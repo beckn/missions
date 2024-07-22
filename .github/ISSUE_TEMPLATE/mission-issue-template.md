@@ -53,14 +53,3 @@ assignees: ''
 
 [Area of governance]
 
-### Tech Skills Needed:
-
-[Required technical skills for the project]
-
-### Complexity
-
-Pick one of [High]/[Medium]/[Low]
-
-### Category
-
-Pick one or more of [CI/CD], [Integrations], [Performance Improvement], [Security], [UI/UX/Design], [Bug], [Feature], [Documentation], [Deployment], [Test], [PoC]
