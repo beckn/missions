@@ -89,7 +89,9 @@ Beckn is a aynchronous protocol at its core.
 
 ![Support call to get contact information of Provider platofrm](./images/support_ka.png)
 
+
 **Rate the viewed resource**
+
 ![Rate the viewed resource](./images/rating_ka.png)
 
 ## API Calls and Schema
