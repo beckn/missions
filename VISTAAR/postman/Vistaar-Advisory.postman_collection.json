@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "cdf4b39d-a1fe-49fb-88d7-22a2ba7a171f",
+		"name": "Vistaar-Advisory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23690031"
+	},
+	"item": [
+		{
+			"name": "Support",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"context\": {\n    \"domain\": \"knowledge-advisory:agrinet:vistaar\",\n    \"action\": \"support\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n        \"name\": \"Balangir\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\":\"{{bpp_id}}\",\n    \"bpp_uri\":\"{{bpp_uri}}\",\n    \"transaction_id\": \"7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"2024-07-02T09:15:30Z\"\n  },\n  \"message\": {\n    \"ref_id\": \"9e188d26-0b1b-4920-a586-6006b0bcf768\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/support",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"support"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"context\": {\n    \"domain\": \"knowledge-advisory:agrinet:vistaar\",\n    \"action\": \"search\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n        \"name\": \"Balangir\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"transaction_id\": \"7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"2024-07-02T09:15:30Z\"\n  },\n  \"message\": {\n    \"intent\": {\n      \"item\": {\n        \"descriptor\": {\n          \"name\": \"cotton aphids\"\n        }\n      }\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/search",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"context\": {\n    \"domain\": \"knowledge-advisory:agrinet:vistaar\",\n    \"action\": \"rating\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n        \"name\": \"Balangir\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\":\"{{bpp_id}}\",\n    \"bpp_uri\":\"{{bpp_uri}}\",\n    \"transaction_id\": \"7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"2024-07-02T09:15:30Z\"\n  },\n  \"message\": {\n    \"ratings\": [\n      {\n        \"id\": \"19a02a67-d2f0-4ea7-b7e1-b2cf4fa57f56\",\n        \"rating_category\": \"Provider\",\n        \"value\": \"5\"\n      }\n    ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/rating",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rating"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://ps-bap-client.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "bap_id",
+			"value": "ps-bap-network.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "bap_uri",
+			"value": "https://ps-bap-network.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "bpp_id",
+			"value": "sandbox-bpp-network.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "bpp_uri",
+			"value": "https://sandbox-bpp-network.becknprotocol.io",
+			"type": "string"
+		}
+	]
+}
