@@ -463,5 +463,6 @@ If you are writing the provider platform software, the following are the steps y
 
 ## Links to artefacts
 
-[Postman collection for VISTAAR Knowledge Advisory](./postman/Vistaar-Advisory.postman_collection.json)
-[Layer2 config for VISTAAR Knowledge Advisory](./layer2/knowledge-advisory_agrinet_vistaar_1.1.0.yaml)
+- [Postman collection for VISTAAR Knowledge Advisory](./postman/Vistaar-Advisory.postman_collection.json)
+- [Layer2 config for VISTAAR Knowledge Advisory](./layer2/knowledge-advisory_agrinet_vistaar_1.1.0.yaml)
+- When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/VISTAAR/layer2/knowledge-advisory_agrinet_vistaar_1.1.0.yaml)
