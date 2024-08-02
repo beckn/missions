@@ -209,7 +209,7 @@ If you are writing the provider platform software, the following are the steps y
 
 ### Appendix-A Migrating to Beckn-ONIX from existing implementation
 
-**Note: After the launch of beckn-onix, it has been decided that FIDE will support only beckn-onix enabled networks. Inacse you are on a non beckn-onix network, its important you migrate to beckn-onix.**
+**Note: After the launch of beckn-onix, it has been decided that FIDE will support only beckn-onix enabled networks. Incase if you are on a legacy or non beckn-onix network, its important you migrate to beckn-onix.**
 
 If you had installed the components of a Beckn network using legacy installations, use the following steps to migrate to Beckn-ONIX
 
