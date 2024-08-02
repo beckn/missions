@@ -25,6 +25,8 @@ Use the following resources to gain deeper knowledge about Beckn protocol and th
 [Online Introduction to Beckn for developers](https://developers.becknprotocol.io/docs/introduction/introduction/)
 [Walkthrough of Beckn ONIX installation](TODO: Link to Mishal's videos)
 
+Beckn Developers guide: https://developers.becknprotocol.io
+
 ## Beckn Resources for reference
 
 Protocol Specification: https://github.com/beckn/protocol-specifications
