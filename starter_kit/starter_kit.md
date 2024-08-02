@@ -49,7 +49,6 @@ Use the following resources to gain deeper knowledge about Beckn protocol and th
 - [Beckn Developers Guide](https://developers.becknprotocol.io/docs/introduction/introduction/)
 - [Beckn Protocol Specification Respository](https://github.com/beckn/protocol-specifications)
 - [Beckn Glossary](https://fide-official.atlassian.net/wiki/external/NzVlZmIxZWM5ODNlNDE5ZTg3NWZkOTljM2Q2NDQ4YjU)
-- [Beckn FAQ](TODO: Add a public link to https://fide-official.atlassian.net/wiki/spaces/TPP/pages/510754836/Beckn+FAQ+s)
 - [Protocol Specification](https://github.com/beckn/protocol-specifications)
 - [Beckn-Onix Repository](https://github.com/beckn/beckn-onix) Beckn-ONIX is an initiative to easily setup and maintain a Beckn network. This document uses the FIDE distribution of Beckn-ONIX as reference implementation.
 - This link has detailed videos on [Walkthrough of Beckn ONIX installation](https://drive.google.com/drive/folders/1PJ6NMXu7abAO3omXlBHro5qtke8DPCbM?usp_dm=false)
