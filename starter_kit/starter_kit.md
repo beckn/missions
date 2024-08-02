@@ -217,3 +217,15 @@ If you had installed the components of a Beckn network using legacy installation
 3. Backup all the log and config data
 4. Install the BAP Beckn Adapter using [Beckn-ONIX](https://github.com/beckn/beckn-onix). Use the credentials that you copied from the older network in step 1 above.
 5. [Download and install layer 2 config file](https://github.com/beckn/beckn-onix/blob/main/docs/user_guide.md#downloading-layer-2-configuration-for-a-domain) - The address from where to install will be specified in the implementation guide provided by your network.
+
+## References
+
+Check out our website, blog, and live projects for a comprehensive overview: 
+Website 🌐 : https://becknprotocol.io/
+Blog✍️ : https://becknprotocol.io/blog/
+Live Projects🛠️ : https://becknprotocol.io/projects/
+
+## Joining Beckn Community
+
+we have thriving community on the dicord, inorder to learn more about beckn, or you want to connect with a beckn expert, Please join the beckn open collective dicord channel
+discord channel link: https://discord.com/invite/pbayfsrMR9
