@@ -25,6 +25,13 @@ Use the following resources to gain deeper knowledge about Beckn protocol and th
 [Online Introduction to Beckn for developers](https://developers.becknprotocol.io/docs/introduction/introduction/)
 [Walkthrough of Beckn ONIX installation](TODO: Link to Mishal's videos)
 
+## Beckn Resources for reference
+
+Protocol Specification: https://github.com/beckn/protocol-specifications
+
+Beckn-Onix: https://github.com/beckn/beckn-onix
+
+
 ## Checklist and stories for network participants
 
 This section contains story version of your journey as a network participant (Seeker Platform/Provider Platform). It is written to give a quick flavor of tasks that are detailed in the latter sections of this document
