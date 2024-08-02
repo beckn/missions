@@ -228,5 +228,5 @@ Live Projects🛠️ : https://becknprotocol.io/projects/
 
 ## Joining Beckn Community
 
-we have thriving community on the dicord, inorder to learn more about beckn, or you want to connect with a beckn expert, Please join the beckn open collective dicord channel
+we have thriving community on the dicord, inorder to learn more about beckn, or you want to connect with a beckn expert, Please join the beckn open collective discord channel
 https://discord.com/invite/pbayfsrMR9
