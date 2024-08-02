@@ -209,6 +209,8 @@ If you are writing the provider platform software, the following are the steps y
 
 ### Appendix-A Migrating to Beckn-ONIX from existing implementation
 
+**Note: After the launch of beckn-onix, it has been decided that FIDE will support only beckn-onix enabled networks. Inacse you are on a non beckn-onix network, its important you migrate to beckn-onix.**
+
 If you had installed the components of a Beckn network using legacy installations, use the following steps to migrate to Beckn-ONIX
 
 1. Write down all the subscription information relevant to the component (e.g. subscriber_id, subscriber_url, registry_url, webhook_url) etc. If the installed Beckn Adapter is the Protocoll Server, most of these can be found in the default.yaml file within the config folder.
