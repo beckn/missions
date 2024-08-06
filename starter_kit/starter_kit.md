@@ -2,13 +2,15 @@
 
 ## Table of contents
 
-1. [Introduction](#introduction)
-2. [Brief introduction to Beckn Network](#brief-introduction-to-beckn-network)
-3. [Learning Resources](#learning-resources)
-4. [Network Participant's journey](#network-participants-journey)
+1. [Beckn Glossary]
+2. [Introduction](#introduction)
+3. [Brief introduction to Beckn Network](#brief-introduction-to-beckn-network)
+4. [Learning Resources](#learning-resources)
+5. [Network Participant's journey](#network-participants-journey)
+   - [Overview of steps for a Network Participants]
    - [Seeker Platform's Journey](#seeker-platform-journey---story-versionchecklist)
    - [Provider Platform's journey](#provider-platform-journey---story-versionchecklist)
-5. [Implementation](#implementation)
+7. [Implementation](#implementation)
    - [Concept of your application](#concept-of-your-application-and-its-place-in-network)
    - [API Integration](#api-integration)
      - [Understand the APIs](#understand-the-apis)
@@ -18,6 +20,20 @@
      - [Pre-Production](#pre-production)
      - [Production preparedness](#production-preparedness)
      - [Go live](#go-live)
+
+## Glossary
+
+[**beckn APIs** - APIs that are part of the beckn protocol specifications and responsible for enabling two platforms consumer & provider side to discover & transact with each other in an Open Network. (Discovery- Order - Fulfillment- Postfulfillemt)
+**Beckn Application Platforms (BAP)** - Beckn Application Platform (BAP) is a consumer-facing infrastructure that captures consumers’ requests via its UI applications, converts them into beckn-compliant schemas and APIs at the server side, and fires them at the network.
+**Beckn Application Platform (BAP)** -  is a consumer-facing infrastructure that captures consumers’ requests via its UI 
+applications converts them into beckn-compliant schemas and APIs at the server side 
+and fires them at the network.
+**Beckn Gateway (BG)** - BGs are extremely lean and stateless routing servers. The purpose of this infrastructure is to optimize the discovery of BPPs by the BAPs by merely matching the context of the search.
+**Network Participants (NPs)** - In the context of an "open network," a network participant typically refers to any individual, entity, or device that interacts with or is connected to the network.
+**Protocol Server** - A server that is specifically designed to handle and implement communication protocols.
+**Sandbox** - A controlled and isolated environment where software applications, code, or processes can run and be tested without affecting the broader system or other applications.
+**Open Network** - An open network is a type of network that is characterized by its accessibility and inclusivity. It is a network where the infrastructure, protocols, and standards are made available to a wide range of participants, typically without restrictions. Open networks contrast with closed or proprietary networks, which have limited access and are often controlled by a single organization.
+
 
 ## Introduction
 
