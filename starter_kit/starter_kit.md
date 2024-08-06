@@ -2,12 +2,12 @@
 
 ## Table of contents
 
-1. [Beckn Glossary]
-2. [Introduction](#introduction)
-3. [Brief introduction to Beckn Network](#brief-introduction-to-beckn-network)
-4. [Learning Resources](#learning-resources)
-5. [Network Participant's journey](#network-participants-journey)
-   - [Overview of steps for a Network Participants]
+1. [Beckn Glossary]_(#Beckn Glossary).
+2. [Overview of steps for a Network Participants]
+3. [Introduction](#introduction)
+4. [Brief introduction to Beckn Network](#brief-introduction-to-beckn-network)
+5. [Learning Resources](#learning-resources)
+6. [Network Participant's journey](#network-participants-journey)
    - [Seeker Platform's Journey](#seeker-platform-journey---story-versionchecklist)
    - [Provider Platform's journey](#provider-platform-journey---story-versionchecklist)
 7. [Implementation](#implementation)
@@ -34,8 +34,22 @@ and fires them at the network.
 **Sandbox** - A controlled and isolated environment where software applications, code, or processes can run and be tested without affecting the broader system or other applications.
 **Open Network** - An open network is a type of network that is characterized by its accessibility and inclusivity. It is a network where the infrastructure, protocols, and standards are made available to a wide range of participants, typically without restrictions. Open networks contrast with closed or proprietary networks, which have limited access and are often controlled by a single organization.
 
+## Overview of steps for a Network Participants
 
-## Introduction
+**Step 1:** Building understanding on Beckn protocol - Refer to the "Introduction section"
+**Step 2 :** Identify the sector or domain you want to solve the Discovery-Order-Fulfillment-Post Fulfillment (DOFP) for - Health, Mobility, Energy, Skilling, Agriculture etc
+**Step 3:** Identify define the role you or your platform would want to play as a Network Participant on an Open Network network (BAP or BPP or a TSP)
+**Step 4:** Define and visualise the outcomes you want to achieve with the selected Network Participant role with the help of the "Outcome Visualisation template". An outcome visualisation template will help you define the requirements and success factors for the transaction you are envisioning to enable on an Open network
+**Step 5:** Register your platform on the beckn sandbox by registering on the beckn Registry that it can be tested against other Network participants and with the beckn gateway and registry and becomes discoverable
+**Step 6:** Deploy ONIX as a pre-requisite pre-API integration step and setup the protocol server for API integration and testing in your local
+**Step 7:**  Map your platform schema with the beckn API schema relevant for the transaction
+**Step 8:** Refer to the respective domain specific Implemnetation guide to integrate/implement the beckn API as per the network Participant role selected. The implemnetation guide contains sample JSONS for request and responses
+**Step 9:** Test with postman collection and against the protocol server
+**Step 10:** Test with other NPs on the network for one complete DOFP flow in the Beckn sandbox
+**Step 11:** Prepare for Go Live access if a live network instance has been setup or is ready
+
+
+**Step 1 ## Introduction**
 
 [Beckn](https://github.com/beckn) is an open protocol that facilitates commerce transactions on open interoperable networks. This document guides participants new to the network to get up and running. It contains the following sections.
 
@@ -71,7 +85,29 @@ Use the following resources to gain deeper knowledge about Beckn protocol and th
 
 ## Network Participant's Journey
 
+**Step 2** Identify the domain or sector you want to solve a problem with DOFP - Health, Mobility, retail etc
+**Step 3** Identify define the role you or your platform would want to play as a Network Participant on an Open Network network (BAP or BPP or a TSP)
+
+**Roles You Can Play**
+**Beckn Application Platform** (Seeker or consumer side platform
+1. Acquires customers as users
+2. Does NOT maintain an active inventory
+3. Provides rich, “resource seeking” with rich buying experience
+4. Interfaces with BPPs and BGs to, place orders, track status etc.
+   
+**Beckn Provider Platform** (Seeker or consumer side platform
+1. Acquires businesses/service providers as users
+2. Maintains an active inventory/catalogue of product or services
+3. Provides rich, “resource-providing”  experience
+4. Interfaces with BAPs and BGs to, publish catalogs, create orders etc.
+
 This section contains story version of your journey as a network participant (Seeker Platform/Provider Platform). It is written to give a quick flavor of tasks that are detailed in the latter sections of this document.
+
+**Step 4** Outcome Visualisation
+Define your requirements, transaction , functional flow and success factor clearly using the template here - https://docs.google.com/document/d/19UGVeUheEVKeC8JbATXiBJfEdwHehrY8sMsvolZYCK0/edit#heading=h.2bgtok41xod2
+
+Find some sample outcome visualisation templates below -
+Sample 1 - https://docs.google.com/document/d/1TQLuBa-TNPSb0ylry6fl7lMub2tfHySqgl03d1rIP7U/edit?usp=sharing
 
 ### Seeker Platform Journey - story version/checklist
 
