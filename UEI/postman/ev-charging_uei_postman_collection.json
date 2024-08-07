@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4e2b4a19-eb48-4dbf-9e0a-2845b7bdf119",
+		"_postman_id": "d4130594-6e07-48b9-beb6-e568290035c5",
 		"name": "ev-charging_uei",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "31540449"
@@ -19,7 +19,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"context\": {\n        \"domain\": \"ev-charging:uei\",\n        \"action\": \"search\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"2023-07-16T04:41:16Z\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"descriptor\": {\n                \"name\": \"\"\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"circle\": {\n                                \"gps\": \"12.423423,77.325647\",\n                                \"radius\": {\n                                    \"type\": \"CONSTANT\",\n                                    \"value\": \"5\",\n                                    \"unit\": \"km\"\n                                }\n                            }\n                        }\n                    }\n                ]\n            },\n            \"tags\": [\n                {\n                    \"descriptor\": {\n                        \"name\": \"Connector Types\",\n                        \"code\": \"connector-types\"\n                    },\n                    \"list\": [\n                        {\n                            \"descriptor\": {\n                                \"name\": \"CCS2\",\n                                \"code\": \"CCS2\"\n                            },\n                            \"value\": \"CCS2\"\n                        }\n                    ],\n                    \"display\": true\n                }\n            ]\n        }\n    }",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"ev-charging:uei\",\n        \"action\": \"search\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"2023-07-16T04:41:16Z\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"descriptor\": {\n                \"name\": \"\"\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"circle\": {\n                                \"gps\": \"12.423423,77.325647\",\n                                \"radius\": {\n                                    \"type\": \"CONSTANT\",\n                                    \"value\": \"5\",\n                                    \"unit\": \"km\"\n                                }\n                            }\n                        }\n                    }\n                ]\n            },\n            \"tags\": [\n                {\n                    \"descriptor\": {\n                        \"name\": \"Connector Types\",\n                        \"code\": \"connector-types\"\n                    },\n                    \"list\": [\n                        {\n                            \"descriptor\": {\n                                \"name\": \"CCS2\",\n                                \"code\": \"CCS2\"\n                            },\n                            \"value\": \"CCS2\"\n                        }\n                    ],\n                    \"display\": true\n                }\n            ]\n        }\n    }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -301,27 +301,27 @@
 	"variable": [
 		{
 			"key": "bap_uri",
-			"value": "https://ps-bap-network-sandbox.ueialliance.org",
+			"value": "https://bap-ps-network-sandbox.ueialliance.org",
 			"type": "string"
 		},
 		{
 			"key": "bap_id",
-			"value": "ps-bap-network-sandbox.ueialliance.org",
+			"value": "bap-ps-network-sandbox.ueialliance.org",
 			"type": "string"
 		},
 		{
 			"key": "base_url",
-			"value": "https://ps-bap-client-sandbox.ueialliance.org",
+			"value": "https://bap-ps-client-sandbox.ueialliance.org",
 			"type": "string"
 		},
 		{
 			"key": "bpp_id",
-			"value": "ps-bpp-network-sandbox.ueialliance.org",
+			"value": "bpp-ps-network-sandbox.ueialliance.org",
 			"type": "string"
 		},
 		{
 			"key": "bpp_uri",
-			"value": "https://ps-bpp-network-sandbox.ueialliance.org",
+			"value": "https://bpp-ps-network-sandbox.ueialliance.org",
 			"type": "string"
 		},
 		{
