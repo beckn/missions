@@ -119,7 +119,7 @@ Beckn is a aynchronous protocol at its core.
       "timestamp": "2024-08-05T09:21:12.618Z",
       "message_id": "e138f204-ec0b-415d-9c9a-7b5bafe10bfe",
       "transaction_id": "2ad735b9-e190-457f-98e5-9702fd895996",
-      "domain": "ev-charging:dent:uei",
+      "domain": "ev-charging:uei",
       "version": "1.1.0",
       "bap_id": "example-bap-id",
       "bap_uri": "https://example-bap-url.com",
@@ -179,7 +179,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_search",
         "location": {
             "city": {
@@ -421,7 +421,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "select",
         "location": {
             "city": {
@@ -551,7 +551,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_select",
         "location": {
             "city": {
@@ -809,7 +809,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "init",
         "location": {
             "city": {
@@ -966,7 +966,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_init",
         "location": {
             "city": {
@@ -1266,7 +1266,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "confirm",
         "location": {
             "city": {
@@ -1441,7 +1441,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_confirm",
         "location": {
             "city": {
@@ -1720,7 +1720,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "status",
         "location": {
             "city": {
@@ -1753,7 +1753,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_status",
         "location": {
             "city": {
@@ -2103,7 +2103,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "update",
         "location": {
             "city": {
@@ -2147,7 +2147,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_update",
         "location": {
             "city": {
@@ -2497,7 +2497,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "support",
         "location": {
             "city": {
@@ -2535,7 +2535,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_support",
         "location": {
             "city": {
@@ -2573,7 +2573,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "track",
         "location": {
             "city": {
@@ -2606,7 +2606,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_track",
         "location": {
             "city": {
@@ -2643,7 +2643,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "cancel",
         "location": {
             "city": {
@@ -2680,7 +2680,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_cancel",
         "location": {
             "city": {
@@ -3024,7 +3024,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "rating",
         "location": {
             "city": {
@@ -3063,7 +3063,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "ev-charging:dent:uei",
+        "domain": "ev-charging:uei",
         "action": "on_rating",
         "location": {
             "city": {
