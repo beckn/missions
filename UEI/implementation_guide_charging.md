@@ -3146,6 +3146,6 @@ If you are writing the provider platform software, the following are the steps y
 
 ## Links to artefacts
 
-- [Postman collection for UEI EV Charging](./postman/ev-charging_dent_uei.postman_collection.json)
-- [Layer2 config for UEI EV Charging](./layer2/ev-charging_dent_uei_1.1.0.yaml)
-- When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/UEI/layer2/ev-charging_dent_uei_1.1.0.yaml)
+- [Postman collection for UEI EV Charging](./postman/ev-charging_uei_postman_collection.json)
+- [Layer2 config for UEI EV Charging](./layer2/ev-charging_uei_1.1.0.yaml)
+- When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/UEI/layer2/ev-charging_uei_1.1.0.yaml)
