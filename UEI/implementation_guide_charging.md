@@ -14,6 +14,7 @@ This document has the following parts:
 4. Taxonomy and layer 2 configuration - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
 5. Notes on writing/integrating with your own software - This section describes ways in which you can integrate (Becknify) your new or existing software
 6. Links to downloadable resources - This section contains the downloadable files referenced in this document.
+7. Sandbox Details - Sandbox links to BAP, Regitry/Gateway and BPP. 
 
 ## Outcome Visualisation
 
@@ -3149,3 +3150,24 @@ If you are writing the provider platform software, the following are the steps y
 - [Postman collection for UEI EV Charging](./postman/ev-charging_uei_postman_collection.json)
 - [Layer2 config for UEI EV Charging](./layer2/ev-charging_uei_1.1.0.yaml)
 - When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/UEI/layer2/ev-charging_uei_1.1.0.yaml)
+
+## Sandbox Details
+
+![UEI Alliance](https://github.com/beckn/missions/blob/main/assets/images/UEI%20Alliance.png)
+
+### BAP:
+
+- **BAP Client Sandbox:** [https://bap-ps-client-sandbox.ueialliance.org/](https://bap-ps-client-sandbox.ueialliance.org/)
+- **BAP Network Sandbox:** [https://bap-ps-network-sandbox.ueialliance.org/](https://bap-ps-network-sandbox.ueialliance.org/)
+
+### Registry/Gateway:
+
+- **Gateway Sandbox:** [https://gateway-sandbox.ueialliance.org/](https://gateway-sandbox.ueialliance.org/)
+- **Registry Sandbox:** [https://registry-sandbox.ueialliance.org/](https://registry-sandbox.ueialliance.org/)
+
+### BPP:
+
+- **BPP Client Sandbox:** [https://bpp-ps-client-sandbox.ueialliance.org/](https://bpp-ps-client-sandbox.ueialliance.org/)
+- **BPP Network Sandbox:** [https://bpp-ps-network-sandbox.ueialliance.org/](https://bpp-ps-network-sandbox.ueialliance.org/)
+- **BPP Playground Sandbox:** [https://bpp-playground-sandbox.ueialliance.org/](https://bpp-playground-sandbox.ueialliance.org/)
+
