@@ -67,7 +67,7 @@
       4. [Setting Up Sandbox, Pre-Prod, and Prod Environments](#setting-up-sandbox-pre-prod-and-prod-environments)
    4. [Troubleshooting Guide](#troubleshooting-guide)
 8. [Implementation](#implementation) - This section is managed through an Implementation Guide
-   1. [Provide a Brief About Different Domains and Use Cases and Link to the IG](#provide-a-brief-about-different-domains-and-use-cases-and-link-to-the-ig)
+   1. [Provide a Brief About Different Domains and Use Cases and Link to the Implementation Guide](#provide-a-brief-about-different-domains-and-use-cases-and-link-to-the-ig)
    2. [Sample Implementation Guides](#sample-implementation-guides)
    3. [Concept of Your Application](#concept-of-your-application)
    4. [API Integration](#api-integration)
