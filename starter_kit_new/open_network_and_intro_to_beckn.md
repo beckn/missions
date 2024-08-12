@@ -61,9 +61,9 @@ Similarly at organisation level, another actor in the ecosystem could be Technic
 
 Use the following resources for a deeper understanding of the Beckn Ecosystem
 
-- For a comprehensive understanding of the Beckn protocol, its origin, concepts and implementation details, refer to this Video Playlist by Ravi Prakash, a co-author of the Beckn Protocol. [Introduction to Beckn By Ravi Prakash - Video Playlist](https://www.youtube.com/watch?v=7Otfcy37-NE&list=PLBC6c8MLy9uVUIb1BOgdOa8tP4rX6c4aK&index=1)
-- The Beckn Developers Guide, gives developers a quick overview of Beckn Protocol, the various components in the network, the APIs, schemas etc. [Beckn Developers Guide](https://developers.becknprotocol.io/docs/introduction/introduction/)
+- [Introduction to Beckn By Ravi Prakash - Video Playlist](https://www.youtube.com/watch?v=7Otfcy37-NE&list=PLBC6c8MLy9uVUIb1BOgdOa8tP4rX6c4aK&index=1) For a comprehensive understanding of the Beckn protocol, its origin, concepts and implementation details, refer to this Video Playlist by Ravi Prakash, a co-author of the Beckn Protocol.
+- [Beckn Developers Guide](https://developers.becknprotocol.io/docs/introduction/introduction/) The Beckn Developers Guide, gives developers a quick overview of Beckn Protocol, the various components in the network, the APIs, schemas etc. 
 - The [Beckn Glossary](https://fide-official.atlassian.net/wiki/external/NzVlZmIxZWM5ODNlNDE5ZTg3NWZkOTljM2Q2NDQ4YjU) explains the most important terms that you come across in Beckn literature.
-- [Beckn-Onix Repository](https://github.com/beckn/beckn-onix) Beckn-ONIX is an initiative to ease setup and maintain a Beckn network. This document uses the FIDE distribution of Beckn-ONIX as reference implementation.
+- [Beckn-Onix Repository](https://github.com/beckn/beckn-onix) Beckn-ONIX is an initiative to ease setup and maintain a Beckn network. This document uses the FIDE distribution of Beckn-ONIX as reference implementation. This link is for the repository with Beckn-ONIX files.
 - [Beckn-ONIX installation videos](https://drive.google.com/drive/folders/1PJ6NMXu7abAO3omXlBHro5qtke8DPCbM?usp_dm=false). This link has detailed videos on Walkthrough of Beckn ONIX installation
 - [Beckn Protocol Specification repository](https://github.com/beckn/protocol-specifications)- Repository containing the core Beckn specification as well as discussions on some of the design choices.
