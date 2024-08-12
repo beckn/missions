@@ -1,3 +1,7 @@
+# Beckn Starter Kit 
+
+## Table of Contents 
+
 1. [Glossary](#glossary)
 2. [Overview of Steps for Network Participants](#overview-of-steps-for-network-participants)
 3. [Introduction](#introduction)
