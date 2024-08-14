@@ -1,4 +1,4 @@
-## Upgrading
+## Migration
 
 This section describes the process to follow to upgrade from non Beckn-ONIX installation of Protocol Server to a Beckn-ONIX based installation. It also describes the process of upgrading from one version of the software to another.
 
