@@ -1,184 +1,124 @@
-## How can I access the logs ?
+## Table of contents
 
-**Gateway** 
+## Introduction
 
- If enabled by the network facilitator or the gateway owner these can be accessed through the url. For example we have deployed the gateway to a subdomain of our domain ‘becknprotocol.io’, the url for gateway logs will be [gateway.becknprotocol.io/bg/log/0](https://gateway.becknprotocol.io/bg/log/0)
+This document contains instructions to troubleshoot all aspects of the Beckn Network. It currently shows instructions for Protocol Server, Registry and Gateway.
 
-**Protocol Server**
+## How to use the guide
 
-Ideally protocol server has 2 parts -
+The guide has multiple sections. The first section common has some design notes as well as problems common to all products. If you are unsure of the message flow in Beckn, look at the first sections of the Common section.
 
-- Client - Generally faces a *client*. *client* can be a buyer or a seller
-- Network - Faces the network and other participants
+If you have problem with a particular product, check once in the common section and then the particular section for the product.
 
-Both the BAP and BPP have protocol server. On beckn side you can access the logs for all ps as following
+## Common
 
-BAP Client - [bap-ps-client-dev.becknprotocol.io/logs](https://bap-ps-client-dev.becknprotocol.io/logs)
+### Flow of messages in Beckn
 
-BAP Network - [bap-ps-network-dev.becknprotocol.io/logs](https://bap-ps-client-dev.becknprotocol.io/logs)
+This section summarizes the flow of messages in Beckn.
 
-BPP Client - [bpp-ps-client-dev.becknprotocol.io/logs](https://bap-ps-client-dev.becknprotocol.io/logs)
+![Search message flow](./assets/images/troubleshoot/search_message_flow.png)
+The following is the flow of a search message:
 
-BPP Network - [bpp-ps-network-dev.becknprotocol.io/logs](https://bap-ps-client-dev.becknprotocol.io/logs)
+1. The message comes from the client/postman to BAP-PS-Client
+2. The message goes through to the BAP-PS-Network.
+3. The BAP-PS-Network requests the registry for the gateway address
+4. The BAP-PS-Network signs and sends the search request to the gateway
+5. The gateway requests the registry for the list of BPPs to multicast
+6. The gateway multicasts the search request to the BPP.
+7. Each BPP-PS-Network which receives the search message, looks up the public key of BAP on registry, verifies the message and forwards it to BPP-PS-Client
+8. BPP-PS-Client calls the webhook configured with the search request
+9. The BPP software or sandbox will call the BPP-PS-Client with the on_search response
+10. The BPP-PS-Client sends the on_search response to BPP-PS-Network
+11. The BPP-PS-Network signs the message and sends to the BAP-PS-Network
+12. The BAP-PS-Network looks up the registry for the public key, verifies and passes the message back to BAP-PS-Client
+13. The BAP-PS-Client aggregates the responses and passes it back to the waiting request.
 
-It can be seen that the above urls are following a certain naming convention
+![Rest message flow](./assets/images/troubleshoot/rest_message_flow.png)
 
-bap/bpp represents the location where ps is being used
+The following is the flow of a rest of the P2P messages (select,init,confirm etc):
 
-ps - stands for protocol server
+1. The message comes from the client/postman to BAP-PS-Client
+2. The message goes through to the BAP-PS-Network.
+3. The BAP-PS-Network signs and sends the search request to the BPP-PS-Network
+4. The BPP-PS-Network which receives the message, looks up the public key of BAP on registry, verifies the message and forwards it to BPP-PS-Client
+5. BPP-PS-Client calls the webhook configured with the request
+6. The BPP software or sandbox will call the BPP-PS-Client with the on_xxxxx response
+7. The BPP-PS-Client sends the on_xxxxx response to BPP-PS-Network
+8. The BPP-PS-Network signs the message and sends to the BAP-PS-Network
+9. The BAP-PS-Network looks up the registry for the public key, verifies and passes the message back to BAP-PS-Client
+10. The BAP-PS-Client passes it back to the waiting request.
 
-client/network represents which part of protocol server it is
+### Accessing logs
 
-dev represents that it represents the logs of the ps deployed on dev environment
+Note that some of the logs might be showing the timestamp in UTC. You can identify it with the letter Z at the end of the timestamp.
 
-## Understanding the flow (Overview)
+There are two ways to access logs.
 
-### Search
+1. The first will be to access them on the machine where they are running. This will require ssh access.
 
-![Screenshot 2024-08-08 at 2.04.02 PM.png](/assets/images/troubleshoot/14.png)
-
-### Rest of the Endpoints
-
-![Screenshot 2024-08-08 at 2.05.48 PM.png](/assets/images/troubleshoot/15.png)
-
-### Points to note
-
-1. Search is the only endpoint where gateway is utilized
-2. BAP network do a look up for all the available gateways and send the search request to 1st working gateway.
-3. Once the gateway receives the request, it broadcast the request to all the possible BPPs
-4. BPPs with available and relevant catalogs sends the catalogs to the BAP using on_search request
-
-## Understanding the sequence and the logs
-
-### Points to Note
-
-- An acknowledgment is sent by the receiver in both forward and reverse flows.
-- Only difference between search endpoint and others is the involvement of the gateway
-- We are going to mention the flow of search below, others can be similarly understood by just removing the role of gateway
-- Network participants interacts with each other using the action api (search, select, confirm) in forward flow and on_action apis (on_search,on_select, on_confirm) in reverse flow
-- message_id statys the same for 1 whole interaction and can be used to track down the logs in both forward and reverse flows
-
-## Forward flow
-
-Stage 1 - BAP client ps
-
-1. Request from client
-
-```json
-info: Request from client:
- {"context":{"ttl":"PT10M","action":"status","timestamp":"2024-08-07T09:00:28.598Z","message_id":"7126559f-d192-4b6f-8ba1-5b5ed8a919cb","transaction_id":"5b53f889-9492-42e3-8f8e-b4ab5ac335f3","domain":"retail:1.1.0","version":"1.1.0","bap_id":"bap-ps-network-dev.becknprotocol.io","bap_uri":"https://bap-ps-network-dev.becknprotocol.io","location":{"country":{"name":"India","code":"IND"},"city":{"name":"Bangalore","code":"std:080"}},"bpp_id":"bpp-ps-network-vendure-dev.becknprotocol.io","bpp_uri":"https://bpp-ps-network-vendure-dev.becknprotocol.io"},"message":{"order_id":"68946706274b3a9c227b6d95c43b9dcdb51a72fde69a3d5f5c5e6160f2e5033b","orderId":"68946706274b3a9c227b6d95c43b9dcdb51a72fde69a3d5f5c5e6160f2e5033b"}}
+```
+docker logs -f bap-client
+docker logs -f bap-network
+docker logs -f bpp-client
+docker logs -f bpp-network
+docker logs -f registry
+docker logs -f gateway
 ```
 
-![Screenshot 2024-08-07 at 2.47.01 PM.png](/assets/images/troubleshoot/1.png)
+- The docker logs for the registry and gateway are not very useful. Instead do the following for the registry
 
-It can be the request from the client layer or if we directly interact with the protocol server using postman from client side
-
-Stage 2 - BAP network ps
-
-1. Recieving messages from outbox queue
-
-```jsx
-recieving message from outbox queue
+```
+$ docker exec -it registry sh
+$ cd tmp
+$ tail -f java_info0.log.0
 ```
 
-![Screenshot 2024-08-07 at 3.07.12 PM.png](/assets/images/troubleshoot/2.png)
+- Do the following for the gateway
 
-The network part of the protocol server gets the request from the client part using the rabbit mq (messaging queue)
+```
+$ docker exec -it gateway sh
+$ cd tmp
+$ tail -f java_info0.log.0
 
-YOU CAN TRACK THE REQUEST USING THE MESSAGE ID
+```
 
-1. Preparing the headers
-    
-    In case of search headers are prepared and a list of available gateways is fetched so that search request can be forwared to first working gateway*
-    
-    In case of other request, gateway is not included as all these requests are p2p i.e the bap-netowork directly interacts with bpp
-    
-    ![Screenshot 2024-08-07 at 3.22.03 PM.png](/assets/images/troubleshoot/3.png)
-    
-2. Request is sent to the gateway and it keeps on sending request until it finds a working gateway
-    
-    
-    A working gateway will send status:ACK as a response to our request
-    
-    ![Screenshot 2024-08-07 at 3.27.57 PM.png](/assets/images/troubleshoot/4.png)
-    
+2. The second is through the web endpoint for each of the component. The protocol server supports the `/logs` endpoint. The gateway supports `/bg/log/0`. Add this to your corresponding URL. **Note that the logs for the protocol server append in the end and do not auto refresh in the browser. So refresh page always before checking**. So for example the following are the log locations of the cloud hosted BAP/BPP in the Beckn Open Collective envrionment. For your environment, you will have to use the right url.
 
-Stage 3 - BPP network ps
+```
+BAP-PS-Client  - https://ps-bap-client.becknprotocol.io/logs
+BAP-PS-Network  - https://ps-bap-network.becknprotocol.io/logs
+BPP-PS-Network  - https://sandbox-bpp-network.becknprotocol.io/logs
+BPP-PS-Client  - https://sandbox-bpp-client.becknprotocol.io/logs
+Gateway  - https://gateway.becknprotocol.io/bg/log/0
+```
 
-1. In case of search we will see a log `Request from BG`   . Again I am tracking everything using the message id. Message id stays the same for the whole journey.
+### Common problems
 
-![Screenshot 2024-08-07 at 3.35.01 PM.png](/assets/images/troubleshoot/5.png)
+**Prob: When I type the address of the logs endpoint, I get a `This site cant be reached` error in the browser**
+**Sol:** Check if the address has been properly typed in the address bar
 
-1. Validating the header and signature that exist inside the header
-    
-    As beckn follow the private-public key architecture. At every step the request is validated using the public key and the signature string is provided in the request header
-    
-    ![Screenshot 2024-08-07 at 3.37.42 PM.png](/assets/images/troubleshoot/6.png)
-    
+**Prob: When I type the address of the registry/gateway/logs endpoint, I get `502 Bad Gateway` error and the page has the word Nginx in it.**
+**Sol:** This is usually due to either the Nginx not being configured properly or the docker container not being up. For example, if you get this error when you are trying to reach the registry, then it means that either the Nginx is not configured to proxy the request to the right port (3030) or the registry is not running at the port(3030). The nginx can be configured in different ways by system administrators. So check either the `/etc/nginx/sites-enabled` folder or the `/etc/nginx/conf.d` folder to see the configuration files and if it is proxying to the right port. Next check `docker ps` to see if the registry is up and in the docker output, check if the exposed port is alright.
 
-Stage 4 - BPP client
+## Troubleshooting Registry
 
-1. Bpp client gets the request from BPP network and then send the request to a webhook (Datastore). In response to this bpp client gets an acknowlegement in positive scenario
+**Prob: Subscriber list call from BAP to the registry seems to be empty**
+**Sol:** When you create network domain in the registry, the actual domain name is the "Name" field and not the "Description" field. When you create network roles, the field shown for selection is description. However the real value that should be present in the request should be the name and not the description. For example in the image shown above, the context.domain should be nic2004:60221 and not "mobility".
 
-![Screenshot 2024-08-07 at 3.56.23 PM.png](/assets/images/troubleshoot/7.png)
+![real domain name](./assets/images/troubleshoot/domain_in_registry.png)
 
-## Reverse Flow (on_action endpoints are used for all the communication)
+## Troubleshooting Gateway
 
-Stage 1 - BPP client ps
+**Prob: Status 400 Cannot invoke "in.succinct.onet.core.adaptor.NetworkAdaptor$Domain.getExtensionPackage() because the return value of "in.succinc.onet.core.adaptor.NetworkAdaptor$Domains.get(String)is null" when sending message from BAP to Gateway**
+**Sol:** Newer versions of Gateway are caching the domain names from bootup. So if the domain is later added to registry, it is not able to get it. Restart the gateway and the error should go.
 
-1. Once we get the data from the datastore through the webhook(It calls the on_action api ), bpp client prepare a request and then send it to bpp network.
-    
-    
-    ![Screenshot 2024-08-07 at 3.59.49 PM.png](/assets/images/troubleshoot/8.png)
-    
+## Troubleshooting Protocol Server
 
-Stage 2 - BPP network ps
+**Prob: 422 Layer 2 config file "ev-charging_uei_1.1.0.yaml" is not installed and it is marked as required in configuration"**
+**Sol:** Beckn-ONIX has made installation of the layer 2 config file as mandatory. You need to download and install this on both the BAP and BPP. Use the beckn-onix/layer2/download\*.sh scripts to install it on your BAP/BPP Protocol Server. You can get the layer 2 config file from your network or in repositories such as beckn-sandbox.
 
-1. After getting the request from bap client, bpp network prepare the axios config with all the essential headers
-    
-    
-    ![Screenshot 2024-08-07 at 4.03.41 PM.png](/assets/images/troubleshoot/9.png)
-    
+**Prob: When I type the address of the BAP-Network in a browser, I get 'Cannot GET /' error**
+**Sol:** This in itself is not an error. The BAP-Network exposes endpoints to which you can send POST request. You are asking for GET in the browser. So just ignore this message. If you want to see logs, use the /logs endpoint.
 
-1. Once the axios request has been prepared, bpp network send the data to bap network. The initial log will be something like `sending Response to BAP: https://bap-ps-network-dev.becknprotocol.io` . Attaching the screenshot below for the whole logs
-    
-    
-    ![Screenshot 2024-08-07 at 4.05.47 PM.png](/assets/images/troubleshoot/10.png)
-    
-
-Stage 3 - Bap network
-
-1. Bap network gets the request from Bpp network with the data and send the ack back. Request from BPP network
-
-![Screenshot 2024-08-07 at 4.15.16 PM.png](/assets/images/troubleshoot/11.png)
-
-1. Bap network uploads the data or send the data to Bap client using Rabbit mq. You can check the log starting with something like `Sending response from BPP to inbox queue`
-    
-    Bap client and network and bpp client & network interacts with each other using a message queue call Rabbit mq. Uploading the screenshot for the whole log
-    
-    ![Screenshot 2024-08-07 at 4.20.29 PM.png](/assets/images/troubleshoot/12.png)
-    
-
-Stage 4 - BAP client
-
-Bap client gets the data from Bap network throught rabbit mq. You can see a log on bap client something similar to `recieving message from inbox queue` . The whole log will look like below. Also pasting the screenshot
-
-![Screenshot 2024-08-07 at 4.29.32 PM.png](/assets/images/troubleshoot/13.png)
-
-It send the data using on_action api to the client after this
-
-## Some common question
-
-### **I send a search request from BAP, but did not get a response, how do i troubleshoot the issue**
-
-You need to follow the closest first strategy and start checking the logs from bpp client and move forward until you find the root cause. You can follow the order in which we explained the logs in this document
-
-### I send a search request i got a NACK
-
-NACK means that the request was not acknowledged by the reciever. In most scenarios you will get the reason in the response along with NACK status. You can use that message for debbuging the issue. Most likely there is something wrong with the payload you are sending or in the request itself. You can follow the step approach in this scenario also. Just check the logs of the closest entity.
-
-For example if you requested the bap-client ps using postman and got a NACK. In case you don’t get the error details in the body, you can also check the bap client logs
-
-### I send a search request, i got a schema validation error
-
-You can check whether your payload follows the beckn specification. The error details might also be mentioned inside the response data. You will need to fix your payload
+**Prob: Logs shows "invalid input .... libsodium-wrappers.js" when BAP-Protocol Server receives a message**
+**Sol:** Sometimes the "=" symbol at end of public key and "==" symbol at end of private key in the default/config.yml get missed out in some Operating Systems. We have not been able to identify why this happens. If it does, make sure public key ends with one equal and private with two equals. Also ensure that the public key matches with the entry in the registry.
