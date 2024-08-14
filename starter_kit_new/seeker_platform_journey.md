@@ -91,13 +91,29 @@ With this done, you are ready to integrate your application to the Beckn network
 
 #### Installation
 
-Use either the GUI or the CLI to install the Protocol Server BAP software. During installation, we are asked for three pieces of information.
+Use either the GUI or the CLI to install the Protocol Server BAP software. The following commands start the CLI installation. 
+
+```
+$ git clone https://github.com/beckn/beckn-onix.git
+$ cd beckn-onix/install
+$ ./beckn_onix.sh
+```
+
+During installation, you are asked for three pieces of information.
 
 1. Registry URL - The registry of the network you want to join. This information will be in the implementation guide. (During installation notice the instructions to see if we need to suffix /subscribers to the registry address)
 2. Subscriber ID - The subscriber ID for the BAP Protocol Server (you decided in the Prerequisite section)
 3. Subscriber URL - The subscriber URL for the BAP Protocol Server (you decided in the Prerequisite section)
 
-The installation will install the Protocol Server and other required support software and register it with the registry. Once this is done, you might have to contact the network facilitator to get yourself approved as a Network Participant.
+The installation will install the Protocol Server and other required support software and register it with the registry. 
+The next step will be to install the required layer 2 configuration file (This process might be integrated into the installation soon). The link to this file will be in the implementation guide. Run the following command and paste the link when asked. 
+
+```
+$ cd ../layer2
+$ ./download_layer_2_config_bap.sh
+```
+
+Once this is done, you might have to contact the network facilitator to get yourself approved as a Network Participant.
 
 #### Testing the installed protocol server using Postman
 
