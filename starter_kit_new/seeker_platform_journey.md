@@ -4,7 +4,7 @@
 
 If you are coming in with a platform that you already have, then probably it will have the following structure. - A consumer service(app) that lets consumers search and initiate orders. - A supplier/provider service(app) that lets suppliers get and fulfil orders. - The platform itself connecting the two.
 
-This is the high level picture of most platforms. The proposition that Beckn brings to the table is that by unbundling the consumer and the supplier side functionalities and having the network match the supply and demand instead of the platform, you open up opportunities to new customers and suppliers.
+This is the high level picture of most platforms. The proposition that Beckn brings to the table is that by unbundling the consumer and the supplier side functionalities and having the network match the supply and demand instead of the platform, you open up opportunities to new customers and suppliers. The following diagram shows an example of unbundling in the Mobility space.
 
 ![Unbundling Platforms](./images/unbundling.png)
 
@@ -21,16 +21,20 @@ This unbundled application will now have to connect to the Beckn network for dis
 
 ![Unbundled Seeker Application](./images/unbundled_seeker.png)
 
-After unbundling, you will be calling the various Beckn API endpoints of the **Beckn Adapter** to send those to the Beckn Network. For example if the user inputs his intent in the UI, you will have to translate the input into a format expected by the Beckn Search API and call the search API of the Beckn Adapter( The word Beckn Adapter and the reference implementation, Protocol Server[explained below] are used interchangeably in this document). By default the Beckn Adapter is configured to fetch the search results and return back in the response (In advanced configurations this can be configured to be also asynchronous). You then proceed to show the search results to the user.
+After unbundling, you will be calling the various API endpoints of the **Beckn Adapter** (The word Beckn Adapter and the reference implementation, Protocol Server[explained below] are used interchangeably in this document) to send messages to the Beckn Network. Internally, the Protocol Server is architected as two App servers. One (BAP-Client) exposes endpoints towards the client(you) while the other (BAP-Network) talks to the Beckn network. 
+
+For example if the user inputs his intent in the UI, you will have to translate the input into a format expected by the Search API and call the search API of the Protocol Server Client. By default the Protocol Server is configured to wait for the search results (it aggregates all the responses from the different providers) and return it back in the response, synchronously. (In advanced configurations this can be configured to be also asynchronous). You then proceed to show the search results to the user.
 
 So one of the main tasks that needs to be done is to convert your inputs into Schema required by Beckn messages. This is called **Schema mapping** and we will come back to it soon.
 
 In the diagram above and the explanation, we mentioned Beckn Adapter. The Beckn Adapter helps your backnend server send Beckn Requests to the Beckn network. Some of the functionalitites that are handled by it are
 
-- Exposing REST endpoints that your backend server can call for the various order phases (search, select, init, confirm, status, cancel etc)
+- Exposing REST endpoints that your application can call for the various order phases (search, select, init, confirm, status, cancel etc)
 - Validating the requests sent by you to be complaint to Beckn core specification as well as any additional rules specified by the network operator (Layer 2 config)
 - Signing the request with a private key, so it can be verified by the receiver using your public key
-- Waiting and sending back responses in a synchronous fashion (Beckn by default relies on asynchronous messages. The Beckn Adapter wrap this in a simple call to make your backend server task easy)
+- Exposing on_xxxxx(on_search, on_select etc) endpoints on the Beckn Network side, so the BPPs can call it back with responses
+- Waiting and aggregating responses in a synchronous fashion (Beckn by default relies on asynchronous messages. The Beckn Adapter wrap this in a simple call to make your application task easy)
+- Reply back with ACK / NACK messages required by the protocol
 - Provide logging, observability and other network operation functionality.
 
 As you can see above, the use of Beckn Adapter reduces the burden on your application development significantly. Beckn-ONIX comes with a reference implementation of the Beckn Adapter called the Protocol Server.
@@ -43,7 +47,7 @@ As we saw in the previous section, the primary task in Seeker Application develo
 - map that data to the Beckn schema for each message.
 - similarly map the Beckn schema from response to extract the data we need
 
-To help you with this task, the community and network will release implmentation guide for various domains, use cases and networks. Choose the right implementation guide for your case before proceeding further.
+To help you with this task, the community and network facilitator will release implmentation guide for various domains, use cases and networks. Choose the right implementation guide for your case before proceeding further.
 
 The implementation guide will contain the following sections:
 
@@ -52,6 +56,9 @@ The implementation guide will contain the following sections:
 3. Example data and mapping to the Beckn Schema for the various messages required for each usecase category
 4. Layer 2 Configuration file required to be installed for that network (more on this later)
 5. Details on sandbox support (for seeker application developers) and postman collection (for provider application developers).
+
+You can find some sample implementation guides [here](https://github.com/beckn/missions/blob/main/starter_kit_new/implementation_guides.md)
+
 
 ### Open Source Assets
 
