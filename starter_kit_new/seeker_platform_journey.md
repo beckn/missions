@@ -8,7 +8,7 @@ This is the high level picture of most platforms. The proposition that Beckn bri
 
 ![Unbundling Platforms](./images/unbundling.png)
 
-As a Seeker Platform after you unbundle your Seeker side application will probably have a customer facing application with a backend server providing the following:
+As a Seeker Platform after you unbundle your Seeker side application you will probably have a customer facing application with a backend server providing the following:
 
 - Ability to let customers discover an item or service
 - Ability to let customers add items to cart or compose the order
@@ -21,11 +21,11 @@ This unbundled application will now have to connect to the Beckn network for dis
 
 ![Unbundled Seeker Application](./images/unbundled_seeker.png)
 
-After unbundling, you will be calling the various Beckn API endpoints of the **Beckn Adapter** to send those to the Beckn Network. For example if the user inputs his intent in the UI, you will have to translate the input into a format expected by the Beckn Search API and call the search API of the Beckn Adapter( The word Beckn Adapter and the reference implementation, Protocol Server) are used interchangeably in this document. By default the Beckn Adapter is configured to fetch the search results and return back in the response (In advanced configurations this can be configured to be also asynchronous). You then proceed to show the search results to the user.
+After unbundling, you will be calling the various Beckn API endpoints of the **Beckn Adapter** to send those to the Beckn Network. For example if the user inputs his intent in the UI, you will have to translate the input into a format expected by the Beckn Search API and call the search API of the Beckn Adapter( The word Beckn Adapter and the reference implementation, Protocol Server[explained below] are used interchangeably in this document). By default the Beckn Adapter is configured to fetch the search results and return back in the response (In advanced configurations this can be configured to be also asynchronous). You then proceed to show the search results to the user.
 
 So one of the main tasks that needs to be done is to convert your inputs into Schema required by Beckn messages. This is called **Schema mapping** and we will come back to it soon.
 
-In the diagram above and the explanation, we mentioned Beckn Adapter. The Beckn Adapter helps your backnend server send Beckn Requests to the Beckn network. Some of the functionalitites that is hadled by it are
+In the diagram above and the explanation, we mentioned Beckn Adapter. The Beckn Adapter helps your backnend server send Beckn Requests to the Beckn network. Some of the functionalitites that are handled by it are
 
 - Exposing REST endpoints that your backend server can call for the various order phases (search, select, init, confirm, status, cancel etc)
 - Validating the requests sent by you to be complaint to Beckn core specification as well as any additional rules specified by the network operator (Layer 2 config)
@@ -37,7 +37,11 @@ As you can see above, the use of Beckn Adapter reduces the burden on your applic
 
 ### Implementation Guide
 
-As we saw in the previous section, the primary task in Seeker Application development will be to - understand the message flow and data required to be sent in each message - map that data to the Beckn schema for each message.
+As we saw in the previous section, the primary task in Seeker Application development will be to
+
+- understand the message flow and data required to be sent in each message
+- map that data to the Beckn schema for each message.
+- similarly map the Beckn schema from response to extract the data we need
 
 To help you with this task, the community and network will release implmentation guide for various domains, use cases and networks. Choose the right implementation guide for your case before proceeding further.
 
@@ -71,7 +75,11 @@ These cover the Order transaction lifecycle (Refer to the image in the Introduct
 
 ### Becknifying your application
 
-With the help of the implementation guide, you start your implementation by - Identifying the Beckn messages you will call on the BAP PS Client. - Mapping the data from the customer into the data to be sent with the Beckn messages - Mapping the data received from the network into the UI to be shown to the user.
+With the help of the implementation guide, you start your implementation by
+
+- Identifying the Beckn messages you will call on the BAP PS Client.
+- Mapping the data from the customer into the data to be sent with the Beckn messages
+- Mapping the data received from the network into the UI to be shown to the user.
 
 With this done, you are ready to integrate your application to the Beckn network.
 
@@ -81,7 +89,7 @@ With this done, you are ready to integrate your application to the Beckn network
 
 #### Prerequisite
 
-1. When we connecting our seeker app to the Beckn network, we are connecting as a Network Participant of the type BAP. In order for any other network participant to reach us, we need to have a publicly accessible URI for the BAP. This is also called as **Subscriber URI** in documentation. Similarly we need a ID for the BAP called the **Subscriber ID**. Typically (as convention) if we are a company called "example.com", the BAP URI will be "https://bap-network.example.com" and the BAP ID will be "bap-network.example.com".
+1. When we connecting our seeker app to the Beckn network, we are connecting as a Network Participant of the type BAP. In order for any other network participant to reach us, we need to have a publicly accessible URI for the BAP. This is also called as **Subscriber URI** in documentation. Similarly we need a ID for the BAP called the **Subscriber ID**. Typically (as convention) if we our primary domain is called "example.com", the BAP URI will be "https://bap-network.example.com" and the BAP ID will be "bap-network.example.com".
 2. Create two subdomain entries. One as shown above for the BAP PS Network (https://bap-network.example.com) and another for BAP PS Client (https://bap-client.example.com). The URL for the BAP PS Client is optional in production as usually it and its caller (your Customer app backend server) can stay in the same VPC and you do not need any public URL. For the sake of this document, we will continue to have two web addresses.
 3. Identify the system on which you will install the BAP Protocol Server. Usually this will be in the same VPC as the Customer App Backend server.
 4. When we install the Protocol Server, BAP Protocol Server Client will run on port 5001 and BAP Protocol Server Network will run on port 5002. So we need to configure a reverse proxy on this machine, so the following mapping is done.
@@ -91,7 +99,7 @@ With this done, you are ready to integrate your application to the Beckn network
 
 #### Installation
 
-Use either the GUI or the CLI to install the Protocol Server BAP software. The following commands start the CLI installation. 
+Use either the GUI or the CLI to install the Protocol Server BAP software. The following commands start the CLI installation.
 
 ```
 $ git clone https://github.com/beckn/beckn-onix.git
@@ -105,8 +113,8 @@ During installation, you are asked for three pieces of information.
 2. Subscriber ID - The subscriber ID for the BAP Protocol Server (you decided in the Prerequisite section)
 3. Subscriber URL - The subscriber URL for the BAP Protocol Server (you decided in the Prerequisite section)
 
-The installation will install the Protocol Server and other required support software and register it with the registry. 
-The next step will be to install the required layer 2 configuration file (This process might be integrated into the installation soon). The link to this file will be in the implementation guide. Run the following command and paste the link when asked. 
+The installation will install the Protocol Server and other required support software and register it with the registry.
+The next step will be to install the required layer 2 configuration file (This process might be integrated into the installation soon). The link to this file will be in the implementation guide. Run the following command and paste the link when asked.
 
 ```
 $ cd ../layer2
