@@ -556,7 +556,10 @@ Beckn protocol allows the unbundling of Platform type of application where the t
 
 ### Registry and Gateway
 
-**Registry** in a Beckn network holds details on the different network participants including their ID, URL, Public Key, Domains they operate in, Role (BAP, BPP, BG etc). It also provides a way for the Network Facilatoror Organization to include or exclude a participant from transaction. Every network participant when it receives a message, will lookup at the registry for the public key of the sender to ensure that the message was sent by the said party and has not been modified since sending. This authentication is the core of trust in the Beckn Network.
+**Registry** in a Beckn network holds details on the different network participants including their ID, URL, Public Key, Domains they operate in, Role (BAP, BPP, BG etc). It also provides a way for the Network Facilatoror Organization to include or exclude a participant from transaction. Every network participant when it receives a message, will lookup at the registry for the public key of the sender to ensure that the message was sent by the said party and has not been modified since sending. This authentication is the core of trust in the Beckn Network. 
+
+> [!TIP]
+> User Guide for the Registry can be found here [Registry User Guide](../registry-user-guide.md)
 
 **Gateway** is a special server used to multicast search request sent by a BAP to all relevant BPPs in the network. It does this using only the context of the message. It uses the help of the Registry to do this task.
 
@@ -739,11 +742,12 @@ Explore the Beckn GitHub repositories, where you'll find a wealth of resources t
 
 ## Resources
 
-- [Experience the world of Beckn through experience center](https://experience.becknprotocol.io/)
-- [Home of Beckn Protocol](https://becknprotocol.io/)
-- [Beckn Developer Portal](https://developers.becknprotocol.io/)
+- [Experience the world of Beckn through experience center](https://experience.becknprotocol.io/) - Experience life with Beckn in various domains through these sample Applications.
+- [Home of Beckn Protocol](https://becknprotocol.io/) - Start your quest for anything Beckn from here.
+- [Beckn Developer Portal](https://developers.becknprotocol.io/) - Developer Portal for Beckn Protocol.
 - The [Beckn Glossary](../glossary.md) explains the most important terms that you come across in Beckn literature.
 - [Beckn Protocol Specification repository](https://github.com/beckn/protocol-specifications)- Repository containing the core Beckn specification as well as discussions on some of the design choices.
+- [Registry User Guide](../registry-user-guide.md) - User Guide for the Registry
 
 ### Important code repositories
 
