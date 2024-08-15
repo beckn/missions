@@ -10,16 +10,17 @@
 6. [Getting started with Beckn - NP's perspective](#getting-started-with-beckn---nps-perspective)
 7. [Network Participant's journey](#network-participants-journey)
 
-   7.1 [Unbundling the platform](#unbundling-the-platform)
+   7.1 [Beckn Adapter/Protocol Server](#beckn-adaptor-protocol-server)
 
    7.2 [Seeker Platform's journey](#seeker-platforms-journey)
 
    7.3 [Provider Platform's journey](#provider-platforms-journey)
-9. [Network Facilitator's journey](#network-facilitator-journey)
-10. [Going to Production - Network Participants](#going-to-production-network-participants)
-11. [Beckn FAQ](#beckn-faq)
-12. [Seeking Help](#seeking-help)
-13. [Resources](#resources)
+
+8. [Network Facilitator's journey](#network-facilitator-journey)
+9. [Going to Production - Network Participants](#going-to-production-network-participants)
+10. [Beckn FAQ](#beckn-faq)
+11. [Seeking Help](#seeking-help)
+12. [Resources](#resources)
 
 ## Glossary
 
@@ -109,7 +110,7 @@ The **Core Schema** specifies the structure of data in the commerce interactions
 
 ### Taxonomies and domain specific attributes
 
-Taxonomies and domain-specific attributes can be added to the elements of the Core schema. Similarly we can also add additional newtwork facilatator defined rules to these. It is achieved through definition of enumerations, required fields, allowed and default values, conditional schemas etc. Together these are referred to as Layer 2 config. 
+Taxonomies and domain-specific attributes can be added to the elements of the Core schema. Similarly we can also add additional newtwork facilatator defined rules to these. It is achieved through definition of enumerations, required fields, allowed and default values, conditional schemas etc. Together these are referred to as Layer 2 config.
 
 ### Network Actors
 
@@ -224,9 +225,10 @@ Use one of these next sections to guide you through your integration process bas
 ## Network Participant's journey
 
 ### Beckn Adaptor (Protocol Server)
+
 When a Network Participant needs to connect to the Beckn network and transact over it, there are many Beckn specific tasks that need to be done. We can separate the component that does these tasks and call it a **Beckn Adaptor**. FIDE provides a reference implementation of the Beckn Adapter, called as **Protocol Server**. This is also part of the Beckn-ONIX initiative. This document refers to the Beckn Adapter and Protocol Server interchangeably
 
-Some of the functionalitites that are provided by Protocol Server are: 
+Some of the functionalitites that are provided by Protocol Server are:
 
 **Common functionalities**
 
@@ -245,13 +247,19 @@ When integrating Consumer Side applications (Beckn Application Platform), the Pr
 When integrating Provider Side platforms (Beckn Provider Platforms), the Protocol Server (**BPP Protocol Server**) does these additional tasks
 
 - Calls the API server endpoint (webhook) when messages are sent to the BPP on the Beckn Network
-- Expose response API endpoints on_xxxxx (on_search, on_select etc) that the BPP software can call back when it has responses. When the BPP calls 
+- Expose response API endpoints on_xxxxx (on_search, on_select etc) that the BPP software can call back when it has responses. When the BPP calls
 
-Internally the Protocol Server is architected as two App servers. One is given the suffix Client (**BAP PS Client, BPP PS Client**). The other is given the suffix Network (**BAP PS Network, BPP PS Network**). The Client server will interact with the Consumer/Provider applications. The Network server will interact with the Beckn Network. 
+Internally the Protocol Server is architected as two App servers. One is given the suffix Client (**BAP PS Client, BPP PS Client**). The other is given the suffix Network (**BAP PS Network, BPP PS Network**). The Client server will interact with the Consumer/Provider applications. The Network server will interact with the Beckn Network.
 
 The following diagram shows the forward and reverse message flows with the various Protocol Server components
 ![Forward and reverse message flows](./images/forward_reverse_flow.png)
 
+In addition to sending messages in the Beckn format, another key task the Protocol Server does with the messages is sign it so the receiver can verify that the message is originating from the indicated source and has not been tampered with. It signs the message with its private key and attaches a signature to the header. The receiver will lookup the registry for the public key of the sending participant and verify the signature. The image below shows the format of the Authorization header that goes with a signed message.
+
+![Signature header](./images/signature.png)
+
+> [!TIP]
+> Refer to this [document](https://github.com/beckn/protocol-specifications/blob/master/docs/BECKN-006-Signing-Beckn-APIs-In-HTTP-Draft-01.md) for more details on authentication.
 
 ### Seeker Platform's Journey
 
@@ -268,15 +276,13 @@ This unbundled application will now have to connect to the Beckn network for dis
 
 ![Unbundled Seeker Application](./images/unbundled_seeker.png)
 
-After unbundling, you will be calling the various API endpoints of the Protocol Server client to send messages to the Beckn Network. Refer to the [Protocol Server Section]( ) Internally, the Protocol Server is architected as two App servers. One (BAP-Client) exposes endpoints towards the client(you) while the other (BAP-Network) talks to the Beckn network.
+After unbundling, you will be calling the various API endpoints of the Protocol Server client to send messages to the Beckn Network. Refer to the [Protocol Server Section](#beckn-adaptor-protocol-server).
 
 For example if the user inputs his intent in the UI, you will have to translate the input into a format expected by the Search API and call the search API of the Protocol Server Client. By default the Protocol Server is configured to wait for the search results (it aggregates all the responses from the different providers) and return it back in the response, synchronously. (In advanced configurations this can be configured to be also asynchronous). You then proceed to show the search results to the user.
 
 So one of the main tasks that needs to be done is to convert your inputs into Schema required by Beckn messages. Similarly any Beckn response by other participants will have to be mapped back to the data relevant for your application. This is called **Schema mapping** and we will come back to it soon.
 
-In the diagram above and the explanation, we mentioned Beckn Adapter. The Beckn Adapter helps your backnend server send Beckn Requests to the Beckn network. 
-
-As you can see above, the use of Beckn Adapter reduces the burden on your application development significantly. Beckn-ONIX comes with a reference implementation of the Beckn Adapter called the Protocol Server.
+The Protocol Server helps your backnend server send Beckn Requests to the Beckn network. Its use reduces the burden on your application development significantly.
 
 #### Implementation Guide
 
@@ -302,7 +308,7 @@ You can find some sample implementation guides [here](https://github.com/beckn/m
 
 ##### Protocol Server
 
-The primary asset that will help the Seeker Application developers is the reference implementation of the Beckn Adapter called as the **Protocol Server**. This is available in the Beckn-ONIX reference implementation suite.
+The primary asset that will help the Seeker Application developers is the reference implementation of the Beckn Adapter, the **Protocol Server**. This is available in the Beckn-ONIX reference implementation suite.
 
 > [!NOTE]
 > Based on our requirement the same Protocol Server application can be configured in two modes
@@ -312,13 +318,9 @@ The primary asset that will help the Seeker Application developers is the refere
 
 Since we are building the Seeker platform we will be installing the protocol server in the BAP mode and is referred as the BAP-Protocol Server in the diagrams and during installation.
 
-In the "Unbundle your platform" section, we saw the tasks performed by any Beckn Adapter. The Protocol Server performs all of these tasks. Internally, the Protocol Server is architected as two App servers. One (BAP-Client) exposes endpoints towards the client while the other (BAP-Network) talks to the Beckn network. The following diagram shows the structure of the BAP Protocol Server.
+The following diagram shows the structure of the BAP Protocol Server.
 
 ![BAP Protocol Server](./images/bap_protocol_server.png)
-
-In addition to sending messages in the Beckn format, another key task the Protocol Server does with the messages is sign it so the receiver can verify that the message is originating from the indicated source and has not been tampered with. It signs the message with its private key and attaches a signature to the header. The receiver will lookup the registry for the public key of the sending participant and verify the signature. Refer to this [document](https://github.com/beckn/protocol-specifications/blob/master/docs/BECKN-006-Signing-Beckn-APIs-In-HTTP-Draft-01.md) for more details. The image below shows the format of the Authorization header that goes with a signed message.
-
-![Signature header](./images/signature.png)
 
 The BAP Protocol Server exposes the following endpoints which your app can call
 
@@ -412,7 +414,9 @@ As a Provider Platform after you unbundle your Provider side application will ha
 
 This unbundled application will now have to connect to the Beckn network to provide these functionalities to the consumer. The tasks that Providers have to do to keep the catalog upto date, inventory management, setting shop policies etc, are not covered by Beckn. Beckn only covers the catalog and order management tasks towards the consumer side.
 
-**Beckn protocol** defines APIs, authentication and message format to help participants connect to the Beckn network. These APIs cover all aspects of **Discovery, Order, Fulfillment and Post Fulfillment** that are required in commerce tansactions. You can use an Adapter that implements the Beckn protocol to make your task easy. Beckn-ONIX initiative provides a reference implementation of such an adapter and is called the Protocol Server. The following diagram illustrates how your unbundled application might look when connected to the Beckn network
+**Beckn protocol** defines APIs, authentication and message format to help participants connect to the Beckn network. These APIs cover all aspects of **Discovery, Order, Fulfillment and Post Fulfillment** that are required in commerce tansactions.
+
+You can use the Protocol Server to make integration with Beckn Network easier. Refer to [Protocol Server Section](#beckn-adaptor-protocol-server) to review the Protocol Server functionaity. The following diagram illustrates how your unbundled application might look when connected to the Beckn network
 
 ![Unbundled Provider Application](./images/unbundled_provider.png)
 
@@ -420,14 +424,10 @@ After unbundling, you will be listening to an endpoint in your software (called 
 
 - Broadly check if the message is structurally alright and return back an HTTP 200 message with the following ACK status. `{ message: { ack: { status: 'ACK' } }`
 - Process the message (e.g if it is a order confirmation - confirm message, create order in database, trigger payment verification etc ) and compose a response (e.g. on_confirm).
-- Call the corresponding endpoint (e.g. on_confirm) on the **Beckn Adapter** (The word Beckn Adapter and the reference implementation, Protocol Server[explained below] are used interchangeably in this document).
-- The Beckn Adapter will take care of returning the response message to the BAP(consumer facing App Platform) that sent the original message. The BAP will inform the user of order confirmation.
+- Call the corresponding endpoint (e.g. on_confirm) on the BPP Protocol Server Client.
+- The Protocol Server will take care of returning the response message to the BAP(consumer facing App Platform) that sent the original message. The BAP will inform the user of order confirmation.
 
 So one of the main tasks that needs to be done is to extract the data from Beckn Requests and similarly to map our data into Beckn Responses. This is called **Schema mapping** and we will come back to it soon.
-
-In the diagram above and the explanation, we mentioned Beckn Adapter. The Beckn Adapter helps your backnend server communicate with the Beckn network. Some of the functionalitites that are handled by it are
-
-As you can see above, the use of Beckn Adapter reduces the burden on your application development significantly. Beckn-ONIX comes with a reference implementation of the Beckn Adapter called the Protocol Server.
 
 #### Implementation Guide
 
@@ -450,7 +450,7 @@ The implementation guide will contain the following sections:
 
 ##### Protocol Server
 
-The primary asset that will help the Provider Application developers is the reference implementation of the Beckn Adapter called as the **Protocol Server**. This is available in the Beckn-ONIX reference implementation suite.
+The primary asset that will help the Provider Application developers is the **Protocol Server**. This is available in the Beckn-ONIX reference implementation suite.
 
 > [!NOTE]
 > Based on our requirement the same Protocol Server application can be configured in two modes
@@ -458,15 +458,9 @@ The primary asset that will help the Provider Application developers is the refe
 > 1. BAP Protocol Server
 > 2. BPP Protocol Server
 
-Since we are building the provider platform, this protocol server needs to be installed in BPP mode and is referred as the BPP-Protocol Server in the diagrams and during installation.
-
-In the "Unbundle your platform" section, we saw the tasks performed by any Beckn Adapter. The Protocol Server performs all of these tasks. Internally, the Protocol Server is architected as two App servers. One (BPP-Network) listens on the Beckn network for messages meant for you, while the other (BPP-Client) will call your server endpoint (webhook) as well as expose response endpoints (on_search, on_select etc ) that your software can call. The following diagram shows the structure of the BAP Protocol Server.
+Since we are building the provider platform, this protocol server needs to be installed in BPP mode and is referred as the BPP-Protocol Server in the diagrams and during installation. The following diagram shows the structure of the BAP Protocol Server.
 
 ![BPP Protocol Server](./images/bap_protocol_server.png)
-
-In addition to sending messages in the Beckn format, another key task the Protocol Server does with the messages is sign it so the receiver can verify that the message is originating from the indicated source and has not been tampered with. It signs the message with its private key and attaches a signature to the header. The receiver will lookup the registry for the public key of the sending participant and verify the signature. Refer to this [document](https://github.com/beckn/protocol-specifications/blob/master/docs/BECKN-006-Signing-Beckn-APIs-In-HTTP-Draft-01.md) for more details. The image below shows the format of the Authorization header that goes with a signed message.
-
-![Signature header](./images/signature.png)
 
 The BPP Protocol Server calls your Provider Platform Software endpoint (webhook url) with messages from the Beckn Network. The same endpoint is called for all messages. You can differentiate the message by looking at the context.action field of the message json. The action field will have the following values
 
@@ -474,9 +468,7 @@ The BPP Protocol Server calls your Provider Platform Software endpoint (webhook 
   search, select, init, confirm, status, cancel, track, support, update, rating
 ```
 
-These cover the Order transaction lifecycle (Refer to the image in the Introduction to Beckn section on how these map to the order lifecycle). The default implementation of the BAP Protocol Server will work sychronously and will return back when it has the answers from the network or times out.
-
-You return back an ack, process these messages and callback the corresponding endpoint (on_search, on_select etc) on the BPP PS Client server.
+These cover the Order transaction lifecycle (Refer to the image in the Introduction to Beckn section on how these map to the order lifecycle). You return back an ack, process these messages and callback the corresponding endpoint (on_search, on_select etc) on the BPP PS Client server.
 
 #### Becknifying your application
 
@@ -639,7 +631,7 @@ The same procedure can be used to install the registry and gateway in other envi
 
 ### Pre-production
 
-1. Different networks will have different requirements for pre-prod. At a minimum, they might want you to submit logs for specific flows. Check your network website for details.
+1. Different networks will have different requirements for pre-prod. Typically, they might want you to submit logs for specific flows. Check your network website for details.
 2. Register on Pre-production environment.
 3. Test application with seeker/provider available on pre prod environment.
 
