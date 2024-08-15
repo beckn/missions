@@ -141,6 +141,18 @@ The above section was a very brief introduction about Open networks and the Beck
 
 [Beckn](https://github.com/beckn) is an open protocol that facilitates commerce transactions on open interoperable networks. This section guides participants new to the network to get up and running.
 
+### Unbundling the platform
+
+If you are coming in with a platform that you already have, then probably it will have the following structure.
+
+- A consumer service(app) that lets consumers search and initiate orders.
+- A provider/provider service(app) that lets providers get and fulfil orders.
+- The platform itself connecting the two.
+
+This is the high level picture of most platforms. The proposition that Beckn brings to the table is that by unbundling the consumer and the provider side functionalities and having the network match the supply and demand instead of the platform, you open up opportunities to new consumers and providers. The following diagram shows an example of unbundling in the Mobility space.
+
+![Unbundling Platforms](./images/unbundling.png)
+
 ### Different Roles in an Open Network
 
 #### Beckn Application Platforms (BAP)
@@ -149,7 +161,7 @@ The above section was a very brief introduction about Open networks and the Beck
 
 **Key Characteristics**:
 
-- Acquires customers as users
+- Acquires consumers as users
 - Does NOT maintain an active inventory
 - Provides a rich “resource-seeking” and buying experience
 - Interfaces with Beckn Provider Platforms (BPPs) and Network Facilitators to place orders, track status, etc.
@@ -201,28 +213,15 @@ _Refer to the [Outcome Visualization Template](https://docs.google.com/presentat
 
 ### Map Your Journey as per the Role Selected & Outcome Visualization
 
-After identifying your role and visualizing the outcomes, map out your implementation journey. The following chapter gives these steps based on your role.
+After identifying your role and visualizing the outcomes, map out your implementation journey. The following chapters gives these steps based on your role.
 
-- **For Beckn Application Platforms (BAPs)**
-- **For Beckn Provider Platforms (BPPs)**
-- **For Network Facilitators**
+- **Beckn Application Platforms (BAPs) - Seeker Platform' s journey**
+- **For Beckn Provider Platforms (BPPs) - Provider Platform's journey**
+- **For Network Facilitators - Network Facilitators's journey**
 
-Use the next section to guide you through your integration process based on the role you have chosen.
+Use one of these next sections to guide you through your integration process based on the role you have chosen.
 
 ## Network Participant's journey
-
-### Unbundling the platform
-
-If you are coming in with a platform that you already have, then probably it will have the following structure.
-
-- A consumer service(app) that lets consumers search and initiate orders.
-- A supplier/provider service(app) that lets suppliers get and fulfil orders.
-- The platform itself connecting the two.
-
-This is the high level picture of most platforms. The proposition that Beckn brings to the table is that by unbundling the consumer and the supplier side functionalities and having the network match the supply and demand instead of the platform, you open up opportunities to new customers and suppliers. The following diagram shows an example of unbundling in the Mobility space.
-
-![Unbundling Platforms](./images/unbundling.png)
-
 
 ### Beckn Adaptor (Protocol Server)
 When a Network Participant needs to connect to the Beckn network and transact over it, there are many Beckn specific tasks that need to be done. We can separate the component that does these tasks and call it a **Beckn Adaptor**. FIDE provides a reference implementation of the Beckn Adapter, called as **Protocol Server**. This is also part of the Beckn-ONIX initiative. This document refers to the Beckn Adapter and Protocol Server interchangeably
@@ -237,7 +236,7 @@ Some of the functionalitites that are provided by Protocol Server are:
 - Reply back synchronously with ACK / NACK messages required by the protocol
 - Provide logging, observability and other network operation functionality.
 
-When integrating Customer Side applications (Beckn Application Platform), the Protocol Server (**BAP Protocol Server**) does these additional tasks
+When integrating Consumer Side applications (Beckn Application Platform), the Protocol Server (**BAP Protocol Server**) does these additional tasks
 
 - Exposing REST endpoints that Seeker application platforms can call for the various order phases (search, select, init, confirm, status, cancel etc)
 - Exposing on_xxxxx(on_search, on_select etc) endpoints on the Beckn Network side, so the BPPs can call it back with responses
@@ -248,24 +247,28 @@ When integrating Provider Side platforms (Beckn Provider Platforms), the Protoco
 - Calls the API server endpoint (webhook) when messages are sent to the BPP on the Beckn Network
 - Expose response API endpoints on_xxxxx (on_search, on_select etc) that the BPP software can call back when it has responses. When the BPP calls 
 
-Internally the Protocol Server is architected as two App servers. One is given the suffix Client (BAP PS Client, BPP PS Client). The other is given the suffix Network (BAP PS Network, BPP PS Network). The Client server will interact with the Customer/Provider applications. The Network server will interact with the Beckn Network. 
+Internally the Protocol Server is architected as two App servers. One is given the suffix Client (**BAP PS Client, BPP PS Client**). The other is given the suffix Network (**BAP PS Network, BPP PS Network**). The Client server will interact with the Consumer/Provider applications. The Network server will interact with the Beckn Network. 
+
+The following diagram shows the forward and reverse message flows with the various Protocol Server components
+![Forward and reverse message flows](./images/forward_reverse_flow.png)
+
 
 ### Seeker Platform's Journey
 
-As a Seeker Platform after you unbundle your Seeker side application you will probably have a customer facing application with a backend server providing the following:
+As a Seeker Platform after you unbundle your Seeker side application you will probably have a consumer facing application with a backend server providing the following:
 
-- Ability to let customers discover an item or service
-- Ability to let customers add items to cart or compose the order
-- Ability to let customers order item or service
-- Ability to let customers pay for the order
-- Ability to let customers track the order to fulfillment
-- Ability to let customers leave feedback on items, services and orders.
+- Ability to let consumers discover an item or service
+- Ability to let consumers add items to cart or compose the order
+- Ability to let consumers order item or service
+- Ability to let consumers pay for the order
+- Ability to let consumers track the order to fulfillment
+- Ability to let consumers leave feedback on items, services and orders.
 
 This unbundled application will now have to connect to the Beckn network for discovery, supply demand matching and communication with providers. **Beckn protocol** defines APIs, authentication and message format to help participants connect to the Beckn network. These APIs cover all aspects of **Discovery, Order, Fulfillment and Post Fulfillment** that are required in commerce tansactions. You can use an Adapter that implements the Beckn protocol to make your task easy. Beckn-ONIX initiative provides a reference implementation of such an adapter and is called the Protocol Server. The following diagram illustrates how your unbundled application might look when connected to the Beckn network
 
 ![Unbundled Seeker Application](./images/unbundled_seeker.png)
 
-After unbundling, you will be calling the various API endpoints of the **Beckn Adapter** (The word Beckn Adapter and the reference implementation, Protocol Server[explained below] are used interchangeably in this document) to send messages to the Beckn Network. Internally, the Protocol Server is architected as two App servers. One (BAP-Client) exposes endpoints towards the client(you) while the other (BAP-Network) talks to the Beckn network.
+After unbundling, you will be calling the various API endpoints of the Protocol Server client to send messages to the Beckn Network. Refer to the [Protocol Server Section]( ) Internally, the Protocol Server is architected as two App servers. One (BAP-Client) exposes endpoints towards the client(you) while the other (BAP-Network) talks to the Beckn network.
 
 For example if the user inputs his intent in the UI, you will have to translate the input into a format expected by the Search API and call the search API of the Protocol Server Client. By default the Protocol Server is configured to wait for the search results (it aggregates all the responses from the different providers) and return it back in the response, synchronously. (In advanced configurations this can be configured to be also asynchronous). You then proceed to show the search results to the user.
 
@@ -328,7 +331,7 @@ These cover the Order transaction lifecycle (Refer to the image in the Introduct
 With the help of the implementation guide, you start your implementation by
 
 - Identifying the Beckn messages you will call on the BAP PS Client.
-- Mapping the data from the customer into the data to be sent with the Beckn messages
+- Mapping the data from the consumer into the data to be sent with the Beckn messages
 - Mapping the data received from the network into the UI to be shown to the user.
 
 With this done, you are ready to integrate your application to the Beckn network.
@@ -340,8 +343,8 @@ With this done, you are ready to integrate your application to the Beckn network
 ##### Prerequisite
 
 1. When we connecting our seeker app to the Beckn network, we are connecting as a Network Participant of the type BAP. In order for any other network participant to reach us, we need to have a publicly accessible URI for the BAP. This is also called as **Subscriber URI** in documentation. Similarly we need a ID for the BAP called the **Subscriber ID**. Typically (as convention) if we our primary domain is called "example.com", the BAP URI will be "https://bap-network.example.com" and the BAP ID will be "bap-network.example.com".
-2. Create two subdomain entries. One as shown above for the BAP PS Network (https://bap-network.example.com) and another for BAP PS Client (https://bap-client.example.com). The URL for the BAP PS Client is optional in production as usually it and its caller (your Customer app backend server) can stay in the same VPC and you do not need any public URL. For the sake of this document, we will continue to have two web addresses.
-3. Identify the system on which you will install the BAP Protocol Server. Usually this will be in the same VPC as the Customer App Backend server.
+2. Create two subdomain entries. One as shown above for the BAP PS Network (https://bap-network.example.com) and another for BAP PS Client (https://bap-client.example.com). The URL for the BAP PS Client is optional in production as usually it and its caller (your consumer app backend server) can stay in the same VPC and you do not need any public URL. For the sake of this document, we will continue to have two web addresses.
+3. Identify the system on which you will install the BAP Protocol Server. Usually this will be in the same VPC as the consumer App Backend server.
 4. When we install the Protocol Server, BAP Protocol Server Client will run on port 5001 and BAP Protocol Server Network will run on port 5002. So we need to configure a reverse proxy on this machine, so the following mapping is done.
 
 - BAP Client URI (e.g. https://bap-client.example.com) is mapped to port 5001
@@ -396,7 +399,7 @@ Once you have tested with Postman, it is time to test directly calling the Proto
 
 ### Provider Platform's Journey
 
-As a Provider Platform after you unbundle your Provider side application will have a supplier facing application with a backend server providing some of the following:
+As a Provider Platform after you unbundle your Provider side application will have a provider facing application with a backend server providing some of the following:
 
 - Ability to return back catalog on search requests
 - Ability to support order creation
@@ -407,7 +410,7 @@ As a Provider Platform after you unbundle your Provider side application will ha
 - Ability to provide support and tracking information
 - Ability to store rating and feedback
 
-This unbundled application will now have to connect to the Beckn network to provide these functionalities to the customer. The tasks that Providers have to do to keep the catalog upto date, inventory management, setting shop policies etc, are not covered by Beckn. Beckn only covers the catalog and order management tasks towards the customer side.
+This unbundled application will now have to connect to the Beckn network to provide these functionalities to the consumer. The tasks that Providers have to do to keep the catalog upto date, inventory management, setting shop policies etc, are not covered by Beckn. Beckn only covers the catalog and order management tasks towards the consumer side.
 
 **Beckn protocol** defines APIs, authentication and message format to help participants connect to the Beckn network. These APIs cover all aspects of **Discovery, Order, Fulfillment and Post Fulfillment** that are required in commerce tansactions. You can use an Adapter that implements the Beckn protocol to make your task easy. Beckn-ONIX initiative provides a reference implementation of such an adapter and is called the Protocol Server. The following diagram illustrates how your unbundled application might look when connected to the Beckn network
 
@@ -418,7 +421,7 @@ After unbundling, you will be listening to an endpoint in your software (called 
 - Broadly check if the message is structurally alright and return back an HTTP 200 message with the following ACK status. `{ message: { ack: { status: 'ACK' } }`
 - Process the message (e.g if it is a order confirmation - confirm message, create order in database, trigger payment verification etc ) and compose a response (e.g. on_confirm).
 - Call the corresponding endpoint (e.g. on_confirm) on the **Beckn Adapter** (The word Beckn Adapter and the reference implementation, Protocol Server[explained below] are used interchangeably in this document).
-- The Beckn Adapter will take care of returning the response message to the BAP(Customer facing App Platform) that sent the original message. The BAP will inform the user of order confirmation.
+- The Beckn Adapter will take care of returning the response message to the BAP(consumer facing App Platform) that sent the original message. The BAP will inform the user of order confirmation.
 
 So one of the main tasks that needs to be done is to extract the data from Beckn Requests and similarly to map our data into Beckn Responses. This is called **Schema mapping** and we will come back to it soon.
 
@@ -551,7 +554,7 @@ When you send requests from postman, you should see them arrive at your webhook 
 
 ## Network facilitator Journey
 
-Beckn protocol allows the unbundling of Platform type of application where the three tasks of customer operations, provider operations and the matching of customer to provider are unbundled. This creates a open network with new entrants being able to write software on the customer side (Beckn Application Platform) and provider side (Beckn Provider Platform). The task of bringing these participants together, allow them to discover each other, perform required complaince and regulation check for such networks etc is that of **Network Faciliator Organizations**. Some of the tasks of the Network Faciliator Organizations include:
+Beckn protocol allows the unbundling of Platform type of application where the three tasks of consumer operations, provider operations and the matching of consumer to provider are unbundled. This creates a open network with new entrants being able to write software on the consumer side (Beckn Application Platform) and provider side (Beckn Provider Platform). The task of bringing these participants together, allow them to discover each other, perform required complaince and regulation check for such networks etc is that of **Network Faciliator Organizations**. Some of the tasks of the Network Faciliator Organizations include:
 
 - Conceptualize the network, its nature, nature of participants and the types of transactions allowed.
 - Help network participants onboard onto the network
