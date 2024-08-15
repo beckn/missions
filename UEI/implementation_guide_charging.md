@@ -14,7 +14,7 @@ This document has the following parts:
 4. Taxonomy and layer 2 configuration - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
 5. Notes on writing/integrating with your own software - This section describes ways in which you can integrate (Becknify) your new or existing software
 6. Links to downloadable resources - This section contains the downloadable files referenced in this document.
-7. Sandbox Details - Sandbox links to BAP, Regitry/Gateway and BPP. 
+7. Sandbox Details - Sandbox links to BAP, Regitry/Gateway and BPP.
 
 ## Outcome Visualisation
 
@@ -65,7 +65,7 @@ Beckn is a aynchronous protocol at its core.
 - However when writing software we should be prepared to receive these NACK messages as well as error field in the on_xxxxxx messages
 - While this discussion is from a Beckn perspective, Adapters can provide synchronous modes. For example, the Protocol Server which is the reference implementation of the Beckn Adapter provides a synchronous mode by default. So if your software calls the support endpoint on the BAP Protocol Server, the Protocol Server waits till it gets the on_support and returns back that as the response.
 
-![ACK NACK for messages](../assets/images/ack_nack.png)
+![ACK NACK for messages](/docs/assets/images/ack_nack.png)
 
 **Structure of a message with a NACK**
 
@@ -3125,7 +3125,7 @@ If you are writing the seeker platform software, the following are the steps you
    - the remaining components are provided by the sandbox enviornment
 8. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
 
-![Seeker platform testing sandbox ](../assets/images/seeker_deployment.png)
+![Seeker platform testing sandbox ](/docs/assets/images/seeker_deployment.png)
 
 ### Integrating the provider platform
 
@@ -3143,7 +3143,7 @@ If you are writing the provider platform software, the following are the steps y
    - Use the postman collection to test your Provider Platform
 7. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
 
-![Provider platform testing sandbox](../assets/images/provider_deployment.png)
+![Provider platform testing sandbox](/docs/assets/images/provider_deployment.png)
 
 ## Links to artefacts
 
@@ -3170,4 +3170,3 @@ If you are writing the provider platform software, the following are the steps y
 - **BPP Client Sandbox:** [https://bpp-ps-client-sandbox.ueialliance.org/](https://bpp-ps-client-sandbox.ueialliance.org/)
 - **BPP Network Sandbox:** [https://bpp-ps-network-sandbox.ueialliance.org/](https://bpp-ps-network-sandbox.ueialliance.org/)
 - **BPP Playground Sandbox:** [https://bpp-playground-sandbox.ueialliance.org/](https://bpp-playground-sandbox.ueialliance.org/)
-
