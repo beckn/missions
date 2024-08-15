@@ -9,14 +9,17 @@
 5. [Learning Resources](#learning-resources)
 6. [Getting started with Beckn - NP's perspective](#getting-started-with-beckn---nps-perspective)
 7. [Network Participant's journey](#network-participants-journey)
+
    7.1 [Unbundling the platform](#unbundling-the-platform)
+
    7.2 [Seeker Platform's journey](#seeker-platforms-journey)
+
    7.3 [Provider Platform's journey](#provider-platforms-journey)
-8. [Network Facilitator's journey](#network-facilitator-journey)
-9. [Going to Production - Network Participants](#going-to-production-network-participants)
-10. [Beckn FAQ](#beckn-faq)
-11. [Seeking Help](#seeking-help)
-12. [Resources](#resources)
+9. [Network Facilitator's journey](#network-facilitator-journey)
+10. [Going to Production - Network Participants](#going-to-production-network-participants)
+11. [Beckn FAQ](#beckn-faq)
+12. [Seeking Help](#seeking-help)
+13. [Resources](#resources)
 
 ## Glossary
 
@@ -44,7 +47,7 @@
 
 4. **Step 4:** Define and visualize the outcomes you want to achieve with the selected Network Participant role using the "Outcome Visualization template".
 
-5. **Step 5:** Register your platform on the Beckn sandbox by registering on the Beckn Registry for testing against other Network participants. The network facilitator will provide with
+5. **Step 5:** Register your platform on the Beckn sandbox by registering on the Beckn Registry for testing against other Network participants. The network facilitator will provide with the URL for that.
 
 6. **Step 6:** Deploy ONIX as a prerequisite pre-API integration step and set up the protocol server for API integration and testing.
 
@@ -52,32 +55,32 @@
 
 8. **Step 8:** Refer to the domain-specific Implementation guide to integrate the Beckn API as per the selected Network Participant role.
 
-9. **Step 9:** Test with Postman collection and against the protocol server.
+9. **Step 9:** Test with Postman collection and against the sandbox.
 
-10. **Step 10:** Test with other NPs on the network for one complete DOFP flow in the Beckn sandbox.
+10. **Step 10:** Test with other NPs on the network for one complete DOFP flow in the sandbox environment.
 
-11. **Step 11:** Prepare for Go Live access if a live network instance is set up or ready.
+11. **Step 11:** Prepare for Go Live.
 
 ## Introduction to Open Networks
 
-Open networks allows **interoperability** and collaboration between different participants on the network. It is a powerful force and has boosted innovation and growth wherever it has been adopted. Starting with the internet , from http for information transfer to smtp for email, the web is full of examples of open networks and protocols.
+**Open networks** allows **interoperability** and collaboration between different participants on a network. It is a powerful force and has boosted innovation and growth wherever it has been adopted. Starting with the internet , HTTP for information transfer, SMTP for email; the web is full of examples of open networks and protocols.
 
 While web as a network is open, the **economy on the web** has not been so. It is filled with platforms that centralise control. **Beckn** is an **open digital infrastructure** that allows creating of unbundled and decentralised digital market and an open playground for all commerce participants.
 
-Beckn allows consumers, governments and business to unlock markets by enabling direct interactions among them while leveraging the power of the internet and other digital infrastructure. It is a set of **open specifications** that allow creation of open networks enabling commerce aware communication between participants. It helps transition from a platform based ecosystem to a open-protocol and open-network based interoperable ecosystem.
+Beckn allows consumers, governments and business to unlock markets by enabling direct interactions among them while leveraging the power of the internet and other digital infrastructure. It is a set of **open specifications** that allow creation of open networks enabling commerce aware communication between participants. It helps transition from a platform based ecosystem to a open-protocol and open-network based interoperable ecosystem. Below is the illustration of a open network with Beckn.
 
 ![Open network with Beckn](./images/open_network_with_beckn.png)
 
 ## Introduction to Beckn Protocol
 
-Beckn protocol specification consists of the core APIs, the core schema, layer 2 schema, the communication protocol and the authentication and contract components.
+The foundation of a Beckn open network is the Beckn Protocol Specification. Beckn protocol specification consists of the core APIs, the core schema, the communication protocol and the authentication and contract components.
 
 > [!TIP]
-> More on [Beckn Protocol Specification](https://developers.becknprotocol.io/docs/introduction/beckn-protocol-specification/)
+> More on [Beckn Protocol Specification at this link](https://developers.becknprotocol.io/docs/introduction/beckn-protocol-specification/)
 
 ### Core APIs
 
-The **Core APIs** include **transaction APIs** that cover the **discovery, order, fulfillment and post-fulfillment** phases of an order lifecycle and are **asynchronous**.
+The **Core APIs** include **transaction APIs** that cover the **discovery, order, fulfillment and post-fulfillment** phases of an order lifecycle.
 
 Every end-to-end commerce transaction can be categorized through these four stages:
 
@@ -96,7 +99,7 @@ All transaction APIs are asynchronous, which means that the requested informatio
 ![Asynchronous API](./images/async.png)
 
 > [!TIP]
-> More on [Core APIs](https://developers.becknprotocol.io/docs/introduction/transactional-layer/)
+> More on [Core APIs at this link](https://developers.becknprotocol.io/docs/introduction/transactional-layer/)
 
 ### Core Schema
 
@@ -104,9 +107,9 @@ The **Core Schema** specifies the structure of data in the commerce interactions
 
 ![Core Schema](./images/schema.png)
 
-### Layer 2 Schema
+### Taxonomies and domain specific attributes
 
-Layer 2 Schema through taxonomies add domain-specific attributes to the elements of the Core schema. Also they provide a way to add additional network facilitator (defined below) defined rules to the Core Schema. It is achieved through definition of enumerations, required fields, allowed and default values, conditional schemas etc.
+Taxonomies and domain-specific attributes can be added to the elements of the Core schema. Similarly we can also add additional newtwork facilatator defined rules to these. It is achieved through definition of enumerations, required fields, allowed and default values, conditional schemas etc. Together these are referred to as Layer 2 config. 
 
 ### Network Actors
 
@@ -114,29 +117,29 @@ The **primary actors** in Beckn-enabled networks include the
 
 - Consumer facing platforms called **Beckn Application Platforms(BAP)**. A Beckn Application Platform (BAP) is a consumer-facing infrastructure which captures consumer's requests via its UI applications, converts them into beckn-compliant schemas and APIs at the server side, and fires them at the network.
 - Seller facing platforms called **Beckn Provider Platforms(BPP)**. These are the platforms that maintain an active inventory, one or more catalogs of products and services, implement the supply logic and enable fulfillment of orders. The BPP can be a single provider with a Beckn API implementation or an aggregator of merchants.
-- Registration platforms with data about network participants - **Registry**. The Registry has details on all network participants including their public key. Any receiver of an API request must authenticate the sender by looking up the network registry and verify the signature of the sender through the sender’s public key.
-- Routing infrastructure called **Beckn Gateway** used during discovery phase(search). BGs are extremely lean and stateless routing servers. The purpose of this server is to optimize discovery of BPPs by the BAPs by merely matching the context of the search. The BG takes a request from the BAP, determines to which BPPs the message needs to be sent to (by looking up the registry) and multicasts the message only to them.
+- Registration platforms with data about network participants called **Registry**. The Registry has details on all network participants including their public key. Any receiver of an API request must authenticate the sender by looking up the network registry and verify the signature of the sender through the sender’s public key.
+- Routing infrastructure called **Beckn Gateway**. The Beckn Gateway is used during discovery phase(search). BGs are extremely lean and stateless routing servers. The purpose of this server is to optimize discovery of BPPs by the BAPs by merely matching the context of the search. The BG takes a request from the BAP, determines to which BPPs the message needs to be sent to (by looking up the registry) and multicasts the message only to them.
 
-Usually the registry and the gateway are part of the network infrastructure and maintained by organisation called as **Network Facilitators**. Network Facilitators manage and govern the network. They help on-board network participants onto the network and can control who can transact on the network.
+Usually the registry and the gateway are part of the network infrastructure and maintained by **Network Facilitators**. Network Facilitators manage and govern the network. They help on-board network participants onto the network and can control who can transact on the network.
 
 Similarly at organisation level, another actor in the ecosystem could be Technical Service Providers. These are organisations that might help the other Network Participants help setup and get onto Beckn Networks. Network participants can get onto Beckn Network themselves, following guides such as this document and other resources. Else they can take the help of TSPs for this purpose. This document assumes network participants are onboarding themselves onto the Beckn network.
 
 ![Actors in Beckn-enabled networks](./images/actors.png)
 
 > [!TIP]
-> More on [Beckn Network Actors](https://developers.becknprotocol.io/docs/introduction/transactional-layer/)
+> More on [Beckn Network Actors at this link](https://developers.becknprotocol.io/docs/introduction/transactional-layer/)
 
 ## Learning resources
 
-Use the following resources for a deeper understanding of the Beckn Ecosystem
+The above section was a very brief introduction about Open networks and the Beckn Ecosystem. Use the following resources for a deeper understanding of the Beckn Ecosystem
 
-- [Introduction to Beckn By Ravi Prakash - Video Playlist](https://www.youtube.com/watch?v=7Otfcy37-NE&list=PLBC6c8MLy9uVUIb1BOgdOa8tP4rX6c4aK&index=1) For a comprehensive understanding of the Beckn protocol, its origin, concepts and implementation details, refer to this Video Playlist by Ravi Prakash, a co-author of the Beckn Protocol.
+- [Introduction to Beckn By Ravi Prakash - Video Playlist](https://www.youtube.com/watch?v=7Otfcy37-NE&list=PLBC6c8MLy9uVUIb1BOgdOa8tP4rX6c4aK&index=1) For a comprehensive understanding of the Beckn protocol, its origin, concepts and implementation details, refer to this Video Playlist by Ravi Prakash, co-author of the Beckn Protocol.
 - [Beckn Developers Guide](https://developers.becknprotocol.io/docs/introduction/introduction/) The Beckn Developers Guide, gives developers a quick overview of Beckn Protocol, the various components in the network, the APIs, schemas etc.
 - [Beckn-ONIX installation videos](https://drive.google.com/drive/folders/1PJ6NMXu7abAO3omXlBHro5qtke8DPCbM?usp_dm=false). This link has detailed videos on Walkthrough of Beckn ONIX installation
 
 ## Getting started with Beckn - NP's perspective
 
-[Beckn](https://github.com/beckn) is an open protocol that facilitates commerce transactions on open interoperable networks. This document guides participants new to the network to get up and running.
+[Beckn](https://github.com/beckn) is an open protocol that facilitates commerce transactions on open interoperable networks. This section guides participants new to the network to get up and running.
 
 ### Different Roles in an Open Network
 
@@ -198,14 +201,13 @@ _Refer to the [Outcome Visualization Template](https://docs.google.com/presentat
 
 ### Map Your Journey as per the Role Selected & Outcome Visualization
 
-After identifying your role and visualizing the outcomes, map out your implementation journey.
+After identifying your role and visualizing the outcomes, map out your implementation journey. The following chapter gives these steps based on your role.
 
 - **For Beckn Application Platforms (BAPs)**
 - **For Beckn Provider Platforms (BPPs)**
 - **For Network Facilitators**
-- **For Technical Service Providers (TSPs)**
 
-These steps will guide you through your integration process based on the role you have chosen.
+Use the next section to guide you through your integration process based on the role you have chosen.
 
 ## Network Participant's journey
 
@@ -220,6 +222,33 @@ If you are coming in with a platform that you already have, then probably it wil
 This is the high level picture of most platforms. The proposition that Beckn brings to the table is that by unbundling the consumer and the supplier side functionalities and having the network match the supply and demand instead of the platform, you open up opportunities to new customers and suppliers. The following diagram shows an example of unbundling in the Mobility space.
 
 ![Unbundling Platforms](./images/unbundling.png)
+
+
+### Beckn Adaptor (Protocol Server)
+When a Network Participant needs to connect to the Beckn network and transact over it, there are many Beckn specific tasks that need to be done. We can separate the component that does these tasks and call it a **Beckn Adaptor**. FIDE provides a reference implementation of the Beckn Adapter, called as **Protocol Server**. This is also part of the Beckn-ONIX initiative. This document refers to the Beckn Adapter and Protocol Server interchangeably
+
+Some of the functionalitites that are provided by Protocol Server are: 
+
+**Common functionalities**
+
+- Validating the requests sent by network participants to be complaint to Beckn core specification as well as any additional rules specified by the network operator (Layer 2 config)
+- Signing the request with a private key, so it can be verified by the receiver using the sender's public key
+- Verify any message received from other participants by fetching their public key from registry and checking against it
+- Reply back synchronously with ACK / NACK messages required by the protocol
+- Provide logging, observability and other network operation functionality.
+
+When integrating Customer Side applications (Beckn Application Platform), the Protocol Server (**BAP Protocol Server**) does these additional tasks
+
+- Exposing REST endpoints that Seeker application platforms can call for the various order phases (search, select, init, confirm, status, cancel etc)
+- Exposing on_xxxxx(on_search, on_select etc) endpoints on the Beckn Network side, so the BPPs can call it back with responses
+- Waiting and aggregating responses in a synchronous fashion (Beckn by default relies on asynchronous messages. The Protocol Server wraps this in a simple call to make your application task easy)
+
+When integrating Provider Side platforms (Beckn Provider Platforms), the Protocol Server (**BPP Protocol Server**) does these additional tasks
+
+- Calls the API server endpoint (webhook) when messages are sent to the BPP on the Beckn Network
+- Expose response API endpoints on_xxxxx (on_search, on_select etc) that the BPP software can call back when it has responses. When the BPP calls 
+
+Internally the Protocol Server is architected as two App servers. One is given the suffix Client (BAP PS Client, BPP PS Client). The other is given the suffix Network (BAP PS Network, BPP PS Network). The Client server will interact with the Customer/Provider applications. The Network server will interact with the Beckn Network. 
 
 ### Seeker Platform's Journey
 
@@ -240,17 +269,9 @@ After unbundling, you will be calling the various API endpoints of the **Beckn A
 
 For example if the user inputs his intent in the UI, you will have to translate the input into a format expected by the Search API and call the search API of the Protocol Server Client. By default the Protocol Server is configured to wait for the search results (it aggregates all the responses from the different providers) and return it back in the response, synchronously. (In advanced configurations this can be configured to be also asynchronous). You then proceed to show the search results to the user.
 
-So one of the main tasks that needs to be done is to convert your inputs into Schema required by Beckn messages. This is called **Schema mapping** and we will come back to it soon.
+So one of the main tasks that needs to be done is to convert your inputs into Schema required by Beckn messages. Similarly any Beckn response by other participants will have to be mapped back to the data relevant for your application. This is called **Schema mapping** and we will come back to it soon.
 
-In the diagram above and the explanation, we mentioned Beckn Adapter. The Beckn Adapter helps your backnend server send Beckn Requests to the Beckn network. Some of the functionalitites that are handled by it are
-
-- Exposing REST endpoints that your application can call for the various order phases (search, select, init, confirm, status, cancel etc)
-- Validating the requests sent by you to be complaint to Beckn core specification as well as any additional rules specified by the network operator (Layer 2 config)
-- Signing the request with a private key, so it can be verified by the receiver using your public key
-- Exposing on_xxxxx(on_search, on_select etc) endpoints on the Beckn Network side, so the BPPs can call it back with responses
-- Waiting and aggregating responses in a synchronous fashion (Beckn by default relies on asynchronous messages. The Beckn Adapter wrap this in a simple call to make your application task easy)
-- Reply back with ACK / NACK messages required by the protocol
-- Provide logging, observability and other network operation functionality.
+In the diagram above and the explanation, we mentioned Beckn Adapter. The Beckn Adapter helps your backnend server send Beckn Requests to the Beckn network. 
 
 As you can see above, the use of Beckn Adapter reduces the burden on your application development significantly. Beckn-ONIX comes with a reference implementation of the Beckn Adapter called the Protocol Server.
 
@@ -343,7 +364,7 @@ During installation, you are asked for three pieces of information.
 3. Subscriber URL - The subscriber URL for the BAP Protocol Server (you decided in the Prerequisite section)
 
 The installation will install the Protocol Server and other required support software and register it with the registry.
-The next step will be to install the required layer 2 configuration file (This process might be integrated into the installation soon). The link to this file will be in the implementation guide. Run the following command and paste the link when asked.
+The next step will be to install the required layer 2 configuration file (This process might be integrated into the installation soon). The link to this file will be in the implementation guide provided by your network facilitator. Run the following command and paste the link when asked.
 
 ```
 $ cd ../layer2
@@ -356,13 +377,13 @@ Once this is done, you might have to contact the network facilitator to get your
 
 In case you want to test the installed Protocol Server before you integrate it with your application, you can do so with Postman. The implementation guide will have the required Postman collection. You can also find a bunch of Postman collections for different domains [here](https://github.com/beckn/beckn-sandbox/tree/main/artefacts).
 
-Within each postman collection, there are usually collection variables defined. Change these variables, to change the following.
+Within each postman collection, there are usually collection variables defined. Change these variables as indicated.
 
 - The bap_subscriber_id should be the Subscriber ID from above (e.g. bap-network.example.com)
 - The bap_subscriber_url should be the Subscriber URL from above (e.g. https://bap-network.example.com)
 - The base_url should be the address of the BAP PS Client (e.g. https://bap-client.example.com)
 
-The following diagram shows how Postman connects to your seeker side app. Further it also shows the existance of a Sandbox. Sandbox is a mock Seller side platform that is usually present in most trial networks and can help you to verify your Seeker Side application without having to write a corresponding Provider side application.
+The following diagram shows how Postman connects to your seeker side app. Further it also shows the existance of a Sandbox. Sandbox is a mock Seller side platform that is usually present in most networks (trial environments) and can help you to verify your Seeker Side application without having to write a corresponding Provider side application.
 
 ![Testing with Postman and Sandbox](./images/postman_sandbox.png)
 
@@ -371,11 +392,11 @@ The following diagram shows how Postman connects to your seeker side app. Furthe
 Once you have tested with Postman, it is time to test directly calling the Protocol Server Endpoints from your application. You will be sending the Beckn requests (search, select etc ) to the BAP PS Client address (e.g. https://bap-client.example.com/search, https://bap-client.example.com/select etc). By default the BAP PS is configured to wait for response from the network and return back the responses synchronously.
 
 > [!TIP]
-> Use the following [troubleshooting guide](../troubleshoot.md) when you run into problems.
+> Use the following [troubleshooting guide](../troubleshoot.md) if you run into problems.
 
 ### Provider Platform's Journey
 
-As a Provider Platform after you unbundle your Provider side application will probably have a supplier facing application with a backend server providing the following:
+As a Provider Platform after you unbundle your Provider side application will have a supplier facing application with a backend server providing some of the following:
 
 - Ability to return back catalog on search requests
 - Ability to support order creation
@@ -394,7 +415,7 @@ This unbundled application will now have to connect to the Beckn network to prov
 
 After unbundling, you will be listening to an endpoint in your software (called as webhook). On this endpoint you will receive all the Beckn messages (search, confirm, status etc). When you receive any such message, you have to do the following:
 
-- Broadly check if the message is structurally alright and return back an HTTP 200 message with the following message `{ message: { ack: { status: 'ACK' } }`
+- Broadly check if the message is structurally alright and return back an HTTP 200 message with the following ACK status. `{ message: { ack: { status: 'ACK' } }`
 - Process the message (e.g if it is a order confirmation - confirm message, create order in database, trigger payment verification etc ) and compose a response (e.g. on_confirm).
 - Call the corresponding endpoint (e.g. on_confirm) on the **Beckn Adapter** (The word Beckn Adapter and the reference implementation, Protocol Server[explained below] are used interchangeably in this document).
 - The Beckn Adapter will take care of returning the response message to the BAP(Customer facing App Platform) that sent the original message. The BAP will inform the user of order confirmation.
@@ -402,12 +423,6 @@ After unbundling, you will be listening to an endpoint in your software (called 
 So one of the main tasks that needs to be done is to extract the data from Beckn Requests and similarly to map our data into Beckn Responses. This is called **Schema mapping** and we will come back to it soon.
 
 In the diagram above and the explanation, we mentioned Beckn Adapter. The Beckn Adapter helps your backnend server communicate with the Beckn network. Some of the functionalitites that are handled by it are
-
-- Calling your API server endpoing (webhook) when messages are sent to you on the Beckn Network
-- Validating the requests sent to you and your responses to be compliant to Beckn core specification as well as any additional rules specified by the network operator (Layer 2 Config)
-- When you receive a message from another participant, it verifies if the message was indeed from the said participant and has not been tampered. It uses the copy of the sender's public key present in the registry to do this.
-- When you callback a response (e.g. on_select, on_confirm etc), it will sign the message with your private key and forward it to the recipient
-- Provide logging, observability and other network operation functionality.
 
 As you can see above, the use of Beckn Adapter reduces the burden on your application development significantly. Beckn-ONIX comes with a reference implementation of the Beckn Adapter called the Protocol Server.
 
