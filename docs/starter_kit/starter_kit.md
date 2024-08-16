@@ -306,7 +306,10 @@ The implementation guide will contain the following sections:
 4. Layer 2 Configuration file required to be installed for that network (more on this later)
 5. Details on sandbox support (for seeker application developers) and postman collection (for provider application developers).
 
-You can find some sample implementation guides [here](https://github.com/beckn/missions/blob/main/starter_kit_new/implementation_guides.md)
+You can find relevant implementation guides [here](https://github.com/beckn/missions/blob/main/starter_kit/implementation_guides.md)
+
+> [!NOTE]
+> The implementation guides are currently available only for active domians / usecases and will be made available as and when new domians / usecsaes are activated.
 
 #### Open Source Assets
 
