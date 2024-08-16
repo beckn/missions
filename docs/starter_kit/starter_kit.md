@@ -26,7 +26,9 @@
 
 - **Beckn APIs:** APIs that are part of the Beckn protocol specifications and responsible for enabling two platforms (consumer & provider side) to discover & transact with each other in an Open Network. (Discovery-Order-Fulfillment-Post-fulfillment)
 
-- **Beckn Application Platforms (BAP):** A consumer-facing infrastructure that captures consumers’ requests via its UI applications, converts them into Beckn-compliant schemas and APIs at the server side, and fires them at the network.
+- **Beckn Application Platforms (BAP):** A consumer-facing platform that captures consumers’ requests via its UI applications, converts them into Beckn-compliant schemas and APIs at the server side, and fires them at the network.
+
+- **Beckn Provider Platforms (BPP):** A digital platform or service that leverages the Beckn Protocol to connect with other platforms in a decentralized network. It acts as a service provider in the network, offering services such as mobility, retail, or logistics. The platform communicates with other entities (e.g., Beckn Application Platforms or other providers) using the Beckn Protocol’s standardized API specifications.
 
 - **Beckn Gateway (BG):** Extremely lean and stateless routing servers. The purpose of this infrastructure is to optimize the discovery of BPPs by the BAPs by merely matching the context of the search.It multicasts search requests from the BAP to relevant BPPs.
 
