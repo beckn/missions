@@ -212,7 +212,9 @@ This step is crucial for network participants to define the use cases they wish 
 
 This process helps in scoping out the necessary functionality, UI, and backend integration requirements to enable an end-to-end transaction on the network.
 
-_Refer to the [Outcome Visualization Template](https://docs.google.com/presentation/d/14OLgjGIVQnexu-MvtpY9Y87r1fQOPUOQU_ip1MMWIrw/edit#slide=id.g243ea7a9558_0_218) for detailed guidance._
+> [!NOTE]
+> _Refer to the [Outcome Visualization Template](https://docs.google.com/presentation/d/14OLgjGIVQnexu-MvtpY9Y87r1fQOPUOQU_ip1MMWIrw/edit#slide=id.g243ea7a9558_0_218) for detailed guidance.
+>  The doc provided is a sample reference visualisation based on mobility usecase and may not match your usecase and is provided only for understanding purposes, Please create a copy of the document to draft an outcome visualisation for your journey_.
 
 ### Map Your Journey as per the Role Selected & Outcome Visualization
 
