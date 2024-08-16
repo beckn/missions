@@ -11,4 +11,4 @@ This repository is maintained by the FIDE mission teams and is actively used for
 - Implementation guides that will help build your software, integrate with Beckn and conduct transactions on it.
 - Other resources.
   
-[Click here](./starter_kit/starter_kit.md) to get started
+[Click here](./docs/starter_kit/starter_kit.md) to get started
