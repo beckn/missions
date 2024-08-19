@@ -10,7 +10,7 @@ The guide has multiple sections. The first section common has some design notes 
 
 If you have problem with a particular product, check once in the common section and then the particular section for the product.
 
-## Common
+## Knowledge Base
 
 ### Flow of messages in Beckn
 
@@ -92,7 +92,7 @@ BPP-PS-Client  - https://sandbox-bpp-client.becknprotocol.io/logs
 Gateway  - https://gateway.becknprotocol.io/bg/log/0
 ```
 
-### Common problems
+## Common problems
 
 **Prob: When I type the address of the logs endpoint, I get a `This site cant be reached` error in the browser**
 **Sol:** Check if the address has been properly typed in the address bar
