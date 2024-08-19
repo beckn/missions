@@ -10,7 +10,7 @@ The guide has multiple sections. The first section common has some design notes 
 
 If you have problem with a particular product, check once in the common section and then the particular section for the product.
 
-## Knowledge Base
+## Background
 
 ### Flow of messages in Beckn
 
@@ -92,33 +92,42 @@ BPP-PS-Client  - https://sandbox-bpp-client.becknprotocol.io/logs
 Gateway  - https://gateway.becknprotocol.io/bg/log/0
 ```
 
-## Common problems
+## Common issues
 
-**Prob: When I type the address of the logs endpoint, I get a `This site cant be reached` error in the browser**
-**Sol:** Check if the address has been properly typed in the address bar
+### 1. When I type the address of the logs endpoint, I get a `This site cant be reached` error in the browser
 
-**Prob: When I type the address of the registry/gateway/logs endpoint, I get `502 Bad Gateway` error and the page has the word Nginx in it.**
-**Sol:** This is usually due to either the Nginx not being configured properly or the docker container not being up. For example, if you get this error when you are trying to reach the registry, then it means that either the Nginx is not configured to proxy the request to the right port (3030) or the registry is not running at the port(3030). The nginx can be configured in different ways by system administrators. So check either the `/etc/nginx/sites-enabled` folder or the `/etc/nginx/conf.d` folder to see the configuration files and if it is proxying to the right port. Next check `docker ps` to see if the registry is up and in the docker output, check if the exposed port is alright.
+Check if the address has been properly typed in the address bar. If you are setting up the network, make sure the subdomain entries in the domain registrar do not have any typographic error.
+
+
+### 2. When I type the address of the registry/gateway/logs endpoint, I get `502 Bad Gateway` error and the page has the word Nginx in it.
+
+This is usually due to either the Nginx not being configured properly or the docker container not being up. For example, if you get this error when you are trying to reach the registry, then it means that either the Nginx is not configured to proxy the request to the right port (3030) or the registry is not running at the port(3030). The nginx can be configured in different ways by system administrators. So check either the `/etc/nginx/sites-enabled` folder or the `/etc/nginx/conf.d` folder to see the configuration files and if it is proxying to the right port. Next check `docker ps` to see if the registry is up and in the docker output, check if the exposed port is alright.
 
 ## Troubleshooting Registry
 
-**Prob: Subscriber list call from BAP to the registry seems to be empty**
-**Sol:** When you create network domain in the registry, the actual domain name is the "Name" field and not the "Description" field. When you create network roles, the field shown for selection is description. However the real value that should be present in the request should be the name and not the description. For example in the image shown above, the context.domain should be nic2004:60221 and not "mobility".
+### 1. Subscriber list call from BAP to the registry seems to be empty
+
+When you create network domain in the registry, the actual domain name is the "Name" field and not the "Description" field. When you create network roles, the field shown for selection is description. However the real value that should be present in the request should be the name and not the description. For example in the image shown above, the context.domain should be nic2004:60221 and not "mobility".
 
 ![real domain name](./assets/images/troubleshoot/domain_in_registry.png)
 
 ## Troubleshooting Gateway
 
-**Prob: Status 400 Cannot invoke "in.succinct.onet.core.adaptor.NetworkAdaptor$Domain.getExtensionPackage() because the return value of "in.succinc.onet.core.adaptor.NetworkAdaptor$Domains.get(String)is null" when sending message from BAP to Gateway**
-**Sol:** Newer versions of Gateway are caching the domain names from bootup. So if the domain is later added to registry, it is not able to get it. Restart the gateway and the error should go.
+### 1. Status 400 Cannot invoke "in.succinct.onet.core.adaptor.NetworkAdaptor$Domain.getExtensionPackage() because the return value of "in.succinc.onet.core.adaptor.NetworkAdaptor$Domains.get(String)is null" when sending message from BAP to Gateway
+
+Newer versions of Gateway are caching the domain names from bootup. So if the domain is later added to registry, it is not able to get it. Restart the gateway and the error should go.
 
 ## Troubleshooting Protocol Server
 
-**Prob: 422 Layer 2 config file "ev-charging_uei_1.1.0.yaml" is not installed and it is marked as required in configuration"**
-**Sol:** Beckn-ONIX has made installation of the layer 2 config file as mandatory. You need to download and install this on both the BAP and BPP. Use the beckn-onix/layer2/download\*.sh scripts to install it on your BAP/BPP Protocol Server. You can get the layer 2 config file from your network or in repositories such as beckn-sandbox.
+### 1. 422 Layer 2 config file "<domain>_<network>_<1.1.0>.yaml" is not installed and it is marked as required in configuration"
 
-**Prob: When I type the address of the BAP-Network in a browser, I get 'Cannot GET /' error**
-**Sol:** This in itself is not an error. The BAP-Network exposes endpoints to which you can send POST request. You are asking for GET in the browser. So just ignore this message. If you want to see logs, use the /logs endpoint.
+Beckn-ONIX has made installation of the layer 2 config file as mandatory. You need to download and install this on both the BAP and BPP. Use the beckn-onix/layer2/download\*.sh scripts to install it on your BAP/BPP Protocol Server. You can get the layer 2 config file from your network or in repositories such as beckn-sandbox.
 
-**Prob: Logs shows "invalid input .... libsodium-wrappers.js" when BAP-Protocol Server receives a message**
-**Sol:** Sometimes the "=" symbol at end of public key and "==" symbol at end of private key in the default/config.yml get missed out in some Operating Systems. We have not been able to identify why this happens. If it does, make sure public key ends with one equal and private with two equals. Also ensure that the public key matches with the entry in the registry.
+### 2. When I type the address of the BAP-Network in a browser, I get 'Cannot GET /' error
+
+This in itself is not an error. The BAP-Network exposes endpoints to which you can send POST request. You are asking for GET in the browser. So just ignore this message. If you want to see logs, use the /logs endpoint.
+
+### 3. Logs shows "invalid input .... libsodium-wrappers.js" when BAP-Protocol Server receives a message
+
+Sometimes the "=" symbol at end of public key and "==" symbol at end of private key in the default/config.yml get missed out in some Operating Systems. We have not been able to identify why this happens. If it does, make sure public key ends with one equal and private with two equals. Also ensure that the public key matches with the entry in the registry.
+
