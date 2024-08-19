@@ -2,13 +2,21 @@
 
 In the Beckn ecosystem, the Registry serves as the foundational component for setting up a new network. This Registry is where all network participants register their public keys, and it acts as a lookup endpoint, enabling participants to discover and validate each other within the network.
 
+## Create an Account
+
+To create an account on the Beckn Registry, register using the following link: 
+
+[Register](https://registry.becknprotocol.io/register)
+
+![Register](/assets/images/15-register.png))
+
 ## Login
 
-To begin, you need to create an account and log in. You can do so through the following link:
+Once your account is created, you can log in using the link below:
 
 [Login](https://registry.becknprotocol.io/login)
 
-![Login](/docs/assets/images/1-%20Login.png)
+![Login](/assets/images/1-%20Login.png)
 
 ## Forget Password
 
