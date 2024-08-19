@@ -1,7 +1,5 @@
 # Beckn Troubleshooting Guide
 
-## Table of contents
-
 ## Introduction
 
 This document contains instructions to troubleshoot all aspects of the Beckn Network. It currently shows instructions for Protocol Server, Registry and Gateway.
