@@ -16,7 +16,7 @@ If you have problem with a particular product, check once in the common section 
 
 This section summarizes the flow of messages in Beckn.
 
-![Search message flow](./assets/images/troubleshoot/search_message_flow.png)
+![Search message flow](assets/images/troubleshoot/search_message_flow.png)
 The following is the flow of a search message:
 
 1. The message comes from the client/postman to BAP-PS-Client
@@ -33,7 +33,7 @@ The following is the flow of a search message:
 12. The BAP-PS-Network looks up the registry for the public key, verifies and passes the message back to BAP-PS-Client
 13. The BAP-PS-Client aggregates the responses and passes it back to the waiting request.
 
-![Rest message flow](./assets/images/troubleshoot/rest_message_flow.png)
+![Rest message flow](assets/images/troubleshoot/rest_message_flow.png)
 
 The following is the flow of a rest of the P2P messages (select,init,confirm etc):
 
@@ -98,7 +98,6 @@ Gateway  - https://gateway.becknprotocol.io/bg/log/0
 
 Check if the address has been properly typed in the address bar. If you are setting up the network, make sure the subdomain entries in the domain registrar do not have any typographic error.
 
-
 ### 2. When I type the address of the registry/gateway/logs endpoint, I get `502 Bad Gateway` error and the page has the word Nginx in it.
 
 This is usually due to either the Nginx not being configured properly or the docker container not being up. For example, if you get this error when you are trying to reach the registry, then it means that either the Nginx is not configured to proxy the request to the right port (3030) or the registry is not running at the port(3030). The nginx can be configured in different ways by system administrators. So check either the `/etc/nginx/sites-enabled` folder or the `/etc/nginx/conf.d` folder to see the configuration files and if it is proxying to the right port. Next check `docker ps` to see if the registry is up and in the docker output, check if the exposed port is alright.
@@ -109,7 +108,7 @@ This is usually due to either the Nginx not being configured properly or the doc
 
 When you create network domain in the registry, the actual domain name is the "Name" field and not the "Description" field. When you create network roles, the field shown for selection is description. However the real value that should be present in the request should be the name and not the description. For example in the image shown above, the context.domain should be nic2004:60221 and not "mobility".
 
-![real domain name](./assets/images/troubleshoot/domain_in_registry.png)
+![real domain name](assets/images/troubleshoot/domain_in_registry.png)
 
 ## Troubleshooting Gateway
 
@@ -130,4 +129,3 @@ This in itself is not an error. The BAP-Network exposes endpoints to which you c
 ### 3. Logs shows "invalid input .... libsodium-wrappers.js" when BAP-Protocol Server receives a message
 
 Sometimes the "=" symbol at end of public key and "==" symbol at end of private key in the default/config.yml get missed out in some Operating Systems. We have not been able to identify why this happens. If it does, make sure public key ends with one equal and private with two equals. Also ensure that the public key matches with the entry in the registry.
-

@@ -1791,6 +1791,7 @@ Beckn is a aynchronous protocol at its core.
   }
 }
 ```
+
 ### on_update (end charging)
 
 ```
@@ -2500,7 +2501,7 @@ If you are writing the provider platform software, the following are the steps y
 
 ## Sandbox Details
 
-![UEI Alliance](https://github.com/beckn/missions/blob/main/assets/images/UEI%20Alliance.png)
+![UEI Alliance](/docs/assets/images/UEI%20Alliance.png)
 
 ### BAP:
 
