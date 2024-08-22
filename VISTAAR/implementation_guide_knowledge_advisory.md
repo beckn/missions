@@ -256,7 +256,8 @@ Beckn is a aynchronous protocol at its core.
                     "url": "https://agritech.tnau.ac.in/itk/pdf/itk_cotton.pdf"
                   }
                 ]
-              }
+              },
+              "rating": "4.0"
             },
             {
               "id": "8977",
@@ -270,7 +271,8 @@ Beckn is a aynchronous protocol at its core.
                     "url": "https://www.youtube.com/watch?v=bupCtQNfecg"
                   }
                 ]
-              }
+              },
+              "rating": "3.5"
             }
           ]
         },
@@ -298,7 +300,8 @@ Beckn is a aynchronous protocol at its core.
                     "url": "https://www.youtube.com/watch?v=SBs68VHPXUs"
                   }
                 ]
-              }
+              },
+              "rating": "4.5"
             }
           ]
         }
