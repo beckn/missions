@@ -601,7 +601,7 @@ While web as a network is open, the **economy on the web** has not been so. It i
 
 Beckn allows consumers, governments and business to unlock markets by enabling direct interactions among them while leveraging the power of the internet and other digital infrastructure. It is a set of **open specifications** that allow creation of open networks enabling commerce aware communication between participants. It helps transition from a platform based ecosystem to a open-protocol and open-network based interoperable ecosystem. Below is the illustration of a open network with Beckn.
 
-![Open network with Beckn](./images/open_network_with_beckn.png)
+![Open network with Beckn](./images/open_network_with_beckn_2.png)
 
 ## Beckn Protocol
 
