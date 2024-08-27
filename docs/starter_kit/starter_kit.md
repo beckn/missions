@@ -65,7 +65,7 @@ If you are coming in with a platform that you already have, then probably it wil
 
 This is the high level picture of most platforms. The proposition that Beckn brings to the table is that by unbundling the consumer and the provider side functionalities and having the network match the supply and demand instead of the platform, you open up opportunities to new consumers and providers. The following diagram shows an example of unbundling in the Mobility space.
 
-![Unbundling Platforms](./images/unbundling.png)
+![Unbundling Platforms](./images/mobility_network.png)
 
 ### Different Roles in an Open Network
 
@@ -601,7 +601,7 @@ While web as a network is open, the **economy on the web** has not been so. It i
 
 Beckn allows consumers, governments and business to unlock markets by enabling direct interactions among them while leveraging the power of the internet and other digital infrastructure. It is a set of **open specifications** that allow creation of open networks enabling commerce aware communication between participants. It helps transition from a platform based ecosystem to a open-protocol and open-network based interoperable ecosystem. Below is the illustration of a open network with Beckn.
 
-![Open network with Beckn](./images/open_network_with_beckn_2.png)
+![Open network with Beckn](./images/beckn_network.png)
 
 ## Beckn Protocol
 
