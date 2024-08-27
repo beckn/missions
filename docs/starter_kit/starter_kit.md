@@ -65,7 +65,7 @@ If you are coming in with a platform that you already have, then probably it wil
 
 This is the high level picture of most platforms. The proposition that Beckn brings to the table is that by unbundling the consumer and the provider side functionalities and having the network match the supply and demand instead of the platform, you open up opportunities to new consumers and providers. The following diagram shows an example of unbundling in the Mobility space.
 
-![Unbundling Platforms](./images/mobility_network.png)
+![Unbundling Platforms](./images/mobility_unbundled_network.png)
 
 ### Different Roles in an Open Network
 
