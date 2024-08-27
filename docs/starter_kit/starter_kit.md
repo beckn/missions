@@ -108,7 +108,7 @@ This is the high level picture of most platforms. The proposition that Beckn bri
 
 This a bird's eye view of the steps Network participants will be taking to bring their applications to Beckn. We will expand on each of these in the rest of this and the next chapter.
 
-1. **Step 1:** Build understanding on Beckn protocol - Refer to the ["Introduction"](#introduction-to-beckn-protocol) section.
+1. **Step 1:** Build understanding on Beckn protocol - Refer to the [Open Networks and Beckn Protocol](#open-networks-and-beckn-protocol) section.
 
 2. **Step 2:** Identify the sector or domain you want to solve the Discovery-Order-Fulfillment-Post Fulfillment (DOFP) for (e.g., Health, Mobility, Energy, Skilling, Agriculture).
 
