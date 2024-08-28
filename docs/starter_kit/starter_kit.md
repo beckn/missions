@@ -1,4 +1,4 @@
-# Beckn Starter Kit
+# Beckn Starter Kit (Work in progress)
 
 ## Table of Contents
 
@@ -63,9 +63,9 @@ If you are coming in with a platform that you already have, then probably it wil
 - A provider/provider service(app) that lets providers get and fulfil orders.
 - The platform itself connecting the two.
 
-This is the high level picture of most platforms. The proposition that Beckn brings to the table is that by unbundling the consumer and the provider side functionalities and having the network match the supply and demand instead of the platform, you open up opportunities to new consumers and providers. The following diagram shows an example of unbundling in the Mobility space.
+This is the high level picture of most platforms. The proposition that Beckn brings to the table is that by unbundling the consumer and the provider side functionalities and having the network match the supply and demand instead of the platform, you open up opportunities to new consumers and providers. The following diagram shows an example of unbundling and transition to open networks.
 
-![Unbundling Platforms](./images/mobility_unbundled_network.png)
+![Unbundling Platforms](./images/unbundled_network.png)
 
 ### Different Roles in an Open Network
 
@@ -147,8 +147,7 @@ This step is crucial for network participants to define the use cases they wish 
 
 This process helps in scoping out the necessary functionality, UI, and backend integration requirements to enable an end-to-end transaction on the network.
 
->[!NOTE]
->_Refer to the [Outcome Visualization Template](https://docs.google.com/presentation/d/14OLgjGIVQnexu-MvtpY9Y87r1fQOPUOQU_ip1MMWIrw/edit#slide=id.g243ea7a9558_0_218) for a sample reference visualisation based on mobility usecase_.
+> [!NOTE] >_Refer to the [Outcome Visualization Template](https://docs.google.com/presentation/d/14OLgjGIVQnexu-MvtpY9Y87r1fQOPUOQU_ip1MMWIrw/edit#slide=id.g243ea7a9558_0_218) for a sample reference visualisation based on mobility usecase_.
 
 ### Map Your Journey as per the Role Selected & Outcome Visualization
 
