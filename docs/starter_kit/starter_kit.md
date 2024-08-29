@@ -182,7 +182,7 @@ For example if the user inputs his intent in the UI, you will have to translate 
 
 So one of the main tasks that needs to be done is to convert your inputs into Schema required by Beckn messages. Similarly any Beckn response by other participants will have to be mapped back to the data relevant for your application. This is called **Schema mapping** and we will come back to it soon.
 
-The Beckn-ONIX adaptor helps your backnend server send Beckn Requests to the Beckn network. Its use reduces the burden on your application development significantly.
+The Beckn-ONIX adaptor helps your backnend server send Beckn Requests to the Beckn network. Its reduces the burden on your application development significantly.
 
 #### Implementation Guide
 
@@ -202,7 +202,7 @@ The implementation guide will contain the following sections:
 4. Layer 2 Configuration file required to be installed for that network (more on this later)
 5. Details on sandbox support (for consumer application developers) and postman collection (for provider application developers).
 
-You can find relevant implementation guides [here](https://github.com/beckn/missions/blob/main/starter_kit/implementation_guides.md)
+You can find relevant implementation guides [here](./implementation_guides.md)
 
 > [!NOTE]
 > The implementation guides are currently available only for active domians / usecases and will be made available as and when new domians / usecsaes are activated.
