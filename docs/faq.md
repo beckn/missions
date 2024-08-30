@@ -71,3 +71,54 @@ Yes. Beckn-ONIX can be used by any network participant from any open network bas
 1. The registry to which you connect
 
 2. The layer 2 config file that your network provides to its participants.
+
+Q14. **What is a BAP?**
+
+BAP (Beckn Application Platform) is a consumer-facing infrastructure which captures consumers’ requests via its UI applications, converts them into beckn-compliant schemas and APIs at the server side, and fires them at the network. BAPs are the initiators of transactions and have the flexibility to communicate with multiple networks and integrate the responses from these networks into a bundled transaction experience. For example, a BAP can book a cab via an urban mobility network, order a coffee from a restaurant via a local-retail network, have it picked up via an order on a delivery network and get it delivered on the way to work. 
+
+Q15. **What is a BPP?**
+
+BPP (Beckn Provider Platform) are provider side platforms that maintain an active inventory, one or more catalogs of products and services, implement the supply logic and enable fulfillment of orders. The BPP can be a single provider with a Beckn API implementation or an aggregator of merchants.
+
+Q16. **What is a Gateway, why is it required?**
+
+Beckn Gateways(BG) are extremely lean and stateless routing servers. Its purpose is to optimize discovery of BPPs by the BAPs by merely matching the context of the search. The BG takes a search request from the BAP, determines to which BPPs the message needs to be sent to (by looking up the registry) and multicasts the message only to them. It is used only in the search request.
+
+Q17. **How can someone use the gateway? Mention the current possible scenarios.**
+
+The Gateway is only used during the search request. When consumer searches for a product or a service, the BAP might not know the providers who have this product/service. In such cases, it sends the search request to the Gateway. The gateway looks at the context of the search message and looks up the registry for the BPPs matching the context. It then forwards the search request to all the BPPs returned by the registry. Prior to Beckn Protocol core version 1.0, the BPPs would send the responses back to the Gateway and the Gateway would send it to the BAP. This has been changed and now the BPPs directly send the responses back to the BAP. 
+
+Q18. **What is a Registry, why is it required?**
+
+The Beckn Registry (or the registry infrastructure in case of a more complicated infrastructure), contains a list of network participants, their role in the network, the domain they transact in and their public key. During Beckn transactions, network participants lookup in the Registry for these information about the Participant. Typically the Gateway looks for all BPPs that match the context of the search request. Also all Participants when they get a message from a Sender participant, lookup the registry to see if the sender participant is a subscribed participant and his public key. They use the public key to verify that the message is not tampered. Network Facilitators can use the registry to maintain and manage network participants including their state, KYC compliance etc. The registry has other functionalities and can be organized in a hierarchy. Refer to this [document](https://developers.becknprotocol.io/docs/introduction/the-registry-infrastructure) for more details.
+
+
+Q19. **Do we need to deploy our own gateway and registry?**
+
+Usually the registry is deployed by a Network Facilitator. There is usually one registry (or in a more general sense, one registry infrastructure) for a network. Network participants (BAP, BPP) do not need to deploy their own registry. 
+
+The Beckn Gateway again is typically hosted by the Network Facilitator, though the protocol itself does not impose any restrictions. Similarly we can have multiple Beckn Gateways in a network, though the usecase is not typical. Again, BAPs and BPPs do not need to host their own gateway.
+
+Q20. **Can we send extra details with Beckn APIs? Does the Beckn schema support this?**
+
+Additional details can be sent in Beckn APIs at multiple levels. The most common way to extend the Beckn API structure is using [**TagGroups and Tags**](https://github.com/beckn/protocol-specifications/blob/master/docs/BECKN-009-Tags-the-Edge-of-Beckn.md). Tags are supported in most large Beckn Objects such as Item, Fulfillment, Order etc. The second way, particularly to get additional information from the consumers is using a method called [**Xinput**](https://github.com/beckn/protocol-specifications/blob/master/docs/BECKN-007-The-XInput-Schema.md). 
+
+Q21. **What happens when you move an app from one network to another?**
+
+While moving an existing Beckn enabled application from one network to another, the application does not need to typically change. For Consumer side applications, the following needs to be done.
+
+1. A BAP Beckn Adaptor needs to be subscribed into the new network.
+2. The Consumer side application will need to now point to the new BAP Beckn Adapter to transact on the new network.
+
+For Provider side platforms, the following needs to be done.
+1. A BPP Beckn Adaptor needs to be subscribed into the new network.
+2. The BPP Beckn Adaptor needs to be configured with the Provider side Platform webhook url.
+3. The Provider side platform needs to be configured to send the responses (on_search, on_select etc) to the new BPP Beckn Adaptor.
+
+Q22. **How do you track the seeker's location during fulfillment?**
+
+Typically in most usecases the Seeker's location is not tracked. For the purposes of fulfillment, the fullfillment location is part of the order. If the seeker wants to change that, it can be done with the update request. If the usecase requires it, the order can contain link to an external system that will capture and expose the seeker's location to the fulfillment agent. 
+
+Q23. **Given the beckn endpoints are open, how is security established when communicating with BPP / BG endpoints.**
+
+Beckn endpoints are protected using the Subscriber/Public Key mechanism. For example, when a Sender Network Participant sends a message to the Receiver Network Participant, it has to sign the message with its private key. The receiver Network Participant looks up the Sender Network Participant ID in the registry to check if it is a subscribed network participant. It fetches the public key of the sender in the same lookup. It uses this public key to verify that the message came from the Sender and that it has not been tampered with. Refer to [this document](https://github.com/beckn/protocol-specifications/blob/master/docs/BECKN-006-Signing-Beckn-APIs-In-HTTP-Draft-01.md) for more details.
