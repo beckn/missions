@@ -116,6 +116,15 @@ When you create network domain in the registry, the actual domain name is the "N
 
 Newer versions of Gateway are caching the domain names from bootup. So if the domain is later added to registry, it is not able to get it. Restart the gateway and the error should go.
 
+### 2. Search request does not reach BPP Network and in the Gateway logs it gives a Invalid key exeption. The key seems to be properly configured
+
+Check the logs of the Gateway to see the response of the lookup with the registry. If the lookup is failing for some reason for the BAP public key, the gateway gives this error. You will know if this is the problem if you see a empty array in the gateway logs after the lookup request is logged. Fix it by identifying why the lookup is failing. Maybe some attribute is wrong (such as country - as was in this case).
+
+### 3. How to set the country in the Gateway?
+
+In the Gateway container, in the file /gateway/overrideProperties/config/swf.properties, set the in.succinct.onet.country.iso.3 and 
+in.succinct.onet.country.iso.2 keys to the desired country. Make sure that the same entries are also done in the Registry and the network participants have their operating region set to this country. 
+
 ## Troubleshooting Protocol Server
 
 ### 1. 422 Layer 2 config file "<domain>_<network>_<1.1.0>.yaml" is not installed and it is marked as required in configuration"
@@ -129,3 +138,7 @@ This in itself is not an error. The BAP-Network exposes endpoints to which you c
 ### 3. Logs shows "invalid input .... libsodium-wrappers.js" when BAP-Protocol Server receives a message
 
 Sometimes the "=" symbol at end of public key and "==" symbol at end of private key in the default/config.yml get missed out in some Operating Systems. We have not been able to identify why this happens. If it does, make sure public key ends with one equal and private with two equals. Also ensure that the public key matches with the entry in the registry.
+
+### 4. Request is reaching the BPP Network, but not being passed on to the BPP Client
+
+One of the primary reasons why the BPP Network will not pass on the request to BPP Client is because the signature of the message did not match. Carefully notice the BPP-Network log and see the BAP-ID and BAP Public key. Sometimes the public key will be different from the current BAP Public key due to the use of cache. If this is the case, in the machine that is running the BPP-Network, clear the redis cache using `docker exec -it redis redis-cli FLUSHALL`. Try the request again. This time, the BPP-Network should fetch the public key of the BAP from the registry and should get the latest key. 
