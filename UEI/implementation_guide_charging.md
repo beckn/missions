@@ -1,5 +1,14 @@
 # UEI Implementation Guide - EV Charging
 
+#### Version 1.2
+
+## Version History
+
+| Date       | Version | Description                                         |
+| ---------- | ------- | --------------------------------------------------- |
+| 07-08-2024 | 1.0     | Initial Version                                     |
+| 09-09-2024 | 1.1     | Incorporated input from Participants during Winroom |
+
 ## Introduction
 
 This document provides material that helps network participants build and integrate their application with the UEI Network for EV Charging. This document is part of the starter kit that provides information about the network, learning resources, network participant checklist etc. This document only focuses on the implementation of the seeker/provider platform. It assumes the reader has a good overview of the Beckn network, its APIs, the overall structure of the schema etc.
@@ -65,7 +74,7 @@ Beckn is a aynchronous protocol at its core.
 - However when writing software we should be prepared to receive these NACK messages as well as error field in the on_xxxxxx messages
 - While this discussion is from a Beckn perspective, Adapters can provide synchronous modes. For example, the Protocol Server which is the reference implementation of the Beckn Adapter provides a synchronous mode by default. So if your software calls the support endpoint on the BAP Protocol Server, the Protocol Server waits till it gets the on_support and returns back that as the response.
 
-![ACK NACK for messages](/docs/assets/images/ack_nack.png)
+![ACK NACK for messages](../docs/assets/images/ack_nack.png)
 
 **Structure of a message with a NACK**
 
@@ -101,72 +110,76 @@ Beckn is a aynchronous protocol at its core.
 
 ### Use case - Discovery, order and fulfillment of EV Charging
 
+- This usecase does not allow pre-booking of the charging station. So essentially after the user searches the charging station, the rest of the messages (select, init, confirm and update) all happen while the user is at the charging station. This is due to the current readiness of the participants.
+- It is envisioned that a future version of this guide (once the NPs are ready) will add pre-booking of a slot at a charging station.
+
 **Search for EV Charging stations nearby**
 
 ## API Calls and Schema
 
 ### search
 
-**search by location and connector type**
+Search request can contain one or more search criterion within it. Use the following list on how to specify the criterion.
 
 - The location to search around is specified in the message->intent->fulfillment->stops[0]->location field.
-- The connector type is specified in the connector-types tag group
+- The connector type required is specified in message->intent->fulfillment->tags[0]->list[0]. Refer to the taxonomy section below for the list of connector types supported.
+- If searching by free text, it is specified in message->intent->descriptor->name
+- If searching by category, it is specified in message->intent->category->descriptor->code
 
 ```
-  {
-    "context": {
-      "ttl": "PT10M",
-      "action": "search",
-      "timestamp": "2024-08-05T09:21:12.618Z",
-      "message_id": "e138f204-ec0b-415d-9c9a-7b5bafe10bfe",
-      "transaction_id": "2ad735b9-e190-457f-98e5-9702fd895996",
-      "domain": "ev-charging:uei",
-      "version": "1.1.0",
-      "bap_id": "example-bap-id",
-      "bap_uri": "https://example-bap-url.com",
-    },
-    "message": {
-      "intent": {
+{
+  "context": {
+    "ttl": "PT10M",
+    "action": "search",
+    "timestamp": "2024-08-05T09:21:12.618Z",
+    "message_id": "e138f204-ec0b-415d-9c9a-7b5bafe10bfe",
+    "transaction_id": "2ad735b9-e190-457f-98e5-9702fd895996",
+    "domain": "ev-charging:uei",
+    "version": "1.1.0",
+    "bap_id": "example-bap-id",
+    "bap_uri": "https://example-bap-url.com"
+  },
+  "message": {
+    "intent": {
+      "descriptor": {
+        "name": "charging stations for ioniq 5"
+      },
+      "category": {
         "descriptor": {
-          "name": ""
-        },
-        "fulfillment": {
-          "stops": [
-            {
-                "location": {
-                    "circle": {
-                        "gps": "12.423423,77.325647",
-                        "radius": {
-                            "type": "CONSTANT",
-                            "value": "5",
-                            "unit": "km"
-                        }
-                    }
-                }
-            }
-          ]
+          "code": "green-tariff"
         }
+      },
+      "fulfillment": {
+        "stops": [
+          {
+            "location": {
+              "circle": {
+                "gps": "12.423423,77.325647",
+                "radius": {
+                  "type": "CONSTANT",
+                  "value": "5",
+                  "unit": "km"
+                }
+              }
+            }
+          }
+        ],
         "tags": [
           {
-            "descriptor": {
-              "name": "Connector Types",
-              "code": "connector-types"
-            },
             "list": [
               {
                 "descriptor": {
-                  "name": "CCS2",
-                  "code": "CCS2"
+                  "code": "connector-type"
                 },
                 "value": "CCS2"
               }
-            ],
-            "display": true
+            ]
           }
         ]
       }
     }
   }
+}
 ```
 
 ### on_search
@@ -278,20 +291,6 @@ Beckn is a aynchronous protocol at its core.
             {
               "id": "1",
               "type": "CHARGING",
-              "stops": [
-                {
-                  "type": "start",
-                  "time": {
-                    "timestamp": "01-06-2023 10:00:00"
-                  }
-                },
-                {
-                  "type": "end",
-                  "time": {
-                    "timestamp": "01-06-2023 10:30:00"
-                  }
-                }
-              ],
               "tags": [
                 {
                   "descriptor": {
@@ -332,20 +331,6 @@ Beckn is a aynchronous protocol at its core.
             {
               "id": "2",
               "type": "CHARGING",
-              "stops": [
-                {
-                  "type": "start",
-                  "time": {
-                    "timestamp": "01-06-2023 10:00:00"
-                  }
-                },
-                {
-                  "type": "end",
-                  "time": {
-                    "timestamp": "01-06-2023 10:30:00"
-                  }
-                }
-              ],
               "tags": [
                 {
                   "descriptor": {
@@ -382,79 +367,6 @@ Beckn is a aynchronous protocol at its core.
               ]
             }
           ]
-        },
-        {
-          "id": "log9.in",
-          "descriptor": {
-            "name": "Log9 Inc"
-          },
-          "categories": [
-            {
-              "id": "1",
-              "descriptor": {
-                "code": "green-tariff",
-                "name": "green tariff"
-              }
-            }
-          ],
-          "items": [
-            {
-              "id": "pe-charging-01",
-              "descriptor": {
-                "code": "energy"
-              },
-              "price": {
-                "value": "10",
-                "currency": "INR / kWH"
-              },
-              "quantity": {
-                "available": "1000"
-              },
-              "category_ids": [
-                "1"
-              ],
-              "fulfillment_ids": [
-                "3",
-                "4"
-              ],
-              "add_ons": [
-                {
-                  "id": "pe-charging-01-addon-1",
-                  "descriptor": {
-                    "name": "Free tyre pressure check"
-                  },
-                  "price": {
-                    "value": "0",
-                    "currency": "INR"
-                  }
-                }
-              ]
-            }
-          ],
-          "fulfillments": [
-            {
-              "id": "3",
-              "type": "BATTERY-SWAP",
-              "stops": [
-                {
-                  "location": {
-                    "gps": "12.745675, 77.987393"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "4",
-              "type": "MOBILE-BATTERY-SWAP",
-              "stops": [
-                {
-                  "location": {
-                    "url": "https://log9.in/track/bswap/3234242"
-                  }
-                }
-              ]
-            }
-          ]
         }
       ]
     }
@@ -465,6 +377,9 @@ Beckn is a aynchronous protocol at its core.
 ### select
 
 **sending a select request**
+
+- Choose the item(s) from the list from on_search and request quote
+- The chosen item is in message->order->item_id
 
 ```
 {
@@ -512,6 +427,9 @@ Beckn is a aynchronous protocol at its core.
 
 ### on_select
 
+- The BPP returns back with a quote for the selection
+- It is in message->order->quote
+
 ```
 {
   "context": {
@@ -535,7 +453,7 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "order": {
-      "providers": {
+      "provider": {
         "id": "example_provider_id",
         "descriptor": {
           "name": "Example Company",
@@ -592,13 +510,13 @@ Beckn is a aynchronous protocol at its core.
             {
               "type": "start",
               "time": {
-                "timestamp": "01-06-2023 10:00:00"
+                "timestamp": "2023-07-16T10:00:00+05:30"
               }
             },
             {
               "type": "end",
               "time": {
-                "timestamp": "01-06-2023 10:30:00"
+                "timestamp": "2023-07-16T10:30:00+05:30"
               }
             }
           ],
@@ -687,6 +605,9 @@ Beckn is a aynchronous protocol at its core.
 
 **send init request**
 
+- The draft order including billing details.
+- Billing details specified in message->order->billing
+
 ```
 {
   "context": {
@@ -743,6 +664,10 @@ Beckn is a aynchronous protocol at its core.
 
 ### on_init
 
+- Contains payment terms. Payment terms specified in message->order->payments
+- Cancellation terms specified in message->order->cancellation_terms
+- Here we show the BPP as payment collector. In case the BAP specifies that it collects the payment in the init, the url field within payments will be empty
+
 ```
 {
   "context": {
@@ -766,7 +691,7 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "order": {
-      "providers": {
+      "provider": {
         "id": "example_provider_id",
         "descriptor": {
           "name": "Example Company",
@@ -802,7 +727,7 @@ Beckn is a aynchronous protocol at its core.
               }
             }
           },
-          "fulfillments": [
+          "fulfillment_ids": [
             "1"
           ]
         }
@@ -828,13 +753,13 @@ Beckn is a aynchronous protocol at its core.
             {
               "type": "start",
               "time": {
-                "timestamp": "01-06-2023 10:00:00"
+                "timestamp": "2023-07-16T10:00:00+05:30"
               }
             },
             {
               "type": "end",
               "time": {
-                "timestamp": "01-06-2023 10:30:00"
+                "timestamp": "2023-07-16T10:30:00+05:30"
               }
             }
           ],
@@ -876,7 +801,7 @@ Beckn is a aynchronous protocol at its core.
       ],
       "billing": {
         "email": "abc@example.com",
-        "number": "+91-9876522222"
+        "phone": "+91-9876522222"
       },
       "quote": {
         "price": {
@@ -908,17 +833,12 @@ Beckn is a aynchronous protocol at its core.
       "payments": [
         {
           "url": "https://payment.gateway.in",
+          "collected_by": "bpp",
           "type": "PRE-ORDER",
           "status": "NOT-PAID",
           "params": {
             "amount": "40",
             "currency": "INR"
-          },
-          "time": {
-            "range": {
-              "start": "2023-08-10T10:00:00Z",
-              "end": "2023-08-10T10:30:00Z"
-            }
           }
         }
       ],
@@ -945,6 +865,9 @@ Beckn is a aynchronous protocol at its core.
 
 ### confirm
 
+- Confirm order including payment paid info (when applicable).
+- It is in message->order->payments
+
 ```
 {
   "context": {
@@ -968,7 +891,7 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "order": {
-      "providers": {
+      "provider": {
         "id": "example_provider_id"
       },
       "items": [
@@ -979,7 +902,7 @@ Beckn is a aynchronous protocol at its core.
       "billing": {
         "name": "John Doe",
         "email": "abc@example.com",
-        "number": "+91-9876522222"
+        "phone": "+91-9876522222"
       },
       "fulfillments": [
         {
@@ -1039,6 +962,8 @@ Beckn is a aynchronous protocol at its core.
 
 ### on_confirm
 
+- Order confirmed. Charging can start.
+
 ```
 {
   "context": {
@@ -1063,7 +988,7 @@ Beckn is a aynchronous protocol at its core.
   "message": {
     "order": {
       "id": "6743e9e2-4fb5-487c-92b7",
-      "providers": {
+      "provider": {
         "id": "example_provider_id",
         "descriptor": {
           "name": "Example Company",
@@ -1099,7 +1024,7 @@ Beckn is a aynchronous protocol at its core.
               }
             }
           },
-          "fulfillments": [
+          "fulfillment_ids": [
             "1"
           ]
         }
@@ -1128,11 +1053,7 @@ Beckn is a aynchronous protocol at its core.
                 "gps": "12.423423,77.325647"
               },
               "time": {
-                "timestamp": "01-06-2023 10:00:00",
-                "range": {
-                  "start": "01-06-2023 10:00:00",
-                  "end": "01-06-2023 10:10:00"
-                }
+                "timestamp": "2023-07-16T10:00:00+05:30",
               },
               "instructions": {
                 "name": "Charging instructions",
@@ -1142,11 +1063,7 @@ Beckn is a aynchronous protocol at its core.
             {
               "type": "end",
               "time": {
-                "timestamp": "01-06-2023 10:30:00",
-                "range": {
-                  "start": "01-06-2023 10:30:00",
-                  "end": "01-06-2023 10:40:00"
-                }
+                "timestamp": "2023-07-16T10:30:00+05:30",
               }
             }
           ],
@@ -1188,7 +1105,7 @@ Beckn is a aynchronous protocol at its core.
       ],
       "billing": {
         "email": "abc@example.com",
-        "number": "+91-9876522222"
+        "phone": "+91-9876522222"
       },
       "quote": {
         "price": {
@@ -1226,10 +1143,7 @@ Beckn is a aynchronous protocol at its core.
             "currency": "INR"
           },
           "time": {
-            "range": {
-              "start": "2023-08-10T10:00:00Z",
-              "end": "2023-08-10T10:30:00Z"
-            }
+            "timestamp": "2023-07-16T09:30:00+05:30"
           }
         }
       ],
@@ -1255,6 +1169,8 @@ Beckn is a aynchronous protocol at its core.
 ```
 
 ### status
+
+- Request for status on order. order_id is specifiedin message->order_id
 
 ```
 {
@@ -1285,6 +1201,10 @@ Beckn is a aynchronous protocol at its core.
 
 ### on_status
 
+- Status of requested order.
+- Primarily the fulfillment status is specified in message->order->fulfillments[]->state
+- The message->order->fulfillments[]->state->descriptor->long_desc can be used to specify the OCPP status of the charge point. This can help the BAP to construct a custom detailed UI for charging status.
+
 ```
 {
   "context": {
@@ -1309,7 +1229,7 @@ Beckn is a aynchronous protocol at its core.
   "message": {
     "order": {
       "id": "6743e9e2-4fb5-487c-92b7",
-      "providers": {
+      "provider": {
         "id": "example_provider_id",
         "descriptor": {
           "name": "Example Company",
@@ -1345,7 +1265,7 @@ Beckn is a aynchronous protocol at its core.
               }
             }
           },
-          "fulfillments": [
+          "fulfillment_ids": [
             "1"
           ]
         }
@@ -1374,21 +1294,13 @@ Beckn is a aynchronous protocol at its core.
                 "gps": "12.423423,77.325647"
               },
               "time": {
-                "timestamp": "01-06-2023 10:00:00",
-                "range": {
-                  "start": "01-06-2023 10:00:00",
-                  "end": "01-06-2023 10:10:00"
-                }
+                "timestamp": "2023-07-16T10:00:00+05:30",
               }
             },
             {
               "type": "end",
               "time": {
-                "timestamp": "01-06-2023 10:30:00",
-                "range": {
-                  "start": "01-06-2023 10:30:00",
-                  "end": "01-06-2023 10:40:00"
-                }
+                "timestamp": "2023-07-16T10:30:00+05:30",
               }
             }
           ],
@@ -1430,7 +1342,7 @@ Beckn is a aynchronous protocol at its core.
       ],
       "billing": {
         "email": "abc@example.com",
-        "number": "+91-9876522222"
+        "phone": "+91-9876522222"
       },
       "quote": {
         "price": {
@@ -1468,10 +1380,7 @@ Beckn is a aynchronous protocol at its core.
             "currency": "INR"
           },
           "time": {
-            "range": {
-              "start": "2023-08-10T10:00:00Z",
-              "end": "2023-08-10T10:30:00Z"
-            }
+            "timestamp": "2023-07-16T09:30:00+05:30"
           }
         }
       ],
@@ -1497,6 +1406,9 @@ Beckn is a aynchronous protocol at its core.
 ```
 
 ### update (start charging)
+
+- Update the state of the fulfillment to start-charging.
+- This will trigger charging start.
 
 ```
 {
@@ -1540,6 +1452,9 @@ Beckn is a aynchronous protocol at its core.
 
 ### on_update (start charging)
 
+- Confirmation of successful start of charging operation
+- State in message->order->fulfillments[]->state
+
 ```
 {
   "context": {
@@ -1564,7 +1479,7 @@ Beckn is a aynchronous protocol at its core.
   "message": {
     "order": {
       "id": "6743e9e2-4fb5-487c-92b7",
-      "providers": {
+      "provider": {
         "id": "example_provider_id",
         "descriptor": {
           "name": "Example Company",
@@ -1600,7 +1515,7 @@ Beckn is a aynchronous protocol at its core.
               }
             }
           },
-          "fulfillments": [
+          "fulfillment_ids": [
             "1"
           ]
         }
@@ -1629,21 +1544,13 @@ Beckn is a aynchronous protocol at its core.
                 "gps": "12.423423,77.325647"
               },
               "time": {
-                "timestamp": "01-06-2023 10:00:00",
-                "range": {
-                  "start": "01-06-2023 10:00:00",
-                  "end": "01-06-2023 10:10:00"
-                }
+                "timestamp": "2023-07-16T10:00:00+05:30",
               }
             },
             {
               "type": "end",
               "time": {
-                "timestamp": "01-06-2023 10:30:00",
-                "range": {
-                  "start": "01-06-2023 10:30:00",
-                  "end": "01-06-2023 10:40:00"
-                }
+                "timestamp": "2023-07-16T10:30:00+05:30",
               }
             }
           ],
@@ -1685,7 +1592,7 @@ Beckn is a aynchronous protocol at its core.
       ],
       "billing": {
         "email": "abc@example.com",
-        "number": "+91-9876522222"
+        "phone": "+91-9876522222"
       },
       "quote": {
         "price": {
@@ -1723,10 +1630,7 @@ Beckn is a aynchronous protocol at its core.
             "currency": "INR"
           },
           "time": {
-            "range": {
-              "start": "2023-08-10T10:00:00Z",
-              "end": "2023-08-10T10:30:00Z"
-            }
+            "timestamp": "2023-07-16T09:30:00+05:30"
           }
         }
       ],
@@ -1752,6 +1656,8 @@ Beckn is a aynchronous protocol at its core.
 ```
 
 ### update (end charging)
+
+- Request to change fulfillment state to end-charging
 
 ```
 {
@@ -1794,6 +1700,9 @@ Beckn is a aynchronous protocol at its core.
 
 ### on_update (end charging)
 
+- Confirmation of successful operation to end charging
+- The state will be in message->order->fulfillments[]->state
+
 ```
 {
   "context": {
@@ -1818,7 +1727,7 @@ Beckn is a aynchronous protocol at its core.
   "message": {
     "order": {
       "id": "6743e9e2-4fb5-487c-92b7",
-      "providers": {
+      "provider": {
         "id": "example_provider_id",
         "descriptor": {
           "name": "Example Company",
@@ -1854,7 +1763,7 @@ Beckn is a aynchronous protocol at its core.
               }
             }
           },
-          "fulfillments": [
+          "fulfillment_ids": [
             "1"
           ]
         }
@@ -1883,21 +1792,13 @@ Beckn is a aynchronous protocol at its core.
                 "gps": "12.423423,77.325647"
               },
               "time": {
-                "timestamp": "01-06-2023 10:00:00",
-                "range": {
-                  "start": "01-06-2023 10:00:00",
-                  "end": "01-06-2023 10:10:00"
-                }
+                "timestamp": "2023-07-16T10:00:00+05:30",
               }
             },
             {
               "type": "end",
               "time": {
-                "timestamp": "01-06-2023 10:30:00",
-                "range": {
-                  "start": "01-06-2023 10:30:00",
-                  "end": "01-06-2023 10:40:00"
-                }
+                "timestamp": "2023-07-16T10:30:00+05:30",
               }
             }
           ],
@@ -1939,7 +1840,7 @@ Beckn is a aynchronous protocol at its core.
       ],
       "billing": {
         "email": "abc@example.com",
-        "number": "+91-9876522222"
+        "phone": "+91-9876522222"
       },
       "quote": {
         "price": {
@@ -1977,10 +1878,7 @@ Beckn is a aynchronous protocol at its core.
             "currency": "INR"
           },
           "time": {
-            "range": {
-              "start": "2023-08-10T10:00:00Z",
-              "end": "2023-08-10T10:30:00Z"
-            }
+            "timestamp": "2023-07-16T09:30:00+05:30"
           }
         }
       ],
@@ -2007,6 +1905,9 @@ Beckn is a aynchronous protocol at its core.
 
 ### support
 
+- Request for support information.
+- If regarding a specific order, specify the order_id in message->support->ref_id
+
 ```
 {
   "context": {
@@ -2030,15 +1931,16 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "support": {
-      "order_id": "6743e9e2-4fb5-487c-92b7",
-      "phone": "+919876543210",
-      "email": "john.doe@gmail.com"
+      "ref_id": "6743e9e2-4fb5-487c-92b7"
     }
   }
 }
 ```
 
 ### on_support
+
+- Contains support information. If integrated with a CMS, the URL could contain order specific support info
+- In all other cases, contains general support info (message->support)
 
 ```
 {
@@ -2063,7 +1965,7 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "support": {
-      "order_id": "6743e9e2-4fb5-487c-92b7",
+      "ref_id": "6743e9e2-4fb5-487c-92b7",
       "phone": "1800 1080",
       "email": "customer.care@example-company.com",
       "url": "https://www.example-company.com/helpdesk"
@@ -2073,6 +1975,8 @@ Beckn is a aynchronous protocol at its core.
 ```
 
 ### track
+
+- Request for a tracking URL for the order. Order Id must be specified in message->order_id
 
 ```
 {
@@ -2106,6 +2010,9 @@ Beckn is a aynchronous protocol at its core.
 ```
 
 ### on_track
+
+- Tracking URL with custom UI on charging process.
+- The tracking URL will be in message->tracking->url
 
 ```
 {
@@ -2144,6 +2051,9 @@ Beckn is a aynchronous protocol at its core.
 
 ### cancel
 
+- Request to cancel an order. order_id to be specified in message->order_id
+- In the case where there is no advance booking of the charging slot, this does not have much relevance
+
 ```
 {
   "context": {
@@ -2166,18 +2076,19 @@ Beckn is a aynchronous protocol at its core.
     "timestamp": "2023-07-16T04:41:16Z"
   },
   "message": {
-    "order": {
-      "cancellation_reason_id": "5",
-      "descriptor": {
-        "short_desc": "can't attend booking"
-      },
-      "order_id": "6743e9e2-4fb5-487c-92b7"
-    }
+    "cancellation_reason_id": "5",
+    "descriptor": {
+      "short_desc": "can't attend booking"
+    },
+    "order_id": "6743e9e2-4fb5-487c-92b7"
   }
 }
 ```
 
 ### on_cancel
+
+- Confirmation of cancelled order. The cancelled order will be in message->order
+- In cases where advanced booking of charging station is not supported, this message is not relevant.
 
 ```
 {
@@ -2204,7 +2115,7 @@ Beckn is a aynchronous protocol at its core.
     "order": {
       "id": "6743e9e2-4fb5-487c-92b7",
       "status": "CANCELLED",
-      "providers": {
+      "provider": {
         "id": "example_provider_id",
         "descriptor": {
           "name": "Example Company",
@@ -2240,7 +2151,7 @@ Beckn is a aynchronous protocol at its core.
               }
             }
           },
-          "fulfillments": [
+          "fulfillment_ids": [
             "1"
           ]
         }
@@ -2264,11 +2175,15 @@ Beckn is a aynchronous protocol at its core.
           },
           "stops": [
             {
+              "type": "start",
               "time": {
-                "range": {
-                  "start": "10:00",
-                  "end": "10:30"
-                }
+                "timestamp": "2023-07-16T10:00:00+05:30",
+              }
+            },
+            {
+              "type": "end",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30",
               }
             }
           ],
@@ -2310,7 +2225,7 @@ Beckn is a aynchronous protocol at its core.
       ],
       "billing": {
         "email": "abc@example.com",
-        "number": "+91-9876522222"
+        "phone": "+91-9876522222"
       },
       "quote": {
         "price": {
@@ -2348,10 +2263,7 @@ Beckn is a aynchronous protocol at its core.
             "currency": "INR"
           },
           "time": {
-            "range": {
-              "start": "2023-08-10T10:00:00Z",
-              "end": "2023-08-10T10:30:00Z"
-            }
+            "timestamp": "2023-07-16T09:30:00+05:30"
           }
         }
       ],
@@ -2378,6 +2290,10 @@ Beckn is a aynchronous protocol at its core.
 
 ### rating
 
+- Rate different categories including fulfillment. Specify in message->ratings
+- Value should be a decimal between 0 and 5.
+- Id can be the order id.
+
 ```
 {
   "context": {
@@ -2403,7 +2319,7 @@ Beckn is a aynchronous protocol at its core.
     "ratings": [
       {
         "id": "6743e9e2-4fb5-487c-92b7",
-        "rating_category": "charger",
+        "rating_category": "Fulfillment",
         "value": "5"
       }
     ]
@@ -2412,6 +2328,9 @@ Beckn is a aynchronous protocol at its core.
 ```
 
 ### on_rating
+
+- Confirmation of rating.
+- Optionally send a form for additional input (message->feedback_form). Empty message otherwise.
 
 ```
 {
@@ -2436,12 +2355,10 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "feedback_form": {
-      "xinput": {
-        "form": {
-          "url": "https://example-bpp.comfeedback/portal"
-        },
-        "required": "false"
-      }
+      "form": {
+        "url": "https://example-bpp.comfeedback/portal"
+      },
+      "required": false
     }
   }
 }
@@ -2449,7 +2366,8 @@ Beckn is a aynchronous protocol at its core.
 
 ## Taxonomy and layer 2 configuration
 
-- Any specific tags, enumerations, and rules we add for the use cases or required by the network, will go here.
+- **Connector-Type** is a tag used in multiple messages above. The values allowed for the connector types are specified in the OCPI Standard. This [page](https://ev2go.io/ocpiconnectors) lists some of them. This list will be extended with those types which are present in India, but not listed in the OCPI list. The code to be used will be the OCPI connector Value shown in the above webpage in all lowercase characters (e.g.chademo, iec_62196_t3a)
+- **Charging Status** in fulfillment object has a long_desc field. This field should have the [OCPP](https://openchargealliance.org/protocols/open-charge-point-protocol/) status json object. The BAP can in on_status get this charging status value and show custom UI uniform across different BPPs.
 
 ## Integrating with your software
 
@@ -2473,7 +2391,7 @@ If you are writing the seeker platform software, the following are the steps you
    - the remaining components are provided by the sandbox enviornment
 8. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
 
-![Seeker platform testing sandbox ](/docs/assets/images/seeker_deployment.png)
+![Seeker platform testing sandbox ](../docs/assets/images/seeker_deployment.png)
 
 ### Integrating the provider platform
 
@@ -2491,7 +2409,7 @@ If you are writing the provider platform software, the following are the steps y
    - Use the postman collection to test your Provider Platform
 7. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
 
-![Provider platform testing sandbox](/docs/assets/images/provider_deployment.png)
+![Provider platform testing sandbox](../docs/assets/images/provider_deployment.png)
 
 ## Links to artefacts
 
@@ -2501,7 +2419,7 @@ If you are writing the provider platform software, the following are the steps y
 
 ## Sandbox Details
 
-![UEI Alliance](/docs/assets/images/UEI%20Alliance.png)
+![UEI Alliance](../docs/assets/images/UEI%20Alliance.png)
 
 ### BAP:
 
