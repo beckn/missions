@@ -1,6 +1,6 @@
 # UEI Implementation Guide - EV Charging
 
-#### Version 1.2
+#### Version 1.1
 
 ## Version History
 
