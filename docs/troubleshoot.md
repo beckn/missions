@@ -114,7 +114,7 @@ When you create network domain in the registry, the actual domain name is the "N
 
 ### 1. Status 400 Cannot invoke "in.succinct.onet.core.adaptor.NetworkAdaptor$Domain.getExtensionPackage() because the return value of "in.succinc.onet.core.adaptor.NetworkAdaptor$Domains.get(String)is null" when sending message from BAP to Gateway
 
-Newer versions of Gateway are caching the domain names from bootup. So if the domain is later added to registry, it is not able to get it. Restart the gateway and the error should go.
+The domain field of the search request(context.domain), should be registered in the Registry. Refer to [Network Domain](https://github.com/beckn/missions/blob/main/docs/registry-user-guide.md#create-new-network-domain) section of the registry user guide on how to add one if it does not exist. Make sure the domain name is there in the registry. After you add the domain name to the registry (if it did not exist before), restart the gateway (The gateway picks up the configured domains at startup and seems to cache them). Also refer to this [earlier question](https://github.com/beckn/missions/blob/main/docs/troubleshoot.md#1-subscriber-list-call-from-bap-to-the-registry-seems-to-be-empty)
 
 ### 2. Search request does not reach BPP Network and in the Gateway logs it gives a Invalid key exeption. The key seems to be properly configured
 
