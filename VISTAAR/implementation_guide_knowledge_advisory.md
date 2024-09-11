@@ -1,5 +1,13 @@
 # VISTAAR Implementation Guide - Knowledge Advisory
 
+#### Version 1.0
+
+## Version History
+
+| Date       | Version | Description                                         |
+| ---------- | ------- | --------------------------------------------------- |
+| 15-08-2024 | 1.0     | Initial Version                                     |
+
 ## Introduction
 
 This document provides material that helps network participants build and integrate their application with the Beckn Network. This document is part of the starter kit that provides information about the network, learning resources, network participant checklist etc. This document only focuses on the implementation of the seeker/provider platform. It assumes the reader has a good overview of the Beckn network, its APIs, the overall structure of the schema etc.
