@@ -9,7 +9,12 @@ This repository is maintained by the FIDE mission teams and is actively used for
 - Brief introduction about Beckn and its terminologies.
 - Learning resources that help you understand more about Beckn.
 - Handy checklist for network participants.
-- Implementation guides that will help build your software, integrate with Beckn and conduct transactions on it.
+- Implementation guides that will help build your software, integrate with different Beckn powered networks and conduct transactions on it.
 - Other resources.
 
 [Click here](./docs/starter_kit/starter_kit.md) to get started
+
+## Implementation Guides
+
+The implementation guides for various networks are listed [here](./docs/starter_kit/implementation_guides.md)
+
