@@ -125,6 +125,10 @@ Check the logs of the Gateway to see the response of the lookup with the registr
 In the Gateway container, in the file /gateway/overrideProperties/config/swf.properties, set the in.succinct.onet.country.iso.3 and 
 in.succinct.onet.country.iso.2 keys to the desired country. Make sure that the same entries are also done in the Registry and the network participants have their operating region set to this country. 
 
+### 4. I did not update any software. I just restarted the machine with my gateway instance and after that the Gateway is crashing at bootup.
+
+This is due to a known issue with older Gateway software. See details on the issue [here](https://github.com/beckn/beckn-onix/blob/main/docs/known_issues.md#gateway-is-not-working-after-restart). Solution is to update the gateway software. Details on how to do it are in the link above. 
+
 ## Troubleshooting Protocol Server
 
 ### 1. 422 Layer 2 config file "<domain>_<network>_<1.1.0>.yaml" is not installed and it is marked as required in configuration"
