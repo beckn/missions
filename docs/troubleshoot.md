@@ -146,3 +146,7 @@ Sometimes the "=" symbol at end of public key and "==" symbol at end of private 
 ### 4. Request is reaching the BPP Network, but not being passed on to the BPP Client
 
 One of the primary reasons why the BPP Network will not pass on the request to BPP Client is because the signature of the message did not match. Carefully notice the BPP-Network log and see the BAP-ID and BAP Public key. Sometimes the public key will be different from the current BAP Public key due to the use of cache. If this is the case, in the machine that is running the BPP-Network, clear the redis cache using `docker exec -it redis redis-cli FLUSHALL`. Try the request again. This time, the BPP-Network should fetch the public key of the BAP from the registry and should get the latest key. 
+
+### 5. Request is reaching the BAP Client, but not being returned to Postman
+
+One of the reasons for this is that the message_id in the on_xxxxxx(on_search, on_init etc) is not matching the request you sent (usually due to wrong BPP SW or Simulator implementation). So the BAP Client does not have enough information to correlate the request to response and returns back empty response to Postman. 
