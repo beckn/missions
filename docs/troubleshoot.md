@@ -92,6 +92,9 @@ BPP-PS-Client  - https://sandbox-bpp-client.becknprotocol.io/logs
 Gateway  - https://gateway.becknprotocol.io/bg/log/0
 ```
 
+### Interpreting logs
+Refer to this [Log Interpretation Guide](./log-interpretation.md) for tips on interpreting logs.
+
 ## Common issues
 
 ### 1. When I type the address of the logs endpoint, I get a `This site cant be reached` error in the browser
