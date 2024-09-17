@@ -153,3 +153,8 @@ One of the primary reasons why the BPP Network will not pass on the request to B
 ### 5. Request is reaching the BAP Client, but not being returned to Postman
 
 One of the reasons for this is that the message_id in the on_xxxxxx(on_search, on_init etc) is not matching the request you sent (usually due to wrong BPP SW or Simulator implementation). So the BAP Client does not have enough information to correlate the request to response and returns back empty response to Postman. 
+
+### 6. Gateway Unable to Broadcast the Request to BPP or Unable to Connect to BPP Using HTTP
+
+One of the reasons for this issue is that the latest version of the gateway uses HTTP/2 by default. If the target servers do not support HTTP/2 or lack a proxy server like Nginx (which automatically downgrades HTTP/2 requests to HTTP/1.1), the request may never reach the server (BPP in most cases).
+
