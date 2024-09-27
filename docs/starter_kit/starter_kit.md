@@ -1,4 +1,4 @@
-# Beckn Starter Kit (Work in progress)
+# Beckn Starter Kit
 
 ## Table of Contents
 
