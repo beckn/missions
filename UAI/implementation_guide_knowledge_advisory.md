@@ -91,15 +91,15 @@ Beckn is a aynchronous protocol at its core.
 
 **Search for resources on topic**
 
-![Search for resources on infested disease](./images/search_ka.png)
+![Search for resources on infested disease](Images/search_ka.png)
 
 **Support information from the provider platform**
 
-![Support call to get contact information of Provider platofrm](./images/support_ka.png)
+![Support call to get contact information of Provider platofrm](Images/support_ka.png)
 
 **Rate the viewed resource**
 
-![Rate the viewed resource](./images/rating_ka.png)
+![Rate the viewed resource](Images/rating_ka.png)
 
 ## API Calls and Schema
 
