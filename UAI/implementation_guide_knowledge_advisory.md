@@ -1,4 +1,4 @@
-# VISTAAR Implementation Guide - Knowledge Advisory
+# UAI Implementation Guide - Knowledge Advisory
 
 #### Version 1.0
 
@@ -6,7 +6,7 @@
 
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
-| 15-08-2024 | 1.0     | Initial Version                                     |
+| 06-11-2024 | 1.0     | Initial Version                                     |
 
 ## Introduction
 
