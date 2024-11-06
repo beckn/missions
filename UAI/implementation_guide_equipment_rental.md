@@ -1,140 +1,62 @@
-# VISTAAR Implementation Guide - Knowledge Advisory
+# 1. Implementation Guide
 
-#### Version 1.0
+This document contains the REQUIRED and RECOMMENDED standard functionality that must be implemented by any Agritech Service Provider Platform a.k.a BPPs and Agritech Consumer Platform a.k.a BAPs.
 
-## Version History
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [RFC2119].
 
-| Date       | Version | Description                                         |
-| ---------- | ------- | --------------------------------------------------- |
-| 15-08-2024 | 1.0     | Initial Version                                     |
+## 1.1 Discovery of Services
 
-## Introduction
+### 1.1.1 Recommendations for BPPs
+The following recommendations need to be considered when implementing discovery functionality for an Agritech BPP
 
-This document provides material that helps network participants build and integrate their application with the Beckn Network. This document is part of the starter kit that provides information about the network, learning resources, network participant checklist etc. This document only focuses on the implementation of the seeker/provider platform. It assumes the reader has a good overview of the Beckn network, its APIs, the overall structure of the schema etc.
+- REQUIRED. The BPP MUST implement the `search` endpoint to receive an `Intent` object sent by BAPs
+- REQUIRED. The BPP MUST return a catalog of Farm services (Farm equipment renting / labours) on the `on_search` callback endpoint specified in the `context.bap_uri` field of the `search` request body.
+- REQUIRED. The BPP MUST map its Farm services to the `Item` schema.
+- REQUIRED. Any Agritech service provider-related information like name, logo, short description must be mapped to the `Provider.descriptor` schema
+- REQUIRED. Any form that must be filled before receiving a quotation must be mapped to the `XInput` schema
+- REQUIRED. If the platform wants to group its products/service under a specific category, it must map each category to the `Category` schema
+- REQUIRED. Any service fulfillment-related information MUST be mapped to the `Fulfillment` schema.
+- REQUIRED. If the BPP does not want to respond to a search request, it MUST return a `ack.status` value equal to `NACK`
+- RECOMMENDED. Upon receiving a `search` request, the BPP SHOULD return a catalog that best matches the intent. This can be done by indexing the catalog against the various probable paths in the `Intent` schema relevant to typical Agritech use cases
 
-## Structure of the document
+### 1.1.2 Recommendations for BAPs
+- REQUIRED. The BAP MUST call the `search` endpoint of the BG to discover multiple BPPs on a network
+- REQUIRED. The BAP MUST implement the `on_search` endpoint to consume the `Catalog` objects containing Farm services cataloge sent by BPPs.
+- REQUIRED. The BAP MUST expect multiple catalogs sent by the respective Agritech Providers on the network
+- REQUIRED. The Farm services can be found in the `Catalog.providers[].items[]` array in the `on_search` request
+- REQUIRED. If the `catalog.providers[].items[].xinput` object is present, then the BAP MUST redirect the user to, or natively render the form present on the link specified on the `items[].xinput.form.url` field.
+- REQUIRED. If the `catalog.providers[].items[].xinput.required` field is set to `"true"` , then the BAP MUST NOT fire a `select`, `init` or `confirm` call until the form is submitted and a successful response is received
+- RECOMMENDED. If the `catalog.providers[].items[].xinput.required` field is set to `"false"` , then the BAP SHOULD allow the user to skip filling the form
 
-This document has the following parts:
 
-1. Outcome Visualization - This is a pictorial or descriptive representation of the different use cases that are supported by the network.
-2. Flow diagrams - This section provides a pictorial representation of the message flows that happen during the use case.
-3. API Calls and Schema - This section provides details on the API calls and the schema of the message that is sent in the form of sample schemas.
-4. Taxonomy and layer 2 configuration - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
-5. Notes on writing/integrating with your own software - This section describes ways in which you can integrate (Becknify) your new or existing software
-6. Links to downloadable resources - This section contains the downloadable files referenced in this document.
-
-## Outcome Visualisation
-
-### Use case - Discovery and consumption of knowledge advisory
-
-![Outcome visualization - Knowledge Advisory](./images/outcome_visualization_ka.png)
-
-1. Moti is a farmer in Odisha. She is a wheat farmer and is struggling with Aphid infestation. She struggles to control it and is looking for effective solutions to address the disease and increase her crop yield.
-2. She is introduced to Vistaar through Krishi Vigyan Kendra. A farm extension worker Ramesh then uses a Vistaar-enabled bot which is plugged into the Vistaar network.
-3. He uses the bot interface to search for remedies and prevention measures for the Aphid infestation. He receives multiple search results from different experts on best practices and fertilizers to address her concerns.
-4. He selects a 2-minute video from AgroExpert Solutions and clicks on the "watch it now" option. Ramesh watches the video and understands the right fertilizers Moti needs.
-5. After watching the video, Ramesh selects "Get Support" and connects with a farmer associate to address further questions.
-6. After the conversation, Ramesh gives a rating for the video which he watched.
-
-## Flow diagrams
-
-### General Beckn message flow and error handling
-
-This section is relevant to all the messages flows illustrated below and discussed further in the document.
-
-Beckn is a aynchronous protocol at its core.
-
-- When a network participant(NP1) sends a message to another participant(NP2), the other participant(NP2) immediately returns back an ACK/NACK(Acknowledgement or Negative Acknowledgement in case of error - usually with wrongly formed messages).
-- An ACK is an indicator that the receiving participant(NP2) will process this message and dispatch an on_xxxxxx message to original NP (NP1)
-- Subsequently after processing the message NP2 sends back the real response in the corresponding on_xxxxxx message, to which again the first participant(NP1).
-- This message can contain a message field (for success) or error field (for failure)
-- NP1 when it receives the on_xxxxxx message, sends back an ACK/NACK (Here in both the cases NP1 will not send any subsequent message).
-- In the Use case diagrams, this ACK/NACK is not illustrated explicitly to keep the diagrams crisp.
-- However when writing software we should be prepared to receive these NACK messages as well as error field in the on_xxxxxx messages
-- While this discussion is from a Beckn perspective, Adapters can provide synchronous modes. For example, the Protocol Server which is the reference implementation of the Beckn Adapter provides a synchronous mode by default. So if your software calls the support endpoint on the BAP Protocol Server, the Protocol Server waits till it gets the on_support and returns back that as the response.
-
-![ACK NACK for messages](/docs/assets/images/ack_nack.png)
-
-**Structure of a message with a NACK**
-
-```
-{
-    "message": {
-        "ack": {
-            "status": "NACK"
-        }
-    },
-    "error": {
-        "code": 400,
-        "message": "OpenApiValidator Error at BAP-CLIENT",
-    }
-}
-```
-
-**Structure of a on_select message with an error**
-
-```
-{
-    "context": {
-        "action": "on_select",
-        "version": "1.1.0",
-        ...
-    },
-    "error": {
-        "code": 30001,
-        "message": "Requested provider is not in the database"
-    }
-}
-```
-
-### Use case - Discovery and consumption of knowledge advisory
-
-**Search for resources on topic**
-
-![Search for resources on infested disease](./images/search_ka.png)
-
-**Support information from the provider platform**
-
-![Support call to get contact information of Provider platofrm](./images/support_ka.png)
-
-**Rate the viewed resource**
-
-![Rate the viewed resource](./images/rating_ka.png)
-
-## API Calls and Schema
-
-### search
-
-**search by topic**
-
-- The topic to search is specified in the message->item->descriptor->name field.
-
+### Example
+A search request for a Farm services may look like this
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
-    "action": "search",
+    "domain": "agrinet",
     "location": {
       "country": {
-        "name": "India",
-        "code": "IND"
+        "name": "kenya"
       },
       "city": {
-        "name": "Balangir"
+        "name": "Kirinyaga"
       }
     },
+    "action": "search",
     "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_uri": "https://ps-bap-client.becknprotocol.io",
-    "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
-    "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    "timestamp": "2024-07-02T09:15:30Z"
+    "bap_id": "{bap_id}",
+    "bap_uri": "{bap_url}",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "timestamp": "2023-11-06T09:41:09.673Z",
+    "ttl": "PT10M"
   },
   "message": {
     "intent": {
       "item": {
         "descriptor": {
-          "name": "cotton aphids"
+          "name": "ploughing"
         }
       }
     }
@@ -142,176 +64,1233 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-**search by topic and language**
-
-- The topic to search is specified in the message->intent->item->descriptor->name field.
-- The desired language is specified in a tag named languages.
-
+An example catalog of Farm services may look like this
 ```
 {
-  "context": {
-    "domain": "advisory:agrinet:vistaar",
-    "action": "search",
-    "location": {
-      "country": {
-        "name": "India",
-        "code": "IND"
+    "context": {
+      "domain": "agrinet",
+      "location": {
+        "country": {
+            "name": "kenya"
+          },
+          "city" : {
+            "name": "kirinyaga"
+          }
       },
-      "city": {
-        "name": "Balangir"
-      }
+      "action": "on_search",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z",
+      "ttl": "PT10M"
     },
-    "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_uri": "https://ps-bap-client.becknprotocol.io",
-    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
-    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
-    "timestamp": "2024-07-02T09:15:30Z"
-  },
-  "message": {
-    "intent": {
-      "item": {
+    "message": {
+      "catalog": {
         "descriptor": {
-          "name": "cotton aphid"
+          "name": "Kuza-AgriNet-BPP",
+          "short_desc" : "",
+          "long_desc" : "",
+          "images": [
+            {
+              "url": "https://image_url"
+            }
+          ]
         },
-        "tags": [
+        "providers": [
           {
+            "id": "provider_id_1",
             "descriptor": {
-              "name": "languages"
+              "name": "Provider 1",
+              "short_desc" : "",
+              "long_desc" : "",
+              "images": [
+                  {
+                  "url": "https://image_url"
+                  }
+              ]
             },
-            "list": [
+            "locations": [
               {
-                "value": "Odia"
+                "id": "location 1",
+                "gps": "12.909955,77.596316"
+              }
+            ],
+            "categories": [
+              {
+                "id": "c1",
+                "descriptor": {
+                  "code": "Agri Services",
+                  "name": "Agri Services"
+                }
+              }
+            ],
+            "fulfillments": [
+              {
+                "id": "f1",
+                "type": "Delivery"
+              },
+              {
+                "id": "f2",
+                "type": "Self-Pickup"
               }
             ]
+          }
+        ],
+        "items": [
+          {
+            "id": "item_id",
+            "descriptor": {
+              "images": [
+                {
+                  "url": "https://image_url"
+                }
+              ],
+              "name": "Ploughing",
+              "short_desc": "Ploughing also turns over the upper layer of soil, bringing fresh nutrients to the surface. It buries weeds and the remains of previous crops, allowing them to break down.",
+              "long_desc": "Ploughing also turns over the upper layer of soil, bringing fresh nutrients to the surface. It buries weeds and the remains of previous crops, allowing them to break down."
+            },
+            "matched": false,
+            "recommended": true,
+            "price": {
+              "listed_value": "1300.0",
+              "currency": "KSH",
+              "value": "1200.0"
+            },
+            "rating": "5",
+            "creator" : {
+              "descriptor" : {
+                "name" : "Hello Tractor"
+              }
+            },
+            "location_ids": [
+              "location_id1",
+              "location_id2"
+            ],
+            "category_ids": [
+              "c1", 
+              "c2"
+            ],
+            "fulfillment_id": [
+              "f1",
+              "f2"
+            ],
+            "tags": [
+              {
+                "descriptor": {
+                  "code" : "stage",
+                  "name" : "Stages applicable"
+                },
+                "list": [
+                  {
+                    "value": "Land Preparation"
+                  },
+                  {
+                    "value": "Acres"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "offer": {
+            "descriptor": {
+                "name": "hire1get1free"
+              },
+              "item_ids": [
+                "item_id1",
+                "item_id2"
+            ]
+        }
+      }
+    }
+  }     
+```
+
+## 1.2 Ordering Farm services
+This section provides recommendations for implementing the APIs related to selecting & ordering Farm services.
+
+### 1.2.1 Recommendations for BPPs
+
+#### 1.2.1.1 Selecting a Farm service from the catalog
+- REQUIRED. The BPP MUST implement the `select` endpoint on the url specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+- REQUIRED. If the Agritech provider has successfully received the information submitted by the Agritech consumer, the BPP must return an acknowledgement with `ack.status` set to `ACK` in response to the `select` request
+- REQUIRED. If the Agritech provider has returned a successful acknowledgement to a `select` request, it MUST send the offer encapsulated in an `Order` object
+
+#### 1.2.1.2 Initializing the Order
+- REQUIRED. The BPP MUST implement the `init` endpoint on the url specified in  the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+#### 1.2.1.3 Confirming the Order
+- REQUIRED. The BPP MUST implement the `confirm` endpoint on the url specified in URL specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+### 1.2.2 Recommendations for BAPs
+
+#### 1.2.2.1 Selecting a Farm service from the catalog
+- REQUIRED. The BAP MUST implement the `on_select` endpoint on the url specified in the `context.bap_uri` field sent during `select`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+#### 1.2.2.2  Initializing the Order
+- REQUIRED. The BAP MUST hit the `init` endpoint on the url specified in  the `context.bpp_uri` field sent during `on_search`. 
+- REQUIRED. The BAP MUST implement the `on_init` endpoint on the url specified in  the `context.bap_uri` field sent during `init`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+#### 1.2.2.3 Confirming the Order
+- REQUIRED. The BAP MUST hit the `confirm` endpoint on the url specified in  the `context.bpp_uri` field sent during `on_search`. 
+- REQUIRED. The BAP MUST implement the `on_confirm` endpoint on the url specified in URL specified in the `context.bap_uri` field sent during `confirm`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+### 1.2.3 Example Workflow
+
+### 1.2.3 Example Requests
+
+Below is an example of a `select` request
+```
+{
+    "context": {
+      "domain": "agrinet",
+      "location": {
+        "country": {
+            "name": "kenya"
+          },
+          "city" : {
+            "name": "kirinyaga"
+          }
+      },
+      "action": "select",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "order": {
+        "provider": {
+          "id": "provider_id"
+        },
+        "items": [
+          {
+            "id": "item_id",
+            "quantity": {
+              "selected": {
+                "count": 3,
+                "measure" : {
+                  "unit" : "Acres"
+                }
+              }
+            }
+          }
+        ],
+        "fulfillments": [
+          {
+            "id": "f1"
           }
         ]
       }
     }
   }
+```
+
+Below is an example of an `on_select` callback
+```
+{
+    "context": {
+      "domain": "agrinet",
+      "location": {
+        "country": {
+            "name": "kenya"
+          },
+          "city" : {
+            "name": "kirinyaga"
+          }
+      },
+      "action": "on_select",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "order": {
+        "providers": [
+          {
+            "id": "provider_id_1",
+            "descriptor": {
+              "name": "Provider 1",
+              "short_desc" : "",
+              "long_desc" : "",
+              "images": [
+                  {
+                  "url": "https://image_url"
+                  }
+              ]
+            },
+            "locations": [
+              {
+                "id": "location 1",
+                "gps": "12.909955,77.596316"
+              }
+            ],
+            "categories": [
+              {
+                "id": "c1",
+                "descriptor": {
+                  "code": "herbicide",
+                  "name": "herbicide"
+                }
+              }
+            ],
+            "fulfillments": [
+              {
+                "id": "f1",
+                "type": "Delivery"
+              },
+              {
+                "id": "f2",
+                "type": "Self-Pickup"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "item_id",
+            "descriptor": {
+              "images": [
+                {
+                  "url": "https://image_url"
+                }
+              ],
+              "name": "Potasun",
+              "short_desc": "Selective post-emergence herbicide for weed control in Irish potatoes. Mixing: 200mls/20ltr. Available in 1ltr pack",
+              "long_desc": "Potasun 50EC is a selective herbicide that controls annual and perennial grasses and broad leaf weeds in tomato, cassava, Irish potato, and cocoyam. It is a selective earlier post-emergence herbicide"
+            },
+            "matched": true,
+            "quantity": {
+              "selected": {
+                "count": 3,
+                "measure" : {
+                  "unit" : "Acres"
+                }
+              }
+            },
+            "price": {
+              "listed_value": "1200.0",
+              "currency": "KSH",
+              "value": "1200.0"
+            },
+            "rating": "5",
+            "creator" : {
+              "descriptor" : {
+                "name" : "Hello Tractor"
+              }
+            },
+            "recommended": true,
+            "location_ids": [
+              "location_id1",
+              "location_id2"
+            ],
+            "category_ids": [
+              "c1", 
+              "c2"
+            ],
+            "tags": [
+              {
+                "descriptor": {
+                  "code": "stage",
+                  "name": "stages applicable"
+                },
+                "list": [
+                  {
+                    "value": "Land Preparation"
+                  },
+                  {
+                    "value": "Sowing"
+                  }
+                ]
+              },
+              {
+                "descriptor": {
+                  "code" : "disease",
+                  "name": "diseases covered"
+                },
+                "list": [
+                  {
+                    "value": "Baterial Wilt"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "offer": {
+            "descriptor": {
+                "name": "buy1get1"
+              },
+              "item_ids": [
+                "item_id1",
+                "item_id2"
+            ]
+        },
+        "quote": {
+            "price": {
+            "currency": "KSH",
+            "value": "1500.0"
+            },
+            "breakup": [
+            {
+                "title": "base-price",
+                "price": {
+                "currency": "KSH",
+                "value": "1200.0"
+                }
+            },
+            {
+                "title": "taxes",
+                "price": {
+                "currency": "KSH",
+                "value": "300.0"
+                }
+            }
+          ]
+        },
+        "fulfillments": [
+          {
+            "id": "f1"
+          }
+        ]
+      }
+    }
+  }
+```
+
+
+Below is an example of a `init` request
+```
+{
+    "context": {
+      "domain": "agrinet",
+      "location": {
+        "country": {
+          "name": "kenya"
+        },
+        "city": {
+          "name": "Kirinyaga"
+        }
+      },
+      "action": "init",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z"
+    },
+    "message": {
+      "order": {
+        "provider": {
+          "id": "provider_id"
+        },
+        "items": [
+          {
+            "id": "item_id",
+            "quantity": {
+              "selected": {
+                "count": 3,
+                "measure" : {
+                  "unit" : "Acres"
+                }
+              }
+            }
+          }
+        ],
+        "fulfillments": [
+          {
+            "type": "Delivery",
+            "stops": [
+              {
+                "location": {
+                  "gps": "13.2008459,77.708736",
+                  "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+                  "city": {
+                    "name": "Nduini"
+                  },
+                  "county": {
+                    "name": "Kirinyaga"
+                  },
+                  "country": {
+                    "name": "Kenya"
+                  },
+                  "area_code": "75001"
+                },
+                "time": {
+                  "label": "preferable time slot",
+                  "timestamp": "2024-01-17T10:58:43.451Z",
+                  "range": {
+                    "start": "2024-01-17T16:10:00.430Z",
+                    "end": "2024-01-17T16:10:00.430Z"
+                  }
+                },
+                "contact": {
+                  "phone": "2547463949",
+                  "email": "nc.njugunu@gmail.com"
+                }
+              }
+            ]
+          }
+        ],
+        "billing": {
+          "name": "John Githuru",
+          "phone": "2542343344",
+          "email": "nc.njugunu@gmail.com",
+          "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+          "city": {
+            "name": "Nduini"
+          },
+          "county": {
+            "name": "Kirinyaga"
+          }
+        }
+      }
+    }
+  }
+```
+
+Below is an example of an `on_init` callback
+```
+{
+  "context": {
+    "domain": "agrinet",
+    "location": {
+      "country": {
+        "name": "kenya"
+      },
+      "city": {
+        "name": "kirinyaga"
+      }
+    },
+    "action": "on_init",
+    "version": "1.1.0",
+    "bap_id": "{bap_id}",
+    "bap_uri": "{bap_url}",
+    "bpp_id": "{bpp_id}",
+    "bpp_uri": "{bpp_url}",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "providers": [
+        {
+          "id": "provider_id_1",
+          "descriptor": {
+            "name": "Provider 1",
+            "short_desc": "",
+            "long_desc": "",
+            "images": [
+              {
+                "url": "https://image_url"
+              }
+            ]
+          },
+          "locations": [
+            {
+              "id": "location 1",
+              "gps": "12.909955,77.596316"
+            }
+          ],
+          "categories": [
+            {
+              "id": "c1",
+              "descriptor": {
+                "code": "herbicide",
+                "name": "herbicide"
+              }
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "item_id",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://image_url"
+              }
+            ],
+            "name": "Potasun",
+            "short_desc": "Selective post-emergence herbicide for weed control in Irish potatoes. Mixing: 200mls/20ltr. Available in 1ltr pack",
+            "long_desc": "Potasun 50EC is a selective herbicide that controls annual and perennial grasses and broad leaf weeds in tomato, cassava, Irish potato, and cocoyam. It is a selective earlier post-emergence herbicide"
+          },
+          "quantity": {
+            "selected": {
+              "count": 3,
+              "measure": {
+                "unit": "Acres"
+              }
+            }
+          },
+          "matched": true,
+          "price": {
+            "listed_value": "1200.0",
+            "currency": "KSH",
+            "value": "1200.0"
+          },
+          "rating": "5",
+          "creator": {
+            "descriptor": {
+              "name": "Hello Tractor"
+            }
+          },
+          "recommended": true,
+          "location_ids": [
+            "location_id1",
+            "location_id2"
+          ],
+          "category_ids": [
+            "c1",
+            "c2"
+          ],
+          "fulfillment_id": [
+            "f1",
+            "f2"
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "code": "stage",
+                "name": "stages applicable"
+              },
+              "list": [
+                {
+                  "value": "Land Preparation"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "disease",
+                "name": "diseases covered"
+              },
+              "list": [
+                {
+                  "value": "Baterial Wilt"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "offer": {
+        "descriptor": {
+          "name": "buy1get1"
+        },
+        "item_ids": [
+          "item_id1",
+          "item_id2"
+        ]
+      },
+      "quote": {
+        "price": {
+          "currency": "KSH",
+          "value": "1700.0"
+        },
+        "breakup": [
+          {
+            "title": "base-price",
+            "price": {
+              "currency": "KSH",
+              "value": "1200.0"
+            }
+          },
+          {
+            "title": "taxes",
+            "price": {
+              "currency": "KSH",
+              "value": "300.0"
+            }
+          },
+          {
+            "title": "delivery-charges",
+            "price": {
+              "currency": "KSH",
+              "value": "200.0"
+            }
+          }
+        ]
+      },
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+                "city": {
+                  "name": "Nduini"
+                },
+                "county": {
+                  "name": "Kirinyaga"
+                },
+                "country": {
+                  "name": "Kenya"
+                },
+                "area_code": "75001"
+              },
+              "time": {
+                "label": "preferable time slot",
+                "timestamp": "2024-01-17T10:58:43.451Z",
+                "range": {
+                  "start": "2024-01-17T16:10:00.430Z",
+                  "end": "2024-01-17T16:10:00.430Z"
+                }
+              },
+              "contact": {
+                "phone": "2547463949",
+                "email": "nc.njugunu@gmail.com"
+              }
+            }
+          ],
+          "agent": {
+            "person": {
+              "id": "string",
+              "url": "string",
+              "name": "string"
+            },
+            "contact": {
+              "phone": "string",
+              "email": "string"
+            }
+          },
+          "customer": {
+            "person": {
+              "name": "John Githuru"
+            },
+            "contact": {
+              "phone": "2542343344"
+            }
+          }
+        }
+      ],
+      "billing": {
+        "name": "John Githuru",
+        "phone": "2542343344",
+        "email": "nc.njugunu@gmail.com",
+        "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+        "city": {
+          "name": "Nduini"
+        },
+        "county": {
+          "name": "Kirinyaga"
+        }
+      },
+      "payments": [
+        {
+          "id": "string",
+          "collected_by": "string",
+          "status": "NOT-PAID",
+          "type": "PRE-FULFILLMENT",
+          "params": {
+            "amount": "1700",
+            "currency": "KSH",
+            "virtual_payment_address": "string"
+          }
+        }
+      ]
+    }
+  }
 }
 
 ```
 
-### on_search
-
-**on_search with catalog of results**
-
-- The catalog that comes back has a list of providers.
-- Each provider has a list of items.
-- Each item is the catalog listing for a resource.
-- The name, short_desc and long_desc fields contain the name and description of the resource.
-- Further, if the resource is a video or a pdf, its mimetype and url are specified in the media field.
-
+Below is an example of a `confirm` request
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
-    "action": "on_search",
+    "domain": "agrinet",
     "location": {
       "country": {
-        "name": "India",
-        "code": "IND"
+        "name": "kenya"
       },
       "city": {
-        "name": "Balangir"
+        "name": "Kirinyaga"
       }
     },
+    "action": "confirm",
     "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_url": "https://ps-bap-client.becknprotocol.io",
-    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
-    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-    "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
-    "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    "timestamp": "2024-07-02T09:15:30Z"
+    "bap_id": "{bap_id}",
+    "bap_uri": "{bap_url}",
+    "bpp_id": "{bpp_id}",
+    "bpp_uri": "{bpp_url}",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z"
   },
   "message": {
-    "catalog": {
-      "descriptor": {
-        "name": "Cotton Aphid"
+    "order": {
+      "provider": {
+        "id": "provider_id"
       },
+      "items": [
+        {
+          "id": "item_id",
+          "quantity": {
+            "selected": {
+              "count": 3,
+              "measure": {
+                "unit": "Acres"
+              }
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+                "city": {
+                  "name": "Nduini"
+                },
+                "county": {
+                  "name": "Kirinyaga"
+                },
+                "country": {
+                  "name": "Kenya"
+                },
+                "area_code": "75001"
+              },
+              "time": {
+                "label": "preferable time slot",
+                "timestamp": "2024-01-17T10:58:43.451Z",
+                "range": {
+                  "start": "2024-01-17T16:10:00.430Z",
+                  "end": "2024-01-17T16:10:00.430Z"
+                }
+              },
+              "contact": {
+                "phone": "2547463949",
+                "email": "nc.njugunu@gmail.com"
+              }
+            }
+          ]
+        }
+      ],
+      "billing": {
+        "name": "John Githuru",
+        "phone": "2542343344",
+        "email": "nc.njugunu@gmail.com",
+        "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+        "city": {
+          "name": "Nduini"
+        },
+        "county": {
+          "name": "Kirinyaga"
+        }
+      },
+      "payments": [
+        {
+          "id": "string",
+          "collected_by": "string",
+          "status": "PAID",
+          "type": "PRE-FULFILLMENT",
+          "params": {
+            "transaction_id": "string",
+            "amount": "1700",
+            "currency": "KSH",
+            "virtual_payment_address": "string"
+          }
+        }
+      ]
+    }
+  }
+}
+
+```
+Below is an example of an `on_confirm` callback
+```
+{
+  "context": {
+    "domain": "agrinet",
+    "location": {
+      "country": {
+        "name": "kenya"
+      },
+      "city": {
+        "name": "kirinyaga"
+      }
+    },
+    "action": "on_confirm",
+    "version": "1.1.0",
+    "bap_id": "{bap_id}",
+    "bap_uri": "{bap_url}",
+    "bpp_id": "{bpp_id}",
+    "bpp_uri": "{bpp_url}",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "id": "order_id",
+      "status": "active",
       "providers": [
         {
-          "id": "19a02a67-d2f0-4ea7-b7e1-b2cf4fa57f56",
+          "id": "provider_id_1",
           "descriptor": {
-            "name": "Agri Acad",
-            "short_desc": "Agri Academic aggregator",
+            "name": "Provider 1",
+            "short_desc": "",
+            "long_desc": "",
             "images": [
               {
-                "url": "https://agri_acad.example.org/logo.png"
+                "url": "https://image_url"
               }
             ]
           },
-          "items": [
+          "locations": [
             {
-              "id": "9875",
+              "id": "location 1",
+              "gps": "12.909955,77.596316"
+            }
+          ],
+          "categories": [
+            {
+              "id": "c1",
               "descriptor": {
-                "name": "Cotton aphid: Aphis gossypii (Aphididae: Hemiptera)",
-                "short_desc": "TNAU Agritech portal. Aphid management",
-                "long_desc": "Avoid late sowing. Treat seeds with Beauveria bassiana @ 10 g/kg. Apply nitrogenous fertilizers judiciously. Grow cowpea as intercrop or on the bunds to increase the natural enemy build up. Spray any one of the following insecticides when pest population reaches ETL: Imidacloprid 17.8% SL 40 – 50 ml/acre or Azadirachtin 0.03% EC 1000 ml/acre or Buprofezin 25%SC 400 ml/acre or Diafenthiuron 50%WP 240 g/acre or Thiacloprid 21.7%SC 40-50 ml/acre or Flonicamid 50% WG 60 g/acre or Thiamethoxam 25% WG 40 g/acre"
+                "code": "herbicide",
+                "name": "herbicide"
               }
-            },
-            {
-              "id": "4321",
-              "descriptor": {
-                "name": "Cotton aphid: Aphis gossypii",
-                "short_desc": "Cotton aphid and management",
-                "long_desc": "",
-                "media": [
-                  {
-                    "mimetype": "application/pdf",
-                    "url": "https://agritech.tnau.ac.in/itk/pdf/itk_cotton.pdf"
-                  }
-                ]
-              },
-              "rating": "4.0"
-            },
-            {
-              "id": "8977",
-              "descriptor": {
-                "name": "Aphids Pest Management in Cotton Farming - Hindi Video",
-                "short_desc": "Control the Aphids in cotton farming by following the information provided in the video. ",
-                "long_desc": "",
-                "media": [
-                  {
-                    "mimetype": "video/mp4",
-                    "url": "https://www.youtube.com/watch?v=bupCtQNfecg"
-                  }
-                ]
-              },
-              "rating": "3.5"
             }
           ]
-        },
+        }
+      ],
+      "items": [
         {
-          "id": "5e899a32-72f3-48e1-9156-5b1302c1f32a",
+          "id": "item_id",
           "descriptor": {
-            "name": "Farming videos",
-            "short_desc": "Farming video repository",
             "images": [
               {
-                "url": "https:/farm_video.example.org/logo.png"
+                "url": "https://image_url"
               }
-            ]
+            ],
+            "name": "Potasun",
+            "short_desc": "Selective post-emergence herbicide for weed control in Irish potatoes. Mixing: 200mls/20ltr. Available in 1ltr pack",
+            "long_desc": "Potasun 50EC is a selective herbicide that controls annual and perennial grasses and broad leaf weeds in tomato, cassava, Irish potato, and cocoyam. It is a selective earlier post-emergence herbicide"
           },
-          "items": [
+          "quantity": {
+            "selected": {
+              "count": 3,
+              "measure": {
+                "unit": "Acres"
+              }
+            }
+          },
+          "matched": true,
+          "price": {
+            "listed_value": "1200.0",
+            "currency": "KSH",
+            "value": "1200.0"
+          },
+          "rating": "5",
+          "creator": {
+            "descriptor": {
+              "name": "Hello Tractor"
+            }
+          },
+          "recommended": true,
+          "location_ids": [
+            "location_id1",
+            "location_id2"
+          ],
+          "category_ids": [
+            "c1",
+            "c2"
+          ],
+          "fulfillment_id": [
+            "f1",
+            "f2"
+          ],
+          "cancellation_terms": [
             {
-              "id": "53453",
-              "descriptor": {
-                "name": "Aphid, Thrips control in cotton",
-                "short_desc": "Aphid control in cotton",
-                "long_desc": "",
-                "media": [
-                  {
-                    "mimetype": "video/mp4",
-                    "url": "https://www.youtube.com/watch?v=SBs68VHPXUs"
-                  }
-                ]
+              "fulfillment_state": {
+                "descriptor": {
+                  "name": "string",
+                  "code": "string",
+                  "short_desc": "string",
+                  "long_desc": "string"
+                }
               },
-              "rating": "4.5"
+              "reason_required": true,
+              "cancellation_fee": {
+                "percentage": "10.00",
+                "amount": {
+                  "currency": "string",
+                  "value": "100"
+                }
+              },
+              "xinput": {
+                "form": {
+                  "url": "string",
+                  "data": {
+                    "additionalProp1": "string",
+                    "additionalProp2": "string",
+                    "additionalProp3": "string"
+                  },
+                  "mime_type": "text/html",
+                  "submission_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+                },
+                "required": true
+              }
+            }
+          ],
+          "return_terms": [
+            {
+              "fulfillment_state": {
+                "name": "string",
+                "code": "string"
+              },
+              "return_eligible": true,
+              "return_time": {
+                "label": "string",
+                "timestamp": "2024-01-04T07:12:23.580Z",
+                "duration": "string",
+                "range": {
+                  "start": "2024-01-04T07:12:23.580Z",
+                  "end": "2024-01-04T07:12:23.580Z"
+                },
+                "days": "string"
+              },
+              "fulfillment_managed_by": "CONSUMER"
+            }
+          ],
+          "refund_terms": [
+            {
+              "fulfillment_state": {
+                "name": "string",
+                "code": "string"
+              },
+              "refund_eligible": true,
+              "refund_within": {
+                "label": "string",
+                "timestamp": "2024-01-04T07:12:23.579Z",
+                "duration": "string",
+                "range": {
+                  "start": "2024-01-04T07:12:23.579Z",
+                  "end": "2024-01-04T07:12:23.579Z"
+                },
+                "days": "string"
+              },
+              "refund_amount": {
+                "currency": "string",
+                "value": "100.00"
+              }
+            }
+          ],
+          "replacement_terms": [
+            {
+              "fulfillment_state": {
+                "name": "string",
+                "code": "string"
+              },
+              "replace_within": {
+                "label": "string",
+                "timestamp": "2024-01-04T07:12:23.580Z",
+                "duration": "string",
+                "range": {
+                  "start": "2024-01-04T07:12:23.580Z",
+                  "end": "2024-01-04T07:12:23.580Z"
+                },
+                "days": "string",
+                "schedule": {
+                  "frequency": "string",
+                  "holidays": [
+                    "2024-01-04T07:12:23.580Z"
+                  ],
+                  "times": [
+                    "2024-01-04T07:12:23.580Z"
+                  ]
+                }
+              }
+            }
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "code": "stage",
+                "name": "stages applicable"
+              },
+              "list": [
+                {
+                  "value": "Land Preparation"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "disease",
+                "name": "diseases covered"
+              },
+              "list": [
+                {
+                  "value": "Baterial Wilt"
+                }
+              ]
             }
           ]
+        }
+      ],
+      "offer": {
+        "descriptor": {
+          "name": "buy1get1"
+        },
+        "item_ids": [
+          "item_id1",
+          "item_id2"
+        ]
+      },
+      "quote": {
+        "price": {
+          "currency": "KSH",
+          "value": "1700.0"
+        },
+        "breakup": [
+          {
+            "title": "base-price",
+            "price": {
+              "currency": "KSH",
+              "value": "1200.0"
+            }
+          },
+          {
+            "title": "taxes",
+            "price": {
+              "currency": "KSH",
+              "value": "300.0"
+            }
+          },
+          {
+            "title": "delivery-charges",
+            "price": {
+              "currency": "KSH",
+              "value": "200.0"
+            }
+          }
+        ]
+      },
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "state": {
+            "descriptor": {
+              "code": "PRE-Order",
+              "name": "Before Order"
+            },
+            "updated_at": "2023-02-06T09:55:41.161Z"
+          },
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+                "city": {
+                  "name": "Nduini"
+                },
+                "county": {
+                  "name": "Kirinyaga"
+                },
+                "country": {
+                  "name": "Kenya"
+                },
+                "area_code": "75001"
+              },
+              "time": {
+                "label": "preferable time slot",
+                "timestamp": "2024-01-17T10:58:43.451Z",
+                "range": {
+                  "start": "2024-01-17T16:10:00.430Z",
+                  "end": "2024-01-17T16:10:00.430Z"
+                }
+              },
+              "contact": {
+                "phone": "2547463949",
+                "email": "nc.njugunu@gmail.com"
+              }
+            }
+          ],
+          "agent": {
+            "person": {
+              "id": "string",
+              "url": "string",
+              "name": "string"
+            },
+            "contact": {
+              "phone": "string",
+              "email": "string"
+            }
+          },
+          "customer": {
+            "person": {
+              "name": "John Githuru"
+            },
+            "contact": {
+              "phone": "2542343344"
+            }
+          }
+        }
+      ],
+      "fulfillment_state": {
+        "descriptor": {
+          "name": "In Transit",
+          "code": "it",
+          "short_desc": "string",
+          "long_desc": "string"
+        },
+        "updated_at": "2024-01-18T08:14:33.667Z",
+        "updated_by": "string"
+      },
+      "billing": {
+        "name": "John Githuru",
+        "phone": "2542343344",
+        "email": "nc.njugunu@gmail.com",
+        "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+        "city": {
+          "name": "Nduini"
+        },
+        "county": {
+          "name": "Kirinyaga"
+        }
+      },
+      "payments": [
+        {
+          "id": "string",
+          "collected_by": "string",
+          "status": "PAID",
+          "type": "PRE-FULFILLMENT",
+          "params": {
+            "transaction_id": "string",
+            "amount": "1500",
+            "currency": "KSH",
+            "virtual_payment_address": "string"
+          }
         }
       ]
     }
@@ -319,211 +1298,605 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-### support
+## 1.3 Fulfillment of Farm services
+This section contains recommendations for implementing the APIs related to fulfilling a Farm services.
 
-**sending a support request**
+### 1.3.1 Recommendations for BPPs
 
-- In most cases the support request is a call to get contact details of the provider platform (Phone, Web url etc).
-- However in rare cases a reference id might be sent to provide a context to the request.
+#### 1.3.1.1 Sending status updates
+- REQUIRED. The BPP MUST implement the `status` endpoint on the url specified in URL specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
 
+#### 1.3.1.2 Updating the Order
+- REQUIRED. The BPP MUST implement the `update` endpoint on the url specified in URL specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+#### 1.3.1.3 Cancelling the Order
+- REQUIRED. The BPP MUST implement the `cancel` endpoint on the url specified in URL specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+- REQUIRED. The BPP MUST implement the `get_cancellation_reasons` endpoint on the url specified in URL specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+#### 1.3.1.4 Real-time tracking
+- REQUIRED. The BPP MUST implement the `track` endpoint on the url specified in URL specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+### 1.3.2 Recommendations for BAPs
+
+#### 1.3.2.1 Receiving status updates
+- REQUIRED. The BAP MUST implement the `on_status` endpoint on the url specified in URL specified in the `context.bap_uri` field sent during `status`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+#### 1.3.2.2 Updating the Order
+- REQUIRED. The BAP MUST implement the `on_update` endpoint on the url specified in URL specified in the `context.bap_uri` field sent during `update`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+#### 1.3.2.3 Cancelling the Order
+- REQUIRED. The BAP MUST implement the `on_cancel` endpoint on the url specified in URL specified in the `context.bap_uri` field sent during `cancel`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+- REQUIRED. The BAP MUST implement the `cancellation_reasons` endpoint on the url specified in URL specified in the `context.bap_uri` field sent during `get_cancellation_reasons`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+#### 1.3.2.4 Real-time tracking
+- REQUIRED. The BAP MUST implement the `on_track` endpoint on the url specified in URL specified in the `context.bap_uri` field sent during `track`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+### 1.3.3 Example Workflow
+
+### 1.3.4 Example Requests
+
+Below is an example of a `status` request
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
+    "domain": "agrinet",
     "location": {
       "country": {
-        "name": "India"
+        "name": "kenya"
       },
       "city": {
-        "name": "Balangir"
+        "name": "Kirinyaga"
       }
     },
-    "action": "support",
+    "action": "status",
     "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_url": "https://ps-bap-client.becknprotocol.io",
-    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
-    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-    "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
-    "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
-    "timestamp": "2024-07-02T09:18:30Z"
+    "bap_id": "{bap_id}",
+    "bap_uri": "{bap_url}",
+    "bpp_id": "{bpp_id}",
+    "bpp_uri": "{bpp_url}",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z"
   },
   "message": {
-    "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768"
+    "order_id": "b989c9a9-f603-4d44-b38d-26fd72286b38"
   }
 }
 ```
 
-### on_support
-
-**Getting an on_support callback**
-
-- In most cases the returned details are common contact information of the provider platform.
-- However it is possible to connect this to other customer management solutions.
-
+Below is an example of an `on_status` callback
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
+    "domain": "agrinet",
     "location": {
       "country": {
-        "code": "IND"
+        "name": "kenya"
       },
       "city": {
-        "name": "Balangir"
+        "name": "kirinyaga"
       }
     },
-    "action": "on_support",
+    "action": "on_status",
     "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_url": "https://ps-bap-client.becknprotocol.io",
-    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
-    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-    "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
-    "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
-    "timestamp": "2024-07-02T09:18:30Z",
+    "bap_id": "{bap_id}",
+    "bap_uri": "{bap_url}",
+    "bpp_id": "{bpp_id}",
+    "bpp_uri": "{bpp_url}",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z",
     "ttl": "PT10M"
   },
   "message": {
-    "support": {
-      "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768",
-      "phone": "18001801551",
-      "url": "https://agritech.tnau.ac.in/agriculture/agri_faqs.html"
+    "order": {
+      "id": "order_id",
+      "providers": [
+        {
+          "id": "provider_id_1",
+          "descriptor": {
+            "name": "Provider 1",
+            "short_desc": "",
+            "long_desc": "",
+            "images": [
+              {
+                "url": "https://image_url"
+              }
+            ]
+          },
+          "locations": [
+            {
+              "id": "location 1",
+              "gps": "12.909955,77.596316"
+            }
+          ],
+          "categories": [
+            {
+              "id": "c1",
+              "descriptor": {
+                "code": "herbicide",
+                "name": "herbicide"
+              }
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "item_id",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://image_url"
+              }
+            ],
+            "name": "Potasun",
+            "short_desc": "Selective post-emergence herbicide for weed control in Irish potatoes. Mixing: 200mls/20ltr. Available in 1ltr pack",
+            "long_desc": "Potasun 50EC is a selective herbicide that controls annual and perennial grasses and broad leaf weeds in tomato, cassava, Irish potato, and cocoyam. It is a selective earlier post-emergence herbicide"
+          },
+          "unit_type": "Kgs",
+          "unit_size": "10",
+          "matched": true,
+          "price": {
+            "listed_value": "1200.0",
+            "currency": "KSH",
+            "value": "1200.0"
+          },
+          "rating": "5",
+          "creator": "Bayer",
+          "recommended": true,
+          "location_id": "location_id",
+          "category_id": "c1",
+          "fulfillment_id": "f1",
+          "cancellation_terms": "",
+          "return_terms": "",
+          "refund_terms": "",
+          "tags": [
+            {
+              "descriptor": {
+                "code": "stage",
+                "name": "stages applicable"
+              },
+              "list": [
+                {
+                  "value": "Land Preparation"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "disease",
+                "name": "diseases covered"
+              },
+              "list": [
+                {
+                  "value": "Baterial Wilt"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "offer": {
+        "descriptor": {
+          "name": "buy1get1"
+        },
+        "item_ids": [
+          {
+            "item_id": "item-1"
+          },
+          {
+            "item_id": "item-2"
+          }
+        ]
+      },
+      "quote": {
+        "price": {
+          "currency": "KSH",
+          "value": "1700.0"
+        },
+        "breakup": [
+          {
+            "title": "base-price",
+            "price": {
+              "currency": "KSH",
+              "value": "1200.0"
+            }
+          },
+          {
+            "title": "taxes",
+            "price": {
+              "currency": "KSH",
+              "value": "300.0"
+            }
+          },
+          {
+            "title": "delivery-charges",
+            "price": {
+              "currency": "KSH",
+              "value": "200.0"
+            }
+          }
+        ]
+      },
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "state": {
+            "descriptor": {
+              "code": "PRE-Order",
+              "name": "Before Order"
+            },
+            "updated_at": "2023-02-06T09:55:41.161Z"
+          },
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+                "city": {
+                  "name": "Nduini"
+                },
+                "county": {
+                  "name": "Kirinyaga"
+                },
+                "country": {
+                  "name": "Kenya"
+                },
+                "area_code": "75001"
+              },
+              "time": {
+                "label": "preferable time slot",
+                "timestamp": "2024-01-17T10:58:43.451Z",
+                "range": {
+                  "start": "2024-01-17T16:10:00.430Z",
+                  "end": "2024-01-17T16:10:00.430Z"
+                }
+              },
+              "contact": {
+                "phone": "2547463949",
+                "email": "nc.njugunu@gmail.com"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "John Githuru"
+            },
+            "contact": {
+              "phone": "2542343344"
+            }
+          }
+        }
+      ],
+      "fulfillment_state": {
+        "descriptor": {
+          "name": "string",
+          "code": "string",
+          "short_desc": "string",
+          "long_desc": "string"
+        },
+        "updated_at": "2024-01-18T08:14:33.667Z",
+        "updated_by": "string"
+      },
+      "billing": {
+        "name": "John Githuru",
+        "phone": "2542343344",
+        "email": "nc.njugunu@gmail.com",
+        "address": "Nduini, Kirinyaga Central, Kirinyaga, Kenya",
+        "city": {
+          "name": "Nduini"
+        },
+        "county": {
+          "name": "Kirinyaga"
+        }
+      },
+      "payments": [
+        {
+          "id": "string",
+          "collected_by": "string",
+          "status": "PAID",
+          "type": "PRE-FULFILLMENT",
+          "params": {
+            "transaction_id": "string",
+            "amount": "1500",
+            "currency": "KSH",
+            "virtual_payment_address": "string"
+          }
+        }
+      ],
+      "cancellation_terms": [
+        {
+          "descriptor": {
+            "name": "terms",
+            "short_desc": "",
+            "long_desc": ""
+          }
+        },
+        {
+          "cancellation_fee": {
+            "amount": {
+              "currency": "KSH",
+              "value": "100"
+            }
+          }
+        }
+      ],
+      "return_terms": [
+        {
+          "descriptor": {
+            "name": "terms",
+            "short_desc": "",
+            "long_desc": ""
+          }
+        },
+        {
+          "return_charges": {
+            "amount": {
+              "currency": "KSH",
+              "value": "100"
+            }
+          }
+        }
+      ],
+      "replacement_terms": [
+        {
+          "descriptor": {
+            "name": "terms",
+            "short_desc": "",
+            "long_desc": ""
+          }
+        },
+        {
+          "replacement_charges": {
+            "amount": {
+              "currency": "KSH",
+              "value": "100"
+            }
+          }
+        }
+      ],
+      "refund_terms": [
+        {
+          "descriptor": {
+            "name": "terms",
+            "short_desc": "",
+            "long_desc": ""
+          }
+        },
+        {
+          "refund_charges": {
+            "amount": {
+              "currency": "KSH",
+              "value": "100"
+            }
+          }
+        }
+      ]
     }
   }
 }
-
 ```
 
-### rating
+## 1.4 Post-fulfillment of Farm services
+This section contains recommendations for implementing the APIs after fulfilling a Farm services
 
-**Rating a resource**
+### 1.4.1 Recommendations for BPPs
 
-- When the user wants to rate the resource, it happens in two steps.
-- The user sends a numerical (0-5) rating in the request.
-- The response will have a link to the form where the user can provide text feedback.
+#### 1.4.1.1 Rating and Feedback
+- REQUIRED. The BPP MUST implement the `rating` endpoint on the url specified in URL specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+- REQUIRED. The BPP MUST implement the `get_rating_categories` endpoint on the url specified in URL specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
 
+#### 1.4.1.2 Providing Support
+- REQUIRED. The BPP MUST implement the `support` endpoint on the url specified in URL specified in the `context.bpp_uri` field sent during `on_search`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+### 1.4.2 Recommendations for BAPs
+
+#### 1.4.2.1 Rating and Feedback
+- REQUIRED. The BAP MUST implement the `on_rating` endpoint on the url specified in URL specified in the `context.bap_uri` field sent during `rating`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+- REQUIRED. The BAP MUST implement the `rating_categories` endpoint on the url specified in URL specified in the `context.bap_uri` field sent during `get_rating_categories`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+#### 1.4.2.2 Providing Support
+- REQUIRED. The BAP MUST implement the `on_support` endpoint on the url specified in URL specified in the `context.bap_uri` field sent during `support`. In case of permissioned networks, this URL MUST match the `Subscriber.url` present on the respective entry in the Network Registry
+
+### 1.4.3 Example Workflow
+
+### 1.4.4 Example Requests
+
+Below is an example of a `get_rating_categories` request
 ```
 {
-  "context": {
-    "domain": "advisory:agrinet:vistaar",
-    "location": {
-      "country": {
-        "name": "India"
-      },
-      "city": {
-        "name": "Balangir"
-      }
-    },
-    "action": "rating",
-    "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_url": "https://ps-bap-client.becknprotocol.io",
-    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
-    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-    "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
-    "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
-    "timestamp": "2024-07-02T09:15:30Z"
-  },
-  "message": {
-    "ratings": [
-      {
-        "id": "19a02a67-d2f0-4ea7-b7e1-b2cf4fa57f56",
-        "rating_category": "Provider",
-        "value": "5"
-      }
-    ]
-  }
+    "context": {
+        "domain": "agrinet",
+        "location": {
+            "country": {
+            "name": "kenya"
+            },
+            "city": {
+            "name": "Kirinyaga"
+            }
+        },
+        "action": "get_rating_categories",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z"
+    }
 }
 ```
 
-### on_rating
+Below is an example of an `rating_categories` callback
+```
+{
+    "context": {
+        "domain": "agrinet",
+        "location": {
+            "country": {
+            "name": "kenya"
+            },
+            "city": {
+            "name": "Kirinyaga"
+            }
+        },
+        "action": "rating_categories",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z"
+    },
+    "message": {
+        "rating_categories" : [
+            "Item",
+            "provider",
+            "Order"
+        ]
+    }
+}
+```
 
-**Getting on_rating response**
-
-- The on_rating response has a link to the form where the user can specify a text feedback that goes alongside the numerical rating provided earlier.
+Below is an example of a `rating` request
 
 ```
 {
-  "context": {
-    "domain": "advisory:agrinet:vistaar",
-    "location": {
-      "country": {
-        "name": "India"
+    "context": {
+      "domain": "agrinet",
+      "location": {
+        "country": {
+          "name": "kenya"
+        },
+        "city": {
+          "name": "Kirinyaga"
+        }
       },
-      "city": {
-        "name": "Balangir"
-      }
+      "action": "rating",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z"
     },
-    "action": "on_rating",
-    "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_url": "https://ps-bap-client.becknprotocol.io",
-    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
-    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-    "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
-    "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
-    "timestamp": "2024-07-02T09:15:30Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "feedback_form": {
-      "form": {
-        "url": "https://agri_acad.example.org/feedback"
+    "message": {
+        "ratings": [
+            {
+                "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
+                "rating_category": "Order",
+                "value": "5"
+            }
+        ]
+    }
+  }
+```
+Below is an example of an `on_rating` callback
+```
+{
+    "context": {
+      "domain": "agrinet",
+      "location": {
+        "country": {
+            "name": "kenya"
+          },
+          "city" : {
+            "name": "kirinyaga"
+          }
+      },
+      "action": "on_rating",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "feedback_form": {
+        "form": {
+          "url": "https://agrinet.kuza-bpp.kuza.one/feedback/portal"
+        }
       }
     }
   }
-}
+
 ```
 
-## Taxonomy and layer 2 configuration
+Below is an example of a `support` request
+```
+{
+    "context": {
+      "domain": "agrinet",
+      "location": {
+        "country": {
+          "name": "kenya"
+        },
+        "city": {
+          "name": "Kirinyaga"
+        }
+      },
+      "action": "support",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z"
+    },
+    "message": {
+      "support": {
+        "ref_id": "894789-43954",
+        "phone": "+254 7684937",
+        "email": "john_gitiomi@gmail.com"
+      }
+    }
+  }
+```
 
-- Any specific tags, enumerations, and rules we add for the use cases or required by the network, will go here.
-
-## Integrating with your software
-
-This section gives general walkthrough of how you would integrate your software with the Beckn network (say the sandbox environment). Refer to the starter kit for details on how to register with the sandbox and get credentials.
-
-Beckn-ONIX is an initiative to promote easy install and maintenance of a Beckn Network. Apart from the Registry and Gateway components that are required for a network facilitator, Beckn-ONIX provides a Beckn Adapter. A reference implementation of the Beckn-ONIX specificatino is available at [Beckn-ONIX repository](https://github.com/beckn/beckn-onix). The reference implementation of the Beckn Adapter is called the Protocol Server. Based on whether we are writing the seeker platform or the provider platform, we will be installing the BAP Protocol Server or the BPP Protocol Server respectively.
-
-### Integrating the seeker platform
-
-If you are writing the seeker platform software, the following are the steps you can follow to build and integrate your application.
-
-1. Identify the use cases from above section that are close to the functionality you plan for your application.
-2. Design and develop the UI that implements the flow you need. Typically you will have a API server that this UI talks to and it is called the Seeker Platform in the diagram below.
-3. The API server should construct the required JSON message packets required for the different endpoints shown in the API section above.
-4. Install the BAP Protocol Server using the reference implementation of Beckn-ONIX. During the installation, you will need the address of the registry of the environment, a URL where the Beckn responses will arrive (called Subscriber URL) and a subscriber_id (typically the same as subscriber URL without the "https://" prefix)
-5. Install the layer 2 file for the domain (Link is in the last section of this document)
-6. Check with your network tech support to enable your BAP Protocol Server in the registry.
-7. Once enabled, you can transact on the Beckn Network. Typically the sandbox environment will have the rest of the components you need to test your software. In the diagram below,
-   - you write the Seeker Platform(dark blue)
-   - install the BAP Protocol Server (light blue)
-   - the remaining components are provided by the sandbox enviornment
-8. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
-
-![Seeker platform testing sandbox ](/docs/assets/images/seeker_deployment.png)
-
-### Integrating the provider platform
-
-If you are writing the provider platform software, the following are the steps you can follow to build and integrate your application.
-
-1. Identify the use cases from above section that are close to the functionality you plan for your application.
-2. Design and develop the component that accepts the Beckn requests and interacts with your software to do transactions. It has to be a endpoint(it is called as webhook_url in the description below) which receives all the Beckn requests (search, select etc). This endpoint can either exist outside of your marketplace/shop software or within it. That is a design decision that will have to be taken by you based on the design of your existing marketplace/shop software. This component is also responsible for sending back the responses to a the Beckn Adaptor.
-3. Install the BPP Protocol Server using the reference implementation of Beckn-ONIX. During the installation, you will need the address of the registry of the environment, a URL where the Beckn responses will arrive (called Subscriber URL), a subscriber_id (typically the same as subscriber URL without the "https://" prefix) and the webhook_url that you configured in the step above. Also the address of the BPP Protocol Server Client will have to be configured in your component above. This address hosts all the response endpoints (on_search,on_select etc)
-4. Install the layer 2 file for the domain (Link is in the last section of this document)
-5. Check with your network tech support to enable your BPP Protocol Server in the registry.
-6. Once enabled, you can transact on the Beckn Network. Typically the sandbox environment will have the rest of the components you need to test your software. In the diagram below,
-   - you write the Provider Platform(dark blue) - Here the component you wrote above in point 2 as well as your marketplace/shop software is together shown as Provider Platform
-   - install the BPP Protocol Server (light blue)
-   - the remaining components are provided by the sandbox enviornment
-   - Use the postman collection to test your Provider Platform
-7. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
-
-![Provider platform testing sandbox](/docs/assets/images/provider_deployment.png)
-
-## Links to artefacts
-
-- [Postman collection for VISTAAR Knowledge Advisory](./postman/Vistaar-Advisory.postman_collection.json)
-- [Layer2 config for VISTAAR Knowledge Advisory](./layer2/knowledge-advisory_agrinet_vistaar_1.1.0.yaml)
-- When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/VISTAAR/layer2/knowledge-advisory_agrinet_vistaar_1.1.0.yaml)
+Below is an example of an `on_support` callback
+```
+{
+    "context": {
+      "domain": "agrinet",
+      "location": {
+        "country": {
+            "name": "kenya"
+          },
+          "city" : {
+            "name": "kirinyaga"
+          }
+      },
+      "action": "on_support",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "support": {
+        "ref_id": "d4975df5-b18c-4772-80ad",
+        "callback_phone": "+254 75849302",
+        "phone": "+254 87960541",
+        "email": "abcd.support@support.com"
+      }
+    }
+  }
+  
+```
