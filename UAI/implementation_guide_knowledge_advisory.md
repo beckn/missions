@@ -27,7 +27,7 @@ This document has the following parts:
 
 ### Use case - Discovery and consumption of knowledge advisory
 
-![Outcome visualization - Knowledge Advisory](./UAI/Images/outcome_visualization_ka.png)
+![Outcome visualization - Knowledge Advisory](Images/outcome_visualization_ka.png)
 
 1. Moti is a farmer in Odisha. She is a wheat farmer and is struggling with Aphid infestation. She struggles to control it and is looking for effective solutions to address the disease and increase her crop yield.
 2. She is introduced to Vistaar through Krishi Vigyan Kendra. A farm extension worker Ramesh then uses a Vistaar-enabled bot which is plugged into the Vistaar network.
