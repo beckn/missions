@@ -53,7 +53,7 @@ This use cases uses the names "Pulse Energy" and "Kazam" as examples for illustr
 
 - Srilekha plugs the kazam’s charger into her vehicle and initiates the charging process. After an hour, the charging stops, and she is prompted to either remove the charger or continue charging. Srilekha removes the charger from her vehicle, thus ending the charging process.
 
-**Post Fulfilment**:
+**Post Fulfilment**: 
 
 - Srilekha rates her experience using a 0-5 star rating.
 
@@ -237,11 +237,19 @@ Search request can contain one or more search criterion within it. Use the follo
           "locations": [
             {
               "id": "1",
-              "gps": "12.345345,77.389754"
+              "gps": "12.345345,77.389754",
+              "descriptor": {
+                "name": "ABC Charging station, sector 47"
+              },
+              "address": "123, Plaza house, street 23"
             },
             {
               "id": "2",
-              "gps": "12.247934,77.876987"
+              "gps": "12.247934,77.876987",
+              "descriptor": {
+                "name": "ABC Charging station, sector 81"
+              },
+              "address": "824, peter lane, street 8"
             }
           ],
           "items": [
@@ -252,7 +260,7 @@ Search request can contain one or more search criterion within it. Use the follo
               },
               "price": {
                 "value": "8",
-                "currency": "INR / kWH"
+                "currency": "INR/kWH"
               },
               "quantity": {
                 "available": {
@@ -299,32 +307,18 @@ Search request can contain one or more search criterion within it. Use the follo
                   "list": [
                     {
                       "descriptor": {
-                        "name": "Charger type",
-                        "code": "charger-type"
+                        "name": "Pillar Number 4",
+                        "code": "charger-id"
                       },
-                      "value": "AC"
+                      "value": "charg1"
                     },
                     {
                       "descriptor": {
-                        "name": "Connector type",
-                        "code": "connector-type"
-                      },
-                      "value": "CCS2"
-                    },
-                    {
-                      "descriptor": {
-                        "name": "Power Rating"
-                      },
-                      "value": "greater than 50kW"
-                    },
-                    {
-                      "descriptor": {
-                        "name": "Availability"
+                          "code": "Availability"
                       },
                       "value": "Available"
                     }
-                  ],
-                  "display": true
+                  ]
                 }
               ]
             },
@@ -334,37 +328,47 @@ Search request can contain one or more search criterion within it. Use the follo
               "tags": [
                 {
                   "descriptor": {
-                    "name": "Charging Point"
+                      "name": "Connector Specifications"
                   },
                   "list": [
                     {
-                      "descriptor": {
-                        "name": "Charger type"
-                      },
-                      "value": "AC"
+                        "descriptor": {
+                            "name": "connector 1",
+                            "code": "connector-id"
+                        },
+                        "value": "con1"
                     },
                     {
-                      "descriptor": {
-                        "name": "Connector type"
-                      },
-                      "value": "CCS2"
+                        "descriptor": {
+                            "name": "Charger Type",
+                            "code": "charger-type"
+                        },
+                        "value": "DC"
                     },
                     {
-                      "descriptor": {
-                        "name": "Power Rating"
-                      },
-                      "value": "greater than 50kW"
+                        "descriptor": {
+                            "name": "Connector Type",
+                            "code": "connector-type"
+                        },
+                        "value": "CCS2"
                     },
                     {
-                      "descriptor": {
-                        "name": "Availability"
-                      },
-                      "value": "Available"
+                        "descriptor": {
+                            "name": "Power Rating",
+                            "code": "power-rating"
+                        },
+                        "value": "30kW"
+                    },
+                    {
+                        "descriptor": {
+                            "name": "Availability",
+                            "code": "availability"
+                        }
                     }
-                  ],
-                  "display": true
+                  ]
                 }
-              ]
+              ],
+              "display": true
             }
           ]
         }
@@ -418,6 +422,28 @@ Search request can contain one or more search criterion within it. Use the follo
               }
             }
           }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1"
+        },
+        {
+          "id": "2",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
+          ]
         }
       ]
     }
@@ -506,20 +532,6 @@ Search request can contain one or more search criterion within it. Use the follo
         {
           "id": "1",
           "type": "CHARGING",
-          "stops": [
-            {
-              "type": "start",
-              "time": {
-                "timestamp": "2023-07-16T10:00:00+05:30"
-              }
-            },
-            {
-              "type": "end",
-              "time": {
-                "timestamp": "2023-07-16T10:30:00+05:30"
-              }
-            }
-          ],
           "tags": [
             {
               "descriptor": {
@@ -528,43 +540,92 @@ Search request can contain one or more search criterion within it. Use the follo
               "list": [
                 {
                   "descriptor": {
-                    "name": "Charger type",
-                    "code": "charger-type"
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
                   },
-                  "value": "AC"
+                  "value": "charg1"
                 },
                 {
                   "descriptor": {
-                    "name": "Connector type",
-                    "code": "connector-type"
-                  },
-                  "value": "CCS2"
-                },
-                {
-                  "descriptor": {
-                    "name": "Power Rating"
-                  },
-                  "value": "greater than 50kW"
-                },
-                {
-                  "descriptor": {
-                    "name": "Availability"
+                      "code": "Availability"
                   },
                   "value": "Available"
                 }
-              ],
-              "display": true
+              ]
             }
           ]
+        },
+        {
+          "id": "2",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
+          ]
+          "tags": [
+            {
+              "descriptor": {
+                  "name": "Connector Specifications"
+              },
+              "list": [
+                {
+                    "descriptor": {
+                        "name": "connector 1",
+                        "code": "connector-id"
+                    },
+                    "value": "con1"
+                },
+                {
+                    "descriptor": {
+                        "name": "Charger Type",
+                        "code": "charger-type"
+                    },
+                    "value": "DC"
+                },
+                {
+                    "descriptor": {
+                        "name": "Connector Type",
+                        "code": "connector-type"
+                    },
+                    "value": "CCS2"
+                },
+                {
+                    "descriptor": {
+                        "name": "Power Rating",
+                        "code": "power-rating"
+                    },
+                    "value": "30kW"
+                },
+                {
+                    "descriptor": {
+                        "name": "Availability",
+                        "code": "availability"
+                    }
+                }
+              ]
+            }
+          ],
+          "display": true
         }
       ],
       "quote": {
         "price": {
-          "value": "32",
+          "value": "39.7",
           "currency": "INR"
         },
         "breakup": [
           {
+            "title": "charging session cost",
             "item": {
               "descriptor": {
                 "name": "Estimated units consumed"
@@ -592,6 +653,13 @@ Search request can contain one or more search criterion within it. Use the follo
             "price": {
               "value": "0",
               "currency": "INR"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+                "currency": "INR",
+                "value": "7.20"
             }
           }
         ]
@@ -646,7 +714,24 @@ Search request can contain one or more search criterion within it. Use the follo
       },
       "fulfillments": [
         {
-          "id": "1",
+          "id": "1"
+        },
+        {
+          "id": "2",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
+          ],
           "customer": {
             "person": {
               "name": "John Doe"
@@ -726,29 +811,39 @@ Search request can contain one or more search criterion within it. Use the follo
                 "unit": "kWh"
               }
             }
-          },
-          "fulfillment_ids": [
-            "1"
-          ]
+          }
         }
       ],
       "fulfillments": [
         {
           "id": "1",
-          "customer": {
-            "person": {
-              "name": "John Doe"
-            },
-            "contact": {
-              "phone": "+91-9887766554"
-            }
-          },
           "type": "CHARGING",
-          "state": {
-            "descriptor": {
-              "code": "order-initiated"
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                      "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
             }
-          },
+          ]
+        },
+        {
+          "id": "2",
+          "type": "CHARGING",
           "stops": [
             {
               "type": "start",
@@ -757,46 +852,64 @@ Search request can contain one or more search criterion within it. Use the follo
               }
             },
             {
-              "type": "end",
+              "type": "finish",
               "time": {
                 "timestamp": "2023-07-16T10:30:00+05:30"
               }
             }
           ],
+          "customer": {
+            "person": {
+              "name": "John Doe"
+            },
+            "contact": {
+              "phone": "+91-9887766554"
+            }
+          },
           "tags": [
             {
               "descriptor": {
-                "name": "Charging Point"
+                  "name": "Connector Specifications"
               },
               "list": [
                 {
-                  "descriptor": {
-                    "name": "Charger type"
-                  },
-                  "value": "AC"
+                    "descriptor": {
+                        "name": "connector 1",
+                        "code": "connector-id"
+                    },
+                    "value": "con1"
                 },
                 {
-                  "descriptor": {
-                    "name": "Connector type"
-                  },
-                  "value": "CCS2"
+                    "descriptor": {
+                        "name": "Charger Type",
+                        "code": "charger-type"
+                    },
+                    "value": "DC"
                 },
                 {
-                  "descriptor": {
-                    "name": "Power Rating"
-                  },
-                  "value": "greater than 50kW"
+                    "descriptor": {
+                        "name": "Connector Type",
+                        "code": "connector-type"
+                    },
+                    "value": "CCS2"
                 },
                 {
-                  "descriptor": {
-                    "name": "Availability"
-                  },
-                  "value": "Available"
+                    "descriptor": {
+                        "name": "Power Rating",
+                        "code": "power-rating"
+                    },
+                    "value": "30kW"
+                },
+                {
+                    "descriptor": {
+                        "name": "Availability",
+                        "code": "availability"
+                    }
                 }
-              ],
-              "display": true
+              ]
             }
-          ]
+          ],
+          "display": true
         }
       ],
       "billing": {
@@ -805,11 +918,12 @@ Search request can contain one or more search criterion within it. Use the follo
       },
       "quote": {
         "price": {
-          "value": "32",
+          "value": "39.7",
           "currency": "INR"
         },
         "breakup": [
           {
+            "title": "charging session cost",
             "item": {
               "descriptor": {
                 "name": "Estimated units consumed"
@@ -827,9 +941,27 @@ Search request can contain one or more search criterion within it. Use the follo
               "value": "32",
               "currency": "INR"
             }
+          },
+          {
+            "item": {
+              "descriptor": {
+                "name": "Free car wash"
+              }
+            },
+            "price": {
+              "value": "0",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+                "currency": "INR",
+                "value": "7.20"
+            }
           }
         ]
-      },
+      }
       "payments": [
         {
           "url": "https://payment.gateway.in",
@@ -906,7 +1038,24 @@ Search request can contain one or more search criterion within it. Use the follo
       },
       "fulfillments": [
         {
-          "id": "1",
+          "id": "1"
+        },
+        {
+          "id": "2",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
+          ],
           "customer": {
             "person": {
               "name": "John Doe"
@@ -922,39 +1071,13 @@ Search request can contain one or more search criterion within it. Use the follo
           "collected_by": "BPP",
           "params": {
             "amount": "40",
-            "currency": "INR"
+            "currency": "INR",
+            "transaction_id": "tans1"
           },
           "status": "PAID",
           "type": "PRE-ORDER"
         }
-      ],
-      "quote": {
-        "price": {
-          "value": "40",
-          "currency": "INR"
-        },
-        "breakup": [
-          {
-            "item": {
-              "descriptor": {
-                "name": "Estimated units consumed"
-              },
-              "quantity": {
-                "selected": {
-                  "measure": {
-                    "value": "4",
-                    "unit": "kWh"
-                  }
-                }
-              }
-            },
-            "price": {
-              "value": "32",
-              "currency": "INR"
-            }
-          }
-        ]
-      }
+      ]
     }
   }
 }
@@ -1023,15 +1146,57 @@ Search request can contain one or more search criterion within it. Use the follo
                 "unit": "kWh"
               }
             }
-          },
-          "fulfillment_ids": [
-            "1"
-          ]
+          }
         }
       ],
       "fulfillments": [
         {
           "id": "1",
+          "type": "CHARGING",
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                      "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              },
+              "instructions": {
+                "name": "Charging instructions",
+                "short_desc": "To start your charging, go to charger number 987, and click on 'start' on your app"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
+          ],
           "customer": {
             "person": {
               "name": "John Doe"
@@ -1040,67 +1205,55 @@ Search request can contain one or more search criterion within it. Use the follo
               "phone": "+91-9887766554"
             }
           },
-          "type": "CHARGING",
           "state": {
             "descriptor": {
               "code": "payment-completed"
             }
           },
-          "stops": [
-            {
-              "type": "start",
-              "location": {
-                "gps": "12.423423,77.325647"
-              },
-              "time": {
-                "timestamp": "2023-07-16T10:00:00+05:30",
-              },
-              "instructions": {
-                "name": "Charging instructions",
-                "short_desc": "To start your charging, go to charger number 987, and click on 'start' on your app"
-              }
-            },
-            {
-              "type": "end",
-              "time": {
-                "timestamp": "2023-07-16T10:30:00+05:30",
-              }
-            }
-          ],
           "tags": [
             {
               "descriptor": {
-                "name": "Charging Point"
+                  "name": "Connector Specifications"
               },
               "list": [
                 {
-                  "descriptor": {
-                    "name": "Charger type"
-                  },
-                  "value": "AC"
+                    "descriptor": {
+                        "name": "connector 1",
+                        "code": "connector-id"
+                    },
+                    "value": "con1"
                 },
                 {
-                  "descriptor": {
-                    "name": "Connector type"
-                  },
-                  "value": "CCS2"
+                    "descriptor": {
+                        "name": "Charger Type",
+                        "code": "charger-type"
+                    },
+                    "value": "DC"
                 },
                 {
-                  "descriptor": {
-                    "name": "Power Rating"
-                  },
-                  "value": "greater than 50kW"
+                    "descriptor": {
+                        "name": "Connector Type",
+                        "code": "connector-type"
+                    },
+                    "value": "CCS2"
                 },
                 {
-                  "descriptor": {
-                    "name": "Availability"
-                  },
-                  "value": "Available"
+                    "descriptor": {
+                        "name": "Power Rating",
+                        "code": "power-rating"
+                    },
+                    "value": "30kW"
+                },
+                {
+                    "descriptor": {
+                        "name": "Availability",
+                        "code": "availability"
+                    }
                 }
-              ],
-              "display": true
+              ]
             }
-          ]
+          ],
+          "display": true
         }
       ],
       "billing": {
@@ -1109,11 +1262,12 @@ Search request can contain one or more search criterion within it. Use the follo
       },
       "quote": {
         "price": {
-          "value": "40",
+          "value": "39.7",
           "currency": "INR"
         },
         "breakup": [
           {
+            "title": "charging session cost",
             "item": {
               "descriptor": {
                 "name": "Estimated units consumed"
@@ -1131,6 +1285,24 @@ Search request can contain one or more search criterion within it. Use the follo
               "value": "32",
               "currency": "INR"
             }
+          },
+          {
+            "item": {
+              "descriptor": {
+                "name": "Free car wash"
+              }
+            },
+            "price": {
+              "value": "0",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+                "currency": "INR",
+                "value": "7.20"
+            }
           }
         ]
       },
@@ -1139,6 +1311,7 @@ Search request can contain one or more search criterion within it. Use the follo
           "type": "PRE-ORDER",
           "status": "PAID",
           "params": {
+            "transaction_id": "trans1",
             "amount": "40",
             "currency": "INR"
           },
@@ -1273,6 +1446,47 @@ Search request can contain one or more search criterion within it. Use the follo
       "fulfillments": [
         {
           "id": "1",
+          "type": "CHARGING",
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                      "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
+          ],
           "customer": {
             "person": {
               "name": "John Doe"
@@ -1281,63 +1495,134 @@ Search request can contain one or more search criterion within it. Use the follo
               "phone": "+91-9887766554"
             }
           },
-          "type": "CHARGING",
           "state": {
             "descriptor": {
-              "name": "vehicle 65% charged"
+              "code": "pehicle getting charged"
             }
           },
-          "stops": [
-            {
-              "type": "start",
-              "location": {
-                "gps": "12.423423,77.325647"
-              },
-              "time": {
-                "timestamp": "2023-07-16T10:00:00+05:30",
-              }
-            },
-            {
-              "type": "end",
-              "time": {
-                "timestamp": "2023-07-16T10:30:00+05:30",
-              }
-            }
-          ],
           "tags": [
             {
               "descriptor": {
-                "name": "Charging Point"
+                  "name": "Connector Specifications"
               },
               "list": [
                 {
-                  "descriptor": {
-                    "name": "Charger type"
-                  },
-                  "value": "AC"
+                    "descriptor": {
+                        "name": "connector 1",
+                        "code": "connector-id"
+                    },
+                    "value": "con1"
+                },
+                {
+                    "descriptor": {
+                        "name": "Charger Type",
+                        "code": "charger-type"
+                    },
+                    "value": "DC"
+                },
+                {
+                    "descriptor": {
+                        "name": "Connector Type",
+                        "code": "connector-type"
+                    },
+                    "value": "CCS2"
+                },
+                {
+                    "descriptor": {
+                        "name": "Power Rating",
+                        "code": "power-rating"
+                    },
+                    "value": "30kW"
+                },
+                {
+                    "descriptor": {
+                        "name": "Availability",
+                        "code": "availability"
+                    }
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                  "name": "Charging Details",
+                  "code": "charging-details"
+                },
+                "list": [
+                {
+                    "descriptor": {
+                      "name": "Energy Delivered",  
+                      "code": "energy-delivered"
+                    },
+                    "value": "2.3kWh"
+                },
+                {
+                    "descriptor": {
+                      "name": "State of Charge",
+                      "code": "soc"
+                    },
+                    "value": "80%"
                 },
                 {
                   "descriptor": {
-                    "name": "Connector type"
-                  },
-                  "value": "CCS2"
+                      "name": "Start Time",
+                      "code": "start-time"
+                    },
+                    "value": "2023-07-16T10:30:00.000Z"
                 },
                 {
                   "descriptor": {
-                    "name": "Power Rating"
-                  },
-                  "value": "greater than 50kW"
+                      "name": "Stop Time",
+                      "code": "stop-time"
+                    },
+                    "value": "2023-07-16T11:30:00.000Z"
                 },
                 {
                   "descriptor": {
-                    "name": "Availability"
-                  },
-                  "value": "Available"
+                      "name": "Stop Time",
+                      "code": "stop-time"
+                    },
+                    "value": "2023-07-16T11:30:00.000Z"
+                },
+                {
+                  "descriptor": {
+                      "name": "Meter Start",
+                      "code": "meter-start"
+                    },
+                    "value": "12345"
+                },
+                {
+                  "descriptor": {
+                      "name": "Meter Stop",
+                      "code": "meter-stop"
+                    },
+                    "value": "14345"
+                },
+                {
+                  "descriptor": {
+                      "name": "Current",
+                      "code": "current"
+                    },
+                    "value": "10A"
+                },
+                {
+                  "descriptor": {
+                      "name": "Power",
+                      "code": "power"
+                    },
+                    "value": "3.3kW"
+                },
+                {
+                  "descriptor": {
+                      "name": "Voltage",
+                      "code": "voltage"
+                    },
+                    "value": "330V"
                 }
               ],
               "display": true
             }
-          ]
+          ],
+          "display": true
         }
       ],
       "billing": {
@@ -1346,11 +1631,12 @@ Search request can contain one or more search criterion within it. Use the follo
       },
       "quote": {
         "price": {
-          "value": "32",
+          "value": "39.7",
           "currency": "INR"
         },
         "breakup": [
           {
+            "title": "charging session cost",
             "item": {
               "descriptor": {
                 "name": "Estimated units consumed"
@@ -1368,6 +1654,24 @@ Search request can contain one or more search criterion within it. Use the follo
               "value": "32",
               "currency": "INR"
             }
+          },
+          {
+            "item": {
+              "descriptor": {
+                "name": "Free car wash"
+              }
+            },
+            "price": {
+              "value": "0",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+                "currency": "INR",
+                "value": "7.20"
+            }
           }
         ]
       },
@@ -1376,6 +1680,7 @@ Search request can contain one or more search criterion within it. Use the follo
           "type": "PRE-ORDER",
           "status": "PAID",
           "params": {
+            "transaction_id": "trans1",
             "amount": "40",
             "currency": "INR"
           },
@@ -1514,15 +1819,57 @@ Search request can contain one or more search criterion within it. Use the follo
                 "unit": "kWh"
               }
             }
-          },
-          "fulfillment_ids": [
-            "1"
-          ]
+          }
         }
       ],
       "fulfillments": [
         {
           "id": "1",
+          "type": "CHARGING",
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                      "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              },
+              "instructions": {
+                "name": "Charging instructions",
+                "short_desc": "To start your charging, go to charger number 987, and click on 'start' on your app"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
+          ],
           "customer": {
             "person": {
               "name": "John Doe"
@@ -1531,63 +1878,55 @@ Search request can contain one or more search criterion within it. Use the follo
               "phone": "+91-9887766554"
             }
           },
-          "type": "CHARGING",
           "state": {
             "descriptor": {
-              "code": "charging-started"
+              "code": "charging started"
             }
           },
-          "stops": [
-            {
-              "type": "start",
-              "location": {
-                "gps": "12.423423,77.325647"
-              },
-              "time": {
-                "timestamp": "2023-07-16T10:00:00+05:30",
-              }
-            },
-            {
-              "type": "end",
-              "time": {
-                "timestamp": "2023-07-16T10:30:00+05:30",
-              }
-            }
-          ],
           "tags": [
             {
               "descriptor": {
-                "name": "Charging Point"
+                  "name": "Connector Specifications"
               },
               "list": [
                 {
-                  "descriptor": {
-                    "name": "Charger type"
-                  },
-                  "value": "AC"
+                    "descriptor": {
+                        "name": "connector 1",
+                        "code": "connector-id"
+                    },
+                    "value": "con1"
                 },
                 {
-                  "descriptor": {
-                    "name": "Connector type"
-                  },
-                  "value": "CCS2"
+                    "descriptor": {
+                        "name": "Charger Type",
+                        "code": "charger-type"
+                    },
+                    "value": "DC"
                 },
                 {
-                  "descriptor": {
-                    "name": "Power Rating"
-                  },
-                  "value": "greater than 50kW"
+                    "descriptor": {
+                        "name": "Connector Type",
+                        "code": "connector-type"
+                    },
+                    "value": "CCS2"
                 },
                 {
-                  "descriptor": {
-                    "name": "Availability"
-                  },
-                  "value": "Available"
+                    "descriptor": {
+                        "name": "Power Rating",
+                        "code": "power-rating"
+                    },
+                    "value": "30kW"
+                },
+                {
+                    "descriptor": {
+                        "name": "Availability",
+                        "code": "availability"
+                    }
                 }
-              ],
-              "display": true
+              ]
             }
-          ]
+          ],
+          "display": true
         }
       ],
       "billing": {
@@ -1596,11 +1935,12 @@ Search request can contain one or more search criterion within it. Use the follo
       },
       "quote": {
         "price": {
-          "value": "40",
+          "value": "39.7",
           "currency": "INR"
         },
         "breakup": [
           {
+            "title": "charging session cost",
             "item": {
               "descriptor": {
                 "name": "Estimated units consumed"
@@ -1618,6 +1958,24 @@ Search request can contain one or more search criterion within it. Use the follo
               "value": "32",
               "currency": "INR"
             }
+          },
+          {
+            "item": {
+              "descriptor": {
+                "name": "Free car wash"
+              }
+            },
+            "price": {
+              "value": "0",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+                "currency": "INR",
+                "value": "7.20"
+            }
           }
         ]
       },
@@ -1626,6 +1984,7 @@ Search request can contain one or more search criterion within it. Use the follo
           "type": "PRE-ORDER",
           "status": "PAID",
           "params": {
+            "transaction_id": "trans1",
             "amount": "40",
             "currency": "INR"
           },
