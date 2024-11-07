@@ -274,12 +274,51 @@ Search request can contain one or more search criterion within it. Use the follo
                 "1"
               ],
               "location_ids": [
-                "1",
-                "2"
+                "1"
               ],
               "fulfillment_ids": [
                 "1",
                 "2"
+              ],
+              "add_ons": [
+                {
+                  "id": "pe-charging-01-addon-1",
+                  "descriptor": {
+                    "name": "Free car wash"
+                  },
+                  "price": {
+                    "value": "0",
+                    "currency": "INR"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "pe-charging-02",
+              "descriptor": {
+                "code": "energy"
+              },
+              "price": {
+                "value": "8",
+                "currency": "INR/kWH"
+              },
+              "quantity": {
+                "available": {
+                  "measure": {
+                    "value": "100",
+                    "unit": "kWH"
+                  }
+                }
+              },
+              "category_ids": [
+                "1"
+              ],
+              "location_ids": [
+                "1"
+              ],
+              "fulfillment_ids": [
+                "3",
+                "4"
               ],
               "add_ons": [
                 {
@@ -363,6 +402,80 @@ Search request can contain one or more search criterion within it. Use the follo
                         "descriptor": {
                             "name": "Availability",
                             "code": "availability"
+                        }
+                    }
+                  ]
+                }
+              ],
+              "display": true
+            },
+            {
+              "id": "3",
+              "type": "CHARGING",
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "Charging Point Specifications"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "name": "Pillar Number 3",
+                        "code": "charger-id"
+                      },
+                      "value": "charg3"
+                    },
+                    {
+                      "descriptor": {
+                          "code": "Availability"
+                      },
+                      "value": "Unvailable"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "4",
+              "type": "CHARGING",
+              "tags": [
+                {
+                  "descriptor": {
+                      "name": "Connector Specifications"
+                  },
+                  "list": [
+                    {
+                        "descriptor": {
+                            "name": "connector 1",
+                            "code": "connector-id"
+                        },
+                        "value": "con4"
+                    },
+                    {
+                        "descriptor": {
+                            "name": "Charger Type",
+                            "code": "charger-type"
+                        },
+                        "value": "AC"
+                    },
+                    {
+                        "descriptor": {
+                            "name": "Connector Type",
+                            "code": "connector-type"
+                        },
+                        "value": "CCS2"
+                    },
+                    {
+                        "descriptor": {
+                            "name": "Power Rating",
+                            "code": "power-rating"
+                        },
+                        "value": "40kW"
+                    },
+                    {
+                        "descriptor": {
+                            "name": "Availability",
+                            "code": "unavailability"
                         }
                     }
                   ]
@@ -1568,13 +1681,6 @@ Search request can contain one or more search criterion within it. Use the follo
                       "code": "start-time"
                     },
                     "value": "2023-07-16T10:30:00.000Z"
-                },
-                {
-                  "descriptor": {
-                      "name": "Stop Time",
-                      "code": "stop-time"
-                    },
-                    "value": "2023-07-16T11:30:00.000Z"
                 },
                 {
                   "descriptor": {
