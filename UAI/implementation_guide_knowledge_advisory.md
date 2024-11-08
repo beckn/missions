@@ -25,16 +25,27 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
-### Use case - Discovery and consumption of knowledge advisory
+### Use case - Discovery and consumption of free knowledge advisory
 
-![Outcome visualization - Knowledge Advisory](Images/outcome_visualization_ka.png)
+1. Sandip, an onion farmer from Nashik, encounters an unknown infestation on his crops.
+2. To find a solution, he turns to a beckn-enabled app, connected to the UAI network, to look up remedies and preventive measures.
+3. Using various search methods—audio, image, text in any language, or video—Sandip searches for help with identifying the infestation and discovering effective remedies.
+4. The app provides Sandip with multiple search results from experts specializing in pest and disease identification, remedies, and crop management best practices.
+5. Sandip watches a 2-minute video from AgroExpert Solutions, which explains the suitable pesticides and fertilizers he needs to manage the infestation effectively.
+6. After implementing the advice, Sandip submits a rating for the advisory service based on the quality and clarity of the content provided.
+7. The app also gives Sandip the option to reach out to support services in case he encounters any issues with the advisory service.
 
-1. Moti is a farmer in Odisha. She is a wheat farmer and is struggling with Aphid infestation. She struggles to control it and is looking for effective solutions to address the disease and increase her crop yield.
-2. She is introduced to Vistaar through Krishi Vigyan Kendra. A farm extension worker Ramesh then uses a Vistaar-enabled bot which is plugged into the Vistaar network.
-3. He uses the bot interface to search for remedies and prevention measures for the Aphid infestation. He receives multiple search results from different experts on best practices and fertilizers to address her concerns.
-4. He selects a 2-minute video from AgroExpert Solutions and clicks on the "watch it now" option. Ramesh watches the video and understands the right fertilizers Moti needs.
-5. After watching the video, Ramesh selects "Get Support" and connects with a farmer associate to address further questions.
-6. After the conversation, Ramesh gives a rating for the video which he watched.
+### Use case - Discovery and consumption of paid knowledge advisory
+
+1. Monisha, a tomato farmer in Nashik, seeks to understand upcoming weather changes to plan her fertilization, irrigation, pest control, and other crop management practices.
+2. Using a beckn-enabled app connected to the UAI network, she searches for weather data and forecasts specific to her farm's location.
+3. She discovers a variety of weather content providers on the network, each offering different forecasts, ratings, and pricing options.
+4. Monisha chooses a 14-day hyperlocal weather forecast from News14, priced at INR 30, based on the service's details and rating.
+5. After selecting her forecast, she provides her contact information and billing address, receiving a final quote and terms of purchase, including any cancellation or refund policies.
+5. Reviewing the terms, Monisha makes her payment via UPI and confirms her order, receiving an order ID from the service provider.
+6. Shortly after, Monisha receives her detailed weather report from News14, formatted as a PDF or in a user-friendly display on the app.
+7. Satisfied with the service, she submits a rating based on the quality and usefulness of the weather information.
+8. The app allows Monisha to reach out to support services in case she encounters any issues with the advisory service.
 
 ## Flow diagrams
 
@@ -87,19 +98,33 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-### Use case - Discovery and consumption of knowledge advisory
+### Use case - Discovery and consumption of free knowledge advisory
 
 **Search for resources on topic**
 
-![Search for resources on infested disease](Images/search_ka.png)
+![Search for resources on infested disease](Images/Advisory/free/UAI%20advisory-Discovery.jpg)
 
-**Support information from the provider platform**
+**Seek support and provide rating**
 
-![Support call to get contact information of Provider platofrm](Images/support_ka.png)
+![Support call to get contact information of Provider platofrm](./Images/Advisory/free/uai-Post%20Fulfilment.jpg)
 
-**Rate the viewed resource**
+### Use case - Discovery and consumption of paid knowledge advisory
 
-![Rate the viewed resource](Images/rating_ka.png)
+**Search for resources on topic**
+
+![Search for resources on infested disease](./Images/Advisory/paid/UAI%20advisory-Discovery.jpg)
+
+**Place an order for the advisory**
+
+![Select the advisory, initialise and confirm the order ](./Images/Advisory/paid/UAI%20advisory-Order.jpg)
+
+**fulfillment of an active order**
+
+![check the order status, update the order details or cancel the order ](./Images/Advisory/paid/UAI%20advisory-Fulfilment.jpg)
+
+**Seek support and provide rating**
+
+![Support call to get contact information of Provider platofrm](./Images/Advisory/paid/UAI%20advisory-Post%20Fulfilment.jpg)
 
 ## API Calls and Schema
 
@@ -112,7 +137,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
+    "domain": "advisory:uai",
     "action": "search",
     "location": {
       "country": {
@@ -150,7 +175,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
+    "domain": "advisory:uai",
     "action": "search",
     "location": {
       "country": {
@@ -182,6 +207,9 @@ Beckn is a aynchronous protocol at its core.
             "list": [
               {
                 "value": "Odia"
+              },
+              {
+                "value": "Hindi"
               }
             ]
           }
@@ -206,7 +234,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
+    "domain": "advisory:uai",
     "action": "on_search",
     "location": {
       "country": {
@@ -229,7 +257,7 @@ Beckn is a aynchronous protocol at its core.
   "message": {
     "catalog": {
       "descriptor": {
-        "name": "Cotton Aphid"
+        "name": "Kisaan Seva"
       },
       "providers": [
         {
@@ -329,7 +357,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
+    "domain": "advisory:uai",
     "location": {
       "country": {
         "name": "India"
@@ -364,7 +392,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
+    "domain": "advisory:uai",
     "location": {
       "country": {
         "code": "IND"
@@ -406,7 +434,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
+    "domain": "advisory:uai",
     "location": {
       "country": {
         "name": "India"
@@ -446,7 +474,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:agrinet:vistaar",
+    "domain": "advisory:uai",
     "location": {
       "country": {
         "name": "India"
@@ -524,6 +552,4 @@ If you are writing the provider platform software, the following are the steps y
 
 ## Links to artefacts
 
-- [Postman collection for VISTAAR Knowledge Advisory](./postman/Vistaar-Advisory.postman_collection.json)
-- [Layer2 config for VISTAAR Knowledge Advisory](./layer2/knowledge-advisory_agrinet_vistaar_1.1.0.yaml)
-- When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/VISTAAR/layer2/knowledge-advisory_agrinet_vistaar_1.1.0.yaml)
+TBP
