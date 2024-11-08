@@ -97,7 +97,7 @@ Beckn is a aynchronous protocol at its core.
 
 **Search for rental service**
 
-![Search for resources on infested disease](Images/Advisory/free/UAI%20advisory-Discovery.jpg)
+![Search for rental service](Images/Rental/uai-rental-discovery.jpg)
 
 **Place an order for the Farm Equipment**
 
