@@ -25,27 +25,22 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
-### Use case - Discovery and consumption of free knowledge advisory
+### Use case - Discovery of Rental Services for Farm Equipment
 
-1. Sandip, an onion farmer from Nashik, encounters an unknown infestation on his crops.
-2. To find a solution, he turns to a beckn-enabled app, connected to the UAI network, to look up remedies and preventive measures.
-3. Using various search methods—audio, image, text in any language, or video—Sandip searches for help with identifying the infestation and discovering effective remedies.
-4. The app provides Sandip with multiple search results from experts specializing in pest and disease identification, remedies, and crop management best practices.
-5. Sandip watches a 2-minute video from AgroExpert Solutions, which explains the suitable pesticides and fertilizers he needs to manage the infestation effectively.
-6. After implementing the advice, Sandip submits a rating for the advisory service based on the quality and clarity of the content provided.
-7. The app also gives Sandip the option to reach out to support services in case he encounters any issues with the advisory service.
-
-### Use case - Discovery and consumption of paid knowledge advisory
-
-1. Monisha, a tomato farmer in Nashik, seeks to understand upcoming weather changes to plan her fertilization, irrigation, pest control, and other crop management practices.
-2. Using a beckn-enabled app connected to the UAI network, she searches for weather data and forecasts specific to her farm's location.
-3. She discovers a variety of weather content providers on the network, each offering different forecasts, ratings, and pricing options.
-4. Monisha chooses a 14-day hyperlocal weather forecast from News14, priced at INR 30, based on the service's details and rating.
-5. After selecting her forecast, she provides her contact information and billing address, receiving a final quote and terms of purchase, including any cancellation or refund policies.
-5. Reviewing the terms, Monisha makes her payment via UPI and confirms her order, receiving an order ID from the service provider.
-6. Shortly after, Monisha receives her detailed weather report from News14, formatted as a PDF or in a user-friendly display on the app.
-7. Satisfied with the service, she submits a rating based on the quality and usefulness of the weather information.
-8. The app allows Monisha to reach out to support services in case she encounters any issues with the advisory service.
+1.	Vijay, a grape farmer in Nashik, faces a powdery mildew infestation on his crops and needs a sprayer to apply fungicides effectively.
+2.	Using the UAI platform, Vijay searches for rental services that offer sprayers and other specialized equipment operated by experienced providers nearby.
+3.	He filters the search results by rating, experience, location, and rental cost, finding options like:
+a.	Sandip Patil - 4.2 rating, 3 years of experience, sprayer and tractor, 2 km away
+b.	Bhagwan Wane - 3.8 rating, 2 years of experience, sprayer and harvester, 3 km away
+c.	Ajinkya Sonavane - 3.5 rating, 4 years of experience, sprayer and drones, 2 km away
+4.	Vijay chooses Sandip Patil as his preferred service provider and reviews available equipment details and rental costs.
+5.	After selecting the sprayer, Vijay receives a rental quote of INR 300 per acre. He inputs his booking date, time, and the required area for spraying.
+6.	He reviews the final quote, including any applicable taxes and terms of service, such as cancellation and refund policies.
+7.	Vijay accepts the terms and confirms his order by choosing cash on delivery as the payment method.
+8.	The service provider, Sandip Patil, confirms the booking and shares the order ID along with the agent’s details and scheduled time for the service.
+9.	On the scheduled day, Vijay receives status updates as Sandip Patil arrives and completes the spraying.
+10.	After completing the service, Vijay pays Sandip by cash, based on the final amount agreed.
+11.	Satisfied with the service, Vijay submits a rating for the equipment quality, service punctuality, and overall support, helping others make informed choices.
 
 ## Flow diagrams
 
