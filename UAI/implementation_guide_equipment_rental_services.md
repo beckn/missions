@@ -93,33 +93,23 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-### Use case - Discovery and consumption of free knowledge advisory
+### Use case - Discovery of Rental Services for Farm Equipment
 
-**Search for resources on topic**
+**Search for rental service**
 
 ![Search for resources on infested disease](Images/Advisory/free/UAI%20advisory-Discovery.jpg)
+
+**Place an order for the Farm Equipment**
+
+![Support call to get contact information of Provider platofrm](./Images/Advisory/free/uai-Post%20Fulfilment.jpg)
+
+**Fullfilment of an active order**
+
+![Support call to get contact information of Provider platofrm](./Images/Advisory/free/uai-Post%20Fulfilment.jpg)
 
 **Seek support and provide rating**
 
 ![Support call to get contact information of Provider platofrm](./Images/Advisory/free/uai-Post%20Fulfilment.jpg)
-
-### Use case - Discovery and consumption of paid knowledge advisory
-
-**Search for resources on topic**
-
-![Search for resources on infested disease](./Images/Advisory/paid/UAI%20advisory-Discovery.jpg)
-
-**Place an order for the advisory**
-
-![Select the advisory, initialise and confirm the order ](./Images/Advisory/paid/UAI%20advisory-Order.jpg)
-
-**fulfillment of an active order**
-
-![check the order status, update the order details or cancel the order ](./Images/Advisory/paid/UAI%20advisory-Fulfilment.jpg)
-
-**Seek support and provide rating**
-
-![Support call to get contact information of Provider platofrm](./Images/Advisory/paid/UAI%20advisory-Post%20Fulfilment.jpg)
 
 ## API Calls and Schema
 
