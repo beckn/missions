@@ -117,49 +117,35 @@ Beckn is a aynchronous protocol at its core.
 
 #### search
 
-**search by topic**
+**search by location**
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "action": "search",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_uri": "https://ps-bap-client.becknprotocol.io",
-    "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
-    "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    "timestamp": "2024-07-02T09:15:30Z"
-  },
-  "message": {
-     "intent": {
-      "item": {
-        "descriptor": {
-          "name": "Weather forecast"
-        },
-        "time" : {
-          "range" : {
-            "start" : "2024-03-01T00:00:00.000Z",
-            "end" : "2024-03-15T00:00:00.000Z"
-          }
+    "context": {
+      "domain": "equipement-renting:uai",
+      "location": {
+        "country": {
+          "name": "IND"
         }
       },
-      "fulfillment": {
-        "stops": [
-          {
-            "location": {
-              "gps": ""12.9716, 77.5946""
-            }
+      "action": "search",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "timestamp": "2023-11-06T09:41:09.673Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "intent": {
+        "item": {
+          "descriptor": {
+            "name": "ploughing"
           }
-        ]
+        }
       }
     }
   }
-}
 ```
 #### on_search
 
@@ -173,243 +159,250 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "advisory:uai",
-      "location": {
-        "country": {
-          "code": "INDIA"
-        }
-      },
-      "action": "on_search",
-      "version": "1.1.0",
-      "bap_id": "dataset-bap-id",
-      "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-      "bpp_id": "dataset-bpp-subId",
-      "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
-      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-      "timestamp": "2023-11-06T09:41:09.708Z",
-      "ttl": "PT10M"
+        "domain": "agricultural-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_search",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
     "message": {
-      "catalog": {
-        "descriptor": {
-          "name": "Data source platform ltd"
-        },
-        "providers": [
-          {
-            "id": "1",
+        "catalog": {
             "descriptor": {
-              "name": "WeAreNews14",
-              "additional_desc": {
-                "url" : "https://www.wearenews14.com/",
-                "content_type" : "text/html"
-              },
-              "images": [
-                {
-                  "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/example-new-logo-hero.png"
-                }
-              ]
-            },
-            "tags": [
-              {
-                "descriptor": {
-                  "name": "Provider's Additional Information"
-                },
-                "list": [
-                  {
-                    "descriptor": {
-                      "name": "License"
-                    },
-                    "value": "Proprietary"
-                  },
-                  {
-                    "descriptor": {
-                      "name": "Provider's years in operation"
-                    },
-                    "value": "3"
-                  }
-                ]
-              }
-            ],
-            "rating": "4.9",
-            "categories": [
-              {
-                "id": "c1",
-                "descriptor": {
-                  "code": "Weather-forecast",
-                  "name": "Weather Forecast"
-                }
-              }
-            ],
-            "fulfillments": [
-              {
-                "id": "f1",
-                "type": "CLOUD"
-              },
-              {
-                "id": "f2",
-                "type": "REST"
-              },
-              {
-                "id": "f3",
-                "type": "EMAIL"
-              }
-            ],
-            "items": [
-              {
-                "id": "1",
-                "descriptor": {
-                  "images": [
+                "name": "Agricultural Aggregator",
+                "short_desc": "",
+                "long_desc": "",
+                "images": [
                     {
-                      "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
+                        "url": "https://image_url"
                     }
-                  ],
-                  "additional_desc" : {
-                    "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-                    "content_type" : "text/html"
-                  },
-                  "name": "Hyperlocal weather forecast",
-                  "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-                  "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
-                },
-                "time" : {
-                  "range" : {
-                    "start" : "2024-03-01T00:00:00.000Z",
-                    "end" : "2024-03-15T00:00:00.000Z"
-                  }
-                },
-                "matched": true,
-                "price": {
-                  "currency": "INR",
-                  "value": "30"
-                },
-                "recommended": true,
-                "category_ids": [
-                  "c1"
-                ],
-                "fulfillment_ids": [
-                  "f1",
-                  "f2",
-                  "f3"
-                ],
-                "tags": [
-                  {
-                    "descriptor": {
-                      "name": "Forecast confidence levels"
-                    },
-                    "list": [
-                      {
-                        "value": "90%"
-                      },
-                      {
-                        "value": "85%"
-                      },
-                      {
-                        "value": "80%"
-                      },
-                      {
-                        "value": "75%"
-                      },
-                      {
-                        "value": "70%"
-                      }
-                    ]
-                  },
-                  {
-                    "descriptor": {
-                      "name": "Weather datapoints"
-                    },
-                    "list": [
-                      {
-                        "value": "Temperature"
-                      },
-                      {
-                        "value": "Vertical wind speed"
-                      },
-                      {
-                        "value": "Horizontal wind velocity"
-                      },
-                      {
-                        "value": "Relative Humidity"
-                      },
-                      {
-                        "value": "Surface pressure"
-                      },
-                      {
-                        "value": "Dew Point"
-                      },
-                      {
-                        "value": "Precipitation"
-                      },
-                      {
-                        "value": "Cloud cover"
-                      },
-                      {
-                        "value": "Solar radiation"
-                      }
-                    ]
-                  },
-                  {
-                    "descriptor": {
-                      "name": "Data formats"
-                    },
-                    "list": [
-                      {
-                        "value": "PDF"
-                      },
-                      {
-                        "value": "BUFR"
-                      },
-                      {
-                        "value": "XML"
-                      },
-                      {
-                        "value": "JSON"
-                      },
-                      {
-                        "value": "CSV"
-                      },
-                      {
-                        "value": "NetCDF"
-                      },
-                      {
-                        "value": "GRIB"
-                      },
-                      {
-                        "value": "Shapefiles"
-                      },
-                      {
-                        "value": "GeoTIFF"
-                      }
-                    ]
-                  },
-                  {
-                    "descriptor": {
-                      "name": "Dataset Attribute"
-                    },
-                    "list": [
-                      {
-                        "descriptor": {
-                          "name": "Size"
-                        },
-                        "value": "20MB"
-                      },
-                      {
-                        "descriptor": {
-                          "name": "Last update timestamp"
-                        },
-                        "value": "24 Feb 2024 23:21"
-                      }
-                    ]
-                  }
                 ]
-              }
+            },
+            "providers": [
+                {
+                    "id": "1",
+                    "descriptor": {
+                        "name": "Provider 1",
+                        "short_desc": "",
+                        "long_desc": "",
+                        "images": [
+                            {
+                                "url": "https://image_url"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "c1",
+                            "descriptor": {
+                                "code": "Agri Services",
+                                "name": "Agri Services"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "f1",
+                            "type": "Delivery"
+                        },
+                        {
+                            "id": "f2",
+                            "type": "Self-Pickup"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "l1",
+                            "gps": "23.11355, 24.32344"
+                        },
+                        {
+                            "id": "l2",
+                            "gps": "24.11355, 23.32344"
+                        },
+                        {
+                            "id": "l3",
+                            "gps": "24.24434, 23.24234"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "1",
+                            "descriptor": {
+                                "images": [
+                                    {
+                                        "url": "https://image_url"
+                                    }
+                                ],
+                                "name": "sprayer and tractor",
+                                "short_desc": "Our Tractor-Mounted Sprayer Service provides efficient, uniform application of pesticides, herbicides, and fertilizers across large fields.",
+                                "long_desc": "Designed to enhance crop health and maximize yield, this service ensures precise chemical distribution, reducing waste and promoting optimal growth. Perfect for large-scale farms looking to protect crops and boost productivity with minimal manual effort."
+                            },
+                            "price": {
+                                "currency": "INR/Acre",
+                                "value": "300.0"
+                            },
+                            "rating": "4.2",
+                            "creator": {
+                                "descriptor": {
+                                    "name": "Sandip"
+                                }
+                            },
+                            "location_ids": [
+                                "l1"
+                            ],
+                            "category_ids": [
+                                "c1"
+                            ],
+                            "fulfillment_ids": [
+                                "f1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "name": "stage"
+                                    },
+                                    "list": [
+                                        {
+                                            "value": "Land Preparation"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "experience"
+                                    },
+                                    "list": [
+                                        {
+                                            "value": "3 Years"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2",
+                            "descriptor": {
+                                "images": [
+                                    {
+                                        "url": "https://image_url"
+                                    }
+                                ],
+                                "name": "sprayer and harvester,",
+                                "short_desc": "Our Tractor-Mounted Sprayer and Harvester Service combines crop protection and harvesting efficiency in one seamless solution.",
+                                "long_desc": "With precision spraying for pest, weed, and nutrient management, followed by high-speed harvesting, this service streamlines your crop cycle. Ideal for large-scale farms, it minimizes crop loss, saves time, and ensures maximum yield, enabling healthier, ready-to-market crops with minimal manual labor."
+                            },
+                            "price": {
+                                "currency": "INR/Acre",
+                                "value": "400.0"
+                            },
+                            "rating": "3.8",
+                            "creator": {
+                                "descriptor": {
+                                    "name": "Bhagwan Wane"
+                                }
+                            },
+                            "location_ids": [
+                                "l2"
+                            ],
+                            "category_ids": [
+                                "c1"
+                            ],
+                            "fulfillment_ids": [
+                                "f1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "name": "stage"
+                                    },
+                                    "list": [
+                                        {
+                                            "value": "Land Preparation"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "experience"
+                                    },
+                                    "list": [
+                                        {
+                                            "value": "2 Years"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "3",
+                            "descriptor": {
+                                "images": [
+                                    {
+                                        "url": "https://image_url"
+                                    }
+                                ],
+                                "name": "sprayer and drones",
+                                "short_desc": "Our Drone-Integrated Sprayer Service offers advanced, precise application of pesticides, herbicides, and fertilizers across fields with minimal ground disruption.",
+                                "long_desc": "Equipped for efficient aerial spraying, drones reach areas difficult for traditional machinery, ensuring thorough crop protection and optimal nutrient delivery. Ideal for modern farms seeking to reduce labor, save time, and improve crop health through smart, targeted spraying."
+                            },
+                            "price": {
+                                "currency": "INR/Acre",
+                                "value": "600.0"
+                            },
+                            "rating": "3.5",
+                            "creator": {
+                                "descriptor": {
+                                    "name": "Ajinkya Sonavane"
+                                }
+                            },
+                            "location_ids": [
+                                "l2"
+                            ],
+                            "category_ids": [
+                                "c1"
+                            ],
+                            "fulfillment_ids": [
+                                "f1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "name": "stage"
+                                    },
+                                    "list": [
+                                        {
+                                            "value": "Land Preparation"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "experience"
+                                    },
+                                    "list": [
+                                        {
+                                            "value": "4 Years"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
-          }
-        ]
-      }
+        }
     }
-  }
+}
 ```
 #### select
 
@@ -417,61 +410,64 @@ Beckn is a aynchronous protocol at its core.
 
 - provider Contains details of the seller from whom the items are purchased.
 - Items  A list of individual items included in the purchase.
-- fulfillments[idx] object provides specific fulfillment details for each part of the order..
+- fulfillments[idx] object provides specific fulfillment details for each part of the order.
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "select",
-    "version": "1.1.0",
-    "bap_id": "dataset-bap-id",
-    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bpp_id": "dataset-bpp-subId",
-    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.217Z"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1"
+    "context": {
+      "domain": "equipement-renting:uai",
+      "location": {
+        "country": {
+            "name": "IND"
+          }
       },
-      "items": [
-        {
-          "id": "1",
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
+      "action": "select",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "order": {
+        "provider": {
+          "id": "1"
+        },
+        "items": [
+          {
+            "id": "1",
+            "quantity": {
+              "selected": {
+                "measure" : {
+                  "unit" : "Acres",
+                  "value": "10"
                 }
-              ]
+              }
             }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ]
+          }
+        ],
+        "fulfillments": [
+          {
+            "id": "f1",
+            "stops": [
+                {
+                    "location": {
+                        "gps": "23.23234, 24.2424"
+                    },
+                    "time": {
+                        "timestamp": "2023-11-06T09:41:09.708Z"
+                    }
+                }
+            ]
+          }
+        ]
+      }
     }
   }
-}
 ```
 
 #### on_select
@@ -482,141 +478,143 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_select",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
-    "action": "on_select",
-    "version": "1.1.0",
-    "bap_id": "dataset-bap-id",
-    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bpp_id": "dataset-bpp-subId",
-    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.229Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1",
-        "descriptor": {
-          "name": "WeAreNews14",
-          "additional_desc": {
-            "url" : "https://www.wearenews14.com/",
-            "content_type" : "text/html"
-          },
-          "images": [
-            {
-              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
-            }
-          ]
-        },
-        "rating": "4.9",
-      },
-      "items": [
-        {
-          "id": "1",
-          "descriptor": {
-            "images": [
-              {
-                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
-              }
+    "message": {
+        "order": {
+            "provider": {
+                "id": "1",
+                "descriptor": {
+                    "name": "Provider 1",
+                    "short_desc": "",
+                    "long_desc": "",
+                    "images": [
+                        {
+                            "url": "https://image_url"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "1",
+                    "descriptor": {
+                        "images": [
+                            {
+                                "url": "https://image_url"
+                            }
+                        ],
+                        "name": "sprayer and tractor",
+                        "short_desc": "Our Tractor-Mounted Sprayer Service provides efficient, uniform application of pesticides, herbicides, and fertilizers across large fields.",
+                        "long_desc": "Designed to enhance crop health and maximize yield, this service ensures precise chemical distribution, reducing waste and promoting optimal growth. Perfect for large-scale farms looking to protect crops and boost productivity with minimal manual effort."
+                    },
+                    "price": {
+                        "currency": "INR/Acre",
+                        "value": "300.0"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "unit": "Acres",
+                                "value": "10"
+                            }
+                        }
+                    },
+                    "rating": "4.2",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Sandip"
+                        }
+                    },
+                    "location_ids": [
+                        "l1"
+                    ],
+                    "category_ids": [
+                        "c1"
+                    ],
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "stage"
+                            },
+                            "list": [
+                                {
+                                    "value": "Land Preparation"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "experience"
+                            },
+                            "list": [
+                                {
+                                    "value": "3 Years"
+                                }
+                            ]
+                        }
+                    ]
+                }
             ],
-            "additional_desc" : {
-              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-              "content_type" : "text/html"
-            },
-            "name": "Hyperlocal weather forecast",
-            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
-          },
-          "time" : {
-            "range" : {
-              "start" : "2024-03-01T00:00:00.000Z",
-              "end" : "2024-03-15T00:00:00.000Z"
-            }
-          },
-          "category_ids": [
-            "c1"
-          ],
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "price": {
-             "currency": "INR",
-             "value": "30"
-          },
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Weather datapoints"
-              },
-              "list": [
+            "fulfillments": [
                 {
-                  "value": "Temperature"
-                },
-                {
-                  "value": "Horizontal wind velocity"
-                },
-                {
-                  "value": "Relative Humidity"
-                },
-                {
-                  "value": "Surface pressure"
-                },
-                {
-                  "value": "Precipitation"
+                    "id": "f1",
+                    "type": "Delivery",
+                    "stops": [
+                        {
+                            "location": {
+                                "gps": "23.23234, 24.2424"
+                            },
+                            "time": {
+                                "timestamp": "2023-11-06T09:41:09.708Z"
+                            }
+                        }
+                    ]
                 }
-              ]
-            },
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3150.0"
+                },
+                "breakup": [
+                    {
+                        "title": "base-price",
+                        "price": {
+                            "currency": "INR",
+                            "value": "3000.0"
+                        }
+                    },
+                    {
+                        "title": "taxes",
+                        "price": {
+                            "currency": "INR",
+                            "value": "150.0"
+                        }
+                    }
+                ]
             }
-          ]
         }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ],
-      "quote": {
-        "price": {
-          "currency": "INR",
-          "value": "31.5"
-        },
-        "breakup": [
-          {
-            "title": "dataset-fee",
-            "price": {
-              "currency": "INR",
-              "value": "30"
-            }
-          },
-          {
-            "title": "gst",
-            "price": {
-              "currency": "INR",
-              "value": "1.5"
-            }
-          }
-        ]
-      }
     }
-  }
 }
 ```
 
@@ -626,62 +624,73 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "init",
-    "version": "1.1.0",
-    "bap_id": "dataset-bap-id",
-    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bpp_id": "dataset-bpp-subId",
-    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.217Z"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1"
+    "context": {
+      "domain": "equipement-renting:uai",
+      "location": {
+        "country": {
+            "name": "IND"
+          }
       },
-      "items": [
-        {
-          "id": "1",
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
+      "action": "init",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "order": {
+        "provider": {
+          "id": "1"
+        },
+        "items": [
+          {
+            "id": "1",
+            "quantity": {
+              "selected": {
+                "measure" : {
+                  "unit" : "Acres",
+                  "value": "10"
                 }
-              ]
+              }
             }
-          ]
+          }
+        ],
+        "fulfillments": [
+          {
+            "id": "f1",
+            "stops": [
+                {
+                    "location": {
+                        "gps": "23.23234, 24.2424"
+                    },
+                    "time": {
+                        "timestamp": "2023-11-06T09:41:09.708Z"
+                    }
+                }
+            ],
+            "customer": {
+                "person": {
+                    "name": "Madhavan"
+                },
+                "contact": {
+                    "phone": "8130xxxxxx"
+                }
+            }
+          }
+        ],
+        "billing": {
+            "name": "Madhvan",
+            "phone" : "8130xxxxxx",
+            "email" : "Mad@example.com" 
         }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ],
-      "billing": {
-        "name": "Monisha",
-        "phone" : "+9752345678",
-        "email" : "Monisha@example.com" 
       }
     }
   }
-}
 ```
 
 #### on_init
@@ -690,609 +699,654 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_init",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
-    "action": "on_init",
-    "version": "1.1.0",
-    "bap_id": "dataset-bap-id",
-    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bpp_id": "dataset-bpp-subId",
-    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.229Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1",
-        "descriptor": {
-          "name": "WeAreNews14",
-          "additional_desc": {
-            "url" : "https://www.wearenews14.com/",
-            "content_type" : "text/html"
-          },
-          "images": [
-            {
-              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
-            }
-          ]
-        },
-        "rating": "4.9",
-      },
-      "items": [
-        {
-          "id": "1",
-          "descriptor": {
-            "images": [
-              {
-                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
-              }
+    "message": {
+        "order": {
+            "provider": {
+                "id": "1",
+                "descriptor": {
+                    "name": "Provider 1",
+                    "short_desc": "",
+                    "long_desc": "",
+                    "images": [
+                        {
+                            "url": "https://image_url"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "1",
+                    "descriptor": {
+                        "images": [
+                            {
+                                "url": "https://image_url"
+                            }
+                        ],
+                        "name": "sprayer and tractor",
+                        "short_desc": "Our Tractor-Mounted Sprayer Service provides efficient, uniform application of pesticides, herbicides, and fertilizers across large fields.",
+                        "long_desc": "Designed to enhance crop health and maximize yield, this service ensures precise chemical distribution, reducing waste and promoting optimal growth. Perfect for large-scale farms looking to protect crops and boost productivity with minimal manual effort."
+                    },
+                    "price": {
+                        "currency": "INR/Acre",
+                        "value": "300.0"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "unit": "Acres",
+                                "value": "10"
+                            }
+                        }
+                    },
+                    "rating": "4.2",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Sandip"
+                        }
+                    },
+                    "location_ids": [
+                        "l1"
+                    ],
+                    "category_ids": [
+                        "c1"
+                    ],
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "stage"
+                            },
+                            "list": [
+                                {
+                                    "value": "Land Preparation"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "experience"
+                            },
+                            "list": [
+                                {
+                                    "value": "3 Years"
+                                }
+                            ]
+                        }
+                    ]
+                }
             ],
-            "additional_desc" : {
-              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-              "content_type" : "text/html"
-            },
-            "name": "Hyperlocal weather forecast",
-            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
-          },
-          "time" : {
-            "range" : {
-              "start" : "2024-03-01T00:00:00.000Z",
-              "end" : "2024-03-15T00:00:00.000Z"
-            }
-          },
-          "category_ids": [
-            "c1"
-          ],
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "price": {
-             "currency": "INR",
-             "value": "30"
-          },
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Weather datapoints"
-              },
-              "list": [
+            "fulfillments": [
                 {
-                  "value": "Temperature"
-                },
-                {
-                  "value": "Horizontal wind velocity"
-                },
-                {
-                  "value": "Relative Humidity"
-                },
-                {
-                  "value": "Surface pressure"
-                },
-                {
-                  "value": "Precipitation"
+                    "id": "f1",
+                    "type": "Delivery",
+                    "stops": [
+                        {
+                            "location": {
+                                "gps": "23.23234, 24.2424"
+                            },
+                            "time": {
+                                "timestamp": "2023-11-06T09:41:09.708Z"
+                            }
+                        }
+                    ],
+                    "customer": {
+                        "person": {
+                            "name": "Madhavan"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    }
                 }
-              ]
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3150.0"
+                },
+                "breakup": [
+                    {
+                        "title": "base-price",
+                        "price": {
+                            "currency": "INR",
+                            "value": "3000.0"
+                        }
+                    },
+                    {
+                        "title": "taxes",
+                        "price": {
+                            "currency": "INR",
+                            "value": "150.0"
+                        }
+                    }
+                ]
             },
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
+            "billing": {
+                "name": "Madhvan",
+                "phone": "8130xxxxxx",
+                "email": "Mad@example.com"
+            },
+            "payments": [
                 {
-                  "value": "PDF"
+                    "status": "NOT-PAID",
+                    "type": "POST-FULFILLMENT",
+                    "collected_by": "AGENT",
+                    "params": {
+                        "amount": "3150",
+                        "currency": "INR"
+                    }
                 }
-              ]
-            }
-          ]
+            ]
         }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ],
-      "quote": {
-        "price": {
-          "currency": "INR",
-          "value": "31.5"
-        },
-        "breakup": [
-          {
-            "title": "dataset-fee",
-            "price": {
-              "currency": "INR",
-              "value": "30"
-            }
-          },
-          {
-            "title": "gst",
-            "price": {
-              "currency": "INR",
-              "value": "1.5"
-            }
-          }
-        ]
-      },
-      "payments": [
-        {
-          "status": "NOT-PAID",
-          "type": "PRE-ORDER",
-          "params": {
-            "amount": "31.5",
-            "currency": "INR",
-            "bank_code": "INB0004321",
-            "bank_account_number": "1234002341"
-          }
-        }
-      ]
     }
-  }
 }
 ```
 
 #### confirm
 
-**Provide the proof of payment to the seller**
+**Confirm payment terms for post-fulfillment collection**
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "confirm",
-    "version": "1.1.0",
-    "bap_id": "dataset-bap-id",
-    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bpp_id": "dataset-bpp-subId",
-    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.217Z"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1"
-      },
-      "items": [
-        {
-          "id": "1",
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
             }
-          ]
+        },
+        "action": "confirm",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "1"
+            },
+            "items": [
+                {
+                    "id": "1",
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "unit": "Acres",
+                                "value": "10"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "location": {
+                                "gps": "23.23234, 24.2424"
+                            },
+                            "time": {
+                                "timestamp": "2023-11-06T09:41:09.708Z"
+                            }
+                        }
+                    ],
+                    "customer": {
+                        "person": {
+                            "name": "Madhavan"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Madhvan",
+                "phone": "8130xxxxxx",
+                "email": "Mad@example.com"
+            },
+            "payments": [
+                {
+                    "status": "NOT-PAID",
+                    "type": "POST-FULFILLMENT",
+                    "collected_by": "AGENT",
+                    "params": {
+                        "amount": "3150",
+                        "currency": "INR"
+                    }
+                }
+            ]
         }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ],
-      "billing": {
-        "name": "Monisha",
-        "phone" : "+9752345678",
-        "email" : "Monisha@example.com" 
-      },
-      "payments": [
-        {
-          "status": "PAID",
-          "type": "PRE-ORDER",
-          "params": {
-            "transaction_id": "raz816863816313",
-            "amount": "31.5",
-            "currency": "INR",
-            "bank_code": "INB0004321",
-            "bank_account_number": "1234002341"
-          }
-        }
-      ]
     }
-  }
 }
 ```
 
 #### on_confirm
 
-**Create an order, provide the link to the report**
+**Confirm order details, including agent assignment and payment terms**
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_init",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
-    "action": "on_confirm",
-    "version": "1.1.0",
-    "bap_id": "dataset-bap-id",
-    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bpp_id": "dataset-bpp-subId",
-    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.229Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order": {
-      "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
-      "provider": {
-        "id": "1",
-        "descriptor": {
-          "name": "WeAreNews14",
-          "additional_desc": {
-            "url" : "https://www.wearenews14.com/",
-            "content_type" : "text/html"
-          },
-          "images": [
-            {
-              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
-            }
-          ]
-        },
-        "rating": "4.9",
-      },
-      "items": [
-        {
-          "id": "1",
-          "descriptor": {
-            "images": [
-              {
-                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
-              }
+    "message": {
+        "order": {
+            "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
+            "provider": {
+                "id": "1",
+                "descriptor": {
+                    "name": "Provider 1",
+                    "short_desc": "",
+                    "long_desc": "",
+                    "images": [
+                        {
+                            "url": "https://image_url"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "1",
+                    "descriptor": {
+                        "images": [
+                            {
+                                "url": "https://image_url"
+                            }
+                        ],
+                        "name": "sprayer and tractor",
+                        "short_desc": "Our Tractor-Mounted Sprayer Service provides efficient, uniform application of pesticides, herbicides, and fertilizers across large fields.",
+                        "long_desc": "Designed to enhance crop health and maximize yield, this service ensures precise chemical distribution, reducing waste and promoting optimal growth. Perfect for large-scale farms looking to protect crops and boost productivity with minimal manual effort."
+                    },
+                    "price": {
+                        "currency": "INR/Acre",
+                        "value": "300.0"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "unit": "Acres",
+                                "value": "10"
+                            }
+                        }
+                    },
+                    "rating": "4.2",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Sandip"
+                        }
+                    },
+                    "location_ids": [
+                        "l1"
+                    ],
+                    "category_ids": [
+                        "c1"
+                    ],
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "stage"
+                            },
+                            "list": [
+                                {
+                                    "value": "Land Preparation"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "experience"
+                            },
+                            "list": [
+                                {
+                                    "value": "3 Years"
+                                }
+                            ]
+                        }
+                    ]
+                }
             ],
-            "additional_desc" : {
-              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-              "content_type" : "text/html"
-            },
-            "name": "Hyperlocal weather forecast",
-            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
-          },
-          "time" : {
-            "range" : {
-              "start" : "2024-03-01T00:00:00.000Z",
-              "end" : "2024-03-15T00:00:00.000Z"
-            }
-          },
-          "category_ids": [
-            "c1"
-          ],
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "price": {
-             "currency": "INR",
-             "value": "30"
-          },
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Weather datapoints"
-              },
-              "list": [
+            "fulfillments": [
                 {
-                  "value": "Temperature"
-                },
-                {
-                  "value": "Horizontal wind velocity"
-                },
-                {
-                  "value": "Relative Humidity"
-                },
-                {
-                  "value": "Surface pressure"
-                },
-                {
-                  "value": "Precipitation"
+                    "id": "f1",
+                    "type": "Delivery",
+                    "stops": [
+                        {
+                            "location": {
+                                "gps": "23.23234, 24.2424"
+                            },
+                            "time": {
+                                "timestamp": "2023-11-06T09:41:09.708Z"
+                            }
+                        }
+                    ],
+                    "customer": {
+                        "person": {
+                            "name": "Madhavan"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Tony"
+                        },
+                        "contact": {
+                            "phone": "9230xxxxxx"
+                        },
+                        "rating": "4.7"
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "ORDER CONFIRMED",
+                            "name": "Your Order is confirmed"
+                        }
+                    }
                 }
-              ]
-            },
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD",
-          "state": {
-            "descriptor" : {
-              "code" : "ORDER CONFIRMED",
-              "name" : "Your Order is confirmed"
-            }
-          },
-          "stops" : [
-            {
-              "instructions": {
-                "short_desc" : "The below link can be usd to access the report PDF",
-                "media": [
-                  {
-                    "url": "www.example.com/weather/report/234434.PDF"
-                  }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3150.0"
+                },
+                "breakup": [
+                    {
+                        "title": "base-price",
+                        "price": {
+                            "currency": "INR",
+                            "value": "3000.0"
+                        }
+                    },
+                    {
+                        "title": "taxes",
+                        "price": {
+                            "currency": "INR",
+                            "value": "150.0"
+                        }
+                    }
                 ]
-              }
-            }
-          ],
+            },
+            "billing": {
+                "name": "Madhvan",
+                "phone": "8130xxxxxx",
+                "email": "Mad@example.com"
+            },
+            "payments": [
+                {
+                    "status": "NOT-PAID",
+                    "type": "POST-FULFILLMENT",
+                    "collected_by": "AGENT",
+                    "params": {
+                        "amount": "3150",
+                        "currency": "INR"
+                    }
+                }
+            ]
         }
-      ],
-      "quote": {
-        "price": {
-          "currency": "INR",
-          "value": "31.5"
-        },
-        "breakup": [
-          {
-            "title": "dataset-fee",
-            "price": {
-              "currency": "INR",
-              "value": "30"
-            }
-          },
-          {
-            "title": "gst",
-            "price": {
-              "currency": "INR",
-              "value": "1.5"
-            }
-          }
-        ]
-      },
-      "payments": [
-        {
-          "status": "NOT-PAID",
-          "type": "PRE-ORDER",
-          "params": {
-            "amount": "31.5",
-            "currency": "INR",
-            "bank_code": "INB0004321",
-            "bank_account_number": "1234002341"
-          }
-        }
-      ]
     }
-  }
 }
 ```
 
 #### status
 
-**check for status in case forecast report link could not be sent in the on_confirm callback**
+**Request current status of the order using order ID**
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "status",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
-    "action": "status",
-    "version": "1.1.0",
-    "bap_id": "dataset-bap-id",
-    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bpp_id": "dataset-bpp-subId",
-    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "message_id": "b8c1e69c-fbbc-439b-a5de-2adcc74fa0da",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T10:14:10.295Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order_id": "b989c9a9-f603-4d44-b38d-26fd72286b40"
-  }
+    "message": {
+        "order_id": "b989c9a9-f603-4d44-b38d-26fd72286b40"
+    }
 }
 ```
 
 #### on_status
 
-**get the status of the order, with the link to the forecast report**
+**Retrieve the current status of the order, including progress and fulfillment details**
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_status",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
-    "action": "on_confirm",
-    "version": "1.1.0",
-    "bap_id": "dataset-bap-id",
-    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bpp_id": "dataset-bpp-subId",
-    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.229Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order": {
-      "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
-      "provider": {
-        "id": "1",
-        "descriptor": {
-          "name": "WeAreNews14",
-          "additional_desc": {
-            "url" : "https://www.wearenews14.com/",
-            "content_type" : "text/html"
-          },
-          "images": [
-            {
-              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
-            }
-          ]
-        },
-        "rating": "4.9",
-      },
-      "items": [
-        {
-          "id": "1",
-          "descriptor": {
-            "images": [
-              {
-                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
-              }
+    "message": {
+        "order": {
+            "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
+            "provider": {
+                "id": "1",
+                "descriptor": {
+                    "name": "Provider 1",
+                    "short_desc": "",
+                    "long_desc": "",
+                    "images": [
+                        {
+                            "url": "https://image_url"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "1",
+                    "descriptor": {
+                        "images": [
+                            {
+                                "url": "https://image_url"
+                            }
+                        ],
+                        "name": "sprayer and tractor",
+                        "short_desc": "Our Tractor-Mounted Sprayer Service provides efficient, uniform application of pesticides, herbicides, and fertilizers across large fields.",
+                        "long_desc": "Designed to enhance crop health and maximize yield, this service ensures precise chemical distribution, reducing waste and promoting optimal growth. Perfect for large-scale farms looking to protect crops and boost productivity with minimal manual effort."
+                    },
+                    "price": {
+                        "currency": "INR/Acre",
+                        "value": "300.0"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "unit": "Acres",
+                                "value": "10"
+                            }
+                        }
+                    },
+                    "rating": "4.2",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Sandip"
+                        }
+                    },
+                    "location_ids": [
+                        "l1"
+                    ],
+                    "category_ids": [
+                        "c1"
+                    ],
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "stage"
+                            },
+                            "list": [
+                                {
+                                    "value": "Land Preparation"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "experience"
+                            },
+                            "list": [
+                                {
+                                    "value": "3 Years"
+                                }
+                            ]
+                        }
+                    ]
+                }
             ],
-            "additional_desc" : {
-              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-              "content_type" : "text/html"
-            },
-            "name": "Hyperlocal weather forecast",
-            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
-          },
-          "time" : {
-            "range" : {
-              "start" : "2024-03-01T00:00:00.000Z",
-              "end" : "2024-03-15T00:00:00.000Z"
-            }
-          },
-          "category_ids": [
-            "c1"
-          ],
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "price": {
-             "currency": "INR",
-             "value": "30"
-          },
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Weather datapoints"
-              },
-              "list": [
+            "fulfillments": [
                 {
-                  "value": "Temperature"
-                },
-                {
-                  "value": "Horizontal wind velocity"
-                },
-                {
-                  "value": "Relative Humidity"
-                },
-                {
-                  "value": "Surface pressure"
-                },
-                {
-                  "value": "Precipitation"
+                    "id": "f1",
+                    "type": "Delivery",
+                    "stops": [
+                        {
+                            "location": {
+                                "gps": "23.23234, 24.2424"
+                            },
+                            "time": {
+                                "timestamp": "2023-11-06T09:41:09.708Z"
+                            }
+                        }
+                    ],
+                    "customer": {
+                        "person": {
+                            "name": "Madhavan"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Tony"
+                        },
+                        "contact": {
+                            "phone": "9230xxxxxx"
+                        },
+                        "rating": "4.7"
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "IN-PROGRESS",
+                            "name": "Service is underway"
+                        }
+                    }
                 }
-              ]
-            },
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD",
-          "state": {
-            "descriptor" : {
-              "code" : "ORDER-COMPLETED",
-              "name" : "Your Order is completed"
-            }
-          },
-          "stops" : [
-            {
-              "instructions": {
-                "short_desc" : "The below link can be usd to access the report PDF",
-                "media": [
-                  {
-                    "url": "www.example.com/weather/report/234434.PDF"
-                  }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3150.0"
+                },
+                "breakup": [
+                    {
+                        "title": "base-price",
+                        "price": {
+                            "currency": "INR",
+                            "value": "3000.0"
+                        }
+                    },
+                    {
+                        "title": "taxes",
+                        "price": {
+                            "currency": "INR",
+                            "value": "150.0"
+                        }
+                    }
                 ]
-              }
-            }
-          ],
+            },
+            "billing": {
+                "name": "Madhvan",
+                "phone": "8130xxxxxx",
+                "email": "Mad@example.com"
+            },
+            "payments": [
+                {
+                    "status": "NOT-PAID",
+                    "type": "POST-FULFILLMENT",
+                    "collected_by": "AGENT",
+                    "params": {
+                        "amount": "3150",
+                        "currency": "INR"
+                    }
+                }
+            ]
         }
-      ],
-      "quote": {
-        "price": {
-          "currency": "INR",
-          "value": "31.5"
-        },
-        "breakup": [
-          {
-            "title": "dataset-fee",
-            "price": {
-              "currency": "INR",
-              "value": "30"
-            }
-          },
-          {
-            "title": "gst",
-            "price": {
-              "currency": "INR",
-              "value": "1.5"
-            }
-          }
-        ]
-      },
-      "payments": [
-        {
-          "status": "NOT-PAID",
-          "type": "PRE-ORDER",
-          "params": {
-            "amount": "31.5",
-            "currency": "INR",
-            "bank_code": "INB0004321",
-            "bank_account_number": "1234002341"
-          }
-        }
-      ]
     }
-  }
 }
 ```
 
@@ -1305,26 +1359,27 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "name": "IND"
-      }
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "support",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
-    "action": "support",
-    "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_url": "https://ps-bap-client.becknprotocol.io",
-    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
-    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-    "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
-    "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
-    "timestamp": "2024-07-02T09:18:30Z"
-  },
-  "message": {
-    "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768"
-  }
+    "message": {
+        "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768"
+    }
 }
 ```
 
@@ -1337,71 +1392,71 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_support",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
-    "action": "on_support",
-    "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_url": "https://ps-bap-client.becknprotocol.io",
-    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
-    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-    "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
-    "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
-    "timestamp": "2024-07-02T09:18:30Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "support": {
-      "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768",
-      "phone": "18001801551",
-      "url": "https://agritech.tnau.ac.in/agriculture/agri_faqs.html"
+    "message": {
+        "support": {
+            "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768",
+            "phone": "18001801551",
+            "url": "https://agritech.tnau.ac.in/agriculture/agri_faqs.html"
+        }
     }
-  }
 }
-
 ```
 
 #### rating
 
-**Rating a resource**
+**Rating a provider**
 
-- When the user wants to rate the resource, it happens in two steps.
+- When the user wants to rate the provider, it happens in two steps.
 - The user sends a numerical (0-5) rating in the request.
 - The response will have a link to the form where the user can provide text feedback.
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "name": "IND"
-      }
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "rating",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
-    "action": "rating",
-    "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_url": "https://ps-bap-client.becknprotocol.io",
-    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
-    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-    "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
-    "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
-    "timestamp": "2024-07-02T09:15:30Z"
-  },
-  "message": {
-    "ratings": [
-      {
-        "id": "19a02a67-d2f0-4ea7-b7e1-b2cf4fa57f56",
-        "rating_category": "Provider",
-        "value": "5"
-      }
-    ]
-  }
+    "message": {
+        "ratings": [
+            {
+                "id": "19a02a67-d2f0-4ea7-b7e1-b2cf4fa57f56",
+                "rating_category": "Provider",
+                "value": "5"
+            }
+        ]
+    }
 }
 ```
 
@@ -1413,31 +1468,31 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "name": "IND"
-      }
+    "context": {
+        "domain": "equipement-renting:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_rating",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
     },
-    "action": "on_rating",
-    "version": "1.1.0",
-    "bap_id": "ps-bap-network.becknprotocol.io",
-    "bap_url": "https://ps-bap-client.becknprotocol.io",
-    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
-    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-    "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
-    "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
-    "timestamp": "2024-07-02T09:15:30Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "feedback_form": {
-      "form": {
-        "url": "https://agri_acad.example.org/feedback"
-      }
+    "message": {
+        "feedback_form": {
+            "form": {
+                "url": "https://agri_acad.example.org/feedback"
+            }
+        }
     }
-  }
 }
 ```
 
