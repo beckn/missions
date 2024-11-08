@@ -1,4 +1,4 @@
-# UAI Implementation Guide - Knowledge Advisory
+# UAI Implementation Guide - Equipment Rental Services
 
 #### Version 1.0
 
