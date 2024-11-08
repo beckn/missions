@@ -128,7 +128,9 @@ Beckn is a aynchronous protocol at its core.
 
 ## API Calls and Schema
 
-### search
+### Discovery and consumption of free knowledge advisory
+
+#### search
 
 **search by topic**
 
@@ -143,9 +145,6 @@ Beckn is a aynchronous protocol at its core.
       "country": {
         "name": "India",
         "code": "IND"
-      },
-      "city": {
-        "name": "Balangir"
       }
     },
     "version": "1.1.0",
@@ -159,7 +158,7 @@ Beckn is a aynchronous protocol at its core.
     "intent": {
       "item": {
         "descriptor": {
-          "name": "cotton aphids"
+          "name": "Stemphylium Blight"
         }
       }
     }
@@ -179,11 +178,7 @@ Beckn is a aynchronous protocol at its core.
     "action": "search",
     "location": {
       "country": {
-        "name": "India",
         "code": "IND"
-      },
-      "city": {
-        "name": "Balangir"
       }
     },
     "version": "1.1.0",
@@ -197,7 +192,7 @@ Beckn is a aynchronous protocol at its core.
     "intent": {
       "item": {
         "descriptor": {
-          "name": "cotton aphid"
+          "name": "Stemphylium Blight"
         },
         "tags": [
           {
@@ -221,7 +216,7 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 
-### on_search
+#### on_search
 
 **on_search with catalog of results**
 
@@ -238,11 +233,7 @@ Beckn is a aynchronous protocol at its core.
     "action": "on_search",
     "location": {
       "country": {
-        "name": "India",
         "code": "IND"
-      },
-      "city": {
-        "name": "Balangir"
       }
     },
     "version": "1.1.0",
@@ -275,21 +266,21 @@ Beckn is a aynchronous protocol at its core.
             {
               "id": "9875",
               "descriptor": {
-                "name": "Cotton aphid: Aphis gossypii (Aphididae: Hemiptera)",
-                "short_desc": "TNAU Agritech portal. Aphid management",
-                "long_desc": "Avoid late sowing. Treat seeds with Beauveria bassiana @ 10 g/kg. Apply nitrogenous fertilizers judiciously. Grow cowpea as intercrop or on the bunds to increase the natural enemy build up. Spray any one of the following insecticides when pest population reaches ETL: Imidacloprid 17.8% SL 40 – 50 ml/acre or Azadirachtin 0.03% EC 1000 ml/acre or Buprofezin 25%SC 400 ml/acre or Diafenthiuron 50%WP 240 g/acre or Thiacloprid 21.7%SC 40-50 ml/acre or Flonicamid 50% WG 60 g/acre or Thiamethoxam 25% WG 40 g/acre"
+                "name": "Stemphylium Blight: Steps to prevent",
+                "short_desc": "TNAU Agritech portal",
+                "long_desc": "To manage Stemphylium Blight in onions, begin by inspecting crops regularly and removing infected leaves to prevent spread. Avoid overhead irrigation, as excess moisture promotes fungal growth; instead, use drip irrigation to keep leaves dry. Apply fungicides like Mancozeb or Azoxystrobin, adhering to recommended dosages for effective control. Rotate crops with non-host plants, such as cereals, to limit fungal spore buildup in soil. Maintain balanced fertilization, as excess nitrogen can increase  susceptibility, and ensure adequate spacing for better airflow. Routine monitoring is crucial to detect early signs and take prompt action, safeguarding the crop yield effectively."
               }
             },
             {
               "id": "4321",
               "descriptor": {
-                "name": "Cotton aphid: Aphis gossypii",
-                "short_desc": "Cotton aphid and management",
+                "name": "Stemphylium Blight: care gossypii",
+                "short_desc": "Stemphylium Blight management",
                 "long_desc": "",
                 "media": [
                   {
                     "mimetype": "application/pdf",
-                    "url": "https://agritech.tnau.ac.in/itk/pdf/itk_cotton.pdf"
+                    "url": "https://agritech.tnau.ac.in/itk/pdf/itk_Stemphylium.pdf"
                   }
                 ]
               },
@@ -298,13 +289,13 @@ Beckn is a aynchronous protocol at its core.
             {
               "id": "8977",
               "descriptor": {
-                "name": "Aphids Pest Management in Cotton Farming - Hindi Video",
-                "short_desc": "Control the Aphids in cotton farming by following the information provided in the video. ",
+                "name": "Stemphylium Blight Management in Onion Farming - Hindi Video",
+                "short_desc": "Control the Stemphylium Blight in Onino farming by following the information provided in the video. ",
                 "long_desc": "",
                 "media": [
                   {
                     "mimetype": "video/mp4",
-                    "url": "https://www.youtube.com/watch?v=bupCtQNfecg"
+                    "url": "https://www.youtube.com/watch?v=30QQf9yCJNQ"
                   }
                 ]
               },
@@ -327,13 +318,13 @@ Beckn is a aynchronous protocol at its core.
             {
               "id": "53453",
               "descriptor": {
-                "name": "Aphid, Thrips control in cotton",
-                "short_desc": "Aphid control in cotton",
+                "name": "Stemphylium Blight control in onion",
+                "short_desc": "Stemphylium control in cotton",
                 "long_desc": "",
                 "media": [
                   {
                     "mimetype": "video/mp4",
-                    "url": "https://www.youtube.com/watch?v=SBs68VHPXUs"
+                    "url": "https://www.youtube.com/watch?v=J8Y4jefHAYQ"
                   }
                 ]
               },
@@ -347,7 +338,7 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-### support
+#### support
 
 **sending a support request**
 
@@ -360,10 +351,7 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
-        "name": "India"
-      },
-      "city": {
-        "name": "Balangir"
+        "name": "IND"
       }
     },
     "action": "support",
@@ -382,7 +370,7 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-### on_support
+#### on_support
 
 **Getting an on_support callback**
 
@@ -396,9 +384,6 @@ Beckn is a aynchronous protocol at its core.
     "location": {
       "country": {
         "code": "IND"
-      },
-      "city": {
-        "name": "Balangir"
       }
     },
     "action": "on_support",
@@ -423,7 +408,7 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 
-### rating
+#### rating
 
 **Rating a resource**
 
@@ -437,10 +422,7 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
-        "name": "India"
-      },
-      "city": {
-        "name": "Balangir"
+        "name": "IND"
       }
     },
     "action": "rating",
@@ -465,7 +447,7 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-### on_rating
+#### on_rating
 
 **Getting on_rating response**
 
@@ -477,10 +459,1335 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
-        "name": "India"
+        "name": "IND"
+      }
+    },
+    "action": "on_rating",
+    "version": "1.1.0",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
+    "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
+    "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
+    "timestamp": "2024-07-02T09:15:30Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "feedback_form": {
+      "form": {
+        "url": "https://agri_acad.example.org/feedback"
+      }
+    }
+  }
+}
+```
+
+### Discovery and consumption of paid knowledge advisory
+
+#### search
+
+**search by topic**
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_uri": "https://ps-bap-client.becknprotocol.io",
+    "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
+    "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+     "intent": {
+      "item": {
+        "descriptor": {
+          "name": "Weather forecast"
+        },
+        "time" : {
+          "range" : {
+            "start" : "2024-03-01T00:00:00.000Z",
+            "end" : "2024-03-15T00:00:00.000Z"
+          }
+        }
       },
-      "city": {
-        "name": "Balangir"
+      "fulfillment": {
+        "stops": [
+          {
+            "location": {
+              "gps": ""12.9716, 77.5946""
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+#### on_search
+
+**on_search with catalog of results**
+- The catalog that comes back has a list of providers.
+- Each provider has a list of items.
+- Each item is the catalog listing for a resource.
+- The name, short_desc and long_desc fields contain the name and description of the resource.
+- Further, if the resource is a video or a pdf, its mimetype and url are specified in the media field.
+
+```
+{
+    "context": {
+      "domain": "advisory:uai",
+      "location": {
+        "country": {
+          "code": "INDIA"
+        }
+      },
+      "action": "on_search",
+      "version": "1.1.0",
+      "bap_id": "dataset-bap-id",
+      "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+      "bpp_id": "dataset-bpp-subId",
+      "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "catalog": {
+        "descriptor": {
+          "name": "Data source platform ltd"
+        },
+        "providers": [
+          {
+            "id": "1",
+            "descriptor": {
+              "name": "WeAreNews14",
+              "additional_desc": {
+                "url" : "https://www.wearenews14.com/",
+                "content_type" : "text/html"
+              },
+              "images": [
+                {
+                  "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/example-new-logo-hero.png"
+                }
+              ]
+            },
+            "tags": [
+              {
+                "descriptor": {
+                  "name": "Provider's Additional Information"
+                },
+                "list": [
+                  {
+                    "descriptor": {
+                      "name": "License"
+                    },
+                    "value": "Proprietary"
+                  },
+                  {
+                    "descriptor": {
+                      "name": "Provider's years in operation"
+                    },
+                    "value": "3"
+                  }
+                ]
+              }
+            ],
+            "rating": "4.9",
+            "categories": [
+              {
+                "id": "c1",
+                "descriptor": {
+                  "code": "Weather-forecast",
+                  "name": "Weather Forecast"
+                }
+              }
+            ],
+            "fulfillments": [
+              {
+                "id": "f1",
+                "type": "CLOUD"
+              },
+              {
+                "id": "f2",
+                "type": "REST"
+              },
+              {
+                "id": "f3",
+                "type": "EMAIL"
+              }
+            ],
+            "items": [
+              {
+                "id": "1",
+                "descriptor": {
+                  "images": [
+                    {
+                      "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
+                    }
+                  ],
+                  "additional_desc" : {
+                    "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
+                    "content_type" : "text/html"
+                  },
+                  "name": "Hyperlocal weather forecast",
+                  "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
+                  "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
+                },
+                "time" : {
+                  "range" : {
+                    "start" : "2024-03-01T00:00:00.000Z",
+                    "end" : "2024-03-15T00:00:00.000Z"
+                  }
+                },
+                "matched": true,
+                "price": {
+                  "currency": "INR",
+                  "value": "30"
+                },
+                "recommended": true,
+                "category_ids": [
+                  "c1"
+                ],
+                "fulfillment_ids": [
+                  "f1",
+                  "f2",
+                  "f3"
+                ],
+                "tags": [
+                  {
+                    "descriptor": {
+                      "name": "Forecast confidence levels"
+                    },
+                    "list": [
+                      {
+                        "value": "90%"
+                      },
+                      {
+                        "value": "85%"
+                      },
+                      {
+                        "value": "80%"
+                      },
+                      {
+                        "value": "75%"
+                      },
+                      {
+                        "value": "70%"
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "name": "Weather datapoints"
+                    },
+                    "list": [
+                      {
+                        "value": "Temperature"
+                      },
+                      {
+                        "value": "Vertical wind speed"
+                      },
+                      {
+                        "value": "Horizontal wind velocity"
+                      },
+                      {
+                        "value": "Relative Humidity"
+                      },
+                      {
+                        "value": "Surface pressure"
+                      },
+                      {
+                        "value": "Dew Point"
+                      },
+                      {
+                        "value": "Precipitation"
+                      },
+                      {
+                        "value": "Cloud cover"
+                      },
+                      {
+                        "value": "Solar radiation"
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "name": "Data formats"
+                    },
+                    "list": [
+                      {
+                        "value": "PDF"
+                      },
+                      {
+                        "value": "BUFR"
+                      },
+                      {
+                        "value": "XML"
+                      },
+                      {
+                        "value": "JSON"
+                      },
+                      {
+                        "value": "CSV"
+                      },
+                      {
+                        "value": "NetCDF"
+                      },
+                      {
+                        "value": "GRIB"
+                      },
+                      {
+                        "value": "Shapefiles"
+                      },
+                      {
+                        "value": "GeoTIFF"
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "name": "Dataset Attribute"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "name": "Size"
+                        },
+                        "value": "20MB"
+                      },
+                      {
+                        "descriptor": {
+                          "name": "Last update timestamp"
+                        },
+                        "value": "24 Feb 2024 23:21"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+```
+#### select
+
+**selecting an item from the catalog**
+
+- provider Contains details of the seller from whom the items are purchased.
+- Items  A list of individual items included in the purchase.
+- fulfillments[idx] object provides specific fulfillment details for each part of the order..
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "select",
+    "version": "1.1.0",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:44:47.217Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "1"
+      },
+      "items": [
+        {
+          "id": "1",
+          "fulfillment_ids": [
+            "f1"
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Data formats"
+              },
+              "list": [
+                {
+                  "value": "PDF"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "f1"
+          "type": "CLOUD"
+        }
+      ]
+    }
+  }
+}
+```
+
+#### on_select
+
+**Getting a quotation from the seller for the selected items from the catalog**
+
+- Contains the pricing, itemized details, and cost breakup for a potential purchase.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_select",
+    "version": "1.1.0",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:44:47.229Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "1",
+        "descriptor": {
+          "name": "WeAreNews14",
+          "additional_desc": {
+            "url" : "https://www.wearenews14.com/",
+            "content_type" : "text/html"
+          },
+          "images": [
+            {
+              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
+            }
+          ]
+        },
+        "rating": "4.9",
+      },
+      "items": [
+        {
+          "id": "1",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
+              }
+            ],
+            "additional_desc" : {
+              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
+              "content_type" : "text/html"
+            },
+            "name": "Hyperlocal weather forecast",
+            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
+            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
+          },
+          "time" : {
+            "range" : {
+              "start" : "2024-03-01T00:00:00.000Z",
+              "end" : "2024-03-15T00:00:00.000Z"
+            }
+          },
+          "category_ids": [
+            "c1"
+          ],
+          "fulfillment_ids": [
+            "f1"
+          ],
+          "price": {
+             "currency": "INR",
+             "value": "30"
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Weather datapoints"
+              },
+              "list": [
+                {
+                  "value": "Temperature"
+                },
+                {
+                  "value": "Horizontal wind velocity"
+                },
+                {
+                  "value": "Relative Humidity"
+                },
+                {
+                  "value": "Surface pressure"
+                },
+                {
+                  "value": "Precipitation"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "name": "Data formats"
+              },
+              "list": [
+                {
+                  "value": "PDF"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "f1"
+          "type": "CLOUD"
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "31.5"
+        },
+        "breakup": [
+          {
+            "title": "dataset-fee",
+            "price": {
+              "currency": "INR",
+              "value": "30"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+              "currency": "INR",
+              "value": "1.5"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+#### init
+
+**initialise an order with billing details**
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "init",
+    "version": "1.1.0",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:44:47.217Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "1"
+      },
+      "items": [
+        {
+          "id": "1",
+          "fulfillment_ids": [
+            "f1"
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Data formats"
+              },
+              "list": [
+                {
+                  "value": "PDF"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "f1"
+          "type": "CLOUD"
+        }
+      ],
+      "billing": {
+        "name": "Monisha",
+        "phone" : "+9752345678",
+        "email" : "Monisha@example.com" 
+      }
+    }
+  }
+}
+```
+
+#### on_init
+
+**Receive the payment details from the seller.**
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_init",
+    "version": "1.1.0",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:44:47.229Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "1",
+        "descriptor": {
+          "name": "WeAreNews14",
+          "additional_desc": {
+            "url" : "https://www.wearenews14.com/",
+            "content_type" : "text/html"
+          },
+          "images": [
+            {
+              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
+            }
+          ]
+        },
+        "rating": "4.9",
+      },
+      "items": [
+        {
+          "id": "1",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
+              }
+            ],
+            "additional_desc" : {
+              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
+              "content_type" : "text/html"
+            },
+            "name": "Hyperlocal weather forecast",
+            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
+            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
+          },
+          "time" : {
+            "range" : {
+              "start" : "2024-03-01T00:00:00.000Z",
+              "end" : "2024-03-15T00:00:00.000Z"
+            }
+          },
+          "category_ids": [
+            "c1"
+          ],
+          "fulfillment_ids": [
+            "f1"
+          ],
+          "price": {
+             "currency": "INR",
+             "value": "30"
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Weather datapoints"
+              },
+              "list": [
+                {
+                  "value": "Temperature"
+                },
+                {
+                  "value": "Horizontal wind velocity"
+                },
+                {
+                  "value": "Relative Humidity"
+                },
+                {
+                  "value": "Surface pressure"
+                },
+                {
+                  "value": "Precipitation"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "name": "Data formats"
+              },
+              "list": [
+                {
+                  "value": "PDF"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "f1"
+          "type": "CLOUD"
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "31.5"
+        },
+        "breakup": [
+          {
+            "title": "dataset-fee",
+            "price": {
+              "currency": "INR",
+              "value": "30"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+              "currency": "INR",
+              "value": "1.5"
+            }
+          }
+        ]
+      },
+      "payments": [
+        {
+          "status": "NOT-PAID",
+          "type": "PRE-ORDER",
+          "params": {
+            "amount": "31.5",
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+#### confirm
+
+**Provide the proof of payment to the seller**
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "confirm",
+    "version": "1.1.0",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:44:47.217Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "1"
+      },
+      "items": [
+        {
+          "id": "1",
+          "fulfillment_ids": [
+            "f1"
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Data formats"
+              },
+              "list": [
+                {
+                  "value": "PDF"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "f1"
+          "type": "CLOUD"
+        }
+      ],
+      "billing": {
+        "name": "Monisha",
+        "phone" : "+9752345678",
+        "email" : "Monisha@example.com" 
+      },
+      "payments": [
+        {
+          "status": "PAID",
+          "type": "PRE-ORDER",
+          "params": {
+            "transaction_id": "raz816863816313",
+            "amount": "31.5",
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+#### on_confirm
+
+**Create an order, provide the link to the report**
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_confirm",
+    "version": "1.1.0",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:44:47.229Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
+      "provider": {
+        "id": "1",
+        "descriptor": {
+          "name": "WeAreNews14",
+          "additional_desc": {
+            "url" : "https://www.wearenews14.com/",
+            "content_type" : "text/html"
+          },
+          "images": [
+            {
+              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
+            }
+          ]
+        },
+        "rating": "4.9",
+      },
+      "items": [
+        {
+          "id": "1",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
+              }
+            ],
+            "additional_desc" : {
+              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
+              "content_type" : "text/html"
+            },
+            "name": "Hyperlocal weather forecast",
+            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
+            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
+          },
+          "time" : {
+            "range" : {
+              "start" : "2024-03-01T00:00:00.000Z",
+              "end" : "2024-03-15T00:00:00.000Z"
+            }
+          },
+          "category_ids": [
+            "c1"
+          ],
+          "fulfillment_ids": [
+            "f1"
+          ],
+          "price": {
+             "currency": "INR",
+             "value": "30"
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Weather datapoints"
+              },
+              "list": [
+                {
+                  "value": "Temperature"
+                },
+                {
+                  "value": "Horizontal wind velocity"
+                },
+                {
+                  "value": "Relative Humidity"
+                },
+                {
+                  "value": "Surface pressure"
+                },
+                {
+                  "value": "Precipitation"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "name": "Data formats"
+              },
+              "list": [
+                {
+                  "value": "PDF"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "f1"
+          "type": "CLOUD",
+          "state": {
+            "descriptor" : {
+              "code" : "ORDER CONFIRMED",
+              "name" : "Your Order is confirmed"
+            }
+          },
+          "stops" : [
+            {
+              "instructions": {
+                "short_desc" : "The below link can be usd to access the report PDF",
+                "media": [
+                  {
+                    "url": "www.example.com/weather/report/234434.PDF"
+                  }
+                ]
+              }
+            }
+          ],
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "31.5"
+        },
+        "breakup": [
+          {
+            "title": "dataset-fee",
+            "price": {
+              "currency": "INR",
+              "value": "30"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+              "currency": "INR",
+              "value": "1.5"
+            }
+          }
+        ]
+      },
+      "payments": [
+        {
+          "status": "NOT-PAID",
+          "type": "PRE-ORDER",
+          "params": {
+            "amount": "31.5",
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+#### status
+
+**check for status in case forecast report link could not be sent in the on_confirm callback**
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "status",
+    "version": "1.1.0",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "b8c1e69c-fbbc-439b-a5de-2adcc74fa0da",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order_id": "b989c9a9-f603-4d44-b38d-26fd72286b40"
+  }
+}
+```
+
+#### on_status
+
+**get the status of the order, with the link to the forecast report**
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_confirm",
+    "version": "1.1.0",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:44:47.229Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
+      "provider": {
+        "id": "1",
+        "descriptor": {
+          "name": "WeAreNews14",
+          "additional_desc": {
+            "url" : "https://www.wearenews14.com/",
+            "content_type" : "text/html"
+          },
+          "images": [
+            {
+              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
+            }
+          ]
+        },
+        "rating": "4.9",
+      },
+      "items": [
+        {
+          "id": "1",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
+              }
+            ],
+            "additional_desc" : {
+              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
+              "content_type" : "text/html"
+            },
+            "name": "Hyperlocal weather forecast",
+            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
+            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
+          },
+          "time" : {
+            "range" : {
+              "start" : "2024-03-01T00:00:00.000Z",
+              "end" : "2024-03-15T00:00:00.000Z"
+            }
+          },
+          "category_ids": [
+            "c1"
+          ],
+          "fulfillment_ids": [
+            "f1"
+          ],
+          "price": {
+             "currency": "INR",
+             "value": "30"
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Weather datapoints"
+              },
+              "list": [
+                {
+                  "value": "Temperature"
+                },
+                {
+                  "value": "Horizontal wind velocity"
+                },
+                {
+                  "value": "Relative Humidity"
+                },
+                {
+                  "value": "Surface pressure"
+                },
+                {
+                  "value": "Precipitation"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "name": "Data formats"
+              },
+              "list": [
+                {
+                  "value": "PDF"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "f1"
+          "type": "CLOUD",
+          "state": {
+            "descriptor" : {
+              "code" : "ORDER-COMPLETED",
+              "name" : "Your Order is completed"
+            }
+          },
+          "stops" : [
+            {
+              "instructions": {
+                "short_desc" : "The below link can be usd to access the report PDF",
+                "media": [
+                  {
+                    "url": "www.example.com/weather/report/234434.PDF"
+                  }
+                ]
+              }
+            }
+          ],
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "31.5"
+        },
+        "breakup": [
+          {
+            "title": "dataset-fee",
+            "price": {
+              "currency": "INR",
+              "value": "30"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+              "currency": "INR",
+              "value": "1.5"
+            }
+          }
+        ]
+      },
+      "payments": [
+        {
+          "status": "NOT-PAID",
+          "type": "PRE-ORDER",
+          "params": {
+            "amount": "31.5",
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+#### support
+
+**sending a support request**
+
+- In most cases the support request is a call to get contact details of the provider platform (Phone, Web url etc).
+- However in rare cases a reference id might be sent to provide a context to the request.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "name": "IND"
+      }
+    },
+    "action": "support",
+    "version": "1.1.0",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
+    "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
+    "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
+    "timestamp": "2024-07-02T09:18:30Z"
+  },
+  "message": {
+    "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768"
+  }
+}
+```
+
+#### on_support
+
+**Getting an on_support callback**
+
+- In most cases the returned details are common contact information of the provider platform.
+- However it is possible to connect this to other customer management solutions.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_support",
+    "version": "1.1.0",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
+    "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
+    "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
+    "timestamp": "2024-07-02T09:18:30Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "support": {
+      "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768",
+      "phone": "18001801551",
+      "url": "https://agritech.tnau.ac.in/agriculture/agri_faqs.html"
+    }
+  }
+}
+
+```
+
+#### rating
+
+**Rating a resource**
+
+- When the user wants to rate the resource, it happens in two steps.
+- The user sends a numerical (0-5) rating in the request.
+- The response will have a link to the form where the user can provide text feedback.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "name": "IND"
+      }
+    },
+    "action": "rating",
+    "version": "1.1.0",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
+    "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
+    "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "ratings": [
+      {
+        "id": "19a02a67-d2f0-4ea7-b7e1-b2cf4fa57f56",
+        "rating_category": "Provider",
+        "value": "5"
+      }
+    ]
+  }
+}
+```
+
+#### on_rating
+
+**Getting on_rating response**
+
+- The on_rating response has a link to the form where the user can specify a text feedback that goes alongside the numerical rating provided earlier.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "location": {
+      "country": {
+        "name": "IND"
       }
     },
     "action": "on_rating",
