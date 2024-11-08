@@ -97,19 +97,19 @@ Beckn is a aynchronous protocol at its core.
 
 **Search for rental service**
 
-![Search for rental service](Images/Rental/uai-rental-discovery.jpg)
+![Search for farm equipment rental service](Images/Rental/uai-rental-discovery.jpg)
 
 **Place an order for the Farm Equipment**
 
-![Support call to get contact information of Provider platofrm](./Images/Advisory/free/uai-Post%20Fulfilment.jpg)
+![Select the farm equipment for rental, initialise and confirm the order](Images/Rental/uai-rental-order.jpg)
 
 **Fullfilment of an active order**
 
-![Support call to get contact information of Provider platofrm](./Images/Advisory/free/uai-Post%20Fulfilment.jpg)
+![check the order status, update the order details or cancel the order](Images/Rental/uai-rental-fulfilment.jpg)
 
 **Seek support and provide rating**
 
-![Support call to get contact information of Provider platofrm](./Images/Advisory/free/uai-Post%20Fulfilment.jpg)
+![Support call to get contact information of Provider platofrm](Images/Rental/uai-rental-post%20fulfilment.jpg)
 
 ## API Calls and Schema
 
