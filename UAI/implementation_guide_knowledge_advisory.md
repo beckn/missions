@@ -6,7 +6,7 @@
 
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
-| 06-11-2024 | 1.0     | Initial Version                                     |
+| 06-11-2024 | 0.1     | Initial Version                                     |
 
 ## Introduction
 
