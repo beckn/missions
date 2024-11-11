@@ -126,8 +126,9 @@ Beckn is a aynchronous protocol at its core.
     "context": {
         "domain": "equipment-purchase:uai",
         "location": {
-            "country": { "name": "IND" },
-            "city": "Nashik"
+            "country": {
+                "name": "IND"
+            }
         },
         "action": "search",
         "version": "1.1.0",
@@ -141,15 +142,41 @@ Beckn is a aynchronous protocol at its core.
     "message": {
         "intent": {
             "item": {
-                "descriptor": { "name": "motor pump" },
-                "filter": {
-                    "attributes": ["brand", "capacity", "cost", "rating"]
-                }
+                "descriptor": {
+                    "name": "motor pump"
+                },
+                "rating": ">3.0",
+                "price": {
+                    "maximum_value": "5000",
+                    "currency": "INR"
+                },
+                "creator": {
+                    "descriptor": {
+                        "code": "any"
+                    }
+                },
+                "tags": [
+                    {
+                        "list": [
+                            {
+                                "descriptor": {
+                                    "code": "capacity"
+                                },
+                                "value": "30MM"
+                            },
+                            {
+                                "descriptor": {
+                                    "code": "capacity"
+                                },
+                                "value": "60MM"
+                            }
+                        ]
+                    }
+                ]
             }
         }
     }
 }
-
 ```
 #### on_search
 
@@ -164,7 +191,11 @@ Beckn is a aynchronous protocol at its core.
 {
     "context": {
         "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" }, "city": "Nashik" },
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
         "action": "on_search",
         "version": "1.1.0",
         "bap_id": "{bap_id}",
@@ -180,7 +211,11 @@ Beckn is a aynchronous protocol at its core.
         "catalog": {
             "descriptor": {
                 "name": "Agricultural Equipment",
-                "images": [{ "url": "https://example.com/agri_equipment.jpg" }]
+                "images": [
+                    {
+                        "url": "https://example.com/agri_equipment.jpg"
+                    }
+                ]
             },
             "providers": [
                 {
@@ -188,8 +223,36 @@ Beckn is a aynchronous protocol at its core.
                     "descriptor": {
                         "name": "Nashik Agri Vendor",
                         "short_desc": "Quality pumps from local suppliers",
-                        "images": [{ "url": "https://example.com/vendor1_logo.jpg" }]
+                        "images": [
+                            {
+                                "url": "https://example.com/vendor1_logo.jpg"
+                            }
+                        ]
                     },
+                    "fulfillments": [
+                        {
+                            "id": "f1",
+                            "type": "Delivery"
+                        },
+                        {
+                            "id": "f2",
+                            "type": "Self-Pickup"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "l1",
+                            "gps": "23.11355, 24.32344"
+                        },
+                        {
+                            "id": "l2",
+                            "gps": "24.11355, 23.32344"
+                        },
+                        {
+                            "id": "l3",
+                            "gps": "24.24434, 23.24234"
+                        }
+                    ],
                     "items": [
                         {
                             "id": "motor1",
@@ -197,10 +260,39 @@ Beckn is a aynchronous protocol at its core.
                                 "name": "Sharp Hydro 1.0 HP Self Priming Pump - AL3 60 MM",
                                 "short_desc": "Self-priming pump for medium farms",
                                 "long_desc": "1.0 HP pump suitable for a 2-acre farm",
-                                "images": [{ "url": "https://example.com/sharp_hydro.jpg" }]
+                                "images": [
+                                    {
+                                        "url": "https://example.com/sharp_hydro.jpg"
+                                    }
+                                ]
                             },
-                            "price": { "currency": "INR", "value": "4647.16" },
-                            "rating": "3.1"
+                            "price": {
+                                "currency": "INR",
+                                "value": "4647.16"
+                            },
+                            "rating": "3.1",
+                            "creator": {
+                                "descriptor": {
+                                    "name": "Sharp Hydro",
+                                    "code": "Sharp-Hydro"
+                                }
+                            },
+                            "fulfillment_ids": [
+                                "f1",
+                                "f2"
+                            ],
+                            "tags": [
+                                {
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "60MM"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "id": "motor2",
@@ -208,10 +300,39 @@ Beckn is a aynchronous protocol at its core.
                                 "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump",
                                 "short_desc": "Reliable pump for small farms",
                                 "long_desc": "0.5 HP pump, ideal for irrigation needs",
-                                "images": [{ "url": "https://example.com/kirloskar_pump.jpg" }]
+                                "images": [
+                                    {
+                                        "url": "https://example.com/kirloskar_pump.jpg"
+                                    }
+                                ]
                             },
-                            "price": { "currency": "INR", "value": "2090.00" },
-                            "rating": "4.0"
+                            "price": {
+                                "currency": "INR",
+                                "value": "2090.00"
+                            },
+                            "rating": "4.0",
+                            "creator": {
+                                "descriptor": {
+                                    "name": "Kirloskar",
+                                    "code": "Kirloskar"
+                                }
+                            },
+                            "fulfillment_ids": [
+                                "f1",
+                                "f2"
+                            ],
+                            "tags": [
+                                {
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "60MM"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -220,8 +341,36 @@ Beckn is a aynchronous protocol at its core.
                     "descriptor": {
                         "name": "FarmEquip Distributors",
                         "short_desc": "Trusted distributor of agricultural equipment",
-                        "images": [{ "url": "https://example.com/vendor2_logo.jpg" }]
+                        "images": [
+                            {
+                                "url": "https://example.com/vendor2_logo.jpg"
+                            }
+                        ]
                     },
+                    "fulfillments": [
+                        {
+                            "id": "f1",
+                            "type": "Delivery"
+                        },
+                        {
+                            "id": "f2",
+                            "type": "Self-Pickup"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "l1",
+                            "gps": "23.11355, 24.32344"
+                        },
+                        {
+                            "id": "l2",
+                            "gps": "24.11355, 23.32344"
+                        },
+                        {
+                            "id": "l3",
+                            "gps": "24.24434, 23.24234"
+                        }
+                    ],
                     "items": [
                         {
                             "id": "motor3",
@@ -229,10 +378,38 @@ Beckn is a aynchronous protocol at its core.
                                 "name": "GoWater 0.5 HP Self Priming Pump - AL3 30 MM",
                                 "short_desc": "Energy-efficient pump for small farms",
                                 "long_desc": "Lightweight and durable, suitable for small farm irrigation",
-                                "images": [{ "url": "https://example.com/gowater_pump.jpg" }]
+                                "images": [
+                                    {
+                                        "url": "https://example.com/gowater_pump.jpg"
+                                    }
+                                ]
                             },
-                            "price": { "currency": "INR", "value": "3198.71" },
-                            "rating": "4.4"
+                            "price": {
+                                "currency": "INR",
+                                "value": "3198.71"
+                            },
+                            "rating": "4.4",
+                            "creator": {
+                                "descriptor": {
+                                    "name": "Go Water",
+                                    "code": "GoWater"
+                                }
+                            },
+                            "fulfillment_ids": [
+                                "f1"
+                            ],
+                            "tags": [
+                                {
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "30MM"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "id": "motor4",
@@ -240,10 +417,38 @@ Beckn is a aynchronous protocol at its core.
                                 "name": "PowerHouse 1.5 HP Single Phase Monoblock Pump",
                                 "short_desc": "High-power pump for large fields",
                                 "long_desc": "1.5 HP pump with a single-phase motor, ideal for extensive irrigation needs",
-                                "images": [{ "url": "https://example.com/powerhouse_pump.jpg" }]
+                                "images": [
+                                    {
+                                        "url": "https://example.com/powerhouse_pump.jpg"
+                                    }
+                                ]
                             },
-                            "price": { "currency": "INR", "value": "4000.00" },
-                            "rating": "4.5"
+                            "price": {
+                                "currency": "INR",
+                                "value": "4000.00"
+                            },
+                            "rating": "4.5",
+                            "creator": {
+                                "descriptor": {
+                                    "name": "Power House",
+                                    "code": "Power-House"
+                                }
+                            },
+                            "fulfillment_ids": [
+                                "f2"
+                            ],
+                            "tags": [
+                                {
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "60MM"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -263,57 +468,57 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 {
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "select",
-    "version": "1.1.0",
-    "bap_id": "dataset-bap-id",
-    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bpp_id": "dataset-bpp-subId",
-    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.217Z"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1"
+    "context": {
+      "domain": "equipment-purchase:uai",
+      "location": {
+        "country": {
+          "code": "IND"
+        }
       },
-      "items": [
-        {
-          "id": "1",
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
+      "action": "select",
+      "version": "1.1.0",
+      "bap_id": "dataset-bap-id",
+      "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+      "bpp_id": "dataset-bpp-subId",
+      "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+      "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:44:47.217Z"
+    },
+    "message": {
+      "order": {
+        "provider": {
+          "id": "vendor1"
+        },
+        "items": [
+          {
+            "id": "motor2",
+            "fulfillment_ids": [
+              "f1"
+            ],
+            "quantity": {
+              "selected": {
+                "count": "1"
+              }
             }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ]
+          }
+        ],
+        "fulfillments": [
+          {
+            "id": "f1",
+            "stops": [
+                {
+                    "type": "end",
+                    "location": {
+                        "gps": "23.23442, 24.35352"
+                    }
+                }
+            ]
+          }
+        ]
+      }
     }
   }
-}
 ```
 
 #### on_select
@@ -326,31 +531,110 @@ Beckn is a aynchronous protocol at its core.
 {
     "context": {
         "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" } },
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
         "action": "on_select",
         "version": "1.1.0",
-        "bap_id": "{bap_id}",
-        "bap_uri": "{bap_url}",
-        "bpp_id": "{bpp_id}",
-        "bpp_uri": "{bpp_url}",
-        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "bap_id": "dataset-bap-id",
+        "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+        "bpp_id": "dataset-bpp-subId",
+        "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
         "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-        "timestamp": "2023-11-06T09:41:09.708Z",
-        "ttl": "PT10M"
+        "timestamp": "2023-11-06T09:44:47.217Z"
     },
     "message": {
         "order": {
-            "provider": { "id": "vendor1" },
+            "provider": {
+                "id": "vendor1",
+                "descriptor": {
+                    "name": "Nashik Agri Vendor",
+                    "short_desc": "Quality pumps from local suppliers",
+                    "images": [
+                        {
+                            "url": "https://example.com/vendor1_logo.jpg"
+                        }
+                    ]
+                }
+            },
             "items": [
                 {
                     "id": "motor2",
-                    "price": { "currency": "INR", "value": "2300.0" },
-                    "quantity": { "selected": { "value": 2 } }
+                    "descriptor": {
+                        "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump",
+                        "short_desc": "Reliable pump for small farms",
+                        "long_desc": "0.5 HP pump, ideal for irrigation needs",
+                        "images": [
+                            {
+                                "url": "https://example.com/kirloskar_pump.jpg"
+                            }
+                        ]
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "2090.00"
+                    },
+                    "rating": "4.0",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Kirloskar",
+                            "code": "Kirloskar"
+                        }
+                    },
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "tags": [
+                        {
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "60MM"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "gps": "23.23442, 24.35352"
+                            }
+                        }
+                    ]
                 }
             ],
             "quote": {
-                "price": { "currency": "INR", "value": "4600" },
-                "additional_charges": "200.0"
+                "price": {
+                    "currency": "INR",
+                    "value": "2200.0"
+                },
+                "breakup": [
+                    {
+                        "title": "item-price",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2090.0"
+                        }
+                    },
+                    {
+                        "title": "taxes",
+                        "price": {
+                            "currency": "INR",
+                            "value": "110.0"
+                        }
+                    }
+                ]
             }
         }
     }
@@ -365,54 +649,73 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" }, "city": "Nashik" },
-        "action": "init",
-        "version": "1.1.0",
-        "bap_id": "{bap_id}",
-        "bap_uri": "{bap_url}",
-        "bpp_id": "{bpp_id}",
-        "bpp_uri": "{bpp_url}",
-        "message_id": "message_123",
-        "transaction_id": "transaction_456",
-        "timestamp": "2023-11-06T09:41:09.708Z",
-        "ttl": "PT10M"
+      "domain": "equipment-purchase:uai",
+      "location": {
+        "country": {
+          "code": "IND"
+        }
+      },
+      "action": "init",
+      "version": "1.1.0",
+      "bap_id": "dataset-bap-id",
+      "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+      "bpp_id": "dataset-bpp-subId",
+      "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+      "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:44:47.217Z"
     },
     "message": {
-        "order": {
-            "provider": { "id": "vendor1" },
-            "items": [
-                {
-                    "id": "motor2",
-                    "quantity": { "selected": { "value": 2 } }
-                }
+      "order": {
+        "provider": {
+          "id": "vendor1"
+        },
+        "items": [
+          {
+            "id": "motor2",
+            "fulfillment_ids": [
+              "f1"
             ],
-            "fulfillments": [
+            "quantity": {
+              "selected": {
+                "count": "1"
+              }
+            }
+          }
+        ],
+        "fulfillments": [
+          {
+            "id": "f1",
+            "stops": [
                 {
-                    "id": "f1",
-                    "type": "Delivery",
-                    "customer": {
-                        "person": { "name": "Rajesh" },
-                        "contact": { "phone": "9876543210" }
+                    "type": "end",
+                    "location": {
+                        "gps": "23.23442, 24.35352",
+                        "address": "123 street, HSR layout, Nashik",
+                        "city": "Nashik",
+                        "district": "Nashik",
+                        "state": "Maharashtra"
                     }
                 }
             ],
-            "billing": {
-                "name": "Rajesh",
-                "phone": "9876543210",
-                "email": "rajesh@example.com",
-                "address": {
-                    "door": "123",
-                    "street": "Farm Road",
-                    "city": "Nashik",
-                    "state": "Maharashtra",
-                    "zip_code": "422001",
-                    "country": "India"
+            "customer": {
+                "person": {
+                    "name": "Rajesh"
+                },
+                "contact": {
+                    "phone": "8130xxxxxx"
                 }
             }
+          }
+        ],
+        "billing": {
+            "name": "Rajesj",
+            "phone" : "8130xxxxxx",
+            "email" : "Rajesh@example.com" 
         }
+      }
     }
-}
+  }
 
 ```
 
@@ -424,50 +727,166 @@ Beckn is a aynchronous protocol at its core.
 {
     "context": {
         "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" }, "city": "Nashik" },
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
         "action": "on_init",
         "version": "1.1.0",
-        "bap_id": "{bap_id}",
-        "bap_uri": "{bap_url}",
-        "bpp_id": "{bpp_id}",
-        "bpp_uri": "{bpp_url}",
-        "message_id": "message_124",
-        "transaction_id": "transaction_456",
-        "timestamp": "2023-11-06T09:42:10.708Z",
-        "ttl": "PT10M"
+        "bap_id": "dataset-bap-id",
+        "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+        "bpp_id": "dataset-bpp-subId",
+        "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
     },
     "message": {
         "order": {
-            "provider": { "id": "vendor1", "descriptor": { "name": "Nashik Agri Vendor" } },
+            "provider": {
+                "id": "vendor1",
+                "descriptor": {
+                    "name": "Nashik Agri Vendor",
+                    "short_desc": "Quality pumps from local suppliers",
+                    "images": [
+                        {
+                            "url": "https://example.com/vendor1_logo.jpg"
+                        }
+                    ]
+                }
+            },
             "items": [
                 {
                     "id": "motor2",
-                    "descriptor": { "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump" },
-                    "price": { "currency": "INR", "value": "2300.0" },
-                    "quantity": { "selected": { "value": 2 } }
+                    "descriptor": {
+                        "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump",
+                        "short_desc": "Reliable pump for small farms",
+                        "long_desc": "0.5 HP pump, ideal for irrigation needs",
+                        "images": [
+                            {
+                                "url": "https://example.com/kirloskar_pump.jpg"
+                            }
+                        ]
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "2090.00"
+                    },
+                    "rating": "4.0",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Kirloskar",
+                            "code": "Kirloskar"
+                        }
+                    },
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "tags": [
+                        {
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "60MM"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "Delivery",
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "gps": "23.23442, 24.35352",
+                                "address": "123 street, HSR layout, Nashik",
+                                "city": "Nashik",
+                                "district": "Nashik",
+                                "state": "Maharashtra"
+                            }
+                        }
+                    ],
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    }
                 }
             ],
             "quote": {
-                "price": { "currency": "INR", "value": "4600.0" },
-                "additional_charges": "200.0"
+                "price": {
+                    "currency": "INR",
+                    "value": "2200.0"
+                },
+                "breakup": [
+                    {
+                        "title": "item-price",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2090.0"
+                        }
+                    },
+                    {
+                        "title": "taxes",
+                        "price": {
+                            "currency": "INR",
+                            "value": "110.0"
+                        }
+                    }
+                ]
             },
             "billing": {
-                "name": "Rajesh",
-                "phone": "9876543210",
-                "email": "rajesh@example.com"
+                "name": "Rajesj",
+                "phone" : "8130xxxxxx",
+                "email" : "Rajesh@example.com" 
             },
             "payments": [
                 {
                     "status": "NOT-PAID",
                     "type": "POST-FULFILLMENT",
                     "collected_by": "AGENT",
-                    "params": { "amount": "4800", "currency": "INR" }
+                    "params": {
+                        "amount": "2200",
+                        "currency": "INR"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "before delivery starts"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "in delivery items"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "50%"
+                    }
+                }
+            ],
+            "return_terms": [
+                {
+                    "return_eligible": "false"
                 }
             ]
         }
     }
 }
-
 ```
 
 #### confirm
@@ -478,40 +897,74 @@ Beckn is a aynchronous protocol at its core.
 {
     "context": {
         "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" } },
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
         "action": "confirm",
         "version": "1.1.0",
-        "bap_id": "{bap_id}",
-        "bap_uri": "{bap_url}",
-        "bpp_id": "{bpp_id}",
-        "bpp_uri": "{bpp_url}",
-        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "bap_id": "dataset-bap-id",
+        "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+        "bpp_id": "dataset-bpp-subId",
+        "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
         "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-        "timestamp": "2023-11-06T09:41:09.708Z",
-        "ttl": "PT10M"
+        "timestamp": "2023-11-06T09:44:47.217Z"
     },
     "message": {
         "order": {
-            "id": "order_123",
-            "provider": { "id": "vendor1" },
+            "provider": {
+                "id": "vendor1"
+            },
             "items": [
                 {
                     "id": "motor2",
-                    "quantity": { "selected": { "value": 2 } }
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "quantity": {
+                        "selected": {
+                            "count": "1"
+                        }
+                    }
                 }
             ],
             "fulfillments": [
                 {
                     "id": "f1",
-                    "type": "Delivery",
                     "stops": [
                         {
+                            "type": "end",
                             "location": {
-                                "gps": "20.0117, 73.7898"
-                            },
-                            "time": { "timestamp": "2023-11-06T09:41:09.708Z" }
+                                "gps": "23.23442, 24.35352"
+                            }
                         }
-                    ]
+                    ],
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Rajesj",
+                "phone": "8130xxxxxx",
+                "email": "Rajesh@example.com"
+            },
+            "payments": [
+                {
+                    "status": "NOT-PAID",
+                    "type": "POST-FULFILLMENT",
+                    "collected_by": "AGENT",
+                    "params": {
+                        "amount": "2200",
+                        "currency": "INR"
+                    }
                 }
             ]
         }
@@ -528,48 +981,170 @@ Beckn is a aynchronous protocol at its core.
 {
     "context": {
         "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" }, "city": "Nashik" },
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
         "action": "on_confirm",
         "version": "1.1.0",
-        "bap_id": "{bap_id}",
-        "bap_uri": "{bap_url}",
-        "bpp_id": "{bpp_id}",
-        "bpp_uri": "{bpp_url}",
-        "message_id": "message_125",
-        "transaction_id": "transaction_456",
-        "timestamp": "2023-11-06T09:42:10.708Z",
-        "ttl": "PT10M"
+        "bap_id": "dataset-bap-id",
+        "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+        "bpp_id": "dataset-bpp-subId",
+        "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
     },
     "message": {
         "order": {
-            "id": "order_789",
-            "provider": { "id": "vendor1", "descriptor": { "name": "Nashik Agri Vendor" } },
+            "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
+            "provider": {
+                "id": "vendor1",
+                "descriptor": {
+                    "name": "Nashik Agri Vendor",
+                    "short_desc": "Quality pumps from local suppliers",
+                    "images": [
+                        {
+                            "url": "https://example.com/vendor1_logo.jpg"
+                        }
+                    ]
+                }
+            },
             "items": [
                 {
                     "id": "motor2",
-                    "descriptor": { "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump" },
-                    "quantity": { "selected": { "value": 2 } }
+                    "descriptor": {
+                        "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump",
+                        "short_desc": "Reliable pump for small farms",
+                        "long_desc": "0.5 HP pump, ideal for irrigation needs",
+                        "images": [
+                            {
+                                "url": "https://example.com/kirloskar_pump.jpg"
+                            }
+                        ]
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "2090.00"
+                    },
+                    "rating": "4.0",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Kirloskar",
+                            "code": "Kirloskar"
+                        }
+                    },
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "tags": [
+                        {
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "60MM"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "fulfillments": [
                 {
                     "id": "f1",
                     "type": "Delivery",
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "gps": "23.23442, 24.35352",
+                                "address": "123 street, HSR layout, Nashik",
+                                "city": "Nashik",
+                                "district": "Nashik",
+                                "state": "Maharashtra"
+                            }
+                        }
+                    ],
                     "customer": {
-                        "person": { "name": "Rajesh" },
-                        "contact": { "phone": "9876543210" }
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
                     },
                     "state": {
-                        "descriptor": { "code": "ORDER_CONFIRMED", "name": "Your Order is confirmed" }
+                        "descriptor": {
+                            "code": "ORDER CONFIRMED",
+                            "name": "Your Order is confirmed"
+                        }
                     }
                 }
             ],
-            "quote": { "price": { "currency": "INR", "value": "4800.0" } },
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "2200.0"
+                },
+                "breakup": [
+                    {
+                        "title": "item-price",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2090.0"
+                        }
+                    },
+                    {
+                        "title": "taxes",
+                        "price": {
+                            "currency": "INR",
+                            "value": "110.0"
+                        }
+                    }
+                ]
+            },
             "billing": {
-                "name": "Rajesh",
-                "phone": "9876543210",
-                "email": "rajesh@example.com"
-            }
+                "name": "Rajesj",
+                "phone" : "8130xxxxxx",
+                "email" : "Rajesh@example.com" 
+            },
+            "payments": [
+                {
+                    "status": "NOT-PAID",
+                    "type": "POST-FULFILLMENT",
+                    "collected_by": "AGENT",
+                    "params": {
+                        "amount": "2200",
+                        "currency": "INR"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "before delivery starts"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "in delivery items"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "50%"
+                    }
+                }
+            ],
+            "return_terms": [
+                {
+                    "return_eligible": "false"
+                }
+            ]
         }
     }
 }
@@ -580,26 +1155,28 @@ Beckn is a aynchronous protocol at its core.
 
 **Request current status of the order using order ID**
 
-{
 
 ```
 {
     "context": {
         "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" } },
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
         "action": "status",
         "version": "1.1.0",
-        "bap_id": "{bap_id}",
-        "bap_uri": "{bap_url}",
-        "bpp_id": "{bpp_id}",
-        "bpp_uri": "{bpp_url}",
-        "message_id": "message_126",
-        "transaction_id": "transaction_456",
-        "timestamp": "2023-11-06T09:43:10.708Z",
-        "ttl": "PT10M"
+        "bap_id": "dataset-bap-id",
+        "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+        "bpp_id": "dataset-bpp-subId",
+        "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
     },
     "message": {
-        "order_id": "order_789"
+        "order_id": "b989c9a9-f603-4d44-b38d-26fd72286b40"
     }
 }
 
@@ -612,28 +1189,177 @@ Beckn is a aynchronous protocol at its core.
 {
     "context": {
         "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" } },
-        "action": "on_status",
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
+        "action": "on_confirm",
         "version": "1.1.0",
-        "bap_id": "{bap_id}",
-        "bap_uri": "{bap_url}",
-        "bpp_id": "{bpp_id}",
-        "bpp_uri": "{bpp_url}",
-        "message_id": "message_127",
-        "transaction_id": "transaction_456",
-        "timestamp": "2023-11-06T09:43:15.708Z",
-        "ttl": "PT10M"
+        "bap_id": "dataset-bap-id",
+        "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+        "bpp_id": "dataset-bpp-subId",
+        "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
     },
     "message": {
         "order": {
-            "id": "order_789",
+            "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
+            "provider": {
+                "id": "vendor1",
+                "descriptor": {
+                    "name": "Nashik Agri Vendor",
+                    "short_desc": "Quality pumps from local suppliers",
+                    "images": [
+                        {
+                            "url": "https://example.com/vendor1_logo.jpg"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "motor2",
+                    "descriptor": {
+                        "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump",
+                        "short_desc": "Reliable pump for small farms",
+                        "long_desc": "0.5 HP pump, ideal for irrigation needs",
+                        "images": [
+                            {
+                                "url": "https://example.com/kirloskar_pump.jpg"
+                            }
+                        ]
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "2090.00"
+                    },
+                    "rating": "4.0",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Kirloskar",
+                            "code": "Kirloskar"
+                        }
+                    },
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "tags": [
+                        {
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "60MM"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
             "fulfillments": [
                 {
                     "id": "f1",
                     "type": "Delivery",
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "gps": "23.23442, 24.35352",
+                                "address": "123 street, HSR layout, Nashik",
+                                "city": "Nashik",
+                                "district": "Nashik",
+                                "state": "Maharashtra"
+                            }
+                        }
+                    ],
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Tony"
+                        },
+                        "contact": {
+                            "phone": "9230xxxxxx"
+                        },
+                        "rating": "4.7"
+                    },
                     "state": {
-                        "descriptor": { "code": "IN-PROGRESS", "name": "Order is in transit" }
+                        "descriptor": {
+                            "code": "Delivered",
+                            "name": "Your Order is delivered"
+                        }
                     }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "2200.0"
+                },
+                "breakup": [
+                    {
+                        "title": "item-price",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2090.0"
+                        }
+                    },
+                    {
+                        "title": "taxes",
+                        "price": {
+                            "currency": "INR",
+                            "value": "110.0"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Rajesj",
+                "phone" : "8130xxxxxx",
+                "email" : "Rajesh@example.com" 
+            },
+            "payments": [
+                {
+                    "status": "NOT-PAID",
+                    "type": "POST-FULFILLMENT",
+                    "collected_by": "AGENT",
+                    "params": {
+                        "amount": "2200",
+                        "currency": "INR"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "before delivery starts"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "in delivery items"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "50%"
+                    }
+                }
+            ],
+            "return_terms": [
+                {
+                    "return_eligible": "false"
                 }
             ]
         }
@@ -653,20 +1379,23 @@ Beckn is a aynchronous protocol at its core.
 {
     "context": {
         "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" } },
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
         "action": "support",
         "version": "1.1.0",
-        "bap_id": "{bap_id}",
-        "bap_uri": "{bap_url}",
-        "bpp_id": "{bpp_id}",
-        "bpp_uri": "{bpp_url}",
-        "message_id": "message_128",
-        "transaction_id": "transaction_456",
-        "timestamp": "2023-11-06T09:44:10.708Z",
-        "ttl": "PT10M"
+        "bap_id": "dataset-bap-id",
+        "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+        "bpp_id": "dataset-bpp-subId",
+        "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
     },
     "message": {
-        "ref_id": "order_789"
+        "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768"
     }
 }
 
@@ -682,28 +1411,28 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" } },
+        "domain": "equipement-purchase:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
         "action": "on_support",
         "version": "1.1.0",
         "bap_id": "{bap_id}",
         "bap_uri": "{bap_url}",
         "bpp_id": "{bpp_id}",
         "bpp_uri": "{bpp_url}",
-        "message_id": "message_129",
-        "transaction_id": "transaction_456",
-        "timestamp": "2023-11-06T09:45:10.708Z",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
         "ttl": "PT10M"
     },
     "message": {
         "support": {
-            "ref_id": "order_789",
-            "contact": {
-                "phone": "1800123456",
-                "email": "support@agri-vendor.com",
-                "url": "https://agri-vendor.com/support"
-            },
-            "description": "For inquiries related to order #order_789, please contact our support team."
+            "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768",
+            "phone": "18001801551",
+            "url": "https://kirloskar.io/equipements/support.html"
         }
     }
 }
@@ -722,26 +1451,29 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" } },
+        "domain": "equipement-purchase:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
         "action": "rating",
         "version": "1.1.0",
         "bap_id": "{bap_id}",
         "bap_uri": "{bap_url}",
         "bpp_id": "{bpp_id}",
         "bpp_uri": "{bpp_url}",
-        "message_id": "message_130",
-        "transaction_id": "transaction_456",
-        "timestamp": "2023-11-06T09:46:10.708Z",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
         "ttl": "PT10M"
     },
     "message": {
         "ratings": [
             {
-                "id": "provider_rating_001",
-                "rating_category": "Provider",
-                "value": "4",
-                "comments": "Good quality product and timely delivery."
+                "id": "motor2",
+                "rating_category": "Item",
+                "value": "4"
             }
         ]
     }
@@ -758,25 +1490,28 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipment-purchase:uai",
-        "location": { "country": { "name": "IND" } },
+        "domain": "equipement-purchase:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
         "action": "on_rating",
         "version": "1.1.0",
         "bap_id": "{bap_id}",
         "bap_uri": "{bap_url}",
         "bpp_id": "{bpp_id}",
         "bpp_uri": "{bpp_url}",
-        "message_id": "message_131",
-        "transaction_id": "transaction_456",
-        "timestamp": "2023-11-06T09:47:10.708Z",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
         "ttl": "PT10M"
     },
     "message": {
         "feedback_form": {
             "form": {
-                "url": "https://agri-vendor.com/feedback?order_id=order_789"
-            },
-            "description": "Thank you for your rating. Please provide additional feedback if desired."
+                "url": "https://kirloskar.io/rating/feedback"
+            }
         }
     }
 }
