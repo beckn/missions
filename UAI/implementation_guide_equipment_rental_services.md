@@ -140,7 +140,7 @@ Beckn is a aynchronous protocol at its core.
       "intent": {
         "item": {
           "descriptor": {
-            "name": "ploughing"
+            "name": "ploughing equipment"
           }
         }
       }
@@ -686,7 +686,8 @@ Beckn is a aynchronous protocol at its core.
         "billing": {
             "name": "Madhvan",
             "phone" : "8130xxxxxx",
-            "email" : "Mad@example.com" 
+            "email" : "Mad@example.com",
+            "address": "123, main street, Nashik"
         }
       }
     }
@@ -845,8 +846,19 @@ Beckn is a aynchronous protocol at its core.
             "billing": {
                 "name": "Madhvan",
                 "phone": "8130xxxxxx",
-                "email": "Mad@example.com"
+                "email": "Mad@example.com",
+                "address": "123, main street, Nashik"
             },
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "if cancelling before the scheduled day of fulfillment"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                }
+            ],
             "payments": [
                 {
                     "status": "NOT-PAID",
@@ -933,6 +945,16 @@ Beckn is a aynchronous protocol at its core.
                 "phone": "8130xxxxxx",
                 "email": "Mad@example.com"
             },
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "if cancelling before the scheduled day of fulfillment"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                }
+            ],
             "payments": [
                 {
                     "status": "NOT-PAID",
@@ -1119,6 +1141,16 @@ Beckn is a aynchronous protocol at its core.
                 "phone": "8130xxxxxx",
                 "email": "Mad@example.com"
             },
+             "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "if cancelling before the scheduled day of fulfillment"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                }
+            ],
             "payments": [
                 {
                     "status": "NOT-PAID",
