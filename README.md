@@ -14,7 +14,15 @@ This repository is maintained by the FIDE mission teams and is actively used for
 
 [Click here](./docs/starter_kit/starter_kit.md) to get started
 
+| Serial No     | Version  | Release Notes  |
+|---------------|----------|----------------|
+| 1             | 1.0      |                |
+
 ## Implementation Guides
+
+| Serial No     | Mission Name | Version  | Release Notes  |
+|---------------|--------------|----------|----------------|
+| 1             | UAI          |0.1       |[Click Here](https://github.com/beckn/missions/blob/Ragav-UAI-Implementation-Guide-Branch/UAI/Release%20Notes/UAI%20Release%20Notes.md)
 
 The implementation guides for various networks are listed [here](./docs/starter_kit/implementation_guides.md)
 
