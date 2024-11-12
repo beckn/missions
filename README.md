@@ -4,6 +4,12 @@ This repository is maintained by the FIDE mission teams and is actively used for
 
 ## Beckn Starter Kit
 
+## Version History
+
+| Serial No     | Version  | Release Notes  |
+|---------------|----------|----------------|
+| 1             | 1.0      |                |
+
 [Beckn](https://github.com/beckn) is an open protocol that facilitates commerce transactions on open interoperable networks. This document guides participants new to the network to get up and running. It contains the following sections.
 
 - Brief introduction about Beckn and its terminologies.
@@ -14,11 +20,6 @@ This repository is maintained by the FIDE mission teams and is actively used for
 
 [Click here](./docs/starter_kit/starter_kit.md) to get started
 
-## Version History
-
-| Serial No     | Version  | Release Notes  |
-|---------------|----------|----------------|
-| 1             | 1.0      |                |
 
 ## Implementation Guides
 
