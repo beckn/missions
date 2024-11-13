@@ -25,9 +25,9 @@ This repository is maintained by the FIDE mission teams and is actively used for
 
 ## Version History
 
-| Serial No     | Mission Name | Version  | Release Notes  |
-|---------------|--------------|----------|----------------|
-| 1             | UAI          |0.1       |[Click Here](https://github.com/beckn/missions/blob/Ragav-UAI-Implementation-Guide-Branch/UAI/Release%20Notes/UAI%20Release%20Notes.md)
-
-The implementation guides for various networks are listed [here](./docs/starter_kit/implementation_guides.md)
-
+| Serial No     | Name                     | Version  | Release Date   |Release Notes  |Link to Guide  |
+|---------------|--------------------------|----------|----------------|----------------|---------------|
+| 1             | UAI   |0.1       |12th Nov 2024   |[Click Here](https://github.com/beckn/missions/blob/main/UAI/Release%20Notes/UAI%20Release%20Notes.md)   | [Click Here](https://github.com/beckn/missions/tree/main/UAI)
+| 2             | UEI EV Charging  |1.1       |12th Nov 2024   |[Click Here](https://github.com/beckn/missions/blob/main/UAI/Release%20Notes/UAI%20Release%20Notes.md)   | [Click Here](https://github.com/beckn/missions/blob/main/UEI/implementation_guide_charging.md)
+| 3             | UEI EV Charging  |1.0       |09th Sep 2024   |[Click Here](https://github.com/beckn/missions/blob/main/UAI/Release%20Notes/UAI%20Release%20Notes.md)   | [Click Here](https://github.com/beckn/missions/blob/main/UEI/implementation_guide_charging.md)
+| 4             | VISTAAR : Knowledge Advisory  |1.0       |14th Aug 2024   |[Click Here](https://github.com/beckn/missions/blob/main/UAI/Release%20Notes/UAI%20Release%20Notes.md)   | [Click Here](https://github.com/beckn/missions/blob/main/VISTAAR/implementation_guide_knowledge_advisory.md)
