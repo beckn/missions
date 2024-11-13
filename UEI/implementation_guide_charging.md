@@ -372,7 +372,7 @@ Search request can contain one or more search criterion within it. Use the follo
                   "list": [
                     {
                         "descriptor": {
-                            "name": "connector 1",
+                            "name": "connector Id",
                             "code": "connector-id"
                         },
                         "value": "con1"
@@ -402,7 +402,8 @@ Search request can contain one or more search criterion within it. Use the follo
                         "descriptor": {
                             "name": "Availability",
                             "code": "availability"
-                        }
+                        },
+                        "value": "Available"
                     }
                   ]
                 }
@@ -476,7 +477,8 @@ Search request can contain one or more search criterion within it. Use the follo
                         "descriptor": {
                             "name": "Availability",
                             "code": "unavailability"
-                        }
+                        },
+                        "value": "Available"
                     }
                   ]
                 }
@@ -723,7 +725,8 @@ Search request can contain one or more search criterion within it. Use the follo
                     "descriptor": {
                         "name": "Availability",
                         "code": "availability"
-                    }
+                    },
+                    "value": "Available"
                 }
               ]
             }
@@ -1017,7 +1020,8 @@ Search request can contain one or more search criterion within it. Use the follo
                     "descriptor": {
                         "name": "Availability",
                         "code": "availability"
-                    }
+                    },
+                    "value": "Available"
                 }
               ]
             }
@@ -1361,7 +1365,8 @@ Search request can contain one or more search criterion within it. Use the follo
                     "descriptor": {
                         "name": "Availability",
                         "code": "availability"
-                    }
+                    },
+                    "value": "Available"
                 }
               ]
             }
@@ -1651,7 +1656,8 @@ Search request can contain one or more search criterion within it. Use the follo
                     "descriptor": {
                         "name": "Availability",
                         "code": "availability"
-                    }
+                    },
+                    "value": "Available"
                 }
               ]
             },
@@ -2833,6 +2839,27 @@ Search request can contain one or more search criterion within it. Use the follo
 
 - **Connector-Type** is a tag used in multiple messages above. The values allowed for the connector types are specified in the OCPI Standard. This [page](https://ev2go.io/ocpiconnectors) lists some of them. This list will be extended with those types which are present in India, but not listed in the OCPI list. The code to be used will be the OCPI connector Value shown in the above webpage in all lowercase characters (e.g.chademo, iec_62196_t3a)
 - **Charging Status** in fulfillment object has a long_desc field. This field should have the [OCPP](https://openchargealliance.org/protocols/open-charge-point-protocol/) status json object. The BAP can in on_status get this charging status value and show custom UI uniform across different BPPs.
+
+Below is a list of standardised codes used in this implememtation. Each of these codes also have a list of standardised enum values associated with them. These codes and enums are expected to evolve with time as more NPs implement the UEI EV charging use case.
+
+| SN    | Tag Name | Tag Code | Meaning  | Enums    |
+|-------|----------|----------| ---------| ---------|
+|    |       | charger-id      |          |          |
+|    |       | Availability      |          |          |
+|    |       | connector-id      |          |          |
+|    |       | charger-type       |          |          |
+|    |       | connector-type       |          |          |
+|    |       | power-rating       |          |          |
+|    |       | energy-delivered       |          |          |
+|    |       | soc       |          |          |
+|    |       | start-time       |          |          |
+|    |       | stop-time       |          |          |
+|    |       | meter-start       |          |          |
+|    |       | meter-stop       |          |          |
+|    |       | current       |          |          |
+|    |       | power       |          |          |
+|    |       | voltage       |          |          |
+
 
 ## Integrating with your software
 
