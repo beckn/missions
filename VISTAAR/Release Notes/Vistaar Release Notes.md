@@ -1,3 +1,3 @@
-# UAI Implementation Guide Release Notes
+# VISTAAR Implementation Guide Release Notes
 
-#### Version 0.1
+#### Version 1.0
