@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: UAI advisory service
-  description: Layer 2 config for UAI advisory service
+  title: UAI equipment rental service
+  description: Layer 2 config for UAI equipment rental service
   version: 1.1.0
 security:
   - SubscriberAuth: []
@@ -11,7 +11,7 @@ paths:
       tags:
         - Beckn Provider Platform (BPP)
         - Beckn Gateway (BG)
-      description: BAP declares the customer's intent to avail advisory services
+      description: BAP declares the customer's intent to buy/avail products or services
       requestBody:
         content:
           application/json:
@@ -42,7 +42,7 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: BAP declares the customer's cart (or equivalent) created by selecting advisory services from the catalog
+      description: BAP declares the customer's cart (or equivalent) created by selecting objects from the catalog
       requestBody:
         content:
           application/json:
@@ -136,7 +136,7 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: Confirm an order after agreeing to the terms of the order and completing the payment if needed
+      description: Initialize an order by providing billing and/or shipping details
       requestBody:
         content:
           application/json:
@@ -171,7 +171,7 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: Fetch the latest order object for a confirmed advisory service order 
+      description: Fetch the latest order object
       requestBody:
         content:
           application/json:
@@ -393,7 +393,7 @@ paths:
       tags:
         - Beckn Application Platform (BAP)
         - Beckn Gateway (BG)
-      description: BPP sends its catalog of advisory services in response to a search request.
+      description: BPP sends its catalog in response to a search request.
       requestBody:
         content:
           application/json:
@@ -429,7 +429,7 @@ paths:
     post:
       tags:
         - Beckn Application Platform (BAP)
-      description: Send draft order object with quoted price for selected advisory services.
+      description: Send draft order object with quoted price for selected items
       requestBody:
         content:
           application/json:
@@ -463,7 +463,7 @@ paths:
     post:
       tags:
         - Beckn Application Platform (BAP)
-      description: Send order object with terms of the order and payment details updated
+      description: Send order object with payment details updated
       requestBody:
         content:
           application/json:

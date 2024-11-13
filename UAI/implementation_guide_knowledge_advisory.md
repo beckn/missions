@@ -158,7 +158,7 @@ Beckn is a aynchronous protocol at its core.
     "intent": {
       "item": {
         "descriptor": {
-          "name": "Kala Daag"
+          "name": "Kala Daag on onion leaves"
         }
       }
     }
@@ -192,7 +192,7 @@ Beckn is a aynchronous protocol at its core.
     "intent": {
       "item": {
         "descriptor": {
-          "name": "kala daag"
+          "name": "kala daag on onion leaves"
         },
         "tags": [
           {
