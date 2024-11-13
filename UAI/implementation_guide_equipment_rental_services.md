@@ -140,7 +140,7 @@ Beckn is a aynchronous protocol at its core.
       "intent": {
         "item": {
           "descriptor": {
-            "name": "ploughing equipment"
+            "name": "agriculture sprayer"
           }
         }
       }
