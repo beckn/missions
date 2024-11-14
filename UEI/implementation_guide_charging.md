@@ -2758,10 +2758,73 @@ Search request can contain one or more search criterion within it. Use the follo
   }
 }
 ```
+### get_rating_categories
+- BAP can fetch a list of categoried for which a BPP supports prviding rating
+- BAP does not need to send anything in the message field.
+
+```
+{
+  "context": {
+    "domain": "ev-charging:uei",
+    "action": "get_rating_categories",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  }
+}
+```
+### rating_categories
+
+- The BPP responds with a list of categories in which ratings can be provided.
+
+```
+{
+  "context": {
+    "domain": "ev-charging:uei",
+    "action": "get_rating_categories",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "rating_categories": [
+      Item,
+      Order,
+      Fulfillment,
+      Provider
+    ]
+  }
+}
+```
 
 ### rating
 
 - Rate different categories including fulfillment. Specify in message->ratings
+- Specify a rating category from the list recieved in the rating_categories callback from the BPP.
 - Value should be a decimal between 0 and 5.
 - Id can be the order id.
 
