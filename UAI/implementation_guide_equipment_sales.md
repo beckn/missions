@@ -1440,6 +1440,71 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 
+#### get_rating_categories
+
+- BAP can fetch a list of categoried for which a BPP accepts rating
+- ```message``` field is not needed in the get_rating_categories request.
+
+```
+{
+  "context": {
+    "domain": "equipement-purchase:uai",
+    "action": "get_rating_categories",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "{bap_id}",
+    "bap_uri": "{bap_url}",
+    "bpp_id": "{bpp_id}",
+    "bpp_uri": "{bpp_url}",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  }
+}
+```
+
+#### rating_categories
+
+- The BPP responds with a list of categories in which ratings can be provided.
+
+```
+{
+  "context": {
+    "domain": "equipement-purchase:uai",
+    "action": "get_rating_categories",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "{bap_id}",
+    "bap_uri": "{bap_url}",
+    "bpp_id": "{bpp_id}",
+    "bpp_uri": "{bpp_url}",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "rating_categories": [
+      Item,
+      Order,
+      Fulfillment,
+      Provider
+    ]
+  }
+}
+```
+
 #### rating
 
 **Rating a resource**
