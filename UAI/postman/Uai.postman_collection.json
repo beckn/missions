@@ -1,0 +1,708 @@
+{
+	"info": {
+		"_postman_id": "5ac5b06c-8f7d-4e19-aa2d-b1c9a4100a44",
+		"name": "BOC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4049356"
+	},
+	"item": [
+		{
+			"name": "Renting",
+			"item": [
+				{
+					"name": "Search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{renting_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"Sprayer and Tractor\"\n                }\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/search",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{renting_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"select\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"816\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"340\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"measure\": {\n                                \"unit\": \"Acres\",\n                                \"value\": \"10\"\n                            }\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"28\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"23.23234, 24.2424\"\n                            },\n                            \"time\": {\n                                \"timestamp\": \"2023-11-06T09:41:09.708Z\"\n                            }\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/select",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Init",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{renting_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"816\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"340\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"measure\": {\n                                \"unit\": \"Acres\",\n                                \"value\": \"10\"\n                            }\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"28\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"23.23234, 24.2424\"\n                            },\n                            \"time\": {\n                                \"timestamp\": \"2023-11-06T09:41:09.708Z\"\n                            }\n                        }\n                    ],\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Madhavan\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"8130xxxxxx\"\n                        }\n                    }\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Madhvan\",\n                \"phone\": \"8130xxxxxx\",\n                \"email\": \"Mad@example.com\",\n                \"address\": \"123, main street, Nashik\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/init",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"init"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{renting_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"confirm\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"816\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"340\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"measure\": {\n                                \"unit\": \"Acres\",\n                                \"value\": \"10\"\n                            }\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"28\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"23.23234, 24.2424\"\n                            },\n                            \"time\": {\n                                \"timestamp\": \"2023-11-06T09:41:09.708Z\"\n                            }\n                        }\n                    ],\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Madhavan\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"8130xxxxxx\"\n                        }\n                    }\n                }\n            ],\n            \"payments\": [\n                {\n                    \"status\": \"NOT-PAID\",\n                    \"type\": \"POST-FULFILLMENT\",\n                    \"collected_by\": \"AGENT\",\n                    \"params\": {\n                        \"amount\": \"3150\",\n                        \"currency\": \"INR\"\n                    }\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Madhvan\",\n                \"phone\": \"8130xxxxxx\",\n                \"email\": \"Mad@example.com\",\n                \"address\": \"123, main street, Nashik\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/confirm",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{renting_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"status\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order_id\": \"2243\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/status",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Support",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{renting_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"support\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order_id\": \"2243\",\n        \"support\": {\n            \"callback_phone\": \"+91-8858150053\",\n            \"ref_id\": \"894789-43954\",\n            \"phone\": \"+91 9988776543\",\n            \"email\": \"supportperson@gmail.com\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/support",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"support"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{renting_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"rating\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"ratings\": [\n            {\n                \"id\": \"62\",\n                \"rating_category\": \"Item\",\n                \"value\": \"8\"\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/rating",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"rating"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{purchase_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"Kirloskar 0.5 HP\"\n                }\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/search",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{purchase_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"select\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"817\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"344\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"measure\": {\n                                \"unit\": \"Acres\",\n                                \"value\": \"10\"\n                            }\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"28\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"23.23234, 24.2424\"\n                            },\n                            \"time\": {\n                                \"timestamp\": \"2023-11-06T09:41:09.708Z\"\n                            }\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/select",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Init",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{purchase_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"817\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"344\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"measure\": {\n                                \"unit\": \"Acres\",\n                                \"value\": \"10\"\n                            }\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"28\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"23.23234, 24.2424\"\n                            },\n                            \"time\": {\n                                \"timestamp\": \"2023-11-06T09:41:09.708Z\"\n                            }\n                        }\n                    ],\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Madhavan\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"8130xxxxxx\"\n                        }\n                    }\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Madhvan\",\n                \"phone\": \"8130xxxxxx\",\n                \"email\": \"Mad@example.com\",\n                \"address\": \"123, main street, Nashik\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/init",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"init"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{purchase_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"confirm\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"817\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"344\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"measure\": {\n                                \"unit\": \"Acres\",\n                                \"value\": \"10\"\n                            }\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"28\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"23.23234, 24.2424\"\n                            },\n                            \"time\": {\n                                \"timestamp\": \"2023-11-06T09:41:09.708Z\"\n                            }\n                        }\n                    ],\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Madhavan\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"8130xxxxxx\"\n                        }\n                    }\n                }\n            ],\n            \"payments\": [\n                {\n                    \"status\": \"NOT-PAID\",\n                    \"type\": \"POST-FULFILLMENT\",\n                    \"collected_by\": \"AGENT\",\n                    \"params\": {\n                        \"amount\": \"3150\",\n                        \"currency\": \"INR\"\n                    }\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Madhvan\",\n                \"phone\": \"8130xxxxxx\",\n                \"email\": \"Mad@example.com\",\n                \"address\": \"123, main street, Nashik\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/confirm",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{purchase_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"status\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order_id\": \"2245\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/status",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Support",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{purchase_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"support\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order_id\": \"2245\",\n        \"support\": {\n            \"callback_phone\": \"+91-8858150053\",\n            \"ref_id\": \"894789-43954\",\n            \"phone\": \"+91 9988776543\",\n            \"email\": \"supportperson@gmail.com\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/support",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"support"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{purchase_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"rating\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"ratings\": [\n            {\n                \"id\": \"62\",\n                \"rating_category\": \"Item\",\n                \"value\": \"8\"\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/rating",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"rating"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Advisory",
+			"item": [
+				{
+					"name": "Search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{advisor_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"Stemphylium Blight control in onion\"\n                }\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/search",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{advisor_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"select\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"820\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"350\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"28\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"23.23234, 24.2424\"\n                            },\n                            \"time\": {\n                                \"timestamp\": \"2023-11-06T09:41:09.708Z\"\n                            }\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/select",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Init",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{advisor_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"820\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"350\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"28\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"23.23234, 24.2424\"\n                            },\n                            \"time\": {\n                                \"timestamp\": \"2023-11-06T09:41:09.708Z\"\n                            }\n                        }\n                    ],\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Madhavan\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"8130xxxxxx\"\n                        }\n                    }\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Madhvan\",\n                \"phone\": \"8130xxxxxx\",\n                \"email\": \"Mad@example.com\",\n                \"address\": \"123, main street, Nashik\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/init",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"init"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{advisor_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"confirm\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"820\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"350\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"28\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"23.23234, 24.2424\"\n                            },\n                            \"time\": {\n                                \"timestamp\": \"2023-11-06T09:41:09.708Z\"\n                            }\n                        }\n                    ],\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Madhavan\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"8130xxxxxx\"\n                        }\n                    }\n                }\n            ],\n            \"payments\": [\n                {\n                    \"status\": \"NOT-PAID\",\n                    \"type\": \"POST-FULFILLMENT\",\n                    \"collected_by\": \"AGENT\",\n                    \"params\": {\n                        \"amount\": \"3150\",\n                        \"currency\": \"INR\"\n                    }\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Madhvan\",\n                \"phone\": \"8130xxxxxx\",\n                \"email\": \"Mad@example.com\",\n                \"address\": \"123, main street, Nashik\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/confirm",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{advisor_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"status\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order_id\": \"2247\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/status",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Support",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{advisor_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"support\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order_id\": \"2247\",\n        \"support\": {\n            \"callback_phone\": \"+91-8858150053\",\n            \"ref_id\": \"894789-43954\",\n            \"phone\": \"+91 9988776543\",\n            \"email\": \"supportperson@gmail.com\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/support",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"support"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"{{advisor_domain}}\",\n        \"location\": {\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            },\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"action\": \"rating\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"message_id\": \"{{message_id}}\",\n        \"timestamp\": \"2023-11-06T09:41:09.673Z\",\n        \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"ratings\": [\n            {\n                \"id\": \"62\",\n                \"rating_category\": \"Item\",\n                \"value\": \"8\"\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ps-bap-client.becknprotocol.io/rating",
+							"protocol": "https",
+							"host": [
+								"ps-bap-client",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"rating"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://ps-bap-client.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "renting_domain",
+			"value": "equipement-renting:uai",
+			"type": "string"
+		},
+		{
+			"key": "purchase_domain",
+			"value": "equipment-purchase:uai",
+			"type": "string"
+		},
+		{
+			"key": "advisor_domain",
+			"value": "advisory:uai",
+			"type": "string"
+		},
+		{
+			"key": "bap_id",
+			"value": "ps-bap-network.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "bap_uri",
+			"value": "https://ps-bap-network.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "bpp_id",
+			"value": "bpp-ps-network-strapi.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "bpp_uri",
+			"value": "https://bpp-ps-network-strapi.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "transaction_id",
+			"value": "8100d125-76a7-4588-88be-81b97657cd06",
+			"type": "string"
+		},
+		{
+			"key": "message_id",
+			"value": "6104c0a3-d1d1-4ded-aaa4-76e4caf726cf",
+			"type": "string"
+		}
+	]
+}

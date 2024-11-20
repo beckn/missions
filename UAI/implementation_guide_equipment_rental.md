@@ -1735,4 +1735,6 @@ If you are writing the provider platform software, the following are the steps y
 
 ## Links to artefacts
 
-TBP
+
+- [Postman collection for UAI](./postman/Uai.postman_collection.json)
+
