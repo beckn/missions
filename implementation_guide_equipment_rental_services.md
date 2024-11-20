@@ -6,9 +6,7 @@
 
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
-| 06-11-2024 | 0.1     | Initial Version                                     |
-| 14-11-2024 | 0.2     | Internal Review Comments Incorprated                                     |
-| 18-11-2024 | 1.0     | Final Version                                     |
+| 06-11-2024 | 1.0     | Initial Version                                     |
 
 ## Introduction
 
@@ -29,7 +27,7 @@ This document has the following parts:
 
 ### Use case - Discovery and consumption of free knowledge advisory
 
-1. Sandip, an onion farmer from Nashik, encounters an unknown infestation (which he can specify by its properties) on his crops.
+1. Sandip, an onion farmer from Nashik, encounters an unknown infestation on his crops.
 2. To find a solution, he turns to a beckn-enabled app, connected to the UAI network, to look up remedies and preventive measures.
 3. Using various search methods—audio, image, text in any language, or video—Sandip searches for help with identifying the infestation and discovering effective remedies.
 4. The app provides Sandip with multiple search results from experts specializing in pest and disease identification, remedies, and crop management best practices.
@@ -150,8 +148,8 @@ Beckn is a aynchronous protocol at its core.
       }
     },
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_uri": "https://ps-bap-client.becknprotocol.io",
     "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
     "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
     "timestamp": "2024-07-02T09:15:30Z"
@@ -160,7 +158,7 @@ Beckn is a aynchronous protocol at its core.
     "intent": {
       "item": {
         "descriptor": {
-          "name": "Kala Daag on onion leaves"
+          "name": "Stemphylium Blight"
         }
       }
     }
@@ -184,8 +182,8 @@ Beckn is a aynchronous protocol at its core.
       }
     },
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_uri": "https://ps-bap-client.becknprotocol.io",
     "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
     "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
     "timestamp": "2024-07-02T09:15:30Z"
@@ -194,7 +192,7 @@ Beckn is a aynchronous protocol at its core.
     "intent": {
       "item": {
         "descriptor": {
-          "name": "kala daag on onion leaves"
+          "name": "Stemphylium Blight"
         },
         "tags": [
           {
@@ -211,42 +209,6 @@ Beckn is a aynchronous protocol at its core.
             ]
           }
         ]
-      }
-    }
-  }
-}
-
-```
-
-**search by topic and rating**
-
-- The topic to search is specified in the message->intent->item->descriptor->name field.
-- The desired language is specified in a tag named languages.
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "action": "search",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_uri": "https://example-bap-client.becknprotocol.io",
-    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
-    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
-    "timestamp": "2024-07-02T09:15:30Z"
-  },
-  "message": {
-    "intent": {
-      "item": {
-        "descriptor": {
-          "name": "kala daag on onion leaves"
-        },
-        "rating": ">3.0",
       }
     }
   }
@@ -275,10 +237,10 @@ Beckn is a aynchronous protocol at its core.
       }
     },
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
     "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
     "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
     "timestamp": "2024-07-02T09:15:30Z"
@@ -394,10 +356,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "support",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
     "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
     "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
     "timestamp": "2024-07-02T09:18:30Z"
@@ -426,10 +388,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "on_support",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
     "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
     "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
     "timestamp": "2024-07-02T09:18:30Z",
@@ -444,71 +406,6 @@ Beckn is a aynchronous protocol at its core.
   }
 }
 
-```
-
-#### get_rating_categories
-
-- BAP can fetch a list of categoried for which a BPP accepts rating
-- ```message``` field is not needed in the get_rating_categories request.
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "action": "get_rating_categories",
-    "location": {
-      "country": {
-        "name": "India",
-        "code": "IND"
-      }
-    },
-    "city": "std:080",
-    "version": "1.1.0",
-    "bap_id": "{bap_id}",
-    "bap_uri": "{bap_url}",
-    "bpp_id": "{bpp_id}",
-    "bpp_uri": "{bpp_url}",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "timestamp": "2023-07-16T04:41:16Z"
-  }
-}
-```
-
-#### rating_categories
-
-- The BPP responds with a list of categories in which ratings can be provided.
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "action": "get_rating_categories",
-    "location": {
-      "country": {
-        "name": "India",
-        "code": "IND"
-      }
-    },
-    "city": "std:080",
-    "version": "1.1.0",
-    "bap_id": "{bap_id}",
-    "bap_uri": "{bap_url}",
-    "bpp_id": "{bpp_id}",
-    "bpp_uri": "{bpp_url}",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "timestamp": "2023-07-16T04:41:16Z"
-  },
-  "message": {
-    "rating_categories": [
-      Item,
-      Order,
-      Fulfillment,
-      Provider
-    ]
-  }
-}
 ```
 
 #### rating
@@ -530,10 +427,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "rating",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
     "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
     "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
     "timestamp": "2024-07-02T09:15:30Z"
@@ -567,10 +464,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "on_rating",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
     "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
     "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
     "timestamp": "2024-07-02T09:15:30Z",
@@ -590,7 +487,7 @@ Beckn is a aynchronous protocol at its core.
 
 #### search
 
-**search by topic, time range and fulfillment location**
+**search by topic**
 ```
 {
   "context": {
@@ -602,8 +499,8 @@ Beckn is a aynchronous protocol at its core.
       }
     },
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_uri": "https://ps-bap-client.becknprotocol.io",
     "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
     "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
     "timestamp": "2024-07-02T09:15:30Z"
@@ -634,84 +531,6 @@ Beckn is a aynchronous protocol at its core.
   }
 }
 ```
-
-**search by topic, provider licence, item datapoints**
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "action": "search",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_uri": "https://example-bap-client.becknprotocol.io",
-    "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
-    "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    "timestamp": "2024-07-02T09:15:30Z"
-  },
-  "message": {
-     "intent": {
-      "provider": {
-        "tags": [
-          {
-            "descriptor": {
-              "name": "Provider's Additional Information"
-            },
-            "list": [
-              {
-                "descriptor": {
-                  "name": "License"
-                },
-                "value": "Proprietary"
-              }
-            ]
-          }
-        ]
-      }
-      "item": {
-        "descriptor": {
-          "name": "Weather forecast"
-        },
-        "time" : {
-          "range" : {
-            "start" : "2024-03-01T00:00:00.000Z",
-            "end" : "2024-03-15T00:00:00.000Z"
-          }
-        },
-        "tags": [
-          {
-            "descriptor": {
-              "name": "Weather datapoints"
-            },
-            "list": [
-              {
-                "value": "Temperature"
-              },
-              {
-                "value": "Vertical wind speed"
-              }
-            ]
-          }
-        ]
-      },
-      "fulfillment": {
-        "stops": [
-          {
-            "location": {
-              "gps": ""12.9716, 77.5946""
-            }
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
 #### on_search
 
 **on_search with catalog of results**
@@ -732,10 +551,10 @@ Beckn is a aynchronous protocol at its core.
       },
       "action": "on_search",
       "version": "1.1.0",
-      "bap_id": "example-bap.becknprotocol.io",
-      "bap_url": "https://example-bap-client.becknprotocol.io",
-      "bpp_id": "example-bpp.becknprotocol.io",
-      "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+      "bap_id": "dataset-bap-id",
+      "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+      "bpp_id": "dataset-bpp-subId",
+      "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
       "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
       "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
       "timestamp": "2023-11-06T09:41:09.708Z",
@@ -981,10 +800,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "select",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
     "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
     "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
     "timestamp": "2023-11-06T09:44:47.217Z"
@@ -1042,10 +861,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "on_select",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
     "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
     "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
     "timestamp": "2023-11-06T09:44:47.229Z",
@@ -1186,10 +1005,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "init",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
     "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
     "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
     "timestamp": "2023-11-06T09:44:47.217Z"
@@ -1250,10 +1069,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "on_init",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
     "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
     "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
     "timestamp": "2023-11-06T09:44:47.229Z",
@@ -1374,23 +1193,15 @@ Beckn is a aynchronous protocol at its core.
           }
         ]
       },
-      "cancellation_terms": [
-        {
-          "fulfillment_state": {
-            "descriptor": {
-              "short_desc": "The order can not be cancelled once placed"
-            }
-          }
-        }
-      ],
       "payments": [
         {
           "status": "NOT-PAID",
           "type": "PRE-ORDER",
-          "collected_by": "BAP",
           "params": {
             "amount": "31.5",
-            "currency": "INR"
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
           }
         }
       ]
@@ -1414,10 +1225,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "confirm",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
     "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
     "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
     "timestamp": "2023-11-06T09:44:47.217Z"
@@ -1462,10 +1273,12 @@ Beckn is a aynchronous protocol at its core.
         {
           "status": "PAID",
           "type": "PRE-ORDER",
-          "collected_by": "BAP",
           "params": {
+            "transaction_id": "raz816863816313",
             "amount": "31.5",
-            "currency": "INR"
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
           }
         }
       ]
@@ -1489,10 +1302,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "on_confirm",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
     "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
     "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
     "timestamp": "2023-11-06T09:44:47.229Z",
@@ -1632,23 +1445,15 @@ Beckn is a aynchronous protocol at its core.
           }
         ]
       },
-      "cancellation_terms": [
-        {
-          "fulfillment_state": {
-            "descriptor": {
-              "short_desc": "The order can not be cancelled once placed"
-            }
-          }
-        }
-      ],
       "payments": [
         {
-          "status": "PAID",
+          "status": "NOT-PAID",
           "type": "PRE-ORDER",
-          "collected_by": "BAP",
           "params": {
             "amount": "31.5",
-            "currency": "INR"
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
           }
         }
       ]
@@ -1672,10 +1477,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "status",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
     "message_id": "b8c1e69c-fbbc-439b-a5de-2adcc74fa0da",
     "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
     "timestamp": "2023-11-06T10:14:10.295Z",
@@ -1701,10 +1506,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "on_confirm",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
+    "bap_id": "dataset-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "dataset-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
     "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
     "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
     "timestamp": "2023-11-06T09:44:47.229Z",
@@ -1844,23 +1649,15 @@ Beckn is a aynchronous protocol at its core.
           }
         ]
       },
-      "cancellation_terms": [
-        {
-          "fulfillment_state": {
-            "descriptor": {
-              "short_desc": "The order can not be cancelled once placed"
-            }
-          }
-        }
-      ],
       "payments": [
         {
-          "status": "PAID",
+          "status": "NOT-PAID",
           "type": "PRE-ORDER",
-          "collected_by": "BAP",
           "params": {
             "amount": "31.5",
-            "currency": "INR"
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
           }
         }
       ]
@@ -1887,10 +1684,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "support",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
     "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
     "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
     "timestamp": "2024-07-02T09:18:30Z"
@@ -1919,10 +1716,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "on_support",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
     "message_id": "d8b23543-24b4-48eb-ae8a-4a5db68f8d09",
     "transaction_id": "fa2c9c8b-ba24-4d2b-bd9c-3e03d7f6b193",
     "timestamp": "2024-07-02T09:18:30Z",
@@ -1937,71 +1734,6 @@ Beckn is a aynchronous protocol at its core.
   }
 }
 
-```
-
-#### get_rating_categories
-
-- BAP can fetch a list of categoried for which a BPP accepts rating
-- ```message``` field is not needed in the get_rating_categories request.
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "action": "get_rating_categories",
-    "location": {
-      "country": {
-        "name": "India",
-        "code": "IND"
-      }
-    },
-    "city": "std:080",
-    "version": "1.1.0",
-    "bap_id": "{bap_id}",
-    "bap_uri": "{bap_url}",
-    "bpp_id": "{bpp_id}",
-    "bpp_uri": "{bpp_url}",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "timestamp": "2023-07-16T04:41:16Z"
-  }
-}
-```
-
-#### rating_categories
-
-- The BPP responds with a list of categories in which ratings can be provided.
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "action": "get_rating_categories",
-    "location": {
-      "country": {
-        "name": "India",
-        "code": "IND"
-      }
-    },
-    "city": "std:080",
-    "version": "1.1.0",
-    "bap_id": "{bap_id}",
-    "bap_uri": "{bap_url}",
-    "bpp_id": "{bpp_id}",
-    "bpp_uri": "{bpp_url}",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "timestamp": "2023-07-16T04:41:16Z"
-  },
-  "message": {
-    "rating_categories": [
-      Item,
-      Order,
-      Fulfillment,
-      Provider
-    ]
-  }
-}
 ```
 
 #### rating
@@ -2023,10 +1755,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "rating",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
     "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
     "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
     "timestamp": "2024-07-02T09:15:30Z"
@@ -2060,10 +1792,10 @@ Beckn is a aynchronous protocol at its core.
     },
     "action": "on_rating",
     "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_url": "https://ps-bap-client.becknprotocol.io",
+    "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+    "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
     "message_id": "e8c50b1e-6512-42b3-b0b4-8f8a703a5c66",
     "transaction_id": "b7204c3a-9f5e-418f-80a3-ae5dd4e5b97a",
     "timestamp": "2024-07-02T09:15:30Z",
