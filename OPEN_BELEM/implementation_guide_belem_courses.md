@@ -1,4 +1,4 @@
-# OPEN GAMBIA - DSEP Implementation Guide
+# OPEN BELEM - DSEP Implementation Guide
 
 #### Version 1.1
 
@@ -11,7 +11,7 @@
 
 ## Introduction
 
-This document provides material that helps network participants build and integrate their application with the Open Gambia Network for educational courses. This document is part of the starter kit that provides information about the network, learning resources, network participant checklist etc. This document only focuses on the implementation of the seeker/provider platform for educational courses. It assumes the reader has a good overview of the Beckn network, its APIs, the overall structure of the schema etc.
+This document provides material that helps network participants build and integrate their application with the Open Belem Network for educational courses. This document is part of the starter kit that provides information about the network, learning resources, network participant checklist etc. This document only focuses on the implementation of the seeker/provider platform for educational courses. It assumes the reader has a good overview of the Beckn network, its APIs, the overall structure of the schema etc.
 
 ## Structure of the document
 
