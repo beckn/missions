@@ -119,7 +119,7 @@ Beckn is a aynchronous protocol at its core.
 
 #### search
 
-**search by location**
+**search by keyword**
 ```
 {
     "context": {
@@ -149,6 +149,99 @@ Beckn is a aynchronous protocol at its core.
     }
   }
 ```
+
+**search by keyword, using filters as tags**
+```
+{
+    "context": {
+      "domain": "equipement-renting:uai",
+      "location": {
+        "country": {
+          "name": "IND"
+        }
+      },
+      "action": "search",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "timestamp": "2023-11-06T09:41:09.673Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "intent": {
+        "item": {
+          "descriptor": {
+            "name": "agriculture sprayer"
+          },
+          "rating": ">4.0",
+          "tags": [
+                {
+                    "descriptor": {
+                        "name": "stage"
+                    },
+                    "list": [
+                        {
+                            "value": "Land Preparation"
+                        }
+                    ]
+                },
+                {
+                    "descriptor": {
+                        "name": "experience"
+                    },
+                    "list": [
+                        {
+                            "value": ">1 Years"
+                        }
+                    ]
+                }
+            ]
+        }
+      }
+    }
+  }
+```
+
+**search by keyword, price limit and fulfillment type**
+```
+{
+    "context": {
+      "domain": "equipement-renting:uai",
+      "location": {
+        "country": {
+          "name": "IND"
+        }
+      },
+      "action": "search",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "timestamp": "2023-11-06T09:41:09.673Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "intent": {
+        "item": {
+          "descriptor": {
+            "name": "agriculture sprayer"
+          },
+          "price": {
+            "currency": "INR/Acre",
+            "maximum_value": "1000.0"
+          },
+          "fulfillment": {
+            "type": "Delivery"
+          }
+        }
+      }
+    }
+  }
+```
+
 #### on_search
 
 **on_search with catalog of results**
@@ -161,7 +254,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "agricultural-renting:uai",
+        "domain": "equipement-renting:uai",
         "location": {
             "country": {
                 "name": "IND"

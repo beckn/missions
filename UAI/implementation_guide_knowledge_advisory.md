@@ -218,6 +218,42 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 
+**search by topic and rating**
+
+- The topic to search is specified in the message->intent->item->descriptor->name field.
+- The desired language is specified in a tag named languages.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "item": {
+        "descriptor": {
+          "name": "kala daag on onion leaves"
+        },
+        "rating": ">3.0",
+      }
+    }
+  }
+}
+
+```
+
 #### on_search
 
 **on_search with catalog of results**
@@ -554,7 +590,7 @@ Beckn is a aynchronous protocol at its core.
 
 #### search
 
-**search by topic**
+**search by topic, time range and fulfillment location**
 ```
 {
   "context": {
@@ -598,6 +634,84 @@ Beckn is a aynchronous protocol at its core.
   }
 }
 ```
+
+**search by topic, provider licence, item datapoints**
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
+    "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+     "intent": {
+      "provider": {
+        "tags": [
+          {
+            "descriptor": {
+              "name": "Provider's Additional Information"
+            },
+            "list": [
+              {
+                "descriptor": {
+                  "name": "License"
+                },
+                "value": "Proprietary"
+              }
+            ]
+          }
+        ]
+      }
+      "item": {
+        "descriptor": {
+          "name": "Weather forecast"
+        },
+        "time" : {
+          "range" : {
+            "start" : "2024-03-01T00:00:00.000Z",
+            "end" : "2024-03-15T00:00:00.000Z"
+          }
+        },
+        "tags": [
+          {
+            "descriptor": {
+              "name": "Weather datapoints"
+            },
+            "list": [
+              {
+                "value": "Temperature"
+              },
+              {
+                "value": "Vertical wind speed"
+              }
+            ]
+          }
+        ]
+      },
+      "fulfillment": {
+        "stops": [
+          {
+            "location": {
+              "gps": ""12.9716, 77.5946""
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
 #### on_search
 
 **on_search with catalog of results**

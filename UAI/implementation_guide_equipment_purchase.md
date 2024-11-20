@@ -122,7 +122,7 @@ Beckn is a aynchronous protocol at its core.
 
 #### search
 
-**search by location**
+**search by keywords, rating and price**
 ```
 {
     "context": {
@@ -151,6 +151,37 @@ Beckn is a aynchronous protocol at its core.
                 "price": {
                     "maximum_value": "5000",
                     "currency": "INR"
+                }
+            }
+        }
+    }
+}
+```
+
+**search by keyword, creator and capacity**
+```
+{
+    "context": {
+        "domain": "equipment-purchase:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "search",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "timestamp": "2023-11-06T09:41:09.673Z",
+        "ttl": "PT10M"
+    },
+    "message": {
+        "intent": {
+            "item": {
+                "descriptor": {
+                    "name": "motor pump"
                 },
                 "creator": {
                     "descriptor": {
@@ -180,6 +211,41 @@ Beckn is a aynchronous protocol at its core.
     }
 }
 ```
+
+**search by keyword and fulfillment type**
+```
+{
+    "context": {
+        "domain": "equipment-purchase:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "search",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "timestamp": "2023-11-06T09:41:09.673Z",
+        "ttl": "PT10M"
+    },
+    "message": {
+        "intent": {
+            "item": {
+                "descriptor": {
+                    "name": "motor pump"
+                },
+                "fulfillment": {
+                    "type": "Delivery"
+                }
+            }
+        }
+    }
+}
+```
+
 #### on_search
 
 **on_search with catalog of results**
