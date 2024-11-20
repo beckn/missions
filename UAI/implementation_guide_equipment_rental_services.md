@@ -159,7 +159,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "agricultural-renting:uai",
+        "domain": "equipement-renting:uai",
         "location": {
             "country": {
                 "name": "IND"
