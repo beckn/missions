@@ -271,100 +271,6 @@ Search request can contain one or more search criterion within it. Use the follo
                   }
                 }
               },
-              "category_ids": [
-                "1"
-              ],
-              "location_ids": [
-                "1"
-              ],
-              "fulfillment_ids": [
-                "1",
-                "2"
-              ],
-              "add_ons": [
-                {
-                  "id": "pe-charging-01-addon-1",
-                  "descriptor": {
-                    "name": "Free car wash"
-                  },
-                  "price": {
-                    "value": "0",
-                    "currency": "INR"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "pe-charging-02",
-              "descriptor": {
-                "code": "energy"
-              },
-              "price": {
-                "value": "8",
-                "currency": "INR/kWH"
-              },
-              "quantity": {
-                "available": {
-                  "measure": {
-                    "value": "100",
-                    "unit": "kWH"
-                  }
-                }
-              },
-              "category_ids": [
-                "1"
-              ],
-              "location_ids": [
-                "1"
-              ],
-              "fulfillment_ids": [
-                "3",
-                "4"
-              ],
-              "add_ons": [
-                {
-                  "id": "pe-charging-01-addon-1",
-                  "descriptor": {
-                    "name": "Free car wash"
-                  },
-                  "price": {
-                    "value": "0",
-                    "currency": "INR"
-                  }
-                }
-              ]
-            }
-          ],
-          "fulfillments": [
-            {
-              "id": "1",
-              "type": "CHARGING",
-              "tags": [
-                {
-                  "descriptor": {
-                    "name": "Charging Point Specifications"
-                  },
-                  "list": [
-                    {
-                      "descriptor": {
-                        "name": "Pillar Number 4",
-                        "code": "charger-id"
-                      },
-                      "value": "charg1"
-                    },
-                    {
-                      "descriptor": {
-                          "code": "Availability"
-                      },
-                      "value": "Available"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "2",
-              "type": "CHARGING",
               "tags": [
                 {
                   "descriptor": {
@@ -409,37 +315,45 @@ Search request can contain one or more search criterion within it. Use the follo
                   ]
                 }
               ],
-              "display": true
-            },
-            {
-              "id": "3",
-              "type": "CHARGING",
-              "tags": [
+              "category_ids": [
+                "1"
+              ],
+              "location_ids": [
+                "1"
+              ],
+              "fulfillment_ids": [
+                "1"
+              ],
+              "add_ons": [
                 {
+                  "id": "pe-charging-01-addon-1",
                   "descriptor": {
-                    "name": "Charging Point Specifications"
+                    "name": "Free car wash"
                   },
-                  "list": [
-                    {
-                      "descriptor": {
-                        "name": "Pillar Number 3",
-                        "code": "charger-id"
-                      },
-                      "value": "charg3"
-                    },
-                    {
-                      "descriptor": {
-                          "code": "Availability"
-                      },
-                      "value": "Unvailable"
-                    }
-                  ]
+                  "price": {
+                    "value": "0",
+                    "currency": "INR"
+                  }
                 }
               ]
             },
             {
-              "id": "4",
-              "type": "CHARGING",
+              "id": "pe-charging-02",
+              "descriptor": {
+                "code": "energy"
+              },
+              "price": {
+                "value": "8",
+                "currency": "INR/kWH"
+              },
+              "quantity": {
+                "available": {
+                  "measure": {
+                    "value": "100",
+                    "unit": "kWH"
+                  }
+                }
+              },
               "tags": [
                 {
                   "descriptor": {
@@ -483,8 +397,82 @@ Search request can contain one or more search criterion within it. Use the follo
                     }
                   ]
                 }
+              ]
+              "category_ids": [
+                "1"
               ],
-              "display": true
+              "location_ids": [
+                "1"
+              ],
+              "fulfillment_ids": [
+                "3"
+              ],
+              "add_ons": [
+                {
+                  "id": "pe-charging-01-addon-1",
+                  "descriptor": {
+                    "name": "Free car wash"
+                  },
+                  "price": {
+                    "value": "0",
+                    "currency": "INR"
+                  }
+                }
+              ]
+            }
+          ],
+          "fulfillments": [
+            {
+              "id": "1",
+              "type": "CHARGING",
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "Charging Point Specifications"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "name": "Pillar Number 4",
+                        "code": "charger-id"
+                      },
+                      "value": "charg1"
+                    },
+                    {
+                      "descriptor": {
+                          "code": "Availability"
+                      },
+                      "value": "Available"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "type": "CHARGING",
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "Charging Point Specifications"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "name": "Pillar Number 3",
+                        "code": "charger-id"
+                      },
+                      "value": "charg3"
+                    },
+                    {
+                      "descriptor": {
+                          "code": "Availability"
+                      },
+                      "value": "Unvailable"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -542,10 +530,7 @@ Search request can contain one or more search criterion within it. Use the follo
       ],
       "fulfillments": [
         {
-          "id": "1"
-        },
-        {
-          "id": "2",
+          "id": "1",
           "stops": [
             {
               "type": "start",
@@ -630,64 +615,7 @@ Search request can contain one or more search criterion within it. Use the follo
                 "unit": "kWh"
               }
             }
-          }
-        },
-        {
-          "id": "pe-charging-01-addon-1",
-          "descriptor": {
-            "code": "add-on-item",
-            "name": "Free car wash"
           },
-          "price": {
-            "value": "0",
-            "currency": "INR"
-          }
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "1",
-          "type": "CHARGING",
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Charging Point Specifications"
-              },
-              "list": [
-                {
-                  "descriptor": {
-                    "name": "Pillar Number 4",
-                    "code": "charger-id"
-                  },
-                  "value": "charg1"
-                },
-                {
-                  "descriptor": {
-                      "code": "Availability"
-                  },
-                  "value": "Available"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "type": "CHARGING",
-          "stops": [
-            {
-              "type": "start",
-              "time": {
-                "timestamp": "2023-07-16T10:00:00+05:30"
-              }
-            },
-            {
-              "type": "finish",
-              "time": {
-                "timestamp": "2023-07-16T10:30:00+05:30"
-              }
-            }
-          ]
           "tags": [
             {
               "descriptor": {
@@ -696,7 +624,7 @@ Search request can contain one or more search criterion within it. Use the follo
               "list": [
                 {
                     "descriptor": {
-                        "name": "connector 1",
+                        "name": "connector Id",
                         "code": "connector-id"
                     },
                     "value": "con1"
@@ -731,8 +659,60 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
               ]
             }
-          ],
-          "display": true
+          ]
+        },
+        {
+          "id": "pe-charging-01-addon-1",
+          "descriptor": {
+            "code": "add-on-item",
+            "name": "Free car wash"
+          },
+          "price": {
+            "value": "0",
+            "currency": "INR"
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
+          ]
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                      "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
+            }
+          ]
         }
       ],
       "quote": {
@@ -831,10 +811,7 @@ Search request can contain one or more search criterion within it. Use the follo
       },
       "fulfillments": [
         {
-          "id": "1"
-        },
-        {
-          "id": "2",
+          "id": "1",
           "stops": [
             {
               "type": "start",
@@ -928,60 +905,6 @@ Search request can contain one or more search criterion within it. Use the follo
                 "unit": "kWh"
               }
             }
-          }
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "1",
-          "type": "CHARGING",
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Charging Point Specifications"
-              },
-              "list": [
-                {
-                  "descriptor": {
-                    "name": "Pillar Number 4",
-                    "code": "charger-id"
-                  },
-                  "value": "charg1"
-                },
-                {
-                  "descriptor": {
-                      "code": "Availability"
-                  },
-                  "value": "Available"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "type": "CHARGING",
-          "stops": [
-            {
-              "type": "start",
-              "time": {
-                "timestamp": "2023-07-16T10:00:00+05:30"
-              }
-            },
-            {
-              "type": "finish",
-              "time": {
-                "timestamp": "2023-07-16T10:30:00+05:30"
-              }
-            }
-          ],
-          "customer": {
-            "person": {
-              "name": "John Doe"
-            },
-            "contact": {
-              "phone": "+91-9887766554"
-            }
           },
           "tags": [
             {
@@ -1026,8 +949,57 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
               ]
             }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
           ],
-          "display": true
+          "customer": {
+            "person": {
+              "name": "John Doe"
+            },
+            "contact": {
+              "phone": "+91-9887766554"
+            }
+          }
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                      "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
+            }
+          ]
         }
       ],
       "billing": {
@@ -1156,10 +1128,7 @@ Search request can contain one or more search criterion within it. Use the follo
       },
       "fulfillments": [
         {
-          "id": "1"
-        },
-        {
-          "id": "2",
+          "id": "1",
           "stops": [
             {
               "type": "start",
@@ -1264,69 +1233,6 @@ Search request can contain one or more search criterion within it. Use the follo
                 "unit": "kWh"
               }
             }
-          }
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "1",
-          "type": "CHARGING",
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Charging Point Specifications"
-              },
-              "list": [
-                {
-                  "descriptor": {
-                    "name": "Pillar Number 4",
-                    "code": "charger-id"
-                  },
-                  "value": "charg1"
-                },
-                {
-                  "descriptor": {
-                      "code": "Availability"
-                  },
-                  "value": "Available"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "type": "CHARGING",
-          "stops": [
-            {
-              "type": "start",
-              "time": {
-                "timestamp": "2023-07-16T10:00:00+05:30"
-              },
-              "instructions": {
-                "name": "Charging instructions",
-                "short_desc": "To start your charging, go to charger number 987, and click on 'start' on your app"
-              }
-            },
-            {
-              "type": "finish",
-              "time": {
-                "timestamp": "2023-07-16T10:30:00+05:30"
-              }
-            }
-          ],
-          "customer": {
-            "person": {
-              "name": "John Doe"
-            },
-            "contact": {
-              "phone": "+91-9887766554"
-            }
-          },
-          "state": {
-            "descriptor": {
-              "code": "payment-completed"
-            }
           },
           "tags": [
             {
@@ -1371,8 +1277,66 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
               ]
             }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              },
+              "instructions": {
+                "name": "Charging instructions",
+                "short_desc": "To start your charging, go to charger number 987, and click on 'start' on your app"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
           ],
-          "display": true
+          "customer": {
+            "person": {
+              "name": "John Doe"
+            },
+            "contact": {
+              "phone": "+91-9887766554"
+            }
+          },
+          "state": {
+            "descriptor": {
+              "code": "payment-completed"
+            }
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                      "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
+            }
+          ]
         }
       ],
       "billing": {
@@ -1557,68 +1521,6 @@ Search request can contain one or more search criterion within it. Use the follo
               }
             }
           },
-          "fulfillment_ids": [
-            "1"
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "1",
-          "type": "CHARGING",
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Charging Point Specifications"
-              },
-              "list": [
-                {
-                  "descriptor": {
-                    "name": "Pillar Number 4",
-                    "code": "charger-id"
-                  },
-                  "value": "charg1"
-                },
-                {
-                  "descriptor": {
-                      "code": "Availability"
-                  },
-                  "value": "Available"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "type": "CHARGING",
-          "stops": [
-            {
-              "type": "start",
-              "time": {
-                "timestamp": "2023-07-16T10:00:00+05:30"
-              }
-            },
-            {
-              "type": "finish",
-              "time": {
-                "timestamp": "2023-07-16T10:30:00+05:30"
-              }
-            }
-          ],
-          "customer": {
-            "person": {
-              "name": "John Doe"
-            },
-            "contact": {
-              "phone": "+91-9887766554"
-            }
-          },
-          "state": {
-            "descriptor": {
-              "code": "pehicle getting charged"
-            }
-          },
           "tags": [
             {
               "descriptor": {
@@ -1661,13 +1563,68 @@ Search request can contain one or more search criterion within it. Use the follo
                     "value": "Available"
                 }
               ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "John Doe"
+            },
+            "contact": {
+              "phone": "+91-9887766554"
+            }
+          },
+          "state": {
+            "descriptor": {
+              "code": "pehicle getting charged"
+            }
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                      "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
             },
             {
               "descriptor": {
                   "name": "Charging Details",
                   "code": "charging-details"
-                },
-                "list": [
+              },
+              "list": [
                 {
                     "descriptor": {
                       "name": "Energy Delivered",  
@@ -1734,8 +1691,7 @@ Search request can contain one or more search criterion within it. Use the follo
               ],
               "display": true
             }
-          ],
-          "display": true
+          ]
         }
       ],
       "billing": {
@@ -1932,69 +1888,6 @@ Search request can contain one or more search criterion within it. Use the follo
                 "unit": "kWh"
               }
             }
-          }
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "1",
-          "type": "CHARGING",
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Charging Point Specifications"
-              },
-              "list": [
-                {
-                  "descriptor": {
-                    "name": "Pillar Number 4",
-                    "code": "charger-id"
-                  },
-                  "value": "charg1"
-                },
-                {
-                  "descriptor": {
-                      "code": "Availability"
-                  },
-                  "value": "Available"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "type": "CHARGING",
-          "stops": [
-            {
-              "type": "start",
-              "time": {
-                "timestamp": "2023-07-16T10:00:00+05:30"
-              },
-              "instructions": {
-                "name": "Charging instructions",
-                "short_desc": "To start your charging, go to charger number 987, and click on 'start' on your app"
-              }
-            },
-            {
-              "type": "finish",
-              "time": {
-                "timestamp": "2023-07-16T10:30:00+05:30"
-              }
-            }
-          ],
-          "customer": {
-            "person": {
-              "name": "John Doe"
-            },
-            "contact": {
-              "phone": "+91-9887766554"
-            }
-          },
-          "state": {
-            "descriptor": {
-              "code": "charging started"
-            }
           },
           "tags": [
             {
@@ -2038,8 +1931,66 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
               ]
             }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              },
+              "instructions": {
+                "name": "Charging instructions",
+                "short_desc": "To start your charging, go to charger number 987, and click on 'start' on your app"
+              }
+            },
+            {
+              "type": "finish",
+              "time": {
+                "timestamp": "2023-07-16T10:30:00+05:30"
+              }
+            }
           ],
-          "display": true
+          "customer": {
+            "person": {
+              "name": "John Doe"
+            },
+            "contact": {
+              "phone": "+91-9887766554"
+            }
+          },
+          "state": {
+            "descriptor": {
+              "code": "charging started"
+            }
+          }
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                      "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
+            }
+          ]
         }
       ],
       "billing": {
@@ -2235,8 +2186,49 @@ Search request can contain one or more search criterion within it. Use the follo
               }
             }
           },
-          "fulfillment_ids": [
-            "1"
+          "tags": [
+            {
+              "descriptor": {
+                  "name": "Connector Specifications"
+              },
+              "list": [
+                {
+                    "descriptor": {
+                        "name": "connector Id",
+                        "code": "connector-id"
+                    },
+                    "value": "con1"
+                },
+                {
+                    "descriptor": {
+                        "name": "Charger Type",
+                        "code": "charger-type"
+                    },
+                    "value": "DC"
+                },
+                {
+                    "descriptor": {
+                        "name": "Connector Type",
+                        "code": "connector-type"
+                    },
+                    "value": "CCS2"
+                },
+                {
+                    "descriptor": {
+                        "name": "Power Rating",
+                        "code": "power-rating"
+                    },
+                    "value": "30kW"
+                },
+                {
+                    "descriptor": {
+                        "name": "Availability",
+                        "code": "availability"
+                    },
+                    "value": "Available"
+                }
+              ]
+            }
           ]
         }
       ],
@@ -2277,32 +2269,92 @@ Search request can contain one or more search criterion within it. Use the follo
           "tags": [
             {
               "descriptor": {
-                "name": "Charging Point"
+                "name": "Charging Point Specifications"
               },
               "list": [
                 {
                   "descriptor": {
-                    "name": "Charger type"
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
                   },
-                  "value": "AC"
+                  "value": "charg1"
                 },
                 {
                   "descriptor": {
-                    "name": "Connector type"
-                  },
-                  "value": "CCS2"
-                },
-                {
-                  "descriptor": {
-                    "name": "Power Rating"
-                  },
-                  "value": "greater than 50kW"
-                },
-                {
-                  "descriptor": {
-                    "name": "Availability"
+                      "code": "Availability"
                   },
                   "value": "Available"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                  "name": "Charging Details",
+                  "code": "charging-details"
+              },
+              "list": [
+                {
+                    "descriptor": {
+                      "name": "Energy Delivered",  
+                      "code": "energy-delivered"
+                    },
+                    "value": "2.3kWh"
+                },
+                {
+                    "descriptor": {
+                      "name": "State of Charge",
+                      "code": "soc"
+                    },
+                    "value": "80%"
+                },
+                {
+                  "descriptor": {
+                      "name": "Start Time",
+                      "code": "start-time"
+                    },
+                    "value": "2023-07-16T10:30:00.000Z"
+                },
+                {
+                  "descriptor": {
+                      "name": "Stop Time",
+                      "code": "stop-time"
+                    },
+                    "value": "2023-07-16T11:30:00.000Z"
+                },
+                {
+                  "descriptor": {
+                      "name": "Meter Start",
+                      "code": "meter-start"
+                    },
+                    "value": "12345"
+                },
+                {
+                  "descriptor": {
+                      "name": "Meter Stop",
+                      "code": "meter-stop"
+                    },
+                    "value": "14345"
+                },
+                {
+                  "descriptor": {
+                      "name": "Current",
+                      "code": "current"
+                    },
+                    "value": "10A"
+                },
+                {
+                  "descriptor": {
+                      "name": "Power",
+                      "code": "power"
+                    },
+                    "value": "3.3kW"
+                },
+                {
+                  "descriptor": {
+                      "name": "Voltage",
+                      "code": "voltage"
+                    },
+                    "value": "330V"
                 }
               ],
               "display": true
@@ -2623,8 +2675,49 @@ Search request can contain one or more search criterion within it. Use the follo
               }
             }
           },
-          "fulfillment_ids": [
-            "1"
+          "tags": [
+            {
+              "descriptor": {
+                  "name": "Connector Specifications"
+              },
+              "list": [
+                {
+                    "descriptor": {
+                        "name": "connector Id",
+                        "code": "connector-id"
+                    },
+                    "value": "con1"
+                },
+                {
+                    "descriptor": {
+                        "name": "Charger Type",
+                        "code": "charger-type"
+                    },
+                    "value": "DC"
+                },
+                {
+                    "descriptor": {
+                        "name": "Connector Type",
+                        "code": "connector-type"
+                    },
+                    "value": "CCS2"
+                },
+                {
+                    "descriptor": {
+                        "name": "Power Rating",
+                        "code": "power-rating"
+                    },
+                    "value": "30kW"
+                },
+                {
+                    "descriptor": {
+                        "name": "Availability",
+                        "code": "availability"
+                    },
+                    "value": "Available"
+                }
+              ]
+            }
           ]
         }
       ],
@@ -2662,32 +2755,92 @@ Search request can contain one or more search criterion within it. Use the follo
           "tags": [
             {
               "descriptor": {
-                "name": "Charging Point"
+                "name": "Charging Point Specifications"
               },
               "list": [
                 {
                   "descriptor": {
-                    "name": "Charger type"
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
                   },
-                  "value": "AC"
+                  "value": "charg1"
                 },
                 {
                   "descriptor": {
-                    "name": "Connector type"
-                  },
-                  "value": "CCS2"
-                },
-                {
-                  "descriptor": {
-                    "name": "Power Rating"
-                  },
-                  "value": "greater than 50kW"
-                },
-                {
-                  "descriptor": {
-                    "name": "Availability"
+                      "code": "Availability"
                   },
                   "value": "Available"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                  "name": "Charging Details",
+                  "code": "charging-details"
+              },
+              "list": [
+                {
+                    "descriptor": {
+                      "name": "Energy Delivered",  
+                      "code": "energy-delivered"
+                    },
+                    "value": "2.3kWh"
+                },
+                {
+                    "descriptor": {
+                      "name": "State of Charge",
+                      "code": "soc"
+                    },
+                    "value": "80%"
+                },
+                {
+                  "descriptor": {
+                      "name": "Start Time",
+                      "code": "start-time"
+                    },
+                    "value": "2023-07-16T10:30:00.000Z"
+                },
+                {
+                  "descriptor": {
+                      "name": "Stop Time",
+                      "code": "stop-time"
+                    },
+                    "value": "2023-07-16T11:30:00.000Z"
+                },
+                {
+                  "descriptor": {
+                      "name": "Meter Start",
+                      "code": "meter-start"
+                    },
+                    "value": "12345"
+                },
+                {
+                  "descriptor": {
+                      "name": "Meter Stop",
+                      "code": "meter-stop"
+                    },
+                    "value": "14345"
+                },
+                {
+                  "descriptor": {
+                      "name": "Current",
+                      "code": "current"
+                    },
+                    "value": "10A"
+                },
+                {
+                  "descriptor": {
+                      "name": "Power",
+                      "code": "power"
+                    },
+                    "value": "3.3kW"
+                },
+                {
+                  "descriptor": {
+                      "name": "Voltage",
+                      "code": "voltage"
+                    },
+                    "value": "330V"
                 }
               ],
               "display": true
