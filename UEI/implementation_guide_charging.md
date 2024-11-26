@@ -9,6 +9,7 @@
 | 07-08-2024 | 1.0     | Initial Version                                     |
 | 09-09-2024 | 1.1     | Incorporated input from Participants during Winroom |
 | 14-11-2024 | 1.2     | Incorporated feedback from Participants|
+| 25-11-2024 | 1.3     | Updated moving connector specification tag groups from "fulfillments" to "items."|
 
 ## Introduction
 
