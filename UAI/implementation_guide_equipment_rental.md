@@ -1738,3 +1738,16 @@ If you are writing the provider platform software, the following are the steps y
 
 - [Postman collection for UAI](./postman/Uai.postman_collection.json)
 
+## Sandbox Details
+
+### Registry/Gateway:
+- **Gateway Sandbox:**: gateway-uai.becknprotocol.io
+- **Registry Sandbox:**: registery-uai.becknprotocol.io
+
+### BPP:
+ - **BPP Client Sandbox:**: bpp-ps-client-sandbox-uai.becknprotocol.io
+ - **BPP Network Sandbox:**: bpp-ps-network-sandbox-uai.becknprotocol.io
+ - **BPP Sandbox:**: bpp-unified-sandbox-uai.becknprotocol.io
+
+### Domain name:
+    equipement-renting:uai
