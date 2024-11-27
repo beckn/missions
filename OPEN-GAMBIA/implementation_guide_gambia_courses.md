@@ -1,4 +1,4 @@
-# OPEN BELEM - DSEP Implementation Guide
+# OPEN gambia - DSEP Implementation Guide
 
 #### Version 1.1
 
@@ -11,7 +11,7 @@
 
 ## Introduction
 
-This document provides material that helps network participants build and integrate their application with the Open Belem Network for educational courses. This document is part of the starter kit that provides information about the network, learning resources, network participant checklist etc. This document only focuses on the implementation of the seeker/provider platform for educational courses. It assumes the reader has a good overview of the Beckn network, its APIs, the overall structure of the schema etc.
+This document provides material that helps network participants build and integrate their application with the Open Gambia Network for educational courses. This document is part of the starter kit that provides information about the network, learning resources, network participant checklist etc. This document only focuses on the implementation of the seeker/provider platform for educational courses. It assumes the reader has a good overview of the Beckn network, its APIs, the overall structure of the schema etc.
 
 ## Structure of the document
 
@@ -29,25 +29,27 @@ This document has the following parts:
 
 ### Use case - Discovery, order and fulfillment of Educational courses
 
-This use case uses the names "EduSeeker" and "CourseProvider" as examples for illustration.
+This use case uses the names "XPLOR BAP" and "Infosys Springboard" as examples for illustration.
 
-- Srilekha is a working professional looking to upskill herself. She uses her smartphone to search for suitable online courses in data science.
+- John is a student looking to improve his English language skills. He uses his smartphone to search for suitable online English conversation courses.
 
 **Discovery**:
-- Srilekha begins to browse the EduSeeker app to search for data science courses.
-- She receives a catalogue of 4 available courses provided by EduSeeker & CourseProvider. Among them, she finds one which fits her schedule and budget, offered by CourseProvider.
+- John opens the XPLOR app and browses through the available language courses.
+- He receives a catalog of courses including "Everyday Conversational English" offered by Infosys Springboard. He finds this course suitable as it's designed for beginners and fits his learning goals.
 
 **Order**:
-- Srilekha selects the course, opting for a 3-month program at the cost of Rs. 15,000.
-- She accepts the terms of order and is prompted to choose a payment method (card or link).
-- She chooses to make payment through the link and confirms the order.
-- The order is confirmed by CourseProvider and verifies the payment and generates an order ID.
+- John selects the course and reviews the course details including the instructor profile (Prof. Emma Sullivan), course duration (20 hours), and learning objectives.
+- He completes his profile setup, verifies his email, and proceeds with enrollment.
+- As this is a free course during the pilot phase, John directly enrolls without payment.
 
 **Fulfillment**:
-- Srilekha receives login credentials for the course platform. She logs in and starts her first lesson. After completing each module, she is prompted to take a quiz to test her understanding.
+- After enrollment, John receives access to the course platform. He starts with the preliminary quiz to assess his current level.
+- He progresses through the course modules which include video lessons, interactive exercises, and cultural insights sections.
+- After each module, he takes assessment quizzes to test his understanding.
 
 **Post Fulfillment**:
-- Upon course completion, Srilekha rates her experience using a 0-5 star rating.
+- Upon completing all modules, John receives a course completion certificate and digital badge.
+- He rates the course experience on a 5-star scale and provides detailed feedback through the course evaluation form.
 
 ## Flow diagrams
 
@@ -122,7 +124,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "search",
        "version": "{{core_version}}",
         "bap_id": "{{bap_id}}",
@@ -170,7 +172,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-12T20:29:08.425Z",
         "message_id": "5d2a120d-f7f3-48c2-9ce0-24708c83add8",
         "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -188,7 +190,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_search",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -392,7 +394,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "select",
         "version": "{{core_version}}",
         "bap_id": "{{bap_id}}",
@@ -442,7 +444,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-13T11:05:48.613Z",
         "message_id": "8b5a5d34-8b5e-47ad-b55e-81a09da7292c",
         "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -462,7 +464,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_select",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -668,7 +670,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "init",
         "version": "{{core_version}}",
         "bap_id": "{{bap_id}}",
@@ -760,7 +762,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-13T11:08:28.936Z",
         "message_id": "8390effd-c454-485e-8243-4606405878b8",
         "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -780,7 +782,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_init",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -1032,7 +1034,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "confirm",
         "version": "{{core_version}}",
         "bap_id": "{{bap_id}}",
@@ -1112,7 +1114,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-13T11:10:20.448Z",
         "message_id": "06944ad6-d7bc-47d6-8967-efa105e8bf2d",
         "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -1132,7 +1134,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_confirm",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -1465,7 +1467,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "status",
         "location": {
             "city": {
@@ -1507,7 +1509,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-13T11:11:14.004Z",
         "message_id": "d0a5c86d-e7d2-460b-8501-a42bec8119b6",
         "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -1527,7 +1529,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_status",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -1868,7 +1870,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "update",
         "location": {
             "city": {
@@ -1929,7 +1931,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-13T11:17:06.145Z",
         "message_id": "b14e6c0b-1897-4db4-85d5-58152cc9d9ff",
         "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -1949,7 +1951,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_update",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -2290,7 +2292,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "track",
         "location": {
             "city": {
@@ -2333,7 +2335,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-13T11:13:50.087Z",
         "message_id": "aef6a324-c863-4521-91ef-d547dbdc0812",
         "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62195",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -2353,7 +2355,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_track",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -2389,7 +2391,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "cancel",
         "location": {
             "country": {
@@ -2432,7 +2434,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-13T11:23:37.149Z",
         "message_id": "0a0954ba-32d1-4824-ab1c-02c5d3954934",
         "transaction_id": "bdb5ba09-2241-4f00-b434-73466cd06228",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -2448,7 +2450,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_cancel",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -2778,7 +2780,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "support",
         "version": "{{core_version}}",
         "location": {
@@ -2822,7 +2824,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-13T11:27:41.568Z",
         "message_id": "17a29828-4330-424e-a26f-faaf5ccdd2ca",
         "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -2842,7 +2844,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_support",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -2892,7 +2894,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "action": "rating",
         "location": {
             "city": {
@@ -2940,7 +2942,7 @@ Search request can contain one or more search criterion within it. Use the follo
         "timestamp": "2024-09-13T11:28:42.486Z",
         "message_id": "99aa1591-39c8-471a-9ade-7b4b5916b894",
         "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "dsep:courses",
+        "domain": "open-gambia:courses",
         "version": "1.1.0",
         "bap_id": "ps-bap-network.becknprotocol.io",
         "bap_uri": "https://ps-bap-network.becknprotocol.io",
@@ -2960,7 +2962,7 @@ Search request can contain one or more search criterion within it. Use the follo
     "responses": [
         {
             "context": {
-                "domain": "dsep:courses",
+                "domain": "open-belem:courses",
                 "action": "on_rating",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -3036,9 +3038,10 @@ If you are writing the provider platform software, the following are the steps y
 
 ## Links to artefacts
 
-- [Postman collection for DSEP. Check training and courses](./postman/dsep_postman_collection.json)
-- [Layer2 config for DSEP courses](./layer2/dsep_1.1.0.yaml)
-- When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/OPEN_BELEM/layer2/dsep_1.1.0.yaml)
+
+- [Postman collection for Open Belem. Check training and courses](./postman/open_gambia_postman_collection.json)
+- [Layer2 config for Open gambia courses courses](./layer2/open-gambia_courses_1.1.0.yaml)
+- When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/OPEN-GAMBIA/layer2/open-gambia_courses_1.1.0.yaml)
 
 
 
