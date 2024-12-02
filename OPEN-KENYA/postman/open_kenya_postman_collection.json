@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "acc73e55-32e2-4ab1-a20d-04c6ed04ce8c",
+		"name": "Open-Kenya-Example-Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4049356"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n      \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"search\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"transaction_id\":\"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"message_id\":\"{{$randomUUID}}\",\n      \"timestamp\": \"2023-11-06T09:41:09.673Z\"\n    },\n  \"message\": {\n    \"intent\": {\n      \"category\": {\n        \"descriptor\": {\n          \"code\": \"electronics\"\n        }\n      },\n      \"item\": {\n        \"descriptor\": {\n          \"name\": \"earphone\"\n        }\n      },\n      \"fulfillment\": {\n        \"type\": \"Delivery\",\n        \"stops\": [\n          {\n            \"location\": {\n              \"gps\": \"28.4594965,77.0266383\"\n            }\n          }\n        ]\n      }\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/search",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n      \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"select\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"bpp_id\": \"{{bpp_id}}\",\n      \"bpp_uri\": \"{{bpp_uri}}\",\n      \"message_id\": \"{{$randomUUID}}\",\n      \"transaction_id\": \"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"timestamp\": \"2023-11-06T09:44:47.217Z\"\n    },\n    \"message\": {\n    \"order\": {\n      \"provider\": {\n        \"id\": \"./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider\"\n      },\n      \"items\": [\n        {\n          \"id\": \"./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item\",\n          \"quantity\": {\n            \"selected\": {\n              \"count\": 2\n            }\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n          \"id\": \"f1\",\n          \"stops\": [\n            {\n              \"location\": {\n                \"gps\": \"13.2008459,77.708736\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  }\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/select",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"select"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Init",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n      \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"init\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"bpp_id\": \"{{bpp_id}}\",\n      \"bpp_uri\": \"{{bpp_uri}}\",\n      \"transaction_id\": \"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"message_id\": \"{{$randomUUID}}\",\n      \"timestamp\": \"2023-11-06T09:45:40.407Z\"\n    },\n    \"message\": {\n    \"order\": {\n      \"provider\": {\n        \"id\": \"./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider\"\n      },\n      \"items\": [\n        {\n          \"id\": \"./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item\",\n          \"quantity\": {\n            \"selected\": {\n              \"count\": 2\n            }\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n          \"type\": \"Delivery\",\n          \"stops\": [\n            {\n              \"location\": {\n                \"gps\": \"13.2008459,77.708736\",\n                \"address\": \"123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India\",\n                \"city\": {\n                  \"name\": \"Gangamuthanahalli\"\n                },\n                \"state\": {\n                  \"name\": \"Karnataka\"\n                },\n                \"country\": {\n                  \"code\": \"IND\"\n                },\n                \"area_code\": \"75001\"\n              },\n              \"contact\": {\n                \"phone\": \"919246394908\",\n                \"email\": \"nc.rehman@gmail.com\"\n              }\n            }\n          ],\n          \"customer\": {\n            \"person\": {\n              \"name\": \"Motiur Rehman\"\n            },\n            \"contact\": {\n              \"phone\": \"919122343344\"\n            }\n          }\n        }\n      ],\n      \"billing\": {\n        \"name\": \"Motiur Rehman\",\n        \"phone\": \"9191223433\",\n        \"email\": \"nc.rehman@gmail.com\",\n        \"address\": \"123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India\",\n        \"city\": {\n          \"name\": \"Gangamuthanahalli\"\n        },\n        \"state\": {\n          \"name\": \"Karnataka\"\n        }\n      }\n    }\n  }\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/init",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n       \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"confirm\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"bpp_id\": \"{{bpp_id}}\",\n      \"bpp_uri\": \"{{bpp_uri}}\",\n      \"message_id\": \"{{$randomUUID}}\",\n      \"transaction_id\": \"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"timestamp\": \"2023-11-06T10:14:10.280Z\"\n    },\n    \"message\": {\n    \"order\": {\n      \"provider\": {\n        \"id\": \"./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider\"\n      },\n      \"items\": [\n        {\n          \"id\": \"./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item\",\n          \"quantity\": {\n            \"selected\": {\n              \"count\": 2\n            }\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n          \"type\": \"Delivery\",\n          \"stops\": [\n            {\n              \"location\": {\n                \"gps\": \"13.2008459,77.708736\",\n                \"address\": \"123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India\",\n                \"city\": {\n                  \"name\": \"Gangamuthanahalli\"\n                },\n                \"state\": {\n                  \"name\": \"Karnataka\"\n                },\n                \"country\": {\n                  \"code\": \"IND\"\n                },\n                \"area_code\": \"75001\"\n              },\n              \"contact\": {\n                \"phone\": \"919246394908\",\n                \"email\": \"nc.rehman@gmail.com\"\n              }\n            }\n          ],\n          \"customer\": {\n            \"person\": {\n              \"name\": \"Motiur Rehman\"\n            },\n            \"contact\": {\n              \"phone\": \"919122343344\"\n            }\n          }\n        }\n      ],\n      \"billing\": {\n        \"name\": \"Motiur Rehman\",\n        \"phone\": \"9191223433\",\n        \"email\": \"nc.rehman@gmail.com\",\n        \"address\": \"123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India\",\n        \"city\": {\n          \"name\": \"Gangamuthanahalli\"\n        },\n        \"state\": {\n          \"name\": \"Karnataka\"\n        }\n      },\n      \"payments\": [\n        {\n          \"status\": \"PAID\",\n          \"type\": \"PRE-FULFILLMENT\",\n          \"params\": {\n            \"amount\": \"1500\",\n            \"currency\": \"INR\",\n            \"bank_code\": \"INB0004321\",\n            \"bank_account_number\": \"1234002341\",\n            \"transaction_id\": \"jhdasjd8ee783\"\n          }\n        }\n      ]\n    }\n  }\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/confirm",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n      \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"status\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"bpp_id\": \"{{bpp_id}}\",\n      \"bpp_uri\": \"{{bpp_uri}}\",\n      \"message_id\": \"{{$randomUUID}}\",\n      \"transaction_id\": \"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"timestamp\": \"2023-11-06T10:14:10.295Z\",\n      \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order_id\": \"b989c9a9-f603-4d44-b38d-26fd72286b38\"\n    }\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/status",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Support",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n      \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"support\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"bpp_id\": \"{{bpp_id}}\",\n      \"bpp_uri\": \"{{bpp_uri}}\",\n      \"message_id\": \"{{$randomUUID}}\",\n      \"transaction_id\": \"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"timestamp\": \"2023-11-06T10:14:10.295Z\",\n      \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"ref_id\": \"b989c9a9-f603-4d44-b38d-26fd72286b38\",\n        \"phone\": \"+91 4444444444\",\n        \"email\": \"me@gmail.com\"\n    }\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/support",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"support"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n      \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"update\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"bpp_id\": \"{{bpp_id}}\",\n      \"bpp_uri\": \"{{bpp_uri}}\",\n      \"message_id\": \"{{$randomUUID}}\",\n      \"transaction_id\": \"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"timestamp\": \"2023-11-06T10:14:10.295Z\",\n      \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order\": {\n            \"id\":\"b989c9a9-f603-4d44-b38d-26fd72286b38\",\n            \"fulfillment\": {\n                \"customer\": {\n                  \"contact\": {\n                    \"phone\": \"+91-8056475647\"\n                  }\n                }\n            }\n        },\n        \"update_target\": \"order.fulfillment.customer.contact.phone\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/update",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Track",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n      \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"track\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"bpp_id\": \"{{bpp_id}}\",\n      \"bpp_uri\": \"{{bpp_uri}}\",\n      \"message_id\": \"{{$randomUUID}}\",\n      \"transaction_id\": \"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"timestamp\": \"2023-11-06T10:14:10.295Z\",\n      \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order_id\": \"b989c9a9-f603-4d44-b38d-26fd72286b38\"\n    }\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/track",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"track"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n      \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"rating\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"bpp_id\": \"{{bpp_id}}\",\n      \"bpp_uri\": \"{{bpp_uri}}\",\n      \"message_id\": \"{{$randomUUID}}\",\n      \"transaction_id\": \"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"timestamp\": \"2023-11-06T10:14:10.295Z\",\n      \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"ratings\": [{\n            \"id\": \"b989c9a9-f603-4d44-b38d-26fd72286b38\",\n            \"rating_category\": \"Order\",\n            \"value\": \"8\"\n        }]\n    }\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/rating",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"context\": {\n      \"domain\": \"{{domain}}\",\n       \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"std:080\"\n            }\n        },\n      \"action\": \"cancel\",\n      \"version\": \"{{version}}\",\n      \"bap_id\": \"{{bap_id}}\",\n      \"bap_uri\": \"{{bap_uri}}\",\n      \"bpp_id\": \"{{bpp_id}}\",\n      \"bpp_uri\": \"{{bpp_uri}}\",\n      \"message_id\": \"{{$randomUUID}}\",\n      \"transaction_id\": \"8100d125-76a7-4588-88be-81b97657cd09\",\n      \"timestamp\": \"2023-11-06T10:14:10.295Z\",\n      \"ttl\": \"PT10M\"\n    },\n    \"message\": {\n        \"order_id\": \"b989c9a9-f603-4d44-b38d-26fd72286b38\",\n        \"cancellation_reason_id\": \"4\",\n        \"descriptor\": {\n          \"short_desc\": \"Order delayed\"\n        }\n    }\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cancel",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "bap_id",
+			"value": "ps-bap-network.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "bap_uri",
+			"value": "https://ps-bap-network.becknprotocol.io/",
+			"type": "string"
+		},
+		{
+			"key": "bpp_id",
+			"value": "sandbox-bpp-network.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "bpp_uri",
+			"value": "https://sandbox-bpp-network.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "https://ps-bap-client.becknprotocol.io",
+			"type": "string"
+		},
+		{
+			"key": "domain",
+			"value": "retail:1.1.0",
+			"type": "string"
+		},
+		{
+			"key": "version",
+			"value": "1.1.0",
+			"type": "string"
+		}
+	]
+}
