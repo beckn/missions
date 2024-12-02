@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Beckn Protocol Core
-  description: Layer 2 config for ev-charging:uei
+  description: Layer 2 config for Open-Amsterdam-Retail
   version: 1.1.0
 security:
   - SubscriberAuth: []
