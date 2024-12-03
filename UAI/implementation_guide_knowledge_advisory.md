@@ -27,6 +27,8 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
+![UAI Knowledge Advisory Outcome Visualization](images/uai_knowledge_advisory_outcome_visualization.svg)
+
 ### Use case - Discovery and consumption of free knowledge advisory
 
 1. Sandip, an onion farmer from Nashik, encounters an unknown infestation (which he can specify by its properties) on his crops.

@@ -25,6 +25,9 @@ This document has the following parts:
 7. Sandbox Details - Sandbox links to BAP, Regitry/Gateway and BPP.
 
 ## Outcome Visualisation
+
+![Open Kenya Products Outcome Visualization](images/open_kenya_products_outcome_visualization.svg)
+
 ### Use case - Discovery, order and fulfillment of Agricultural Products
 
 This use case follows Yaro, an Agripreneur in Mombasa, Kenya, as he helps farmers purchase fertilizers.

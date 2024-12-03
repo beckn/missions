@@ -27,6 +27,8 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
+![Open Belem Outcome Visualization](images/open_belem_outcome_visualization.svg)
+
 ### Use case - Discovery, order and fulfillment of Educational courses
 
 This use case uses the names "EduSeeker" and "CourseProvider" as examples for illustration.

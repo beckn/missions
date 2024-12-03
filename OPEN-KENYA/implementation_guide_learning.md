@@ -1,4 +1,4 @@
-# Open kenya Implementation Guide
+# Open kenya learning Implementation Guide
 
 #### Version 1.1
 
@@ -25,6 +25,9 @@ This document has the following parts:
 7. Sandbox Details - Sandbox links to BAP, Regitry/Gateway and BPP.
 
 ## Outcome Visualisation
+
+![Open Kenya Learning Outcome Visualization](images/open_kenya_learning_outcome_visualization.svg)
+
 ### Use case - Discovery, order and fulfillment of Educational Content
 
 This use case follows Yara, an Agripreneur in Bondo, Kenya, as he accesses educational content for skill development.

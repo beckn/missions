@@ -29,6 +29,8 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
+![UEI Charging Outcome Visualization](images/uei_outcome_visualization.svg)
+
 ### Use case - Discovery, order and fulfillment of EV Charging
 
 This use cases uses the names "Pulse Energy" and "Kazam" as examples for illustration.

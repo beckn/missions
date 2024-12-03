@@ -27,6 +27,8 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
+![UAI Equipment Purchase Outcome Visualization](images/uai_equipment_sales_outcome_visualization.svg)
+
 ### Use case - Discovery of Equipment Purchase on UAI Network
 
 1.	Rajesh, a guava farmer in Nashik district, needs a motor pump for his 2-acre farm and uses a UAI-enabled app to search for suitable options.

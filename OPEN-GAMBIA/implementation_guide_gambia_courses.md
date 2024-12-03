@@ -27,6 +27,8 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
+![Open Gambia Outcome Visualization](images/open_gambia_outcome_visualization.svg)
+
 ### Use case - Discovery, order and fulfillment of Educational courses
 
 This use case uses the names "XPLOR BAP" and "Infosys Springboard" as examples for illustration.

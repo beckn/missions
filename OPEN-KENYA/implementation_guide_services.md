@@ -25,6 +25,9 @@ This document has the following parts:
 7. Sandbox Details - Sandbox links to BAP, Regitry/Gateway and BPP.
 
 ## Outcome Visualisation
+
+![Open Kenya Services Outcome Visualization](images/open_kenya_services_outcome_visualization.svg)
+
 ### Use case - Discovery, order and fulfillment of Farm Labour Services
 
 This use case follows Jacob Omondi, an Agripreneur in Nairobi, Kenya, as he helps farmers hire agricultural laborers.

@@ -25,6 +25,10 @@ This document has the following parts:
 7. Sandbox Details - Sandbox links to BAP, Regitry/Gateway and BPP.
 
 ## Outcome Visualisation
+
+![Open Amsterdam Outcome Visualization](images/open_amsterdam_outcome_visualization.svg)
+
+
 ### Use case - Discovery, order and fulfillment of Local Retail Products
 
 This use case follows Nina, a 45-year-old bakery owner, as she shops for bulk ingredients.

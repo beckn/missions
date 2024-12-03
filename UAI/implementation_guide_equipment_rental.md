@@ -27,6 +27,8 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
+![UAI Equipment Rental Outcome Visualization](images/uai_equipment_rental_outcome_visualization.svg)
+
 ### Use case - Discovery of Rental Services for Farm Equipment
 
 1.	Vijay, a grape farmer in Nashik, faces a powdery mildew infestation on his crops and needs a sprayer to apply fungicides effectively.
