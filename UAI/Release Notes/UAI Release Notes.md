@@ -33,3 +33,6 @@ L2 configuration files for Sales use case
 
 ### Version 1.0
 Publish the incoprated Version 0.1 & Version 0.2
+
+### Version 1.1(Advisory Guide)
+A new section created for Schema Details and added details for Weather Advisory, Advisory & Spray Schedule & Disease and Pest forecast
