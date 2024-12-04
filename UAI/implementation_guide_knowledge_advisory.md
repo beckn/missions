@@ -7,8 +7,9 @@
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
 | 06-11-2024 | 0.1     | Initial Version                                     |
-| 14-11-2024 | 0.2     | Internal Review Comments Incorprated                                     |
-| 18-11-2024 | 1.0     | Final Version                                     |
+| 14-11-2024 | 0.2     | Internal Review Comments Incorprated                |
+| 18-11-2024 | 1.0     | Final Version                                       |
+| 04-12-2024 | 1.1     | A new section created for Schema Details and added details for Weather Advisory, Advisory & Spray Schedule & Disease and Pest forecast      |
 
 ## Introduction
 
