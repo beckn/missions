@@ -27,7 +27,7 @@ This repository is maintained by the FIDE mission teams and is actively used for
 
 | Serial No     | Name                     | Version  | Release Date   |Release Notes  |Link to Guide  |
 |---------------|--------------------------|----------|----------------|----------------|---------------|
-| 1             | UAI Advisory   |1.1       |18th Nov 2024   |[Click Here](https://github.com/beckn/missions/blob/main/UAI/Release%20Notes/UAI%20Release%20Notes.md)   | [Click Here](https://github.com/beckn/missions/blob/main/UAI/implementation_guide_knowledge_advisory.md)
+| 1             | UAI Advisory   |1.1       |04th Dec 2024   |[Click Here](https://github.com/beckn/missions/blob/main/UAI/Release%20Notes/UAI%20Release%20Notes.md)   | [Click Here](https://github.com/beckn/missions/blob/main/UAI/implementation_guide_knowledge_advisory.md)
 | 2             | UEI EV Charging  |1.3       |25th Nov 2024   |[Click Here](https://github.com/beckn/missions/blob/main/UEI/Release%20Notes/UEI%20Release%20Notes.md)   | [Click Here](https://github.com/beckn/missions/blob/main/UEI/implementation_guide_charging.md)
 | 3             | UAI   |0.2       |14th Nov 2024   |[Click Here](https://github.com/beckn/missions/blob/main/UAI/Release%20Notes/UAI%20Release%20Notes.md)   | [Click Here](https://github.com/beckn/missions/tree/main/UAI)
 | 4             | UEI EV Charging  |1.2       |14th Nov 2024   |[Click Here](https://github.com/beckn/missions/blob/main/UEI/Release%20Notes/UEI%20Release%20Notes.md)   | [Click Here](https://github.com/beckn/missions/blob/main/UEI/implementation_guide_charging.md)
