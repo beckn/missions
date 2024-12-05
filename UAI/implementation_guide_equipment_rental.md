@@ -289,9 +289,9 @@ Beckn is a aynchronous protocol at its core.
                 {
                     "id": "1",
                     "descriptor": {
-                        "name": "Provider 1",
-                        "short_desc": "",
-                        "long_desc": "",
+                        "name": "Sandip",
+                        "short_desc": "A local sprayer provider",
+                        "long_desc": "The provider has ....",
                         "images": [
                             {
                                 "url": "https://image_url"
@@ -349,11 +349,6 @@ Beckn is a aynchronous protocol at its core.
                                 "value": "300.0"
                             },
                             "rating": "4.2",
-                            "creator": {
-                                "descriptor": {
-                                    "name": "Sandip"
-                                }
-                            },
                             "location_ids": [
                                 "l1"
                             ],
@@ -385,7 +380,55 @@ Beckn is a aynchronous protocol at its core.
                                     ]
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "id": "1",
+                    "descriptor": {
+                        "name": "Bhagwan Wane",
+                        "short_desc": "A modern sprayer provider",
+                        "long_desc": "The provider has ....",
+                        "images": [
+                            {
+                                "url": "https://image_url"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "c1",
+                            "descriptor": {
+                                "code": "Agri Services",
+                                "name": "Agri Services"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "f1",
+                            "type": "Delivery"
                         },
+                        {
+                            "id": "f2",
+                            "type": "Self-Pickup"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "l1",
+                            "gps": "23.11355, 24.32344"
+                        },
+                        {
+                            "id": "l2",
+                            "gps": "24.11355, 23.32344"
+                        },
+                        {
+                            "id": "l3",
+                            "gps": "24.24434, 23.24234"
+                        }
+                    ],
+                    "items": [
                         {
                             "id": "2",
                             "descriptor": {
@@ -403,11 +446,6 @@ Beckn is a aynchronous protocol at its core.
                                 "value": "400.0"
                             },
                             "rating": "3.8",
-                            "creator": {
-                                "descriptor": {
-                                    "name": "Bhagwan Wane"
-                                }
-                            },
                             "location_ids": [
                                 "l2"
                             ],
@@ -439,7 +477,55 @@ Beckn is a aynchronous protocol at its core.
                                     ]
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "id": "1",
+                    "descriptor": {
+                        "name": "Ajinkya Sonavane",
+                        "short_desc": "Agricultural parts provider ....",
+                        "long_desc": "The provider has ....",
+                        "images": [
+                            {
+                                "url": "https://image_url"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "c1",
+                            "descriptor": {
+                                "code": "Agri Services",
+                                "name": "Agri Services"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "f1",
+                            "type": "Delivery"
                         },
+                        {
+                            "id": "f2",
+                            "type": "Self-Pickup"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "l1",
+                            "gps": "23.11355, 24.32344"
+                        },
+                        {
+                            "id": "l2",
+                            "gps": "24.11355, 23.32344"
+                        },
+                        {
+                            "id": "l3",
+                            "gps": "24.24434, 23.24234"
+                        }
+                    ],
+                    "items": [
                         {
                             "id": "3",
                             "descriptor": {
@@ -457,11 +543,6 @@ Beckn is a aynchronous protocol at its core.
                                 "value": "600.0"
                             },
                             "rating": "3.5",
-                            "creator": {
-                                "descriptor": {
-                                    "name": "Ajinkya Sonavane"
-                                }
-                            },
                             "location_ids": [
                                 "l2"
                             ],

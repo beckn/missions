@@ -187,7 +187,7 @@ Beckn is a aynchronous protocol at its core.
                 },
                 "creator": {
                     "descriptor": {
-                        "code": "any"
+                        "code": "Kirlosker"
                     }
                 },
                 "tags": [
@@ -197,13 +197,7 @@ Beckn is a aynchronous protocol at its core.
                                 "descriptor": {
                                     "code": "capacity"
                                 },
-                                "value": "30MM"
-                            },
-                            {
-                                "descriptor": {
-                                    "code": "capacity"
-                                },
-                                "value": "60MM"
+                                "value": ">30MM"
                             }
                         ]
                     }
