@@ -384,7 +384,7 @@ Beckn is a aynchronous protocol at its core.
                     ]
                 },
                 {
-                    "id": "1",
+                    "id": "2",
                     "descriptor": {
                         "name": "Bhagwan Wane",
                         "short_desc": "A modern sprayer provider",
@@ -481,7 +481,7 @@ Beckn is a aynchronous protocol at its core.
                     ]
                 },
                 {
-                    "id": "1",
+                    "id": "3",
                     "descriptor": {
                         "name": "Ajinkya Sonavane",
                         "short_desc": "Agricultural parts provider ....",
