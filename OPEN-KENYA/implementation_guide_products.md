@@ -1,4 +1,4 @@
-# Open kenya Implementation Guide
+# Open kenya products Implementation Guide
 
 #### Version 1.1
 
