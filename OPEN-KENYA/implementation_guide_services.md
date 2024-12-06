@@ -1,4 +1,4 @@
-# Open kenya Implementation Guide
+# Open kenya services Implementation Guide
 
 #### Version 1.1
 
