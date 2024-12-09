@@ -121,7 +121,7 @@ Beckn is a aynchronous protocol at its core.
 
 #### search
 
-**search by keyword**
+**search by equpement/service  type**
 ```
 {
     "context": {
@@ -152,7 +152,7 @@ Beckn is a aynchronous protocol at its core.
   }
 ```
 
-**search by keyword, using filters as tags**
+**search by equpement/service type, rating and crop stage**
 ```
 {
     "context": {
@@ -181,21 +181,11 @@ Beckn is a aynchronous protocol at its core.
           "tags": [
                 {
                     "descriptor": {
-                        "name": "stage"
+                        "name": "crop stage"
                     },
                     "list": [
                         {
                             "value": "Land Preparation"
-                        }
-                    ]
-                },
-                {
-                    "descriptor": {
-                        "name": "experience"
-                    },
-                    "list": [
-                        {
-                            "value": ">1 Years"
                         }
                     ]
                 }
@@ -206,7 +196,7 @@ Beckn is a aynchronous protocol at its core.
   }
 ```
 
-**search by keyword, price limit and fulfillment type**
+**search by equpement/service type, price limit and fulfillment type**
 ```
 {
     "context": {
@@ -234,10 +224,84 @@ Beckn is a aynchronous protocol at its core.
           "price": {
             "currency": "INR/Acre",
             "maximum_value": "1000.0"
-          },
-          "fulfillment": {
-            "type": "Delivery"
           }
+        },
+        "fulfillment": {
+            "type": "Delivery",
+            "stops": [
+                {
+                    "type": "SITE",
+                    "location": {
+                        "gps": "23.11355, 24.32344"
+                    },
+                    "time: {
+                        "range": {
+                            "start": "2024-12-01T08:30:00Z",
+                            "end": "2024-12-10T18:00:00Z"
+                        }
+                    }
+                }
+            ]
+        }
+      }
+    }
+  }
+```
+
+**search by equpement/service type, user location, provider's distance from user location and date of delivery**
+```
+{
+    "context": {
+      "domain": "equipement-renting:uai",
+      "location": {
+        "country": {
+          "name": "IND"
+        }
+      },
+      "action": "search",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "timestamp": "2023-11-06T09:41:09.673Z",
+      "ttl": "PT10M"
+    },
+    "message": {
+      "intent": {
+        "item": {
+          "descriptor": {
+            "name": "agriculture sprayer"
+          }
+        },
+        "fulfillment": {
+            "stops": [
+                {
+                    "type": "SITE",
+                    "location": {
+                        "gps": "23.11355, 24.32344"
+                    },
+                    "time: {
+                        "range": {
+                            "start": "2024-12-01T08:30:00Z",
+                            "end": "2024-12-10T18:00:00Z"
+                        }
+                    }
+                }
+            ]
+        },
+        "provider": {
+            "locations": [
+                {
+                    "circle": {
+                        "gps": "23.11355, 24.32344",
+                        "radius": {
+                            "unit": "Killometer",
+                            "value": "20"
+                        }
+                    }
+                }
+            ]
         }
       }
     }

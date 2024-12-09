@@ -221,6 +221,270 @@ Beckn is a aynchronous protocol at its core.
 
 ```
 
+**search by crop details and environment details and disease for spray schedule**
+
+- The desired language is specified in a tag named languages.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "spray-schedule"
+        }
+      },
+      "item": {
+        "tags": [
+          {
+            "descriptor": {
+              "name": "languages"
+            },
+            "list": [
+              {
+                "value": "mr"
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        {
+          "descriptor": {
+              "name": "crop-details"
+            },
+            "list": [
+              {
+                "descriptor": {
+                  "code": "crop-name"
+                },
+                "value": "grape"
+              },
+              {
+                "descriptor": {
+                  "code": "plantation-date"
+                },
+                "value": "2024-07-02T00:0:00Z"
+              },
+              {
+                "descriptor": {
+                  "code": "growth-stage"
+                },
+                "value": "flowering"
+              }
+            ]
+        },
+        {
+          "descriptor": {
+              "name": "environment-condition"
+            },
+            "list": [
+              {
+                "descriptor": {
+                  "code": "soil-type"
+                },
+                "value": "black soil"
+              },
+              {
+                "descriptor": {
+                  "code": "irrigation-type"
+                },
+                "value": "surface drip"
+              }
+            ]
+        },
+        {
+          "descriptor": {
+              "name": "health-information"
+            },
+            "list": [
+              {
+                "descriptor": {
+                  "code": "disease-name"
+                },
+                "value": "karpa"
+              }
+            ]
+        }
+      ]
+    }
+  }
+}
+
+```
+
+**search by a commodity and a date range for a price discovery**
+
+- The desired language is specified in a tag named languages.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "price-discovery"
+        },
+        "time": {
+          "range": {
+            "start": "2024-12-01T08:30:00Z",
+            "end": "2024-12-10T18:00:00Z"
+          }
+        }
+      },
+      "item": {
+        "descriptor": {
+          "code": "Basmati-Rice"
+        }.
+        "tags": [
+          {
+            "descriptor": {
+              "name": "languages"
+            },
+            "list": [
+              {
+                "value": "mr"
+              },
+              {
+                "value": "en"
+              }
+            ]
+          }
+        ]
+      },
+      "fulfillment": {
+        "stops": [
+          {
+            "type": "price-location",
+            "location": {
+              "area_code": "416506" // pin code
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+
+```
+
+
+**search by crop details and location for a pest forecast**
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "pest-forecast"
+        }
+      },
+      "item": {
+        "tags": [
+          {
+            "descriptor": {
+              "name": "languages"
+            },
+            "list": [
+              {
+                "value": "mr"
+              },
+              {
+                "value": "en"
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        {
+          "descriptor": {
+              "name": "crop-details"
+          },
+          "list": [
+            {
+              "descriptor": {
+                "code": "crop-name"
+              },
+              "value": "grape"
+            },
+            {
+              "descriptor": {
+                "code": "plantation-date"
+              },
+              "value": "2024-07-02T00:0:00Z"
+            },
+            {
+              "descriptor": {
+                "code": "growth-stage"
+              },
+              "value": "flowering"
+            }
+          ]
+        }
+      ],
+      "fulfillment": {
+        "stops": [
+          {
+            "type": "forecast-location",
+            "location": {
+              "gps": ""12.9716, 77.5946""
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+
+```
+
 **search by topic and rating**
 
 - The topic to search is specified in the message->intent->item->descriptor->name field.
@@ -613,27 +877,29 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
      "intent": {
-      "item": {
-        "descriptor": {
-          "name": "Weather forecast"
-        },
-        "time" : {
-          "range" : {
-            "start" : "2024-03-01T00:00:00.000Z",
-            "end" : "2024-03-15T00:00:00.000Z"
+        "category": {
+            "descriptor": {
+              "code": "Weather-Forecast"
           }
-        }
-      },
-      "fulfillment": {
-        "stops": [
-          {
-            "location": {
-              "gps": ""12.9716, 77.5946""
+        },
+        "item": {
+          "time" : {
+            "range" : {
+              "start" : "2024-03-01T00:00:00.000Z",
+              "end" : "2024-03-15T00:00:00.000Z"
             }
           }
-        ]
+        },
+        "fulfillment": {
+          "stops": [
+            {
+              "location": {
+                "gps": ""12.9716, 77.5946""
+              }
+            }
+          ]
+        }
       }
-    }
   }
 }
 ```
@@ -674,11 +940,13 @@ Beckn is a aynchronous protocol at its core.
             ]
           }
         ]
-      }
+      },
+      "category": {
+          "descriptor": {
+            "code": "Weather-Forecast"
+        }
+      },
       "item": {
-        "descriptor": {
-          "name": "Weather forecast"
-        },
         "time" : {
           "range" : {
             "start" : "2024-03-01T00:00:00.000Z",
@@ -704,6 +972,66 @@ Beckn is a aynchronous protocol at its core.
       "fulfillment": {
         "stops": [
           {
+            "location": {
+              "gps": ""12.9716, 77.5946""
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**search by topic, duration, language and fulfillment location**
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "7b3d0c62-7c1b-4c6b-b768-14f81b6c3c90",
+    "message_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+     "intent": {
+      "category": {
+          "descriptor": {
+            "code": "Weather-Forecast"
+        }
+      },
+      "item": {
+        "time" : {
+          "duration" : "P3D" // 3 days in ISO8601
+        },
+        "tags": [
+          {
+            "descriptor": {
+              "name": "languages"
+            },
+            "list": [
+              {
+                "value": "mr"
+              },
+              {
+                "value": "en"
+              }
+            ]
+          }
+        ]
+      },
+      "fulfillment": {
+        "stops": [
+          {
+            "type": "Forecast-Region"
             "location": {
               "gps": ""12.9716, 77.5946""
             }
