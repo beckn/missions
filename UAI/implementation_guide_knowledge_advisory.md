@@ -139,7 +139,7 @@ Beckn is a aynchronous protocol at its core.
 
 **search by topic**
 
-- The topic to search is specified in the message->item->descriptor->name field.
+- The topic to search is specified in the message->descriptor->name field.
 
 ```
 {
@@ -161,11 +161,9 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "intent": {
-      "item": {
         "descriptor": {
           "name": "Kala Daag on onion leaves"
         }
-      }
     }
   }
 }
@@ -173,7 +171,7 @@ Beckn is a aynchronous protocol at its core.
 
 **search by topic and language**
 
-- The topic to search is specified in the message->intent->item->descriptor->name field.
+- The topic to search is specified in the message->intent->descriptor->name field.
 - The desired language is specified in a tag named languages.
 
 ```
@@ -195,10 +193,10 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "intent": {
-      "item": {
-        "descriptor": {
+      "descriptor": {
           "name": "kala daag on onion leaves"
-        },
+      },
+      "item": {
         "tags": [
           {
             "descriptor": {
@@ -325,7 +323,6 @@ Beckn is a aynchronous protocol at its core.
     }
   }
 }
-
 ```
 
 **search by a commodity and a date range for a price discovery**
@@ -395,9 +392,7 @@ Beckn is a aynchronous protocol at its core.
     }
   }
 }
-
 ```
-
 
 **search by crop details and location for a pest forecast**
 
@@ -482,12 +477,267 @@ Beckn is a aynchronous protocol at its core.
     }
   }
 }
-
 ```
 
 **search by topic and rating**
 
-- The topic to search is specified in the message->intent->item->descriptor->name field.
+- The topic to search is specified in the message->intent->descriptor->name field.
+- The desired language is specified in a tag named languages.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "descriptor": {
+        "name": "kala daag on onion leaves"
+      }
+      "item": {
+        "rating": ">3.0",
+      }
+    }
+  }
+}
+```
+
+#### search request for agricultural schemes can be structured as below.
+**search by topic**
+
+- The topic to search is specified in the message->intent->descriptor->name field.
+- The desired language is specified in a tag named languages.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "descriptor": {
+        "name": "agricultural scheme"
+      },
+      "item": {
+        "tags": [
+          {
+            "descriptor": {
+              "name": "languages"
+            },
+            "list": [
+              {
+                "value": "mr"
+              },
+              {
+                "value": "en"
+              }
+            ]
+          }
+        ]
+      },
+      "fulfillment": {
+        "stops": [
+          {
+            "type": "applicable-region",
+            "location": {
+              "state": {
+                "name": "Maharshtra"
+              },
+              "country": {
+                "name": "India"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**search by topic and applicant details**
+
+- The topic to search is specified in the message->intent->descriptor->name field.
+- The desired language is specified in a tag named languages.
+- Details are specified using tags.
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "descriptor": {
+        "name": "agricultural scheme"
+      },
+      "item": {
+        "tags": [
+          {
+            "descriptor": {
+              "name": "languages"
+            },
+            "list": [
+              {
+                "value": "mr"
+              },
+              {
+                "value": "en"
+              }
+            ]
+          }
+        ]
+      },
+      "fulfillment": {
+        "stops": [
+          {
+            "type": "applicable-region",
+            "location": {
+              "state": {
+                "name": "Maharshtra"
+              },
+              "country": {
+                "name": "India"
+              }
+            }
+          }
+        ]
+      }
+      "tags": [
+        {
+          "descriptor": {
+              "code": "Demographic-details",
+              "name": "Demographic details"
+          },
+          "list": [
+            {
+              "descriptor": {
+                  "code": "gender"
+              },
+              "value": "Male"
+            },
+            {
+              "descriptor": {
+                  "code": "caste-category"
+              },
+              "value": "General"
+            }
+          ]
+        },
+        {
+          "descriptor": {
+              "code": "personal-details",
+              "name": "Personal details"
+          },
+          "list": [
+            {
+              "descriptor": {
+                  "code": "differently-abled"
+              },
+              "value": "No"
+            },
+            {
+              "descriptor": {
+                  "code": "land-owner",
+                  "name": "Do you or any of your family members own any land"
+              },
+              "value": "No"
+            },
+            {
+              "descriptor": {
+                  "code": "girl-children",
+                  "name": "Number of girl children you have"
+              },
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "descriptor": {
+              "code": "economic-details",
+              "name": "Economic details"
+          },
+          "list": [
+            {
+              "descriptor": {
+                  "code": "ration-card-type"
+              },
+              "value": "Below-Poverty"
+            },
+            {
+              "descriptor": {
+                  "code": " business-support-required",
+                  "name": "What business support do you require?"
+              },
+              "value": "Loan"
+            }
+          ]
+        },
+        {
+          "descriptor": {
+              "code": "employment-details",
+              "name": "Employment details"
+          },
+          "list": [
+            {
+              "descriptor": {
+                  "code": "job-type"
+              },
+              "value": "self-employed"
+            },
+            {
+              "descriptor": {
+                  "code": " enterprise-category"
+              },
+              "value": "individual"
+            }
+          ]
+        },
+      ]
+    }
+  }
+}
+```
+
+**If a BAP already have the name/id of a scheme(cached or fetched using another search request), the BAP can find the scheme using the scheme name or id**
+**search by scheme name/id**
+
 - The desired language is specified in a tag named languages.
 
 ```
@@ -510,16 +760,31 @@ Beckn is a aynchronous protocol at its core.
   "message": {
     "intent": {
       "item": {
-        "descriptor": {
-          "name": "kala daag on onion leaves"
+        "descriptor": {  // we can use any of the name or code.
+          "name": "Mahatma Gandhi National Rural Employment Guarantee Act",
+          "code": "1234"
         },
-        "rating": ">3.0",
+        "tags": [
+          {
+            "descriptor": {
+              "name": "languages"
+            },
+            "list": [
+              {
+                "value": "mr"
+              },
+              {
+                "value": "en"
+              }
+            ]
+          }
+        ]
       }
     }
   }
 }
-
 ```
+
 
 #### on_search
 
