@@ -769,13 +769,72 @@ If searching by category, it is specified in message->intent->category->descript
 
 ### select
 
+The examples from this stage onwards will be based on a scenario where consumer chooses item with `"id": "uid_xyz"` from the on_search response.
+
 **sending a select request**
 
-- Choose the item(s) from the list from on_search and request quote
+- Choose the item(s) from the list from the on_search response and request a quote
 - The chosen item is in message->order->item_id
 
 ```
-
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "select",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-energy-bpp.com",
+    "bpp_uri": "https://api.example-bpp.com/pilot/bpp/",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "provider1"
+      },
+      "items": [
+        {
+          "id": "uid_xyz",
+          "quantity": {
+            "selected": {
+              "measure": {
+                "value": "10",
+                "unit": "KWH"
+              }
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+            "id": "1",
+            "stops": [
+                {
+                    "type": "end",
+                    "id":"MTR3210",
+                    "time": {
+                        "range": {
+                            "start": "2024-10-04T10:00:00",
+                            "end": "2024-10-04T18:00:00"
+                        }
+                    }
+                }
+            ]
+        }
+      ]
+    }
+  }
+}
 ```
 
 ### on_select
@@ -784,7 +843,139 @@ If searching by category, it is specified in message->intent->category->descript
 - It is in message->order->quote
 
 ```
-
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "on_select",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://api.example-bpp.com/pilot/bpp/",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "provider1",
+        "descriptor": {
+          "name": "Mukesh Shankar",
+          "short_desc": "Household rooftop solar energy",
+          "images": [
+            {
+              "url": "https://provider1.in/images/logo.png"
+            }
+          ]
+        }
+      },
+      "items": [
+        {
+          "id": "uid_xyz",
+          "price": {
+            "value": "5",
+            "currency": "INR/kWH"
+          },
+          "quantity": {
+            "selected": {
+              "measure": {
+                "value": "10",
+                "unit": "KWH"
+              }
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "agent": {
+            "organization": {
+              "descriptor": {
+                "name": "UPPCL"
+              }
+            }
+          },
+          "stops": [
+            {
+              "type": "start",
+              "id": "MTR0123",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            },
+            {
+              "type": "end",
+              "id": "MTR3210",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "quote": {
+        "price": {
+          "value": "53.5",
+          "currency": "INR"
+        },
+        "breakup": [
+          {
+            "item": {
+              "descriptor": {
+                "name": "Estimated units consumed"
+              },
+              "quantity": {
+                "selected": {
+                  "measure": {
+                    "value": "10",
+                    "unit": "kWh"
+                  }
+                }
+              },
+              "price": {
+                "value": "5",
+                "currency": "INR/kWH"
+              }
+            },
+            "price": {
+              "value": "50",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "wheeling charge",
+            "price": {
+              "value": "2.5",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "platform charge",
+            "price": {
+              "value": "1",
+              "currency": "INR"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
 ```
 
 ### init
@@ -795,34 +986,522 @@ If searching by category, it is specified in message->intent->category->descript
 - Billing details specified in message->order->billing
 
 ```
-
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "init",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-energy-bpp.com",
+    "bpp_uri": "https://api.example-bpp.com/pilot/bpp/",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "provider1"
+      },
+      "items": [
+        {
+          "id": "uid_xyz",
+          "quantity": {
+            "selected": {
+              "measure": {
+                "value": "10",
+                "unit": "KWH"
+              }
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "customer": {
+            "person": {
+              "name": "Raj"
+            },
+            "contact": {
+              "phone": "+91-1276522222"
+            }
+          },
+          "stops": [
+            {
+              "type": "end",
+              "id": "MTR3210",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "billing": {
+        "name": "Raj",
+        "email": "raj@example.com",
+        "phone": "+91-1276522222"
+      }
+    }
+  }
+}
 ```
 
 ### on_init
 
 - Contains payment terms. Payment terms specified in message->order->payments
 - Cancellation terms specified in message->order->cancellation_terms
-- Here we show the BPP as payment collector. In case the BAP specifies that it collects the payment in the init, the url field within payments will be empty
 
 ```
-
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "on_init",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://api.example-bpp.com/pilot/bpp/",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "provider1",
+        "descriptor": {
+          "name": "Mukesh Shankar",
+          "short_desc": "Household rooftop solar energy",
+          "images": [
+            {
+              "url": "https://provider1.in/images/logo.png"
+            }
+          ]
+        }
+      },
+      "items": [
+        {
+          "id": "uid_xyz",
+          "price": {
+            "value": "5",
+            "currency": "INR/kWH"
+          },
+          "quantity": {
+            "selected": {
+              "measure": {
+                "value": "10",
+                "unit": "KWH"
+              }
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "agent": {
+            "organization": {
+              "descriptor": {
+                "name": "UPPCL"
+              }
+            }
+          },
+          "customer": {
+            "person": {
+              "name": "Raj"
+            },
+            "contact": {
+              "phone": "+91-1276522222"
+            }
+          },
+          "stops": [
+            {
+              "type": "start",
+              "id": "MTR0123",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            },
+            {
+              "type": "end",
+              "id": "MTR3210",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "quote": {
+        "price": {
+          "value": "53.5",
+          "currency": "INR"
+        },
+        "breakup": [
+          {
+            "item": {
+              "descriptor": {
+                "name": "Estimated units consumed"
+              },
+              "quantity": {
+                "selected": {
+                  "measure": {
+                    "value": "10",
+                    "unit": "kWh"
+                  }
+                }
+              },
+              "price": {
+                "value": "5",
+                "currency": "INR/kWH"
+              }
+            },
+            "price": {
+              "value": "50",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "wheeling charge",
+            "price": {
+              "value": "2.5",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "platform charge",
+            "price": {
+              "value": "1",
+              "currency": "INR"
+            }
+          }
+        ]
+      },
+      "billing": {
+        "name": "Raj",
+        "email": "raj@example.com",
+        "phone": "+91-1276522222"
+      },
+      "payments": [
+        {
+          "type": "POST-FULFILLMENT",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "53.50",
+            "currency": "INR"
+          }
+        }
+      ],
+      "cancellation_terms": [
+        {
+          "external_ref": {
+            "mimetype": "text/html",
+            "url": "https://mvvnl.in/cancellation_terms.html"
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
 ### confirm
 
-- Confirm order including payment paid info (when applicable).
-- It is in message->order->payments
+- Consumer confirming the terms of the order.
 
 ```
-
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "confirm",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-energy-bpp.com",
+    "bpp_uri": "https://api.example-bpp.com/pilot/bpp/",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "provider1"
+      },
+      "items": [
+        {
+          "id": "uid_xyz",
+          "quantity": {
+            "selected": {
+              "measure": {
+                "value": "10",
+                "unit": "KWH"
+              }
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "customer": {
+            "person": {
+              "name": "Raj"
+            },
+            "contact": {
+              "phone": "+91-1276522222"
+            }
+          },
+          "stops": [
+            {
+              "type": "end",
+              "id": "MTR3210",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "billing": {
+        "name": "Raj",
+        "email": "raj@example.com",
+        "phone": "+91-1276522222"
+      },
+      "payments": [
+        {
+          "type": "POST-FULFILLMENT",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "53.50",
+            "currency": "INR"
+          }
+        }
+      ],
+      "cancellation_terms": [
+        {
+          "external_ref": {
+            "mimetype": "text/html",
+            "url": "https://mvvnl.in/cancellation_terms.html"
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
 ### on_confirm
 
-- Order confirmed. Charging can start.
+- Order confirmed and an order id is generated to the order.
 
 ```
-
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "on_confirm",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://api.example-bpp.com/pilot/bpp/",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order": {
+      "id": "6743e9e2-4fb5-487c-92b7",
+      "provider": {
+        "id": "provider1",
+        "descriptor": {
+          "name": "Mukesh Shankar",
+          "short_desc": "Household rooftop solar energy",
+          "images": [
+            {
+              "url": "https://provider1.in/images/logo.png"
+            }
+          ]
+        }
+      },
+      "items": [
+        {
+          "id": "uid_xyz",
+          "price": {
+            "value": "5",
+            "currency": "INR/kWH"
+          },
+          "quantity": {
+            "selected": {
+              "measure": {
+                "value": "10",
+                "unit": "KWH"
+              }
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "agent": {
+            "organization": {
+              "descriptor": {
+                "name": "UPPCL"
+              }
+            }
+          },
+          "customer": {
+            "person": {
+              "name": "Raj"
+            },
+            "contact": {
+              "phone": "+91-1276522222"
+            }
+          },
+          "stops": [
+            {
+              "type": "start",
+              "id": "MTR0123",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            },
+            {
+              "type": "end",
+              "id": "MTR3210",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            }
+          ],
+          "state": {
+            "descriptor": {
+              "code": "Order-Placed"
+            }
+          }
+        }
+      ],
+      "quote": {
+        "price": {
+          "value": "53.5",
+          "currency": "INR"
+        },
+        "breakup": [
+          {
+            "item": {
+              "descriptor": {
+                "name": "Estimated units consumed"
+              },
+              "quantity": {
+                "selected": {
+                  "measure": {
+                    "value": "10",
+                    "unit": "kWh"
+                  }
+                }
+              },
+              "price": {
+                "value": "5",
+                "currency": "INR/kWH"
+              }
+            },
+            "price": {
+              "value": "50",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "wheeling charge",
+            "price": {
+              "value": "2.5",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "platform charge",
+            "price": {
+              "value": "1",
+              "currency": "INR"
+            }
+          }
+        ]
+      },
+      "billing": {
+        "name": "Raj",
+        "email": "raj@example.com",
+        "phone": "+91-1276522222"
+      },
+      "payments": [
+        {
+          "type": "POST-FULFILLMENT",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "53.50",
+            "currency": "INR"
+          }
+        }
+      ],
+      "cancellation_terms": [
+        {
+          "external_ref": {
+            "mimetype": "text/html",
+            "url": "https://mvvnl.in/cancellation_terms.html"
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
 ### status

@@ -84,7 +84,7 @@
                         {
                             "id": "uid_xyz",
                             "price": {
-                                "value": "7",
+                                "value": "5",
                                 "currency": "INR/kWH"
                             },
                             "quantity": {
