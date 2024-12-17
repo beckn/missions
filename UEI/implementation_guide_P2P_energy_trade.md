@@ -43,29 +43,25 @@ This document has the following parts:
 **Discovery**:
 
 - Raj logs into the preferred Consumer app.
-- He posts the requirement for 15 kWh of energy, specifying:
+- He searches for 15 kWh of energy, specifying:
     Time: 11 am to 3 pm
     Price: Willing to pay up to Rs. 3.25/kWh
     Duration: chooses the preferred time slot(s)
-- Raj reviews and confirms his request.
-
-- The platform/network cross-references the listings.
-- Gate Closure: After a specified gate closure time, the system identifies a match between:
-    Rakesh's availability (15 kWh at Rs. 3/kWh)
-    Raj’s requirement (15 kWh at up to Rs. 3.25/kWh).
-- Both users are either notified of the match or they read the matching data and update their records.
+- Raj receives a catalog of surplus solar energy available for sale that matches his search request.
 
 **Order**:
 
-- Raj and Rakesh negotiate and finalsie the price.
+- Raj selects a listing from Rakesh. Raj and Rakesh negotiate and finalsie the price.
 - Raj provides the billing information.
-- Both are allowed to make any last-minute changes up to X hours before the scheduled transfer.
 - Both Rakesh and Mr. Raj confirm the match on their respective apps. A contract/agreement is automatically generated between Rakesh and Raj General Store.
 
 **Fulfillment**:
 
+- Raj and Rakesh are allowed to make any last-minute changes in the order up to X hours before the scheduled transfer.
 - Between 11 am and 3 pm, 15 kWh of electricity is transferred from Rakesh to Raj General Store.
 - The transfer is monitored in real-time via smart meters to ensure transparency and accuracy.
+- Based on the actual consumption and production of solar energy at the consumer and the prosumer side, the order details are updated and the order is marked as fulfilled.
+- This transaction is adjusted in the regular bill cycle by the discom.
 
 
 ## Flow diagrams
@@ -121,8 +117,14 @@ Beckn is a aynchronous protocol at its core.
 
 ### Use case - Discovery, order and fulfillment of surplus solar energy
 
-- <>
-- <>
+- This use case focuses exclusively on peer-to-peer (P2P) trading of solar energy. The trading of other energy types is currently out of scope.
+- An additional component, referred to as the Observability Layer, is used to store confirmed orders (i.e., P2P energy trade contracts) between consumers and prosumers.
+- Meter data for both consumers and prosumers is periodically stored in the Observability Layer. In this use case, this task is performed by the Discom; however, other entities may also carry out this responsibility when applicable.
+- The records in the Observability Layer serve as the single source of truth.
+- An entity called the Allocation Engine reads contracts and meter data from the Observability Layer. Based on this information, it allocates solar energy units to consumers.
+- The Allocation Engine updates the order objects in the Observability Layer with the calculated allocations. Any changes in the actual allocation may also result in updates to the quote breakdown.
+- The BAP (Beckn Application Platform) and BPP (Beckn Provider Platform) read the updated orders from the Observability Layer and synchronize their local copies. At this stage, the order is considered fulfilled.
+
 
 **Search for surplus solar energy**
 
@@ -130,15 +132,343 @@ Beckn is a aynchronous protocol at its core.
 
 ### search
 
-Search request can contain one or more search criterion within it. Use the following list on how to specify the criterion.
+A search request can include one or more search criteria. Below are examples of how a search request can be constructed.
+A general rule is:
+if searching by free text, it is specified in message->intent->descriptor->name
+If searching by category, it is specified in message->intent->category->descriptor->code
 
-- <>
-- <>
-- If searching by free text, it is specified in message->intent->descriptor->name
-- If searching by category, it is specified in message->intent->category->descriptor->code
+**Search by the type of energy, units of energy required and the fulfillment time**
+
 
 ```
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "search",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "solar-energy"
+        }
+      },
+      "item": {
+        "quantity": {
+          "available": {
+            "measure": {
+              "value": "10",
+              "unit": "kWH"
+            }
+          }
+        }
+      },
+      "fulfillment": {
+        "stops": [
+          {
+            "type": "end",
+            "time": {
+              "range": {
+                "start": "2024-10-04T10:00:00",
+                "end": "2024-10-04T18:00:00"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
 
+**Search by the type of energy, units of energy required, fulfillment time, and maximum purchase price**
+
+
+```
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "search",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "solar-energy"
+        }
+      },
+      "item": {
+        "quantity": {
+          "available": {
+            "measure": {
+              "value": "10",
+              "unit": "kWH"
+            }
+          }
+        },
+        "price": {
+          "maximum_value": "7",
+          "currency": "INR/kWH"
+        }
+      },
+      "fulfillment": {
+        "stops": [
+          {
+            "type": "end",
+            "time": {
+              "range": {
+                "start": "2024-10-04T10:00:00",
+                "end": "2024-10-04T18:00:00"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**Search by the type of energy, units of energy required, fulfillment time, maximum purchase price and grid name**
+
+
+```
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "search",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "solar-energy"
+        }
+      },
+      "item": {
+        "quantity": {
+          "available": {
+            "measure": {
+              "value": "10",
+              "unit": "kWH"
+            }
+          }
+        },
+        "price": {
+          "maximum_value": "7",
+          "currency": "INR/kWH"
+        }
+      },
+      "fulfillment": {
+        "agent": {
+          "organization": {
+            "descriptor": {
+              "name": "UPPCL"
+            }
+          }
+        },
+        "stops": [
+          {
+            "type": "end",
+            "time": {
+              "range": {
+                "start": "2024-10-04T10:00:00",
+                "end": "2024-10-04T18:00:00"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**Search by the type of energy, units of energy required, fulfillment time, maximum purchase price, grid name and meter id**
+
+
+```
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "search",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "solar-energy"
+        }
+      },
+      "item": {
+        "quantity": {
+          "available": {
+            "measure": {
+              "value": "10",
+              "unit": "kWH"
+            }
+          }
+        },
+        "price": {
+          "maximum_value": "7",
+          "currency": "INR/kWH"
+        }
+      },
+      "fulfillment": {
+        "agent": {
+          "organization": {
+            "descriptor": {
+              "name": "UPPCL"
+            }
+          }
+        },
+        "stops": [
+          {
+            "type": "end",
+            "id": "MTR3210",
+            "time": {
+              "range": {
+                "start": "2024-10-04T10:00:00",
+                "end": "2024-10-04T18:00:00"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**Search by the type of energy, units of energy required, fulfillment time, maximum purchase price, grid name, meter id and geographical location of the consumer**
+
+
+```
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "search",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "solar-energy"
+        }
+      },
+      "item": {
+        "quantity": {
+          "available": {
+            "measure": {
+              "value": "10",
+              "unit": "kWH"
+            }
+          }
+        },
+        "price": {
+          "maximum_value": "7",
+          "currency": "INR/kWH"
+        }
+      },
+      "fulfillment": {
+        "agent": {
+          "organization": {
+            "descriptor": {
+              "name": "UPPCL"
+            }
+          }
+        },
+        "stops": [
+          {
+            "type": "end",
+            "id": "MTR3210",
+            "location": {
+              "circle": {
+                "gps": "12.423423,77.325647",
+                "radius": {
+                  "type": "CONSTANT",
+                  "value": "5",
+                  "unit": "km"
+                }
+              }
+            },
+            "time": {
+              "range": {
+                "start": "2024-10-04T10:00:00",
+                "end": "2024-10-04T18:00:00"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
 ```
 
 ### on_search
@@ -150,7 +480,291 @@ Search request can contain one or more search criterion within it. Use the follo
 - Each item is the catalog listing solar energy.
 
 ```
-
+{
+    "context": {
+        "domain": "uei:p2p-trading",
+        "action": "on_search",
+        "location": {
+            "country": {
+                "name": "India",
+                "code": "IND"
+            }
+        },
+        "city": "std:080",
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+        "bpp_id": "example-bpp.com",
+        "bpp_uri": "https://api.example-bpp.com/pilot/bpp/",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "timestamp": "2023-07-16T04:41:16Z"
+    },
+    "message": {
+        "catalog": {
+            "providers": [
+                {
+                    "id": "provider1",
+                    "descriptor": {
+                        "name": "Mukesh Shankar",
+                        "short_desc": "Household rooftop solar energy",
+                        "images": [
+                            {
+                                "url": "https://provider1.in/images/logo.png"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "1",
+                            "descriptor": {
+                                "code": "solar-energy",
+                                "name": "solar energy"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "gps": "12.345345,77.389754"
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "1",
+                            "agent": {
+                                "organization": {
+                                    "descriptor": {
+                                        "name": "UPPCL"
+                                    }
+                                }
+                            },
+                            "stops": [
+                                {
+                                    "type": "start",
+                                    "id": "MTR0123",
+                                    "time": {
+                                        "range": {
+                                            "start": "2024-10-04T10:00:00",
+                                            "end": "2024-10-04T18:00:00"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "end",
+                                    "time": {
+                                        "range": {
+                                            "start": "2024-10-04T10:00:00",
+                                            "end": "2024-10-04T18:00:00"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "uid_xyz",
+                            "price": {
+                                "value": "7",
+                                "currency": "INR/kWH"
+                            },
+                            "quantity": {
+                                "available": {
+                                    "measure": {
+                                        "value": "30",
+                                        "unit": "kWH"
+                                    }
+                                }
+                            },
+                            "category_ids": [
+                                "1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
+                                "1"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "provider2",
+                    "descriptor": {
+                        "name": "ABC Solar farms",
+                        "short_desc": "Utility scale solar farm",
+                        "images": [
+                            {
+                                "url": "https://provider2.in/images/logo.png"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "1",
+                            "descriptor": {
+                                "code": "solar-energy",
+                                "name": "solar energy"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "gps": "12.297668,77.276467"
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "1",
+                            "agent": {
+                                "organization": {
+                                    "descriptor": {
+                                        "name": "UPPCL"
+                                    }
+                                }
+                            },
+                            "stops": [
+                                {
+                                    "type": "start",
+                                    "id": "MTR0124",
+                                    "time": {
+                                        "range": {
+                                            "start": "2024-10-04T10:00:00",
+                                            "end": "2024-10-04T18:00:00"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "end",
+                                    "time": {
+                                        "range": {
+                                            "start": "2024-10-04T10:00:00",
+                                            "end": "2024-10-04T18:00:00"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "uid_abc",
+                            "price": {
+                                "value": "7",
+                                "currency": "INR/kWH"
+                            },
+                            "quantity": {
+                                "available": {
+                                    "measure": {
+                                        "value": "25000",
+                                        "unit": "kWH"
+                                    }
+                                }
+                            },
+                            "category_ids": [
+                                "1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
+                                "1"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "provider3",
+                    "descriptor": {
+                        "name": "Sharda Desai",
+                        "short_desc": "Rooftop solar energy",
+                        "images": [
+                            {
+                                "url": "https://provider3.in/images/logo.png"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "1",
+                            "descriptor": {
+                                "code": "solar-energy",
+                                "name": "solar energy"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "gps": "12.187363,77.137474"
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "1",
+                            "agent": {
+                                "organization": {
+                                    "descriptor": {
+                                        "name": "UPPCL"
+                                    }
+                                }
+                            },
+                            "stops": [
+                                {
+                                    "type": "start",
+                                    "id": "MTR0125",
+                                    "time": {
+                                        "range": {
+                                            "start": "2024-10-04T10:00:00",
+                                            "end": "2024-10-04T18:00:00"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "end",
+                                    "time": {
+                                        "range": {
+                                            "start": "2024-10-04T10:00:00",
+                                            "end": "2024-10-04T18:00:00"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "uid_mnq",
+                            "price": {
+                                "value": "7.3",
+                                "currency": "INR/kWH"
+                            },
+                            "quantity": {
+                                "available": {
+                                    "measure": {
+                                        "value": "15",
+                                        "unit": "kWH"
+                                    }
+                                }
+                            },
+                            "category_ids": [
+                                "1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
+                                "1"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
 ```
 
 ### select
