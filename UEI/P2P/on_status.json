@@ -1,7 +1,7 @@
 {
   "context": {
     "domain": "uei:p2p-trading",
-    "action": "on_confirm",
+    "action": "on_status",
     "location": {
       "country": {
         "name": "India",
@@ -43,7 +43,7 @@
           "quantity": {
             "selected": {
               "measure": {
-                "value": "10",
+                "value": "8",
                 "unit": "KWH"
               }
             }
@@ -92,14 +92,14 @@
           ],
           "state": {
             "descriptor": {
-              "code": "Order-Placed"
+              "code": "Order-fulfilled"
             }
           }
         }
       ],
       "quote": {
         "price": {
-          "value": "53.5",
+          "value": "43.5",
           "currency": "INR"
         },
         "breakup": [
@@ -111,7 +111,7 @@
               "quantity": {
                 "selected": {
                   "measure": {
-                    "value": "10",
+                    "value": "8",
                     "unit": "kWh"
                   }
                 }
@@ -122,7 +122,7 @@
               }
             },
             "price": {
-              "value": "50",
+              "value": "40",
               "currency": "INR"
             }
           },
@@ -134,7 +134,7 @@
             }
           },
           {
-            "title": "platform charge",
+            "title": "transaction charge",
             "price": {
               "value": "1",
               "currency": "INR"
@@ -149,6 +149,7 @@
       },
       "payments": [
         {
+          "url": "https://paymentgateway.example.com/pay?merchant_id=12345&amount=100.00&currency=INR&order_id=67890&customer_email=user@example.com&callback_url=https://example.com/payment-status",
           "type": "POST-FULFILLMENT",
           "status": "NOT-PAID",
           "params": {
@@ -165,7 +166,8 @@
           }
         }
       ],
-      "Created_at": "2024-10-03T14:30:00"
+      "created_at": "2024-10-03T14:30:00",
+      "updated_at": "2014-10-04T12:00:00"
     }
   }
 }

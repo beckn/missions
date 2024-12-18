@@ -1498,17 +1498,467 @@ The examples from this stage onwards will be based on a scenario where consumer 
             "url": "https://mvvnl.in/cancellation_terms.html"
           }
         }
-      ]
+      ],
+      "Created_at": "2024-10-03T14:30:00"
     }
   }
 }
 ```
 
-### status
+### Record a confirmed order on Observability Layer.
 
-- Request for status on order. order_id is specifiedin message->order_id
+- BAP and BPP record a new Order on the Observability Layer.
+- Observability Layers allows recoding a new Order object between a fixed window only. In this use case it is between the trade start time and a gate closer time.
+- Observability Layer validates the BAP and BPP writing on the Observability Layer with their public key stored in the network registry.
+- Optionally: A new Order object recorded on the Observability Layer can be signed by both BAP and BPP involved in that contract. Implementation can use http Authorization header to store BAP and BPP signatures. Signing will ensure the authenticity and integrity of the contract gettig saved on the Observability Layer. We can refer [this](https://github.com/beckn/protocol-specifications/blob/master/docs/BECKN-006-Signing-Beckn-APIs-In-HTTP-Draft-01.md) document to understand how to use it.
+
+**How to encode signatures of BAP and BPP both in the Authorization header**
+
+ Authorization header in the request sent ot Observability Layer can contain 2 signatures.
+ - BPP returns an on_confirm with BPP's signature in the header.
+ - BAP takes the returned Order object and computes its own signature.
+ - BAP creates an /Order request for Observability layer.
+ - BAP adds BPP's signature in the new request.
+ - BAP adds its own signature in the new request.
+ - BAP sends the request to the Observability Layer.
+
+ How does the header look
 
 ```
+Authorization : Signature keyId="{BAP_subscriber_id}|{BAP_unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(ed25519_sign_of_bap(signing string))"
+
+keyId="{BPP_subscriber_id}|{BPP_unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(ed25519_sign_of_bpp(signing string))
+```
+
+How does the Observability Layer verify the integrity of the message
+- Observability Layer parses BAP's subscriber id and unique Key ID from the header.
+- It looks up the registry for the public key of the BAP by sending the subscriber_id and the unique_key_id
+- It uses the BAP's public key to decrypt the BAP signature, parses the decrypted signature to get (created), (expires) and digest fields. it calculates the hash of the order payload from the /order request. It compares the decrypted (created), (expires) and digest with the value in the request header and the locally calculated digest.
+- Observability Layer repeats the same process with the BPP's signature.
+
+**Use Observability Layer PUT order/ API to store a confirmed Order object in the Observability Layer**
+
+```
+  {
+    "id": "6743e9e2-4fb5-487c-92b7",
+    "provider": {
+      "id": "provider1",
+      "descriptor": {
+        "name": "Mukesh Shankar",
+        "short_desc": "Household rooftop solar energy",
+        "images": [
+          {
+            "url": "https://provider1.in/images/logo.png"
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "id": "uid_xyz",
+        "price": {
+          "value": "5",
+          "currency": "INR/kWH"
+        },
+        "quantity": {
+          "selected": {
+            "measure": {
+              "value": "10",
+              "unit": "KWH"
+            }
+          }
+        }
+      }
+    ],
+    "fulfillments": [
+      {
+        "id": "1",
+        "agent": {
+          "organization": {
+            "descriptor": {
+              "name": "UPPCL"
+            }
+          }
+        },
+        "customer": {
+          "person": {
+            "name": "Raj"
+          },
+          "contact": {
+            "phone": "+91-1276522222"
+          }
+        },
+        "stops": [
+          {
+            "type": "start",
+            "id": "MTR0123",
+            "time": {
+              "range": {
+                "start": "2024-10-04T10:00:00",
+                "end": "2024-10-04T18:00:00"
+              }
+            }
+          },
+          {
+            "type": "end",
+            "id": "MTR3210",
+            "time": {
+              "range": {
+                "start": "2024-10-04T10:00:00",
+                "end": "2024-10-04T18:00:00"
+              }
+            }
+          }
+        ],
+        "state": {
+          "descriptor": {
+            "code": "Order-Placed"
+          }
+        }
+      }
+    ],
+    "quote": {
+      "price": {
+        "value": "53.5",
+        "currency": "INR"
+      },
+      "breakup": [
+        {
+          "item": {
+            "descriptor": {
+              "name": "Estimated units consumed"
+            },
+            "quantity": {
+              "selected": {
+                "measure": {
+                  "value": "10",
+                  "unit": "kWh"
+                }
+              }
+            },
+            "price": {
+              "value": "5",
+              "currency": "INR/kWH"
+            }
+          },
+          "price": {
+            "value": "50",
+            "currency": "INR"
+          }
+        },
+        {
+          "title": "wheeling charge",
+          "price": {
+            "value": "2.5",
+            "currency": "INR"
+          }
+        },
+        {
+          "title": "platform charge",
+          "price": {
+            "value": "1",
+            "currency": "INR"
+          }
+        }
+      ]
+    },
+    "billing": {
+      "name": "Raj",
+      "email": "raj@example.com",
+      "phone": "+91-1276522222"
+    },
+    "payments": [
+      {
+        "type": "POST-FULFILLMENT",
+        "status": "NOT-PAID",
+        "params": {
+          "amount": "53.50",
+          "currency": "INR"
+        }
+      }
+    ],
+    "cancellation_terms": [
+      {
+        "external_ref": {
+          "mimetype": "text/html",
+          "url": "https://mvvnl.in/cancellation_terms.html"
+        }
+      }
+    ],
+    "Created_at": "2024-10-03T14:30:00"
+  }
+```
+
+**Use Observability Layer PUT order/ API to store time series meter data in the Observability Layer**
+
+```
+{
+   "items": [
+       {
+           "Descriptor": {
+               "name": "Active Energy"
+           },
+           "quantity": {
+               "utilized": {
+                   "measure": {
+                       "value": "2",
+                       "unit": "kWh"
+                   }
+               }
+           },
+           "fulfillment_ids": [
+               "f1"
+           ]
+       },
+       {
+           "Descriptor": {
+               "name": "Active Energy"
+           },
+           "quantity": {
+               "utilized": {
+                   "measure": {
+                       "value": "3",
+                       "unit": "kWh"
+                   }
+               }
+           },
+           "fulfillment_ids": [
+               "f2"
+           ]
+       },
+       {
+           "Descriptor": {
+               "name": "Apparent Energy"
+           },
+           "quantity": {
+               "utilized": {
+                   "measure": {
+                       "value": "1",
+                       "unit": "kVAh"
+                   }
+               }
+           },
+           "fulfillment_ids": [
+               "f1"
+           ]
+       },
+       {
+           "Descriptor": {
+               "name": "Apparent Energy"
+           },
+           "quantity": {
+               "utilized": {
+                   "measure": {
+                       "value": "2",
+                       "unit": "kVAh"
+                   }
+               }
+           },
+           "fulfillment_ids": [
+               "f2"
+           ]
+       }
+   ],
+   "fulfillments": [
+       {
+           "id": "f1",
+           "type": "EnergyImported",
+           "stops": [
+               {
+                   "id": "MTR1",
+                   "type": "3-Ph",
+                   "time": {
+                       "range": {
+                           "start": "2014-10-04T10:00:00",
+                           "end": "2014-10-04T11:00:00"
+                       }
+                   }
+               }
+           ]
+       },
+       {
+           "id": "f2",
+           "type": "EnergyExported",
+           "stops": [
+               {
+                   "id": "MTR1",
+                   "type": "3-Ph",
+                   "time": {
+                       "range": {
+                           "start": "2014-10-04T10:00:00",
+                           "end": "2014-10-04T11:00:00"
+                       }
+                   }
+               }
+           ]
+       }
+   ],
+   "tags": [
+    {
+      "list": [
+        {
+          "descriptor": {
+            "code": "avg_current"
+          },
+          "value": "1.05"
+        },
+        {
+          "descriptor": {
+            "code": "avg_voltage"
+          },
+          "value": "260.5"
+        } 
+      ]
+    }
+  ],
+  "created_at": "2014-10-04T11:00:00",
+}
+```
+
+### Allocation Engine fetches Order details and Meter data from the Observability Layer to calculate the allocation of energy units to consumers.
+
+**Use Observability Layer GET order/ API to fetch Order data**
+
+```
+GET /order?order_id=order0123 HTTP/1.1
+Host: api.example.com
+Authorization: Signature keyId="example-bap.com|ae3ea24b-cfec-495e-81f8-044aaef164ac|ed25519",algorithm="ed25519",created="1641287875",expires="1641291475",headers="(created) (expires) digest",signature="cjbhP0PFyrlSCNszJM1F/YmHDVAWsZqJUPzojnE/7TJU3fJ/rmIlgaUHEr5E0/2PIyf0tpSnWtT6cyNNlpmoAQ=="
+```
+
+**Use Observability Layer GET order/ API to fetch meter data**
+
+```
+{
+   "fulfillments": [
+       {
+           "stops": [
+               {
+                   "id": "MTR1",
+                   "time": {
+                       "range": {
+                           "start": "2014-10-04T10:00:00",
+                           "end": "2014-10-04T12:00:00"
+                       }
+                   }
+               },
+           ]
+       }
+   ]
+}
+```
+
+**Use Observability Layer PATCH order/ API to update the details of an existing order object**
+
+```
+{
+  "id": "6743e9e2-4fb5-487c-92b7",
+  "items": [
+    {
+      "id": "uid_xyz",
+      "price": {
+        "value": "5",
+        "currency": "INR/kWH"
+      },
+      "quantity": {
+        "selected": {
+          "measure": {
+            "value": "8",
+            "unit": "kWh"
+          }
+        }
+      }
+    }
+  ],
+  "quote": {
+    "price": {
+      "value": "43.5",
+      "currency": "INR"
+    },
+    "breakup": [
+      {
+        "item": {
+          "descriptor": {
+            "name": "Estimated units consumed"
+          },
+          "quantity": {
+            "selected": {
+              "measure": {
+                "value": "8",
+                "unit": "kWh"
+              }
+            }
+          },
+          "price": {
+            "value": "5",
+            "currency": "INR/kWH"
+          }
+        },
+        "price": {
+          "value": "40",
+          "currency": "INR"
+        }
+      },
+      {
+        "title": "wheeling charge",
+        "price": {
+          "value": "2.5",
+          "currency": "INR"
+        }
+      },
+      {
+        "title": "transaction charge",
+        "price": {
+          "value": "1",
+          "currency": "INR"
+        }
+      }
+    ]
+  },
+  "payments": [
+    {
+      "type": "POST-FULFILLMENT",
+      "status": "NOT-PAID",
+      "params": {
+        "amount": "43.50",
+        "currency": "INR"
+      }
+    }
+  ]
+}
+```
+
+BPP can use the GET order/ API endpoint of the Observability Layer to fetch the updated Order objects.
+
+### status
+
+- BAP checks the status of the Order by calling the /status endpoint of BPP.
+- Request for status of an active order. Order_id is used to fetch the order status. order_id is specified in message->order_id field of the status request.
+
+```
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "status",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-energy-bpp.com",
+    "bpp_uri": "https://api.example-bpp.com/pilot/bpp/",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order_id": "6743e9e2-4fb5-487c-92b7"
+  }
+}
 
 ```
 
@@ -1516,9 +1966,182 @@ The examples from this stage onwards will be based on a scenario where consumer 
 
 - Status of requested order.
 - Primarily the fulfillment status is specified in message->order->fulfillments[]->state
+- A payment link can be generated and sent if BPP does the payment.
 
 ```
-
+{
+  "context": {
+    "domain": "uei:p2p-trading",
+    "action": "on_status",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "city": "std:080",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://api.example-bpp.com/pilot/bpp/",
+    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order": {
+      "id": "6743e9e2-4fb5-487c-92b7",
+      "provider": {
+        "id": "provider1",
+        "descriptor": {
+          "name": "Mukesh Shankar",
+          "short_desc": "Household rooftop solar energy",
+          "images": [
+            {
+              "url": "https://provider1.in/images/logo.png"
+            }
+          ]
+        }
+      },
+      "items": [
+        {
+          "id": "uid_xyz",
+          "price": {
+            "value": "5",
+            "currency": "INR/kWH"
+          },
+          "quantity": {
+            "selected": {
+              "measure": {
+                "value": "8",
+                "unit": "KWH"
+              }
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "agent": {
+            "organization": {
+              "descriptor": {
+                "name": "UPPCL"
+              }
+            }
+          },
+          "customer": {
+            "person": {
+              "name": "Raj"
+            },
+            "contact": {
+              "phone": "+91-1276522222"
+            }
+          },
+          "stops": [
+            {
+              "type": "start",
+              "id": "MTR0123",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            },
+            {
+              "type": "end",
+              "id": "MTR3210",
+              "time": {
+                "range": {
+                  "start": "2024-10-04T10:00:00",
+                  "end": "2024-10-04T18:00:00"
+                }
+              }
+            }
+          ],
+          "state": {
+            "descriptor": {
+              "code": "Order-fulfilled"
+            }
+          }
+        }
+      ],
+      "quote": {
+        "price": {
+          "value": "43.5",
+          "currency": "INR"
+        },
+        "breakup": [
+          {
+            "item": {
+              "descriptor": {
+                "name": "Estimated units consumed"
+              },
+              "quantity": {
+                "selected": {
+                  "measure": {
+                    "value": "8",
+                    "unit": "kWh"
+                  }
+                }
+              },
+              "price": {
+                "value": "5",
+                "currency": "INR/kWH"
+              }
+            },
+            "price": {
+              "value": "40",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "wheeling charge",
+            "price": {
+              "value": "2.5",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "transaction charge",
+            "price": {
+              "value": "1",
+              "currency": "INR"
+            }
+          }
+        ]
+      },
+      "billing": {
+        "name": "Raj",
+        "email": "raj@example.com",
+        "phone": "+91-1276522222"
+      },
+      "payments": [
+        {
+          "url": "https://paymentgateway.example.com/pay?merchant_id=12345&amount=100.00&currency=INR&order_id=67890&customer_email=user@example.com&callback_url=https://example.com/payment-status",
+          "type": "POST-FULFILLMENT",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "53.50",
+            "currency": "INR"
+          }
+        }
+      ],
+      "cancellation_terms": [
+        {
+          "external_ref": {
+            "mimetype": "text/html",
+            "url": "https://mvvnl.in/cancellation_terms.html"
+          }
+        }
+      ],
+      "created_at": "2024-10-03T14:30:00",
+      "updated_at": "2014-10-04T12:00:00"
+    }
+  }
+}
 ```
 
 
