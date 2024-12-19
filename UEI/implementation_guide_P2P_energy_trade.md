@@ -26,42 +26,22 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
+**Context**
+Peer-to-peer Energy Trading on a virtual network-based model for P2P energy trading involving the decentralised exchange of electricity between producers and consumers within a localised grid network, under the distribution coverage of DISCOMs. It allows individuals and groups to buy and sell surplus renewable energy directly to each other, bypassing traditional energy suppliers. The aim is to reduce energy costs, promote renewable energy use and enhance the security and resilience of the energy grid.
+
 ![UEI Charging Outcome Visualization](images/uei_p2p_energy_trade.png)
 
 ### Use case - Discovery, order and fulfillment of EV Charging
 
-- Raj is a general store owner in Lucknow. He wants to buy affordable solar energy for his general store.
-- Rakesh is a resident of Lucknow. He has a solar plant installed on the roof of his house and wants to sell the surplus solar energy directly to consumers.
-
-- Rakesh logs into the preferred Prosumer app.
-- He posts the availability of 15 kWh of surplus energy, specifying:
-    Time: 11 am to 3 pm
-    Price: Rs. 3/kWh
-    Duration: chooses the preferred time slot(s)
-- Rakesh reviews and confirms the listing.
-
-**Discovery**:
-
-- Raj logs into the preferred Consumer app.
-- He searches for 15 kWh of energy, specifying:
-    Time: 11 am to 3 pm
-    Price: Willing to pay up to Rs. 3.25/kWh
-    Duration: chooses the preferred time slot(s)
-- Raj receives a catalog of surplus solar energy available for sale that matches his search request.
-
-**Order**:
-
-- Raj selects a listing from Rakesh. Raj and Rakesh negotiate and finalsie the price.
-- Raj provides the billing information.
-- Both Rakesh and Mr. Raj confirm the match on their respective apps. A contract/agreement is automatically generated between Rakesh and Raj General Store.
-
-**Fulfillment**:
-
-- Raj and Rakesh are allowed to make any last-minute changes in the order up to X hours before the scheduled transfer.
-- Between 11 am and 3 pm, 15 kWh of electricity is transferred from Rakesh to Raj General Store.
-- The transfer is monitored in real-time via smart meters to ensure transparency and accuracy.
-- Based on the actual consumption and production of solar energy at the consumer and the prosumer side, the order details are updated and the order is marked as fulfilled.
-- This transaction is adjusted in the regular bill cycle by the discom.
+**User Journey**
+- The prosumer (e.g., Rakesh) creates a new listing on their app for surplus energy, specifying details such as availability (15 kWh), time slot (11 am to 3 pm), and price (Rs. 3/kWh). The listing is stored on the BPP (Buyer-Provider Platform) for visibility.
+- The consumer (e.g., Mr. Raj) searches for energy via their app on Day T-1. A catalog of available energy options is displayed, showing details like quantity, time slots, and price.
+- The consumer selects a listing, initiates quote negotiation, and confirms (agreement) an order if terms align (e.g., up to Rs. 3.25/kWh). Orders finalized before the gate close time are stored on the Observability Layer for tracking. 
+- On the transaction day (Day T), reminders are sent to both parties.Both the prosumer and consumer have the option to make last-minute adjustments (e.g., quantity or timing) up to a cutoff time (e.g. 1.5 hours before transfer).
+- The energy transfer is carried out between the specified time slots (e.g., 11 am to 3 pm) and monitored via smart meters. Meter data for both prosumer and consumer is recorded periodically on the Observability Layer.
+- The Allocation Engine fetches confirmed (agreed) order details and meter data from the Observability Layer after a cutoff time. Energy units are allocated to consumers, and the confirmed order records are updated in the Observability Layer accordingly.
+- The BAP (Buyer Aggregator Platform) and BPP read updated order data and confirm fulfilment. Payments are settled between BAP and BPP, including platform fees and wheeling charges.
+- Both users confirm the successful transaction and receive a summary of energy transferred, payment details and platform and wheeling fees paid
 
 
 ## Flow diagrams
@@ -1689,7 +1669,7 @@ How does the Observability Layer verify the integrity of the message
   }
 ```
 
-**Use Observability Layer PUT order/ API to store time series meter data in the Observability Layer**
+**Use Observability Layer PUT fulfillment_event/ API to store time series meter data in the Observability Layer**
 
 ```
 {
@@ -1825,7 +1805,7 @@ Host: api.example.com
 Authorization: Signature keyId="example-bap.com|ae3ea24b-cfec-495e-81f8-044aaef164ac|ed25519",algorithm="ed25519",created="1641287875",expires="1641291475",headers="(created) (expires) digest",signature="cjbhP0PFyrlSCNszJM1F/YmHDVAWsZqJUPzojnE/7TJU3fJ/rmIlgaUHEr5E0/2PIyf0tpSnWtT6cyNNlpmoAQ=="
 ```
 
-**Use Observability Layer GET order/ API to fetch meter data**
+**Use Observability Layer GET fulfillment_events/ API to fetch meter data**
 
 ```
 {
@@ -1927,7 +1907,7 @@ Authorization: Signature keyId="example-bap.com|ae3ea24b-cfec-495e-81f8-044aaef1
 }
 ```
 
-BPP can use the GET order/ API endpoint of the Observability Layer to fetch the updated Order objects.
+BPP can use the GET order/ API endpoint of the Observability Layer to fetch the updated Order objects and update their local copy of the Orders.
 
 ### status
 
