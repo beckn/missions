@@ -105,6 +105,11 @@ Check if the address has been properly typed in the address bar. If you are sett
 
 This is usually due to either the Nginx not being configured properly or the docker container not being up. For example, if you get this error when you are trying to reach the registry, then it means that either the Nginx is not configured to proxy the request to the right port (3030) or the registry is not running at the port(3030). The nginx can be configured in different ways by system administrators. So check either the `/etc/nginx/sites-enabled` folder or the `/etc/nginx/conf.d` folder to see the configuration files and if it is proxying to the right port. Next check `docker ps` to see if the registry is up and in the docker output, check if the exposed port is alright.
 
+### 3. Receiving a Webhook Response, but an Empty Response Appears in Postman  
+
+There could be several reasons for this issue, but the first thing you should check is whether the transaction ID and message ID in the webhook response match those in the request it received. BAP uses the message ID to aggregate the request with the appropriate response. A mismatch in message IDs will result in an empty response because BAP cannot correlate the response with its original request and send it to the user. This typically occurs when developers hard-code the message ID and transaction ID in the webhook response.
+
+
 ## Troubleshooting Registry
 
 ### 1. Subscriber list call from BAP to the registry seems to be empty
