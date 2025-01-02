@@ -7,6 +7,7 @@
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
 | 15-08-2024 | 1.0     | Initial Version                                     |
+| 02-01-2025 | 1.1     | Improved language and grammar                       |
 
 ## Introduction
 
@@ -46,7 +47,7 @@ Beckn is a aynchronous protocol at its core.
 
 - When a network participant(NP1) sends a message to another participant(NP2), the other participant(NP2) immediately returns back an ACK/NACK(Acknowledgement or Negative Acknowledgement in case of error - usually with wrongly formed messages).
 - An ACK is an indicator that the receiving participant(NP2) will process this message and dispatch an on_xxxxxx message to original NP (NP1)
-- Subsequently after processing the message NP2 sends back the real response in the corresponding on_xxxxxx message, to which again the first participant(NP1).
+- Subsequently after processing the message NP2 sends back the real response in the corresponding on_xxxxxx message, to which again the first participant(NP1) returns an ACK/NACK.
 - This message can contain a message field (for success) or error field (for failure)
 - NP1 when it receives the on_xxxxxx message, sends back an ACK/NACK (Here in both the cases NP1 will not send any subsequent message).
 - In the Use case diagrams, this ACK/NACK is not illustrated explicitly to keep the diagrams crisp.

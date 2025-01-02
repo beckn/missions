@@ -6,8 +6,8 @@
 
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
-| 22-11-2023 | 1.0     | Initial Version                                     |
-| 10-07-2024 | 1.1     | Phase 2 (Community adoption)                        |
+| 22-11-2024 | 1.0     | Initial Version                                     |
+| 02-01-2025 | 1.1     | Improved and corrected JSON schema                  |
 
 ## Introduction
 
@@ -158,6 +158,7 @@ Search request can contain one or more search criterion within it. Use the follo
 }
 ```
 
+
 ### on_search
 
 **on_search with catalog of results**
@@ -169,15 +170,13 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 {
     "context": {
-        "ttl": "PT10M",
-        "action": "search",
-        "timestamp": "2024-09-12T20:29:08.425Z",
-        "message_id": "5d2a120d-f7f3-48c2-9ce0-24708c83add8",
-        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
         "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
+        "action": "on_search",
+        "version": "1.1.0", 
+        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
+        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
+        "country": "IND",
+        "city": "std:080",
         "location": {
             "city": {
                 "name": "Bangalore",
@@ -187,202 +186,179 @@ Search request can contain one or more search criterion within it. Use the follo
                 "name": "India",
                 "code": "IND"
             }
-        }
+        },
+        "bap_id": "ps-bap-network.becknprotocol.io",
+        "bap_uri": "https://ps-bap-network.becknprotocol.io",
+        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
+        "message_id": "5d2a120d-f7f3-48c2-9ce0-24708c83add8",
+        "ttl": "PT10M",
+        "timestamp": "2024-09-12T20:29:12.894Z"
     },
-    "responses": [
-        {
-            "context": {
-                "domain": "open-gambia:courses",
-                "action": "on_search",
-                "version": "1.1.0",
-                "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-                "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
-                "country": "IND",
-                "city": "std:080",
-                "location": {
-                    "city": {
-                        "name": "Bangalore",
-                        "code": "std:080"
-                    },
-                    "country": {
-                        "name": "India",
-                        "code": "IND"
-                    }
-                },
-                "bap_id": "ps-bap-network.becknprotocol.io",
-                "bap_uri": "https://ps-bap-network.becknprotocol.io",
-                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-                "message_id": "5d2a120d-f7f3-48c2-9ce0-24708c83add8",
-                "ttl": "PT10M",
-                "timestamp": "2024-09-12T20:29:12.894Z"
+    "message": {
+        "catalog": {
+            "descriptor": {
+                "name": "Catalog for English courses"
             },
-            "message": {
-                "catalog": {
+            "providers": [
+                {
+                    "id": "INFOSYS",
                     "descriptor": {
-                        "name": "Catalog for English courses"
+                        "name": "Infosys Springboard",
+                        "short_desc": "Infosys Springboard Digital literacy program",
+                        "images": [
+                            {
+                                "url": "https://infyspringboard.onwingspan.com/web/assets/images/infosysheadstart/app_logos/landing-new.png",
+                                "size_type": "sm"
+                            }
+                        ]
                     },
-                    "providers": [
+                    "categories": [
                         {
-                            "id": "INFOSYS",
+                            "id": "LANGUAGE-COURSES",
                             "descriptor": {
-                                "name": "Infosys Springboard",
-                                "short_desc": "Infosys Springboard Digital literacy program",
+                                "code": "LANGUAGE-COURSES",
+                                "name": "Language Courses"
+                            }
+                        },
+                        {
+                            "id": "SKILL-DEVELOPMENT-COURSES", 
+                            "descriptor": {
+                                "code": "SKILL-DEVELOPMENT-COURSES",
+                                "name": "Skill development Courses"
+                            }
+                        },
+                        {
+                            "id": "TECHNICAL-COURSES",
+                            "descriptor": {
+                                "code": "TECHNICAL-COURSES", 
+                                "name": "Technical Courses"
+                            }
+                        },
+                        {
+                            "id": "SELF-PACED-COURSES",
+                            "descriptor": {
+                                "code": "SELF-PACED-COURSES",
+                                "name": "Self Paced Courses"
+                            }
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "d4975df5-b18c-4772-80ad-368669856d52",
+                            "quantity": {
+                                "maximum": {
+                                    "count": 1
+                                }
+                            },
+                            "descriptor": {
+                                "name": "Everyday Conversational English",
+                                "short_desc": "Elevate your daily conversations with confidence through our 'Everyday Conversational English' course.",
+                                "long_desc": "<p><strong>Course Overview:</strong><br>Welcome to 'Everyday Conversational English,' your key to mastering essential language skills for real-life communication. Tailored for all levels, this course offers:</p><ol><li><strong>Practical Vocabulary:</strong><br>Learn everyday expressions for seamless communication.</li><li><strong>Interactive Role-Playing:</strong><br>Apply knowledge through immersive exercises for real-world scenarios.</li><li><strong>Cultural Insights:</strong><br>Gain cultural nuances to connect authentically in conversations.</li><li><strong>Real-Life Scenarios:</strong><br>Navigate common situations with confidence-building tools.</li><li><strong>Quiz Assessments:</strong><br>Reinforce learning through quizzes for ongoing skill development.</li></ol><p><strong>Why Take This Course:</strong></p><ul><li><strong>Personal & Professional Growth:</strong><br>Enhance personal connections and gain a professional edge.</li><li><strong>Cultural Fluency:</strong><br>Understand and engage with diverse cultures confidently.</li><li><strong>Life-Long Skill:</strong><br>Develop a valuable skill applicable across various life stages.</li></ul><p>Join 'Everyday Conversational English' and elevate your communication for meaningful connections and success.</p>",
                                 "images": [
                                     {
-                                        "url": "https://infyspringboard.onwingspan.com/web/assets/images/infosysheadstart/app_logos/landing-new.png",
-                                        "size_type": "sm"
+                                        "url": "https://ashokitech.com/uploads/course/spring-boot-microservices-online-training.jpeg"
+                                    }
+                                ],
+                                "media": [
+                                    {
+                                        "url": "https://infyspringboard.onwingspan.com/web/courses/infosysheadstart/everyday-conversational-english/preview/"
                                     }
                                 ]
                             },
-                            "categories": [
-                                {
-                                    "id": "LANGUAGE-COURSES",
-                                    "descriptor": {
-                                        "code": "LANGUAGE-COURSES",
-                                        "name": "Language Courses"
-                                    }
-                                },
-                                {
-                                    "id": "SKILL-DEVELOPMENT-COURSES",
-                                    "descriptor": {
-                                        "code": "SKILL-DEVELOPMENT-COURSES",
-                                        "name": "Skill development Courses"
-                                    }
-                                },
-                                {
-                                    "id": "TECHNICAL-COURSES",
-                                    "descriptor": {
-                                        "code": "TECHNICAL-COURSES",
-                                        "name": "Technical Courses"
-                                    }
-                                },
-                                {
-                                    "id": "SELF-PACED-COURSES",
-                                    "descriptor": {
-                                        "code": "SELF-PACED-COURSES",
-                                        "name": "Self Paced Courses"
-                                    }
-                                }
-                            ],
-                            "items": [
-                                {
-                                    "id": "d4975df5-b18c-4772-80ad-368669856d52",
-                                    "quantity": {
-                                        "maximum": {
-                                            "count": 1
-                                        }
-                                    },
-                                    "descriptor": {
-                                        "name": "Everyday Conversational English",
-                                        "short_desc": "Elevate your daily conversations with confidence through our 'Everyday Conversational English' course.",
-                                        "long_desc": "<p><strong>Course Overview:</strong><br>Welcome to 'Everyday Conversational English,' your key to mastering essential language skills for real-life communication. Tailored for all levels, this course offers:</p><ol><li><strong>Practical Vocabulary:</strong><br>Learn everyday expressions for seamless communication.</li><li><strong>Interactive Role-Playing:</strong><br>Apply knowledge through immersive exercises for real-world scenarios.</li><li><strong>Cultural Insights:</strong><br>Gain cultural nuances to connect authentically in conversations.</li><li><strong>Real-Life Scenarios:</strong><br>Navigate common situations with confidence-building tools.</li><li><strong>Quiz Assessments:</strong><br>Reinforce learning through quizzes for ongoing skill development.</li></ol><p><strong>Why Take This Course:</strong></p><ul><li><strong>Personal & Professional Growth:</strong><br>Enhance personal connections and gain a professional edge.</li><li><strong>Cultural Fluency:</strong><br>Understand and engage with diverse cultures confidently.</li><li><strong>Life-Long Skill:</strong><br>Develop a valuable skill applicable across various life stages.</li></ul><p>Join 'Everyday Conversational English' and elevate your communication for meaningful connections and success.</p>",
-                                        "images": [
-                                            {
-                                                "url": "https://ashokitech.com/uploads/course/spring-boot-microservices-online-training.jpeg"
-                                            }
-                                        ],
-                                        "media": [
-                                            {
-                                                "url": "https://infyspringboard.onwingspan.com/web/courses/infosysheadstart/everyday-conversational-english/preview/"
-                                            }
-                                        ]
-                                    },
-                                    "creator": {
-                                        "descriptor": {
-                                            "name": "Prof. Emma Sullivan",
-                                            "short_desc": "Experienced language educator dedicated to fostering practical conversational skills and cultural fluency",
-                                            "long_desc": "Hello, I'm Prof. Emma Sullivan, your guide in 'Everyday Conversational English.' With over a decade of experience, I'm here to make language learning dynamic and culturally enriching. Let's explore practical communication skills together for personal and professional growth. Join me on this exciting journey!",
-                                            "images": [
-                                                {
-                                                    "url": "https://infyspringboard.onwingspan.com/web/assets/images/infosysheadstart/ins/1.png"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "price": {
-                                        "currency": "INR",
-                                        "value": "0"
-                                    },
-                                    "category_ids": [
-                                        "LANGUAGE-COURSES",
-                                        "SELF-PACED-COURSES"
-                                    ],
-                                    "rating": "4.5",
-                                    "rateable": true,
-                                    "tags": [
+                            "creator": {
+                                "descriptor": {
+                                    "name": "Prof. Emma Sullivan",
+                                    "short_desc": "Experienced language educator dedicated to fostering practical conversational skills and cultural fluency",
+                                    "long_desc": "Hello, I'm Prof. Emma Sullivan, your guide in 'Everyday Conversational English.' With over a decade of experience, I'm here to make language learning dynamic and culturally enriching. Let's explore practical communication skills together for personal and professional growth. Join me on this exciting journey!",
+                                    "images": [
                                         {
-                                            "descriptor": {
-                                                "code": "content-metadata",
-                                                "name": "Content metadata"
-                                            },
-                                            "list": [
-                                                {
-                                                    "descriptor": {
-                                                        "code": "learner-level",
-                                                        "name": "Learner level"
-                                                    },
-                                                    "value": "Beginner"
-                                                },
-                                                {
-                                                    "descriptor": {
-                                                        "code": "learning-objective",
-                                                        "name": "Learning objective"
-                                                    },
-                                                    "value": "By the end of the course, learners will confidently navigate everyday conversations, demonstrating improved fluency, cultural awareness, and effective communication skills."
-                                                },
-                                                {
-                                                    "descriptor": {
-                                                        "code": "prerequisite",
-                                                        "name": "Prerequisite"
-                                                    },
-                                                    "value": "Should have a basic understanding of English"
-                                                },
-                                                {
-                                                    "descriptor": {
-                                                        "code": "prerequisite",
-                                                        "name": "Prerequisite"
-                                                    },
-                                                    "value": "Access to a computer or internet to access the course online"
-                                                },
-                                                {
-                                                    "descriptor": {
-                                                        "code": "lang-code",
-                                                        "name": "Language code"
-                                                    },
-                                                    "value": "en"
-                                                },
-                                                {
-                                                    "descriptor": {
-                                                        "code": "course-duration",
-                                                        "name": "Course duration"
-                                                    },
-                                                    "value": "P20H"
-                                                }
-                                            ],
-                                            "display": true
+                                            "url": "https://infyspringboard.onwingspan.com/web/assets/images/infosysheadstart/ins/1.png"
                                         }
                                     ]
                                 }
+                            },
+                            "price": {
+                                "currency": "INR",
+                                "value": "0"
+                            },
+                            "category_ids": [
+                                "LANGUAGE-COURSES",
+                                "SELF-PACED-COURSES"
                             ],
-                            "fulfillments": [
+                            "rating": "4.5",
+                            "rateable": true,
+                            "tags": [
                                 {
-                                    "agent": {
-                                        "person": {
-                                            "name": "Infosys Springboard"
-                                        },
-                                        "contact": {
-                                            "email": "support@infy.com"
-                                        }
+                                    "descriptor": {
+                                        "code": "content-metadata",
+                                        "name": "Content metadata"
                                     },
-                                    "tracking": false
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "learner-level",
+                                                "name": "Learner level"
+                                            },
+                                            "value": "Beginner"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "learning-objective",
+                                                "name": "Learning objective"
+                                            },
+                                            "value": "By the end of the course, learners will confidently navigate everyday conversations, demonstrating improved fluency, cultural awareness, and effective communication skills."
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "prerequisite",
+                                                "name": "Prerequisite"
+                                            },
+                                            "value": "Should have a basic understanding of English"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "prerequisite",
+                                                "name": "Prerequisite"
+                                            },
+                                            "value": "Access to a computer or internet to access the course online"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "lang-code",
+                                                "name": "Language code"
+                                            },
+                                            "value": "en"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "course-duration",
+                                                "name": "Course duration"
+                                            },
+                                            "value": "P20H"
+                                        }
+                                    ],
+                                    "display": true
                                 }
                             ]
                         }
+                    ],
+                    "fulfillments": [
+                        {
+                            "agent": {
+                                "person": {
+                                    "name": "Infosys Springboard"
+                                },
+                                "contact": {
+                                    "email": "support@infy.com"
+                                }
+                            },
+                            "tracking": false
+                        }
                     ]
                 }
-            }
+            ]
         }
-    ]
+    }
 }
 ```
 
@@ -440,31 +416,6 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ```
 {
-    "context": {
-        "ttl": "PT10M",
-        "action": "select",
-        "timestamp": "2024-09-13T11:05:48.613Z",
-        "message_id": "8b5a5d34-8b5e-47ad-b55e-81a09da7292c",
-        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
-        "location": {
-            "city": {
-                "name": "Bangalore",
-                "code": "std:080"
-            },
-            "country": {
-                "name": "India",
-                "code": "IND"
-            }
-        },
-        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io"
-    },
-    "responses": [
-        {
             "context": {
                 "domain": "open-gambia:courses",
                 "action": "on_select",
@@ -658,8 +609,6 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
             }
         }
-    ]
-}
 ```
 
 ### init
@@ -758,32 +707,7 @@ Search request can contain one or more search criterion within it. Use the follo
 ```
 
 {
-    "context": {
-        "ttl": "PT10M",
-        "action": "init",
-        "timestamp": "2024-09-13T11:08:28.936Z",
-        "message_id": "8390effd-c454-485e-8243-4606405878b8",
-        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
-        "location": {
-            "city": {
-                "name": "Bangalore",
-                "code": "std:080"
-            },
-            "country": {
-                "name": "India",
-                "code": "IND"
-            }
-        },
-        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io"
-    },
-    "responses": [
-        {
-            "context": {
+                "context": {
                 "domain": "open-gambia:courses",
                 "action": "on_init",
                 "version": "1.1.0",
@@ -1022,8 +946,6 @@ Search request can contain one or more search criterion within it. Use the follo
                     "type": "DEFAULT"
                 }
             }
-        }
-    ]
 }
 
 ```
@@ -1110,31 +1032,6 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ```
 {
-    "context": {
-        "ttl": "PT10M",
-        "action": "confirm",
-        "timestamp": "2024-09-13T11:10:20.448Z",
-        "message_id": "06944ad6-d7bc-47d6-8967-efa105e8bf2d",
-        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
-        "location": {
-            "city": {
-                "name": "Bangalore",
-                "code": "std:080"
-            },
-            "country": {
-                "name": "India",
-                "code": "IND"
-            }
-        },
-        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io"
-    },
-    "responses": [
-        {
             "context": {
                 "domain": "open-gambia:courses",
                 "action": "on_confirm",
@@ -1458,8 +1355,6 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
             }
         }
-    ]
-}
 ```
 
 ### status
@@ -1505,31 +1400,6 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ```
 {
-    "context": {
-        "ttl": "PT10M",
-        "action": "status",
-        "timestamp": "2024-09-13T11:11:14.004Z",
-        "message_id": "d0a5c86d-e7d2-460b-8501-a42bec8119b6",
-        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
-        "location": {
-            "city": {
-                "name": "Bangalore",
-                "code": "std:080"
-            },
-            "country": {
-                "name": "India",
-                "code": "IND"
-            }
-        },
-        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io"
-    },
-    "responses": [
-        {
             "context": {
                 "domain": "open-gambia:courses",
                 "action": "on_status",
@@ -1861,8 +1731,6 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
             }
         }
-    ]
-}
 ```
 
 ### update (Course progress and completion)
@@ -1900,7 +1768,9 @@ Search request can contain one or more search criterion within it. Use the follo
       "items": [
         {
           "id": "d4975df5-b18c-4772-80ad-368669856d52",
-          "fulfillments": [
+        }
+      ],
+      "fulfillments": [
             {
               "state": {
                 "descriptor": {
@@ -1911,8 +1781,6 @@ Search request can contain one or more search criterion within it. Use the follo
               }
             }
           ]
-        }
-      ]
     },
     "update_target": "order.items[0].fulfillments[0].state"
   }
@@ -1927,31 +1795,6 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ```
 {
-    "context": {
-        "ttl": "PT10M",
-        "action": "update",
-        "timestamp": "2024-09-13T11:17:06.145Z",
-        "message_id": "b14e6c0b-1897-4db4-85d5-58152cc9d9ff",
-        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
-        "location": {
-            "city": {
-                "name": "Bangalore",
-                "code": "std:080"
-            },
-            "country": {
-                "name": "India",
-                "code": "IND"
-            }
-        },
-        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io"
-    },
-    "responses": [
-        {
             "context": {
                 "domain": "open-gambia:courses",
                 "action": "on_update",
@@ -2283,8 +2126,6 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
             }
         }
-    ]
-}
 ```
 
 ### track
@@ -2331,31 +2172,6 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ```
 {
-    "context": {
-        "ttl": "PT10M",
-        "action": "track",
-        "timestamp": "2024-09-13T11:13:50.087Z",
-        "message_id": "aef6a324-c863-4521-91ef-d547dbdc0812",
-        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62195",
-        "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
-        "location": {
-            "city": {
-                "name": "Bangalore",
-                "code": "std:080"
-            },
-            "country": {
-                "name": "India",
-                "code": "IND"
-            }
-        },
-        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io"
-    },
-    "responses": [
-        {
             "context": {
                 "domain": "open-gambia:courses",
                 "action": "on_track",
@@ -2379,8 +2195,6 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
             }
         }
-    ]
-}
 
 ```
 
@@ -2430,27 +2244,6 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ```
 {
-    "context": {
-        "ttl": "PT10M",
-        "action": "cancel",
-        "timestamp": "2024-09-13T11:23:37.149Z",
-        "message_id": "0a0954ba-32d1-4824-ab1c-02c5d3954934",
-        "transaction_id": "bdb5ba09-2241-4f00-b434-73466cd06228",
-        "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
-        "location": {
-            "country": {
-                "name": "India",
-                "code": "IND"
-            }
-        },
-        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io"
-    },
-    "responses": [
-        {
             "context": {
                 "domain": "open-gambia:courses",
                 "action": "on_cancel",
@@ -2764,8 +2557,6 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
             }
         }
-    ]
-}
 
 ```
 
@@ -2820,31 +2611,6 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ```
 {
-    "context": {
-        "ttl": "PT10M",
-        "action": "support",
-        "timestamp": "2024-09-13T11:27:41.568Z",
-        "message_id": "17a29828-4330-424e-a26f-faaf5ccdd2ca",
-        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
-        "location": {
-            "city": {
-                "name": "Bangalore",
-                "code": "std:080"
-            },
-            "country": {
-                "name": "India",
-                "code": "IND"
-            }
-        },
-        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io"
-    },
-    "responses": [
-        {
             "context": {
                 "domain": "open-gambia:courses",
                 "action": "on_support",
@@ -2863,26 +2629,13 @@ Search request can contain one or more search criterion within it. Use the follo
             "message": {
                 "support": {
                     "ref_id": "Abjhjh13773",
-                    "order_id": "d4975df5",
                     "callback_phone": "+91-8858150053",
                     "email": "support@ekstep.com",
                     "phone": "+91-965676879",
                     "url": "https://www.somesupportApp.com/chat-url-for-support",
-                    "docs": [
-                        {
-                            "descriptor": {
-                                "name": "FAQs",
-                                "short_desc": "Frequently asked questions and common issues"
-                            },
-                            "url": "https://link-to-the-document.com",
-                            "mime_type": "application/pdf"
-                        }
-                    ]
                 }
             }
         }
-    ]
-}
 ```
 
 
@@ -2938,33 +2691,8 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ```
 {
-    "context": {
-        "ttl": "PT10M",
-        "action": "rating",
-        "timestamp": "2024-09-13T11:28:42.486Z",
-        "message_id": "99aa1591-39c8-471a-9ade-7b4b5916b894",
-        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
-        "domain": "open-gambia:courses",
-        "version": "1.1.0",
-        "bap_id": "ps-bap-network.becknprotocol.io",
-        "bap_uri": "https://ps-bap-network.becknprotocol.io",
-        "location": {
-            "city": {
-                "name": "Bangalore",
-                "code": "std:080"
-            },
-            "country": {
-                "name": "India",
-                "code": "IND"
-            }
-        },
-        "bpp_id": "sandbox-bpp-network.becknprotocol.io",
-        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io"
-    },
-    "responses": [
-        {
             "context": {
-                "domain": "open-belem:courses",
+                "domain": "open-gambia:courses",
                 "action": "on_rating",
                 "version": "1.1.0",
                 "bpp_id": "sandbox-bpp-network.becknprotocol.io",
@@ -2988,8 +2716,39 @@ Search request can contain one or more search criterion within it. Use the follo
                 }
             }
         }
-    ]
-}
+```
+
+
+- Confirmation of rating.
+- Optionally send a form for additional input (message->feedback_form). Empty message otherwise.
+
+```
+{
+            "context": {
+                "domain": "open-gambia:courses",
+                "action": "on_rating",
+                "version": "1.1.0",
+                "bpp_id": "sandbox-bpp-network.becknprotocol.io",
+                "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io",
+                "country": "IND",
+                "city": "std:080",
+                "bap_id": "ps-bap-network.becknprotocol.io",
+                "bap_uri": "https://ps-bap-network.becknprotocol.io",
+                "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
+                "message_id": "99aa1591-39c8-471a-9ade-7b4b5916b894",
+                "ttl": "PT10M",
+                "timestamp": "2024-09-13T11:28:43.011Z"
+            },
+            "message": {
+                "feedback_form": {
+                    "form": {
+                        "url": "https://infosys.springboard.io/rating?course=d4975df5-b18c-4772-80ad-368669856d52",
+                        "mime_type": "text/html"
+                    },
+                    "required": false
+                }
+            }
+        }
 ```
 
 ## Taxonomy and layer 2 configuration
@@ -3041,7 +2800,7 @@ If you are writing the provider platform software, the following are the steps y
 ## Links to artefacts
 
 
-- [Postman collection for Open Belem. Check training and courses](./postman/open_gambia_postman_collection.json)
+- [Postman collection for Open Gambia. Check training and courses](./postman/open_gambia_postman_collection.json)
 - [Layer2 config for Open gambia courses courses](./layer2/open-gambia_courses_1.1.0.yaml)
 - When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/OPEN-GAMBIA/layer2/open-gambia_courses_1.1.0.yaml)
 
