@@ -2,6 +2,28 @@
 
 In the Beckn ecosystem, the Registry serves as the foundational component for setting up a new network. The Registry is where all network participants register their public keys, and it acts as a lookup endpoint, enabling participants to discover and validate each other within the network.
 
+The Registry is the core component that represents and governs a Beckn network. It serves several critical functions:
+
+1. **Network Participant Registration**: All network participants (BAPs, BPPs, and Gateways) must register and subscribe to the Registry to be officially recognized on the network.
+
+2. **Public Key Infrastructure**: The Registry maintains a database of public keys for all registered participants. These keys are essential for:
+   - Validating the authenticity of participants during transactions
+   - Ensuring secure communication between participants
+   - Preventing unauthorized access to the network
+
+3. **Transaction Validation**: During each transaction on the network:
+   - The Registry validates the digital signatures of participants using their stored public keys
+   - This ensures that only authorized participants can engage in transactions
+   - It helps maintain the security and integrity of the network
+
+4. **Network Discovery**: The Registry enables participants to:
+   - Discover other legitimate participants on the network
+   - Verify the authenticity of potential transaction partners
+   - Access participant metadata and capabilities
+
+For detailed technical information about Registry implementation and integration, please refer to the [Beckn-ONIX guide](https://github.com/beckn/beckn-onix).
+
+
 ## Create an Account
 
 To create an account on the Beckn Registry, use the following link:
@@ -27,6 +49,9 @@ If you forget your password, reset it by selecting the "Forgot Password" option 
 ![Forgot Password](assets/images/registry/forget-pwd.png)
 
 ## Create New Network Domain
+
+**Note:** The network domain represents the domain that will be used for transactions within the Beckn network. For example, if the domain field in your Postman request is "retail", you need to have a network domain called "retail" added in the registry, otherwise the transaction will not go through.
+
 
 1. Click on the "Beckn Menu" located on the toolbar and select "Network Domain" from the dropdown.
 
@@ -68,6 +93,9 @@ If you forget your password, reset it by selecting the "Forgot Password" option 
 
 ## Create/Edit/View Network Role
 
+**Note:** This section describes manual network role creation through the registry UI. If you are using Beckn-ONIX to install a network participant (BAP/BPP), you can skip this step as the installation process automatically sends a request to create both the network participant entry and its associated network role in the registry. Manual creation is only needed if you are developing a protocol server from scratch or have specific requirements for manual addition. Alternatively, you can also use curl requests to add network participants programmatically.
+
+
 1. From the "Admin" menu bar, select "Network Participant" and choose the participant to which a role needs to be added.
 
 2. Click "Edit," navigate to the "Network Role" tab, and click "Add New."
@@ -87,6 +115,9 @@ If you forget your password, reset it by selecting the "Forgot Password" option 
    ![Operation Region](assets/images/registry/21-operatingregion.png)
 
 ## Create/Edit/View Participant Key
+
+**Note:** This section describes manual participant key creation through the registry UI. If you are using Beckn-ONIX to install a network participant (BAP/BPP), you can skip this step as the installation process automatically sends a request to create the participant key in the registry. The public keys that would be added here can be found in the default.yml file inside the installed protocol server docker container if you used Beckn-ONIX for installation. Manual creation is only needed if you are developing a protocol server from scratch or have specific requirements for manual addition. Alternatively, you can also use curl requests to add participant keys programmatically.
+
 
 1. Under "Network Participant," select the participant to edit.
 
