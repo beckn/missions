@@ -1,0 +1,104 @@
+  /observe:
+    post:
+      tags:
+        - Beckn Application Platform (BAP)
+        - Beckn Provider Platform (BPP)
+      description: Observability platforms call this API to request Observable data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  allOf:
+                    - $ref: "#/components/schemas/Context"
+                    - properties:
+                        action:
+                          enum:
+                            - observe
+                      required:
+                        - action
+                        - domain
+                        - location
+                message:
+                  type: object
+                  properties:
+                    requested:
+                      type: object
+                      properties:
+                        actions:
+                          type: object
+                          properties:
+                            search:
+                              type: object
+                              description: A JSON Schema document.
+                            select:
+                              type: object
+                              description: A JSON Schema document.
+                            init:
+                              type: object
+                              description: A JSON Schema document.
+                            confirm:
+                              type: object
+                              description: A JSON Schema document.
+                            status:
+                              type: object
+                              description: A JSON Schema document.
+                            track:
+                              type: object
+                              description: A JSON Schema document.
+                            update:
+                              type: object
+                              description: A JSON Schema document.
+                            support:
+                              type: object
+                              description: A JSON Schema document.
+                            cancel:
+                              type: object
+                              description: A JSON Schema document.
+                            rating:
+                              type: object
+                              description: A JSON Schema document.
+                            on_search:
+                              type: object
+                              description: A JSON Schema document.
+                            on_select:
+                              type: object
+                              description: A JSON Schema document.
+                            on_init:
+                              type: object
+                              description: A JSON Schema document.
+                            on_confirm:
+                              type: object
+                              description: A JSON Schema document.
+                            on_status:
+                              type: object
+                              description: A JSON Schema document.
+                            on_track:
+                              type: object
+                              description: A JSON Schema document.
+                            on_update:
+                              type: object
+                              description: A JSON Schema document.
+                            on_support:
+                              type: object
+                              description: A JSON Schema document.
+                            on_cancel:
+                              type: object
+                              description: A JSON Schema document.
+                            on_rating:
+                              type: object
+                              description: A JSON Schema document.
+                        time:
+                          $ref: "#/components/schemas/Time"
+                      required:
+                        - actions
+                  required:
+                    - requested
+              required:
+                - context
+                - message
+      responses:
+        default:
+          $ref: "#/paths/~1init/post/responses/default"

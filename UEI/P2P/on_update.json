@@ -1,7 +1,7 @@
 {
   "context": {
     "domain": "uei:p2p-trading",
-    "action": "on_status",
+    "action": "on_update",
     "location": {
       "country": {
         "name": "India",

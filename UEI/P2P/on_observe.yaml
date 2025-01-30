@@ -1,0 +1,47 @@
+  /on_observe:
+    post:
+      tags:
+        - Observability Platform
+      description: Adapters(BAP and BPP) call this API to submit requested data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  allOf:
+                    - $ref: "#/components/schemas/Context"
+                    - properties:
+                        action:
+                          enum:
+                            - on_observe
+                      required:
+                        - action
+                        - domain
+                        - location
+                message:
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          format: uri
+                        mime_type:
+                          type: string
+                        method:
+                          type: string
+                      required:
+                        - url
+                        - mime_type
+                        - method
+                    required:
+                      - data   
+              required:
+                - context
+                - message
+      responses:
+        default:
+          $ref: "#/paths/~1init/post/responses/default"

@@ -1,0 +1,38 @@
+  /reconcile:
+    post:
+      tags:
+        - Reconciliation Engine (RE)
+      description: NPs call this API to get the records reconciled.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+                  properties:
+                    context:
+                      allOf:
+                        - $ref: "#/components/schemas/Context"
+                        - properties:
+                            action:
+                              enum:
+                                - reconcile
+                          required:
+                            - action
+                            - domain
+                            - location
+                    message:
+                      type: object
+                      properties:
+                        order:
+                          $ref: "#/components/schemas/Descriptor"
+                      required:
+                        - order
+                  required:
+                    - context
+                    - message
+      responses:
+        default:
+          $ref: "#/paths/~1init/post/responses/default"

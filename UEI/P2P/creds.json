@@ -1,0 +1,67 @@
+{
+    "credentials": [
+        {
+            "Descriptor": {
+                "Name": "Solar Panel Ownership Certificate",
+                "code": "SPOC"
+            },
+            "verifiableCredential": {
+                "type": [
+                    "SolarPanelOwnershipCertificate"
+                ],
+                "issuer": {
+                    "description": {
+                        "name": "did:NLDC:6fb1f712ebe12c27cc26eebfe11"
+                    }
+                },
+                "issueDate": "2022-01-01T19:23:24Z",
+                "validFrom": "2022-01-01T19:23:24Z",
+                "validUntil": "2027-01-01T19:23:24Z",
+                "credentialSubject": {
+                    "id": "did:web:mukesh.shankar/98765456",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "Solar Panel Ownership Credential"
+                            },
+                            "list": [
+                                {
+                                    "value": "Renewable Energy Guarantees of Origin"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "proof": {
+                    "type": "DataIntegrityProof",
+                    "created": "2022-11-13T18:19:39Z",
+                    "verificationMethod": "did:key:zDnaeyJCMXfq8SgtJWbcLgaJyDGY8BU6iw8rhMyqC4aYumkRu",
+                    "cryptosuite": "eddsa-rdfc-2022",
+                    "proofPurpose": "assertionMethod",
+                    "proofValue": "z5aDaMUdSGSrAarqQCwPEbLbDTvXt2yQGeYyViiVwgWCQ14iNgXqkSWC72uVBW4Vz2y2NdNy9dvnSZkRCSNqJ7HgN"
+                }
+            }
+        },
+        {
+            "Descriptor": {
+                "Name": "P2P Trading Licence",
+                "code": "P2PTL"
+            },
+            "Url": "https://https://drive.google.com/drive/u/0/my-drive/43846384/Licence.pdf"
+        },
+        {
+            "Descriptor": {
+                "Name": "Proof of Identity",
+                "code": "POID"
+            },
+            "Url": "https://digilocker.com/43846384/Adhar.pdf"
+        },
+        {
+            "Descriptor": {
+                "Name": "Proof of Address",
+                "code": "POAD"
+            },
+            "Url": "https://digilocker.com/43846384/Adhar.pdf"
+        }
+    ]
+}

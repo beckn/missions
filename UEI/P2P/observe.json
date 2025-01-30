@@ -1,0 +1,35 @@
+{
+    "context": {
+        "domain": "p2p-trading",
+        "action": "observe",
+        "location": {
+            "country": {
+                "name": "India",
+                "code": "IND"
+            }
+        },
+        "version": "1.1.0",
+        "op_id": "example-op.com",
+        "op_uri": "https://api.example-observability.com/",
+        "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "timestamp": "2023-07-16T04:41:16Z"
+    },
+    "message": {
+        "requested": {
+            "actions": {
+                "search": {
+                    "type": "object",
+                    "properties": {}
+                },
+                "select": {},
+                "init": {}
+            },
+            "time": {
+                "range": {
+                    "start": "",
+                    "end": ""
+                }
+            }
+        }
+    }
+}

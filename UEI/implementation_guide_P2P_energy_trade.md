@@ -27,6 +27,7 @@ This document has the following parts:
 ## Outcome Visualisation
 
 **Context**
+
 Peer-to-peer Energy Trading on a virtual network-based model for P2P energy trading involving the decentralised exchange of electricity between producers and consumers within a localised grid network, under the distribution coverage of DISCOMs. It allows individuals and groups to buy and sell surplus renewable energy directly to each other, bypassing traditional energy suppliers. The aim is to reduce energy costs, promote renewable energy use and enhance the security and resilience of the energy grid.
 
 ![UEI Charging Outcome Visualization](images/uei_p2p_energy_trade.png)
@@ -101,9 +102,9 @@ Beckn is a aynchronous protocol at its core.
 - An additional component, referred to as the Observability Layer, is used to store confirmed orders (i.e., P2P energy trade contracts) between consumers and prosumers.
 - Meter data for both consumers and prosumers is periodically stored in the Observability Layer. In this use case, this task is performed by the Discom; however, other entities may also carry out this responsibility when applicable.
 - The records in the Observability Layer serve as the single source of truth.
-- An entity called the Allocation Engine reads contracts and meter data from the Observability Layer. Based on this information, it allocates solar energy units to consumers.
+- Another component referred to as Allocation Engine, fetches contracts and meter data from the Observability Layer. Based on the fetched information, Allocation Engine allocates solar energy units to consumers.
 - The Allocation Engine updates the order objects in the Observability Layer with the calculated allocations. Any changes in the actual allocation may also result in updates to the quote breakdown.
-- The BAP (Beckn Application Platform) and BPP (Beckn Provider Platform) read the updated orders from the Observability Layer and synchronize their local copies. At this stage, the order is considered fulfilled.
+- The BAP (Beckn Application Platform) and BPP (Beckn Provider Platform) read the updated order objects from the Observability Layer and synchronize their local copies. At this stage, the order is considered fulfilled.
 
 
 **Search for surplus solar energy**
@@ -114,10 +115,12 @@ Beckn is a aynchronous protocol at its core.
 
 A search request can include one or more search criteria. Below are examples of how a search request can be constructed.
 A general rule is:
-if searching by free text, it is specified in message->intent->descriptor->name
-If searching by category, it is specified in message->intent->category->descriptor->code
+- if searching by free text, it is specified in message->intent->descriptor->name
+- If searching by category, it is specified in message->intent->category->descriptor->code
 
-**Search by the type of energy, units of energy required and the fulfillment time**
+Search requests are sent to the gateway url.
+
+**Search by the category of energy, number of units of energy required and the fulfillment time**
 
 
 ```
@@ -174,7 +177,7 @@ If searching by category, it is specified in message->intent->category->descript
 }
 ```
 
-**Search by the type of energy, units of energy required, fulfillment time, and maximum purchase price**
+**Search by the category of energy, units of energy required, fulfillment time, and maximum purchase price**
 
 
 ```
@@ -235,7 +238,7 @@ If searching by category, it is specified in message->intent->category->descript
 }
 ```
 
-**Search by the type of energy, units of energy required, fulfillment time, maximum purchase price and grid name**
+**Search by the category of energy, units of energy required, fulfillment time, maximum purchase price and grid name**
 
 
 ```
@@ -453,11 +456,13 @@ If searching by category, it is specified in message->intent->category->descript
 
 ### on_search
 
+BAP receives a response with a catalog.
+
 **on_search with catalog of results**
 
-- The catalog that comes back has a list of providers.
-- Each provider has a list of items.
-- Each item is the catalog listing solar energy.
+- The catalog contains a list of providers.
+- Each provider offers a list of items.
+- Each item in the catalog represents a solar energy listing, including the number of units available and the price per unit.
 
 ```
 {
@@ -749,12 +754,13 @@ If searching by category, it is specified in message->intent->category->descript
 
 ### select
 
-The examples from this stage onwards will be based on a scenario where consumer chooses item with `"id": "uid_xyz"` from the on_search response.
+The example jsons from this stage onwards will be based on a scenario where consumer chooses item with `"id": "uid_xyz"` from the on_search response.
 
 **sending a select request**
 
-- Choose the item(s) from the list from the on_search response and request a quote
-- The chosen item is in message->order->item_id
+- Choose item(s) from the list from the on_search response. The chosen item are identified by message->order->item[i].id
+- Choose a fulfillment type, fill in the required fulfillment details.
+- Send a select request to BPP. BPP endpoint can be fetched from the on_search payload context.bpp_uri field.
 
 ```
 {
@@ -819,8 +825,11 @@ The examples from this stage onwards will be based on a scenario where consumer 
 
 ### on_select
 
-- The BPP returns back with a quote for the selection
-- It is in message->order->quote
+- The BPP creates an on_select payload.
+- The BPP generates a quote for the selected items, includes the quote in on_select payload.
+- The quote is included in message->order->quote
+- BPP sends an on_select request to BAP. 
+- Send an on_select request to BAP. BAP endpoint can be fetched from the select payload context.bap_uri field.
 
 ```
 {

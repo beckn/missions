@@ -1,0 +1,43 @@
+  /on_reconcile:
+    post:
+      tags:
+        - BAP
+        - BPP
+      description: NPs call this API to get the records reconciled.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+                  properties:
+                    context:
+                      allOf:
+                        - $ref: "#/components/schemas/Context"
+                        - properties:
+                            action:
+                              enum:
+                                - on_reconcile
+                          required:
+                            - action
+                            - domain
+                            - location
+                    message:
+                      type: object
+                      properties:
+                        order:
+                          $ref: "#/components/schemas/Descriptor"
+                      required:
+                        - order
+                  required:
+                    - context
+                    - message
+                reconciliation_engine_signature:
+                  type: string
+                  format: base64
+                  description: The signed digest using a private key. Base64-encoded.
+      responses:
+        default:
+          $ref: "#/paths/~1init/post/responses/default"
