@@ -1,12 +1,12 @@
 # Implementation Guide: UEI - Demand Note Sale and Purchase
 
-#### Version 1.0
+#### Version 0.1
 
 ## Version History
 
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
-| 30-01-2025 | 1.0     | Initial Version                                     |
+| 03-02-2025 | 0.1     | Initial draft                                     |
 
 ## Introduction
 
