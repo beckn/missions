@@ -1,6 +1,6 @@
 # UAI Implementation Guide - Weather Data
 
-#### Version 1.0
+#### Version 1.1
 
 ## Version History
 
@@ -9,7 +9,7 @@
 | 06-11-2024 | 0.1     | Initial Version                                     |
 | 14-11-2024 | 0.2     | Internal Review Comments Incorprated                |
 | 18-11-2024 | 1.0     | Final Version                                       |
-| 04-12-2024 | 1.1     | A new section created for Schema Details and added details for Weather Advisory      |
+| 04-12-2024 | 1.1     | A new section created for Schema Details and added details for Weather forecast      |
 
 ## Introduction
 
@@ -93,17 +93,7 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-### Use case - Discovery and consumption of free knowledge advisory
-
-**Search for resources on topic**
-
-![Search for resources on infested disease](Images/Advisory/free/UAI%20advisory-Discovery.jpg)
-
-**Seek support and provide rating**
-
-![Support call to get contact information of Provider platofrm](./Images/Advisory/free/uai-Post%20Fulfilment.jpg)
-
-### Use case - Discovery and consumption of paid knowledge advisory
+### Use case - Discovery and consumption weather forecast report
 
 **Search for resources on topic**
 
@@ -123,7 +113,7 @@ Beckn is a aynchronous protocol at its core.
 
 ## API Calls and Schema
 
-### Discovery and consumption of paid knowledge advisory
+### Discovery and consumption of weather forecast reports
 
 #### search
 
@@ -1733,18 +1723,6 @@ If you are writing the provider platform software, the following are the steps y
 | 1  | Weather Advisory          | Location (Pin Code, Lat/Long)        | 416506 or coordinates            | int or point      |
 | 2  | Weather Advisory          | Language                             | mr, en                           | varchar           |
 | 3  | Weather Advisory          | Duration ( 1 day, 3 day or 7 days)   | 1 or 3 or 7                      | int               |
-| 4  | Advisory & Spray Schedule | Crop, Variety                        | grapes                           | varchar           |
-| 5  |Advisory & Spray Schedule  | Plantation Date                      | 13/11/2024                       | datetime          |
-| 6  | Advisory & Spray Schedule | Growth Stage                         | flowering                        | varchar           |
-| 7  | Advisory & Spray Schedule | Language                             | mr, en                           | varchar           |
-| 8  | Advisory & Spray Schedule | Soil Type                            | sandy soil or  black soil etc.   | varchar           |    
-| 9  | Advisory & Spray Schedule | Irrigation Type                      | surface drip                     | varchar           |
-| 10 | Advisory & Spray Schedule | If any specific disease              | karpa                            | varchar           |
-| 11 | Disease and Pest forecast | Crop, Variety                        | grapes                           | varchar           |
-| 12 | Disease and Pest forecast | Plantation Date                      | 13/11/2024                       | datetime          |
-| 13 | Disease and Pest forecast | Growth Stage                         | flowering                        | varchar           |
-| 14 | Disease and Pest forecast | Language                             | mr, en                           | varchar           |
-| 15 | Disease and Pest forecast | Location (Pin Code, Lat/Long)        | 416506 or coordinates            | int or point      |
 
 ## Links to artefacts
 

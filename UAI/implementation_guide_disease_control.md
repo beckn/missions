@@ -9,7 +9,6 @@
 | 06-11-2024 | 0.1     | Initial Version                                     |
 | 14-11-2024 | 0.2     | Internal Review Comments Incorprated                |
 | 18-11-2024 | 1.0     | Final Version                                       |
-| 04-12-2024 | 1.1     | A new section created for Schema Details and added details for Disease and Pest forecast      |
 
 ## Introduction
 
@@ -91,7 +90,7 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-### Use case - Discovery and consumption of free knowledge advisory
+### Use case - Disease Control
 
 **Search for resources on topic**
 
@@ -121,7 +120,7 @@ Beckn is a aynchronous protocol at its core.
 
 ## API Calls and Schema
 
-### Discovery and consumption of free knowledge advisory
+### Disease Control
 
 #### search
 
@@ -149,9 +148,44 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "intent": {
+        "category": {
+          "code": "disease-control"
+        },
         "descriptor": {
           "name": "Kala Daag on onion leaves"
         }
+    }
+  }
+}
+```
+
+**search by topic and rating**
+
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "descriptor": {
+        "name": "kala daag on onion leaves"
+      }
+      "item": {
+        "rating": ">3.0",
+      }
     }
   }
 }
@@ -181,6 +215,9 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "intent": {
+      "category": {
+        "code": "disease-control"
+      },
       "descriptor": {
           "name": "kala daag on onion leaves"
       },
@@ -398,41 +435,6 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-**search by topic and rating**
-
-- The topic to search is specified in the message->intent->descriptor->name field.
-- The desired language is specified in a tag named languages.
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "action": "search",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_uri": "https://example-bap-client.becknprotocol.io",
-    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
-    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
-    "timestamp": "2024-07-02T09:15:30Z"
-  },
-  "message": {
-    "intent": {
-      "descriptor": {
-        "name": "kala daag on onion leaves"
-      }
-      "item": {
-        "rating": ">3.0",
-      }
-    }
-  }
-}
-```
-
 #### on_search
 
 **on_search with catalog of results**
@@ -442,6 +444,8 @@ Beckn is a aynchronous protocol at its core.
 - Each item is the catalog listing for a resource.
 - The name, short_desc and long_desc fields contain the name and description of the resource.
 - Further, if the resource is a video or a pdf, its mimetype and url are specified in the media field.
+
+**catalog for disease-control**
 
 ```
 {
@@ -546,6 +550,65 @@ Beckn is a aynchronous protocol at its core.
                 ]
               },
               "rating": "4.5"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+**catalog for spray-schedule**
+```
+{
+  "context": {
+    "domain": "advisory:uai",
+    "action": "on_search",
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "bpp_id": "example-bpp.becknprotocol.io",
+    "bpp_uri": "https://example-bpp-client.becknprotocol.io",
+    "country": "IND",
+    "city": "std:080",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      }
+    },
+    "transaction_id": "c3d58269-69a1-49af-b500-60d7e1d792e7",
+    "message_id": "3cff4f60-17e4-4f7d-a73f-0b696162d49f",
+    "ttl": "PT10M",
+    "timestamp": "2024-12-20T08:03:16.516Z"
+  },
+  "message": {
+    "catalog": {
+      "descriptor": {
+        "name": "spray-schedule"
+      },
+      "providers": [
+        {
+          "id": "19a02a67-d2f0-4ea7-b7e1-b2cf4fa57f56",
+          "descriptor": {
+            "name": "xyz",
+            "short_desc": "xyz Agri Services",
+            "images": [
+              {
+                "url": "https://xyz.info/img/logo.jpg"
+              }
+            ]
+          },
+          "items": [
+            {
+              "id": "1",
+              "descriptor": {
+                "name": "Powdery mildew on grapes",
+                "short_desc": "1 A white, powder-like fungal growth appears on both sides of the leaf. 2 White, powdery spots on leaves, shoots, flowers, and fruits; yellowing and curling of leaves; leaf drop.",
+                "long_desc": "1 As soon as symptoms of powdery mildew appear, spray **water-mixable sulfur** at a rate of 25 grams per 10 liters of water. 2 For controlling powdery mildew, spraying **nanosilver** at a rate of 2 ml per liter of water can be beneficial."
+
+              }
             }
           ]
         }
@@ -815,9 +878,6 @@ If you are writing the provider platform software, the following are the steps y
 
 | SN | Use Case                  | Input Details                        | Values                           | Data Types        |
 |----|---------------------------|--------------------------------------|----------------------------------|-------------------|
-| 1  | Weather Advisory          | Location (Pin Code, Lat/Long)        | 416506 or coordinates            | int or point      |
-| 2  | Weather Advisory          | Language                             | mr, en                           | varchar           |
-| 3  | Weather Advisory          | Duration ( 1 day, 3 day or 7 days)   | 1 or 3 or 7                      | int               |
 | 4  | Advisory & Spray Schedule | Crop, Variety                        | grapes                           | varchar           |
 | 5  |Advisory & Spray Schedule  | Plantation Date                      | 13/11/2024                       | datetime          |
 | 6  | Advisory & Spray Schedule | Growth Stage                         | flowering                        | varchar           |

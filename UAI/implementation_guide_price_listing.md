@@ -9,7 +9,6 @@
 | 06-11-2024 | 0.1     | Initial Version                                     |
 | 14-11-2024 | 0.2     | Internal Review Comments Incorprated                |
 | 18-11-2024 | 1.0     | Final Version                                       |
-| 04-12-2024 | 1.1     | A new section created for Schema Details and added details for Weather Advisory, Advisory & Spray Schedule & Disease and Pest forecast      |
 
 ## Introduction
 
@@ -33,15 +32,6 @@ This document has the following parts:
 
 ### Use case - Price Listing
 
-1. Monisha, a tomato farmer in Nashik, seeks to understand upcoming weather changes to plan her fertilization, irrigation, pest control, and other crop management practices.
-2. Using a beckn-enabled app connected to the UAI network, she searches for weather data and forecasts specific to her farm's location.
-3. She discovers a variety of weather content providers on the network, each offering different forecasts, ratings, and pricing options.
-4. Monisha chooses a 14-day hyperlocal weather forecast from News14, priced at INR 30, based on the service's details and rating.
-5. After selecting her forecast, she provides her contact information and billing address, receiving a final quote and terms of purchase, including any cancellation or refund policies.
-5. Reviewing the terms, Monisha makes her payment via UPI and confirms her order, receiving an order ID from the service provider.
-6. Shortly after, Monisha receives her detailed weather report from News14, formatted as a PDF or in a user-friendly display on the app.
-7. Satisfied with the service, she submits a rating based on the quality and usefulness of the weather information.
-8. The app allows Monisha to reach out to support services in case she encounters any issues with the advisory service.
 
 ## Flow diagrams
 
@@ -94,7 +84,7 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-### Use case - Discovery and consumption of free knowledge advisory
+### Use case - Price Listing
 
 **Search for resources on topic**
 
@@ -124,7 +114,7 @@ Beckn is a aynchronous protocol at its core.
 
 ## API Calls and Schema
 
-### Discovery and consumption of free knowledge advisory
+### Price Listing
 
 #### search
 
@@ -209,7 +199,161 @@ Beckn is a aynchronous protocol at its core.
 - Further, if the resource is a video or a pdf, its mimetype and url are specified in the media field.
 
 ```
-
+{
+    "context": {
+        "domain": "advisory:uai",
+        "action": "search",
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "example-bap.becknprotocol.io",
+        "bap_uri": "https://example-bap-client.becknprotocol.io",
+        "bpp_id": "example-bpp.becknprotocol.io",
+        "bpp_uri": "https://example-bpp-client.becknprotocol.io",
+        "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+        "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+        "timestamp": "2024-07-02T09:15:30Z"
+    },
+    "message": {
+        "catalog": {
+            "providers": [
+                {
+                    "id": "privider012",
+                    "descriptor": {
+                        "name": "ExampleAgri",
+                        "short_desc": "ExampleAgri Services",
+                        "images": [
+                            {
+                                "url": "https://ExampleAgri.info/img/logo.jpg"
+                            }
+                        ]
+                    },
+                    "time": {
+                        "range": {
+                            "start": "2024-12-19T00:00:00Z",
+                            "end": "2024-12-19T00:00:00Z"
+                        }
+                    },
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": "Yewla"
+                        },
+                        {
+                            "id": "2",
+                            "city": "Laslgaon"
+                        },
+                        {
+                            "id": "3",
+                            "city": "Nashik"
+                        },
+                        {
+                            "id": "4",
+                            "city": "Satara"
+                        },
+                        {
+                            "id": "5",
+                            "city": "Malegaon"
+                        },
+                        {
+                            "id": "6",
+                            "city": "Manmad"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "1",
+                            "descriptor": {
+                                "name": "Kanda"
+                            },
+                            "location_ids": [
+                                "1"
+                            ],
+                            "price": {
+                                "minimum_value": "301",
+                                "maximum_value": "2190",
+                                "estimated_value": "1400"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "descriptor": {
+                                "name": "Kanda"
+                            },
+                            "location_ids": [
+                                "2"
+                            ],
+                            "price": {
+                                "minimum_value": "800",
+                                "maximum_value": "2900",
+                                "estimated_value": "1900"
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "descriptor": {
+                                "name": "Kanda"
+                            },
+                            "location_ids": [
+                                "3"
+                            ],
+                            "price": {
+                                "minimum_value": "1000",
+                                "maximum_value": "2305",
+                                "estimated_value": "1600"
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "descriptor": {
+                                "name": "Kanda"
+                            },
+                            "location_ids": [
+                                "4"
+                            ],
+                            "price": {
+                                "minimum_value": "300",
+                                "maximum_value": "2380",
+                                "estimated_value": "2000"
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "descriptor": {
+                                "name": "Kanda"
+                            },
+                            "location_ids": [
+                                "5"
+                            ],
+                            "price": {
+                                "minimum_value": "4010",
+                                "maximum_value": "4010",
+                                "estimated_value": "4010"
+                            }
+                        },
+                        {
+                            "id": "6",
+                            "descriptor": {
+                                "name": "Kanda"
+                            },
+                            "location_ids": [
+                                "6"
+                            ],
+                            "price": {
+                                "minimum_value": "1100",
+                                "maximum_value": "2200",
+                                "estimated_value": "1800"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
 ```
 
 #### support
@@ -472,21 +616,6 @@ If you are writing the provider platform software, the following are the steps y
 
 | SN | Use Case                  | Input Details                        | Values                           | Data Types        |
 |----|---------------------------|--------------------------------------|----------------------------------|-------------------|
-| 1  | Weather Advisory          | Location (Pin Code, Lat/Long)        | 416506 or coordinates            | int or point      |
-| 2  | Weather Advisory          | Language                             | mr, en                           | varchar           |
-| 3  | Weather Advisory          | Duration ( 1 day, 3 day or 7 days)   | 1 or 3 or 7                      | int               |
-| 4  | Advisory & Spray Schedule | Crop, Variety                        | grapes                           | varchar           |
-| 5  |Advisory & Spray Schedule  | Plantation Date                      | 13/11/2024                       | datetime          |
-| 6  | Advisory & Spray Schedule | Growth Stage                         | flowering                        | varchar           |
-| 7  | Advisory & Spray Schedule | Language                             | mr, en                           | varchar           |
-| 8  | Advisory & Spray Schedule | Soil Type                            | sandy soil or  black soil etc.   | varchar           |    
-| 9  | Advisory & Spray Schedule | Irrigation Type                      | surface drip                     | varchar           |
-| 10 | Advisory & Spray Schedule | If any specific disease              | karpa                            | varchar           |
-| 11 | Disease and Pest forecast | Crop, Variety                        | grapes                           | varchar           |
-| 12 | Disease and Pest forecast | Plantation Date                      | 13/11/2024                       | datetime          |
-| 13 | Disease and Pest forecast | Growth Stage                         | flowering                        | varchar           |
-| 14 | Disease and Pest forecast | Language                             | mr, en                           | varchar           |
-| 15 | Disease and Pest forecast | Location (Pin Code, Lat/Long)        | 416506 or coordinates            | int or point      |
 
 ## Links to artefacts
 
