@@ -1,0 +1,26 @@
+properties:
+  message:
+    properties:
+      order:
+        properties:
+          fulfillments:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                state:
+                  type: object
+                  properties:
+                    descriptor:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - ORDER_PLACED
+                            - ORDER_PROCESSING
+                            - ORDER_PARTIALLY_FULFILLED
+                            - ORDER_FULFILLED
+                      required:
+                        - code
