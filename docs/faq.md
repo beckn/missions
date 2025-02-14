@@ -97,7 +97,7 @@ Q19. **Do we need to deploy our own gateway and registry?**
 
 Usually the registry is deployed by a Network Facilitator. There is usually one registry (or in a more general sense, one registry infrastructure) for a network. Network participants (BAP, BPP) do not need to deploy their own registry. 
 
-The Beckn Gateway again is typically hosted by the Network Facilitator, though the protocol itself does not impose any restrictions. Similarly we can have multiple Beckn Gateways in a network, though the usecase is not typical. Again, BAPs and BPPs do not need to host their own gateway.
+The Beckn Gateway again is typically hosted by the Network Facilitator, though the protocol itself does not impose any restrictions. Similarly we can have multiple Beckn Gateways in a network, though the use case is not typical. Again, BAPs and BPPs do not need to host their own gateway.
 
 Q20. **Can we send extra details with Beckn APIs? Does the Beckn schema support this?**
 
@@ -117,7 +117,7 @@ For Provider side platforms, the following needs to be done.
 
 Q22. **How do you track the seeker's location during fulfillment?**
 
-Typically in most usecases the Seeker's location is not tracked. For the purposes of fulfillment, the fullfillment location is part of the order. If the seeker wants to change that, it can be done with the update request. If the usecase requires it, the order can contain link to an external system that will capture and expose the seeker's location to the fulfillment agent. 
+Typically in most use cases the Seeker's location is not tracked. For the purposes of fulfillment, the fulfillment location is part of the order. If the seeker wants to change that, it can be done with the update request. If the use case requires it, the order can contain link to an external system that will capture and expose the seeker's location to the fulfillment agent. 
 
 Q23. **Given the beckn endpoints are open, how is security established when communicating with BPP / BG endpoints.**
 
@@ -167,9 +167,9 @@ Q34. **What parts of beckn protocol in ondc or open mobility can be self hosted 
 
 Answering generally, in any existing Beckn Network, the Consumer side application (BAP) and the Provider Platform (BPP) are hosted by network participants.
 
-Q35. **How is grevance management done among network participants ?**
+Q35. **How is grievance management done among network participants ?**
 
-Currently the grieviance management terms and process depends on the network and defined by the network facilitator. 
+Currently the grievance management terms and process depends on the network and defined by the network facilitator. 
 
 Q36. **How to understand beckn from scratch ?**
 
@@ -210,7 +210,7 @@ Q44. **How to test if registry and gateway are setup properly ?**
 You can do it in a few ways.
 1. You can send a search request to the gateway and see if it is multicasting it.
 2. You can see the logs of the gateway (through https://your-gateway-address/bg/log/0) after restart and if you do not see any exceptions, its fine
-3. Gateway contacts the registry on bootup and in many cases if it cannot communicate with registry, it keeps restarting. So if your gateway container is restarting, then probably the setup has issues.
+3. Gateway contacts the registry on boot up and in many cases if it cannot communicate with registry, it keeps restarting. So if your gateway container is restarting, then probably the setup has issues.
 
 Q45. **What does a Network Facilitator mean ?**
 
