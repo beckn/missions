@@ -210,7 +210,7 @@ Q44. **How to test if registry and gateway are setup properly ?**
 You can do it in a few ways.
 1. You can send a search request to the gateway and see if it is multicasting it.
 2. You can see the logs of the gateway (through https://your-gateway-address/bg/log/0) after restart and if you do not see any exceptions, its fine
-3. Gateway contacts the registry on boot up and in many cases if it cannot communicate with registry, it keeps restarting. So if your gateway container is restarting, then probably the setup has issues.
+3. Gateway contacts the registry on bootup and in many cases if it cannot communicate with registry, it keeps restarting. So if your gateway container is restarting, then probably the setup has issues.
 
 Q45. **What does a Network Facilitator mean ?**
 
