@@ -181,7 +181,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "scheme:uai",
     "action": "search",
     "location": {
       "country": {
@@ -246,7 +246,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "scheme:uai",
     "action": "search",
     "location": {
       "country": {
@@ -401,7 +401,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "scheme:uai",
     "action": "search",
     "location": {
       "country": {
@@ -455,7 +455,221 @@ Beckn is a aynchronous protocol at its core.
 - Further, if the resource is a video or a pdf, its mimetype and url are specified in the media field.
 
 ```
-
+{
+  "context": {
+    "domain": "scheme:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "catalog": {
+      "providers": [
+        {
+          "id": "p1",
+          "descriptor": {
+            "name": "SchemeFinder",
+            "short_desc": "A Scheme Discovery and Application Service helps users discover",
+            "long_desc": "The provider has ....",
+            "images": [
+              {
+                "url": "https://image_url"
+              }
+            ]
+          },
+          "categories": [
+            {
+              "id": "c1",
+              "descriptor": {
+                "code": "Financial-Assistance",
+                "name": "Financial Assistance"
+              }
+            },
+            {
+              "id": "c2",
+              "descriptor": {
+                "code": "Housing-Infrastructure",
+                "name": "Housing Infrastructure"
+              }
+            },
+            {
+              "id": "c3",
+              "descriptor": {
+                "code": "Agriculture-Rural-Development",
+                "name": "Agriculture Rural Development"
+              }
+            },
+            {
+              "id": "c4",
+              "descriptor": {
+                "code": "Education-Skill-Development",
+                "name": "Education & Skill Development"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "id": "f1",
+              "type": "Direct Benefit Transfer (DBT)" // Cash or subsidy is transferred directly to the beneficiary's bank account.
+            },
+            {
+              "id": "f2",
+              "type": "Subsidized Services" // Discounts on specific services such as housing
+            },
+            {
+              "id": "f3",
+              "type": "Employment & Placement" //Job guarantees, apprenticeships, or employment-linked benefits.
+            }
+          ],
+          "locations": [
+            {
+              "id": "l1",
+              "city": {
+                "name": "Nashik",
+                "code": "Nashik"
+              }
+            },
+            {
+              "id": "l2",
+              "city": {
+                "name": "Aurangabad",
+                "code": "Aurangabad"
+              }
+            }
+          ],
+          "items": [
+            {
+              "id": "i1",
+              "descriptor": {
+                "name": "Ayushman Bharat Yojana",
+                "short_desc": "Pradhan Mantri Jan Arogya Yojana (PM-JAY) is implemented to reduce the financial burden on poor and vulnerable groups arising out of catastrophic hospital episodes and ensure their access to quality health services.",
+                "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. \n3) The benefit also includes pre and post-hospitalization expenses. \n4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures \n5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)"
+              },
+              "tags": [
+                {
+                  "display": true,
+                  "descriptor": {
+                    "code": "target-beneficiary-type",
+                    "name": "Target beneficiary type"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "Ind",
+                        "name": "Individual"
+                      },
+                      "display": true
+                    }
+                  ]
+                },
+                {
+                  "display": true,
+                  "descriptor": {
+                    "code": "funding-model",
+                    "name": "Funding model"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "PM000024",
+                        "name": "Central Sector Scheme"
+                      },
+                      "display": true
+                    }
+                  ]
+                },
+                {
+                  "display": true,
+                  "descriptor": {
+                    "code": "required-docs",
+                    "name": "Required documents"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "POR",
+                        "name": "Proof of Residence"
+                      },
+                      "display": true
+                    },
+                    {
+                      "descriptor": {
+                        "code": "POI",
+                        "name": "Proof of Identity"
+                      },
+                      "value": "Aadhaar Card",
+                      "display": true
+                    },
+                    {
+                      "descriptor": {
+                        "code": "POC",
+                        "name": "Proof of caste",
+                        "short_description": "optional"
+                      },
+                      "display": true
+                    }
+                  ]
+                },
+                {
+                  "display": true,
+                  "descriptor": {
+                    "code": "demographic-eligibility",
+                    "name": "Demographic eligibility"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "SOCR",
+                        "name": "State of Current Residence"
+                      },
+                      "value": "Maharashtra, Karnataka",
+                      "display": true
+                    }
+                  ]
+                },
+                {
+                  "display": true,
+                  "descriptor": {
+                    "code": "additional-eligibility",
+                    "name": "Additional eligibility"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "CT0001TU",
+                        "name": "Has SECC Registration Number"
+                      },
+                      "value": "Yes",
+                      "display": true
+                    }
+                  ]
+                }
+              ],
+              "category_ids": [
+                "c1"
+              ],
+              "location_ids": [
+                "l1"
+              ],
+              "fulfillment_ids": [
+                "f2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
 ```
 
 #### support
@@ -468,7 +682,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "scheme:uai",
     "location": {
       "country": {
         "name": "IND"
@@ -500,7 +714,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "scheme:uai",
     "location": {
       "country": {
         "code": "IND"
@@ -536,7 +750,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "scheme:uai",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -564,7 +778,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "scheme:uai",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -604,7 +818,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "scheme:uai",
     "location": {
       "country": {
         "name": "IND"
@@ -641,7 +855,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "scheme:uai",
     "location": {
       "country": {
         "name": "IND"
@@ -737,4 +951,4 @@ If you are writing the provider platform software, the following are the steps y
  - **BPP Sandbox:** bpp-unified-sandbox-uai.becknprotocol.io
 
 ### Domain name:
-    advisory:uai
+    scheme:uai
