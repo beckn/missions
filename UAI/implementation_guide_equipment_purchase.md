@@ -1,4 +1,4 @@
-# UAI Implementation Guide - Equipment Sales
+# UAI Implementation Guide - Equipment Purchase
 
 #### Version 1.0
 
@@ -29,43 +29,7 @@ This document has the following parts:
 
 ![UAI Equipment Purchase Outcome Visualization](images/uai_equipment_sales_outcome_visualization.svg)
 
-### Use case - Requesting demo for Agricultural Equipments on UAI Network
-Anand, a grape farmer in Nashik, seeks precision irrigation to optimize fertiliser use on his farm. Using the UKI network, he searches for the optimal irrigation management system.
-
-#### Discovery
-- Anand opens a UKI-enabled app and searches for precision irrigation equipment suitable for grapes.
-- The platform sends the search query to vendors offering irrigation tools nearby. 
-- Anand filters results based on features like brand, capacity, rating, water/energy-use efficiency, and price.
-- He receives a list of service providers offering precision irrigation equipments
-- The product listings provide details such as price, features, and customer ratings.
-
-- Equipment catalog includes:
-    - Precision Irrigation System – ₹15,000 per unit, 4.6 rating (by BPP 1)
-    - Smart Irrigation System – ₹12,000 per unit, 4.3 rating (by BPP 2)
-    - IoT Irrigation Controller – ₹10,500 per unit, 4.0 rating (by BPP 3)
-
-#### Order
-- Anand selects Precision Irrigation System by BPP 1 for his irrigation needs. He receives two options - ‘Book a Demo’ or Purchase
-- Anand places a request for Book a Demo’
-- The UKI-enabled app sends a Demo request to BPP 1. This includes:
-    - Selected product (Precision Irrigation System)
-    - Contact and address details for a demonstration
-    - Date & Time for demonstration
-    - Lead details to be collected:
-        - Do you have drip irrigation? - Yes/No
-            - Any leads that answers 'Yes' is qualified.
-        - Which crop do you cultivate? - Pomegranate / Grapes / Banana / Orange / Chilli /      Tomato / Potato / Capsicum / Sugarcane / Guava / Gourds / Watermelon / Others
-            - Any of these crops will be valid for us.
-        - What is your crop acreage (in acres)?
-            - 0-3 / 3.1-5 / 5.1-7 / 7.1-10 / 10.1-15 / 15+
-        - Your District?
-            - Nashik/Others
-
-- Anand receives a confirmation message for the demonstration
-- Anand receives the status updates of the demonstration - demo date, time and demo completion status
-
-
-### Use case - Discovery and Purchase of Agricultural Equipments on UAI Network
+### Use case - Discovery, Booking a Demo and Purchase of Agricultural Equipments on UAI Network
 
 1.	Rajesh, a guava farmer in Nashik district, needs a motor pump for his 2-acre farm and uses a UAI-enabled app to search for suitable options.
 2.	His search query is sent to nearby vendors, and he filters results by brand, capacity, cost, and rating.
@@ -74,15 +38,21 @@ Anand, a grape farmer in Nashik, seeks precision irrigation to optimize fertilis
     -	GoWater 0.5 HP Self Priming Pump - AL3 30 MM @ Rs 3198.71 (4.4 rating)
     -	PowerHouse 1.5 HP Single Phase Monoblock Pump @ Rs 4000 (4.5 rating)
     -	Kirloskar 0.5 HP Star Ultra Monoblock Pump @ Rs 2090 (4.0 rating)
-4.	Rajesh selects the Kirloskar 0.5 HP Star Ultra Monoblock Pump based on his preference and needs.
-5.	He specifies a quantity of 2 units and opts for home delivery, entering his contact information, billing, and shipping address for invoicing.
-6.	The app sends a purchase request to the seller, including product details, quantity, delivery preference, and Rajesh’s contact information.
-7.	Rajesh receives a final quote with any additional charges (e.g., Rs 2300), along with the purchase terms such as cancellation and refund policies.
-8.	After reviewing the quote and terms, Rajesh selects the "pay on delivery" option and confirms the order.
-9.	The seller provides an order ID along with estimated shipping dates and tracking details.
-10.	As the order is processed, Rajesh receives status updates; once delivered to his provided address, the order status updates to “delivered.”
-11.	Post-delivery, Rajesh rates the motor pump based on product quality, delivery fulfillment, and support, helping future buyers make informed decisions.
-12.	If any issues arise, Rajesh can contact support services through the app for assistance with his purchase.
+4.	Rajesh selects the Kirloskar 0.5 HP Star Ultra Monoblock Pump based on his preference. He receives two options - ‘Book a Demo’ or Purchase
+5.	Rajesh places a request for 'Book a Demo’. He specifies contact, address, Date & Time details for a demonstration.
+6. Rajesh receives a confirmation message for the demonstration.
+7. Rajesh receives the status updates of the demonstration - demo date, time and demo completion status
+8. Rajesh tracks the status of the demo periodically, receives the demo.
+
+Rajesh is happy with the demo and proceeds to purchase the quipement:
+9. Rajesh specifies a quantity of 1 units and opts for home delivery, entering his contact information, billing, and shipping address for invoicing.
+10.	The app sends a purchase request to the seller, including product details, quantity, delivery preference, and Rajesh’s contact information.
+11.	Rajesh receives a final quote with any additional charges (e.g., Rs 2300), along with the purchase terms such as cancellation and refund policies.
+12.	After reviewing the quote and terms, Rajesh selects the "pay on delivery" option and confirms the order.
+13.	The seller provides an order ID along with estimated shipping dates and tracking details.
+14.	As the order is processed, Rajesh receives status updates; once delivered to his provided address, the order status updates to “delivered.”
+15.	Post-delivery, Rajesh rates the motor pump based on product quality, delivery fulfillment, and support, helping future buyers make informed decisions.
+16.	If any issues arise, Rajesh can contact support services through the app for assistance with his purchase.
 
 
 ## Flow diagrams
@@ -156,7 +126,7 @@ Beckn is a aynchronous protocol at its core.
 
 ## API Calls and Schema
 
-### Discovery of Farm Equipment for purchase
+### Booking a Demo and then Purchasing the item
 
 #### search
 
@@ -181,6 +151,11 @@ Beckn is a aynchronous protocol at its core.
     },
     "message": {
         "intent": {
+            "category": {
+                "descriptor": {
+                    "code": "purchase"
+                }
+            },
             "item": {
                 "descriptor": {
                     "name": "motor pump"
@@ -217,6 +192,11 @@ Beckn is a aynchronous protocol at its core.
     },
     "message": {
         "intent": {
+            "category": {
+                "descriptor": {
+                    "code": "purchase"
+                }
+            },
             "item": {
                 "descriptor": {
                     "name": "motor pump"
@@ -265,6 +245,11 @@ Beckn is a aynchronous protocol at its core.
     },
     "message": {
         "intent": {
+            "category": {
+                "descriptor": {
+                    "code": "purchase"
+                }
+            },
             "item": {
                 "descriptor": {
                     "name": "motor pump"
@@ -286,6 +271,8 @@ Beckn is a aynchronous protocol at its core.
 - Each item is the catalog listing for a resource.
 - The name, short_desc and long_desc fields contain the name and description of the resource.
 - Further, if the resource is a video or a pdf, its mimetype and url are specified in the media field.
+
+The items which allow booking a demo have category code "demo" in it.
 
 ```
 {
@@ -353,6 +340,20 @@ Beckn is a aynchronous protocol at its core.
                             "gps": "24.24434, 23.24234"
                         }
                     ],
+                    "categories": [
+                        {
+                            "id": "c1",
+                            "descriptor": {
+                                "code": "purchase"
+                            }
+                        },
+                        {
+                            "id": "c2",
+                            "descriptor": {
+                                "code": "demo"
+                            }
+                        }
+                    ],
                     "items": [
                         {
                             "id": "motor1",
@@ -380,6 +381,10 @@ Beckn is a aynchronous protocol at its core.
                             "fulfillment_ids": [
                                 "f1",
                                 "f2"
+                            ],
+                            "category_ids": [
+                                "c1",
+                                "c2
                             ],
                             "tags": [
                                 {
@@ -420,6 +425,9 @@ Beckn is a aynchronous protocol at its core.
                             "fulfillment_ids": [
                                 "f1",
                                 "f2"
+                            ],
+                            "category_ids": [
+                                "c1"
                             ],
                             "tags": [
                                 {
@@ -471,6 +479,20 @@ Beckn is a aynchronous protocol at its core.
                             "gps": "24.24434, 23.24234"
                         }
                     ],
+                    "categories": [
+                        {
+                            "id": "c1",
+                            "descriptor": {
+                                "code": "purchase"
+                            }
+                        },
+                        {
+                            "id": "c2",
+                            "descriptor": {
+                                "code": "demo"
+                            }
+                        }
+                    ],
                     "items": [
                         {
                             "id": "motor3",
@@ -497,6 +519,10 @@ Beckn is a aynchronous protocol at its core.
                             },
                             "fulfillment_ids": [
                                 "f1"
+                            ],
+                            "category_ids": [
+                                "c1",
+                                "c2"
                             ],
                             "tags": [
                                 {
@@ -537,6 +563,10 @@ Beckn is a aynchronous protocol at its core.
                             "fulfillment_ids": [
                                 "f2"
                             ],
+                            "category_ids": [
+                                "c1",
+                                "c2
+                            ],
                             "tags": [
                                 {
                                     "list": [
@@ -556,8 +586,512 @@ Beckn is a aynchronous protocol at its core.
         }
     }
 }
+```
+
+### User books a Demo
+
+**Assuming booking a demo would be free, there would not be a quotatio involved. Select API call can be skipped**
+
+**There would not be any billing and payment involved. Init API call can also be skipped**
+
+**confirm a demo order.**
+BAP specifies that it is a demo request using item category code.
+
+#### confirm
 
 ```
+{
+    "context": {
+      "domain": "retail:uai",
+      "location": {
+        "country": {
+          "code": "IND"
+        }
+      },
+      "action": "confirm",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_uri}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_uri}",
+      "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:44:47.217Z"
+    },
+    "message": {
+      "order": {
+        "provider": {
+          "id": "vendor1"
+        },
+        "items": [
+          {
+            "id": "motor2",
+            "category_ids": [
+              "c2"
+            ]
+          }
+        ],
+        "fulfillments": [
+          {
+            "customer": {
+                "person": {
+                    "name": "Rajesh"
+                },
+                "contact": {
+                    "phone": "8130xxxxxx"
+                }
+            },
+            "stops": [
+                {
+                    "type": "end",
+                    "location": {
+                        "district": {
+                            "name": "Nashik",
+                            "code": "nashik"
+                        },
+                        "state": {
+                            "name": "Maharashtra",
+                            "code": "maharashtra"
+                        },
+                        "area_code": "122024"
+                    },
+                    "time": {
+                        "range": {
+                            "start": "2025-03-06T09:00:00.000Z",
+                            "end": "2025-03-06T010:00:00.000Z"
+                        }
+                    }
+                }
+            ]
+          }
+        ]
+      }
+    }
+  }
+```
+
+#### on_confirm
+
+```
+{
+    "context": {
+        "domain": "retail:uai",
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_uri}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_uri}",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
+    },
+    "message": {
+        "order": {
+            "id": "ord1",
+            "provider": {
+                "id": "vendor1",
+                "descriptor": {
+                    "name": "Nashik Agri Vendor",
+                    "short_desc": "Quality pumps from local suppliers",
+                    "images": [
+                        {
+                            "url": "https://example.com/vendor1_logo.jpg"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "motor2",
+                    "descriptor": {
+                        "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump",
+                        "short_desc": "Reliable pump for small farms",
+                        "long_desc": "0.5 HP pump, ideal for irrigation needs",
+                        "images": [
+                            {
+                                "url": "https://example.com/kirloskar_pump.jpg"
+                            }
+                        ]
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "2090.00"
+                    },
+                    "rating": "4.0",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Kirloskar",
+                            "code": "Kirloskar"
+                        }
+                    },
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "category_ids": [
+                        "c1",
+                        "c2"
+                    ],
+                    "tags": [
+                        {
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "60MM"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "district": {
+                                    "name": "Nashik",
+                                    "code": "nashik"
+                                },
+                                "state": {
+                                    "name": "Maharashtra",
+                                    "code": "maharashtra"
+                                },
+                                "area_code": "122024"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-03-06T09:00:00.000Z",
+                                    "end": "2025-03-06T010:00:00.000Z"
+                                }
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "code": "Order-Placed"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### status
+
+```
+{
+    "context": {
+        "domain": "retail:uai",
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
+        "action": "status",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_uri}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_uri}",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
+    },
+    "message": {
+        "order_id": "ord1"
+    }
+}
+
+```
+
+#### on_status
+```
+{
+    "context": {
+        "domain": "retail:uai",
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
+        "action": "on_status",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_uri}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_uri}",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
+    },
+    "message": {
+        "order": {
+            "id": "ord1",
+            "provider": {
+                "id": "vendor1",
+                "descriptor": {
+                    "name": "Nashik Agri Vendor",
+                    "short_desc": "Quality pumps from local suppliers",
+                    "images": [
+                        {
+                            "url": "https://example.com/vendor1_logo.jpg"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "motor2",
+                    "descriptor": {
+                        "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump",
+                        "short_desc": "Reliable pump for small farms",
+                        "long_desc": "0.5 HP pump, ideal for irrigation needs",
+                        "images": [
+                            {
+                                "url": "https://example.com/kirloskar_pump.jpg"
+                            }
+                        ]
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "2090.00"
+                    },
+                    "rating": "4.0",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Kirloskar",
+                            "code": "Kirloskar"
+                        }
+                    },
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "category_ids": [
+                        "c1",
+                        "c2"
+                    ],
+                    "tags": [
+                        {
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "60MM"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "district": {
+                                    "name": "Nashik",
+                                    "code": "nashik"
+                                },
+                                "state": {
+                                    "name": "Maharashtra",
+                                    "code": "maharashtra"
+                                },
+                                "area_code": "122024"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-03-06T09:00:00.000Z",
+                                    "end": "2025-03-06T010:00:00.000Z"
+                                }
+                            }
+                        }
+                    ],
+                    "agent": {
+                        "person": {
+                            "name": "Sundaram"
+                        },
+                        "contact": {
+                            "phone": "97643564xx"
+                        }
+                    }
+                    "state": {
+                        "descriptor": {
+                            "code": "Agent-Assigned"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+#### on_status
+
+```
+{
+    "context": {
+        "domain": "retail:uai",
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
+        "action": "on_status",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_uri}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_uri}",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
+    },
+    "message": {
+        "order": {
+            "id": "ord1",
+            "provider": {
+                "id": "vendor1",
+                "descriptor": {
+                    "name": "Nashik Agri Vendor",
+                    "short_desc": "Quality pumps from local suppliers",
+                    "images": [
+                        {
+                            "url": "https://example.com/vendor1_logo.jpg"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "motor2",
+                    "descriptor": {
+                        "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump",
+                        "short_desc": "Reliable pump for small farms",
+                        "long_desc": "0.5 HP pump, ideal for irrigation needs",
+                        "images": [
+                            {
+                                "url": "https://example.com/kirloskar_pump.jpg"
+                            }
+                        ]
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "2090.00"
+                    },
+                    "rating": "4.0",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Kirloskar",
+                            "code": "Kirloskar"
+                        }
+                    },
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "category_ids": [
+                        "c1",
+                        "c2"
+                    ],
+                    "tags": [
+                        {
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "60MM"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "district": {
+                                    "name": "Nashik",
+                                    "code": "nashik"
+                                },
+                                "state": {
+                                    "name": "Maharashtra",
+                                    "code": "maharashtra"
+                                },
+                                "area_code": "122024"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-03-06T09:00:00.000Z",
+                                    "end": "2025-03-06T010:00:00.000Z"
+                                }
+                            }
+                        }
+                    ],
+                    "agent": {
+                        "person": {
+                            "name": "Sundaram"
+                        },
+                        "contact": {
+                            "phone": "97643564xx"
+                        }
+                    }
+                    "state": {
+                        "descriptor": {
+                            "code": "Order-Fulfilled"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+### User is satisfied with the demo and proceeds to buy the equipment.
+This is considered a new transaction. BAP already has the item detail, this transaction can start from select onwards.
+
+BAP specifies that it is a purchase request using item category code.
+
 #### select
 
 **selecting an item from the catalog**
@@ -593,8 +1127,8 @@ Beckn is a aynchronous protocol at its core.
         "items": [
           {
             "id": "motor2",
-            "fulfillment_ids": [
-              "f1"
+            "category_ids": [
+              "c1"
             ],
             "quantity": {
               "selected": {
@@ -687,6 +1221,9 @@ Beckn is a aynchronous protocol at its core.
                     "fulfillment_ids": [
                         "f1"
                     ],
+                    "category_ids": [
+                        "c1"
+                    ],
                     "tags": [
                         {
                             "list": [
@@ -775,6 +1312,9 @@ Beckn is a aynchronous protocol at its core.
             "id": "motor2",
             "fulfillment_ids": [
               "f1"
+            ],
+            "category_ids": [
+              "c1"
             ],
             "quantity": {
               "selected": {
@@ -882,6 +1422,9 @@ Beckn is a aynchronous protocol at its core.
                     },
                     "fulfillment_ids": [
                         "f1"
+                    ],
+                    "category_ids": [
+                        "c1"
                     ],
                     "tags": [
                         {
@@ -1023,6 +1566,9 @@ Beckn is a aynchronous protocol at its core.
                     "fulfillment_ids": [
                         "f1"
                     ],
+                    "category_ids": [
+                        "c1"
+                    ],
                     "quantity": {
                         "selected": {
                             "count": "1"
@@ -1137,6 +1683,9 @@ Beckn is a aynchronous protocol at its core.
                     },
                     "fulfillment_ids": [
                         "f1"
+                    ],
+                    "category_ids": [
+                        "c1"
                     ],
                     "tags": [
                         {
@@ -1346,6 +1895,9 @@ Beckn is a aynchronous protocol at its core.
                     "fulfillment_ids": [
                         "f1"
                     ],
+                    "category_ids": [
+                        "c1"
+                    ],
                     "tags": [
                         {
                             "list": [
@@ -1511,7 +2063,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-purchase:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1548,7 +2100,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "equipement-purchase:uai",
+    "domain": "retail:uai",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -1576,7 +2128,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "equipement-purchase:uai",
+    "domain": "retail:uai",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -1616,7 +2168,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-purchase:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1655,7 +2207,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-purchase:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1745,5 +2297,5 @@ If you are writing the provider platform software, the following are the steps y
  - **BPP Sandbox:** bpp-unified-sandbox-uai.becknprotocol.io
 
 ### Domain name:
-    equipement-purchase:uai
+    retail:uai
 
