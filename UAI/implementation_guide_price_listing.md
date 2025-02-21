@@ -37,34 +37,34 @@ Prashanth is a grapes farmer in Nashik. He wants to know the price of grapes in 
 
 #### Discovery
 - Prashanth searches on the BAP app the price of grapes. He enters the following parameters in the search parameters - 
-    Name of commodity: e.g. Grapes
-    Variety: Thompson Seedless
-    Size: 18 to 25 mm
-    Grade: Grade A
-    Date range: From Date, to date
-    Location - GPS (Latitude/Longitude) or Pin Code
-    Range from the location: e.g. - 100 kms
+  - Name of commodity: e.g. Grapes
+  - Variety: Thompson Seedless
+  - Size: 18 to 25 mm
+  - Grade: Grade A
+  - Date range: From Date, to date
+  - Location - GPS (Latitude/Longitude) or Pin Code
+  - Range from the location: e.g. - 100 kms
 - Prashanth receives multiple search results from different service providers on the price of grapes.
 - The search result can be a pdf, audio file, text, video
 - Prashanth chooses Agri-Dham service provider to view the price of grapes.
-    Commodity: Grapes
-    Grade: Grade A
-    Variety: Thompson Seedless
-    Size: 18 mm to 25 mm
-    Date: 12 Feb to 17 Feb
-    Mandi Name: Nashik: 
-      Min Price: INR 250
-      Max Price: INR 300
-      Average Price: INR 275
-    Mandi Name: Pune
-      Min Price: INR 250
-      Max Price: INR 500
-      Average Price: INR 375
+  - Commodity: Grapes
+  - Grade: Grade A
+  - Variety: Thompson Seedless
+  - Size: 18 mm to 25 mm
+  - Date: 12 Feb to 17 Feb
+  - Mandi Name: Nashik: 
+    - Min Price: INR 250
+    - Max Price: INR 300
+    - Average Price: INR 275
+  - Mandi Name: Pune
+    - Min Price: INR 250
+    - Max Price: INR 500
+    - Average Price: INR 375
 
 #### Post Fulfilment
 - Prashanth submits a rating for the price listing services post consuming the service. BPP can request for a rating or a feedback form
 - Rating: 
-    Based on the content and delivery of the course
+  - Based on the content and delivery of the course
 - Prashanth can reach out to support services in case of any issues with the service delivery
 
 
