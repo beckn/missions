@@ -45,6 +45,7 @@ This document has the following parts:
 8. Rajesh tracks the status of the demo periodically, receives the demo.
 
 Rajesh is happy with the demo and proceeds to purchase the quipement:
+
 9. Rajesh specifies a quantity of 1 units and opts for home delivery, entering his contact information, billing, and shipping address for invoicing.
 10.	The app sends a purchase request to the seller, including product details, quantity, delivery preference, and Rajesh’s contact information.
 11.	Rajesh receives a final quote with any additional charges (e.g., Rs 2300), along with the purchase terms such as cancellation and refund policies.
