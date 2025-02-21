@@ -42,24 +42,24 @@ Abhiraj is a farmer in Nashik. He has been trying to find insurance products to 
 - Search for Pradhan Mantri Fasal Bhima Yojana. (Abhiraj can use text (in any language)).
 - Abhiraj receives the details of the schemes from a list of service providers (BPP)
 - Eligibility criteria can include various items like (tentative list can include more variables):
-    Age
-    Differently abled
-    Caste category
-    Ownership of land - Yes/No
-    Gender - Male/Female
-    No. of girl children
-    No. of children
-    Ration card type
-    Nature of Job - farmer, carpenter, dairy farmer, etc.
-    Enterprise category - Agriculture, agriculture allied, others
-    Type of business support required - Registration/Other
+    - Age
+    - Differently abled
+    - Caste category
+    - Ownership of land - Yes/No
+    - Gender - Male/Female
+    - No. of girl children
+    - No. of children
+    - Ration card type
+    - Nature of Job - farmer, carpenter, dairy farmer, etc.
+    - Enterprise category - Agriculture, agriculture allied, others
+    - Type of business support required - Registration/Other
     Location
-    Type of Scheme - Central, State, District
-    Born and brought up in the current state of residence
-    Do you have a voters id
-    Are you a taxpayer
-    Do you have insurance for cattle/small ruminants?
-    What was the maximum level of education that you have achieved
+    - Type of Scheme - Central, State, District
+    - Born and brought up in the current state of residence
+    - Do you have a voters id
+    - Are you a taxpayer
+    - Do you have insurance for cattle/small ruminants?
+    - What was the maximum level of education that you have achieved
 
 #### Order
 - Abhiraj selects the service provider (BPP) of his choice to view more details about the scheme. 
@@ -82,8 +82,8 @@ Abhiraj is a farmer in Nashik. He has been trying to find insurance products to 
 #### Post Fulfilment
 - Abhiraj submits a rating for the service provided by the agent (Shwetha). The service provider (BPP) receives the rating and can request for further feedback.
 - Rating: 
-    Product/service quality 
-    Service Provider(on-time, polite)
+    - Product/service quality 
+    - Service Provider(on-time, polite)
 - Support
     Abhiraj can reach out to support services in case of any issues with the service delivery
 
