@@ -454,11 +454,15 @@ Beckn is a aynchronous protocol at its core.
 - The name, short_desc and long_desc fields contain the name and description of the resource.
 - Further, if the resource is a video or a pdf, its mimetype and url are specified in the media field.
 
+BPP can send the scheme details in the catalog. if a BPP wants to collect more detail about the applicant, it can send an xinput in the catalog.
+
+If a BAP receives an xinput in the catalog, optionally, the BAP can render the xinput form on UI. Once the applicant fills and submits the form, BPP can send back relevant schemes to the applicant.
+
 ```
 {
   "context": {
     "domain": "scheme:uai",
-    "action": "search",
+    "action": "on_search",
     "location": {
       "country": {
         "code": "IND"
@@ -662,13 +666,684 @@ Beckn is a aynchronous protocol at its core.
               ],
               "fulfillment_ids": [
                 "f2"
-              ]
+              ],
+              "xinput": {
+                  "required": false,
+                  "head": {
+                      "descriptor": {
+                          "name": "Details Form"
+                      },
+                      "index": {
+                          "min": 0,
+                          "cur": 0,
+                          "max": 3
+                      },
+                      "headings": [
+                          "Personal Details",
+                          "Educational Details",
+                          "Financial Details",
+                          "Review & Submit"
+                      ]
+                  },
+                  "form": {
+                      "mime_type": "text/html",
+                      "url": "https://6vs8xnx5i7.scheme-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+                      "resubmit": false,
+                      "auth": {
+                          "descriptor": {
+                              "code": "jwt"
+                          },
+                          "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+                      }
+                  }
+              }
             }
           ]
         }
       ]
     }
   }
+}
+```
+
+#### confirm
+
+```
+{
+  "context": {
+    "domain": "scheme:uai",
+    "action": "confirm",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "p1"
+      },
+      "items": [
+        {
+          "id": "i1"
+        }
+      ],
+      "location_ids": [
+        "l1"
+      ]
+    }
+  }
+}
+```
+
+#### on_confirm
+
+```
+{
+    "context": {
+        "domain": "scheme:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
+    },
+    "message": {
+        "order": {
+            "id": "ord1",
+            "provider": {
+              "id": "p1",
+              "descriptor": {
+                "name": "SchemeFinder",
+                "short_desc": "A Scheme Discovery and Application Service helps users discover",
+                "long_desc": "The provider has ....",
+                "images": [
+                  {
+                    "url": "https://image_url"
+                  }
+                ]
+              }
+            },
+            "items": [
+              {
+                "id": "i1",
+                "descriptor": {
+                  "name": "Ayushman Bharat Yojana",
+                  "short_desc": "Pradhan Mantri Jan Arogya Yojana (PM-JAY) is implemented to reduce the financial burden on poor and vulnerable groups arising out of catastrophic hospital episodes and ensure their access to quality health services.",
+                  "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. \n3) The benefit also includes pre and post-hospitalization expenses. \n4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures \n5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)"
+                },
+                "tags": [
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "target-beneficiary-type",
+                      "name": "Target beneficiary type"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "Ind",
+                          "name": "Individual"
+                        },
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "funding-model",
+                      "name": "Funding model"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "PM000024",
+                          "name": "Central Sector Scheme"
+                        },
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "required-docs",
+                      "name": "Required documents"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "POR",
+                          "name": "Proof of Residence"
+                        },
+                        "display": true
+                      },
+                      {
+                        "descriptor": {
+                          "code": "POI",
+                          "name": "Proof of Identity"
+                        },
+                        "value": "Aadhaar Card",
+                        "display": true
+                      },
+                      {
+                        "descriptor": {
+                          "code": "POC",
+                          "name": "Proof of caste",
+                          "short_description": "optional"
+                        },
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "demographic-eligibility",
+                      "name": "Demographic eligibility"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "SOCR",
+                          "name": "State of Current Residence"
+                        },
+                        "value": "Maharashtra, Karnataka",
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "additional-eligibility",
+                      "name": "Additional eligibility"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "CT0001TU",
+                          "name": "Has SECC Registration Number"
+                        },
+                        "value": "Yes",
+                        "display": true
+                      }
+                    ]
+                  }
+                ],
+                "category_ids": [
+                  "c1"
+                ],
+                "location_ids": [
+                  "l1"
+                ],
+                "fulfillment_ids": [
+                  "f2"
+                ]
+            ],
+            "fulfillments": [
+              {
+                "id": "f2",
+                "type": "Subsidized Services"
+                "customer": {
+                    "person": {
+                        "name": "Madhavan"
+                    },
+                    "contact": {
+                        "phone": "8130xxxxxx"
+                    }
+                },
+                "agent": {
+                  "organization": {
+                    "descriptor": {
+                      "code": "scheme-finder",
+                      "name": "scheme finder"
+                    }
+                  }
+                },
+                "state": {
+                  "descriptor": {
+                    "code": "Booking-Confirmed"
+                  }
+                }
+              }
+            ]
+        }
+    }
+}
+```
+
+#### status
+
+```
+{
+  "context": {
+      "domain": "scheme:uai",
+      "location": {
+          "country": {
+              "name": "IND"
+          }
+      },
+      "action": "status",
+      "version": "1.1.0",
+      "bap_id": "{bap_id}",
+      "bap_uri": "{bap_url}",
+      "bpp_id": "{bpp_id}",
+      "bpp_uri": "{bpp_url}",
+      "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+      "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+      "timestamp": "2023-11-06T09:41:09.708Z",
+      "ttl": "PT10M"
+  },
+  "message": {
+      "order_id": "ord1"
+  }
+}
+```
+
+#### on_status
+
+```
+{
+    "context": {
+        "domain": "scheme:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_status",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
+    },
+    "message": {
+        "order": {
+            "id": "ord1",
+            "provider": {
+              "id": "p1",
+              "descriptor": {
+                "name": "SchemeFinder",
+                "short_desc": "A Scheme Discovery and Application Service helps users discover",
+                "long_desc": "The provider has ....",
+                "images": [
+                  {
+                    "url": "https://image_url"
+                  }
+                ]
+              }
+            },
+            "items": [
+              {
+                "id": "i1",
+                "descriptor": {
+                  "name": "Ayushman Bharat Yojana",
+                  "short_desc": "Pradhan Mantri Jan Arogya Yojana (PM-JAY) is implemented to reduce the financial burden on poor and vulnerable groups arising out of catastrophic hospital episodes and ensure their access to quality health services.",
+                  "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. \n3) The benefit also includes pre and post-hospitalization expenses. \n4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures \n5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)"
+                },
+                "tags": [
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "target-beneficiary-type",
+                      "name": "Target beneficiary type"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "Ind",
+                          "name": "Individual"
+                        },
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "funding-model",
+                      "name": "Funding model"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "PM000024",
+                          "name": "Central Sector Scheme"
+                        },
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "required-docs",
+                      "name": "Required documents"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "POR",
+                          "name": "Proof of Residence"
+                        },
+                        "display": true
+                      },
+                      {
+                        "descriptor": {
+                          "code": "POI",
+                          "name": "Proof of Identity"
+                        },
+                        "value": "Aadhaar Card",
+                        "display": true
+                      },
+                      {
+                        "descriptor": {
+                          "code": "POC",
+                          "name": "Proof of caste",
+                          "short_description": "optional"
+                        },
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "demographic-eligibility",
+                      "name": "Demographic eligibility"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "SOCR",
+                          "name": "State of Current Residence"
+                        },
+                        "value": "Maharashtra, Karnataka",
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "additional-eligibility",
+                      "name": "Additional eligibility"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "CT0001TU",
+                          "name": "Has SECC Registration Number"
+                        },
+                        "value": "Yes",
+                        "display": true
+                      }
+                    ]
+                  }
+                ],
+                "category_ids": [
+                  "c1"
+                ],
+                "location_ids": [
+                  "l1"
+                ],
+                "fulfillment_ids": [
+                  "f2"
+                ]
+            ],
+            "fulfillments": [
+              {
+                "id": "f2",
+                "type": "Subsidized Services"
+                "customer": {
+                    "person": {
+                        "name": "Madhavan"
+                    },
+                    "contact": {
+                        "phone": "8130xxxxxx"
+                    }
+                },
+                "agent": {
+                  "organization": {
+                    "descriptor": {
+                      "code": "scheme-finder",
+                      "name": "scheme finder"
+                    }
+                  },
+                   "person": {
+                      "name": "Sundaram"
+                    },
+                    "contact": {
+                      "phone": "97643564xx"
+                    }
+                },
+                "state": {
+                  "descriptor": {
+                    "code": "Agent-Assigned"
+                  }
+                }
+              }
+            ]
+        }
+    }
+}
+```
+
+#### on_status
+
+```
+{
+    "context": {
+        "domain": "scheme:uai",
+        "location": {
+            "country": {
+                "name": "IND"
+            }
+        },
+        "action": "on_status",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_url}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_url}",
+        "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:41:09.708Z",
+        "ttl": "PT10M"
+    },
+    "message": {
+        "order": {
+            "id": "ord1",
+            "provider": {
+              "id": "p1",
+              "descriptor": {
+                "name": "SchemeFinder",
+                "short_desc": "A Scheme Discovery and Application Service helps users discover",
+                "long_desc": "The provider has ....",
+                "images": [
+                  {
+                    "url": "https://image_url"
+                  }
+                ]
+              }
+            },
+            "items": [
+              {
+                "id": "i1",
+                "descriptor": {
+                  "name": "Ayushman Bharat Yojana",
+                  "short_desc": "Pradhan Mantri Jan Arogya Yojana (PM-JAY) is implemented to reduce the financial burden on poor and vulnerable groups arising out of catastrophic hospital episodes and ensure their access to quality health services.",
+                  "long_desc": "1) The scheme will be cashless & paperless at public hospitals and empanelled private hospitals. 2) The beneficiaries will not be required to pay any charges for the hospitalization expenses. \n3) The benefit also includes pre and post-hospitalization expenses. \n4) Medical and hospitalization expenses for almost all secondary care and most of the tertiary care procedures \n5) a benefit cover of ₹ 500,000 per family per year (on a family floater basis). Note: Benefit cover of ₹ 5 lakhs per family per year (on a family floater basis)"
+                },
+                "tags": [
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "target-beneficiary-type",
+                      "name": "Target beneficiary type"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "Ind",
+                          "name": "Individual"
+                        },
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "funding-model",
+                      "name": "Funding model"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "PM000024",
+                          "name": "Central Sector Scheme"
+                        },
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "required-docs",
+                      "name": "Required documents"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "POR",
+                          "name": "Proof of Residence"
+                        },
+                        "display": true
+                      },
+                      {
+                        "descriptor": {
+                          "code": "POI",
+                          "name": "Proof of Identity"
+                        },
+                        "value": "Aadhaar Card",
+                        "display": true
+                      },
+                      {
+                        "descriptor": {
+                          "code": "POC",
+                          "name": "Proof of caste",
+                          "short_description": "optional"
+                        },
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "demographic-eligibility",
+                      "name": "Demographic eligibility"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "SOCR",
+                          "name": "State of Current Residence"
+                        },
+                        "value": "Maharashtra, Karnataka",
+                        "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "display": true,
+                    "descriptor": {
+                      "code": "additional-eligibility",
+                      "name": "Additional eligibility"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "CT0001TU",
+                          "name": "Has SECC Registration Number"
+                        },
+                        "value": "Yes",
+                        "display": true
+                      }
+                    ]
+                  }
+                ],
+                "category_ids": [
+                  "c1"
+                ],
+                "location_ids": [
+                  "l1"
+                ],
+                "fulfillment_ids": [
+                  "f2"
+                ]
+            ],
+            "fulfillments": [
+              {
+                "id": "f2",
+                "type": "Subsidized Services"
+                "customer": {
+                    "person": {
+                        "name": "Madhavan"
+                    },
+                    "contact": {
+                        "phone": "8130xxxxxx"
+                    }
+                },
+                "agent": {
+                  "organization": {
+                    "descriptor": {
+                      "code": "scheme-finder",
+                      "name": "scheme finder"
+                    }
+                  },
+                   "person": {
+                      "name": "Sundaram"
+                    },
+                    "contact": {
+                      "phone": "97643564xx"
+                    }
+                },
+                "state": {
+                  "descriptor": {
+                    "code": "Application-Initiated"
+                  }
+                }
+              }
+            ]
+        }
+    }
 }
 ```
 
@@ -699,7 +1374,7 @@ Beckn is a aynchronous protocol at its core.
     "timestamp": "2024-07-02T09:18:30Z"
   },
   "message": {
-    "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768"
+    "ref_id": "ord1"
   }
 }
 ```
@@ -733,7 +1408,7 @@ Beckn is a aynchronous protocol at its core.
   },
   "message": {
     "support": {
-      "ref_id": "9e188d26-0b1b-4920-a586-6006b0bcf768",
+      "ref_id": "ord1",
       "phone": "18001801551",
       "url": "https://agritech.tnau.ac.in/agriculture/agri_faqs.html"
     }
@@ -837,7 +1512,7 @@ Beckn is a aynchronous protocol at its core.
   "message": {
     "ratings": [
       {
-        "id": "19a02a67-d2f0-4ea7-b7e1-b2cf4fa57f56",
+        "id": "p1",
         "rating_category": "Provider",
         "value": "5"
       }

@@ -670,6 +670,156 @@ BAP specifies that it is a demo request using item category code.
     }
   }
 ```
+** if the BPP wants to collect additional details from the BAP, they can return an xinput in the on_confirm callback. This on_confirm would not have an order id.
+
+#### on_confirm
+
+```
+{
+    "context": {
+        "domain": "retail:uai",
+        "location": {
+            "country": {
+                "code": "IND"
+            }
+        },
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "bap_id": "{bap_id}",
+        "bap_uri": "{bap_uri}",
+        "bpp_id": "{bpp_id}",
+        "bpp_uri": "{bpp_uri}",
+        "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T09:44:47.217Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "vendor1",
+                "descriptor": {
+                    "name": "Nashik Agri Vendor",
+                    "short_desc": "Quality pumps from local suppliers",
+                    "images": [
+                        {
+                            "url": "https://example.com/vendor1_logo.jpg"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "motor2",
+                    "descriptor": {
+                        "name": "Kirloskar 0.5 HP Star Ultra Monoblock Pump",
+                        "short_desc": "Reliable pump for small farms",
+                        "long_desc": "0.5 HP pump, ideal for irrigation needs",
+                        "images": [
+                            {
+                                "url": "https://example.com/kirloskar_pump.jpg"
+                            }
+                        ]
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "2090.00"
+                    },
+                    "rating": "4.0",
+                    "creator": {
+                        "descriptor": {
+                            "name": "Kirloskar",
+                            "code": "Kirloskar"
+                        }
+                    },
+                    "fulfillment_ids": [
+                        "f1"
+                    ],
+                    "category_ids": [
+                        "c1",
+                        "c2"
+                    ],
+                    "tags": [
+                        {
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "60MM"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": true,
+                        "head": {
+                            "descriptor": {
+                                "name": "Customer Details"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 0
+                            },
+                            "headings": [
+                                "Farm Details",
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://6vs8xnx5i7.schemefinder.co.in/farm-details/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "phone": "8130xxxxxx"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "district": {
+                                    "name": "Nashik",
+                                    "code": "nashik"
+                                },
+                                "state": {
+                                    "name": "Maharashtra",
+                                    "code": "maharashtra"
+                                },
+                                "area_code": "122024"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-03-06T09:00:00.000Z",
+                                    "end": "2025-03-06T010:00:00.000Z"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```
+BAP renders the xinput on the UI, user fills the form and submits. upon submission of the form, BPP confirms the order and sends another on_confirm callback.
+
+This on_confrim would contain an order id.
 
 #### on_confirm
 
