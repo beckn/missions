@@ -31,7 +31,61 @@ This document has the following parts:
 ![UAI Knowledge Advisory Outcome Visualization](images/uai_knowledge_advisory_outcome_visualization.svg)
 
 ### Use case - Discovery of Schemes
+Farmer searching for government schemes and looking for ways to fulfill the schemes from service providers on the UKI Network
 
+Abhiraj is a farmer in Nashik. He has been trying to find insurance products to protect himself from adverse climatic conditions. He uses a beckn enabled app which is integrated to the UKI network to know the available schemes and how to apply. In case he is not able to apply by himself, he wants to book an agent who can assist him in accessing the scheme benefits. 
+
+#### Discovery
+- Search all schemes
+- Search by Name
+- Search by eligibility criteria
+- Search for Pradhan Mantri Fasal Bhima Yojana. (Abhiraj can use text (in any language)).
+- Abhiraj receives the details of the schemes from a list of service providers (BPP)
+- Eligibility criteria can include various items like (tentative list can include more variables):
+    Age
+    Differently abled
+    Caste category
+    Ownership of land - Yes/No
+    Gender - Male/Female
+    No. of girl children
+    No. of children
+    Ration card type
+    Nature of Job - farmer, carpenter, dairy farmer, etc.
+    Enterprise category - Agriculture, agriculture allied, others
+    Type of business support required - Registration/Other
+    Location
+    Type of Scheme - Central, State, District
+    Born and brought up in the current state of residence
+    Do you have a voters id
+    Are you a taxpayer
+    Do you have insurance for cattle/small ruminants?
+    What was the maximum level of education that you have achieved
+
+#### Order
+- Abhiraj selects the service provider (BPP) of his choice to view more details about the scheme. 
+- He receives details of the scheme, required documents and steps on how to apply and an option to book an agent.
+- The booking is confirmed by the service provider (BPP) and the details of the agent (Shwetha) is shared.
+- The service provider shares an order ID.
+
+#### Fulfilment
+- Abhiraj receives status updates from the service provider on the day of the service delivery
+- Shwetha calls Abhiraj to ensure the documents are ready for collection. 
+- If Abhiraj does not have the necessary documents, she closes the request as closed with appropriate reason.
+- If Abhiraj has all the necessary documents, Shwetha reaches Abhiraj’s location to collect the documents. 
+- The documents are authenticated, if the documents are valid, the status is updated as documents collected.  
+- The documents are authenticated, if the documents are invalid, the order ID is closed with appropriate reason. 
+- Shwetha performs the necessary steps to ensure the scheme is applied on behalf of Abhiraj with the concerned government department.
+- In case of any failure in disbursement of the scheme, the status is updated by the BPP, also Shwetha calls to inform Abhiraj and resolves the same
+- In case of successful disbursement, the status is updated.
+- Throughout the process Abhiraj should be able to track the progress of his application.
+
+#### Post Fulfilment
+- Abhiraj submits a rating for the service provided by the agent (Shwetha). The service provider (BPP) receives the rating and can request for further feedback.
+- Rating: 
+    Product/service quality 
+    Service Provider(on-time, polite)
+- Support
+    Abhiraj can reach out to support services in case of any issues with the service delivery
 
 ## Flow diagrams
 

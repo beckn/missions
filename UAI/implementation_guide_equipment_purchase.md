@@ -29,7 +29,43 @@ This document has the following parts:
 
 ![UAI Equipment Purchase Outcome Visualization](images/uai_equipment_sales_outcome_visualization.svg)
 
-### Use case - Discovery of Equipment Purchase on UAI Network
+### Use case - Requesting a demo for Agricultural Equipments on UAI Network
+Anand, a grape farmer in Nashik, seeks precision irrigation to optimize fertiliser use on his farm. Using the UKI network, he searches for the optimal irrigation management system.
+
+#### Discovery
+- Anand opens a UKI-enabled app and searches for precision irrigation equipment suitable for grapes.
+- The platform sends the search query asynchronously to vendors offering irrigation tools nearby. 
+- Anand filters results based on features like brand, capacity, rating, water/energy-use efficiency, and price.
+- He receives a list of service providers offering precision irrigation equipments
+The product listings provide details such as price, features, and customer ratings.
+
+Equipment catalog includes:
+- Precision Irrigation System – ₹15,000 per unit, 4.6 rating (by BPP 1)
+- Smart Irrigation System – ₹12,000 per unit, 4.3 rating (by BPP 2)
+- IoT Irrigation Controller – ₹10,500 per unit, 4.0 rating (by BPP 3)
+
+#### Order
+- Anand selects Precision Irrigation System by BPP 1 for his irrigation needs. He receives two options - ‘Book a Demo’ or Purchase
+- Anand places a request for Book a Demo’
+- The UKI-enabled app sends a Demo request to BPP 1. This includes:
+    Selected product (Precision Irrigation System)
+    Contact and address details for a demonstration
+    Date & Time for demonstration
+    Lead details to be collected:
+        1. Do you have drip irrigation? - Yes/No
+            Any leads that answers 'Yes' is qualified.
+        2. Which crop do you cultivate? - Pomegranate / Grapes / Banana / Orange / Chilli / Tomato / Potato / Capsicum / Sugarcane / Guava / Gourds / Watermelon / Others
+            Any of these crops will be valid for us.
+        3. What is your crop acreage (in acres)?
+            0-3 / 3.1-5 / 5.1-7 / 7.1-10 / 10.1-15 / 15+
+        4. Your District?
+            Nashik/Others
+
+- Anand receives a confirmation message for the demonstration
+- Anand receives the status updates of the demonstration - demo date, time and demo completion status
+
+
+### Use case - Discovery and Purchase of Agricultural Equipments on UAI Network
 
 1.	Rajesh, a guava farmer in Nashik district, needs a motor pump for his 2-acre farm and uses a UAI-enabled app to search for suitable options.
 2.	His search query is sent to nearby vendors, and he filters results by brand, capacity, cost, and rating.
