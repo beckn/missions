@@ -179,12 +179,6 @@ Beckn is a aynchronous protocol at its core.
       "category": {
         "descriptor": {
           "code": "price-discovery"
-        },
-        "time": {
-          "range": {
-            "start": "2024-12-01T08:30:00Z",
-            "end": "2024-12-10T18:00:00Z"
-          }
         }
       },
       "item": {
@@ -213,6 +207,115 @@ Beckn is a aynchronous protocol at its core.
             "type": "price-location",
             "location": {
               "area_code": "416506" // pin code
+            },
+            "time": {
+              "range": {
+                "start": "2024-12-01T08:30:00Z",
+                "end": "2024-19-10T18:00:00Z"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**search by variety, size, **
+
+- The desired language is specified in a tag named languages.
+
+```
+{
+  "context": {
+    "domain": "retail:uai",
+    "action": "search",
+    "location": {
+      "country": {
+        "code": "IND"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.becknprotocol.io",
+    "bap_uri": "https://example-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "price-discovery"
+        }
+      },
+      "item": {
+        "descriptor": {
+          "code": "grapes",
+          "name": "Grapes"
+        }.
+        "tags": [
+          {
+            "descriptor": {
+              "name": "Languages"
+              "code": "languages"
+            },
+            "list": [
+              {
+                "value": "mr"
+              },
+              {
+                "value": "en"
+              }
+            ]
+          },
+          {
+            "descriptor": {
+              "name": "Item Details"
+              "name": "item-details"
+            },
+            "list": [
+              {
+                "descriptor": {
+                  "code": "variety"
+                },
+                "value": "Thompson Seedless"
+              },
+              {
+                "descriptor": {
+                  "code": "size"
+                },
+                "value": "18 to 25 mm"
+              },
+              {
+                "descriptor": {
+                  "code": "grade"
+                },
+                "value": "A"
+              }
+            ]
+          }
+        ]
+      },
+      "fulfillment": {
+        "stops": [
+          {
+            "type": "price-location",
+            "location": {
+              "circle": {
+                "gps": "12.243245,24.344234",
+                "radius": {
+                  "unit": "KM",
+                  "value": "100"
+                }
+              }
+            },
+            "time": {
+              "range": {
+                "start": "2024-12-01T08:30:00Z",
+                "end": "2024-19-10T18:00:00Z"
+              }
             }
           }
         ]
@@ -237,7 +340,7 @@ Beckn is a aynchronous protocol at its core.
 {
     "context": {
         "domain": "advisory:uai",
-        "action": "search",
+        "action": "on_search",
         "location": {
             "country": {
                 "code": "IND"
@@ -302,7 +405,7 @@ Beckn is a aynchronous protocol at its core.
                         {
                             "id": "1",
                             "descriptor": {
-                                "name": "Kanda"
+                                "name": "Grapes"
                             },
                             "location_ids": [
                                 "1"
@@ -316,7 +419,7 @@ Beckn is a aynchronous protocol at its core.
                         {
                             "id": "2",
                             "descriptor": {
-                                "name": "Kanda"
+                                "name": "Grapes"
                             },
                             "location_ids": [
                                 "2"
@@ -330,7 +433,7 @@ Beckn is a aynchronous protocol at its core.
                         {
                             "id": "3",
                             "descriptor": {
-                                "name": "Kanda"
+                                "name": "Grapes"
                             },
                             "location_ids": [
                                 "3"
@@ -344,7 +447,7 @@ Beckn is a aynchronous protocol at its core.
                         {
                             "id": "4",
                             "descriptor": {
-                                "name": "Kanda"
+                                "name": "Grapes"
                             },
                             "location_ids": [
                                 "4"
@@ -358,7 +461,7 @@ Beckn is a aynchronous protocol at its core.
                         {
                             "id": "5",
                             "descriptor": {
-                                "name": "Kanda"
+                                "name": "Grapes"
                             },
                             "location_ids": [
                                 "5"
@@ -372,7 +475,7 @@ Beckn is a aynchronous protocol at its core.
                         {
                             "id": "6",
                             "descriptor": {
-                                "name": "Kanda"
+                                "name": "Grapes"
                             },
                             "location_ids": [
                                 "6"
