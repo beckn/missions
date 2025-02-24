@@ -148,7 +148,7 @@ This step is crucial for network participants to define the use cases they wish 
 This process helps in scoping out the necessary functionality, UI, and backend integration requirements to enable an end-to-end transaction on the network.
 
 >[!NOTE]
->_Refer to the [Outcome Visualization Template](https://docs.google.com/presentation/d/14OLgjGIVQnexu-MvtpY9Y87r1fQOPUOQU_ip1MMWIrw/edit#slide=id.g243ea7a9558_0_218) for a sample reference visualisation based on mobility usecase_.
+>_Refer to the [Outcome Visualization Template](https://docs.google.com/presentation/d/14OLgjGIVQnexu-MvtpY9Y87r1fQOPUOQU_ip1MMWIrw/edit#slide=id.g243ea7a9558_0_218) for a sample reference visualisation based on mobility use case_.
 
 ### Map Your Journey as per the Role Selected & Outcome Visualization
 
@@ -156,7 +156,7 @@ After identifying your role and visualizing the outcomes, map out your implement
 
 - **Beckn Application Platforms (BAPs) - Consumer Platform' s journey**
 - **For Beckn Provider Platforms (BPPs) - Provider Platform's journey**
-- **For Network Facilitators - Network Facilitators's journey**
+- **For Network Facilitators - Network Facilitator's journey**
 
 Use one of these next sections to guide you through your integration process based on the role you have chosen.
 
@@ -173,7 +173,7 @@ As a Consumer facing Platform after you unbundle your Consumer side application 
 - Ability to let consumers track the order to fulfillment
 - Ability to let consumers leave feedback on items, services and orders.
 
-This unbundled application will now have to connect to the Beckn network for discovery, supply demand matching and communication with providers. **Beckn protocol** defines APIs, authentication and message format to help participants connect to the Beckn network. These APIs cover all aspects of **Discovery, Order, Fulfillment and Post Fulfillment** that are required in commerce tansactions. You can use an adaptor that implements the Beckn protocol to make your task easy. Beckn-ONIX initiative provides a reference implementation of such an adaptor and is called the [Beckn-ONIX adaptor](#beckn-onix-adaptor-2). The following diagram illustrates how your unbundled application might look when connected to the Beckn network
+This unbundled application will now have to connect to the Beckn network for discovery, supply demand matching and communication with providers. **Beckn protocol** defines APIs, authentication and message format to help participants connect to the Beckn network. These APIs cover all aspects of **Discovery, Order, Fulfillment and Post Fulfillment** that are required in commerce transactions. You can use an adaptor that implements the Beckn protocol to make your task easy. Beckn-ONIX initiative provides a reference implementation of such an adaptor and is called the [Beckn-ONIX adaptor](#beckn-onix-adaptor-2). The following diagram illustrates how your unbundled application might look when connected to the Beckn network
 
 ![Unbundled Consumer Side Application](./images/unbundled_consumer.png)
 
@@ -183,7 +183,7 @@ For example if the user inputs his intent in the UI, you will have to translate 
 
 So one of the main tasks that needs to be done is to convert your inputs into Schema required by Beckn messages. Similarly any Beckn response by other participants will have to be mapped back to the data relevant for your application. This is called **Schema mapping** and we will come back to it soon.
 
-The Beckn-ONIX adaptor helps your backnend server send Beckn Requests to the Beckn network. Its reduces the burden on your application development significantly.
+The Beckn-ONIX adaptor helps your backend server send Beckn Requests to the Beckn network. It reduces the burden on your application development significantly.
 
 #### Implementation Guide
 
@@ -193,20 +193,20 @@ As we saw in the previous section, the primary task in Consumer facing Applicati
 - map that data to the Beckn schema for each message.
 - similarly map the Beckn schema from response to extract the data we need
 
-To help you with this task, the community and network facilitator will release implmentation guide for various domains, use cases and networks. Choose the right implementation guide for your case before proceeding further.
+To help you with this task, the community and network facilitator will release implementation guide for various domains, use cases and networks. Choose the right implementation guide for your case before proceeding further.
 
 The implementation guide will contain the following sections:
 
 1. It will explain the overall domain, the various use-case categories
 2. Detailed use cases along with message flow diagrams
-3. Example data and mapping to the Beckn Schema for the various messages required for each usecase category
+3. Example data and mapping to the Beckn Schema for the various messages required for each use case category
 4. Layer 2 Configuration file required to be installed for that network (more on this later)
 5. Details on sandbox support (for consumer application developers) and postman collection (for provider application developers).
 
 You can find relevant implementation guides [here](./implementation_guides.md)
 
 > [!NOTE]
-> The implementation guides are currently available only for active domians / usecases and will be made available as and when new domians / usecsaes are activated.
+> The implementation guides are currently available only for active domains / use cases and will be made available as and when new domains / use cases are activated.
 
 #### Open Source Assets
 
@@ -230,7 +230,7 @@ The BAP Beckn-ONIX adaptor exposes the following endpoints which your app can ca
 
     - search, select, init, confirm, status, cancel, track, support, update, rating
 
-These cover the Order transaction lifecycle (Refer to the image in the Introduction to Beckn section on how these map to the order lifecycle). The default implementation of the BAP Beckn-ONIX adaptor will work sychronously and will return back when it has the answers from the network or times out.
+These cover the Order transaction lifecycle (Refer to the image in the Introduction to Beckn section on how these map to the order lifecycle). The default implementation of the BAP Beckn-ONIX adaptor will work synchronously and will return back when it has the answers from the network or times out.
 
 #### Becknifying your application
 
@@ -316,9 +316,9 @@ As a Provider Platform after you unbundle your Provider side application will ha
 - Ability to provide support and tracking information
 - Ability to store rating and feedback
 
-This unbundled application will now have to connect to the Beckn network to provide these functionalities to the consumer. The tasks that Providers have to do to keep the catalog upto date, inventory management, setting shop policies etc, are not covered by Beckn. Beckn only covers the catalog and order management tasks towards the consumer side.
+This unbundled application will now have to connect to the Beckn network to provide these functionalities to the consumer. The tasks that Providers have to do to keep the catalog up to date, inventory management, setting shop policies etc, are not covered by Beckn. Beckn only covers the catalog and order management tasks towards the consumer side.
 
-**Beckn protocol** defines APIs, authentication and message format to help participants connect to the Beckn network. These APIs cover all aspects of **Discovery, Order, Fulfillment and Post Fulfillment** that are required in commerce tansactions.
+**Beckn protocol** defines APIs, authentication and message format to help participants connect to the Beckn network. These APIs cover all aspects of **Discovery, Order, Fulfillment and Post Fulfillment** that are required in commerce transactions.
 
 You can use the Beckn-ONIX adaptor to make integration with Beckn Network easier. Refer to [Beckn-ONIX adaptor](#beckn-onix-adaptor-2) for details on its functionalities. The following diagram illustrates how your unbundled application might look when connected to the Beckn network
 
@@ -340,13 +340,13 @@ As we saw in the previous section, the primary task in Provider Application deve
 - understand the message flow and data format received in each message to extract the data from the request
 - After processing the request, map the data we need to send back to Beckn format
 
-To help you with this task, the community and network will release implmentation guide for various domains, use cases and networks. Choose the right implementation guide for your case before proceeding further.
+To help you with this task, the community and network will release implementation guide for various domains, use cases and networks. Choose the right implementation guide for your case before proceeding further.
 
 The implementation guide will contain the following sections:
 
 1. It will explain the overall domain, the various use-case categories
 2. Detailed use cases along with message flow diagrams
-3. Example data and mapping to the Beckn Schema for the various messages required for each usecase category
+3. Example data and mapping to the Beckn Schema for the various messages required for each use case category
 4. Layer 2 Configuration file required to be installed for that network (more on this later)
 5. Details on sandbox support (for consumer application developers) and postman collection (for provider application developers).
 
@@ -437,7 +437,7 @@ Within each postman collection, there are usually collection variables defined. 
 - The bpp_subscriber_id should be the Subscriber ID from above (e.g. bpp-network.example.com)
 - The bpp_subscriber_url should be the Subscriber URL from above (e.g. https://bpp-network.example.com)
 
-The following diagram shows how Postman sends request to your provider side app. Further it also shows the existance of a public BAP. This is usually present in most trial networks and can help you to verify your Provider Side application without having to write a corresponding Consumer side application.
+The following diagram shows how Postman sends request to your provider side app. Further it also shows the existence of a public BAP. This is usually present in most trial networks and can help you to verify your Provider Side application without having to write a corresponding Consumer side application.
 
 ![Sending requests from Postman](./images/bpp_postman.png)
 
@@ -472,7 +472,7 @@ When you send requests from postman, you should see them arrive at your webhook 
 
 When a Network Participant needs to connect to the Beckn network and transact over it, there are many Beckn protocol specific tasks that need to be done. We can separate the component that does these tasks and call it a **Beckn Adaptor**. FIDE provides a reference implementation of the Beckn adaptor, called as Beckn-ONIX adaptor (also called as Protocol Server).
 
-Some of the functionalitites that are provided by Beckn-ONIX adaptor are:
+Some of the functionalities that are provided by Beckn-ONIX adaptor are:
 
 **Common functionalities**
 
@@ -498,7 +498,7 @@ Internally the Beckn-ONIX adaptor is architected as two App servers. One is give
 The following diagram shows the forward and reverse message flows with the various Beckn-ONIX adaptor components
 ![Forward and reverse message flows](./images/forward_reverse_flow.png)
 
-In addition to sending messages in the Beckn format, another key task the Beckn-ONIX adaptor does with the messages is sign it so the receiver can verify that the message is originating from the indicated source and has not been tampered with. It signs the message with its private key and attaches a signature to the header. The receiver will lookup the registry for the public key of the sending participant and verify the signature. The image below shows the format of the Authorization header that goes with a signed message.
+In addition to sending messages in the Beckn format, another key task the Beckn-ONIX adaptor does with the messages is sign it so the receiver can verify that the message is originating from the indicated source and has not been tampered with. It signs the message with its private key and attaches a signature to the header. The receiver will look up the registry for the public key of the sending participant and verifies the signature. The image below shows the format of the Authorization header that goes with a signed message.
 
 ![Signature header](./images/signature.png)
 
@@ -507,17 +507,17 @@ In addition to sending messages in the Beckn format, another key task the Beckn-
 
 ## Network facilitator Journey
 
-Beckn protocol allows the unbundling of Platform type of application where the three tasks of consumer operations, provider operations and the matching of consumer to provider are unbundled. This creates a open network with new entrants being able to write software on the consumer side (Beckn Application Platform) and provider side (Beckn Provider Platform). The task of bringing these participants together, allow them to discover each other, perform required complaince and regulation check for such networks etc is that of **Network Faciliator Organizations**. Some of the tasks of the Network Faciliator Organizations include:
+Beckn protocol allows the unbundling of Platform type of application where the three tasks of consumer operations, provider operations and the matching of consumer to provider are unbundled. This creates a open network with new entrants being able to write software on the consumer side (Beckn Application Platform) and provider side (Beckn Provider Platform). The task of bringing these participants together, allow them to discover each other, perform required complaince and regulation check for such networks etc is that of **Network Faciliator Organizations**. Some of the tasks of the Network Facilitator Organizations include:
 
 - Conceptualize the network, its nature, nature of participants and the types of transactions allowed.
 - Help network participants onboard onto the network
 - Maintain required network level infrastructure such as registry, gateway as well as multiple environments (sandbox, pre-production, production etc)
-- Define system level policies on allowed payment modes, reconcilliation, settlement etc required to ensure transaction integrity.
+- Define system level policies on allowed payment modes, reconciliation, settlement etc required to ensure transaction integrity.
 - Define policies on privacy, security, compliance and ensure participants are following them
 
 ### Registry and Gateway
 
-**Registry** in a Beckn network holds details on the different network participants including their ID, URL, Public Key, Domains they operate in, Role (BAP, BPP, BG etc). It also provides a way for the Network Facilatoror Organization to include or exclude a participant from transaction. Every network participant when it receives a message, will lookup at the registry for the public key of the sender to ensure that the message was sent by the said party and has not been modified since sending. This authentication is the core of trust in the Beckn Network.
+**Registry** in a Beckn network holds details on the different network participants including their ID, URL, Public Key, Domains they operate in, Role (BAP, BPP, BG etc). It also provides a way for the Network Facilitator Organization to include or exclude a participant from transaction. Every network participant when it receives a message, will look up at the registry for the public key of the sender to ensure that the message was sent by the said party and has not been modified since sending. This authentication is the core of trust in the Beckn Network.
 
 > [!TIP]
 > User Guide for the Registry can be found here [Registry User Guide](../registry-user-guide.md)
@@ -563,7 +563,7 @@ $ ./beckn-onix.sh
 ```
 
 - Choose setting up a new network as the option and Registry as the component to setup.
-- The installation will ask for the address of the registry. Provide the address configured in the pre-requesites section.
+- The installation will ask for the address of the registry. Provide the address configured in the pre-requisites section.
 - The installation will complete and the registry can be accessed in a browser using the URL provided. (Default username/password is root/root)
 
 #### Gateway
@@ -589,7 +589,7 @@ $ ./beckn-onix.sh
 - The installation will ask for the public address of the gateway. Provide the address configured in the pre-requisites section.
 - The installation of gateway will complete.
 
-The same procedure can be used to install the registry and gateway in other environments (staging, production etc). The process is the same except for the URL that can be arrived at for each envrionment as illustrated above.
+The same procedure can be used to install the registry and gateway in other environments (staging, production etc). The process is the same except for the URL that can be arrived at for each environment as illustrated above.
 
 > [!TIP]
 > Use the following [troubleshooting guide](../troubleshoot.md) if you run into problems.
@@ -642,7 +642,7 @@ The **Core Schema** specifies the structure of data in the commerce interactions
 
 ### Taxonomies and domain specific attributes
 
-Taxonomies and domain-specific attributes can be added to the elements of the Core schema. Similarly we can also add additional newtwork facilatator defined rules to these. It is achieved through definition of enumerations, required fields, allowed and default values, conditional schemas etc. Together these are referred to as Layer 2 config.
+Taxonomies and domain-specific attributes can be added to the elements of the Core schema. Similarly we can also add additional network facilitator defined rules to these. It is achieved through definition of enumerations, required fields, allowed and default values, conditional schemas etc. Together these are referred to as Layer 2 config.
 
 ### Network Actors
 
