@@ -270,7 +270,7 @@ Beckn is a aynchronous protocol at its core.
       },
       "item": {
         "time" : {
-          "duration" : "P3D" // 3 days in ISO8601
+          "duration" : "P7D" // 7 days in ISO8601
         },
         "tags": [
           {
@@ -341,15 +341,12 @@ Beckn is a aynchronous protocol at its core.
           {
             "id": "1",
             "descriptor": {
-              "name": "WeAreNews14",
-              "additional_desc": {
-                "url" : "https://www.wearenews14.com/",
-                "content_type" : "text/html"
-              },
+              "name": "Amicus",
+              "short_desc": "Amicus Agri Services",
               "images": [
-                {
-                  "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/example-new-logo-hero.png"
-                }
+                  {
+                      "url": "https://amicusagro.info/img/amicus_logo.jpg"
+                  }
               ]
             },
             "tags": [
@@ -386,15 +383,14 @@ Beckn is a aynchronous protocol at its core.
             "fulfillments": [
               {
                 "id": "f1",
-                "type": "CLOUD"
-              },
-              {
-                "id": "f2",
-                "type": "REST"
-              },
-              {
-                "id": "f3",
-                "type": "EMAIL"
+                "stops": [
+                  "time" : {
+                    "range" : {
+                      "start" : "2024-12-20T00:00:00.000Z",
+                      "end" : "2024-12-26T00:00:00.000Z"
+                    }
+                  }
+                ]
               }
             ],
             "items": [
@@ -406,141 +402,401 @@ Beckn is a aynchronous protocol at its core.
                       "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
                     }
                   ],
-                  "additional_desc" : {
-                    "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-                    "content_type" : "text/html"
-                  },
                   "name": "Hyperlocal weather forecast",
-                  "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-                  "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
-                },
-                "time" : {
-                  "range" : {
-                    "start" : "2024-03-01T00:00:00.000Z",
-                    "end" : "2024-03-15T00:00:00.000Z"
-                  }
+                  "short_desc": "7 दिवसाचा हवामान अंदाज",
+                  "long_desc": "Our Weather Forecast Data delivers reliable and timely forecasts tailored specifically for regions. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more."
                 },
                 "matched": true,
-                "price": {
-                  "currency": "INR",
-                  "value": "30"
-                },
                 "recommended": true,
                 "category_ids": [
                   "c1"
                 ],
                 "fulfillment_ids": [
-                  "f1",
-                  "f2",
-                  "f3"
+                  "f1"
                 ],
                 "tags": [
                   {
                     "descriptor": {
-                      "name": "Forecast confidence levels"
-                    },
-                    "list": [
-                      {
-                        "value": "90%"
-                      },
-                      {
-                        "value": "85%"
-                      },
-                      {
-                        "value": "80%"
-                      },
-                      {
-                        "value": "75%"
-                      },
-                      {
-                        "value": "70%"
-                      }
-                    ]
-                  },
-                  {
-                    "descriptor": {
-                      "name": "Weather datapoints"
-                    },
-                    "list": [
-                      {
-                        "value": "Temperature"
-                      },
-                      {
-                        "value": "Vertical wind speed"
-                      },
-                      {
-                        "value": "Horizontal wind velocity"
-                      },
-                      {
-                        "value": "Relative Humidity"
-                      },
-                      {
-                        "value": "Surface pressure"
-                      },
-                      {
-                        "value": "Dew Point"
-                      },
-                      {
-                        "value": "Precipitation"
-                      },
-                      {
-                        "value": "Cloud cover"
-                      },
-                      {
-                        "value": "Solar radiation"
-                      }
-                    ]
-                  },
-                  {
-                    "descriptor": {
-                      "name": "Data formats"
-                    },
-                    "list": [
-                      {
-                        "value": "PDF"
-                      },
-                      {
-                        "value": "BUFR"
-                      },
-                      {
-                        "value": "XML"
-                      },
-                      {
-                        "value": "JSON"
-                      },
-                      {
-                        "value": "CSV"
-                      },
-                      {
-                        "value": "NetCDF"
-                      },
-                      {
-                        "value": "GRIB"
-                      },
-                      {
-                        "value": "Shapefiles"
-                      },
-                      {
-                        "value": "GeoTIFF"
-                      }
-                    ]
-                  },
-                  {
-                    "descriptor": {
-                      "name": "Dataset Attribute"
+                      "code": "2024-12-20"
                     },
                     "list": [
                       {
                         "descriptor": {
-                          "name": "Size"
-                        },
-                        "value": "20MB"
+                          "code": "min-temp"
+                        }
+                        "value": "16.7°C"
                       },
                       {
                         "descriptor": {
-                          "name": "Last update timestamp"
-                        },
-                        "value": "24 Feb 2024 23:21"
+                          "code": "max-temp"
+                        }
+                        "value": "29.4°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "precipitation"
+                        }
+                        "value": "0mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "sunlight"
+                        }
+                        "value": "11h"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-speed"
+                        }
+                        "value": "11-12 km/hr"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-dir"
+                        }
+                        "value": "N"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "eto"
+                        }
+                        "value": "3mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "uv"
+                        }
+                        "value": "6"
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "code": "2024-12-21"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "min-temp"
+                        }
+                        "value": "14.7°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "max-temp"
+                        }
+                        "value": "29.9°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "precipitation"
+                        }
+                        "value": "0mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "sunlight"
+                        }
+                        "value": "11h"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-speed"
+                        }
+                        "value": "4-8 km/hr"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-dir"
+                        }
+                        "value": "NNW"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "eto"
+                        }
+                        "value": "4mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "uv"
+                        }
+                        "value": "7"
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "code": "2024-12-22"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "min-temp"
+                        }
+                        "value": "15.6°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "max-temp"
+                        }
+                        "value": "30.3°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "precipitation"
+                        }
+                        "value": "0mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "sunlight"
+                        }
+                        "value": "11h"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-speed"
+                        }
+                        "value": "7-9 km/hr"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-dir"
+                        }
+                        "value": "NE"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "eto"
+                        }
+                        "value": "4mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "uv"
+                        }
+                        "value": "7"
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "code": "2024-12-23"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "min-temp"
+                        }
+                        "value": "17.6°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "max-temp"
+                        }
+                        "value": "22.2°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "precipitation"
+                        }
+                        "value": "1.5mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "sunlight"
+                        }
+                        "value": "11h"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-speed"
+                        }
+                        "value": "6-8 km/hr"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-dir"
+                        }
+                        "value": "SE"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "eto"
+                        }
+                        "value": "4mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "uv"
+                        }
+                        "value": "7"
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "code": "2024-12-24"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "min-temp"
+                        }
+                        "value": "17.1°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "max-temp"
+                        }
+                        "value": "28.4°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "precipitation"
+                        }
+                        "value": "0.3mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "sunlight"
+                        }
+                        "value": "11h"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-speed"
+                        }
+                        "value": "4-8 km/hr"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-dir"
+                        }
+                        "value": "SE"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "eto"
+                        }
+                        "value": "4mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "uv"
+                        }
+                        "value": "7"
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "code": "2024-12-25"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "min-temp"
+                        }
+                        "value": "16.2°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "max-temp"
+                        }
+                        "value": "29.6°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "precipitation"
+                        }
+                        "value": "0mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "sunlight"
+                        }
+                        "value": "11h"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-speed"
+                        }
+                        "value": "6-9 km/hr"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-dir"
+                        }
+                        "value": "ENE"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "eto"
+                        }
+                        "value": "3mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "uv"
+                        }
+                        "value": "4"
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "code": "2024-12-26"
+                    },
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "min-temp"
+                        }
+                        "value": "14.4°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "max-temp"
+                        }
+                        "value": "29.4°C"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "precipitation"
+                        }
+                        "value": "0mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "sunlight"
+                        }
+                        "value": "11h"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-speed"
+                        }
+                        "value": "6-11 km/hr"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "wind-dir"
+                        }
+                        "value": "ENE"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "eto"
+                        }
+                        "value": "3mm"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "uv"
+                        }
+                        "value": "6"
                       }
                     ]
                   }
@@ -553,906 +809,69 @@ Beckn is a aynchronous protocol at its core.
     }
   }
 ```
-#### select
-
-**selecting an item from the catalog**
-
-- provider Contains details of the seller from whom the items are purchased.
-- Items  A list of individual items included in the purchase.
-- fulfillments[idx] object provides specific fulfillment details for each part of the order..
-
+**on_search: Example catalog in case the result is a video**
 ```
 {
   "context": {
     "domain": "advisory:uai",
+    "action": "on_search",
+    "version": "1.1.0",
+    "bpp_id": "onix-bpp.fasal.co",
+    "bpp_uri": "https://onix-bpp.fasal.co",
+    "country": "IND",
+    "city": "std:080",
     "location": {
       "country": {
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "action": "select",
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.217Z"
+    "bap_id": "wa-bap",
+    "bap_uri": "https://wa-bap.freecustomer.in",
+    "transaction_id": "9504db39-a7cd-4d6e-b935-2d6fd33c96eb",
+    "message_id": "3cddbac5-b9fa-41a9-aab0-f59781bb1f46",
+    "ttl": "PT10M",
+    "timestamp": "2024-12-03T12:15:30.660Z"
   },
   "message": {
-    "order": {
-      "provider": {
-        "id": "1"
-      },
-      "items": [
-        {
-          "id": "1",
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ]
-    }
-  }
-}
-```
-
-#### on_select
-
-**Getting a quotation from the seller for the selected items from the catalog**
-
-- Contains the pricing, itemized details, and cost breakup for a potential purchase.
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "on_select",
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io",
-    "bap_url": "https://example-bap-client.becknprotocol.io",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.229Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1",
-        "descriptor": {
-          "name": "WeAreNews14",
-          "additional_desc": {
-            "url" : "https://www.wearenews14.com/",
-            "content_type" : "text/html"
-          },
-          "images": [
-            {
-              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
-            }
-          ]
-        },
-        "rating": "4.9",
-      },
-      "items": [
-        {
-          "id": "1",
-          "descriptor": {
-            "images": [
-              {
-                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
-              }
-            ],
-            "additional_desc" : {
-              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-              "content_type" : "text/html"
-            },
-            "name": "Hyperlocal weather forecast",
-            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
-          },
-          "time" : {
-            "range" : {
-              "start" : "2024-03-01T00:00:00.000Z",
-              "end" : "2024-03-15T00:00:00.000Z"
-            }
-          },
-          "category_ids": [
-            "c1"
-          ],
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "price": {
-             "currency": "INR",
-             "value": "30"
-          },
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Weather datapoints"
-              },
-              "list": [
-                {
-                  "value": "Temperature"
-                },
-                {
-                  "value": "Horizontal wind velocity"
-                },
-                {
-                  "value": "Relative Humidity"
-                },
-                {
-                  "value": "Surface pressure"
-                },
-                {
-                  "value": "Precipitation"
-                }
-              ]
-            },
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ],
-      "quote": {
-        "price": {
-          "currency": "INR",
-          "value": "31.5"
-        },
-        "breakup": [
+    "catalog": {
+      "descriptor": {
+        "name": "Fasal",
+        "images": [
           {
-            "title": "dataset-fee",
-            "price": {
-              "currency": "INR",
-              "value": "30"
-            }
-          },
-          {
-            "title": "gst",
-            "price": {
-              "currency": "INR",
-              "value": "1.5"
-            }
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
-#### init
-
-**initialise an order with billing details**
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "init",
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.217Z"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1"
-      },
-      "items": [
-        {
-          "id": "1",
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ],
-      "billing": {
-        "name": "Monisha",
-        "phone" : "+9752345678",
-        "email" : "Monisha@example.com" 
-      }
-    }
-  }
-}
-```
-
-#### on_init
-
-**Receive the payment details from the seller.**
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "on_init",
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.229Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1",
-        "descriptor": {
-          "name": "WeAreNews14",
-          "additional_desc": {
-            "url" : "https://www.wearenews14.com/",
-            "content_type" : "text/html"
-          },
-          "images": [
-            {
-              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
-            }
-          ]
-        },
-        "rating": "4.9",
-      },
-      "items": [
-        {
-          "id": "1",
-          "descriptor": {
-            "images": [
-              {
-                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
-              }
-            ],
-            "additional_desc" : {
-              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-              "content_type" : "text/html"
-            },
-            "name": "Hyperlocal weather forecast",
-            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
-          },
-          "time" : {
-            "range" : {
-              "start" : "2024-03-01T00:00:00.000Z",
-              "end" : "2024-03-15T00:00:00.000Z"
-            }
-          },
-          "category_ids": [
-            "c1"
-          ],
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "price": {
-             "currency": "INR",
-             "value": "30"
-          },
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Weather datapoints"
-              },
-              "list": [
-                {
-                  "value": "Temperature"
-                },
-                {
-                  "value": "Horizontal wind velocity"
-                },
-                {
-                  "value": "Relative Humidity"
-                },
-                {
-                  "value": "Surface pressure"
-                },
-                {
-                  "value": "Precipitation"
-                }
-              ]
-            },
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ],
-      "quote": {
-        "price": {
-          "currency": "INR",
-          "value": "31.5"
-        },
-        "breakup": [
-          {
-            "title": "dataset-fee",
-            "price": {
-              "currency": "INR",
-              "value": "30"
-            }
-          },
-          {
-            "title": "gst",
-            "price": {
-              "currency": "INR",
-              "value": "1.5"
-            }
+            "url": "https://fasal.co/images/logo.png"
           }
         ]
       },
-      "cancellation_terms": [
+      "providers": [
         {
-          "fulfillment_state": {
-            "descriptor": {
-              "short_desc": "The order can not be cancelled once placed"
-            }
-          }
-        }
-      ],
-      "payments": [
-        {
-          "status": "NOT-PAID",
-          "type": "PRE-ORDER",
-          "collected_by": "BAP",
-          "params": {
-            "amount": "31.5",
-            "currency": "INR"
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-#### confirm
-
-**Provide the proof of payment to the seller**
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "confirm",
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.217Z"
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "1"
-      },
-      "items": [
-        {
-          "id": "1",
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD"
-        }
-      ],
-      "billing": {
-        "name": "Monisha",
-        "phone" : "+9752345678",
-        "email" : "Monisha@example.com" 
-      },
-      "payments": [
-        {
-          "status": "PAID",
-          "type": "PRE-ORDER",
-          "collected_by": "BAP",
-          "params": {
-            "amount": "31.5",
-            "currency": "INR"
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-#### on_confirm
-
-**Create an order, provide the link to the report**
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "on_confirm",
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.229Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order": {
-      "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
-      "provider": {
-        "id": "1",
-        "descriptor": {
-          "name": "WeAreNews14",
-          "additional_desc": {
-            "url" : "https://www.wearenews14.com/",
-            "content_type" : "text/html"
-          },
-          "images": [
-            {
-              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
-            }
-          ]
-        },
-        "rating": "4.9",
-      },
-      "items": [
-        {
-          "id": "1",
+          "id": "2d867cbe-a362-4cb5-81ec-0e969bb5695f",
           "descriptor": {
-            "images": [
-              {
-                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
-              }
-            ],
-            "additional_desc" : {
-              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-              "content_type" : "text/html"
-            },
-            "name": "Hyperlocal weather forecast",
-            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
+            "name": "Fasal"
           },
-          "time" : {
-            "range" : {
-              "start" : "2024-03-01T00:00:00.000Z",
-              "end" : "2024-03-15T00:00:00.000Z"
-            }
-          },
-          "category_ids": [
-            "c1"
-          ],
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "price": {
-             "currency": "INR",
-             "value": "30"
-          },
-          "tags": [
+          "items": [
             {
+              "id": "f590e9b2-9421-4ff7-851e-469b096a34e4",
               "descriptor": {
-                "name": "Weather datapoints"
-              },
-              "list": [
-                {
-                  "value": "Temperature"
-                },
-                {
-                  "value": "Horizontal wind velocity"
-                },
-                {
-                  "value": "Relative Humidity"
-                },
-                {
-                  "value": "Surface pressure"
-                },
-                {
-                  "value": "Precipitation"
-                }
-              ]
-            },
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD",
-          "state": {
-            "descriptor" : {
-              "code" : "ORDER CONFIRMED",
-              "name" : "Your Order is confirmed"
-            }
-          },
-          "stops" : [
-            {
-              "instructions": {
-                "short_desc" : "The below link can be usd to access the report PDF",
+                "name": "FasalOne",
+                "short_desc": "Fasal One is your ultimate smart farming solution, designed to help you increase your crop produce by 40% , decrease spend on inputs by 30% and  double your profits. By combining precision farming techniques with advanced automation, FasalOne puts you in complete control of your farm. Whether you cultivate a small plot or vast farmlands, this IoT-powered system adapts to your needs, helping you eliminate guesswork, boost productivity, and achieve higher profitability with ease.",
+                "long_desc": "FasalOne is a flagship technology offering from Fasal. This future ready intelligent system puts precision farming at your fingertips helping you scale with your ambitions in your way. It empowers the farmers with super-smart information about their crops, offering farm-level, crop-specific, and crop-stage-specific intelligence like Irrigation Advisory, Pest and Disease Forewarnings, Weather forecast and Data Analytics. It is designed to help you Double your Profits, Reduce your input costs by upto 30%, Increase your yields by upto 40% and save Water by upto 60%. The Technological Advancements enable you to seamlessly integrate and monitor over 100 sensors across your entire farm, giving you unprecedented actionable insights into crop health, soil conditions, and environmental factors. It offers Affordable scalability where you can upgrade your smart farming journey with our flexible subscription model, beginning at just Rs. 49. The lightning-fast Over-The-Air (OTA) updates ensure that your system always remains at the forefront of agricultural innovation. With 24x7 data access through Bluetooth Low Energy (BLE) technology you get uninterrupted intelligence flow keeping you connected to your farm's critical information. Experience complete farm management with our smart, automated systems that reduce manual effort and maximize efficiency which is now available with Customization options as per your requirement.",
+                "images": [
+                  {
+                    "url": "https://fasal-public-bucket-mumbai.s3.ap-south-1.amazonaws.com/fasal-one.png"
+                  }
+                ],
                 "media": [
                   {
-                    "url": "www.example.com/weather/report/234434.PDF"
+                    "mimetype": "video/mp4",
+                    "url": "https://youtu.be/aJtcBCl8Cl4"
                   }
                 ]
               }
             }
-          ],
-        }
-      ],
-      "quote": {
-        "price": {
-          "currency": "INR",
-          "value": "31.5"
-        },
-        "breakup": [
-          {
-            "title": "dataset-fee",
-            "price": {
-              "currency": "INR",
-              "value": "30"
-            }
-          },
-          {
-            "title": "gst",
-            "price": {
-              "currency": "INR",
-              "value": "1.5"
-            }
-          }
-        ]
-      },
-      "cancellation_terms": [
-        {
-          "fulfillment_state": {
-            "descriptor": {
-              "short_desc": "The order can not be cancelled once placed"
-            }
-          }
-        }
-      ],
-      "payments": [
-        {
-          "status": "PAID",
-          "type": "PRE-ORDER",
-          "collected_by": "BAP",
-          "params": {
-            "amount": "31.5",
-            "currency": "INR"
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-#### status
-
-**check for status in case forecast report link could not be sent in the on_confirm callback**
-
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "status",
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
-    "message_id": "b8c1e69c-fbbc-439b-a5de-2adcc74fa0da",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T10:14:10.295Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order_id": "b989c9a9-f603-4d44-b38d-26fd72286b40"
-  }
-}
-```
-
-#### on_status
-
-**get the status of the order, with the link to the forecast report**
-```
-{
-  "context": {
-    "domain": "advisory:uai",
-    "location": {
-      "country": {
-        "code": "IND"
-      }
-    },
-    "action": "on_confirm",
-    "version": "1.1.0",
-    "bap_id": "example-bap.becknprotocol.io"",
-    "bap_uri": "https://example-bap-client.becknprotocol.io"",
-    "bpp_id": "example-bpp.becknprotocol.io",
-    "bpp_uri": "https://example-bpp-network.becknprotocol.io"",
-    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
-    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
-    "timestamp": "2023-11-06T09:44:47.229Z",
-    "ttl": "PT10M"
-  },
-  "message": {
-    "order": {
-      "id": "b989c9a9-f603-4d44-b38d-26fd72286b40",
-      "provider": {
-        "id": "1",
-        "descriptor": {
-          "name": "WeAreNews14",
-          "additional_desc": {
-            "url" : "https://www.wearenews14.com/",
-            "content_type" : "text/html"
-          },
-          "images": [
-            {
-              "url": "https://static1.anpoimages.com/wordpress/wp-content/uploads/2020/04/accuweather-new-logo-hero.png"
-            }
           ]
-        },
-        "rating": "4.9",
-      },
-      "items": [
-        {
-          "id": "1",
-          "descriptor": {
-            "images": [
-              {
-                "url": "https://www.analyticssteps.com/backend/media/thumbnail/6006173/6278986_1571298721_Weather_Forecoast_Graphics.jpg"
-              }
-            ],
-            "additional_desc" : {
-              "url" : "https://www.example.com/weather-forecast-sample/downloadsample",
-              "content_type" : "text/html"
-            },
-            "name": "Hyperlocal weather forecast",
-            "short_desc": "Access accurate and up-to-date weather forecasts for Sarpang, providing essential information on temperature, precipitation, wind speed, and more.",
-            "long_desc": "<p>Our <strong>Weather Forecast Data of Sarpang</strong> delivers reliable and timely forecasts tailored specifically for the region. Stay informed about current and future weather conditions, including temperature variations, precipitation levels, wind speed patterns, and more. Whether you're planning outdoor activities, agricultural operations, or travel itineraries, our comprehensive weather forecasts for Sarpang ensure that you're well-prepared for any weather-related situations. Trust our data to make informed decisions and optimize your plans, keeping you ahead of the weather and ready for whatever nature brings.</p>"
-          },
-          "time" : {
-            "range" : {
-              "start" : "2024-03-01T00:00:00.000Z",
-              "end" : "2024-03-15T00:00:00.000Z"
-            }
-          },
-          "category_ids": [
-            "c1"
-          ],
-          "fulfillment_ids": [
-            "f1"
-          ],
-          "price": {
-             "currency": "INR",
-             "value": "30"
-          },
-          "tags": [
-            {
-              "descriptor": {
-                "name": "Weather datapoints"
-              },
-              "list": [
-                {
-                  "value": "Temperature"
-                },
-                {
-                  "value": "Horizontal wind velocity"
-                },
-                {
-                  "value": "Relative Humidity"
-                },
-                {
-                  "value": "Surface pressure"
-                },
-                {
-                  "value": "Precipitation"
-                }
-              ]
-            },
-            {
-              "descriptor": {
-                "name": "Data formats"
-              },
-              "list": [
-                {
-                  "value": "PDF"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "fulfillments": [
-        {
-          "id": "f1"
-          "type": "CLOUD",
-          "state": {
-            "descriptor" : {
-              "code" : "ORDER-COMPLETED",
-              "name" : "Your Order is completed"
-            }
-          },
-          "stops" : [
-            {
-              "instructions": {
-                "short_desc" : "The below link can be usd to access the report PDF",
-                "media": [
-                  {
-                    "url": "www.example.com/weather/report/234434.PDF"
-                  }
-                ]
-              }
-            }
-          ],
-        }
-      ],
-      "quote": {
-        "price": {
-          "currency": "INR",
-          "value": "31.5"
-        },
-        "breakup": [
-          {
-            "title": "dataset-fee",
-            "price": {
-              "currency": "INR",
-              "value": "30"
-            }
-          },
-          {
-            "title": "gst",
-            "price": {
-              "currency": "INR",
-              "value": "1.5"
-            }
-          }
-        ]
-      },
-      "cancellation_terms": [
-        {
-          "fulfillment_state": {
-            "descriptor": {
-              "short_desc": "The order can not be cancelled once placed"
-            }
-          }
-        }
-      ],
-      "payments": [
-        {
-          "status": "PAID",
-          "type": "PRE-ORDER",
-          "collected_by": "BAP",
-          "params": {
-            "amount": "31.5",
-            "currency": "INR"
-          }
         }
       ]
     }
