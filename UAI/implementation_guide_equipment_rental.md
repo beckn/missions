@@ -125,7 +125,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "equipement-renting:uai",
+      "domain": "retail:uai",
       "location": {
         "country": {
           "name": "IND"
@@ -142,6 +142,11 @@ Beckn is a aynchronous protocol at its core.
     },
     "message": {
       "intent": {
+        "category": {
+            "descriptor": {
+                "code": "rent"
+            }
+        },
         "item": {
           "descriptor": {
             "name": "agriculture sprayer"
@@ -156,7 +161,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "equipement-renting:uai",
+      "domain": "retail:uai",
       "location": {
         "country": {
           "name": "IND"
@@ -173,6 +178,11 @@ Beckn is a aynchronous protocol at its core.
     },
     "message": {
       "intent": {
+        "category": {
+            "descriptor": {
+                "code": "rent"
+            }
+        },
         "item": {
           "descriptor": {
             "name": "agriculture sprayer"
@@ -200,7 +210,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "equipement-renting:uai",
+      "domain": "retail:uai",
       "location": {
         "country": {
           "name": "IND"
@@ -217,6 +227,11 @@ Beckn is a aynchronous protocol at its core.
     },
     "message": {
       "intent": {
+        "category": {
+            "descriptor": {
+                "code": "rent"
+            }
+        },
         "item": {
           "descriptor": {
             "name": "agriculture sprayer"
@@ -252,7 +267,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "equipement-renting:uai",
+      "domain": "retail:uai",
       "location": {
         "country": {
           "name": "IND"
@@ -269,6 +284,11 @@ Beckn is a aynchronous protocol at its core.
     },
     "message": {
       "intent": {
+        "category": {
+            "descriptor": {
+                "code": "rent"
+            }
+        },
         "item": {
           "descriptor": {
             "name": "agriculture sprayer"
@@ -320,7 +340,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -366,8 +386,8 @@ Beckn is a aynchronous protocol at its core.
                         {
                             "id": "c1",
                             "descriptor": {
-                                "code": "Agri Services",
-                                "name": "Agri Services"
+                                "code": "rent",
+                                "name": "Rent"
                             }
                         }
                     ],
@@ -463,8 +483,8 @@ Beckn is a aynchronous protocol at its core.
                         {
                             "id": "c1",
                             "descriptor": {
-                                "code": "Agri Services",
-                                "name": "Agri Services"
+                                "code": "rent",
+                                "name": "Rent"
                             }
                         }
                     ],
@@ -560,8 +580,8 @@ Beckn is a aynchronous protocol at its core.
                         {
                             "id": "c1",
                             "descriptor": {
-                                "code": "Agri Services",
-                                "name": "Agri Services"
+                                "code": "rent",
+                                "name": "Rent"
                             }
                         }
                     ],
@@ -657,7 +677,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "equipement-renting:uai",
+      "domain": "retail:uai",
       "location": {
         "country": {
             "name": "IND"
@@ -721,7 +741,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -867,7 +887,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "equipement-renting:uai",
+      "domain": "retail:uai",
       "location": {
         "country": {
             "name": "IND"
@@ -943,7 +963,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1124,7 +1144,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1220,7 +1240,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1416,7 +1436,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1445,7 +1465,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1634,7 +1654,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1667,7 +1687,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1701,7 +1721,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "equipement-renting:uai",
+    "domain": "retail:uai",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -1729,7 +1749,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "equipement-renting:uai",
+    "domain": "retail:uai",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -1769,7 +1789,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1807,7 +1827,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "equipement-renting:uai",
+        "domain": "retail:uai",
         "location": {
             "country": {
                 "name": "IND"
@@ -1897,4 +1917,4 @@ If you are writing the provider platform software, the following are the steps y
  - **BPP Sandbox:** bpp-unified-sandbox-uai.becknprotocol.io
 
 ### Domain name:
-    equipement-renting:uai
+    retail:uai
