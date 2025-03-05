@@ -1,0 +1,19 @@
+properties:
+  message:    
+    properties:
+      catalog:
+        properties:
+          providers:
+            items:
+              properties:
+                fulfillments:
+                  type: array
+                  minItems: 1 # Ensure at least one fulfillment
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                      - id
+              required:
+                - fulfillments

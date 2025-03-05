@@ -160,7 +160,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "retail:uai",
+    "domain": "advisory:uai",
     "action": "search",
     "location": {
       "country": {
@@ -229,7 +229,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "retail:uai",
+    "domain": "advisory:uai",
     "action": "search",
     "location": {
       "country": {

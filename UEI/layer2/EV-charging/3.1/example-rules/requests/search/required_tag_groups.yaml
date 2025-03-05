@@ -1,0 +1,20 @@
+
+properties:
+  message:
+    properties:
+      intent:
+        properties:
+          fulfillment:
+            properties:
+              tags:
+                allOf:
+                  - contains:
+                      properties:
+                        descriptor:
+                          type: object
+                          properties:
+                            code:
+                              const: connector-type
+                          required:
+                            - code
+                    
