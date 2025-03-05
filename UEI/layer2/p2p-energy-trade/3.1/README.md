@@ -1,6 +1,6 @@
 # Compilling energy peer to peer trading layer 2 configuration
 
-Note: All folders mentioned here are relative to the folder ``` UEI/layer2/p2p-energy-trade/ ```
+Note: All folders mentioned here are relative to the folder ``` UEI/layer2/p2p-energy-trade/3.1/ ```
 
 API Specific components(rules for specific APIs) are defined under the folder
 
@@ -40,7 +40,7 @@ sudo npm install -g swagger-cli
 ```
 
 ### Use the Swagger CLI to compile the template into a final specification yaml
-1. Go to the ``` api/l2-config/oas-3.1/ondemandride/ ``` folder
+1. Go to the ``` UEI/layer2/p2p-energy-trade/3.1/  ``` folder
 2. Run the Swagger CLI command. Command format is:
 ```
 swagger-cli bundle <input-file-path> --outfile <output-file-path> --type yaml
