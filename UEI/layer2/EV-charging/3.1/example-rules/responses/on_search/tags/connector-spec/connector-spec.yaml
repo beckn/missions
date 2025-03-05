@@ -1,0 +1,3 @@
+allOf:
+  - $ref: "./allowed_tags.yaml"
+  - $ref: "./required_tags.yaml"

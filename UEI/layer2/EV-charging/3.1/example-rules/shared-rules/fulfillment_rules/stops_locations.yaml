@@ -1,0 +1,28 @@
+properties:
+  message:
+    properties:
+      order:
+        properties:
+          fulfillments:
+            items:
+              properties:
+                stops:
+                  allOf:
+                    - contains:
+                        type: object
+                        properties:
+                          type:
+                            const: START
+                        required:
+                          - type
+                          - time
+                    - contains:
+                        type: object
+                        properties:
+                          type:
+                            const: END
+                        required:
+                          - type
+                          - time
+              required:
+                - stops

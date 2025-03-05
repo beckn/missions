@@ -1,0 +1,20 @@
+properties:
+  message:
+    properties:
+      intent:
+        properties:
+          fulfillment:
+            properties:
+              stops:
+                allOf:
+                  - contains:
+                      type: object
+                      properties:
+                        location:
+                          type: object
+                      required:
+                        - location
+            required:
+              - stops
+        required:
+          - fulfillment
