@@ -732,11 +732,24 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
       },
       "items": [
         {
-          "id": "i1"
+          "id": "i1",
+          "location_ids": [
+            "l1"
+          ]
         }
       ],
-      "location_ids": [
-        "l1"
+      "fulfillments": [
+        {
+          "id": "f2",
+          "customer": {
+            "person": {
+              "name": "Madhavan"
+            },
+            "contact": {
+              "phone": "8130xxxxxx"
+            }
+          }
+        }
       ]
     }
   }
