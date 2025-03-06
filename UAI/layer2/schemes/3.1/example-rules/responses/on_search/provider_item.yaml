@@ -1,0 +1,35 @@
+properties:
+  message:    
+    properties:
+      catalog:
+        properties:
+          providers:
+            items:
+              properties:
+                items:
+                  type: array
+                  minItems: 1  # Ensure at least one item
+                  items:
+                    type: object
+                    properties:
+                      descriptor:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          code:
+                            type: string
+                          # Add any other descriptor properties here
+                      fulfillment_ids:
+                        type: array
+                        minItems: 1
+                      location_ids:
+                        type: array
+                        minItems: 1
+                    required:
+                      - id
+                      - descriptor
+                      - fulfillment_ids
+                      - location_ids
+              required:
+                - items
