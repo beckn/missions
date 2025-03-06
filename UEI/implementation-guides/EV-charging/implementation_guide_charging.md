@@ -29,7 +29,7 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
-![UEI Charging Outcome Visualization](images/uei_outcome_visualization.svg)
+![UEI Charging Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg)
 
 ### Use case - Discovery, order and fulfillment of EV Charging
 
@@ -78,7 +78,7 @@ Beckn is a aynchronous protocol at its core.
 - However when writing software we should be prepared to receive these NACK messages as well as error field in the on_xxxxxx messages
 - While this discussion is from a Beckn perspective, Adapters can provide synchronous modes. For example, the Protocol Server which is the reference implementation of the Beckn Adapter provides a synchronous mode by default. So if your software calls the support endpoint on the BAP Protocol Server, the Protocol Server waits till it gets the on_support and returns back that as the response.
 
-![ACK NACK for messages](../docs/assets/images/ack_nack.png)
+![ACK NACK for messages](https://github.com/beckn/missions/blob/main/docs/assets/images/ack_nack.png)
 
 **Structure of a message with a NACK**
 
@@ -3165,7 +3165,7 @@ If you are writing the seeker platform software, the following are the steps you
    - the remaining components are provided by the sandbox enviornment
 8. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
 
-![Seeker platform testing sandbox ](../docs/assets/images/seeker_deployment.png)
+![Seeker platform testing sandbox ](https://github.com/beckn/missions/blob/main/docs/assets/images/seeker_deployment.png)
 
 ### Integrating the provider platform
 
@@ -3183,17 +3183,17 @@ If you are writing the provider platform software, the following are the steps y
    - Use the postman collection to test your Provider Platform
 7. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
 
-![Provider platform testing sandbox](../docs/assets/images/provider_deployment.png)
+![Provider platform testing sandbox](https://github.com/beckn/missions/blob/main/docs/assets/images/provider_deployment.png)
 
 ## Links to artefacts
 
-- [Postman collection for UEI EV Charging](./postman/ev-charging_uei_postman_collection.json)
-- [Layer2 config for UEI EV Charging](./layer2/ev-charging_uei_1.1.0.yaml)
-- When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/main/UEI/layer2/ev-charging_uei_1.1.0.yaml)
+- [Postman collection for UEI EV Charging](https://github.com/beckn/missions/blob/main/UEI/postman/ev-charging_uei_postman_collection.json)
+- [Layer2 config for UEI EV Charging](https://github.com/beckn/missions/blob/main/UEI/layer2/EV-charging/3.1/energy_EV_1.1.0_openapi_3.1.yaml)
+- When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/refs/heads/main/UEI/layer2/EV-charging/3.1/energy_EV_1.1.0_openapi_3.1.yaml)
 
 ## Sandbox Details
 
-![UEI Alliance](../docs/assets/images/UEI%20Alliance.png)
+![UEI Alliance](https://github.com/beckn/missions/blob/main/docs/assets/images/UEI%20Alliance.png)
 
 ### BAP:
 
