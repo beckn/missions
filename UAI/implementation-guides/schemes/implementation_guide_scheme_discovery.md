@@ -1446,7 +1446,6 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
         "code": "IND"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",
@@ -1474,7 +1473,6 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
         "code": "IND"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",

@@ -164,7 +164,12 @@ Beckn is a aynchronous protocol at its core.
     "action": "search",
     "location": {
       "country": {
+        "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "version": "1.1.0",
@@ -233,7 +238,12 @@ Beckn is a aynchronous protocol at its core.
     "action": "search",
     "location": {
       "country": {
+        "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "version": "1.1.0",
@@ -342,9 +352,14 @@ Beckn is a aynchronous protocol at its core.
         "domain": "advisory:uai",
         "action": "on_search",
         "location": {
-            "country": {
-                "code": "IND"
-            }
+          "country": {
+            "name": "India",
+            "code": "IND"
+          },
+          "city": {
+            "name": "Nashik",
+            "code": "std:95253"
+          }
         },
         "version": "1.1.0",
         "bap_id": "example-bap.becknprotocol.io",
@@ -507,7 +522,12 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
-        "name": "IND"
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "action": "support",
@@ -539,7 +559,12 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
+        "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "action": "on_support",
@@ -578,9 +603,12 @@ Beckn is a aynchronous protocol at its core.
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",
@@ -606,9 +634,12 @@ Beckn is a aynchronous protocol at its core.
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",
@@ -643,7 +674,12 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
-        "name": "IND"
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "action": "rating",
@@ -680,7 +716,12 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
-        "name": "IND"
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "action": "on_rating",

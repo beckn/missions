@@ -818,8 +818,6 @@ Beckn is a aynchronous protocol at its core.
     "version": "1.1.0",
     "bpp_id": "onix-bpp.fasal.co",
     "bpp_uri": "https://onix-bpp.fasal.co",
-    "country": "IND",
-    "city": "std:080",
     "location": {
       "country": {
         "code": "IND"
@@ -961,11 +959,9 @@ Beckn is a aynchronous protocol at its core.
     "action": "get_rating_categories",
     "location": {
       "country": {
-        "name": "India",
         "code": "IND"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",
@@ -989,11 +985,9 @@ Beckn is a aynchronous protocol at its core.
     "action": "get_rating_categories",
     "location": {
       "country": {
-        "name": "India",
         "code": "IND"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",
