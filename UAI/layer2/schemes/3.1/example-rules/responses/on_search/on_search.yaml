@@ -6,4 +6,4 @@ allOf:
   #- $ref: "./provider_desc.yaml"
   - $ref: "./provider_fulfillment.yaml"
   - $ref: "./provider_item.yaml"
-  - $ref: "./fulfillment_Stops.yaml"
+  # - $ref: "./fulfillment_Stops.yaml"

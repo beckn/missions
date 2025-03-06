@@ -97,20 +97,36 @@ paths:
                                             properties:
                                               location:
                                                 type: object
-                                                properties:
-                                                  address:
-                                                    type: string
-                                                required:
-                                                  - address
-                                              type:
-                                                const: END
                                             required:
                                               - location
-                                              - type
                                   required:
                                     - stops
                               required:
                                 - fulfillment
+                    - allOf:
+                        - properties:
+                            message:
+                              properties:
+                                catalog:
+                                  properties:
+                                    providers:
+                                      items:
+                                        properties:
+                                          items:
+                                            type: array
+                                            items:
+                                              properties:
+                                                tags:
+                                                  allOf:
+                                                    - contains:
+                                                        properties:
+                                                          descriptor:
+                                                            type: object
+                                                            properties:
+                                                              code:
+                                                                const: LANGUAGES
+                                                            required:
+                                                              - code
       responses:
         '200':
           content:
@@ -250,87 +266,6 @@ paths:
                               required:
                                 - provider
                                 - items
-                    - allOf:
-                        - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/3'
-                        - $ref: '#/paths/~1on_select/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
-                        - properties:
-                            message:
-                              properties:
-                                order:
-                                  required:
-                                    - fulfillments
-                    - allOf:
-                        - properties:
-                            message:
-                              properties:
-                                order:
-                                  properties:
-                                    payments:
-                                      type: array
-                                      items:
-                                        type: object
-                                        properties:
-                                          type:
-                                            type: string
-                                            enum:
-                                              - PRE-ORDER
-                                              - ON-FULFILLMENT
-                                              - POST-FULFILLMENT
-                                          status:
-                                            type: string
-                                            enum:
-                                              - PAID
-                                              - NOT-PAID
-                                          collected_by:
-                                            type: string
-                                            enum:
-                                              - BAP
-                                              - BPP
-                                          params:
-                                            type: object
-                                            properties:
-                                              amount:
-                                                type: string
-                                                pattern: '^\d+(\.\d{1,2})?$'
-                                              currency:
-                                                type: string
-                                        required:
-                                          - type
-                                          - status
-                                          - collected_by
-                                          - params
-                                  required:
-                                    - payments
-                        - properties:
-                            message:
-                              properties:
-                                order:
-                                  properties:
-                                    payments:
-                                      items:
-                                        properties:
-                                          params:
-                                            required:
-                                              - bank_code
-                                              - bank_account_number
-                                              - virtual_payment_address
-                                        required:
-                                          - type
-                                          - status
-                                          - collected_by
-                                          - params
-                                  required:
-                                    - payments
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                billing:
-                                  required:
-                                    - name
-                              required:
-                                - billing
         description: TODO
       responses:
         '200':
@@ -436,65 +371,15 @@ paths:
                                             type: string
                                           descriptor:
                                             type: object
-                                            properties:
-                                              name:
-                                                type: string
-                                              code:
-                                                type: string
-                                                enum:
-                                                  - ENERGY
-                                            required:
-                                              - code
-                                          price:
-                                            type: object
-                                            properties:
-                                              value:
-                                                type: string
-                                            required:
-                                              - value
                                           fulfillment_ids:
                                             minItems: 1
                                           location_ids:
                                             minItems: 1
                                         required:
                                           - id
-                                          - price
                                           - descriptor
                                   required:
                                     - items
-                    - allOf:
-                        - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
-                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                payments:
-                                  type: array
-                                  items:
-                                    properties:
-                                      type:
-                                        type: string
-                                      params:
-                                        type: object
-                                        properties:
-                                          transaction_id:
-                                            type: string
-                                    required:
-                                      - type
-                                  allOf:
-                                    - if:
-                                        properties:
-                                          type:
-                                            const: PRE-ORDER
-                                      then:
-                                        properties:
-                                          params:
-                                            required:
-                                              - transaction_id
-                              required:
-                                - payments
                     - properties:
                         message:
                           properties:
@@ -1076,74 +961,19 @@ paths:
                                                   type: string
                                                 code:
                                                   type: string
-                                            price:
-                                              type: object
-                                              properties:
-                                                value:
-                                                  type: string
-                                                  pattern: ^-?\d+(\.\d+)?$
-                                              required:
-                                                - value
-                                                - currency
                                             fulfillment_ids:
                                               type: array
                                               minItems: 1
-                                            payment_ids:
+                                            location_ids:
                                               type: array
                                               minItems: 1
                                           required:
                                             - id
                                             - descriptor
-                                            - price
                                             - fulfillment_ids
-                                            - payment_ids
+                                            - location_ids
                                     required:
                                       - items
-                    - properties:
-                        message:
-                          properties:
-                            catalog:
-                              properties:
-                                providers:
-                                  items:
-                                    properties:
-                                      fulfillments:
-                                        items:
-                                          properties:
-                                            stops:
-                                              allOf:
-                                                - contains:
-                                                    type: object
-                                                    properties:
-                                                      location:
-                                                        type: object
-                                                        properties:
-                                                          address:
-                                                            type: string
-                                                        required:
-                                                          - address
-                                                      type:
-                                                        const: START
-                                                    required:
-                                                      - location
-                                                      - type
-                                                - contains:
-                                                    type: object
-                                                    properties:
-                                                      location:
-                                                        type: object
-                                                        properties:
-                                                          address:
-                                                            type: string
-                                                        required:
-                                                          - address
-                                                      type:
-                                                        const: END
-                                                    required:
-                                                      - location
-                                                      - type
-                                          required:
-                                            - stops
       responses:
         '200':
           content:
@@ -1245,48 +1075,6 @@ paths:
                                                       - ORDER_FULFILLED
                                                 required:
                                                   - code
-                        - properties:
-                            message:
-                              properties:
-                                order:
-                                  properties:
-                                    fulfillments:
-                                      items:
-                                        properties:
-                                          stops:
-                                            allOf:
-                                              - contains:
-                                                  type: object
-                                                  properties:
-                                                    location:
-                                                      type: object
-                                                      properties:
-                                                        address:
-                                                          type: string
-                                                      required:
-                                                        - address
-                                                    type:
-                                                      const: START
-                                                  required:
-                                                    - location
-                                                    - type
-                                              - contains:
-                                                  type: object
-                                                  properties:
-                                                    location:
-                                                      type: object
-                                                      properties:
-                                                        address:
-                                                          type: string
-                                                      required:
-                                                        - address
-                                                    type:
-                                                      const: END
-                                                  required:
-                                                    - location
-                                                    - type
-                                        required:
-                                          - stops
                     - properties:
                         message:
                           properties:
@@ -1299,7 +1087,6 @@ paths:
                                       - not:
                                           required:
                                             - agent
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
         description: TODO
       responses:
         '200':
@@ -1390,7 +1177,236 @@ paths:
                                     required:
                                       - fulfillment_ids
                                       - location_ids
-                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/3'
+                    - allOf:
+                        - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/3'
+                        - $ref: '#/paths/~1on_select/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
+                        - properties:
+                            message:
+                              properties:
+                                order:
+                                  required:
+                                    - fulfillments
+                    - properties:
+                        message:
+                          type: object
+                      required:
+                        - message
+        description: TODO
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    $ref: '#/components/schemas/Error'
+                  message:
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                    type: object
+                required:
+                  - message
+                type: object
+          description: Acknowledgement of message received
+      tags:
+        - Beckn App Platform (BAP)
+  /on_confirm:
+    post:
+      description: Send active order object
+      operationId: on_confirm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - type: object
+                  properties:
+                    context:
+                      allOf:
+                        - $ref: '#/components/schemas/Context'
+                    error:
+                      $ref: '#/components/schemas/Error'
+                    message:
+                      properties:
+                        order:
+                          $ref: '#/components/schemas/Order'
+                      required:
+                        - order
+                      type: object
+                  required:
+                    - context
+                    - message
+                - allOf:
+                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/0'
+                    - properties:
+                        context:
+                          properties:
+                            action:
+                              type: string
+                              enum:
+                                - on_confirm
+                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/2'
+                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
+                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
+                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
+                    - properties:
+                        message:
+                          properties:
+                            order:
+                              properties:
+                                status:
+                                  type: string
+                                  enum:
+                                    - COMPLETE
+                                    - ACTIVE
+                              required:
+                                - status
+                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
+                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/7'
+        description: TODO
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    $ref: '#/components/schemas/Error'
+                  message:
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                    type: object
+                required:
+                  - message
+                type: object
+          description: Acknowledgement of message received
+      tags:
+        - Beckn App Platform (BAP)
+  /on_status:
+    post:
+      description: Fetch the status of a Service
+      operationId: on_status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - properties:
+                    context:
+                      allOf:
+                        - $ref: '#/components/schemas/Context'
+                    error:
+                      $ref: '#/components/schemas/Error'
+                    message:
+                      properties:
+                        order:
+                          $ref: '#/components/schemas/Order'
+                      required:
+                        - order
+                      type: object
+                  required:
+                    - context
+                  type: object
+                - allOf:
+                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/0'
+                    - properties:
+                        context:
+                          properties:
+                            action:
+                              type: string
+                              enum:
+                                - on_status
+                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/2'
+                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
+                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
+                    - allOf:
+                        - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/3'
+                    - properties:
+                        message:
+                          properties:
+                            order:
+                              properties:
+                                fulfillments:
+                                  items:
+                                    required:
+                                      - state
+                    - properties:
+                        message:
+                          properties:
+                            order:
+                              required:
+                                - id
+        description: TODO
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    $ref: '#/components/schemas/Error'
+                  message:
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                    type: object
+                required:
+                  - message
+                type: object
+          description: Acknowledgement of message received
+      tags:
+        - Beckn App Platform (BAP)
+  /on_update:
+    post:
+      description: Returns updated service with updated runtime object
+      operationId: on_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - properties:
+                    context:
+                      allOf:
+                        - $ref: '#/components/schemas/Context'
+                        - properties:
+                            action:
+                              enum:
+                                - on_update
+                    error:
+                      $ref: '#/components/schemas/Error'
+                    message:
+                      properties:
+                        order:
+                          allOf:
+                            - $ref: '#/components/schemas/Order'
+                      required:
+                        - order
+                      type: object
+                  required:
+                    - context
+                  type: object
+                - allOf:
+                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/0'
+                    - properties:
+                        context:
+                          properties:
+                            action:
+                              type: string
+                              enum:
+                                - on_update
+                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/2'
+                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
+                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
+                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
                     - allOf:
                         - properties:
                             message:
@@ -1479,167 +1495,69 @@ paths:
                                                 required:
                                                   - title
                                                   - price
-                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - properties:
-                        message:
-                          type: object
-                      required:
-                        - message
-        description: TODO
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  error:
-                    $ref: '#/components/schemas/Error'
-                  message:
-                    properties:
-                      ack:
-                        $ref: '#/components/schemas/Ack'
-                    required:
-                      - ack
-                    type: object
-                required:
-                  - message
-                type: object
-          description: Acknowledgement of message received
-      tags:
-        - Beckn App Platform (BAP)
-  /on_confirm:
-    post:
-      description: Send active order object
-      operationId: on_confirm
-      requestBody:
-        content:
-          application/json:
-            schema:
-              allOf:
-                - type: object
-                  properties:
-                    context:
-                      allOf:
-                        - $ref: '#/components/schemas/Context'
-                    error:
-                      $ref: '#/components/schemas/Error'
-                    message:
-                      properties:
-                        order:
-                          $ref: '#/components/schemas/Order'
-                      required:
-                        - order
-                      type: object
-                  required:
-                    - context
-                    - message
-                - allOf:
-                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/0'
-                    - properties:
-                        context:
-                          properties:
-                            action:
-                              type: string
-                              enum:
-                                - on_confirm
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/2'
-                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
-                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                status:
-                                  type: string
-                                  enum:
-                                    - COMPLETE
-                                    - ACTIVE
-                              required:
-                                - status
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                status:
-                                  type: string
-                                  enum:
-                                    - COMPLETED
-                                    - ACTIVE
-                                    - CANCELLED
-                                    - SOFT_CANCEL
-                              required:
-                                - status
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/8'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/9'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/10'
-        description: TODO
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  error:
-                    $ref: '#/components/schemas/Error'
-                  message:
-                    properties:
-                      ack:
-                        $ref: '#/components/schemas/Ack'
-                    required:
-                      - ack
-                    type: object
-                required:
-                  - message
-                type: object
-          description: Acknowledgement of message received
-      tags:
-        - Beckn App Platform (BAP)
-  /on_status:
-    post:
-      description: Fetch the status of a Service
-      operationId: on_status
-      requestBody:
-        content:
-          application/json:
-            schema:
-              allOf:
-                - properties:
-                    context:
-                      allOf:
-                        - $ref: '#/components/schemas/Context'
-                    error:
-                      $ref: '#/components/schemas/Error'
-                    message:
-                      properties:
-                        order:
-                          $ref: '#/components/schemas/Order'
-                      required:
-                        - order
-                      type: object
-                  required:
-                    - context
-                  type: object
-                - allOf:
-                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/0'
-                    - properties:
-                        context:
-                          properties:
-                            action:
-                              type: string
-                              enum:
-                                - on_status
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/2'
-                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
                     - allOf:
-                        - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/3'
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
-                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
+                        - allOf:
+                            - properties:
+                                message:
+                                  properties:
+                                    order:
+                                      properties:
+                                        payments:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              type:
+                                                type: string
+                                                enum:
+                                                  - PRE-ORDER
+                                                  - ON-FULFILLMENT
+                                                  - POST-FULFILLMENT
+                                              status:
+                                                type: string
+                                                enum:
+                                                  - PAID
+                                                  - NOT-PAID
+                                              collected_by:
+                                                type: string
+                                                enum:
+                                                  - BAP
+                                                  - BPP
+                                              params:
+                                                type: object
+                                                properties:
+                                                  amount:
+                                                    type: string
+                                                    pattern: '^\d+(\.\d{1,2})?$'
+                                                  currency:
+                                                    type: string
+                                            required:
+                                              - type
+                                              - status
+                                              - collected_by
+                                              - params
+                                      required:
+                                        - payments
+                            - properties:
+                                message:
+                                  properties:
+                                    order:
+                                      properties:
+                                        payments:
+                                          items:
+                                            properties:
+                                              params:
+                                                required:
+                                                  - bank_code
+                                                  - bank_account_number
+                                                  - virtual_payment_address
+                                            required:
+                                              - type
+                                              - status
+                                              - collected_by
+                                              - params
+                                      required:
+                                        - payments
                     - properties:
                         message:
                           properties:
@@ -1668,91 +1586,8 @@ paths:
                                             params:
                                               required:
                                                 - transaction_id
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                fulfillments:
-                                  items:
-                                    required:
-                                      - state
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              required:
-                                - id
-        description: TODO
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  error:
-                    $ref: '#/components/schemas/Error'
-                  message:
-                    properties:
-                      ack:
-                        $ref: '#/components/schemas/Ack'
-                    required:
-                      - ack
-                    type: object
-                required:
-                  - message
-                type: object
-          description: Acknowledgement of message received
-      tags:
-        - Beckn App Platform (BAP)
-  /on_update:
-    post:
-      description: Returns updated service with updated runtime object
-      operationId: on_update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              allOf:
-                - properties:
-                    context:
-                      allOf:
-                        - $ref: '#/components/schemas/Context'
-                        - properties:
-                            action:
-                              enum:
-                                - on_update
-                    error:
-                      $ref: '#/components/schemas/Error'
-                    message:
-                      properties:
-                        order:
-                          allOf:
-                            - $ref: '#/components/schemas/Order'
-                      required:
-                        - order
-                      type: object
-                  required:
-                    - context
-                  type: object
-                - allOf:
-                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/0'
-                    - properties:
-                        context:
-                          properties:
-                            action:
-                              type: string
-                              enum:
-                                - on_update
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/2'
-                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
-                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/8'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/9'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/10'
+                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
+                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/7'
         description: TODO
       responses:
         '200':
@@ -2062,11 +1897,11 @@ paths:
                     - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
                     - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
                     - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
-                    - $ref: '#/paths/~1confirm/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/8'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/9'
-                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/10'
+                    - $ref: '#/paths/~1on_update/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
+                    - $ref: '#/paths/~1on_update/post/requestBody/content/application~1json/schema/allOf/1/allOf/7'
+                    - $ref: '#/paths/~1on_update/post/requestBody/content/application~1json/schema/allOf/1/allOf/8'
+                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
+                    - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/7'
                     - properties:
                         message:
                           properties:

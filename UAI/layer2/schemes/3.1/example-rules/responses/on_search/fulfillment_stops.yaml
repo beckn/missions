@@ -8,38 +8,5 @@ properties:
               properties:
                 fulfillments:
                   items:
-                    properties:
-                      stops:
-                        allOf:
-                          - contains:
-                              type: object
-                              properties:
-                                location:
-                                  type: object
-                                  properties:
-                                    address:
-                                      type: string
-                                  required:
-                                    - address
-                                type:
-                                  const: START
-                              required:
-                                - location
-                                - type
-                          - contains:
-                              type: object
-                              properties:
-                                location:
-                                  type: object
-                                  properties:
-                                    address:
-                                      type: string
-                                  required:
-                                    - address
-                                type:
-                                  const: END
-                              required:
-                                - location
-                                - type
                     required:
-                      - stops
+                      - id

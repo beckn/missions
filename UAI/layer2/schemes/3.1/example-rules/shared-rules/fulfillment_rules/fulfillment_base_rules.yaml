@@ -1,4 +1,4 @@
 allOf:
   - $ref: "./basic_rules.yaml"
   - $ref: "./state_rule.yaml"
-  - $ref: "./stops_locations.yaml"
+  # - $ref: "./stops_locations.yaml"

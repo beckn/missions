@@ -5,6 +5,6 @@ allOf:
   - $ref: "../../shared-rules/item_rules/item_rules.yaml"
   - $ref: "../../shared-rules/item_rules/ids.yaml"
   - $ref: "../../shared-rules/fulfillment_rules/fulfillment_rules_wo_agent.yaml"
-  - $ref: "../../shared-rules/quote_rules/quote_rules.yaml"
-  - $ref: "../../shared-rules/payment_rules/payment_rules.yaml"
+  # - $ref: "../../shared-rules/quote_rules/quote_rules.yaml"
+  # - $ref: "../../shared-rules/payment_rules/payment_rules.yaml"
   - $ref: "./core_rules.yaml"
