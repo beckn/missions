@@ -1,0 +1,20 @@
+properties:
+  message:
+    properties:
+      intent:
+        properties:
+          category:
+            properties:
+              descriptor:
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - PURCHASE
+                      - RENT
+                required:
+                  - code
+            required:
+              - descriptor
+        required:
+          - category

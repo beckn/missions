@@ -1,0 +1,12 @@
+properties:
+  message:
+    properties:
+      catalog:
+        properties:
+          providers:
+            items:
+              properties:
+                fulfillments:
+                  items:
+                    required:
+                      - id
