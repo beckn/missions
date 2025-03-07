@@ -1729,7 +1729,6 @@ Beckn is a aynchronous protocol at its core.
         "code": "IND"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",
@@ -1757,7 +1756,6 @@ Beckn is a aynchronous protocol at its core.
         "code": "IND"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",

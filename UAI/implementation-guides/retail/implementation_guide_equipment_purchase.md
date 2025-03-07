@@ -2259,7 +2259,6 @@ BAP specifies that it is a purchase request using item category code.
         "code": "IND"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",
@@ -2287,7 +2286,6 @@ BAP specifies that it is a purchase request using item category code.
         "code": "IND"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",

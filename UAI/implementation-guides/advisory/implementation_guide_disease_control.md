@@ -137,6 +137,10 @@ Beckn is a aynchronous protocol at its core.
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "version": "1.1.0",
@@ -168,7 +172,12 @@ Beckn is a aynchronous protocol at its core.
     "action": "search",
     "location": {
       "country": {
+        "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "version": "1.1.0",
@@ -203,7 +212,12 @@ Beckn is a aynchronous protocol at its core.
     "action": "search",
     "location": {
       "country": {
+        "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "version": "1.1.0",
@@ -255,7 +269,12 @@ Beckn is a aynchronous protocol at its core.
     "action": "search",
     "location": {
       "country": {
+        "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "version": "1.1.0",
@@ -359,7 +378,12 @@ Beckn is a aynchronous protocol at its core.
     "action": "search",
     "location": {
       "country": {
+        "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "version": "1.1.0",
@@ -454,7 +478,12 @@ Beckn is a aynchronous protocol at its core.
     "action": "on_search",
     "location": {
       "country": {
+        "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "version": "1.1.0",
@@ -570,12 +599,14 @@ Beckn is a aynchronous protocol at its core.
     "bap_uri": "https://example-bap-client.becknprotocol.io",
     "bpp_id": "example-bpp.becknprotocol.io",
     "bpp_uri": "https://example-bpp-client.becknprotocol.io",
-    "country": "IND",
-    "city": "std:080",
     "location": {
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "transaction_id": "c3d58269-69a1-49af-b500-60d7e1d792e7",
@@ -631,7 +662,12 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
-        "name": "IND"
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "action": "support",
@@ -663,7 +699,12 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
+        "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "action": "on_support",
@@ -702,9 +743,12 @@ Beckn is a aynchronous protocol at its core.
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",
@@ -730,9 +774,12 @@ Beckn is a aynchronous protocol at its core.
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "{bap_id}",
     "bap_uri": "{bap_url}",
@@ -767,7 +814,12 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
-        "name": "IND"
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "action": "rating",
@@ -804,7 +856,12 @@ Beckn is a aynchronous protocol at its core.
     "domain": "advisory:uai",
     "location": {
       "country": {
-        "name": "IND"
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "name": "Nashik",
+        "code": "std:95253"
       }
     },
     "action": "on_rating",

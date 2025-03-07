@@ -135,6 +135,15 @@ Search request can contain one or more search criterion within it. Use the follo
   "context": {
     "ttl": "PT10M",
     "action": "search",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
     "timestamp": "2024-08-05T09:21:12.618Z",
     "message_id": "e138f204-ec0b-415d-9c9a-7b5bafe10bfe",
     "transaction_id": "2ad735b9-e190-457f-98e5-9702fd895996",
@@ -203,9 +212,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -501,9 +512,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -569,9 +582,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -785,9 +800,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -859,9 +876,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -1102,9 +1121,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -1186,9 +1207,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -1440,9 +1463,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -1473,9 +1498,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -1796,9 +1823,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -1841,9 +1870,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -2094,9 +2125,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -2138,9 +2171,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -2444,9 +2479,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -2478,9 +2515,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -2512,11 +2551,9 @@ Search request can contain one or more search criterion within it. Use the follo
         "action": "track",
         "location": {
             "city": {
-                "name": "Bangalore",
                 "code": "std:080"
             },
             "country": {
-                "name": "India",
                 "code": "IND"
             }
         },
@@ -2548,7 +2585,6 @@ Search request can contain one or more search criterion within it. Use the follo
         "action": "on_track",
         "location": {
             "city": {
-                "name": "Bangalore",
                 "code": "std:080"
             },
             "country": {
@@ -2590,9 +2626,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -2626,9 +2664,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -2928,9 +2968,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -2955,9 +2997,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -2994,9 +3038,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
@@ -3032,9 +3078,11 @@ Search request can contain one or more search criterion within it. Use the follo
       "country": {
         "name": "India",
         "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
       }
     },
-    "city": "std:080",
     "version": "1.1.0",
     "bap_id": "example-bap.com",
     "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
