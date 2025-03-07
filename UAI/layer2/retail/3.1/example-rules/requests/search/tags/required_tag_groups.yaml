@@ -1,0 +1,25 @@
+
+properties:
+  message:
+    properties:
+      catalog:
+        properties:
+          providers:
+            items:
+              properties:
+                items:
+                  type: array
+                  items:
+                    properties:
+                      tags:
+                        allOf:
+                          - contains:
+                              properties:
+                                descriptor:
+                                  type: object
+                                  properties:
+                                    code:
+                                      const: LANGUAGES
+                                  required:
+                                    - code
+                            

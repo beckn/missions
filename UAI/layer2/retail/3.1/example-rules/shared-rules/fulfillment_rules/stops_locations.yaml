@@ -1,0 +1,19 @@
+properties:
+  message:
+    properties:
+      order:
+        properties:
+          fulfillments:
+            items:
+              properties:
+                stops:
+                  allOf:
+                    - contains:
+                        type: object
+                        properties:
+                          location:
+                            type: object
+                        required:
+                          - location
+              required:
+                - stops

@@ -1,0 +1,48 @@
+properties:
+  message:
+    properties:
+      order:
+        properties:
+          quote:
+            type: object
+            properties:
+              price:
+                type: object
+                properties:
+                  currency:
+                    type: string
+                  value:
+                    type: string
+                    pattern: '^\d+(\.\d{1,2})?$'
+                required:
+                  - currency
+                  - value
+              breakup:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    price:
+                      type: object
+                      properties:
+                        currency:
+                          type: string
+                        value:
+                          type: string
+                          pattern: '^\d+(\.\d{1,2})?$'
+                      required:
+                        - currency
+                        - value
+                    title:
+                      type: string
+                      enum:
+                        - WHEELING_CHARGE
+                        - PLATFORM_CHARGE
+                  required:
+                    - price
+                    - title
+            required:
+              - price
+              - breakup
+        required:
+          - quote
