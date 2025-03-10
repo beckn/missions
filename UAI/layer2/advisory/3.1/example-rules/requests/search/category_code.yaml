@@ -1,0 +1,22 @@
+properties:
+  message:
+    properties:
+      intent:
+        properties:
+          category:
+            properties:
+              descriptor:
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - DISEASE-CONTROL
+                      - PRICE-DISCOVERY
+                      - WEATHER-FORECAST
+                      - SPRAY-SCHEDULE
+                required:
+                  - code
+            required:
+              - descriptor
+        required:
+          - category
