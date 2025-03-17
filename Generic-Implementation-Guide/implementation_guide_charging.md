@@ -10,6 +10,7 @@
 
 ## Introduction
 
+This implementation guide provides a structured approach to integrating the Beckn protocol across various domains. Rather than focusing on a specific industry, this guide presents scenario-based examples that demonstrate how to implement key interactions using Beckn’s open network principles. These examples serve as a reference to help developers design and build interoperable systems while maintaining flexibility for domain-specific adaptations. Whether you're working in mobility, retail, healthcare, or any other sector, this guide will assist in understanding and applying Beckn's decentralized framework effectively.
 
 ## Structure of the document
 
