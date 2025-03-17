@@ -73,6 +73,37 @@ Beckn is a aynchronous protocol at its core.
 ## Specific use cases
 
 ### Use case 1 - Discovery of catalogs
+Discovery in a Beckn network happens generally through an intermediate entity like a Beckn Gateway (BG) present inside the network.
+
+There are 2 ways of discovery:
+- If the address of the BPP is **not** specified in the context of the API call
+  ```
+  "context": {
+    "ttl": "PT10M",
+    "action": "search",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "timestamp": "2024-08-05T09:21:12.618Z",
+    "message_id": "e138f204-ec0b-415d-9c9a-7b5bafe10bfe",
+    "transaction_id": "2ad735b9-e190-457f-98e5-9702fd895996",
+    "domain": "ev-charging:uei",
+    "version": "1.1.0",
+    "bap_id": "example-bap-id",
+    "bap_uri": "https://example-bap-url.com"
+  }
+  ```
+  The BAP MUST call the BG and the BG may multicast this API to multiple BPPs based on the context.domain. The BPPs synchronously respond with ACKs. The BPPs then asynchronously call the on_search API which is sent back to the BAP.
+
+
+- If the address of the BPP is specified in the context of the API call
+
 
 ### Use case 2 - 
 
