@@ -14,11 +14,11 @@
 ## Structure of the document
 
 This document has the following parts:
-  - General Beckn message flow
-  - Specific use cases
-  - Integrating with your software
+  - [General Flow diagrams](#general-flow-diagrams)
+  - [Specific use cases](#specific-use-cases)
+  - [Integrating with your software](#integrating-with-your-software)
 
-## Flow diagrams
+## General Flow diagrams
 
 ### General Beckn message flow and error handling
 
