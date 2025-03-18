@@ -29,7 +29,8 @@ Beckn is a aynchronous protocol at its core.
 
 - When a network participant(NP1) sends a message to another participant(NP2), the other participant(NP2) immediately returns back an ACK/NACK(Acknowledgement or Negative Acknowledgement in case of error - usually with wrongly formed messages).
 - An ACK is an indicator that the receiving participant(NP2) will process this message and dispatch an on_xxxxxx message to original NP (NP1)
-- Subsequently after processing the message NP2 sends back the real response in the corresponding on_xxxxxx message, to which again the first participant(NP1).
+- Subsequently after processing the message NP2 sends back the real response in the corresponding on_xxxxxx message, to the first participant(NP1).
+- The participant(NP2) uses the context.bap_uri from the request payload to send back the on_xxxxxx response.
 - This message can contain a message field (for success) or error field (for failure)
 - NP1 when it receives the on_xxxxxx message, sends back an ACK/NACK (Here in both the cases NP1 will not send any subsequent message).
 - In the Use case diagrams, this ACK/NACK is not illustrated explicitly to keep the diagrams crisp.
@@ -77,6 +78,7 @@ Discovery in a Beckn network happens generally through an intermediate entity li
 
 There are 2 ways of discovery:
 - If the address of the BPP is **not** specified in the context of the API call
+
   ```
   "context": {
     "ttl": "PT10M",
@@ -99,13 +101,190 @@ There are 2 ways of discovery:
     "bap_uri": "https://example-bap-url.com"
   }
   ```
-  The BAP MUST call the BG and the BG may multicast this API to multiple BPPs based on the context.domain. The BPPs synchronously respond with ACKs. The BPPs then asynchronously call the on_search API which is sent back to the BAP.
+  The BAP calls the BG and the BG may multicast this API to multiple BPPs based on the context.domain. The BPPs synchronously respond with ACKs. The BPPs then asynchronously call the on_search API of the BG which is sent back to the BAP.
 
 
 - If the address of the BPP is specified in the context of the API call
+  The details of the BPP is specified in the context.bpp_id and context.bpp_uri fields.
 
+  ```
+  "context": {
+    "ttl": "PT10M",
+    "action": "search",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "timestamp": "2024-08-05T09:21:12.618Z",
+    "message_id": "e138f204-ec0b-415d-9c9a-7b5bafe10bfe",
+    "transaction_id": "2ad735b9-e190-457f-98e5-9702fd895996",
+    "domain": "ev-charging:uei",
+    "version": "1.1.0",
+    "bap_id": "example-bap-id",
+    "bap_uri": "https://example-bap-url.com",
+    "bpp_id": "example-bpp-id",
+    "bpp_uri": "https://example-bpp-url.com"
+  }
+  ```
+  The BAP calls the targeted BPP directly. The BPP synchronously responds with ACK. The BPP then asynchronously calls the on_search API of the BAP.
 
-### Use case 2 - 
+  An example Catalog from a BPP could look like
+
+  ```
+  {
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "on_search",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "catalog": {
+      "descriptor": {
+        "name": "HBO"
+      },
+      "providers": [
+        {
+          "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider",
+          "descriptor": {
+            "name": "Venky.Mahadevan@Bazaar"
+          },
+          "locations": [
+            {
+              "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location",
+              "gps": "12.909955,77.596316"
+            }
+          ],
+          "categories": [
+            {
+              "id": "c1",
+              "descriptor": {
+                "code": "grocery",
+                "name": "grocery"
+              }
+            },
+            {
+              "id": "c2",
+              "descriptor": {
+                "code": "electronics",
+                "name": "electronics"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "id": "f1",
+              "type": "Delivery"
+            },
+            {
+              "id": "f2",
+              "type": "Self-Pickup"
+            }
+          ],
+          "items": [
+            {
+              "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+              "descriptor": {
+                "images": [
+                  {
+                    "url": "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+                  }
+                ],
+                "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
+                "short_desc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",
+                "long_desc": "<div> <ul> <li>ULTRA MODERN DESIGN - Our thermos bottle is crafted with a unique and modern design. Gone are the days of old and boring flasks. Guaranteed to impress your colleagues, friends & family.</li> <li>ADVANCED TEMPERATURE CONTROL – A double-wall, vacuum-insulated design helps lock in heat for up to 12 hours and cold for up to 24!</li> <li>ELIMINATES CONDENSATION – Offering improved grip and control, these innovative dual-layer bottles offer a slip-resistant surface that’s free of sweat and condensation..</li> <li>LEAK-PROOF and ECO-FRIENDLY – Remove, and clean, the large, screw on lid provides faster access to water inside and won’t spill a drop even when it’s tipped upside or put in your gym bag.</li> <li>The distress quilted jacket is a versatile fashion choice you can wear on any occasion. A style essential piece for Women which will reveal your strong sense of personality</li> </ul> <div> <p><b>Product Details</b></p> <ul> <li>Advanced Temperature Retention.This thermos water bottle ensures your beverages will remain hot or cold for a long time.Hot for up to 12 hours.Cold for up to 24 hours.</li> <li>Retains Original Flavors.Vacuum insulation ensures this travel thermos water bottle is airtight and retains the original flavor of your beverages.Also, this bottle is B.P.A Free.</li> <li>Premium Quality Materials.This stylish bottle is a double-walled vacuum insulated and made from premium 304-grade stainless steel - which makes this flask bottle.</li> </ul> </div>"
+              },
+              "matched": true,
+              "price": {
+                "listed_value": "1200.0",
+                "currency": "INR",
+                "value": "1200.0"
+              },
+              "recommended": true,
+              "location_ids": [
+                  "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location"
+              ],
+              "category_ids": ["c1"],
+              "fulfillment_ids": ["f1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "item-cataegory"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "name": "category"
+                      },
+                      "value": "retail"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "name": "item-properties"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "name": "waterbottle"
+                      },
+                      "value": "y"
+                    },
+                    {
+                      "descriptor": {
+                        "name": "Trekking"
+                      },
+                      "value": "y"
+                    },
+                    {
+                      "descriptor": {
+                        "name": "Sipper"
+                      },
+                      "value": "y"
+                    },
+                    {
+                      "descriptor": {
+                        "name": "Hiking"
+                      },
+                      "value": "y"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+  ``` 
+
+### Use case 2 - Requesting a quotation
+  If there is a payment involved in a transaction, the select and on_Select Beckn APIs can be used to finalsie the quotation for the transaction.
+
+  
 
 ### Use case 3 - 
 
