@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "df50bbb6-3cc9-4d77-995a-6cc36c560a4d",
+		"name": "p2p-energy-trade-UPPCL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30848972"
+	},
+	"item": [
+		{
+			"name": "energy-trading",
+			"item": [
+				{
+					"name": "Search",
+					"item": [
+						{
+							"name": "search based on location and connector",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"context\": {\n    \"domain\": \"{{domain_trade}}\",\n    \"action\": \"search\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n          \"name\": \"Lucknow\",\n          \"code\": \"std:522\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"transaction_id\": \"{{$randomUUID}}\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"{{$timestamp}}\"\n  },\n  \"message\": {\n    \"intent\": {\n      \"item\": {\n        \"descriptor\": {\n          \"code\": \"energy\"\n        },\n        \"quantity\": {\n          \"selected\": {\n            \"measure\": {\n              \"value\": \"10\",\n              \"unit\": \"kWH\"\n            }\n          }\n        }\n      },\n      \"fulfillment\": {\n        \"agent\": {\n          \"organization\": {\n            \"descriptor\": {\n              \"name\": \"UPPCL\"\n            }\n          }\n        },\n        \"stops\": [\n          {\n            \"type\": \"end\",\n            \"location\": {\n                \"address\": \"der://uppcl.meter/98765456\" // meter id\n            },\n            \"time\": {\n              \"range\": { // UPPCL permits this date range to include only the next day. Other implementations may allow a broader time range selection. \n                \"start\": \"2024-10-04T10:00:00\",\n                \"end\": \"2024-10-04T18:00:00\"\n              }\n            }\n          }\n        ]\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/search",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"search"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "select",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"domain\": \"{{domain_trade}}\",\n    \"action\": \"select\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n          \"name\": \"Lucknow\",\n          \"code\": \"std:522\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"transaction_id\": \"{{$randomUUID}}\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"{{$timestamp}}\"\n  },\n  \"message\": {\n    \"order\": {\n      \"provider\": {\n        \"id\": \"p1072\"\n      },\n      \"items\": [\n        {\n          \"id\": \"uid_xyz\",\n          \"descriptor\": {\n            \"code\": \"energy\"\n          },\n          \"quantity\": {\n            \"selected\": {\n              \"measure\": {\n                \"value\": \"10\",\n                \"unit\": \"KWH\"\n              }\n            }\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n            \"id\": \"1\",\n            \"stops\": [\n                {\n                    \"type\": \"end\",\n                    \"location\": {\n                        \"address\": \"der://uppcl.meter/98765456\" // meter id\n                    },\n                    \"time\": {\n                        \"range\": { // UPPCL permits this date range to include only the next day. Other implementations may allow a broader time range selection. \n                            \"start\": \"2024-10-04T10:00:00\",\n                            \"end\": \"2024-10-04T18:00:00\"\n                        }\n                    }\n                }\n            ]\n        }\n      ]\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/select",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "init",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"domain\": \"{{domain_trade}}\",\n    \"action\": \"init\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n          \"name\": \"Lucknow\",\n          \"code\": \"std:522\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"transaction_id\": \"{{$randomUUID}}\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"{{$timestamp}}\"\n  },\n  \"message\": {\n    \"order\": {\n      \"provider\": {\n        \"id\": \"p1072\"\n      },\n      \"items\": [\n        {\n          \"id\": \"uid_xyz\",\n          \"descriptor\": {\n            \"code\": \"energy\"\n          },\n          \"quantity\": {\n            \"selected\": {\n              \"measure\": {\n                \"value\": \"10\",\n                \"unit\": \"KWH\"\n              }\n            }\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n          \"id\": \"1\",\n          \"customer\": {\n            \"person\": {\n              \"name\": \"Raj\"\n            },\n            \"contact\": {\n              \"phone\": \"+91-1276522222\"\n            }\n          },\n          \"stops\": [\n            {\n              \"type\": \"end\",\n              \"location\": {\n                   \"address\": \"der://uppcl.meter/98765456\" // meter id\n              },\n              \"time\": {\n                \"range\": {// UPPCL permits this date range to include only the next day. Other implementations may allow a broader time range selection.\n                  \"start\": \"2024-10-04T10:00:00\",\n                  \"end\": \"2024-10-04T18:00:00\"\n                }\n              }\n            }\n          ]\n        }\n      ],\n      \"billing\": {\n        \"name\": \"Raj\",\n        \"email\": \"raj@example.com\",\n        \"phone\": \"+91-1276522222\"\n      }\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/init",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"init"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"domain\": \"{{domain_trade}}\",\n    \"action\": \"confirm\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n          \"name\": \"Lucknow\",\n          \"code\": \"std:522\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"transaction_id\": \"{{$randomUUID}}\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"{{$timestamp}}\"\n  },\n  \"message\": {\n    \"order\": {\n      \"provider\": {\n        \"id\": \"p1072\"\n      },\n      \"items\": [\n        {\n          \"id\": \"uid_xyz\",\n          \"descriptor\": {\n            \"code\": \"energy\"\n          },\n          \"quantity\": {\n            \"selected\": {\n              \"measure\": {\n                \"value\": \"10\",\n                \"unit\": \"KWH\"\n              }\n            }\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n          \"id\": \"1\",\n          \"customer\": {\n            \"person\": {\n              \"name\": \"Raj\"\n            },\n            \"contact\": {\n              \"phone\": \"+91-1276522222\"\n            }\n          },\n          \"stops\": [\n            {\n              \"type\": \"end\",\n              \"location\": {\n                   \"address\": \"der://uppcl.meter/98765456\" // meter id\n              },\n              \"time\": {\n                \"range\": {// UPPCL permits this date range to include only the next day. Other implementations may allow a broader time range selection.\n                  \"start\": \"2024-10-04T10:00:00\",\n                  \"end\": \"2024-10-04T18:00:00\"\n                }\n              }\n            }\n          ]\n        }\n      ],\n      \"billing\": {\n        \"name\": \"Raj\",\n        \"email\": \"raj@example.com\",\n        \"phone\": \"+91-1276522222\"\n      },\n      \"payments\": [\n        {\n          \"type\": \"POST-FULFILLMENT\",\n          \"status\": \"NOT-PAID\",\n          \"params\": {\n            \"amount\": \"53.50\",\n            \"currency\": \"INR\"\n          }\n        }\n      ],\n      \"cancellation_terms\": [\n        {\n          \"external_ref\": {\n            \"mimetype\": \"text/html\",\n            \"url\": \"https://mvvnl.in/cancellation_terms.html\"\n          }\n        }\n      ]\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/confirm",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"domain\": \"{{domain_trade}}\",\n    \"action\": \"status\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n          \"name\": \"Lucknow\",\n          \"code\": \"std:522\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"transaction_id\": \"{{$randomUUID}}\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"{{$timestamp}}\"\n  },\n  \"message\": {\n    \"order_id\": \"6743e9e2-4fb5-487c-92b7\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Has Beckn API requests"
+		},
+		{
+			"name": "energy-logistics",
+			"item": [
+				{
+					"name": "init",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"domain\": \"{{domain_logistics}}\",\n    \"action\": \"init\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n          \"name\": \"Lucknow\",\n          \"code\": \"std:522\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bpp_id}}\",\n    \"bap_uri\": \"{{bpp_uri}}\",\n    \"bpp_id\": \"{{logistics_bpp_id}}\",\n    \"bpp_uri\": \"{{logistics_bpp_uri}}\",\n    \"transaction_id\": \"{{$randomUUID}}\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"{{$timestamp}}\"\n  },\n\"message\": {\n    \"order\": {\n      \"provider\": {\n        \"descriptor\": {\n          \"name\": \"UPPCL\"\n        }\n      },\n      \"fulfillments\": [\n        {\n          \"customer\": {\n            \"person\": {\n              \"name\": \"Raj\"\n            },\n            \"contact\": {\n              \"phone\": \"+91-1276522222\"\n            }\n          },\n          \"stops\": [\n            {\n              \"type\": \"start\",\n              \"location\": {\n                   \"address\": \"der://uppcl.meter/92982739\" // meter id\n              },\n              \"time\": {\n                \"range\": {// UPPCL permits this date range to include only the next day. Other implementations may allow a broader time range selection.\n                  \"start\": \"2024-10-04T10:00:00\",\n                  \"end\": \"2024-10-04T18:00:00\"\n                }\n              }\n            },\n            {\n              \"type\": \"end\",\n              \"location\": {\n                   \"address\": \"der://uppcl.meter/98765456\" // meter id\n              },\n              \"time\": {\n                \"range\": {\n                  \"start\": \"2024-10-04T10:00:00\",\n                  \"end\": \"2024-10-04T18:00:00\"\n                }\n              }\n            }\n          ],\n          \"tags\": [\n              {\n                \"descriptor\":{\n                  \"name\": \"P2P-Trade-Draft-Contract\"\n                },\n                \"list\": [\n                  {\n                    \"Value\": \"https://https://dhiway.com/vc/energy/3894434.json\"\n                    // this will contain details such as #units traded, trade price etc between a BAP and BPP.\n                  }\n                ]\n            }\n          ]\n        }\n      ],\n      \"billing\": {\n        \"name\": \"p2p-Trading-BPP\",\n        \"email\": \"p2tbpp@example.com\",\n        \"phone\": \"+91-1276522222\"\n      }\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/init",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"init"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"domain\": \"{{domain_logistics}}\",\n    \"action\": \"confirm\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n          \"name\": \"Lucknow\",\n          \"code\": \"std:522\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bpp_id}}\",\n    \"bap_uri\": \"{{bpp_uri}}\",\n    \"bpp_id\": \"{{logistics_bpp_id}}\",\n    \"bpp_uri\": \"{{logistics_bpp_uri}}\",\n    \"transaction_id\": \"{{$randomUUID}}\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"{{$timestamp}}\"\n  },\n\"message\": {\n    \"order\": {\n      \"provider\": {\n        \"descriptor\": {\n          \"name\": \"UPPCL\"\n        }\n      },\n      \"fulfillments\": [\n        {\n          \"customer\": {\n            \"person\": {\n              \"name\": \"Raj\"\n            },\n            \"contact\": {\n              \"phone\": \"+91-1276522222\"\n            }\n          },\n          \"stops\": [\n            {\n              \"type\": \"start\",\n              \"location\": {\n                   \"address\": \"der://uppcl.meter/92982739\" // meter id\n              },\n              \"time\": {\n                \"range\": {// UPPCL permits this date range to include only the next day. Other implementations may allow a broader time range selection.\n                  \"start\": \"2024-10-04T10:00:00\",\n                  \"end\": \"2024-10-04T18:00:00\"\n                }\n              }\n            },\n            {\n              \"type\": \"end\",\n              \"location\": {\n                   \"address\": \"der://uppcl.meter/98765456\" // meter id\n              },\n              \"time\": {\n                \"range\": {\n                  \"start\": \"2024-10-04T10:00:00\",\n                  \"end\": \"2024-10-04T18:00:00\"\n                }\n              }\n            }\n          ],\n          \"tags\": [\n              {\n                \"descriptor\":{\n                  \"name\": \"P2P-Trade-Contract\"\n                },\n                \"list\": [\n                  {\n                    \"value\": \"https://https://dhiway.com/vc/energy/3894434.json\"\n                  }\n                ]\n            }\n          ]\n        }\n      ],\n      \"billing\": {\n        \"name\": \"p2p-Trading-BPP\",\n        \"email\": \"p2ptbpp@example.com\",\n        \"phone\": \"+91-1276522222\"\n      },\n      \"cancellation_terms\": [\n        {\n          \"external_ref\": {\n            \"mimetype\": \"text/html\",\n            \"url\": \"https://mvvnl.in/cancellation_terms.html\"\n          }\n        }\n      ]\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/confirm",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"domain\": \"{{domain_logistics}}\",\n    \"action\": \"status\",\n    \"location\": {\n      \"country\": {\n        \"name\": \"India\",\n        \"code\": \"IND\"\n      },\n      \"city\": {\n          \"name\": \"Lucknow\",\n          \"code\": \"std:522\"\n      }\n    },\n    \"version\": \"1.1.0\",\n    \"bap_id\": \"{{bpp_id}}\",\n    \"bap_uri\": \"{{bpp_uri}}\",\n    \"bpp_id\": \"{{logistics_bpp_id}}\",\n    \"bpp_uri\": \"{{logistics_bpp_uri}}\",\n    \"transaction_id\": \"{{$randomUUID}}\",\n    \"message_id\": \"{{$randomUUID}}\",\n    \"timestamp\": \"{{$timestamp}}\"\n  },\n  \"message\": {\n    \"order_id\": \"6743e9e2-4fb5-487c-92b7\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "bap_uri",
+			"value": "https://bap-ps-network-sandbox.ueialliance.org",
+			"type": "string"
+		},
+		{
+			"key": "bap_id",
+			"value": "bap-ps-network-sandbox.ueialliance.org",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "https://bap-ps-client-sandbox.ueialliance.org",
+			"type": "string"
+		},
+		{
+			"key": "bpp_id",
+			"value": "bpp-ps-network-sandbox.ueialliance.org",
+			"type": "string"
+		},
+		{
+			"key": "bpp_uri",
+			"value": "https://bpp-ps-network-sandbox.ueialliance.org",
+			"type": "string"
+		},
+		{
+			"key": "core_version",
+			"value": "1.1.0",
+			"type": "string"
+		},
+		{
+			"key": "domain_trade",
+			"value": "p2p-energy-trade",
+			"type": "string"
+		},
+		{
+			"key": "domain_logistics",
+			"value": "p2p-energy-logistics",
+			"type": "string"
+		},
+		{
+			"key": "logistics_bpp_id",
+			"value": "p2p-transmission-bpp-sandbox.krypc.com",
+			"type": "string"
+		},
+		{
+			"key": "logistics_bpp_uri",
+			"value": "https://transmission-bpp-sandbox.krypc.com",
+			"type": "string"
+		}
+	]
+}
