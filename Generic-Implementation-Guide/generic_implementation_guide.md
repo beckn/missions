@@ -703,6 +703,11 @@ There are 2 ways of discovery:
             }
           }
         }
+      ],
+      "refund_terms": [
+        {
+          "refund_eligible": "true"
+        }
       ]
     }
   }
