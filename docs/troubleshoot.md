@@ -110,6 +110,33 @@ This is usually due to either the Nginx not being configured properly or the doc
 There could be several reasons for this issue, but the first thing you should check is whether the transaction ID and message ID in the webhook response match those in the request it received. BAP uses the message ID to aggregate the request with the appropriate response. A mismatch in message IDs will result in an empty response because BAP cannot correlate the response with its original request and send it to the user. This typically occurs when developers hard-code the message ID and transaction ID in the webhook response.
 
 
+### 4. I don't have the creds and its asking for it during the installation
+
+Please open the registry url in the browser and create a new user. Those creds will be used during the installation. This step is a must to do before installation.
+
+
+### 5. Getting error "docker: 'f' is not a docker command" during installation
+
+If you encounter this error during installation, it means there is an issue with your Docker installation. Follow these steps to resolve:
+
+1. Uninstall the current Docker installation:
+   ```bash
+   sudo apt-get remove docker docker-engine docker.io containerd runc
+   ```
+
+2. Re-install Docker following the official installation guide for your OS
+
+3. After Docker is reinstalled, navigate to the beckn-onix repository and run:
+   ```bash
+   cd scripts
+   ./package-manager.sh
+   ```
+
+This will properly set up the Docker environment and dependencies needed for installation.
+
+
+
+
 ## Troubleshooting Registry
 
 ### 1. Subscriber list call from BAP to the registry seems to be empty
@@ -117,6 +144,26 @@ There could be several reasons for this issue, but the first thing you should ch
 When you create network domain in the registry, the actual domain name is the "Name" field and not the "Description" field. When you create network roles, the field shown for selection is description. However the real value that should be present in the request should be the name and not the description. For example in the image shown above, the context.domain should be nic2004:60221 and not "mobility".
 
 ![real domain name](assets/images/troubleshoot/domain_in_registry.png)
+
+
+### 2. Role permission not updated error during registry installation
+
+If you encounter a role permission error during registry installation, follow these steps:
+
+1. First check if the registry URL is accessible:
+   - Verify DNS entries are correct
+   - Check nginx configuration is properly set up
+   - Try accessing the registry URL directly in browser
+
+2. If registry URL is accessible but still getting the error, you can manually upload the role permission file:
+   - Log into registry UI
+   - Go to admin/role permission section
+   - Upload the role permission file located in the scripts folder of beckn-onix repository
+   - No need to reinstall the registry after manual upload
+
+
+
+
 
 ## Troubleshooting Gateway
 
@@ -136,6 +183,28 @@ in.succinct.onet.country.iso.2 keys to the desired country. Make sure that the s
 ### 4. I did not update any software. I just restarted the machine with my gateway instance and after that the Gateway is crashing at bootup.
 
 This is due to a known issue with older Gateway software. See details on the issue [here](https://github.com/beckn/beckn-onix/blob/main/docs/known_issues.md#gateway-is-not-working-after-restart). Solution is to update the gateway software. Details on how to do it are in the link above. 
+
+### 5. Gateway service is restarting and its entry is not present in registry
+
+If your gateway service keeps restarting and you notice its entry is missing from the registry, follow these troubleshooting steps:
+
+1. First verify the DNS entries are correctly configured:
+   - Check that the gateway domain points to the correct IP address
+   - Verify DNS propagation using tools like `dig` or `nslookup`
+
+2. Check the nginx configuration on the gateway server:
+   - Ensure nginx is properly configured to proxy requests to the gateway service
+   - Verify nginx logs for any connection errors
+   - Make sure SSL certificates are valid if using HTTPS
+
+3. Once DNS and nginx are confirmed working:
+   - Try registering the gateway again in the registry
+   - Check gateway logs for any startup errors
+   - Ensure gateway has proper permissions to connect to registry
+
+The gateway needs to be properly registered in the registry and accessible via its configured domain for the network to function correctly.
+
+
 
 ## Troubleshooting Protocol Server
 
