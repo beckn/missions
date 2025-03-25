@@ -350,8 +350,9 @@ There are 2 ways of discovery:
   }
 }
 ```
-**on_select**
+**A typical on_select**
 - on_select typically includes provider details, item details(including any add ons if any), fulfillment details of the selected fulfillment option and a quotation.
+- At the end of an select-on_select cycle, atleats an estimate quote has to be finalsied between buyer and seller.
 
 ```
 {
@@ -446,6 +447,261 @@ There are 2 ways of discovery:
       }
     }
   }
+}
+```
+
+**on_select with xinput**
+
+- If a seller needs custom information before they can provide a quotation, they can send an xinput form as part of the on_select callback, requesting buyer to fill the custom info in the form. The buyer need to fill the form and call select API again to inform the seller. Seller can send the quotation as part of a following on_select.
+- For example, when a user is applying for a financial support, the provider can send an xinput as part of the on_select callback to request for certain documents or details.
+
+```
+{
+    "context": {
+        "domain": "dsep:scholarships",
+        "location": {
+            "city": {
+                "name": "Bangalore",
+                "code": "std:080"
+            },
+            "country": {
+                "name": "India",
+                "code": "IND"
+            }
+        },
+        "action": "on_select",
+        "timestamp": "2023-08-02T09:12:12.680Z",
+        "ttl": "PT10M",
+        "version": "0.7.0",
+        "bap_id": "ps-bap-network.becknprotocol.io",
+        "bap_uri": "https://ps-bap-network.becknprotocol.io/",
+        "bpp_id": "beckn-sandbox-bpp.becknprotocol.io",
+        "bpp_uri": "https://sandbox-bpp-network.becknprotocol.io/",
+        "transaction_id": "a9aaecca-10b7-4d19-b640-022723112309",
+        "message_id": "6114a3e5-acb0-4c99-b017-0ead5e894bad"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "BX213573733",
+                "descriptor": {
+                    "name": "XYZ Education Foundation",
+                    "short_desc" : "Short Description about the Foundation",
+                    "images": [
+                        {
+                            "url" : "url of the image of the provider"
+                        }
+                    ]
+                },
+                "locations" : [
+                    {
+                        "id" : "L1",
+                        "city" :"{
+                          "name": Pune"
+                        }
+                        "state" : "Maharastra"
+                    },
+                    {
+                        "id" : "L2",
+                        "city" :"{
+                          "name": Thane"
+                        }
+                        "state" : "Maharastra"
+                    },
+                    {
+                        "id" : "L3",
+                        "city" :"{
+                          "name": Lucknow"
+                        }
+                        "state" : "Uttar Pradesh"
+                    }
+                ],
+                "rateable": false
+            },
+            "items": [
+                {
+                    "id": "SCM_63587501",
+                    "descriptor": {
+                        "name": "XYZ Education Scholarship for Undergraduate Students",
+                        "short_desc": "XYZ Education Scholarship for Undergraduate Students"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "Upto RS.1000 per year"
+                    },
+                    "time" : {
+                        "label" : "Start  & End date of the Application",
+                        "range" : {
+                            "start" : "2022-09-01T00:00:00.000Z",
+                            "end" : "2022-10-31T00:00:00.000Z"
+                        }
+                    },
+                    "rateable": false,
+                    "tags": [
+                        {
+                            "display": true,
+                            "descriptor": {
+                                "code": "soc-elg",
+                                "name": "Social Eligibility"
+                            },
+                            "list": [
+                                {
+                                    "value" : "SC"
+                                },
+                                {
+                                    "value" : "ST"
+                                },
+                                {
+                                    "value" : "OBC"
+                                }]
+                        },
+                        {
+                            "display": true,
+                            "descriptor": {
+                                "code": "gen-elg",
+                                "name": "Gender Eligibility"
+                            },
+                            "list": [
+                                {
+                                    "value" : "Female"
+                                },
+                                {
+                                    "value" : "Transgender"
+                                }]
+                        },
+                        {
+                            "display": true,
+                            "descriptor": {
+                                "code": "fin-elg",
+                                "name": "Financial Eligibility"
+                            },
+                            "list": [
+                                {
+                                    "value" : "Max Family Income - Rs.500000.00"
+                                }] 
+                            
+                        },
+                        {
+                            "display": true,
+                            "descriptor": {
+                                "code": "acad-elg",
+                                "name": "Academic Eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "class",
+                                        "name": "Class"
+                                    },
+                                    "value": "12th"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "percentage",
+                                        "name": "Percentage"
+                                    },
+                                    "value": ">= 50"
+                                }
+
+                            ] 
+                            
+                        },
+                        {
+                            "display": true,
+                            "descriptor": {
+                                "code": "docs-reqd",
+                                "name": "Documents Required"
+                            },
+                            "list": [
+                                {
+                                    "value" : "10th Marksheet"
+                                },
+                                {
+                                    "value" : "Aadhar Card of the Student"
+                                },
+                                {
+                                    "value" : "Aadhar Card of the Parent"
+                                },
+                                {
+                                    "value" : "Pan Card of the Parent"
+                                }
+                            ]
+                        },
+                        {
+                            "display": true,
+                            "descriptor": {
+                                "code": "add-info",
+                                "name": "Additional Information"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "faq-url",
+                                        "name": "Frequently Asked Questions's URL"
+                                    },
+                                    "value" : "https://www.xyz-scholarship.com/faq" 
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "tnc-url",
+                                        "name": "Terms and Conditions's URL"
+                                    },
+                                    "value": "https://www.xyz-scholarship.com/tnc"
+                                }
+                            ]
+                        }
+                    ],
+                    "location_ids": ["L1","L2"],
+                    "category_ids": ["DSEP_CAT_1"]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "DSEP_FUL_63587501",
+                    "type": "SCHOLARSHIP",
+                    "tracking": false,
+                    "agent" : {
+                        "person" : {
+                            "name" : "Ekstep Foundation SPoc"
+                        },
+                        "contact" : {
+                            "email" : "ekstepsupport@ekstep.com"
+                        }
+                    }
+                }
+            ],
+            "xinput": {
+                  "required": false,
+                  "head": {
+                      "descriptor": {
+                          "name": "Details Form"
+                      },
+                      "index": {
+                          "min": 0,
+                          "cur": 0,
+                          "max": 3
+                      },
+                      "headings": [
+                          "Personal Details",
+                          "Educational Details",
+                          "Financial Details",
+                          "Review & Submit"
+                      ]
+                  },
+                  "form": {
+                      "mime_type": "text/html",
+                      "url": "https://6vs8xnx5i7.scheme-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+                      "resubmit": false,
+                      "auth": {
+                          "descriptor": {
+                              "code": "jwt"
+                          },
+                          "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+                      }
+                  }
+              }
+        }
+    }
 }
 ```
 
@@ -545,6 +801,8 @@ There are 2 ways of discovery:
 
 **on_int**
 - Generally contains the full order terms including fulfillment details, payment terms and details, return terms, replcament terms, cancellation terms, and refund terms etc wherever applicable.
+- Based on the use case, an on_init may only contain a subset of the above terms.
+- Similar to on_select, BPP can send an xinput as part of the on_init callback if BPP requires additional details to confirm the terms of the order.
 
 ```
 {
@@ -701,12 +959,16 @@ There are 2 ways of discovery:
               "currency": "INR",
               "value": "100"
             }
-          }
+          },
+
         }
       ],
       "refund_terms": [
         {
-          "refund_eligible": "true"
+          "refund_eligible": "true",
+          "fulfillment_state": {
+            "code" : ""
+          }
         }
       ]
     }
