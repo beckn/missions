@@ -232,3 +232,31 @@ One of the reasons for this is that the message_id in the on_xxxxxx(on_search, o
 
 One of the reasons for this issue is that the latest version of the gateway uses HTTP/2 by default. If the target servers do not support HTTP/2 or lack a proxy server like Nginx (which automatically downgrades HTTP/2 requests to HTTP/1.1), the request may never reach the server (BPP in most cases).
 
+
+## Using Beckn Support Bot for Troubleshooting
+
+The Beckn Support Bot is an AI-powered assistant that can help you debug issues and understand error messages. Here's how to effectively use it:
+
+1. Access the bot at [Beckn Support Bot](https://chatgpt.com/g/g-67e5227406c4819196cd9c9bb5a54eaf-beckn-support)
+
+2. For troubleshooting help:
+   - Share the exact error message you're seeing
+   - Provide context about your setup (BAP/BPP, environment, etc.)
+   - Include relevant logs if available
+   - Describe what you've already tried
+
+3. The bot can help with:
+   - Interpreting error messages and logs
+   - Suggesting common fixes for known issues
+   - Pointing to relevant documentation
+   - Explaining Beckn concepts and terminology
+   - Recommending best practices
+
+4. Tips for using the bot effectively:
+   - Be specific in your questions
+   - Provide as much context as possible
+   - Follow up if you need clarification
+   - Use the bot alongside other troubleshooting resources
+
+Remember that while the bot provides helpful guidance, for critical production issues you should also engage with the Beckn community through official channels like Discord or Tech Office Hours.
+

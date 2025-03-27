@@ -749,6 +749,21 @@ $ docker exec -it bap-network cat config/default.yml | grep publicKey
 
 ## Seeking Help
 
+
+### Beckn Support Bot
+
+For quick assistance with Beckn Protocol related questions, you can use our AI-powered support bot. The bot is trained on Beckn documentation and can help with:
+
+- Understanding Beckn concepts and terminology
+- Implementation guidance and troubleshooting
+- Finding relevant documentation and resources
+- Best practices and recommendations
+
+Access the bot here: [Beckn Support Bot](https://chatgpt.com/g/g-67e5227406c4819196cd9c9bb5a54eaf-beckn-support)
+
+Note: The bot provides general guidance based on documentation
+
+
 ### Beckn FAQ
 
 Check if your question is part of the questions frequently asked by the community [here](../faq.md)
@@ -770,6 +785,7 @@ Explore the Beckn GitHub repositories, where you'll find a wealth of resources t
 
 ## Resources
 
+- [Beckn Support AI Bot](https://chatgpt.com/g/g-67e5227406c4819196cd9c9bb5a54eaf-beckn-support) - An AI assistant to help you with Beckn Protocol related questions and implementation guidance.
 - [Experience the world of Beckn through experience center](https://experience.becknprotocol.io/) - Experience life with Beckn in various domains through these sample Applications.
 - [Home of Beckn Protocol](https://becknprotocol.io/) - Start your quest for anything Beckn from here.
 - [Beckn Developer Portal](https://developers.becknprotocol.io/) - Developer Portal for Beckn Protocol.
