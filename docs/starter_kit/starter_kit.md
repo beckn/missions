@@ -273,7 +273,7 @@ During installation, you are asked for three pieces of information.
 3. Subscriber URL - The subscriber URL for the BAP Beckn-ONIX adaptor (you decided in the Prerequisite section)
 
 The installation will install the BAP Beckn-ONIX adaptor and other required support software and register it with the registry.
-The next step will be to install the required layer 2 configuration file (This process might be integrated into the installation soon). The link to this file will be in the implementation guide provided by your network facilitator. Run the following command and paste the link when asked.
+The next step will be to install the required layer 2 configuration file (If you didn't provide the url during the onix setup process, you will have to do it now). The link to this file will be in the implementation guide provided by your network facilitator. Run the following command and paste the link when asked.
 
 ```
 $ cd ../layer2
@@ -419,7 +419,7 @@ During installation, you are asked for four pieces of information.
 4. Webhook URL - The url of the endpoint in your provider software where you will receive Beckn messages (All messages will be sent to same endpoint. Use the context.action field to differentiate individual messages)
 
 The script will install the BPP Beckn-ONIX adaptor and other required support software and register it with the registry.
-The next step will be to install the required layer 2 configuration file (This process might be integrated into the installation soon). The link to this file will be in the implementation guide. Run the following command and paste the link when asked.
+The next step will be to install the required layer 2 configuration file (If you didn't provide the url during the onix setup process, you will have to do it now). The link to this file will be in the implementation guide provided by your network facilitator. Run the following command and paste the link when asked.
 
 ```
 $ cd ../layer2
@@ -698,7 +698,7 @@ $ ./beckn-onix.sh
 
 6. Choose "Join an existing network" and the right option (BAP/BPP on what you are replacing).
 7. Use the subscriber information that you copied from the older network in step 1 above.
-8. Once the installation is done, run the script to download and install the layer 2 configuration for the domains. The download URL to use will be provided in the implementation guide for your network.
+8. Once the installation is done, run the script to download and install the layer 2 configuration for the domains(if you haven't provided the url during the onix setup process). The download URL to use will be provided in the implementation guide for your network.
 
 ```
 $ cd ../layer2
