@@ -48,20 +48,6 @@
                         "estimated_value": "80000",
                         "currency": "INR"
                     },
-                    "add_ons": [
-                        {
-                            "id": "1",
-                            "descriptor": {
-                                "name": "PCFC",
-                                "code": "Panel Cleaning and Performance Checkups",
-                                "short_desc": "Regular cleaning of solar panels to remove dust, dirt, and debris, ensuring maximum efficiency, along with system diagnostics to check for performance issues and potential faults."
-                            },
-                            "price": {
-                                "currency": "INR",
-                                "value": "2000"
-                            }
-                        }
-                    ],
                     "tags": [
                         {
                             "descriptor": {
@@ -72,7 +58,25 @@
                                     "descriptor": {
                                         "code": "system-capacity"
                                     },
-                                    "value": "2KW"
+                                    "value": "upto 10KW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "system-type"
+                                    },
+                                    "value": "on-grid"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "recommended-system-size"
+                                    },
+                                    "value": "6KW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "estimated-annual-energy-production"
+                                    },
+                                    "value": "9000KWh"
                                 }
                             ]
                         },
@@ -86,6 +90,36 @@
                                         "code": "property-type"
                                     },
                                     "value": "Residential"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "roof-type"
+                                    },
+                                    "value": "flat"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "roof-area"
+                                    },
+                                    "value": "1500sqft"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "shading-analysis"
+                                    },
+                                    "value": "minimal-obstruction"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "roof-strength"
+                                    },
+                                    "value": "suitable"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "sunlight-exposure"
+                                    },
+                                    "value": "high"
                                 }
                             ]
                         },
@@ -112,6 +146,55 @@
                                         "code": "financial-assistance"
                                     },
                                     "value": "true"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "equipment-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "solar-panels",
+                                        "short_desc": "400W Monocrystalline"
+                                    },
+                                    "value": "4"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "invertor",
+                                        "short_desc": "2kW Hybrid Inverter"
+                                    },
+                                    "value": "1"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "mounting-structure",
+                                        "short_desc": "Ballasted Racking"
+                                    },
+                                    "value": "1"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "wiring-and-connectors",
+                                        "short_desc": "Copper Wiring and MC4 Connectors"
+                                    },
+                                    "value": "As required"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "battery",
+                                        "short_desc": "10kWh Lithium-ion"
+                                    },
+                                    "value": "1"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "monitoring-system",
+                                        "short_desc": "Smart Energy Monitor"
+                                    },
+                                    "value": "1"
                                 }
                             ]
                         }
@@ -183,18 +266,10 @@
                         }
                     },
                     {
-                        "title": "Add-On",
-                        "item": {
-                            "id": 1,
-                            "add_ons": [
-                                {
-                                    "id": "1"
-                                }
-                            ]
-                        },
+                        "title": "GST",
                         "price": {
-                            "value": "3000",
-                            "currency": "INR"
+                            "currency": "INR",
+                            "value": "3000"
                         }
                     }
                 ]

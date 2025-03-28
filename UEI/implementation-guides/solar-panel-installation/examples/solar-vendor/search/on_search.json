@@ -42,22 +42,22 @@
                         {
                             "id": "1",
                             "descriptor": {
-                                "code": "residential",
-                                "name": "residential"
+                                "code": "survey-and-installation",
+                                "name": "survey and installation"
                             }
                         },
                         {
                             "id": "2",
                             "descriptor": {
-                                "code": "housing-society",
-                                "name": "housing-society"
+                                "code": "survey",
+                                "name": "survey"
                             }
                         },
                         {
                             "id": "3",
                             "descriptor": {
-                                "code": "commercial",
-                                "name": "commercial"
+                                "code": "installation",
+                                "name": "installation"
                             }
                         }
                     ],
@@ -66,19 +66,22 @@
                             "id": "1",
                             "city": {
                                 "name": "Bangalore"
-                            }
+                            },
+                            "area_code": "560060"
                         },
                         {
                             "id": "2",
                             "city": {
                                 "name": "Mysore"
-                            }
+                            },
+                            "area_code": "550018"
                         },
                         {
                             "id": "3",
                             "city": {
                                 "name": "Ramanagara"
-                            }
+                            },
+                            "area_code": "580016"
                         }
                     ],
                     "tags": [
@@ -114,20 +117,6 @@
                                 "2",
                                 "3"
                             ],
-                            "add_ons": [
-                                {
-                                    "id": "1",
-                                    "descriptor": {
-                                        "name": "PCFC",
-                                        "code": "Panel Cleaning and Performance Checkups",
-                                        "short_desc": "Regular cleaning of solar panels to remove dust, dirt, and debris, ensuring maximum efficiency, along with system diagnostics to check for performance issues and potential faults."
-                                    },
-                                    "price": {
-                                        "currency": "INR",
-                                        "value": "2000"
-                                    }
-                                }
-                            ],
                             "tags": [
                                 {
                                     "descriptor": {
@@ -139,6 +128,12 @@
                                                 "code": "system-capacity"
                                             },
                                             "value": "2KW"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "system-type"
+                                            },
+                                            "value": "on-grid"
                                         }
                                     ]
                                 },
@@ -186,7 +181,7 @@
                         {
                             "id": "2",
                             "descriptor": {
-                                "name": "Commercial Industrial Solar Installation"
+                                "name": "Commercial Solar Installation"
                             },
                             "price": {
                                 "estimated_value": "120000",
@@ -199,21 +194,6 @@
                                 "1",
                                 "2"
                             ],
-                            "add_ons": [
-                                {
-                                    "id": "2",
-                                    "descriptor": {
-                                        "name": "Annual Maintenance Contract",
-                                        "code": "AMC",
-                                        "short_desc": "Includes periodic inspection, cleaning, and performance checks.",
-                                        "long_desc": "Panel cleaning every 6 months,Inverter performance check,Battery health inspection,Wiring and safety audit"
-                                    },
-                                    "price": {
-                                        "currency": "INR",
-                                        "value": "5000"
-                                    }
-                                }
-                            ],
                             "tags": [
                                 {
                                     "descriptor": {
@@ -225,6 +205,12 @@
                                                 "code": "system-capacity"
                                             },
                                             "value": "2KW"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "system-type"
+                                            },
+                                            "value": "on-grid"
                                         }
                                     ]
                                 },

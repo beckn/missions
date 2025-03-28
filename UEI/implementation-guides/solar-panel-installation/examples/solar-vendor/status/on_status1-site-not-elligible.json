@@ -1,7 +1,7 @@
 {
     "context": {
         "domain": "solar-rooftop:uei",
-        "action": "on_confirm",
+        "action": "on_status",
         "location": {
             "country": {
                 "code": "IND"
@@ -236,7 +236,15 @@
                     },
                     "state": {
                         "descriptor": {
-                            "code": "Site-Visit-Planned"
+                            "code": "Cancelled:Site-Not-Elligible"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Vinod"
+                        },
+                        "contact": {
+                            "phone": "+91-9887766554"
                         }
                     }
                 }
@@ -290,7 +298,18 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "cancellation": {
+                "cancelled_by": "PROVIDER",
+                "time": "2025-03-22T09:00:00Z",
+                "reason": {
+                    "descriptor": {
+                        "code": "Site-Not-Elligible",
+                        "short_desc": "The area of not enough"
+                    }
+                }
+
+            }
         }
     }
 }

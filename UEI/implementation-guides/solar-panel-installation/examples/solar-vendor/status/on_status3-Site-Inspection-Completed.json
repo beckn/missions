@@ -44,20 +44,10 @@
                     "descriptor": {
                         "name": "Residential Solar Panel Installation"
                     },
-                    "add_ons": [
-                        {
-                            "id": "1",
-                            "descriptor": {
-                                "name": "PCFC",
-                                "code": "Panel Cleaning and Performance Checkups",
-                                "short_desc": "Regular cleaning of solar panels to remove dust, dirt, and debris, ensuring maximum efficiency, along with system diagnostics to check for performance issues and potential faults."
-                            },
-                            "price": {
-                                "currency": "INR",
-                                "value": "2000"
-                            }
-                        }
-                    ],
+                    "price": {
+                        "estimated_value": "80000",
+                        "currency": "INR"
+                    },
                     "tags": [
                         {
                             "descriptor": {
@@ -69,6 +59,12 @@
                                         "code": "system-capacity"
                                     },
                                     "value": "upto 10KW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "system-type"
+                                    },
+                                    "value": "on-grid"
                                 },
                                 {
                                     "descriptor": {
@@ -240,7 +236,7 @@
                     },
                     "state": {
                         "descriptor": {
-                            "code": "Equipment-Details-Shared"
+                            "code": "Site-Inspection-Completed"
                         }
                     },
                     "agent": {
@@ -260,60 +256,20 @@
                 },
                 "breakup": [
                     {
-                        "title": "Solar Panels",
-                        "price": {
-                            "value": "40000",
-                            "currency": "INR"
-                        }
-                    },
-                    {
-                        "title": "Invertor",
-                        "price": {
-                            "value": "10000",
-                            "currency": "INR"
-                        }
-                    },
-                    {
-                        "title": "Mounting Structure",
-                        "price": {
-                            "value": "8000",
-                            "currency": "INR"
-                        }
-                    },
-                    {
-                        "title": "Wiring and Connectors",
-                        "price": {
-                            "value": "4000",
-                            "currency": "INR"
-                        }
-                    },
-                    {
-                        "title": "battery",
-                        "price": {
-                            "value": "15000",
-                            "currency": "INR"
-                        }
-                    },
-                    {
-                        "title": "Monitoring System",
-                        "price": {
-                            "value": "3000",
-                            "currency": "INR"
-                        }
-                    },
-                    {
-                        "title": "Add-On",
+                        "title": "Base-Price",
                         "item": {
-                            "id": 1,
-                            "add_ons": [
-                                {
-                                    "id": "1"
-                                }
-                            ]
+                            "id": "1"
                         },
                         "price": {
-                            "value": "3000",
+                            "value": "80000",
                             "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "GST",
+                        "price": {
+                            "currency": "INR",
+                            "value": "3000"
                         }
                     }
                 ]
@@ -338,22 +294,6 @@
                             "descriptor": {
                                 "code": "Survey-Charge",
                                 "short_desc": "This amount will not be adjusted in the installation charge."
-                            }
-                        }
-                    ]
-                },
-                {
-                    "collected_by": "bpp",
-                    "type": "POST-FULFILLMENT",
-                    "status": "NOT-PAID",
-                    "params": {
-                        "amount": "83000",
-                        "currency": "INR"
-                    },
-                    "tags": [
-                        {
-                            "descriptor": {
-                                "code": "Installation-Charge"
                             }
                         }
                     ]

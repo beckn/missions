@@ -21,7 +21,7 @@
         "intent": {
             "category": {
                 "descriptor": {
-                    "code": "panel-installation"
+                    "code": "survey-and-installation"
                 }
             },
             "location": {
@@ -39,6 +39,12 @@
                                     "code": "system-capacity"
                                 },
                                 "value": "2KW"
+                            },
+                            {
+                                "descriptor": {
+                                    "code": "system-type"
+                                },
+                                "value": "on-grid"
                             }
                         ]
                     },

@@ -1,7 +1,7 @@
 {
     "context": {
         "domain": "solar-rooftop:uei",
-        "action": "on_confirm",
+        "action": "on_status",
         "location": {
             "country": {
                 "code": "IND"
@@ -43,10 +43,6 @@
                     "id": "1",
                     "descriptor": {
                         "name": "Residential Solar Panel Installation"
-                    },
-                    "price": {
-                        "estimated_value": "80000",
-                        "currency": "INR"
                     },
                     "tags": [
                         {
@@ -101,7 +97,7 @@
                                     "descriptor": {
                                         "code": "roof-area"
                                     },
-                                    "value": "1500sqft"
+                                    "value": "1200sqft"
                                 },
                                 {
                                     "descriptor": {
@@ -159,7 +155,7 @@
                                         "code": "solar-panels",
                                         "short_desc": "400W Monocrystalline"
                                     },
-                                    "value": "4"
+                                    "value": "6"
                                 },
                                 {
                                     "descriptor": {
@@ -173,7 +169,7 @@
                                         "code": "mounting-structure",
                                         "short_desc": "Ballasted Racking"
                                     },
-                                    "value": "1"
+                                    "value": "2"
                                 },
                                 {
                                     "descriptor": {
@@ -236,7 +232,15 @@
                     },
                     "state": {
                         "descriptor": {
-                            "code": "Site-Visit-Planned"
+                            "code": "Equipment-Details-Shared"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Vinod"
+                        },
+                        "contact": {
+                            "phone": "+91-9887766554"
                         }
                     }
                 }
@@ -248,12 +252,44 @@
                 },
                 "breakup": [
                     {
-                        "title": "Base-Price",
-                        "item": {
-                            "id": "1"
-                        },
+                        "title": "Solar Panels",
                         "price": {
-                            "value": "80000",
+                            "value": "40000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "Invertor",
+                        "price": {
+                            "value": "10000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "Mounting Structure",
+                        "price": {
+                            "value": "8000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "Wiring and Connectors",
+                        "price": {
+                            "value": "4000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "battery",
+                        "price": {
+                            "value": "15000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "Monitoring System",
+                        "price": {
+                            "value": "3000",
                             "currency": "INR"
                         }
                     },
@@ -286,6 +322,22 @@
                             "descriptor": {
                                 "code": "Survey-Charge",
                                 "short_desc": "This amount will not be adjusted in the installation charge."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "collected_by": "bpp",
+                    "type": "POST-FULFILLMENT",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "83000",
+                        "currency": "INR"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Installation-Charge"
                             }
                         }
                     ]
