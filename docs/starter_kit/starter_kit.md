@@ -22,13 +22,17 @@
 6. [Learning Resources](#learning-resources)
 7. [Seeking Help](#seeking-help)
 
-   7.1 [Beckn FAQ](#beckn-faq)
 
-   7.2 [Join an existing community](#join-an-existing-community)
+   7.1 [Beckn Support Bot](#beckn-support-bot)
 
-   7.3 [Tech office hours](#tech-office-hours)
+   7.2 [Beckn FAQ](#beckn-faq)
 
-   7.4 [Github discussion forums](#github-discussion-forums)
+
+   7.3 [Join an existing community](#join-an-existing-community)
+
+   7.4 [Tech office hours](#tech-office-hours)
+
+   7.5 [Github discussion forums](#github-discussion-forums)
 
 8. [Migration](#migration)
 9. [Resources](#resources)
