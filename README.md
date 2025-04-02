@@ -2,8 +2,6 @@
 
 This repository is maintained by the FIDE mission teams and is actively used for managing mission-related documentation and project management. It serves as a central hub for coordinating efforts, tracking progress, and ensuring all mission-critical information is easily accessible.
 
-## Beckn Starter Kit
-
 ## Version History
 
 | Serial No     | Version  | Release Notes  |
@@ -18,12 +16,14 @@ This repository is maintained by the FIDE mission teams and is actively used for
 - Implementation guides that will help build your software, integrate with different Beckn powered networks and conduct transactions on it.
 - Other resources.
 
+## Link to the mission assets
+
+### Beckn Starter Kit
 [Click here](./docs/starter_kit/starter_kit.md) to get started
 
 
-## Implementation Guides
+### Link to existing Implementation Guides
 
-## Version History
 
 | Serial No     | Name                     | Version  | Release Date   |Release Notes  |Link to Guide  |
 |---------------|--------------------------|----------|----------------|----------------|---------------|
