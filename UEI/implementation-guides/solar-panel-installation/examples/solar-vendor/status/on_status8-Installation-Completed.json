@@ -1,0 +1,349 @@
+{
+    "context": {
+        "domain": "solar-rooftop:uei",
+        "action": "on_status",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:080"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+        "bpp_id": "example-bpp.com",
+        "bpp_uri": "https://example-bpp.com",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "timestamp": "2023-07-16T04:41:16Z"
+    },
+    "message": {
+        "order": {
+            "id": "550e8400-e29b-41d4-a716-446655440000",
+            "provider": {
+                "id": "example_provider_id",
+                "descriptor": {
+                    "name": "Example Company",
+                    "short_desc": "Example Company Pvt Ltd",
+                    "images": [
+                        {
+                            "url": "https://example-company.com/images/logo.png"
+                        },
+                        {
+                            "url": "https://example-company.com/images/site.png"
+                        }
+                    ]
+                },
+                "rating": "4.3/5"
+            },
+            "items": [
+                {
+                    "id": "1",
+                    "descriptor": {
+                        "name": "Residential Solar Panel Installation"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "system-specification"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "system-capacity"
+                                    },
+                                    "value": "upto 10KW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "system-type"
+                                    },
+                                    "value": "on-grid"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "recommended-system-size"
+                                    },
+                                    "value": "6KW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "estimated-annual-energy-production"
+                                    },
+                                    "value": "9000KWh"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "installation-context"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "property-type"
+                                    },
+                                    "value": "Residential"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "roof-type"
+                                    },
+                                    "value": "flat"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "roof-area"
+                                    },
+                                    "value": "1200sqft"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "shading-analysis"
+                                    },
+                                    "value": "minimal-obstruction"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "roof-strength"
+                                    },
+                                    "value": "suitable"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "sunlight-exposure"
+                                    },
+                                    "value": "high"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "installer-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "empaneled"
+                                    },
+                                    "value": "true"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "financial-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "financial-assistance"
+                                    },
+                                    "value": "true"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "equipment-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "solar-panels",
+                                        "short_desc": "400W Monocrystalline"
+                                    },
+                                    "value": "6"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "invertor",
+                                        "short_desc": "2kW Hybrid Inverter"
+                                    },
+                                    "value": "1"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "mounting-structure",
+                                        "short_desc": "Ballasted Racking"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "wiring-and-connectors",
+                                        "short_desc": "Copper Wiring and MC4 Connectors"
+                                    },
+                                    "value": "As required"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "battery",
+                                        "short_desc": "10kWh Lithium-ion"
+                                    },
+                                    "value": "1"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "monitoring-system",
+                                        "short_desc": "Smart Energy Monitor"
+                                    },
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "area_code": "560004",
+                                "gps": "12.344445,21.2324445",
+                                "address": "11th street, sector 4, kormangala",
+                                "city": {
+                                    "name": "Bangalore"
+                                },
+                                "state": {
+                                    "name": "Karnataka"
+                                }
+                            },
+                            "time": {
+                                "label": "Service Schedule",
+                                "range": {
+                                    "start": "2025-03-22T09:00:00Z ",
+                                    "end": "2025-04-22T18:00:00Z "
+                                }
+                            }
+                        }
+                    ],
+                    "customer": {
+                        "person": {
+                            "name": "Ramesh Sharma"
+                        },
+                        "contact": {
+                            "phone": "+91-9887766554"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "Installation-Completed"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Vinod"
+                        },
+                        "contact": {
+                            "phone": "+91-9887766554"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "83000",
+                    "currency": "INR"
+                },
+                "breakup": [
+                    {
+                        "title": "Solar Panels",
+                        "price": {
+                            "value": "40000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "Invertor",
+                        "price": {
+                            "value": "10000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "Mounting Structure",
+                        "price": {
+                            "value": "8000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "Wiring and Connectors",
+                        "price": {
+                            "value": "4000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "battery",
+                        "price": {
+                            "value": "15000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "Monitoring System",
+                        "price": {
+                            "value": "3000",
+                            "currency": "INR"
+                        }
+                    },
+                    {
+                        "title": "GST",
+                        "price": {
+                            "currency": "INR",
+                            "value": "3000"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Ramesh sharma",
+                "email": "abc@example.com",
+                "phone": "+91-9876522222"
+            },
+            "payments": [
+                {
+                    "collected_by": "bpp",
+                    "type": "PRE-ORDER",
+                    "status": "PAID",
+                    "params": {
+                        "amount": "250",
+                        "currency": "INR",
+                        "transaction_id": "t0123"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Survey-Charge",
+                                "short_desc": "This amount will not be adjusted in the installation charge."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "collected_by": "bpp",
+                    "type": "POST-FULFILLMENT",
+                    "status": "PAID",
+                    "params": {
+                        "amount": "83000",
+                        "currency": "INR",
+                        "transaction_id": "t0124"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Installation-Charge"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

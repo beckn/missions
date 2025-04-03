@@ -1,0 +1,263 @@
+{
+    "context": {
+        "domain": "solar-rooftop:uei",
+        "action": "on_search",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:080"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+        "bpp_id": "example-bpp.com",
+        "bpp_uri": "https://example-bpp.com",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "timestamp": "2023-07-16T04:41:16Z"
+    },
+    "message": {
+        "catalog": {
+            "providers": [
+                {
+                    "id": "example_provider_id",
+                    "descriptor": {
+                        "name": "Example Company",
+                        "short_desc": "Example Company Pvt Ltd",
+                        "long_desc": "A very long desc",
+                        "images": [
+                            {
+                                "url": "https://example-company.com/images/logo.png"
+                            },
+                            {
+                                "url": "https://example-company.com/images/site.png"
+                            }
+                        ]
+                    },
+                    "rating": "4.3/5",
+                    "categories": [
+                        {
+                            "id": "1",
+                            "descriptor": {
+                                "code": "survey-and-installation",
+                                "name": "survey and installation"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "descriptor": {
+                                "code": "survey",
+                                "name": "survey"
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "descriptor": {
+                                "code": "installation",
+                                "name": "installation"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "Bangalore"
+                            },
+                            "area_code": "560060"
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": "Mysore"
+                            },
+                            "area_code": "550018"
+                        },
+                        {
+                            "id": "3",
+                            "city": {
+                                "name": "Ramanagara"
+                            },
+                            "area_code": "580016"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "provider-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "govt_subsidy_empaneled"
+                                    },
+                                    "value": "true"
+                                }
+                            ]
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "1",
+                            "descriptor": {
+                                "name": "Residential Solar Panel Installation"
+                            },
+                            "price": {
+                                "estimated_value": "80000",
+                                "currency": "INR"
+                            },
+                            "category_ids": [
+                                "1"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2",
+                                "3"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "system-specification"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "system-capacity"
+                                            },
+                                            "value": "2KW"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "system-type"
+                                            },
+                                            "value": "on-grid"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installation-context"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "property-type"
+                                            },
+                                            "value": "Residential"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installer-details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "empaneled"
+                                            },
+                                            "value": "true"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "financial-details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "financial-assistance"
+                                            },
+                                            "value": "true"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2",
+                            "descriptor": {
+                                "name": "Commercial Solar Installation"
+                            },
+                            "price": {
+                                "estimated_value": "120000",
+                                "currency": "INR"
+                            },
+                            "category_ids": [
+                                "3"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "system-specification"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "system-capacity"
+                                            },
+                                            "value": "2KW"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "system-type"
+                                            },
+                                            "value": "on-grid"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installation-context"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "property-type"
+                                            },
+                                            "value": "Residential"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installer-details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "empaneled"
+                                            },
+                                            "value": "true"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "financial-details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "financial-assistance"
+                                            },
+                                            "value": "true"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
