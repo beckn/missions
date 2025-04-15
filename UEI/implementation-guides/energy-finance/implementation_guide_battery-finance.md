@@ -1,4 +1,4 @@
-# UEI Implementation Guide - Battery Finance
+# UEI Implementation Guide - Energy Finance
 
 #### Version 1.0
 
@@ -10,7 +10,7 @@
 
 ## Introduction
 
-This document provides example JSONs for the Energy: Battery Finance use case.
+This document provides example JSONs for the Energy: Energy Finance use case.
 
 ## Structure of the document
 
@@ -23,9 +23,9 @@ This document has the following parts:
 
 ## Outcome Visualization
 
-![Battery Finance Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg)
+![Energy Finance Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg)
 
-### Use case - Discovery, order and fulfillment of Battery Finance services
+### Use case - Discovery, order and fulfillment of Energy Finance services
 <>
 
 ## API Calls and Schema

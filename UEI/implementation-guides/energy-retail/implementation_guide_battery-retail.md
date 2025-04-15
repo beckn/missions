@@ -1,4 +1,4 @@
-# UEI Implementation Guide - Battery Retail
+# UEI Implementation Guide - Energy Retail
 
 #### Version 1.0
 
@@ -10,7 +10,7 @@
 
 ## Introduction
 
-This document provides example JSONs for the Energy: Battery Retail use case.
+This document provides example JSONs for the Energy: Energy Retail use case.
 
 ## Structure of the document
 
@@ -23,9 +23,9 @@ This document has the following parts:
 
 ## Outcome Visualization
 
-![Battery Retail Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg)
+![Energy Retail Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg)
 
-### Use case - Discovery, order and fulfillment of Battery Retail services
+### Use case - Discovery, order and fulfillment of Energy Retail services
 <>
 
 ## API Calls and Schema
