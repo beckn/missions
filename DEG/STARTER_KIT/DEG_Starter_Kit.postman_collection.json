@@ -1,0 +1,1675 @@
+{
+	"info": {
+		"_postman_id": "94933175-b97d-4146-bda3-d6a5cd5984da",
+		"name": "DEG Starter Kit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23690031"
+	},
+	"item": [
+		{
+			"name": "Energy Retail",
+			"item": [
+				{
+					"name": "Energy Retail Beckn APIs",
+					"item": [
+						{
+							"name": "Energy Retail Discovery",
+							"item": [
+								{
+									"name": "Search By Item Name",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"domain\": \"deg:retail\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"search\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"4ff62a86-2241-41cc-9527-f0c00ecaba76\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T14:59:57.314Z\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"battery\"\n                }\n            },\n            \"location\": {\n                \"circle\": {\n                    \"radius\": {\n                        \"type\": \"CONSTANT\",\n                        \"value\": \"5\",\n                        \"unit\": \"km\"\n                    }\n                }\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"search"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Search By Provider, Item, price, fulfillment",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"action\": \"search\",\n        \"domain\": \"deg:retail\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            }\n        },\n        \"ttl\": \"PT30S\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"55dcacb4-822b-40d8-bc86-5d77cd85ecda\",\n      \n        \"timestamp\": \"2023-10-09T04:46:28.012Z\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"Bluebird\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"Mono PERC\"\n                },\n                \"price\": {\n                    \"minimum_value\": \"187500\",\n                    \"maximum_value\": \"187500\"\n                }\n                \n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"28.446029,77.090842\"\n                            \n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"search"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Search By Provider",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n     \"context\": {\n        \"action\": \"search\",\n        \"domain\": \"deg:retail\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            }\n        },\n        \"ttl\": \"PT30S\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"7c97e4de-cf93-4eeb-a9d5-e8912667da3e\",\n        \"timestamp\": \"2023-10-09T04:46:28.012Z\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"Bluebird\"\n                }\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"search"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Search By Location",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"action\": \"search\",\n        \"domain\": \"deg:retail\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            }\n        },\n        \"ttl\": \"PT30S\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"6fd05781-8a65-4483-934a-b3bd8f1a553b\",\n        \"timestamp\": \"2023-10-09T04:46:28.012Z\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"28.446029,77.090842\"\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"search"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Select",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"deg:retail\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"select\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"4ff62a86-2241-41cc-9527-f0c00ecaba76\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:06:40.758Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"items\": [\n                {\n                    \"id\": \"283\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    }\n                }\n            ],\n            \"provider\": {\n                \"id\": \"104\",\n                \"name\": \"STARMAX\"\n            },\n            \"fulfillments\": [\n                {\n                    \"id\": \"3\"\n                }\n            ]\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/select",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"select"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Init",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"deg:retail\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"init\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"4ff62a86-2241-41cc-9527-f0c00ecaba76\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:09:34.127Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"104\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"283\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"3\",\n                    \"type\": \"Delivery in 5 Days\",\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Detroit Public School\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"9944110000\"\n                        }\n                    },\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"42.30043209999999,-83.1166438\",\n                                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                                \"city\": {\n                                    \"name\": \"Detroit\"\n                                },\n                                \"state\": {\n                                    \"name\": \"Michigan\"\n                                },\n                                \"country\": {\n                                    \"code\": \"IND\"\n                                },\n                                \"area_code\": \"48209\"\n                            },\n                            \"contact\": {\n                                \"phone\": \"9944110000\",\n                                \"email\": \"dps1289@gmail.com\",\n                                \"name\": \"Detroit Public School\"\n                            }\n                        }\n                    ]\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Detroit Public School\",\n                \"phone\": \"9944110000\",\n                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                \"email\": \"dps1289@gmail.com\",\n                \"city\": {\n                    \"name\": \"Detroit\"\n                },\n                \"state\": {\n                    \"name\": \"Michigan\"\n                }\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/init",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"init"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"deg:retail\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"confirm\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"4ff62a86-2241-41cc-9527-f0c00ecaba76\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:31:08.345Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"104\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"283\",\n                    \"code\": \"Battery\",\n                    \"name\": \"STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery\",\n                    \"short_desc\": \"STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery, 305Ah X 8\",\n                    \"long_desc\": \"Deep Cycle Flooded Battery\\\\nBattery cell composition: lead_acid\\\\nCompatible with vehicle type: Golf Cart\\\\nItem weight: 121.03 pounds\\\\nVoltage: 6.0\",\n                    \"images\": [\n                        {\n                            \"url\": \"https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg\",\n                            \"size_type\": \"sm\"\n                        }\n                    ],\n                    \"price\": {\n                        \"value\": \"35000\",\n                        \"currency\": \"USD\"\n                    },\n                    \"rating\": \"4.2\",\n                    \"rateable\": true,\n                    \"quantity\": {\n                        \"available\": {\n                            \"count\": 100,\n                            \"measure\": {\n                                \"value\": \"100\"\n                            }\n                        },\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    },\n                    \"fulfillments\": [\n                        {\n                            \"id\": \"3\",\n                            \"type\": \"Delivery in 5 Days\"\n                        },\n                        {\n                            \"id\": \"3\",\n                            \"type\": \"Delivery in 5 Days\",\n                            \"rating\": \"4.3\"\n                        },\n                        {\n                            \"id\": \"3\",\n                            \"type\": \"Delivery in 5 Days\",\n                            \"rating\": \"4.3\"\n                        }\n                    ]\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"3\",\n                    \"type\": \"Delivery in 5 Days\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"42.30043209999999,-83.1166438\",\n                                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                                \"city\": {\n                                    \"name\": \"Detroit\"\n                                },\n                                \"state\": {\n                                    \"name\": \"Michigan\"\n                                },\n                                \"country\": {\n                                    \"code\": \"IND\"\n                                },\n                                \"area_code\": \"48209\"\n                            },\n                            \"contact\": {\n                                \"phone\": \"9944110000\",\n                                \"email\": \"dps1289@gmail.com\",\n                                \"name\": \"Detroit Public School\"\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"id\": \"3\",\n                    \"type\": \"Delivery in 5 Days\",\n                    \"rating\": \"4.3\",\n                    \"rateable\": true\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Detroit Public School\",\n                \"phone\": \"9944110000\",\n                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                \"email\": \"dps1289@gmail.com\",\n                \"city\": {\n                    \"name\": \"Detroit\"\n                },\n                \"state\": {\n                    \"name\": \"Michigan\"\n                }\n            },\n            \"payments\": [\n                {\n                    \"params\": {\n                        \"amount\": \"35320\",\n                        \"currency\": \"USD\"\n                    },\n                    \"status\": \"PAID\",\n                    \"type\": \"ON-FULFILLMENT\"\n                }\n            ]\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/confirm",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"confirm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Status",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"deg:retail\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"status\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"af10ae14-ca94-43b3-bf79-8f114f5bd8d0\",\n        \n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:32:47.261Z\"\n    },\n    \"message\": {\n        \"order_id\": \"3710\",\n        \"orderId\": \"3710\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/status",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "origin",
+								"value": "https://deg-retail-dev.becknprotocol.io"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://deg-retail-dev.becknprotocol.io/"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"fullname\":\"Detroit Public School\",\"email\":\"dps1289^@gmail.com\",\"address\":\"USA\",\"password\":\"Test^@123\",\"phone_no\":\"9944110000\",\"utility_name\":\"\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/signup",
+							"protocol": "https",
+							"host": [
+								"unified-strapi-dev",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"unified-beckn-energy",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "origin",
+								"value": "https://deg-retail-dev.becknprotocol.io"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://deg-retail-dev.becknprotocol.io/"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"phone\":\"9944110000\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/mobile-login",
+							"protocol": "https",
+							"host": [
+								"unified-strapi-dev",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"unified-beckn-energy",
+								"mobile-login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjM4LCJpYXQiOjE3NDQ3Mjg5NDIsImV4cCI6MTc0NDgxNTM0Mn0.3gfdWIHeIPqeH4tnZCBfxW2PIt6BWkZazJqI-QrAaks"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "origin",
+								"value": "https://deg-retail-dev.becknprotocol.io"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://deg-retail-dev.becknprotocol.io/"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"otp\":212121}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/verify-otp",
+							"protocol": "https",
+							"host": [
+								"unified-strapi-dev",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"unified-beckn-energy",
+								"verify-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Link Wallet",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjM4LCJpYXQiOjE3NDQ3Mjg5NDIsImV4cCI6MTc0NDgxNTM0Mn0.3gfdWIHeIPqeH4tnZCBfxW2PIt6BWkZazJqI-QrAaks"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "origin",
+								"value": "https://deg-retail-dev.becknprotocol.io"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://deg-retail-dev.becknprotocol.io/"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"wallet_id\": \"/subjects/users/phone/9944110000\",\n    \"energy_identities_consent\": true,\n    \"energy_assets_consent\": true,\n    \"energy_transactions_consent\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/wallet/link",
+							"protocol": "https",
+							"host": [
+								"unified-strapi-dev",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"unified-beckn-energy",
+								"wallet",
+								"link"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjM4LCJpYXQiOjE3NDQ3Mjg5NDIsImV4cCI6MTc0NDgxNTM0Mn0.3gfdWIHeIPqeH4tnZCBfxW2PIt6BWkZazJqI-QrAaks"
+							},
+							{
+								"key": "origin",
+								"value": "https://deg-retail-dev.becknprotocol.io"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://deg-retail-dev.becknprotocol.io/"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+							}
+						],
+						"url": {
+							"raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/user-profile",
+							"protocol": "https",
+							"host": [
+								"unified-strapi-dev",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"unified-beckn-energy",
+								"user-profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Energy Finance",
+			"item": [
+				{
+					"name": "Energy Finance Discovery",
+					"item": [
+						{
+							"name": "Search By Category",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"deg:finance\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"search\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"c07c000b-aab6-410e-9fa2-fd11cafb6dda\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:12:41.861Z\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"\"\n                }\n            },\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"loan_type\",\n                    \"name\": \"Battery\"\n                }\n            },\n            \"location\": {\n                \"circle\": {\n                    \"radius\": {\n                        \"type\": \"CONSTANT\",\n                        \"value\": \"5\",\n                        \"unit\": \"km\"\n                    }\n                }\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"search"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search By Provider and Category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"action\": \"search\",\n        \"domain\": \"deg:finance\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT30S\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"3cdf8e2a-babb-4758-ab7e-d2a1fc6144f4\",\n        \"timestamp\": \"2023-10-09T04:46:28.012Z\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"America\"\n                }\n            },\n            \"category\": {\n                \"descriptor\": {\n                    \"name\": \"Battery\",\n                    \"code\": \"loan_type\"\n                }\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"search"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Confirm",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"deg:finance\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"confirm\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"9a14790b-e44c-46b2-91ba-d770d07fd7ac\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:21:26.026Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"items\": [\n                {\n                    \"id\": \"281\",\n                    \"code\": \"80\",\n                    \"name\": \"6\",\n                    \"short_desc\": \"Asset Financier\",\n                    \"long_desc\": \"Battery Loan by PNC Equipment Financing 6 Months EMI Plan\",\n                    \"images\": [\n                        {\n                            \"url\": \"https://www.lawnandgardendirectory.org/Shared/images/PNC-Equipment-Finance-th1.jpg\",\n                            \"size_type\": \"sm\"\n                        }\n                    ],\n                    \"price\": {\n                        \"value\": \"12\"\n                    },\n                    \"rating\": \"null\",\n                    \"rateable\": true,\n                    \"quantity\": {\n                        \"available\": {\n                            \"count\": 10000,\n                            \"measure\": {\n                                \"value\": \"10000\"\n                            }\n                        }\n                    }\n                }\n            ],\n            \"provider\": {\n                \"id\": \"103\"\n            },\n            \"fulfillments\": [\n                {\n                    \"type\": \"Delivery\",\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Detroit Public School \"\n                        },\n                        \"contact\": {\n                            \"phone\": \"9944110000\"\n                        }\n                    },\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"13.2008459,77.708736\",\n                                \"address\": \"123, Terminal 1, Kempegowda Int'''l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India\",\n                                \"city\": {\n                                    \"name\": \"Gangamuthanahalli\"\n                                },\n                                \"state\": {\n                                    \"name\": \"Karnataka\"\n                                },\n                                \"country\": {\n                                    \"code\": \"IND\"\n                                },\n                                \"area_code\": \"75001\"\n                            },\n                            \"contact\": {\n                                \"email\": \"dps1289@gmail.com\"\n                            }\n                        }\n                    ]\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Detroit Public School \",\n                \"address\": \"123, Terminal 1, Kempegowda Int'''l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India\",\n                \"state\": {\n                    \"name\": \"Gangamuthanahalli\"\n                },\n                \"city\": {\n                    \"name\": \"Karnataka\"\n                },\n                \"email\": \"dps1289@gmail.com\",\n                \"phone\": \"9944110000\"\n            },\n            \"payments\": [\n                {\n                    \"params\": {\n                        \"amount\": \"28000\",\n                        \"currency\": \"$\",\n                        \"bank_account_number\": \"1234002341\",\n                        \"bank_code\": \"INB0004321\"\n                    },\n                    \"status\": \"PAID\",\n                    \"type\": \"PRE-FULFILLMENT\"\n                }\n            ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bap-ps-client-dev.becknprotocol.io/confirm",
+							"protocol": "https",
+							"host": [
+								"bap-ps-client-dev",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"domain\": \"deg:finance\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"select\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"9a14790b-e44c-46b2-91ba-d770d07fd7ac\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:15:43.333Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"items\": [\n                {\n                    \"id\": \"281\",\n                    \"selected\": {\n                        \"quantity\": {\n                            \"count\": 1\n                        }\n                    }\n                }\n            ],\n            \"provider\": {\n                \"id\": \"103\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bap-ps-client-dev.becknprotocol.io/select",
+							"protocol": "https",
+							"host": [
+								"bap-ps-client-dev",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"select"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Battery Rental",
+			"item": [
+				{
+					"name": "Battery Rental Beckn APIs",
+					"item": [
+						{
+							"name": "Battery Discovery",
+							"item": [
+								{
+									"name": "Search By Item",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"domain\": \"deg:rental\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"search\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"924dd6fb-8896-476e-9918-b0faf06d3e77\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:48:13.783Z\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"battery\"\n                }\n            },\n            \"location\": {\n                \"circle\": {\n                    \"radius\": {\n                        \"type\": \"CONSTANT\",\n                        \"value\": \"5\",\n                        \"unit\": \"km\"\n                    }\n                }\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"search"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Search By provider, item, price",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"action\": \"search\",\n        \"domain\": \"deg:rental\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT30S\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"7aab9698-1599-42b3-8872-950c15bb6680\",\n        \"timestamp\": \"2023-10-09T04:46:28.012Z\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"Detroit\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"STARMAX GC STCR-305\"\n                },\n                \"price\": {\n                    \"minimum_value\": \"20\"\n                }\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"search"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Search By Provider",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"action\": \"search\",\n        \"domain\": \"deg:rental\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT30S\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"9b578dfe-b98f-4915-8172-bb97438de0b8\",\n        \"timestamp\": \"2023-10-09T04:46:28.012Z\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"Detroit Public\"\n                }\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"search"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Search By Price",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"action\": \"search\",\n        \"domain\": \"deg:rental\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT30S\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"9b578dfe-b98f-4915-8172-bb97438de0b8\",\n        \"timestamp\": \"2023-10-09T04:46:28.012Z\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"price\": {\n                    \"minimum_value\": \"20\"\n                }\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"search"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Select",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"deg:rental\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"select\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"487b234d-7bed-422e-8306-e11b0f2d20df\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:51:35.713Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"items\": [\n                {\n                    \"id\": \"420\",\n                    \"fulfillment_ids\": [\n                        \"569\",\n                        \"570\"\n                    ]\n                }\n            ],\n            \"provider\": {\n                \"id\": \"299\"\n            },\n            \"fulfillments\": [\n                {\n                    \"id\": \"569\",\n                    \"type\": \"RENTAL_START\",\n                    \"state\": {\n                        \"code\": \"timestamp\",\n                        \"name\": \"1744734601\"\n                    }\n                },\n                {\n                    \"id\": \"570\",\n                    \"type\": \"RENTAL_END\",\n                    \"state\": {\n                        \"code\": \"timestamp\",\n                        \"name\": \"1744738200\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/select",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"select"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Init",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"deg:rental\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"init\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"487b234d-7bed-422e-8306-e11b0f2d20df\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:53:32.711Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"299\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"420\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    },\n                    \"fulfillment_ids\": [\n                        \"569\",\n                        \"570\",\n                        \"569\",\n                        \"570\"\n                    ]\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"569\",\n                    \"type\": \"RENTAL_START\",\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Detroit Public School\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"8635345630\"\n                        }\n                    },\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                                \"city\": {\n                                    \"name\": \"Bengaluru\"\n                                },\n                                \"state\": {\n                                    \"name\": \"Karnataka\"\n                                },\n                                \"country\": {\n                                    \"code\": \"IND\"\n                                }\n                            },\n                            \"contact\": {\n                                \"phone\": \"8635345630\",\n                                \"email\": \"lisayrt12@gmail.com\"\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"id\": \"570\",\n                    \"type\": \"RENTAL_END\",\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Detroit Public School\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"8635345630\"\n                        }\n                    },\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                                \"city\": {\n                                    \"name\": \"Bengaluru\"\n                                },\n                                \"state\": {\n                                    \"name\": \"Karnataka\"\n                                },\n                                \"country\": {\n                                    \"code\": \"IND\"\n                                }\n                            },\n                            \"contact\": {\n                                \"phone\": \"8635345630\",\n                                \"email\": \"lisayrt12@gmail.com\"\n                            }\n                        }\n                    ]\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Detroit Public School\",\n                \"phone\": \"8635345630\",\n                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                \"email\": \"lisayrt12@gmail.com\",\n                \"city\": {\n                    \"name\": \"Bengaluru\"\n                },\n                \"state\": {\n                    \"name\": \"Karnataka\"\n                }\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/init",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"init"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"deg:rental\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"confirm\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"487b234d-7bed-422e-8306-e11b0f2d20df\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T15:55:09.100Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"299\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"420\",\n                    \"code\": \"Battery\",\n                    \"name\": \"STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery\",\n                    \"short_desc\": \"STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery, 305Ah X 8\",\n                    \"long_desc\": \"Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\\\\n                  Our flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\\\\n                  Choose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.\",\n                    \"images\": [\n                        {\n                            \"url\": \"https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg\",\n                            \"size_type\": \"sm\"\n                        }\n                    ],\n                    \"price\": {\n                        \"value\": \"10\",\n                        \"currency\": \"USD\"\n                    },\n                    \"rating\": \"null\",\n                    \"rateable\": true,\n                    \"quantity\": {\n                        \"available\": {\n                            \"count\": 1000,\n                            \"measure\": {\n                                \"value\": \"1000\",\n                                \"unit\": \"per hour\"\n                            }\n                        },\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    },\n                    \"fulfillments\": [\n                        {\n                            \"id\": \"569\",\n                            \"type\": \"RENTAL_START\"\n                        },\n                        {\n                            \"id\": \"570\",\n                            \"type\": \"RENTAL_END\"\n                        },\n                        {\n                            \"id\": \"569\",\n                            \"type\": \"RENTAL_START\",\n                            \"rating\": \"4\",\n                            \"state\": {\n                                \"code\": \"timestamp\",\n                                \"name\": \"1744734600\"\n                            }\n                        },\n                        {\n                            \"id\": \"570\",\n                            \"type\": \"RENTAL_END\",\n                            \"rating\": \"4\",\n                            \"state\": {\n                                \"code\": \"timestamp\",\n                                \"name\": \"1744806600\"\n                            }\n                        },\n                        {\n                            \"id\": \"569\",\n                            \"type\": \"RENTAL_START\",\n                            \"rating\": \"4\",\n                            \"state\": {\n                                \"code\": \"timestamp\",\n                                \"name\": \"1744734600\"\n                            }\n                        },\n                        {\n                            \"id\": \"570\",\n                            \"type\": \"RENTAL_END\",\n                            \"rating\": \"4\",\n                            \"state\": {\n                                \"code\": \"timestamp\",\n                                \"name\": \"1744806600\"\n                            }\n                        }\n                    ]\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"6\",\n                    \"type\": \"RENTAL_START\",\n                    \"state\": {\n                        \"description\": \"1744734601\",\n                        \"descriptor\": {\n                            \"code\": \"timestamp\",\n                            \"name\": \"1744734601\"\n                        }\n                    }\n                },\n                {\n                    \"id\": \"7\",\n                    \"type\": \"RENTAL_END\",\n                    \"state\": {\n                        \"description\": \"1744738200\",\n                        \"descriptor\": {\n                            \"code\": \"timestamp\",\n                            \"name\": \"1744738200\"\n                        }\n                    }\n                }\n            ],\n            \"billing\": {\n                \"name\": \"Detroit Public School\",\n                \"phone\": \"8635345630\",\n                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                \"email\": \"lisayrt12@gmail.com\",\n                \"city\": {\n                    \"name\": \"Bengaluru\"\n                },\n                \"state\": {\n                    \"name\": \"Karnataka\"\n                }\n            },\n            \"payments\": [\n                {\n                    \"params\": {\n                        \"amount\": \"10.60\",\n                        \"currency\": \"USD\"\n                    },\n                    \"status\": \"PAID\",\n                    \"type\": \"ON-FULFILLMENT\"\n                }\n            ]\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/confirm",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"confirm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Status",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"deg:retail\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"status\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"61faaf40-7c18-4099-a6f7-a47d7905f261\",\n        \"message_id\": \"b1efe63f-9856-4aae-98b8-825623b19239\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:06:40.803Z\"\n    },\n    \"message\": {\n        \"order_id\": \"3710\",\n        \"orderId\": \"3710\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/status",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "origin",
+								"value": "https://deg-retail-dev.becknprotocol.io"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://deg-retail-dev.becknprotocol.io/"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"phone\":\"9944110000\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/mobile-login",
+							"protocol": "https",
+							"host": [
+								"unified-strapi-dev",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"unified-beckn-energy",
+								"mobile-login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish Catalog",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYzOCwiaWF0IjoxNzQ0NzI5MTUxLCJleHAiOjE3NDQ4MTU1NTF9.els3jxwJ-uDPe3rRgh_zog10zvkBVd39loEppTS-cVs"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "origin",
+								"value": "https://deg-retail-dev.becknprotocol.io"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://deg-retail-dev.becknprotocol.io/"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"providerDetails\": {\n        \"data\": [\n            {\n                \"context\": {\n                    \"domain\": \"deg:retail\",\n                    \"action\": \"on_status\",\n                    \"version\": \"1.1.0\",\n                    \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n                    \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n                    \"country\": \"IND\",\n                    \"city\": \"std:080\",\n                    \"location\": {\n                        \"country\": {\n                            \"name\": \"United States\",\n                            \"code\": \"USA\"\n                        },\n                        \"city\": {\n                            \"name\": \"Bangalore\",\n                            \"code\": \"std:080\"\n                        }\n                    },\n                    \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n                    \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n                    \"transaction_id\": \"3613297e-e2ee-474b-b7ab-395bc4dcc4e3\",\n                    \"message_id\": \"abe88b28-9bf7-428a-b855-1f69ca57027f\",\n                    \"ttl\": \"PT10M\",\n                    \"timestamp\": \"2025-04-15T15:37:47.339Z\"\n                },\n                \"message\": {\n                    \"id\": \"3710\",\n                    \"status\": \"ACTIVE\",\n                    \"created_at\": \"2025-04-15T15:31:09.948Z\",\n                    \"provider\": {\n                        \"id\": \"104\",\n                        \"name\": \"STARMAX\",\n                        \"short_desc\": \"Battery\",\n                        \"long_desc\": \"Battery\",\n                        \"rating\": \"4\",\n                        \"images\": {\n                            \"url\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS59reL7gFrAuwvUJfVteNazOPfcdrlTM7WtQ&s\",\n                            \"size_type\": \"sm\"\n                        },\n                        \"rateable\": true\n                    },\n                    \"items\": [\n                        {\n                            \"id\": \"283\",\n                            \"code\": \"Battery\",\n                            \"name\": \"STARMAX GC STCR-305 ^– 6-Volt Deep Cycle Flooded Battery\",\n                            \"short_desc\": \"STARMAX GC STCR-305 ^– 6-Volt Deep Cycle Flooded Battery, 305Ah X 8\",\n                            \"long_desc\": \"Deep Cycle Flooded Battery\\nBattery cell composition: lead_acid\\nCompatible with vehicle type: Golf Cart\\nItem weight: 121.03 pounds\\nVoltage: 6.0\",\n                            \"images\": [\n                                {\n                                    \"url\": \"https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg\",\n                                    \"size_type\": \"sm\"\n                                }\n                            ],\n                            \"price\": {\n                                \"value\": \"35000\",\n                                \"currency\": \"USD\"\n                            },\n                            \"rating\": \"4.2\",\n                            \"rateable\": true,\n                            \"quantity\": {\n                                \"available\": {\n                                    \"count\": 100,\n                                    \"measure\": {\n                                        \"value\": \"100\"\n                                    }\n                                },\n                                \"selected\": {\n                                    \"count\": 1\n                                }\n                            }\n                        }\n                    ],\n                    \"fulfillments\": [\n                        {\n                            \"id\": \"3\",\n                            \"state\": {\n                                \"descriptor\": {\n                                    \"code\": \"ORDER_DELIVERED\",\n                                    \"short_desc\": \"ORDER DELIVERED\"\n                                },\n                                \"updated_at\": \"2025-04-15T15:31:09.978Z\"\n                            },\n                            \"customer\": {\n                                \"contact\": {\n                                    \"email\": \"dps1289^@gmail.com\",\n                                    \"phone\": \"9944110000\"\n                                },\n                                \"person\": {\n                                    \"name\": \"Detroit\"\n                                }\n                            },\n                            \"stops\": [\n                                {\n                                    \"type\": \"start\",\n                                    \"location\": {\n                                        \"gps\": \"42.30043209999999,-83.1166438\",\n                                        \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                                        \"city\": {\n                                            \"name\": \"Detroit\"\n                                        },\n                                        \"country\": {\n                                            \"code\": \"IND\"\n                                        },\n                                        \"area_code\": \"48209\",\n                                        \"state\": {\n                                            \"name\": \"Michigan\"\n                                        }\n                                    },\n                                    \"contact\": {\n                                        \"phone\": \"9944110000\"\n                                    }\n                                }\n                            ],\n                            \"agent\": {\n                                \"person\": {\n                                    \"name\": \" \"\n                                }\n                            },\n                            \"rating\": \"4.3\",\n                            \"rateable\": true\n                        }\n                    ],\n                    \"quote\": {\n                        \"price\": {\n                            \"value\": \"35320\",\n                            \"currency\": \"USD\"\n                        },\n                        \"breakup\": [\n                            {\n                                \"title\": \"Item Price\",\n                                \"price\": {\n                                    \"currency\": \"USD\",\n                                    \"value\": \"33018.87\"\n                                },\n                                \"item\": {\n                                    \"id\": \"283\"\n                                }\n                            },\n                            {\n                                \"title\": \"Sales Tax ^@ 6%\",\n                                \"price\": {\n                                    \"currency\": \"USD\",\n                                    \"value\": \"1981.13\"\n                                },\n                                \"item\": {\n                                    \"id\": \"283\"\n                                }\n                            },\n                            {\n                                \"title\": \"Delivery Charge\",\n                                \"price\": {\n                                    \"currency\": \"USD\",\n                                    \"value\": \"20\"\n                                },\n                                \"item\": {\n                                    \"id\": \"283\"\n                                }\n                            }\n                        ]\n                    },\n                    \"billing\": {\n                        \"name\": \"Detroit Public School\",\n                        \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                        \"state\": {\n                            \"name\": \"Michigan\"\n                        },\n                        \"city\": {\n                            \"name\": \"Detroit\"\n                        },\n                        \"email\": \"dps1289^@gmail.com\",\n                        \"phone\": \"9944110000\"\n                    }\n                }\n            }\n        ]\n    },\n    \"walletId\": \"/subjects/users/phone/9944110000\",\n    \"startTime\": \"1744734600\",\n    \"endTime\": \"1744806600\",\n    \"price\": \"10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/rent-catalogue",
+							"protocol": "https",
+							"host": [
+								"unified-strapi-dev",
+								"becknprotocol",
+								"io"
+							],
+							"path": [
+								"unified-beckn-energy",
+								"rent-catalogue"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "P2P Energy Trading",
+			"item": [
+				{
+					"name": "Beckn APIs",
+					"item": [
+						{
+							"name": "P2P Energy Discovery",
+							"item": [
+								{
+									"name": "Search By Energy Quantity",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"domain\": \"uei:p2p_trading\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"search\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"780bcaaa-4699-4319-a26b-f1470ab7b3ec\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:15:41.288Z\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"quantity\": {\n                    \"available\": {\n                        \"measure\": {\n                            \"value\": \"1\",\n                            \"unit\": \"kwh\"\n                        }\n                    }\n                }\n            },\n            \"location\": {\n                \"circle\": {\n                    \"gps\": \"12.423423,77.325647\",\n                    \"radius\": {\n                        \"type\": \"CONSTANT\",\n                        \"value\": \"5\",\n                        \"unit\": \"km\"\n                    }\n                }\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"search"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Init",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"uei:p2p_trading\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"init\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"780bcaaa-4699-4319-a26b-f1470ab7b3ec\",\n       \n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:15:49.626Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"71\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"199\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"1\",\n                    \"type\": \"START\"\n                },\n                {\n                    \"id\": \"2\",\n                    \"type\": \"END\"\n                }\n            ],\n            \"billing\": {\n                \"phone\": \"7070707070\",\n                \"name\": \"Amit\",\n                \"email\": \"amit@gmail.com\"\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/init",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"init"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"domain\": \"uei:p2p_trading\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"confirm\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"780bcaaa-4699-4319-a26b-f1470ab7b3ec\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:15:53.071Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"71\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"199\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"1\",\n                    \"type\": \"START\"\n                },\n                {\n                    \"id\": \"2\",\n                    \"type\": \"END\"\n                }\n            ],\n            \"billing\": {\n                \"phone\": \"7070707070\",\n                \"name\": \"Amit\",\n                \"email\": \"amit@gmail.com\"\n            },\n            \"payments\": [\n                {\n                    \"id\": \"payment-id-780bcaaa-4699-4319-a26b-f1470ab7b3ec\",\n                    \"collected_by\": \"BPP\",\n                    \"params\": {\n                        \"amount\": \"5\",\n                        \"currency\": \"INR\",\n                        \"bank_account_number\": \"1234002341\",\n                        \"bank_code\": \"INB0004321\",\n                        \"bank_account_name\": \"Test user Company Energy\"\n                    },\n                    \"status\": \"PAID\",\n                    \"type\": \"PRE-ORDER\"\n                }\n            ]\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bap-ps-client-dev.becknprotocol.io/confirm",
+									"protocol": "https",
+									"host": [
+										"bap-ps-client-dev",
+										"becknprotocol",
+										"io"
+									],
+									"path": [
+										"confirm"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "EV",
+			"item": [
+				{
+					"name": "Charger Discovery",
+					"item": [
+						{
+							"name": "Beckn APIs",
+							"item": [
+								{
+									"name": "EV Charger Discovery",
+									"item": [
+										{
+											"name": "Search By Location and Item Name",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"context\": {\n        \"domain\": \"deg:ev\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"search\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"20f17f6d-05a9-4847-989a-e8a588d675a3\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:29:17.583Z\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"charger\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"18.601271241867366,73.75648915163117\"\n                        }\n                    }\n                ]\n            },\n            \"location\": {\n                \"circle\": {\n                    \"radius\": {\n                        \"type\": \"CONSTANT\",\n                        \"value\": \"5\",\n                        \"unit\": \"km\"\n                    }\n                }\n            }\n        }\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+													"protocol": "https",
+													"host": [
+														"bap-ps-client-dev",
+														"becknprotocol",
+														"io"
+													],
+													"path": [
+														"search"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Search By provider, item, location, price, tag",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"context\": {\n        \"domain\": \"deg:ev\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"search\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"20f17f6d-05a9-4847-989a-e8a588d675a3\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:29:17.583Z\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"BigApple\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"BigApple\"\n                },\n                \"price\": {\n                    \"minimum_value\": \"130\",\n                    \"maximum_value\": \"130\"\n                },\n                \"tags\": [\n                    {\n                        \"list\": [\n                            {\n                                \"descriptor\": {\n                                    \"code\": \"port_type\"\n                                },\n                                \"value\": \"CHAdeMO\"\n                            }\n                        ]\n                    }\n                ]\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"40.743700,-73.973200\"\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+													"protocol": "https",
+													"host": [
+														"bap-ps-client-dev",
+														"becknprotocol",
+														"io"
+													],
+													"path": [
+														"search"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Search By Provider",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"context\": {\n        \"action\": \"search\",\n        \"domain\": \"deg:ev\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT30S\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"3bcc3352-4a73-4033-afab-f6cac2188f3b\",\n        \"timestamp\": \"2023-10-09T04:46:28.012Z\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"BigApple\"\n                }\n            }\n        }\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+													"protocol": "https",
+													"host": [
+														"bap-ps-client-dev",
+														"becknprotocol",
+														"io"
+													],
+													"path": [
+														"search"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Search By Item Name, Price and tags",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"context\": {\n        \"action\": \"search\",\n        \"domain\": \"deg:ev\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"USA\"\n            }\n        },\n        \"ttl\": \"PT30S\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"422d2a34-48ab-4a18-81d4-71a1f09c3533\",\n        \"message_id\": \"1066a68a-e553-4a8e-a7a0-f03aa343c468\",\n        \"timestamp\": \"2023-10-09T04:46:28.012Z\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"BigApple\"\n                },\n                \"price\": {\n                    \"minimum_value\": \"130\",\n                    \"maximum_value\": \"130\"\n                },\n                \"tags\": [\n                    {\n                        \"list\": [\n                            {\n                                \"descriptor\": {\n                                    \"code\": \"port_type\"\n                                },\n                                \"value\": \"CHAdeMO\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        }\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://bap-ps-client-dev.becknprotocol.io/search",
+													"protocol": "https",
+													"host": [
+														"bap-ps-client-dev",
+														"becknprotocol",
+														"io"
+													],
+													"path": [
+														"search"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Select",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"domain\": \"deg:ev\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"select\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"35b94f17-4816-4073-9d4f-b081b6f4f5cd\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:40:19.337Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"items\": [\n                {\n                    \"id\": \"382\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    },\n                    \"tags\": [\n                        {\n                            \"list\": [\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"port_type\",\n                                        \"name\": \"GB/T\"\n                                    },\n                                    \"value\": \"GB/T\",\n                                    \"display\": true\n                                }\n                            ]\n                        }\n                    ]\n                }\n            ],\n            \"provider\": {\n                \"id\": \"282\",\n                \"name\": \"Capital Volt\"\n            },\n            \"fulfillments\": [\n                {\n                    \"id\": \"548\"\n                },\n                {\n                    \"id\": \"548\"\n                }\n            ]\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/select",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"select"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Init",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"domain\": \"deg:ev\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"init\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"35b94f17-4816-4073-9d4f-b081b6f4f5cd\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:40:29.436Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"282\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"382\",\n                    \"quantity\": {\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"548\",\n                    \"type\": \"Onsite\",\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"sanket\"\n                        },\n                        \"contact\": {\n                            \"phone\": \"8275229378\"\n                        }\n                    },\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"42.30043209999999,-83.1166438\",\n                                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                                \"city\": {\n                                    \"name\": \"Detroit\"\n                                },\n                                \"state\": {\n                                    \"name\": \"Michigan\"\n                                },\n                                \"country\": {\n                                    \"code\": \"IND\"\n                                },\n                                \"area_code\": \"48209\"\n                            },\n                            \"contact\": {\n                                \"phone\": \"8275229378\",\n                                \"email\": \"sanketkadu13@gmail.com\",\n                                \"name\": \"sanket\"\n                            }\n                        }\n                    ]\n                }\n            ],\n            \"billing\": {\n                \"name\": \"sanket\",\n                \"phone\": \"8275229378\",\n                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                \"email\": \"sanketkadu13@gmail.com\",\n                \"city\": {\n                    \"name\": \"Detroit\"\n                },\n                \"state\": {\n                    \"name\": \"Michigan\"\n                }\n            }\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/init",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"init"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirm",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"domain\": \"deg:ev\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"confirm\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"35b94f17-4816-4073-9d4f-b081b6f4f5cd\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"United States\",\n                \"code\": \"USA\"\n            },\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:42:40.428Z\"\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"282\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"382\",\n                    \"code\": \"Capital Volt Fast Charger 2\",\n                    \"name\": \"Capital Volt Fast Charger 2\",\n                    \"short_desc\": \"Fast EV Charger\",\n                    \"long_desc\": \"Capital Volt Fast Charger 2 supports high-speed charging with multiple port compatibility.\",\n                    \"images\": [\n                        {\n                            \"url\": \"https://capital-volt.com/charger2.png\",\n                            \"size_type\": \"sm\"\n                        }\n                    ],\n                    \"price\": {\n                        \"value\": \"160\",\n                        \"currency\": \"USD\"\n                    },\n                    \"rating\": \"null\",\n                    \"rateable\": true,\n                    \"quantity\": {\n                        \"available\": {\n                            \"count\": 10,\n                            \"measure\": {\n                                \"value\": \"10\"\n                            }\n                        },\n                        \"selected\": {\n                            \"count\": 1\n                        }\n                    },\n                    \"locations\": [\n                        {\n                            \"id\": \"10\",\n                            \"city\": \"Washington DC\",\n                            \"state\": \"Washington DC\",\n                            \"country\": \"USA\",\n                            \"gps\": \"21.135404344414,79.08125649563958\",\n                            \"address\": \"176 Main Street\"\n                        }\n                    ],\n                    \"tags\": [\n                        {\n                            \"list\": [\n                                {\n                                    \"code\": \"port_type\",\n                                    \"name\": \"GB/T\",\n                                    \"value\": \"GB/T\",\n                                    \"display\": true\n                                },\n                                {\n                                    \"code\": \"port_type\",\n                                    \"name\": \"CHAdeMO\",\n                                    \"value\": \"CHAdeMO\",\n                                    \"display\": true\n                                },\n                                {\n                                    \"code\": \"port_type\",\n                                    \"name\": \"CCS\",\n                                    \"value\": \"CCS\",\n                                    \"display\": true\n                                }\n                            ]\n                        }\n                    ],\n                    \"fulfillments\": [\n                        {\n                            \"id\": \"548\",\n                            \"type\": \"Onsite\"\n                        },\n                        {\n                            \"id\": \"548\",\n                            \"type\": \"Onsite\"\n                        },\n                        {\n                            \"id\": \"548\",\n                            \"type\": \"Onsite\"\n                        }\n                    ]\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"548\",\n                    \"type\": \"Onsite\",\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"42.30043209999999,-83.1166438\",\n                                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                                \"city\": {\n                                    \"name\": \"Detroit\"\n                                },\n                                \"state\": {\n                                    \"name\": \"Michigan\"\n                                },\n                                \"country\": {\n                                    \"code\": \"IND\"\n                                },\n                                \"area_code\": \"48209\"\n                            },\n                            \"contact\": {\n                                \"phone\": \"8275229378\",\n                                \"email\": \"sanketkadu13@gmail.com\",\n                                \"name\": \"sanket\"\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"id\": \"548\",\n                    \"type\": \"Onsite\",\n                    \"rateable\": true\n                }\n            ],\n            \"billing\": {\n                \"name\": \"sanket\",\n                \"phone\": \"8275229378\",\n                \"address\": \"5890 W Vernor Hwy, Detroit, Michigan\",\n                \"email\": \"sanketkadu13@gmail.com\",\n                \"city\": {\n                    \"name\": \"Detroit\"\n                },\n                \"state\": {\n                    \"name\": \"Michigan\"\n                }\n            },\n            \"payments\": [\n                {\n                    \"params\": {\n                        \"amount\": \"160\",\n                        \"currency\": \"USD\"\n                    },\n                    \"status\": \"PAID\",\n                    \"type\": \"ON-FULFILLMENT\"\n                }\n            ]\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/confirm",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"confirm"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Status",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"context\": {\n        \"domain\": \"deg:rental\",\n        \"bpp_id\": \"bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bpp_uri\": \"http://bpp-ps-network-strapi2-dev.becknprotocol.io\",\n        \"bap_id\": \"bap-ps-network-dev.becknprotocol.io\",\n        \"action\": \"status\",\n        \"bap_uri\": \"https://bap-ps-network-dev.becknprotocol.io\",\n        \"version\": \"1.1.0\",\n        \"transaction_id\": \"51e0200f-9a7d-4b5a-a9ee-48834d4baa78\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"name\": \"Bangalore\",\n                \"code\": \"std:080\"\n            }\n        },\n        \"ttl\": \"PT10M\",\n        \"timestamp\": \"2025-04-15T16:43:48.711Z\"\n    },\n    \"message\": {\n        \"order_id\": \"3712\",\n        \"orderId\": \"3712\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bap-ps-client-dev.becknprotocol.io/status",
+											"protocol": "https",
+											"host": [
+												"bap-ps-client-dev",
+												"becknprotocol",
+												"io"
+											],
+											"path": [
+												"status"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
