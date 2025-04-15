@@ -2473,3 +2473,13 @@ If you are writing the provider platform software, the following are the steps y
 7. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
 
 ![Provider platform testing sandbox](https://github.com/beckn/missions/blob/main/docs/assets/images/provider_deployment.png)
+
+## link to the use case specific implementation guide
+
+### UEI
+
+  - [Battery Retail:](../UEI/implementation-guides/battery-retail/implementation_guide_battery-retail.md)
+  - [Battery Rental:](../UEI/implementation-guides/battery-rental/implementation_guide_battery-rental.md)
+  - [Battery Finance:](../UEI/implementation-guides/battery-finance/implementation_guide_battery-finance.md)
+  - [Peer to Peer Energy Trade:](../UEI/implementation-guides/p2p-energy-trade/implementation_guide_p2p.md)
+  - [EV charging:](../UEI/implementation-guides/EV-charging/implementation_guide_charging.md)
