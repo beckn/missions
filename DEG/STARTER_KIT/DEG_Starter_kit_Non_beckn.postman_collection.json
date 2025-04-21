@@ -1,1690 +1,1551 @@
 {
-	"info": {
-		"_postman_id": "5c389ea2-38b5-49ab-b508-880469dd4204",
-		"name": "DEG Non Beckn Api's",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26603171"
-	},
-	"item": [
-		{
-			"name": "Retail App",
-			"item": [
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "*/*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-retail-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-retail-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"phone\": \"8669029341\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/mobile-login",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"mobile-login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Signup",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "*/*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc2NzI4LCJleHAiOjE3NDQ5NjMxMjh9.c9sgHL8SwgfUbosoC8UfVco7K7iFf1oj54nGlIjskDs"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-retail-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-retail-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"fullname\": \"shree\",\n    \"email\": \"shree1234@gmail.com\",\n    \"address\": \"Pune\",\n    \"password\": \"Test@123\",\n    \"phone_no\": \"9879879875\",\n    \"utility_name\": \"\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/signup",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Edit Profile",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json, text/plain, */*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ0LCJpYXQiOjE3NDQ4NzcyNTIsImV4cCI6MTc0NDk2MzY1Mn0.sARuX8-wF2Evk6dpctlfkQFBs7Z17uZok4IJycgcDqg"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-retail-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-retail-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"fullname\": \"shree gaikwad\",\n    \"address\": \"Pirangut Pune\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/user-profile",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"user-profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "My Orders",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "accept",
-								"value": "*/*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc3NDc2LCJleHAiOjE3NDQ5NjM4NzZ9.rwQ7L0w_bm4f-ThkKqs2dwZmIl5r0FBCM0iQ5h9vka4"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-retail-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-retail-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/order-history/get?filters\\[category\\]=18",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"order-history",
-								"get"
-							],
-							"query": [
-								{
-									"key": "filters\\[category\\]",
-									"value": "18"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Asset for Renting",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "*/*"
-							},
-							{
-								"key": "Accept-Language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "Connection",
-								"value": "keep-alive"
-							},
-							{
-								"key": "Origin",
-								"value": "https://deg-retail-dev.becknprotocol.io"
-							},
-							{
-								"key": "Referer",
-								"value": "https://deg-retail-dev.becknprotocol.io/"
-							},
-							{
-								"key": "Sec-Fetch-Dest",
-								"value": "empty"
-							},
-							{
-								"key": "Sec-Fetch-Mode",
-								"value": "cors"
-							},
-							{
-								"key": "Sec-Fetch-Site",
-								"value": "same-site"
-							},
-							{
-								"key": "User-Agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							}
-						],
-						"url": {
-							"raw": "https://one.becknprotocol.io/subjects/users/phone/8669029341/documents",
-							"protocol": "https",
-							"host": [
-								"one",
-								"becknprotocol",
-								"io"
-							],
-							"path": [
-								"subjects",
-								"users",
-								"phone",
-								"8669029341",
-								"documents"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get My Service ( Rented Items)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json, text/plain, */*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc3NDc2LCJleHAiOjE3NDQ5NjM4NzZ9.rwQ7L0w_bm4f-ThkKqs2dwZmIl5r0FBCM0iQ5h9vka4"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-retail-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-retail-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/rent-catalogue",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"rent-catalogue"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Rental App",
-			"item": [
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "*/*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQzLCJpYXQiOjE3NDQ4NzY0NDIsImV4cCI6MTc0NDk2Mjg0Mn0.WOEi7lUQoP5781MkBC1zUXaGW7yDqfX73E7q79XX0Js"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-rental-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-rental-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"phone\": \"8669029341\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/mobile-login",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"mobile-login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Signup",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "*/*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc3ODU5LCJleHAiOjE3NDQ5NjQyNTl9.T_jxvjroFt7A1UqlQDfjET0xMqhA4Ok9paGmjObVrvk"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-rental-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-rental-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"fullname\": \"Raju\",\n    \"email\": \"raju1234@gmail.com\",\n    \"address\": \"Pune\",\n    \"password\": \"Test@123\",\n    \"phone_no\": \"7373737275\",\n    \"utility_name\": \"\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/signup",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Edit Profile",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json, text/plain, */*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ2LCJpYXQiOjE3NDQ4Nzc5MzUsImV4cCI6MTc0NDk2NDMzNX0.n3Hnc9Cs9T6Bnk5TYlDtW71qAsA4e9T6eA6kqbWviCM"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-rental-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-rental-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"fullname\": \"Raju Gaikwad\",\n    \"address\": \"Amaravati\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/user-profile",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"user-profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "My Rentals",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc4MDY5LCJleHAiOjE3NDQ5NjQ0Njl9.TTHe9rMWeWqL5EXrfWhNnEAt6gkZxl3k3MxpOvMpURY"
-							},
-							{
-								"key": "Referer",
-								"value": "https://deg-rental-dev.becknprotocol.io/"
-							},
-							{
-								"key": "User-Agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							}
-						],
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/order-history/get?filters\\[category\\]=20",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"order-history",
-								"get"
-							],
-							"query": [
-								{
-									"key": "filters\\[category\\]",
-									"value": "20"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Finance App",
-			"item": [
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "*/*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-finance-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-finance-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"phone\": \"9999912344\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/beckn-energy-finance/mobile-login",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"beckn-energy-finance",
-								"mobile-login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Loan Application",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json, text/plain, */*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU5MiwiaWF0IjoxNzQ0ODc4MzgwLCJleHAiOjE3NDQ5NjQ3ODB9.fJ4xlHm3o8cHU7im_2DV6EU1K-JXdbAPN0rP2MKgWgE"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-finance-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-finance-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/beckn-energy-finance/orders",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"beckn-energy-finance",
-								"orders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Loan Catalogue",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json, text/plain, */*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU5MiwiaWF0IjoxNzQ0ODc4MzgwLCJleHAiOjE3NDQ5NjQ3ODB9.fJ4xlHm3o8cHU7im_2DV6EU1K-JXdbAPN0rP2MKgWgE"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-finance-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-finance-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/beckn-energy-finance/catalogues",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"beckn-energy-finance",
-								"catalogues"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Wallet App",
-			"item": [
-				{
-					"name": "Create Connection",
-					"item": [
-						{
-							"name": "Country Code",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "accept",
-										"value": "application/json, text/plain, */*"
-									},
-									{
-										"key": "accept-language",
-										"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-									},
-									{
-										"key": "origin",
-										"value": "https://deg-wallet-dev.becknprotocol.io"
-									},
-									{
-										"key": "priority",
-										"value": "u=1, i"
-									},
-									{
-										"key": "referer",
-										"value": "https://deg-wallet-dev.becknprotocol.io/"
-									},
-									{
-										"key": "sec-ch-ua",
-										"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-									},
-									{
-										"key": "sec-ch-ua-mobile",
-										"value": "?0"
-									},
-									{
-										"key": "sec-ch-ua-platform",
-										"value": "\"macOS\""
-									},
-									{
-										"key": "sec-fetch-dest",
-										"value": "empty"
-									},
-									{
-										"key": "sec-fetch-mode",
-										"value": "cors"
-									},
-									{
-										"key": "sec-fetch-site",
-										"value": "same-site"
-									},
-									{
-										"key": "user-agent",
-										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-									}
-								],
-								"url": {
-									"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/utility/companies?country_code=USA",
-									"host": [
-										"{{RETAIL_BASE_URL}}"
-									],
-									"path": [
-										"unified-beckn-energy",
-										"utility",
-										"companies"
-									],
-									"query": [
-										{
-											"key": "country_code",
-											"value": "USA"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "attest",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "accept",
-										"value": "application/json, text/plain, */*"
-									},
-									{
-										"key": "accept-language",
-										"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-									},
-									{
-										"key": "content-type",
-										"value": "application/json"
-									},
-									{
-										"key": "origin",
-										"value": "https://deg-wallet-dev.becknprotocol.io"
-									},
-									{
-										"key": "priority",
-										"value": "u=1, i"
-									},
-									{
-										"key": "referer",
-										"value": "https://deg-wallet-dev.becknprotocol.io/"
-									},
-									{
-										"key": "sec-ch-ua",
-										"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-									},
-									{
-										"key": "sec-ch-ua-mobile",
-										"value": "?0"
-									},
-									{
-										"key": "sec-ch-ua-platform",
-										"value": "\"macOS\""
-									},
-									{
-										"key": "sec-fetch-dest",
-										"value": "empty"
-									},
-									{
-										"key": "sec-fetch-mode",
-										"value": "cors"
-									},
-									{
-										"key": "sec-fetch-site",
-										"value": "same-site"
-									},
-									{
-										"key": "user-agent",
-										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"wallet_doc_type\":\"IDENTITIES\",\"document_id\":\"/subjects/users/phone/8669029341/documents/identities/type/electricity/id/5487774000/1744890705/MZT\",\"deg_wallet_id\":\"/subjects/users/phone/8669029341\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/wallet/attest",
-									"host": [
-										"{{RETAIL_BASE_URL}}"
-									],
-									"path": [
-										"unified-beckn-energy",
-										"wallet",
-										"attest"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Create Assets",
-					"item": [
-						{
-							"name": "attest",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "accept",
-										"value": "application/json, text/plain, */*"
-									},
-									{
-										"key": "accept-language",
-										"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-									},
-									{
-										"key": "content-type",
-										"value": "application/json"
-									},
-									{
-										"key": "origin",
-										"value": "https://deg-wallet-dev.becknprotocol.io"
-									},
-									{
-										"key": "priority",
-										"value": "u=1, i"
-									},
-									{
-										"key": "referer",
-										"value": "https://deg-wallet-dev.becknprotocol.io/"
-									},
-									{
-										"key": "sec-ch-ua",
-										"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-									},
-									{
-										"key": "sec-ch-ua-mobile",
-										"value": "?0"
-									},
-									{
-										"key": "sec-ch-ua-platform",
-										"value": "\"macOS\""
-									},
-									{
-										"key": "sec-fetch-dest",
-										"value": "empty"
-									},
-									{
-										"key": "sec-fetch-mode",
-										"value": "cors"
-									},
-									{
-										"key": "sec-fetch-site",
-										"value": "same-site"
-									},
-									{
-										"key": "user-agent",
-										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"wallet_doc_type\":\"PHYSICAL_ASSETS\",\"document_id\":\"/subjects/users/phone/8669029341/documents/assets/physical/type/battery/source/wallet/1744881866/visaNew.svg/TJ6\",\"deg_wallet_id\":\"/subjects/users/phone/8669029341\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/wallet/attest",
-									"protocol": "https",
-									"host": [
-										"unified-strapi-dev",
-										"becknprotocol",
-										"io"
-									],
-									"path": [
-										"unified-beckn-energy",
-										"wallet",
-										"attest"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Add Battery to Wallet",
-					"item": [
-						{
-							"name": "attest",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "accept",
-										"value": "application/json, text/plain, */*"
-									},
-									{
-										"key": "accept-language",
-										"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-									},
-									{
-										"key": "content-type",
-										"value": "application/json"
-									},
-									{
-										"key": "origin",
-										"value": "https://deg-retail-dev.becknprotocol.io"
-									},
-									{
-										"key": "priority",
-										"value": "u=1, i"
-									},
-									{
-										"key": "referer",
-										"value": "https://deg-retail-dev.becknprotocol.io/"
-									},
-									{
-										"key": "sec-ch-ua",
-										"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-									},
-									{
-										"key": "sec-ch-ua-mobile",
-										"value": "?0"
-									},
-									{
-										"key": "sec-ch-ua-platform",
-										"value": "\"macOS\""
-									},
-									{
-										"key": "sec-fetch-dest",
-										"value": "empty"
-									},
-									{
-										"key": "sec-fetch-mode",
-										"value": "cors"
-									},
-									{
-										"key": "sec-fetch-site",
-										"value": "same-site"
-									},
-									{
-										"key": "user-agent",
-										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"wallet_doc_type\":\"PHYSICAL_ASSETS\",\"document_id\":\"/subjects/users/phone/8669029341/documents/assets/physical/type/starmax_gc_stcr-305_–_6-volt_deep_cycle_flooded.../source/spark/1744886409/3768\",\"deg_wallet_id\":\"/subjects/users/phone/8669029341\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/wallet/attest",
-									"protocol": "https",
-									"host": [
-										"unified-strapi-dev",
-										"becknprotocol",
-										"io"
-									],
-									"path": [
-										"unified-beckn-energy",
-										"wallet",
-										"attest"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json, text/plain, */*"
-							},
-							{
-								"key": "accept-language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json"
-							},
-							{
-								"key": "origin",
-								"value": "https://deg-wallet-dev.becknprotocol.io"
-							},
-							{
-								"key": "priority",
-								"value": "u=1, i"
-							},
-							{
-								"key": "referer",
-								"value": "https://deg-wallet-dev.becknprotocol.io/"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							},
-							{
-								"key": "sec-fetch-dest",
-								"value": "empty"
-							},
-							{
-								"key": "sec-fetch-mode",
-								"value": "cors"
-							},
-							{
-								"key": "sec-fetch-site",
-								"value": "same-site"
-							},
-							{
-								"key": "user-agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"phone\": \"8669029341\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/mobile-login",
-							"host": [
-								"{{RETAIL_BASE_URL}}"
-							],
-							"path": [
-								"unified-beckn-energy",
-								"mobile-login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Connections",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "*/*"
-							},
-							{
-								"key": "Accept-Language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "Connection",
-								"value": "keep-alive"
-							},
-							{
-								"key": "Origin",
-								"value": "https://deg-wallet-dev.becknprotocol.io"
-							},
-							{
-								"key": "Referer",
-								"value": "https://deg-wallet-dev.becknprotocol.io/"
-							},
-							{
-								"key": "Sec-Fetch-Dest",
-								"value": "empty"
-							},
-							{
-								"key": "Sec-Fetch-Mode",
-								"value": "cors"
-							},
-							{
-								"key": "Sec-Fetch-Site",
-								"value": "same-site"
-							},
-							{
-								"key": "User-Agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							}
-						],
-						"url": {
-							"raw": "https://one.becknprotocol.io/subjects/users/phone/8669029341/documents",
-							"protocol": "https",
-							"host": [
-								"one",
-								"becknprotocol",
-								"io"
-							],
-							"path": [
-								"subjects",
-								"users",
-								"phone",
-								"8669029341",
-								"documents"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Assets",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "*/*"
-							},
-							{
-								"key": "Accept-Language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "Connection",
-								"value": "keep-alive"
-							},
-							{
-								"key": "Origin",
-								"value": "https://deg-wallet-dev.becknprotocol.io"
-							},
-							{
-								"key": "Referer",
-								"value": "https://deg-wallet-dev.becknprotocol.io/"
-							},
-							{
-								"key": "Sec-Fetch-Dest",
-								"value": "empty"
-							},
-							{
-								"key": "Sec-Fetch-Mode",
-								"value": "cors"
-							},
-							{
-								"key": "Sec-Fetch-Site",
-								"value": "same-site"
-							},
-							{
-								"key": "User-Agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							}
-						],
-						"url": {
-							"raw": "https://one.becknprotocol.io/subjects/users/phone/8669029341/documents",
-							"protocol": "https",
-							"host": [
-								"one",
-								"becknprotocol",
-								"io"
-							],
-							"path": [
-								"subjects",
-								"users",
-								"phone",
-								"8669029341",
-								"documents"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Transactions",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "*/*"
-							},
-							{
-								"key": "Accept-Language",
-								"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
-							},
-							{
-								"key": "Connection",
-								"value": "keep-alive"
-							},
-							{
-								"key": "Origin",
-								"value": "https://deg-wallet-dev.becknprotocol.io"
-							},
-							{
-								"key": "Referer",
-								"value": "https://deg-wallet-dev.becknprotocol.io/"
-							},
-							{
-								"key": "Sec-Fetch-Dest",
-								"value": "empty"
-							},
-							{
-								"key": "Sec-Fetch-Mode",
-								"value": "cors"
-							},
-							{
-								"key": "Sec-Fetch-Site",
-								"value": "same-site"
-							},
-							{
-								"key": "User-Agent",
-								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
-							},
-							{
-								"key": "sec-ch-ua",
-								"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
-							},
-							{
-								"key": "sec-ch-ua-mobile",
-								"value": "?0"
-							},
-							{
-								"key": "sec-ch-ua-platform",
-								"value": "\"macOS\""
-							}
-						],
-						"url": {
-							"raw": "https://one.becknprotocol.io/subjects/users/phone/8669029341/documents",
-							"protocol": "https",
-							"host": [
-								"one",
-								"becknprotocol",
-								"io"
-							],
-							"path": [
-								"subjects",
-								"users",
-								"phone",
-								"8669029341",
-								"documents"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "RETAIL_BASE_URL",
-			"value": "https://unified-strapi-dev.becknprotocol.io",
-			"type": "string"
-		}
-	]
+  "info": {
+    "_postman_id": "f41d171e-6dd2-4b4f-bac8-239f72a532f7",
+    "name": "DEG Non Beckn Api's",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23690031"
+  },
+  "item": [
+    {
+      "name": "Retail App",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "*/*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "content-type",
+                "value": "application/json"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-retail-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-retail-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone\": \"8669029341\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/mobile-login",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "mobile-login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "*/*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc2NzI4LCJleHAiOjE3NDQ5NjMxMjh9.c9sgHL8SwgfUbosoC8UfVco7K7iFf1oj54nGlIjskDs"
+              },
+              {
+                "key": "content-type",
+                "value": "application/json"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-retail-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-retail-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fullname\": \"shree\",\n    \"email\": \"shree1234@gmail.com\",\n    \"address\": \"Pune\",\n    \"password\": \"Test@123\",\n    \"phone_no\": \"9879879875\",\n    \"utility_name\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/signup",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "signup"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Edit Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ0LCJpYXQiOjE3NDQ4NzcyNTIsImV4cCI6MTc0NDk2MzY1Mn0.sARuX8-wF2Evk6dpctlfkQFBs7Z17uZok4IJycgcDqg"
+              },
+              {
+                "key": "content-type",
+                "value": "application/json"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-retail-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-retail-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fullname\": \"shree gaikwad\",\n    \"address\": \"Pirangut Pune\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/user-profile",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "user-profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "*/*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc3NDc2LCJleHAiOjE3NDQ5NjM4NzZ9.rwQ7L0w_bm4f-ThkKqs2dwZmIl5r0FBCM0iQ5h9vka4"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-retail-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-retail-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/order-history/get?filters\\[category\\]=18",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "order-history", "get"],
+              "query": [
+                {
+                  "key": "filters\\[category\\]",
+                  "value": "18"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Asset for Renting",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Origin",
+                "value": "https://deg-retail-dev.becknprotocol.io"
+              },
+              {
+                "key": "Referer",
+                "value": "https://deg-retail-dev.becknprotocol.io/"
+              },
+              {
+                "key": "Sec-Fetch-Dest",
+                "value": "empty"
+              },
+              {
+                "key": "Sec-Fetch-Mode",
+                "value": "cors"
+              },
+              {
+                "key": "Sec-Fetch-Site",
+                "value": "same-site"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              }
+            ],
+            "url": {
+              "raw": "https://one.becknprotocol.io/subjects/users/phone/8669029341/documents",
+              "protocol": "https",
+              "host": ["one", "becknprotocol", "io"],
+              "path": ["subjects", "users", "phone", "8669029341", "documents"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get My Service ( Rented Items)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc3NDc2LCJleHAiOjE3NDQ5NjM4NzZ9.rwQ7L0w_bm4f-ThkKqs2dwZmIl5r0FBCM0iQ5h9vka4"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-retail-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-retail-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/rent-catalogue",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "rent-catalogue"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rental App",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "*/*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQzLCJpYXQiOjE3NDQ4NzY0NDIsImV4cCI6MTc0NDk2Mjg0Mn0.WOEi7lUQoP5781MkBC1zUXaGW7yDqfX73E7q79XX0Js"
+              },
+              {
+                "key": "content-type",
+                "value": "application/json"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-rental-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-rental-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone\": \"8669029341\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/mobile-login",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "mobile-login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "*/*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc3ODU5LCJleHAiOjE3NDQ5NjQyNTl9.T_jxvjroFt7A1UqlQDfjET0xMqhA4Ok9paGmjObVrvk"
+              },
+              {
+                "key": "content-type",
+                "value": "application/json"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-rental-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-rental-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fullname\": \"Raju\",\n    \"email\": \"raju1234@gmail.com\",\n    \"address\": \"Pune\",\n    \"password\": \"Test@123\",\n    \"phone_no\": \"7373737275\",\n    \"utility_name\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/signup",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "signup"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Edit Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ2LCJpYXQiOjE3NDQ4Nzc5MzUsImV4cCI6MTc0NDk2NDMzNX0.n3Hnc9Cs9T6Bnk5TYlDtW71qAsA4e9T6eA6kqbWviCM"
+              },
+              {
+                "key": "content-type",
+                "value": "application/json"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-rental-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-rental-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fullname\": \"Raju Gaikwad\",\n    \"address\": \"Amaravati\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/user-profile",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "user-profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Rentals",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwMywiaWF0IjoxNzQ0ODc4MDY5LCJleHAiOjE3NDQ5NjQ0Njl9.TTHe9rMWeWqL5EXrfWhNnEAt6gkZxl3k3MxpOvMpURY"
+              },
+              {
+                "key": "Referer",
+                "value": "https://deg-rental-dev.becknprotocol.io/"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              }
+            ],
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/order-history/get?filters\\[category\\]=20",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "order-history", "get"],
+              "query": [
+                {
+                  "key": "filters\\[category\\]",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Finance App",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "*/*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "content-type",
+                "value": "application/json"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-finance-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-finance-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone\": \"9999912344\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/beckn-energy-finance/mobile-login",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["beckn-energy-finance", "mobile-login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Loan Application",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU5MiwiaWF0IjoxNzQ0ODc4MzgwLCJleHAiOjE3NDQ5NjQ3ODB9.fJ4xlHm3o8cHU7im_2DV6EU1K-JXdbAPN0rP2MKgWgE"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-finance-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-finance-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/beckn-energy-finance/orders",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["beckn-energy-finance", "orders"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Loan Catalogue",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU5MiwiaWF0IjoxNzQ0ODc4MzgwLCJleHAiOjE3NDQ5NjQ3ODB9.fJ4xlHm3o8cHU7im_2DV6EU1K-JXdbAPN0rP2MKgWgE"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-finance-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-finance-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/beckn-energy-finance/catalogues",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["beckn-energy-finance", "catalogues"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Wallet App",
+      "item": [
+        {
+          "name": "Create Connection",
+          "item": [
+            {
+              "name": "Country Code",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "accept",
+                    "value": "application/json, text/plain, */*"
+                  },
+                  {
+                    "key": "accept-language",
+                    "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+                  },
+                  {
+                    "key": "origin",
+                    "value": "https://deg-wallet-dev.becknprotocol.io"
+                  },
+                  {
+                    "key": "priority",
+                    "value": "u=1, i"
+                  },
+                  {
+                    "key": "referer",
+                    "value": "https://deg-wallet-dev.becknprotocol.io/"
+                  },
+                  {
+                    "key": "sec-ch-ua",
+                    "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+                  },
+                  {
+                    "key": "sec-ch-ua-mobile",
+                    "value": "?0"
+                  },
+                  {
+                    "key": "sec-ch-ua-platform",
+                    "value": "\"macOS\""
+                  },
+                  {
+                    "key": "sec-fetch-dest",
+                    "value": "empty"
+                  },
+                  {
+                    "key": "sec-fetch-mode",
+                    "value": "cors"
+                  },
+                  {
+                    "key": "sec-fetch-site",
+                    "value": "same-site"
+                  },
+                  {
+                    "key": "user-agent",
+                    "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+                  }
+                ],
+                "url": {
+                  "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/utility/companies?country_code=USA",
+                  "host": ["{{RETAIL_BASE_URL}}"],
+                  "path": ["unified-beckn-energy", "utility", "companies"],
+                  "query": [
+                    {
+                      "key": "country_code",
+                      "value": "USA"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "attest",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "accept",
+                    "value": "application/json, text/plain, */*"
+                  },
+                  {
+                    "key": "accept-language",
+                    "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "origin",
+                    "value": "https://deg-wallet-dev.becknprotocol.io"
+                  },
+                  {
+                    "key": "priority",
+                    "value": "u=1, i"
+                  },
+                  {
+                    "key": "referer",
+                    "value": "https://deg-wallet-dev.becknprotocol.io/"
+                  },
+                  {
+                    "key": "sec-ch-ua",
+                    "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+                  },
+                  {
+                    "key": "sec-ch-ua-mobile",
+                    "value": "?0"
+                  },
+                  {
+                    "key": "sec-ch-ua-platform",
+                    "value": "\"macOS\""
+                  },
+                  {
+                    "key": "sec-fetch-dest",
+                    "value": "empty"
+                  },
+                  {
+                    "key": "sec-fetch-mode",
+                    "value": "cors"
+                  },
+                  {
+                    "key": "sec-fetch-site",
+                    "value": "same-site"
+                  },
+                  {
+                    "key": "user-agent",
+                    "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"wallet_doc_type\":\"IDENTITIES\",\"document_id\":\"/subjects/users/phone/8669029341/documents/identities/type/electricity/id/5487774000/1744890705/MZT\",\"deg_wallet_id\":\"/subjects/users/phone/8669029341\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/wallet/attest",
+                  "host": ["{{RETAIL_BASE_URL}}"],
+                  "path": ["unified-beckn-energy", "wallet", "attest"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Create Assets",
+          "item": [
+            {
+              "name": "attest",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "accept",
+                    "value": "application/json, text/plain, */*"
+                  },
+                  {
+                    "key": "accept-language",
+                    "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "origin",
+                    "value": "https://deg-wallet-dev.becknprotocol.io"
+                  },
+                  {
+                    "key": "priority",
+                    "value": "u=1, i"
+                  },
+                  {
+                    "key": "referer",
+                    "value": "https://deg-wallet-dev.becknprotocol.io/"
+                  },
+                  {
+                    "key": "sec-ch-ua",
+                    "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+                  },
+                  {
+                    "key": "sec-ch-ua-mobile",
+                    "value": "?0"
+                  },
+                  {
+                    "key": "sec-ch-ua-platform",
+                    "value": "\"macOS\""
+                  },
+                  {
+                    "key": "sec-fetch-dest",
+                    "value": "empty"
+                  },
+                  {
+                    "key": "sec-fetch-mode",
+                    "value": "cors"
+                  },
+                  {
+                    "key": "sec-fetch-site",
+                    "value": "same-site"
+                  },
+                  {
+                    "key": "user-agent",
+                    "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"wallet_doc_type\":\"PHYSICAL_ASSETS\",\"document_id\":\"/subjects/users/phone/8669029341/documents/assets/physical/type/battery/source/wallet/1744881866/visaNew.svg/TJ6\",\"deg_wallet_id\":\"/subjects/users/phone/8669029341\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/wallet/attest",
+                  "protocol": "https",
+                  "host": ["unified-strapi-dev", "becknprotocol", "io"],
+                  "path": ["unified-beckn-energy", "wallet", "attest"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Add Battery to Wallet",
+          "item": [
+            {
+              "name": "attest",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "accept",
+                    "value": "application/json, text/plain, */*"
+                  },
+                  {
+                    "key": "accept-language",
+                    "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "origin",
+                    "value": "https://deg-retail-dev.becknprotocol.io"
+                  },
+                  {
+                    "key": "priority",
+                    "value": "u=1, i"
+                  },
+                  {
+                    "key": "referer",
+                    "value": "https://deg-retail-dev.becknprotocol.io/"
+                  },
+                  {
+                    "key": "sec-ch-ua",
+                    "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+                  },
+                  {
+                    "key": "sec-ch-ua-mobile",
+                    "value": "?0"
+                  },
+                  {
+                    "key": "sec-ch-ua-platform",
+                    "value": "\"macOS\""
+                  },
+                  {
+                    "key": "sec-fetch-dest",
+                    "value": "empty"
+                  },
+                  {
+                    "key": "sec-fetch-mode",
+                    "value": "cors"
+                  },
+                  {
+                    "key": "sec-fetch-site",
+                    "value": "same-site"
+                  },
+                  {
+                    "key": "user-agent",
+                    "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"wallet_doc_type\":\"PHYSICAL_ASSETS\",\"document_id\":\"/subjects/users/phone/8669029341/documents/assets/physical/type/starmax_gc_stcr-305_–_6-volt_deep_cycle_flooded.../source/spark/1744886409/3768\",\"deg_wallet_id\":\"/subjects/users/phone/8669029341\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://unified-strapi-dev.becknprotocol.io/unified-beckn-energy/wallet/attest",
+                  "protocol": "https",
+                  "host": ["unified-strapi-dev", "becknprotocol", "io"],
+                  "path": ["unified-beckn-energy", "wallet", "attest"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "accept-language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "content-type",
+                "value": "application/json"
+              },
+              {
+                "key": "origin",
+                "value": "https://deg-wallet-dev.becknprotocol.io"
+              },
+              {
+                "key": "priority",
+                "value": "u=1, i"
+              },
+              {
+                "key": "referer",
+                "value": "https://deg-wallet-dev.becknprotocol.io/"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              },
+              {
+                "key": "sec-fetch-dest",
+                "value": "empty"
+              },
+              {
+                "key": "sec-fetch-mode",
+                "value": "cors"
+              },
+              {
+                "key": "sec-fetch-site",
+                "value": "same-site"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone\": \"8669029341\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{RETAIL_BASE_URL}}/unified-beckn-energy/mobile-login",
+              "host": ["{{RETAIL_BASE_URL}}"],
+              "path": ["unified-beckn-energy", "mobile-login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Connections",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Origin",
+                "value": "https://deg-wallet-dev.becknprotocol.io"
+              },
+              {
+                "key": "Referer",
+                "value": "https://deg-wallet-dev.becknprotocol.io/"
+              },
+              {
+                "key": "Sec-Fetch-Dest",
+                "value": "empty"
+              },
+              {
+                "key": "Sec-Fetch-Mode",
+                "value": "cors"
+              },
+              {
+                "key": "Sec-Fetch-Site",
+                "value": "same-site"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              }
+            ],
+            "url": {
+              "raw": "https://one.becknprotocol.io/subjects/users/phone/8669029341/documents",
+              "protocol": "https",
+              "host": ["one", "becknprotocol", "io"],
+              "path": ["subjects", "users", "phone", "8669029341", "documents"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Assets",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Origin",
+                "value": "https://deg-wallet-dev.becknprotocol.io"
+              },
+              {
+                "key": "Referer",
+                "value": "https://deg-wallet-dev.becknprotocol.io/"
+              },
+              {
+                "key": "Sec-Fetch-Dest",
+                "value": "empty"
+              },
+              {
+                "key": "Sec-Fetch-Mode",
+                "value": "cors"
+              },
+              {
+                "key": "Sec-Fetch-Site",
+                "value": "same-site"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              }
+            ],
+            "url": {
+              "raw": "https://one.becknprotocol.io/subjects/users/phone/8669029341/documents",
+              "protocol": "https",
+              "host": ["one", "becknprotocol", "io"],
+              "path": ["subjects", "users", "phone", "8669029341", "documents"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Transactions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Origin",
+                "value": "https://deg-wallet-dev.becknprotocol.io"
+              },
+              {
+                "key": "Referer",
+                "value": "https://deg-wallet-dev.becknprotocol.io/"
+              },
+              {
+                "key": "Sec-Fetch-Dest",
+                "value": "empty"
+              },
+              {
+                "key": "Sec-Fetch-Mode",
+                "value": "cors"
+              },
+              {
+                "key": "Sec-Fetch-Site",
+                "value": "same-site"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"macOS\""
+              }
+            ],
+            "url": {
+              "raw": "https://one.becknprotocol.io/subjects/users/phone/8669029341/documents",
+              "protocol": "https",
+              "host": ["one", "becknprotocol", "io"],
+              "path": ["subjects", "users", "phone", "8669029341", "documents"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "RETAIL_BASE_URL",
+      "value": "https://bpp-unified-strapi-deg.becknprotocol.io",
+      "type": "string"
+    }
+  ]
 }
