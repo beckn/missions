@@ -4,9 +4,9 @@
 
 ## Version History
 
-| Date       | Version | Description                                         |
-| ---------- | ------- | --------------------------------------------------- |
-| 15-04-2025 | 1.0     | Initial Version                                     |
+| Date       | Version | Description     |
+| ---------- | ------- | --------------- |
+| 15-04-2025 | 1.0     | Initial Version |
 
 ## Introduction
 
@@ -16,17 +16,19 @@ This document provides example JSONs for the Energy: Energy Finance use case.
 
 This document has the following parts:
 
-1. Outcome Visualization - This is a pictorial or descriptive representation of the different use cases that are supported by the network.
-3. API Calls and Schema - This section provides details on the API calls and the schema of the message that is sent in the form of sample schemas.
-4. Taxonomy and layer 2 configuration - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
-7. Sandbox Details - Sandbox links to BAP, Registry/Gateway and BPP.
+<!-- 1. Outcome Visualization - This is a pictorial or descriptive representation of the different use cases that are supported by the network. -->
 
-## Outcome Visualization
+1. API Calls and Schema - This section provides details on the API calls and the schema of the message that is sent in the form of sample schemas.
+2. Taxonomy and layer 2 configuration - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
+3. Sandbox Details - Sandbox links to BAP, Registry/Gateway and BPP.
 
-![Energy Finance Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg)
+<!-- ## Outcome Visualization
+
+![Energy Finance Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg) -->
 
 ### Use case - Discovery, order and fulfillment of Energy Finance services
-<>
+
+<!-- <> -->
 
 ## API Calls and Schema
 
@@ -632,7 +634,7 @@ This document has the following parts:
 
 ```
 
-
+<!--
 ## Taxonomy and layer 2 configuration
 
 ## Links to artifacts
@@ -659,4 +661,4 @@ This document has the following parts:
 
 - **BPP Client Sandbox:** []()
 - **BPP Network Sandbox:** []()
-- **BPP Playground Sandbox:** []()
+- **BPP Playground Sandbox:** []() -->

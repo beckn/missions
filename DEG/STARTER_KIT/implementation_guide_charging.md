@@ -4,12 +4,12 @@
 
 ## Version History
 
-| Date       | Version | Description                                         |
-| ---------- | ------- | --------------------------------------------------- |
-| 07-08-2024 | 1.0     | Initial Version                                     |
-| 09-09-2024 | 1.1     | Incorporated input from Participants during Winroom |
-| 14-11-2024 | 1.2     | Incorporated feedback from Participants|
-| 25-11-2024 | 1.3     | Updated moving connector specification tag groups from "fulfillments" to "items."|
+| Date       | Version | Description                                                                       |
+| ---------- | ------- | --------------------------------------------------------------------------------- |
+| 07-08-2024 | 1.0     | Initial Version                                                                   |
+| 09-09-2024 | 1.1     | Incorporated input from Participants during Winroom                               |
+| 14-11-2024 | 1.2     | Incorporated feedback from Participants                                           |
+| 25-11-2024 | 1.3     | Updated moving connector specification tag groups from "fulfillments" to "items." |
 
 ## Introduction
 
@@ -57,7 +57,7 @@ This use cases uses the names "Pulse Energy" and "Kazam" as examples for illustr
 
 - Srilekha plugs the kazam’s charger into her vehicle and initiates the charging process. After an hour, the charging stops, and she is prompted to either remove the charger or continue charging. Srilekha removes the charger from her vehicle, thus ending the charging process.
 
-**Post Fulfilment**: 
+**Post Fulfilment**:
 
 - Srilekha rates her experience using a 0-5 star rating.
 
@@ -1657,7 +1657,7 @@ Search request can contain one or more search criterion within it. Use the follo
               "list": [
                 {
                     "descriptor": {
-                      "name": "Energy Delivered",  
+                      "name": "Energy Delivered",
                       "code": "energy-delivered"
                     },
                     "value": "2.3kWh"
@@ -2333,7 +2333,7 @@ Search request can contain one or more search criterion within it. Use the follo
               "list": [
                 {
                     "descriptor": {
-                      "name": "Energy Delivered",  
+                      "name": "Energy Delivered",
                       "code": "energy-delivered"
                     },
                     "value": "2.3kWh"
@@ -2824,7 +2824,7 @@ Search request can contain one or more search criterion within it. Use the follo
               "list": [
                 {
                     "descriptor": {
-                      "name": "Energy Delivered",  
+                      "name": "Energy Delivered",
                       "code": "energy-delivered"
                     },
                     "value": "2.3kWh"
@@ -2955,7 +2955,9 @@ Search request can contain one or more search criterion within it. Use the follo
   }
 }
 ```
+
 ### get_rating_categories
+
 - BAP can fetch a list of categoried for which a BPP supports prviding rating
 - BAP does not need to send anything in the message field.
 
@@ -2984,6 +2986,7 @@ Search request can contain one or more search criterion within it. Use the follo
   }
 }
 ```
+
 ### rating_categories
 
 - The BPP responds with a list of categories in which ratings can be provided.
@@ -3110,44 +3113,43 @@ Search request can contain one or more search criterion within it. Use the follo
 
 Below is a list of standardised codes used in this implememtation. Each of these codes also have a list of standardised enum values associated with them. These codes and enums are expected to evolve with time as more NPs implement the UEI EV charging use case.
 
-| SN | Path     | Tag Code | Meaning  | Enums    |
-|----|----------|----------| ---------| ---------|
-|  1  |   Charging Point Specifications    | identifier       |          |          |
-|  2  |   Charging Point Specifications     | manufacturer       |          |     EVSE, OEM     |
-| 3   |   Charging Point Specifications    | availability      |          |    Online, Offline      |
-|  4  |  Charging Point Specifications      | charger-type       |          |          |
-|  5  |  Charging Point Specifications      | power-rating       |          |          |
-|  6  |  Connector Specification     | charger-type       |          |       AC, DC   |
-|  7  |  Connector Specification     | connector-type       |          |     Enums defined in the below table    |
-|  8  |  Connector Specification     | power-rating       |          |         |
-|  9  |  Connector Specification     | availability       |          |    Available, Unavailable, Preparing, Finishing, Charging, SuspendedEVSE, SuspendedEV, Reserved, Faulted     |
-|  10  |   quote breakup  | energy-cost       |          |          |
-|  11  |   quote breakup  | service-charge       |          |          |
-|  12  |   quote breakup  | platform-fee       |          |          |
-|  13  |   quote breakup  | parking-fee       |          |          |
-|  14  |   quote breakup  | gst       |          |          |
-|  15  |   quote breakup  | total       |          |          |
-|  16  |   payment  | payment_type       |          |   PRE-ORDER       |
-|  17  |   payment  | payment_status       |          |   PAID, NOT-PAID       |
-|  18  |   payment  | collected_by       |          |   bap, bpp       |
-|  19  |   fulfillment   |  state    |          |   start-chargin, end-chargin, charging-started, charging-ended, order-initiated, payment-completed       |
-|  20  |  Connector  Charging Details     | energy-delivered       |          |          |
-|  21  | Connector  Charging Details       | soc       |          |          |
-|   22 |  Connector  Charging Details      | start-time       |          |          |
-|  23  |   Connector  Charging Details     | stop-time       |          |          |
-|  24  | Connector  Charging Details       | meter-start       |          |          |
-|  25  |  Connector  Charging Details      | meter-stop       |          |          |
-|  26  |  Connector  Charging Details      | current       |          |          |
-|  27  |  Connector  Charging Details      | power       |          |          |
-|  28  | Connector  Charging Details       | voltage       |          |          |
-
+| SN  | Path                          | Tag Code         | Meaning | Enums                                                                                                 |
+| --- | ----------------------------- | ---------------- | ------- | ----------------------------------------------------------------------------------------------------- |
+| 1   | Charging Point Specifications | identifier       |         |                                                                                                       |
+| 2   | Charging Point Specifications | manufacturer     |         | EVSE, OEM                                                                                             |
+| 3   | Charging Point Specifications | availability     |         | Online, Offline                                                                                       |
+| 4   | Charging Point Specifications | charger-type     |         |                                                                                                       |
+| 5   | Charging Point Specifications | power-rating     |         |                                                                                                       |
+| 6   | Connector Specification       | charger-type     |         | AC, DC                                                                                                |
+| 7   | Connector Specification       | connector-type   |         | Enums defined in the below table                                                                      |
+| 8   | Connector Specification       | power-rating     |         |                                                                                                       |
+| 9   | Connector Specification       | availability     |         | Available, Unavailable, Preparing, Finishing, Charging, SuspendedEVSE, SuspendedEV, Reserved, Faulted |
+| 10  | quote breakup                 | energy-cost      |         |                                                                                                       |
+| 11  | quote breakup                 | service-charge   |         |                                                                                                       |
+| 12  | quote breakup                 | platform-fee     |         |                                                                                                       |
+| 13  | quote breakup                 | parking-fee      |         |                                                                                                       |
+| 14  | quote breakup                 | gst              |         |                                                                                                       |
+| 15  | quote breakup                 | total            |         |                                                                                                       |
+| 16  | payment                       | payment_type     |         | PRE-ORDER                                                                                             |
+| 17  | payment                       | payment_status   |         | PAID, NOT-PAID                                                                                        |
+| 18  | payment                       | collected_by     |         | bap, bpp                                                                                              |
+| 19  | fulfillment                   | state            |         | start-chargin, end-chargin, charging-started, charging-ended, order-initiated, payment-completed      |
+| 20  | Connector Charging Details    | energy-delivered |         |                                                                                                       |
+| 21  | Connector Charging Details    | soc              |         |                                                                                                       |
+| 22  | Connector Charging Details    | start-time       |         |                                                                                                       |
+| 23  | Connector Charging Details    | stop-time        |         |                                                                                                       |
+| 24  | Connector Charging Details    | meter-start      |         |                                                                                                       |
+| 25  | Connector Charging Details    | meter-stop       |         |                                                                                                       |
+| 26  | Connector Charging Details    | current          |         |                                                                                                       |
+| 27  | Connector Charging Details    | power            |         |                                                                                                       |
+| 28  | Connector Charging Details    | voltage          |         |                                                                                                       |
 
 List of enums values defined for connector-type code
 
-- CHADEMO - The connector type is CHAdeMO, DC 
--  CHAOJI -  The ChaoJi connector. The new generation charging connector, harmonized between CHAdeMO and GB/T. DC.
--  DOMESTIC_A  - Standard/Domestic household, type "A", NEMA 1-15, 2 pins
--  DOMESTIC_B  - Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+- CHADEMO - The connector type is CHAdeMO, DC
+- CHAOJI -  The ChaoJi connector. The new generation charging connector, harmonized between CHAdeMO and GB/T. DC.
+- DOMESTIC_A  - Standard/Domestic household, type "A", NEMA 1-15, 2 pins
+- DOMESTIC_B  - Standard/Domestic household, type "B", NEMA 5-15, 3 pins
 - DOMESTIC_C  - Standard/Domestic household, type "C", CEE 7/17, 2 pins
 - DOMESTIC_D  - Standard/Domestic household, type "D", 3 pin
 - DOMESTIC_E  - Standard/Domestic household, type "E", CEE 7/5 3 pins
@@ -3239,7 +3241,7 @@ If you are writing the provider platform software, the following are the steps y
 - [Layer2 config for UEI EV Charging](https://github.com/beckn/missions/blob/main/UEI/layer2/EV-charging/3.1/energy_EV_1.1.0_openapi_3.1.yaml)
 - When installing layer2 using Beckn-ONIX use this web address (https://raw.githubusercontent.com/beckn/missions/refs/heads/main/UEI/layer2/EV-charging/3.1/energy_EV_1.1.0_openapi_3.1.yaml)
 
-## Sandbox Details
+<!-- ## Sandbox Details
 
 ![UEI Alliance](https://github.com/beckn/missions/blob/main/docs/assets/images/UEI%20Alliance.png)
 
@@ -3257,4 +3259,4 @@ If you are writing the provider platform software, the following are the steps y
 
 - **BPP Client Sandbox:** [https://bpp-ps-client-sandbox.ueialliance.org/](https://bpp-ps-client-sandbox.ueialliance.org/)
 - **BPP Network Sandbox:** [https://bpp-ps-network-sandbox.ueialliance.org/](https://bpp-ps-network-sandbox.ueialliance.org/)
-- **BPP Playground Sandbox:** [https://bpp-playground-sandbox.ueialliance.org/](https://bpp-playground-sandbox.ueialliance.org/)
+- **BPP Playground Sandbox:** [https://bpp-playground-sandbox.ueialliance.org/](https://bpp-playground-sandbox.ueialliance.org/) -->
