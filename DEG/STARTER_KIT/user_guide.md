@@ -6,7 +6,7 @@ DEG Platform - Complete User Guide
 
 | S.No. | Action / Feature       | Steps                                                                                                                                   |
 | ----- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | Go to URL              | Go to [https://exp.energy.becknprotocol.io/](https://exp.energy.becknprotocol.io/)                                                      |
+| 1     | Go to URL              | Go to [https://deg-experience-sandbox.becknprotocol.io](https://deg-experience-sandbox.becknprotocol.io)                                |
 | 2     | Click Begin            | Click on 'begin' button                                                                                                                 |
 | 3     | Open Wallet Experience | Start with wallet experience by clicking on 'Wallet Experience' tab                                                                     |
 | 4     | Sign In                | Enter 10 digit mobile number (e.g., 7777755555) then click on sign in. If number is not registered it will be automatically registered. |
