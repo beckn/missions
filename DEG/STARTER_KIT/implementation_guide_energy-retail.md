@@ -21,7 +21,7 @@ This document has the following parts:
 
 ## Outcome Visualization
 
-![Energy Retail Outcome Visualization](./images/Energy-Retail.png)
+<!-- ![Energy Retail Outcome Visualization](./images/Energy-Retail.png) -->
 
 ### Use case - Discovery, order and fulfillment of Energy Retail services
 

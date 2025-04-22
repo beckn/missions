@@ -21,7 +21,7 @@ This document has the following parts:
 
 ## Outcome Visualization
 
-![Energy Finance Outcome Visualization](./images/Energy-Finance.png)
+<!-- ![Energy Finance Outcome Visualization](./images/Energy-Finance.png) -->
 
 ### Use case - Discovery, order and fulfillment of Energy Finance services
 

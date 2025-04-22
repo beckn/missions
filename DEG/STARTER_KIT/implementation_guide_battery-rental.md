@@ -21,7 +21,7 @@ This document has the following parts:
 
 ## Outcome Visualization
 
-![Battery Rental Outcome Visualization](./images/Battery-Rental.png)
+<!-- ![Battery Rental Outcome Visualization](./images/Battery-Rental.png) -->
 
 ### Use case - Discovery, order and fulfillment of Battery Rental services
 

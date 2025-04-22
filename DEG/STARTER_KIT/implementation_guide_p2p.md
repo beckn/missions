@@ -21,7 +21,7 @@ This document has the following parts:
 
 ## Outcome Visualization
 
-![P2P energy trade Outcome Visualization](./images/P2P-Trade.png)
+<!-- ![P2P energy trade Outcome Visualization](./images/P2P-Trade.png) -->
 
 ### Use case - Discovery, order and fulfillment of P2P energy trade
 
