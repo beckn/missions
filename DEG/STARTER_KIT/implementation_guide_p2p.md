@@ -16,15 +16,12 @@ This document provides example JSONs for the Energy: P2P trade use case.
 
 This document has the following parts:
 
-<!-- 1. Outcome Visualization - This is a pictorial or descriptive representation of the different use cases that are supported by the network. -->
+1. Outcome Visualization - This is a pictorial or descriptive representation of the different use cases that are supported by the network.
+2. API Calls and Schema - This section provides details on the API calls and the schema of the message that is sent in the form of sample schemas.
 
-1. API Calls and Schema - This section provides details on the API calls and the schema of the message that is sent in the form of sample schemas.
-2. Taxonomy and layer 2 configuration - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
-3. Sandbox Details - Sandbox links to BAP, Registry/Gateway and BPP.
+## Outcome Visualization
 
-<!-- ## Outcome Visualization -->
-
-<!-- ![P2P energy trade Outcome Visualization](./images/P2P-Trade.png) -->
+![P2P energy trade Outcome Visualization](./images/P2P-Trade.png)
 
 ### Use case - Discovery, order and fulfillment of P2P energy trade
 
