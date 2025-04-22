@@ -24,9 +24,28 @@ This document has the following parts:
 
 <!-- ## Outcome Visualization
 
-![Energy Finance Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg) -->
+![Energy Finance Outcome Visualization](./images/Energy-Finance.png) -->
 
 ### Use case - Discovery, order and fulfillment of Energy Finance services
+
+This use case follows Priya, a young professional in Seattle, Washington, as she buys a battery on EMI through a digital marketplace app.
+
+Discovery:
+Priya opens the app and searches for a battery she wants to purchase.
+She browses the catalog and selects a battery that fits her requirements.
+
+Order:
+The app shows multiple EMI options, each with details like interest rate, tenure, processing fee, and total cost.
+Priya picks a suitable EMI plan based on her budget.
+She then chooses to sync her credit score with the order, which may apply an additional discount based on her credit profile.
+Satisfied with the final cost, she proceeds to place the order.
+
+Fulfillment:
+Priya receives a confirmation of her order along with EMI and billing details.
+She can view and track her order status through the ‘My Orders’ section, monitoring updates on shipping, delivery, and payment schedule.
+
+Post Fulfillment:
+After receiving the battery, Priya has the option to rate the product, contact support for any issues, or review her EMI plan in detail for future reference.
 
 <!-- <> -->
 
@@ -634,31 +653,3 @@ This document has the following parts:
 
 ```
 
-<!--
-## Taxonomy and layer 2 configuration
-
-## Links to artifacts
-
-- [Postman collection ]()
-- [Layer2 config ]()
-- When installing layer2 using Beckn-ONIX use this web address ()
-
-## Sandbox Details
-
-![UEI Alliance]()
-
-### BAP:
-
-- **BAP Client Sandbox:** []()
-- **BAP Network Sandbox:** []()
-
-### Registry/Gateway:
-
-- **Gateway Sandbox:** []()
-- **Registry Sandbox:** []()
-
-### BPP:
-
-- **BPP Client Sandbox:** []()
-- **BPP Network Sandbox:** []()
-- **BPP Playground Sandbox:** []() -->

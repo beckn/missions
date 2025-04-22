@@ -25,9 +25,28 @@ This document has the following parts:
 
 <!-- ## Outcome Visualization
 
-![Battery Rental Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg) -->
+![Battery Rental Outcome Visualization](./images/Battery-Rental.png) -->
 
 ### Use case - Discovery, order and fulfillment of Battery Rental services
+
+This use case follows Samantha, a freelance photographer in Portland, Oregon, as she rents a battery using a digital marketplace app.
+
+Discovery:
+Samantha opens the app and taps on ‘Battery Rental’.
+She uses the search box to explore all available rental batteries.
+
+Order:
+She selects a battery and picks the rental date and time.
+The app redirects her to the Billing & Shipping page, where her name, address, and contact info are pre-filled.
+She reviews the billing summary, then proceeds to the Payment Options screen.
+Samantha selects a payment method and confirms the transaction using a 6-digit OTP.
+
+Fulfillment:
+Upon successful payment, a rental confirmation screen appears showing the purchase details.
+
+Post Fulfillment:
+Samantha navigates to the ‘My Rentals’ tab on the home screen
+and verifies her newly rented battery is listed.
 
 ## API Calls and Schema
 
@@ -1657,31 +1676,3 @@ This document has the following parts:
     }
 }
 ```
-
-<!-- ## Taxonomy and layer 2 configuration
-
-## Links to artifacts
-
-- [Postman collection ]()
-- [Layer2 config ]()
-- When installing layer2 using Beckn-ONIX use this web address ()
-
-## Sandbox Details
-
-![UEI Alliance]()
-
-### BAP:
-
-- **BAP Client Sandbox:** []()
-- **BAP Network Sandbox:** []()
-
-### Registry/Gateway:
-
-- **Gateway Sandbox:** []()
-- **Registry Sandbox:** []()
-
-### BPP:
-
-- **BPP Client Sandbox:** []()
-- **BPP Network Sandbox:** []()
-- **BPP Playground Sandbox:** []() -->

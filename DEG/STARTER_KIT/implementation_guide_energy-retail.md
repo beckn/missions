@@ -24,9 +24,27 @@ This document has the following parts:
 
 <!-- ## Outcome Visualization
 
-![Energy Retail Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg) -->
+![Energy Retail Outcome Visualization](./images/Energy-Retail.png) -->
 
 ### Use case - Discovery, order and fulfillment of Energy Retail services
+
+This use case follows Jason, a tech enthusiast in Austin, Texas, as he purchases a battery and lists it for rental using a digital marketplace and finance app.
+
+Discovery:
+Jason opens the marketplace app, types ‘Battery’ in the search bar, and selects one from the results. He reviews the product description, picks the quantity, and clicks ‘Add to Cart’.
+
+Order:
+He goes to the cart, verifies the item, and taps ‘Proceed’. After confirming his shipping details, a loader appears before showing a complete summary.
+
+At checkout, Jason—being a repeat buyer—is eligible for EMI plans. He explores options showing processing fee, duration, and total cost, then clicks ‘Sync Now’ to apply a 2% interest discount from past transactions.
+
+He checks the EMI Plan Breakup, selects a plan, and auto-fills the EMI form using wallet sync. After submitting, a success screen confirms his order and loan details. He finalizes the purchase using his credit card and OTP.
+
+Fulfillment:
+After payment, Jason sees a confirmation screen. He taps ‘View Order Details’, reviews the product info, and clicks ‘Add to Wallet’. The battery appears under ‘Transactions’; alternatively, he could have scanned a QR code to add it.
+
+Post Fulfillment:
+In the rental section, Jason selects ‘Provide Rental Service’, chooses the battery from his wallet, sets rental date, time, and price, and lists it for rental.
 
 ## API Calls and Schema
 
@@ -1240,31 +1258,3 @@ This document has the following parts:
     }
 }
 ```
-
-<!-- ## Taxonomy and layer 2 configuration
-
-## Links to artifacts
-
-- [Postman collection ]()
-- [Layer2 config ]()
-- When installing layer2 using Beckn-ONIX use this web address ()
-
-## Sandbox Details
-
-![UEI Alliance]()
-
-### BAP:
-
-- **BAP Client Sandbox:** []()
-- **BAP Network Sandbox:** []()
-
-### Registry/Gateway:
-
-- **Gateway Sandbox:** []()
-- **Registry Sandbox:** []()
-
-### BPP:
-
-- **BPP Client Sandbox:** []()
-- **BPP Network Sandbox:** []()
-- **BPP Playground Sandbox:** []() -->

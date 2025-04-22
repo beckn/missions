@@ -1,4 +1,4 @@
-# UEI Implementation Guide - Battery P2P
+# UEI Implementation Guide - P2P Energy Trade
 
 #### Version 1.0
 
@@ -10,7 +10,7 @@
 
 ## Introduction
 
-This document provides example JSONs for the Energy: Battery P2P use case.
+This document provides example JSONs for the Energy: P2P trade use case.
 
 ## Structure of the document
 
@@ -24,9 +24,28 @@ This document has the following parts:
 
 <!-- ## Outcome Visualization -->
 
-<!-- ![Battery P2P Outcome Visualization](https://github.com/beckn/missions/blob/main/UEI/images/uei_outcome_visualization.svg) -->
+<!-- ![P2P energy trade Outcome Visualization](./images/P2P-Trade.png) -->
 
-### Use case - Discovery, order and fulfillment of Battery P2P services
+### Use case - Discovery, order and fulfillment of P2P energy trade
+
+This use case follows David, a homeowner in Austin, Texas, as he purchases surplus solar energy from peers through a peer-to-peer energy network.
+
+Discovery:
+David logs into the app and navigates to the energy marketplace.
+He decides to raise a demand request for additional energy to meet his household consumption.
+
+Order:
+David specifies the units required, rate per unit, and selects a payment method—opting to use his linked wallet.
+He submits the energy demand request to the network.
+
+Fulfillment:
+The system matches his demand with available energy supplies from other users.
+David can track the status of his demand request in real time.
+Once a match is found, he is notified, the wallet balance is auto-deducted, and the energy units are delivered to his account.
+
+Post Fulfillment:
+The purchased energy is automatically reflected and adjusted in David’s current billing cycle, and he can review this adjustment in his monthly energy statement.
+
 
 <!-- <> -->
 
@@ -1033,31 +1052,3 @@ This document has the following parts:
   }
 }
 ```
-
-## Taxonomy and layer 2 configuration
-
-## Links to artifacts
-
-- [Postman collection ]()
-- [Layer2 config ]()
-- When installing layer2 using Beckn-ONIX use this web address ()
-
-## Sandbox Details
-
-![UEI Alliance]()
-
-### BAP:
-
-- **BAP Client Sandbox:** []()
-- **BAP Network Sandbox:** []()
-
-### Registry/Gateway:
-
-- **Gateway Sandbox:** []()
-- **Registry Sandbox:** []()
-
-### BPP:
-
-- **BPP Client Sandbox:** []()
-- **BPP Network Sandbox:** []()
-- **BPP Playground Sandbox:** []()
