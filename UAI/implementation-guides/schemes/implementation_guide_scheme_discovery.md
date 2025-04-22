@@ -28,7 +28,7 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
-![UAI Knowledge Advisory Outcome Visualization](images/uai_knowledge_advisory_outcome_visualization.svg)
+![UAI Knowledge Advisory Outcome Visualization](../../Images/uai_knowledge_advisory_outcome_visualization.svg)
 
 ### Use case - Discovery of Schemes
 Farmer searching for government schemes and looking for ways to fulfill the schemes from service providers on the UKI Network
@@ -142,29 +142,29 @@ Beckn is a aynchronous protocol at its core.
 
 **Search for resources on topic**
 
-![Search for resources on infested disease](Images/Advisory/free/UAI%20advisory-Discovery.jpg)
+![Search for resources on infested disease](../../Images/Advisory/free/UAI%20advisory-Discovery.jpg)
 
 **Seek support and provide rating**
 
-![Support call to get contact information of Provider platofrm](./Images/Advisory/free/uai-Post%20Fulfilment.jpg)
+![Support call to get contact information of Provider platofrm](./../../Images/Advisory/free/uai-Post%20Fulfilment.jpg)
 
 ### Use case - Discovery and consumption of paid knowledge advisory
 
 **Search for resources on topic**
 
-![Search for resources on infested disease](./Images/Advisory/paid/UAI%20advisory-Discovery.jpg)
+![Search for resources on infested disease](./../../Images/Advisory/paid/UAI%20advisory-Discovery.jpg)
 
 **Place an order for the advisory**
 
-![Select the advisory, initialise and confirm the order ](./Images/Advisory/paid/UAI%20advisory-Order.jpg)
+![Select the advisory, initialise and confirm the order ](./../../Images/Advisory/paid/UAI%20advisory-Order.jpg)
 
 **fulfillment of an active order**
 
-![check the order status, update the order details or cancel the order ](./Images/Advisory/paid/UAI%20advisory-Fulfilment.jpg)
+![check the order status, update the order details or cancel the order ](./../../Images/Advisory/paid/UAI%20advisory-Fulfilment.jpg)
 
 **Seek support and provide rating**
 
-![Support call to get contact information of Provider platofrm](./Images/Advisory/paid/UAI%20advisory-Post%20Fulfilment.jpg)
+![Support call to get contact information of Provider platofrm](./../../Images/Advisory/paid/UAI%20advisory-Post%20Fulfilment.jpg)
 
 ## API Calls and Schema
 
@@ -1623,7 +1623,7 @@ If you are writing the provider platform software, the following are the steps y
 ## Links to artefacts
 
 
-- [Postman collection for UAI](./postman/Uai.postman_collection.json)
+- [Postman collection for UAI](../../postman/Uai.postman_collection.json)
 
 ## Sandbox Details
 

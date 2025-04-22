@@ -27,7 +27,7 @@ This document has the following parts:
 
 ## Outcome Visualisation
 
-![UAI Equipment Rental Outcome Visualization](images/uai_equipment_rental_outcome_visualization.svg)
+![UAI Equipment Rental Outcome Visualization](../../Images/uai_equipment_rental_outcome_visualization.svg)
 
 ### Use case - Discovery of Rental Services for Farm Equipment
 
@@ -101,19 +101,19 @@ Beckn is a aynchronous protocol at its core.
 
 **Search for rental service**
 
-![Search for farm equipment rental service](Images/Rental/uai-rental-discovery.jpg)
+![Search for farm equipment rental service](../../Images/Rental/uai-rental-discovery.jpg)
 
 **Place an order for the Farm Equipment**
 
-![Select the farm equipment for rental, initialise and confirm the order](Images/Rental/uai-rental-order.jpg)
+![Select the farm equipment for rental, initialise and confirm the order](../../Images/Rental/uai-rental-order.jpg)
 
 **Fullfilment of an active order**
 
-![check the order status, update the order details or cancel the order](Images/Rental/uai-rental-fulfilment.jpg)
+![check the order status, update the order details or cancel the order](../../Images/Rental/uai-rental-fulfilment.jpg)
 
 **Seek support and provide rating**
 
-![Support call to get contact information of Provider platofrm](Images/Rental/uai-rental-post%20fulfilment.jpg)
+![Support call to get contact information of Provider platofrm](../../Images/Rental/uai-rental-post%20fulfilment.jpg)
 
 ## API Calls and Schema
 
@@ -1901,7 +1901,7 @@ If you are writing the provider platform software, the following are the steps y
 ## Links to artefacts
 
 
-- [Postman collection for UAI](./postman/Uai.postman_collection.json)
+- [Postman collection for UAI](../../postman/Uai.postman_collection.json)
 
 ## Sandbox Details
 
