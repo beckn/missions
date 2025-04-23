@@ -1076,7 +1076,7 @@ In cases where the payment is collected by a BAP, the payment object would have 
 - payment.param.amount and payment.param.currency would be set to appropriate values.
 - payment.type(Pre-Order, Pre-Fulfillment, Post-Order, Post-Fulfillment etc), payment.status(Inititated, Completed etc) would be set to appropriate value.
 - The BPP does not have to send the payment url or the bank details in the payment.params object.
-- When a BAP collects payment for a transaction, BAP is responsible for settling the payment with the corresponding BPPs—either online or offline—as per the terms defined in their mutual business agreement.
+- When a BAP collects payment for a transaction, BAP is responsible for settling the payment with the corresponding BPPs, off the network, as per the terms defined in their mutual business agreement.
 
 The payment object inside the on_init callback would look like this.
 
@@ -2593,3 +2593,5 @@ Discovery:
   - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/schemes/implementation_guide_scheme_discovery.md
   - https://github.com/beckn/missions/blob/main/VISTAAR/implementation_guide_knowledge_advisory.md
 
+DEG implementations:
+  - https://github.com/beckn/missions/tree/main/DEG/STARTER_KIT
