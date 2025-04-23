@@ -135,6 +135,7 @@ Note: In the API payload, context field is almost similar in all the APIs. Conte
   "timestamp": "2025-04-23T14:30:00Z",
   "ttl": "PT10M"
 }
+```
 
 ### Discovery of catalogs
 
