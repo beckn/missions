@@ -2561,3 +2561,29 @@ If you are writing the provider platform software, the following are the steps y
 7. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
 
 ![Provider platform testing sandbox](https://github.com/beckn/missions/blob/main/docs/assets/images/provider_deployment.png)
+
+
+## Link to the domain specific implementation guide
+
+Retail:
+  - https://github.com/beckn/missions/blob/main/OPEN-AMSTERDAM/implementation_guide_open_amsterdam.md
+  - https://github.com/beckn/missions/blob/main/OPEN-KENYA/implementation_guide_products.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/retail/implementation_guide_equipment_purchase.md
+
+Skilling and Education:
+  - https://github.com/beckn/missions/blob/main/OPEN-BELEM/implementation_guide_belem_courses.md
+  - https://github.com/beckn/missions/blob/main/OPEN-GAMBIA/implementation_guide_gambia_courses.md
+  - https://github.com/beckn/missions/blob/main/OPEN-KENYA/implementation_guide_learning.md
+
+Services:
+  - https://github.com/beckn/missions/blob/main/OPEN-KENYA/implementation_guide_services.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/advisory/implementation_guide_disease_control.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/retail/implementation_guide_equipment_rental.md
+  - https://github.com/beckn/missions/blob/main/UEI/implementation-guides/EV-charging/implementation_guide_charging.md
+
+Discovery:
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/advisory/implementation_guide_price_listing.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/advisory/implementation_guide_weather_data.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/schemes/implementation_guide_scheme_discovery.md
+  - https://github.com/beckn/missions/blob/main/VISTAAR/implementation_guide_knowledge_advisory.md
+
