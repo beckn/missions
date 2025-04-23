@@ -17,19 +17,20 @@ This implementation guide provides a structured approach to integrating the Beck
 This document has the following parts:
   - [General Flow diagrams](#general-flow-diagrams)
   - [Specific flows](#specific-flows)
-    - [Discovery of catalog](#use-case-1---discovery-of-catalogs)
-    - [Placing an Order](#use-case-2---placing-an-order)
-    - [Payment](#use-case-3---payment-in-a-transaction)
-    - [Payment collected by BAP](#use-case-4---payment-collected-by-a-bap)
-    - [Payment collected by BPP](#use-case-5---payment-collected-by-a-bpp)
-    - [Confirming an Order](#use-case-6---confirming-an-order)
-    - [Checking status of an order](#use-case-7---checking-the-status-of-an-order)
-    - [Tracking and order](#use-case-8---tracking-the-order-delivery)
-    - [Updating an order](#use-case-9---updating-part-of-an-order)
-    - [Support](#use-case-10---request-for-a-support)
-    - [Cancellation](#use-case-11---cancelling-an-order)
-    - [Rating](#use-case-12---providing-rating-for-an-order)
+    - [Discovery of catalog](#discovery-of-catalogs)
+    - [Placing an Order](#placing-an-order)
+    - [Payment](#payment-in-a-transaction)
+    - [Payment collected by BAP](#payment-collected-by-a-bap)
+    - [Payment collected by BPP](#payment-collected-by-a-bpp)
+    - [Confirming an Order](#confirming-an-order)
+    - [Checking status of an order](#checking-the-status-of-an-order)
+    - [Tracking and order](#tracking-the-order-delivery)
+    - [Updating an order](#updating-part-of-an-order)
+    - [Support](#request-for-a-support)
+    - [Cancellation](#cancelling-an-order)
+    - [Rating](#providing-rating-for-an-order)
   - [Integrating with your software](#integrating-with-your-software)
+  - [Links to Domain specific Implementation guides](#link-to-the-domain-specific-implementation-guide)
 
 ## General Flow diagrams
 
@@ -93,7 +94,7 @@ Note: In the API payload, context field is almost similar in all the APIs. Conte
 |------------------|--------------------------------|
 | `domain`         | Set according to your domain (e.g., `retail`, `mobility`, `ev-charging:uei`). |
 | `country.code`   | Use ISO 3166-1 alpha-3 code (e.g., `IND` for India). |
-| `action`         | Reflect the current API action (e.g., `search`, `select`, `on_confirm`). |
+| `action`         | Reflect the current API action (All Possible actions as per the current specification, `search`, `select`, `init`, `confirm`, `status`, `track`, `update`, `support`, `rating`, `cancel`, `on_search`, `on_select`, `on_init`, `on_confirm`, `on_status`, `on_track`, `on_update`, `on_support`, `on_rating`, `on_cancel`, `get_rating_categories`, `rating_categories`, `get_cancellation_reasons`, `cancellation_reasons`). |
 | `version`        | Use the supported Protocol Specification version (commonly `1.1.0` or `1.0.0`). |
 | `bap_id` / `bap_uri` | Set to your BAP's ID and public callback URL, as per registry. |
 | `bpp_id` / `bpp_uri` | Reflect the responding BPP's details. |
@@ -1059,7 +1060,11 @@ There are 2 ways of discovery:
 
 - The payment for a transaction can either be collected by a BAP or a BPP. It is represented by the payment.collected_by parameter in the on_init response.
 - The status of the payment is represented by payment.status field.
-- Payment type is represented by payment.type field. It indicates the stag in the order lifecycle when the payment has to be completed.
+- Payment type is represented by payment.type field. It indicates the stage in the order lifecycle when the payment has to be completed. Example values are:
+  - PRE-ORDER: Payment is expected before the order is even confirmed.
+  - PRE-FULFILMENT: Payment is made after order confirmation, but before fulfillment begins.
+  - POST-ORDER: Payment happens immediately after placing the order.
+  - POST-FULFILMENT: Payment is made after the order has been fulfilled
 - The details of the payment is represented by the payment.params object. It contains amount and currency fields.
 - transaction_id is unused until the payment has been completed. It is used to provide the proof of payment from a BAP to a BPP.
 - There are 2 ways to represent where the payment need to be done. It can either be the bank details under payment.params object or the payment.url field.
@@ -1069,8 +1074,9 @@ There are 2 ways of discovery:
 In cases where the payment is collected by a BAP, the payment object would have these details.
 - The payment.collected_by field would be set to BAP.
 - payment.param.amount and payment.param.currency would be set to appropriate values.
-- payment.type(Pre-Order, Pre-Fulfillment, Post-Order, POst-Fulfillment etc), payment.status(Inititated, Completed etc) would be set to appropriate value.
+- payment.type(Pre-Order, Pre-Fulfillment, Post-Order, Post-Fulfillment etc), payment.status(Inititated, Completed etc) would be set to appropriate value.
 - The BPP does not have to send the payment url or the bank details in the payment.params object.
+- When a BAP collects payment for a transaction, BAP is responsible for settling the payment with the corresponding BPPs—either online or offline—as per the terms defined in their mutual business agreement.
 
 The payment object inside the on_init callback would look like this.
 
@@ -2522,7 +2528,7 @@ on_rating
 
 ## Integrating with your software
 
-This section gives general walkthrough of how you would integrate your software with the Beckn network (say the sandbox environment). Refer to the starter kit for details on how to register with the sandbox and get credentials.
+This section gives general walkthrough of how you would integrate your software with the Beckn network (say the sandbox environment). Refer to the [starter kit](https://github.com/beckn/missions/blob/main/docs/starter_kit/starter_kit.md) for details on how to register with the sandbox and get credentials.
 
 Beckn-ONIX is an initiative to promote easy install and maintenance of a Beckn Network. Apart from the Registry and Gateway components that are required for a network facilitator, Beckn-ONIX provides a Beckn Adapter. A reference implementation of the Beckn-ONIX specificatino is available at [Beckn-ONIX repository](https://github.com/beckn/beckn-onix). The reference implementation of the Beckn Adapter is called the Protocol Server. Based on whether we are writing the seeker platform or the provider platform, we will be installing the BAP Protocol Server or the BPP Protocol Server respectively.
 
