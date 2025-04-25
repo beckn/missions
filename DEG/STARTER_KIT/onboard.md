@@ -27,6 +27,9 @@ Beckn-Onix provides ready-to-use protocol server implementations for both BAP an
 
 You can refer to the **Beckn-Onix Starter Kit** for step-by-step setup instructions:  
 👉 [Starter Kit Guide on GitHub](https://github.com/beckn/missions/blob/troubleshoot-guide/starter_kit/starter_kit.md)
+<br/>
+<br/>
+__NOTE:__ For Onboarding Network Participant on DEG Sandbox, after cloning `beckn-onix` repository checkout to [beckn-one](https://github.com/beckn/beckn-onix/tree/beckn-one) branch
 
 ---
 
@@ -34,8 +37,8 @@ You can refer to the **Beckn-Onix Starter Kit** for step-by-step setup instructi
 
 Below are the important URLs to be used while onboarding to the DEG Sandbox Environment:
 
-- **Gateway URL**: [https://gateway-deg.becknprotocol.io](https://gateway-deg.becknprotocol.io)
-- **Registry URL**: [https://registry-deg.becknprotocol.io](https://registry-deg.becknprotocol.io)
+- **Gateway URL**: [https://dedi-gateway.becknprotocol.io](https://dedi-gateway.becknprotocol.io)
+- **Registry URL**: [https://dedi-registry.becknprotocol.io/api/registry](https://dedi-registry.becknprotocol.io/api/registry)
 
 ---
 
