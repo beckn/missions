@@ -15,6 +15,10 @@
 
 This document provides material that helps network participants build and integrate their application with the UEI Network for EV Charging. This document is part of the starter kit that provides information about the network, learning resources, network participant checklist etc. This document only focuses on the implementation of the seeker/provider platform. It assumes the reader has a good overview of the Beckn network, its APIs, the overall structure of the schema etc.
 
+## Prerequisites
+
+Please refer to the [Generic Implementation Guide](../../Generic-Implementation-Guide/generic_implementation_guide.md) for a foundational understanding of how to use the Beckn Protocol Specification to implement a use case. The guide covers core concepts and patterns commonly applied across different domains when implementing Beckn Protocol.
+
 ## Structure of the document
 
 This document has the following parts:

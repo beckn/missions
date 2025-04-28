@@ -12,6 +12,10 @@
 
 This document provides example JSONs for the Energy: Battery Rental use case.
 
+## Prerequisites
+
+Please refer to the [Generic Implementation Guide](../../Generic-Implementation-Guide/generic_implementation_guide.md) for a foundational understanding of how to use the Beckn Protocol Specification to implement a use case. The guide covers core concepts and patterns commonly applied across different domains when implementing Beckn Protocol.
+
 ## Structure of the document
 
 This document has the following parts:

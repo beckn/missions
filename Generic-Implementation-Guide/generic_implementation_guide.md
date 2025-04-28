@@ -7,6 +7,7 @@
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
 | 01-04-2025 | 1.0     | Initial Version                                     |
+| 28-04-2025 | 1.1     | Links to domain specific implementation guides, With details about the context fields.                                      |
 
 ## Introduction
 
@@ -16,20 +17,21 @@ This implementation guide provides a structured approach to integrating the Beck
 
 This document has the following parts:
   - [General Flow diagrams](#general-flow-diagrams)
-  - [Specific use cases](#specific-use-cases)
-    - [Discovery of catalog](#use-case-1---discovery-of-catalogs)
-    - [Placing an Order](#use-case-2---placing-an-order)
-    - [Payment](#use-case-3---payment-in-a-transaction)
-    - [Payment collected by BAP](#use-case-4---payment-collected-by-a-bap)
-    - [Payment collected by BPP](#use-case-5---payment-collected-by-a-bpp)
-    - [Confirming an Order](#use-case-6---confirming-an-order)
-    - [Checking status of an order](#use-case-7---checking-the-status-of-an-order)
-    - [Tracking and order](#use-case-8---tracking-the-order-delivery)
-    - [Updating an order](#use-case-9---updating-part-of-an-order)
-    - [Support](#use-case-10---request-for-a-support)
-    - [Cancellation](#use-case-11---cancelling-an-order)
-    - [Rating](#use-case-12---providing-rating-for-an-order)
+  - [Specific flows](#specific-flows)
+    - [Discovery of catalog](#discovery-of-catalogs)
+    - [Placing an Order](#placing-an-order)
+    - [Payment](#payment-in-a-transaction)
+    - [Payment collected by BAP](#payment-collected-by-a-bap)
+    - [Payment collected by BPP](#payment-collected-by-a-bpp)
+    - [Confirming an Order](#confirming-an-order)
+    - [Checking status of an order](#checking-the-status-of-an-order)
+    - [Tracking and order](#tracking-the-order-delivery)
+    - [Updating an order](#updating-part-of-an-order)
+    - [Support](#request-for-a-support)
+    - [Cancellation](#cancelling-an-order)
+    - [Rating](#providing-rating-for-an-order)
   - [Integrating with your software](#integrating-with-your-software)
+  - [Links to Domain specific Implementation guides](#link-to-the-domain-specific-implementation-guide)
 
 ## General Flow diagrams
 
@@ -83,11 +85,68 @@ Beckn is a aynchronous protocol at its core.
 }
 ```
 
-## Specific use cases
+## Specific flows
 
-Note: in the API payload, context field is almost similar in all the APIs. Context used in a callback is same as the context sent in the corresponding request.
+Note: In the API payload, context field is almost similar in all the APIs. Context used in a callback is same as the context sent in the corresponding request.
 
-### Use case 1 - Discovery of catalogs
+### Key Fields in Context and How to Implement
+
+| Field             | Description & Implementation |
+|------------------|--------------------------------|
+| `domain`         | Set according to your domain (e.g., `retail`, `mobility`, `ev-charging:uei`). |
+| `country.code`   | Use ISO 3166-1 alpha-3 code (e.g., `IND` for India). |
+| `action`         | Reflect the current API action (All Possible actions as per the current specification, `search`, `select`, `init`, `confirm`, `status`, `track`, `update`, `support`, `rating`, `cancel`, `on_search`, `on_select`, `on_init`, `on_confirm`, `on_status`, `on_track`, `on_update`, `on_support`, `on_rating`, `on_cancel`, `get_rating_categories`, `rating_categories`, `get_cancellation_reasons`, `cancellation_reasons`). |
+| `version`        | Use the supported Protocol Specification version (commonly `1.1.0` or `1.0.0`). |
+| `bap_id` / `bap_uri` | Set to your BAP's ID and public callback URL, as per registry. |
+| `bpp_id` / `bpp_uri` | Reflect the responding BPP's details. |
+| `transaction_id` | Generate a **UUID** for the full transaction flow; reuse across related APIs. |
+| `message_id`     | Generate a new **UUID** for each API call and its callbacks. |
+| `timestamp`      | Use ISO 8601 UTC format (e.g., `2025-04-23T14:30:00Z`). Must reflect current server time. |
+| `ttl`            | Set expiry using ISO 8601 Duration format (e.g., `PT10M` = 10 minutes). |
+
+---
+
+#### Best Practices
+
+- Ensure IDs and URIs match those in the **Beckn Registry**.
+- Validate **timestamp** and **ttl** on receiving side to reject stale messages.
+- Use `transaction_id` to trace an end-to-end flow.
+- Use `message_id` to trace a single request/response pair.
+
+#### Example `context` Block
+
+```json
+"context": {
+  "domain": "retail",
+  "location": {
+    "country": {
+      "code": "IND"
+    },
+    "city": {
+      "code": "std:080"
+    },
+  }
+  "action": "select",
+  "version": "1.1.0",
+  "bap_id": "buyer-app.example.com",
+  "bap_uri": "https://buyer-app.example.com",
+  "bpp_id": "seller-app.example.com",
+  "bpp_uri": "https://seller-app.example.com",
+  "transaction_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+  "message_id": "abcd1234-5678-90ef-ghij-klmnopqrstuv",
+  "timestamp": "2025-04-23T14:30:00Z",
+  "ttl": "PT10M"
+}
+```
+
+### Discovery of catalogs
+
+Discovery is the process of finding what’s available — it helps a consumer (on a BAP) discover products, services, or providers (on one or more BPPs) that match their need.
+
+In Beckn, this is done through two core APIs:
+  - search – Sent by the BAP to declare an intent.
+  - on_search – Sent by BPPs in response, containing matching catalogs.
+
 Discovery in a Beckn network happens generally through an intermediate entity like a Beckn Gateway (BG) present inside the network.
 
 There are 2 ways of discovery:
@@ -115,10 +174,11 @@ There are 2 ways of discovery:
     "bap_uri": "https://example-bap-url.com"
   }
   ```
-  The BAP calls the BG and the BG may multicast this API to multiple BPPs based on the context.domain. The BPPs synchronously respond with ACKs. The BPPs then asynchronously call the on_search API of the BG which is sent back to the BAP.
+  The BAP calls the BG and the BG may multicast this API to multiple BPPs based on the context.domain. The BPPs synchronously respond with ACKs. The BPPs then asynchronously call the on_search API to send the catalogs to the BAP.
 
 
-- If the address of the BPP is specified in the context of the API call
+- If the address of the BPP is specified in the context of the API call.
+  
   The details of the BPP is specified in the context.bpp_id and context.bpp_uri fields.
 
   ```
@@ -146,6 +206,13 @@ There are 2 ways of discovery:
   }
   ```
   The BAP calls the targeted BPP directly. The BPP synchronously responds with ACK. The BPP then asynchronously calls the on_search API of the BAP.
+
+  In a callback in response to the search/ call, BPPs send their catalog to the BAP who initiated the search. A catalog generally contains the following things:
+    - List of items (products/services)
+    - Their fulfillment options (location, agent, time)
+    - Payment options
+    - Offers
+    - Categories and tags
 
   An example Catalog from a BPP could look like
 
@@ -295,14 +362,14 @@ There are 2 ways of discovery:
   }
   ``` 
 
-### Use case 2 - Placing an order
+### Placing an order
   - Order phase generally involves a subset of the below actions wherever applicable.
       - finalizing the quotation
       - providing the billing information of the customer
       - providing additional information needed to confirm the order
       - sharing payment details
       - completing the payment
-  - There are 2 APIs involved in this stage:
+  - There are 3 APIs(and callbacks) involved in this stage:
       - select, on_select
       - init, on_init
       - confirm, on_confirm
@@ -364,7 +431,7 @@ There are 2 ways of discovery:
 ```
 **A typical on_select**
 - on_select typically includes provider details, item details(including any add ons if any), fulfillment details of the selected fulfillment option and a quotation.
-- At the end of an select-on_select cycle, at least an estimate quote has to be finalized between buyer and seller.
+- At the end of an select and on_select cycle, at least an estimate quote has to be finalized between buyer and seller.
 
 ```
 {
@@ -990,22 +1057,27 @@ There are 2 ways of discovery:
 }
 ```
 
-### Use case 3 - Payment in a transaction
+### Payment in a transaction
 
 - The payment for a transaction can either be collected by a BAP or a BPP. It is represented by the payment.collected_by parameter in the on_init response.
 - The status of the payment is represented by payment.status field.
-- Payment type is represented by payment.type field. It indicates the stag in the order lifecycle when the payment has to be completed.
+- Payment type is represented by payment.type field. It indicates the stage in the order lifecycle when the payment has to be completed. Example values are:
+  - PRE-ORDER: Payment is expected before the order is even confirmed.
+  - PRE-FULFILMENT: Payment is made after order confirmation, but before fulfillment begins.
+  - POST-ORDER: Payment happens immediately after placing the order.
+  - POST-FULFILMENT: Payment is made after the order has been fulfilled
 - The details of the payment is represented by the payment.params object. It contains amount and currency fields.
 - transaction_id is unused until the payment has been completed. It is used to provide the proof of payment from a BAP to a BPP.
 - There are 2 ways to represent where the payment need to be done. It can either be the bank details under payment.params object or the payment.url field.
 
-### Use case 4 - Payment collected by a BAP.
+### Payment collected by a BAP.
 
 In cases where the payment is collected by a BAP, the payment object would have these details.
 - The payment.collected_by field would be set to BAP.
 - payment.param.amount and payment.param.currency would be set to appropriate values.
-- payment.type, payment.status would be set to appropriate value.
+- payment.type(Pre-Order, Pre-Fulfillment, Post-Order, Post-Fulfillment etc), payment.status(Inititated, Completed etc) would be set to appropriate value.
 - The BPP does not have to send the payment url or the bank details in the payment.params object.
+- When a BAP collects payment for a transaction, BAP is responsible for settling the payment with the corresponding BPPs, off the network, as per the terms defined in their mutual business agreement.
 
 The payment object inside the on_init callback would look like this.
 
@@ -1044,12 +1116,12 @@ The BAP would process the payment from the customer, validate the payment and th
 ]
 ```
 
-### Use case 5 - Payment collected by a BPP.
+### Payment collected by a BPP.
 
 In cases where the payment is collected by a BPP, the payment object would have these details.
 - The payment.collected_by field would be set to BPP.
 - payment.param.amount and payment.param.currency would be set to appropriate values.
-- payment.type, payment.status would be set to appropriate value.
+- payment.type(Pre-Order, Pre-Fulfillment, Post-Order, POst-Fulfillment etc), payment.status(Inititated, Completed etc) would be set to appropriate value.
 - The BPP would need to send the payment receivers details in either url or in the payment.params object.
 
 The payment object inside the on_init callback would look like this.
@@ -1094,10 +1166,12 @@ The BAP would render the payment.url on the UI, the customer completes the payme
 ]
 ```
 
-### Use case 6 - confirming an Order
+### Confirming an Order
 
-- The BAP agrees on all the terms of the order,  completes the payment if it is involved, and sends a confirmation to the BPP using confirm/ call.
+- The BAP agrees on all the terms of the order, completes the payment if it is involved, and sends a confirmation to the BPP using confirm/ call.
 - The BPP verifies the terms of the order and if everything looks okay it sends the order confirmation using on_confirm callback.
+- Must contain all final values from the previous stages.
+- Should include payment details, if applicable (COD, pre-paid, etc.).
 - on_confirm callback contains an order id.
 - A confirm payload will look like this.
 
@@ -1202,6 +1276,12 @@ confirm
   }
 }
 ```
+
+The on_confirm API is the callback response to confirm. It carries the final confirmation details of the order.
+  - The message.order object includes:
+      - A unique order ID (assigned by the BPP)
+      - All previously confirmed elements (item, payment, fulfillment)
+      - Status of the order (e.g., confirmed, pending, failed)
 
 on_confirm
 ```
@@ -1377,7 +1457,7 @@ on_confirm
 }
 ```
 
-### Use case 7 - Checking the status of an order
+### Checking the status of an order
 
 - BAP can check the status of an order by calling the status api of the BPP.
 - BAP needs to send the order id received during the on_confirm callback as part of the status call.
@@ -1413,6 +1493,15 @@ status
   }
 }
 ```
+
+The on_status API is a callback sent by the BPP to inform the BAP about the current status of a previously confirmed order. it is used:
+  - After the BAP sends a status request
+  - Or unsolicited by BPP when status changes (e.g., order shipped, ride started, service in-progress)
+  -  what to include in an on_status callback
+      - id: Unique order ID (from on_confirm)
+      - status: Status code (e.g., in-progress, completed, cancelled, pending)
+      - fulfillments: Describes current fulfillment progress (optional but recommended)
+      - updated_at: Timestamp of the last status change (optional but recommended)
 
 on_status
 ```
@@ -1585,13 +1674,14 @@ on_status
 }
 ```
 
-### Use case 8 - Tracking the order delivery
+### Tracking the order delivery
 
 - If the order is being delivered, the users can track the order using the track api.
-- BAP needs to send the order id as part of the track callback.
+- BAP needs to send the order id as part of the track call.
 - BAP can also send a callback url on which the BPP can send regular tracking updates.
 - BPP sends a response using the on_track API.
 - on_track can contain a url which can be used to track the shipment.
+- on_track can also contain the exact location of the item, embedded in the on_track message.tracking.location
 - Tracking URL gets active after the order is shipped.
 
 track
@@ -1623,6 +1713,11 @@ track
   }
 }
 ```
+
+When the status or location of a delivery, ride, or fulfillment is changing frequently and should be relayed
+Respond quickly to track requests with accurate location data
+Use meaningful status codes (e.g., left-warehouse, out-for-delivery)
+For high-frequency updates, send on_track periodically (e.g., every few minutes)
 
 on_track
 ```
@@ -1657,7 +1752,7 @@ on_track
 }
 ```
 
-### Use case 9 - Updating part of an order
+### Updating part of an order
 
 - Users can update parts of an existing order. It can be dependent on parts of an order the BPP allows to be updated.
 - BAP can use the update/ api to update a part of an order.
@@ -1877,7 +1972,7 @@ on_update
 }
 ```
 
-### Use case 10 - Request for a support
+### Request for a support
 
 - Users can request for a support using the support api.
 - BAP needs to send the order id.
@@ -1952,7 +2047,7 @@ on_support
 }
 ```
 
-### Use case 11 - Cancelling an Order
+### Cancelling an Order
 Cancelling an order requires BAP to send a reason for cancellation. The reason can be a value from a pre defined enum or a text. Each BPP define their own list of reasons for cancelling an order. BAP needs to fetch those reasons defined by that BPP.
 
 -There is a set of separate meta API endpoints which are supposed to be implemented by BAP and BPP to use this feature.
@@ -2282,7 +2377,7 @@ on_cancel
 ```
 
 
-### Use case 12 - Providing rating for an Order
+### Providing rating for an Order
 
 Providing rating to an order requires BAP to send the rating category to BPP. The rating category can be a value from a pre defined enum. Each BPP define their own list of rating categories. BAP needs to fetch those categories defined by that BPP.
 
@@ -2434,7 +2529,7 @@ on_rating
 
 ## Integrating with your software
 
-This section gives general walkthrough of how you would integrate your software with the Beckn network (say the sandbox environment). Refer to the starter kit for details on how to register with the sandbox and get credentials.
+This section gives general walkthrough of how you would integrate your software with the Beckn network (say the sandbox environment). Refer to the [starter kit](https://github.com/beckn/missions/blob/main/docs/starter_kit/starter_kit.md) for details on how to register with the sandbox and get credentials.
 
 Beckn-ONIX is an initiative to promote easy install and maintenance of a Beckn Network. Apart from the Registry and Gateway components that are required for a network facilitator, Beckn-ONIX provides a Beckn Adapter. A reference implementation of the Beckn-ONIX specificatino is available at [Beckn-ONIX repository](https://github.com/beckn/beckn-onix). The reference implementation of the Beckn Adapter is called the Protocol Server. Based on whether we are writing the seeker platform or the provider platform, we will be installing the BAP Protocol Server or the BPP Protocol Server respectively.
 
@@ -2473,3 +2568,31 @@ If you are writing the provider platform software, the following are the steps y
 7. Once the application is working on the Sandbox, refer to the Starter kit for instructions to take it to pre-production and production.
 
 ![Provider platform testing sandbox](https://github.com/beckn/missions/blob/main/docs/assets/images/provider_deployment.png)
+
+
+## Link to the domain specific implementation guide
+
+Retail:
+  - https://github.com/beckn/missions/blob/main/OPEN-AMSTERDAM/implementation_guide_open_amsterdam.md
+  - https://github.com/beckn/missions/blob/main/OPEN-KENYA/implementation_guide_products.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/retail/implementation_guide_equipment_purchase.md
+
+Skilling and Education:
+  - https://github.com/beckn/missions/blob/main/OPEN-BELEM/implementation_guide_belem_courses.md
+  - https://github.com/beckn/missions/blob/main/OPEN-GAMBIA/implementation_guide_gambia_courses.md
+  - https://github.com/beckn/missions/blob/main/OPEN-KENYA/implementation_guide_learning.md
+
+Services:
+  - https://github.com/beckn/missions/blob/main/OPEN-KENYA/implementation_guide_services.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/advisory/implementation_guide_disease_control.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/retail/implementation_guide_equipment_rental.md
+  - https://github.com/beckn/missions/blob/main/UEI/implementation-guides/EV-charging/implementation_guide_charging.md
+
+Discovery:
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/advisory/implementation_guide_price_listing.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/advisory/implementation_guide_weather_data.md
+  - https://github.com/beckn/missions/blob/main/UAI/implementation-guides/schemes/implementation_guide_scheme_discovery.md
+  - https://github.com/beckn/missions/blob/main/VISTAAR/implementation_guide_knowledge_advisory.md
+
+DEG implementations:
+  - https://github.com/beckn/missions/tree/main/DEG/STARTER_KIT
