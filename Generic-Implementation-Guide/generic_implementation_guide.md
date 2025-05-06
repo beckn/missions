@@ -30,6 +30,7 @@ This document has the following parts:
     - [Support](#request-for-a-support)
     - [Cancellation](#cancelling-an-order)
     - [Rating](#providing-rating-for-an-order)
+    - [Using tags in messages](#Using-tags-in-messages)
   - [Integrating with your software](#integrating-with-your-software)
   - [Links to Domain specific Implementation guides](#link-to-the-domain-specific-implementation-guide)
 
@@ -2525,7 +2526,305 @@ on_rating
   }
 }
 ```
+### Using Tags in Messages
 
+- The schema of beckn has been abstracted to a level that allows any real-world entity to be represented as a generic object. Schema is defined to represent domain agnostic use cases.
+- Sometimes, interacting entities (a.k.a Network Participants) need to send additional information related to various real-world entities.
+- Beckn protocol defines two schemas, namely, Tag and TagGroup, that allow groups of key-value pairs to be transmitted between network participants as metadata.
+- Tag schema represents a single key value pair.
+- TagGroup schema represents a list of Tag schemas. It is used to group related tags togather.
+- There is a tags field explicitly supported in several schemas. tags field is a list of TagGroups. tags is defined in the following schemas
+  - Category.tags
+  - Contact.tags
+  - Fulfillment.tags
+  - Intent.tags
+  - Intent.tags
+  - Item.tags
+  - Person.tags
+  - Provider.tags
+  - Order.tags
+- The key can be represented using "descriptor.code" field in the Tag schema.
+- The value of the key can be represented using "value" field in the Tag schema.
+- The format of the “key” field is recommended to be in the snake-case format.
+- BAPs might render or not render the tags according to the “display” property of the tag.
+- Certain Tag codes can be standardized by the Network Facilitators to enable BAPs to provide consistent customer experience.
+- Network facilitators should refer to standard supported tags maintained by domain-specific working groups when creating tag lists.
+
+Examples
+
+Using tags to represent properties of items in a search intent
+```
+{
+  "context": {
+    "domain": "advisory:agrinet:vistaar",
+    "action": "search",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "name": "Balangir"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "ps-bap-network.becknprotocol.io",
+    "bap_uri": "https://ps-bap-client.becknprotocol.io",
+    "transaction_id": "d28ec57e-8c8f-4db0-a5aa-73d6563942e1",
+    "message_id": "6c8b36e8-7886-4cc8-b3a6-8a3d464fcd6c",
+    "timestamp": "2024-07-02T09:15:30Z"
+  },
+  "message": {
+    "intent": {
+      "item": {
+        "descriptor": {
+          "name": "cotton aphid"
+        },
+        "tags": [
+          {
+            "descriptor": {
+              "name": "languages"
+            },
+            "list": [
+              {
+                "value": "Odia"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+
+```
+
+Using tags to represent properties of items in a catalog
+```
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "on_search",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "catalog": {
+      "descriptor": {
+        "name": "HBO"
+      },
+      "providers": [
+        {
+          "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider",
+          "descriptor": {
+            "name": "Venky.Mahadevan@Bazaar"
+          },
+          "locations": [
+            {
+              "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location",
+              "gps": "12.909955,77.596316"
+            }
+          ],
+          "categories": [
+            {
+              "id": "c1",
+              "descriptor": {
+                "code": "grocery",
+                "name": "grocery"
+              }
+            },
+            {
+              "id": "c2",
+              "descriptor": {
+                "code": "electronics",
+                "name": "electronics"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "id": "f1",
+              "type": "Delivery"
+            },
+            {
+              "id": "f2",
+              "type": "Self-Pickup"
+            }
+          ],
+          "items": [
+            {
+              "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+              "descriptor": {
+                "images": [
+                  {
+                    "url": "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+                  }
+                ],
+                "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
+                "short_desc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",
+                "long_desc": "<div> <ul> <li>ULTRA MODERN DESIGN - Our thermos bottle is crafted with a unique and modern design. Gone are the days of old and boring flasks. Guaranteed to impress your colleagues, friends & family.</li> <li>ADVANCED TEMPERATURE CONTROL – A double-wall, vacuum-insulated design helps lock in heat for up to 12 hours and cold for up to 24!</li> <li>ELIMINATES CONDENSATION – Offering improved grip and control, these innovative dual-layer bottles offer a slip-resistant surface that’s free of sweat and condensation..</li> <li>LEAK-PROOF and ECO-FRIENDLY – Remove, and clean, the large, screw on lid provides faster access to water inside and won’t spill a drop even when it’s tipped upside or put in your gym bag.</li> <li>The distress quilted jacket is a versatile fashion choice you can wear on any occasion. A style essential piece for Women which will reveal your strong sense of personality</li> </ul> <div> <p><b>Product Details</b></p> <ul> <li>Advanced Temperature Retention.This thermos water bottle ensures your beverages will remain hot or cold for a long time.Hot for up to 12 hours.Cold for up to 24 hours.</li> <li>Retains Original Flavors.Vacuum insulation ensures this travel thermos water bottle is airtight and retains the original flavor of your beverages.Also, this bottle is B.P.A Free.</li> <li>Premium Quality Materials.This stylish bottle is a double-walled vacuum insulated and made from premium 304-grade stainless steel - which makes this flask bottle.</li> </ul> </div>"
+              },
+              "matched": true,
+              "price": {
+                "listed_value": "1200.0",
+                "currency": "INR",
+                "value": "1200.0"
+              },
+              "recommended": true,
+              "location_ids": [
+                  "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location"
+              ],
+              "category_ids": ["c1"],
+              "fulfillment_ids": ["f1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "item-cataegory"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "name": "category"
+                      },
+                      "value": "retail"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "name": "item-properties"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "name": "waterbottle"
+                      },
+                      "value": "y"
+                    },
+                    {
+                      "descriptor": {
+                        "name": "Trekking"
+                      },
+                      "value": "y"
+                    },
+                    {
+                      "descriptor": {
+                        "name": "Sipper"
+                      },
+                      "value": "y"
+                    },
+                    {
+                      "descriptor": {
+                        "name": "Hiking"
+                      },
+                      "value": "y"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+Using tags to represent fulfillment details of a customer
+```
+{
+    "context": {
+        "domain": "open-belem:courses",
+        "action": "init",
+        "version": "{{core_version}}",
+        "bap_id": "{{bap_id}}",
+        "bap_uri": "{{bap_uri}}",
+        "bpp_id": "{{bpp_id}}",
+        "bpp_uri": "{{bpp_uri}}",
+        "location": {
+            "city": {
+                "name": "Bangalore",
+                "code": "std:080"
+            },
+            "country": {
+                "name": "India",
+                "code": "IND"
+            }
+        },
+        "transaction_id": "a9aaecca-10b7-4d19-b640-b047a7c62196",
+        "message_id": "{{$randomUUID}}",
+        "ttl": "PT10M",
+        "timestamp": "2023-02-15T15:14:30.560Z"
+    },
+    "message": {
+        "order": {
+        "provider": {
+            "id": "INFOSYS"
+        },
+        "items": [
+            {
+            "id": "d4975df5-b18c-4772-80ad-368669856d52"
+            }
+        ],
+        "billing": {
+            "name": "Jane Doe",
+            "phone": "+91-9663088848",
+            "email": "jane.doe@example.com",
+            "address": "No 27, XYZ Lane, etc"
+        },
+        "fulfillments": [
+            {
+            "customer": {
+                "person": {
+                "name": "Jane Doe",
+                "age": "13",
+                "gender": "female",
+                "tags": [
+                    {
+                    "descriptor": {
+                        "code": "professional-details",
+                        "name": "Professional Details"
+                    },
+                    "list": [
+                        {
+                        "descriptor": {
+                            "code": "profession",
+                            "name": "profession"
+                        },
+                        "value": "student"
+                        }
+                    ],
+                    "display": true
+                    }
+                ]
+                },
+                "contact": {
+                "phone": "+91-9663088848",
+                "email": "jane.doe@example.com"
+                }
+            }
+            }
+        ]
+        }
+    }
+}
+```
 
 ## Integrating with your software
 
