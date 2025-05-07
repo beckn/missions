@@ -1,0 +1,204 @@
+{
+    "context": {
+      "domain": "deg:retail",
+      "action": "on_search",
+      "version": "1.1.0",
+      "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",
+      "bpp_uri": "http://bpp-ps-network-strapi2-dev.becknprotocol.io",
+      "location": {
+        "country": { "code": "USA" },
+        "city": { "code": "628" }
+      },
+      "bap_id": "bap-ps-network-dev.becknprotocol.io",
+      "bap_uri": "https://bap-ps-network-dev.becknprotocol.io",
+      "transaction_id": "4ff62a86-2241-41cc-9527-f0c00ecaba76",
+      "message_id": "db0708ee-a2ae-4b13-aee2-150ce3738b40",
+      "ttl": "PT10M",
+      "timestamp": "2025-04-15T14:59:57.691Z"
+    },
+    "message": {
+      "catalog": {
+        "descriptor": {
+          "name": "UrjaKart",
+          "code": "UrjaKart",
+          "short_desc": "Marketplace for buying batteries and renewable energy hardware."
+        },
+        "providers": [
+          {
+            "id": "104",
+            "descriptor": {
+              "name": "STARMAX",
+              "short_desc": "Manufacturer of deep cycle batteries for EVs and storage",
+              "long_desc": "STARMAX offers high-performance flooded lead-acid batteries suitable for golf carts, solar storage, and electric vehicles.",
+              "additional_desc": { "url": "www.becknprotocol.io" },
+              "images": [
+                {
+                  "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS59reL7gFrAuwvUJfVteNazOPfcdrlTM7WtQ&s",
+                  "size_type": "sm"
+                }
+              ]
+            },
+            "rating": "4",
+            "categories": [
+              {
+                "id": "17",
+                "descriptor": {
+                  "name": "EV Batteries",
+                  "code": "ev_batteries"
+                }
+              },
+              {
+                "id": "18",
+                "descriptor": {
+                  "name": "Solar Storage",
+                  "code": "solar_storage"
+                }
+              },
+              {
+                "id": "19",
+                "descriptor": {
+                  "name": "General Purpose Batteries",
+                  "code": "general_batteries"
+                }
+              }
+            ],
+            "fulfillments": [
+              { "id": "1", "type": "HOME_DELIVERY" },
+              { "id": "2", "type": "STORE_PICKUP" }
+            ],
+            "rateable": true,
+            "items": [
+              {
+                "id": "283",
+                "descriptor": {
+                  "name": "STARMAX GC STCR-305 – 6V 305Ah Flooded Battery",
+                  "short_desc": "Heavy-duty 6V flooded battery for carts, solar, or backup",
+                  "long_desc": "The STARMAX GC STCR-305 is a 6V deep cycle flooded lead-acid battery with a 305Ah capacity. Ideal for golf carts, solar systems, and inverter backup. Weighs 121 lbs and designed for high-load environments."
+                },
+                "rateable": true,
+                "rating": "4.2",
+                "price": {
+                  "value": "1000",
+                  "currency": "USD"
+                },
+                "quantity": {
+                  "available": { "count": 100 }
+                },
+                "fulfillment_ids": ["1", "2"],
+                "category_ids": ["19"]
+              }
+            ]
+          },
+          {
+            "id": "105",
+            "descriptor": {
+              "name": "Odyssey",
+              "short_desc": "High-performance AGM battery brand for heavy-duty vehicles",
+              "long_desc": "Odyssey designs dual-purpose AGM batteries built for harsh environments and high-cranking power. Used in military and commercial fleets.",
+              "additional_desc": { "url": "www.becknprotocol.io" },
+              "images": [
+                {
+                  "url": "https://www.odysseybattery.com/wp-content/uploads/sites/2/ODYSSEY_logo.png",
+                  "size_type": "sm"
+                }
+              ]
+            },
+            "rating": "5",
+            "rateable": true,
+            "categories": [
+              {
+                "id": "19",
+                "descriptor": {
+                  "name": "General Purpose Batteries",
+                  "code": "general_batteries"
+                }
+              }
+            ],
+            "fulfillments": [
+              { "id": "1", "type": "HOME_DELIVERY" },
+              { "id": "2", "type": "STORE_PICKUP" }
+            ],
+            "items": [
+              {
+                "id": "282",
+                "descriptor": {
+                  "name": "Odyssey Extreme AGM 1225CCA Group 6TL Battery",
+                  "short_desc": "Military-grade AGM battery for extreme-duty vehicles",
+                  "long_desc": "This Odyssey Extreme AGM battery offers 1225 Cold Cranking Amps and advanced lead plates for double the power of conventional batteries. Suitable for Group 6TL military vehicles like H1 Humvees. Backed by a 4-year warranty."
+                },
+                "rateable": true,
+                "rating": "4.4",
+                "price": {
+                  "value": "800",
+                  "currency": "USD"
+                },
+                "quantity": {
+                  "available": { "count": 100 }
+                },
+                "fulfillment_ids": ["1"],
+                "category_ids": ["19"]
+              }
+            ]
+          },
+          {
+            "id": "106",
+            "descriptor": {
+              "name": "Voltronix",
+              "short_desc": "Lithium battery provider for solar and backup power",
+              "long_desc": "Voltronix supplies advanced lithium-ion battery kits for solar storage and off-grid applications, offering long lifecycle and low maintenance.",
+              "additional_desc": { "url": "https://voltronix.com/" },
+              "images": [
+                {
+                  "url": "https://voltronix.com/wp-content/uploads/2021/08/New-Voltonix_logo_byline_Blue25AAE1_White-bkg.png",
+                  "size_type": "sm"
+                }
+              ]
+            },
+            "rating": "4",
+            "rateable": true,
+            "categories": [
+              {
+                "id": "17",
+                "descriptor": {
+                  "name": "EV Batteries",
+                  "code": "ev_batteries"
+                }
+              },
+              {
+                "id": "19",
+                "descriptor": {
+                  "name": "General Purpose Batteries",
+                  "code": "general_batteries"
+                }
+              }
+            ],
+            "fulfillments": [
+              { "id": "2", "type": "STORE_PICKUP" }
+            ],
+            "items": [
+              {
+                "id": "284",
+                "descriptor": {
+                  "name": "Voltronix Lithium Battery Kit for Solar Backup",
+                  "short_desc": "Modular lithium-ion battery kit for energy storage systems",
+                  "long_desc": "This lithium battery kit offers 3000–5000 charge cycles and weighs up to 60% less than lead-acid alternatives. Ideal for solar and off-grid energy storage. Maintenance-free design reduces corrosion and runtime variability."
+                },
+                "rateable": true,
+                "rating": "5",
+                "price": {
+                  "value": "2000",
+                  "currency": "USD"
+                },
+                "quantity": {
+                  "available": { "count": 10 }
+                },
+                "fulfillment_ids": ["2"],
+                "category_ids": ["19"]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+  

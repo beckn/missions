@@ -1,0 +1,243 @@
+{
+    "context": {
+        "domain": "deg:finance",
+        "action": "on_search",
+        "version": "1.1.0",
+        "bpp_id": "bpp-loan-provider.example.com",
+        "bpp_uri": "https://bpp-loan-provider.example.com",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "628"
+            }
+        },
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-solar-001",
+        "message_id": "msg-solar-001",
+        "ttl": "PT10M",
+        "timestamp": "2025-05-07T10:05:00Z"
+    },
+    "message": {
+        "catalog": {
+            "descriptor": {
+                "name": "Solar Loan Catalog",
+                "short_desc": "Loan offerings for rooftop solar systems"
+            },
+            "providers": [
+                {
+                    "id": "sun_finance",
+                    "descriptor": {
+                        "name": "Sun Finance",
+                        "long_desc": "Loan provider for residential and SME solar energy systems"
+                    },
+                    "categories": [
+                        {
+                            "id": "solar_loans",
+                            "descriptor": {
+                                "name": "Solar Panel Loans",
+                                "code": "SOLAR_LOAN"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "digital_doc",
+                            "type": "Digital"
+                        },
+                        {
+                            "id": "field_verification",
+                            "type": "In-person Verification"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "solar_loan_3kw",
+                            "descriptor": {
+                                "name": "Solar Panel Loan - 3kW System (36 Month Plan)",
+                                "short_desc": "Loan for 3kW rooftop solar installation"
+                            },
+                            "category_ids": [
+                                "solar_loans"
+                            ],
+                            "fulfillment_ids": [
+                                "field_verification"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "name": "Loan Terms"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Max Loan Amount"
+                                            },
+                                            "value": "15000"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Tenure"
+                                            },
+                                            "value": "36 months"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Interest Rate (Annual %)"
+                                            },
+                                            "value": "10.0"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Collateral Required"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Monthly EMI Estimate"
+                                            },
+                                            "value": "110"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Eligibility"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Minimum Credit Score"
+                                            },
+                                            "value": "680"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Minimum Income"
+                                            },
+                                            "value": "3000 USD"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Panel Type"
+                                            },
+                                            "value": "Mono PERC"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Subsidy Available"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "greengrid_loans",
+                    "descriptor": {
+                        "name": "GreenGrid Loans",
+                        "long_desc": "Affordable loans for solar panel adoption"
+                    },
+                    "categories": [
+                        {
+                            "id": "solar_loans",
+                            "descriptor": {
+                                "name": "Solar Panel Loans",
+                                "code": "SOLAR_LOAN"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "digital_doc",
+                            "type": "Digital"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "solar_loan_2kw",
+                            "descriptor": {
+                                "name": "Solar Panel Loan - 2kW System (24 Month Plan)",
+                                "short_desc": "Loan for 2kW rooftop solar installation"
+                            },
+                            "category_ids": [
+                                "solar_loans"
+                            ],
+                            "fulfillment_ids": [
+                                "digital_doc"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "name": "Loan Terms"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Max Loan Amount"
+                                            },
+                                            "value": "10000"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Tenure"
+                                            },
+                                            "value": "24 months"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Interest Rate (Annual %)"
+                                            },
+                                            "value": "9.5"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Monthly EMI Estimate"
+                                            },
+                                            "value": "75"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Eligibility"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Minimum Credit Score"
+                                            },
+                                            "value": "640"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Minimum Income"
+                                            },
+                                            "value": "2200 USD"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Panel Type"
+                                            },
+                                            "value": "Polycrystalline"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
