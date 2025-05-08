@@ -23,15 +23,15 @@
     "message": {
         "catalog": {
             "descriptor": {
-                "name": "UrjaKart",
-                "code": "UrjaKart",
+                "name": "Energykart",
+                "code": "Energykart",
                 "short_desc": "A seller platform for energy solutions, enabling seamless transactions of batteries, solar panels, and other renewable energy products."
             },
             "providers": [
                 {
                     "id": "299",
                     "descriptor": {
-                        "name": "Detroit Public School's Battery",
+                        "name": "San Francisco Energy Depot",
                         "short_desc": "Battery",
                         "long_desc": "Battery",
                         "additional_desc": {
@@ -76,7 +76,7 @@
                                 "name": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery",
                                 "code": "Battery",
                                 "short_desc": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery, 305Ah X 8",
-                                "long_desc": "Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\n                  Our flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\n                  Choose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.",
+                                "long_desc": "Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\nOur flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\nChoose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.",
                                 "images": [
                                     {
                                         "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg"
@@ -102,10 +102,10 @@
                         {
                             "id": "421",
                             "descriptor": {
-                                "name": "STARMAX GC STCR-305 ^– 6-Volt Deep Cycle Flooded Battery",
+                                "name": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery",
                                 "code": "Battery",
-                                "short_desc": "STARMAX GC STCR-305 ^– 6-Volt Deep Cycle Flooded Battery, 305Ah X 8",
-                                "long_desc": "Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\n                  Our flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\n                  Choose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.",
+                                "short_desc": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery, 305Ah X 8",
+                                "long_desc": "Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\nOur flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\nChoose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.",
                                 "images": [
                                     {
                                         "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg"
@@ -132,7 +132,7 @@
                 {
                     "id": "277",
                     "descriptor": {
-                        "name": "Detroit Public School's Battery",
+                        "name": "San Francisco Battery Rentals",
                         "short_desc": "Battery",
                         "long_desc": "Battery",
                         "additional_desc": {
@@ -173,7 +173,7 @@
                                 "name": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery",
                                 "code": "Battery",
                                 "short_desc": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery, 305Ah X 8",
-                                "long_desc": "Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\n                  Our flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\n                  Choose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.",
+                                "long_desc": "Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\nOur flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\nChoose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.",
                                 "images": [
                                     {
                                         "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg"

@@ -23,8 +23,8 @@
     "message": {
         "catalog": {
             "descriptor": {
-                "name": "UrjaKart",
-                "code": "UrjaKart",
+                "name": "Energykart",
+                "code": "Energykart",
                 "short_desc": "A seller platform for energy solutions, enabling seamless transactions of batteries, solar panels, and other renewable energy products."
             },
             "providers": [

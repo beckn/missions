@@ -1,0 +1,281 @@
+{
+    "context": {
+        "domain": "deg:service",
+        "action": "on_search",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "628"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+        "bpp_id": "example-bpp.com",
+        "bpp_uri": "https://example-bpp.com",
+        "transaction_id": "certification-txn-9001",
+        "message_id": "certification-msg-10001",
+        "timestamp": "2025-05-07T14:15:00Z"
+    },
+    "message": {
+        "catalog": {
+            "providers": [
+                {
+                    "id": "sf_solar_cert_board",
+                    "descriptor": {
+                        "name": "SF Solar Certification Board",
+                        "short_desc": "Official body for certifying solar panel installations",
+                        "long_desc": "Authorized certifying body offering inspection and certification services for solar panel installations in residential and commercial properties.",
+                        "images": [
+                            {
+                                "url": "https://sfsolarboard.gov/logo.png"
+                            }
+                        ]
+                    },
+                    "rating": "4.7/5",
+                    "categories": [
+                        {
+                            "id": "1",
+                            "descriptor": {
+                                "code": "solar-certification",
+                                "name": "Solar Certification"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Francisco"
+                            }
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "provider-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "certified-body"
+                                    },
+                                    "value": "true"
+                                }
+                            ]
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "inspection",
+                            "type": "ONSITE",
+                            "rateable": true,
+                            "tracking": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "inspection_details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "technician_qualification"
+                                            },
+                                            "value": "Certified Solar Inspector"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "average_duration"
+                                            },
+                                            "value": "90 minutes"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "solar-cert-residential",
+                            "descriptor": {
+                                "name": "Residential Solar Certification"
+                            },
+                            "price": {
+                                "estimated_value": "150",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "certification-type"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "property-type"
+                                            },
+                                            "value": "Residential"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "inspection-mode"
+                                            },
+                                            "value": "On-site"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "documentation"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "required-docs"
+                                            },
+                                            "value": "System layout, installation report, ID proof"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "certificate-validity"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "validity-period"
+                                            },
+                                            "value": "5 years"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "renewal-required"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "eligibility-criteria"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "minimum-system-size"
+                                            },
+                                            "value": "1.5KW"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "installation-age-limit"
+                                            },
+                                            "value": "Under 6 months old"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "solar-cert-commercial",
+                            "descriptor": {
+                                "name": "Commercial Solar Certification"
+                            },
+                            "price": {
+                                "estimated_value": "300",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "certification-type"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "property-type"
+                                            },
+                                            "value": "Commercial"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "inspection-mode"
+                                            },
+                                            "value": "On-site with grid compliance check"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "documentation"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "required-docs"
+                                            },
+                                            "value": "Wiring diagram, installation report, business registration"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "certificate-validity"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "validity-period"
+                                            },
+                                            "value": "5 years"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "renewal-required"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "eligibility-criteria"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "minimum-system-size"
+                                            },
+                                            "value": "3KW"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "installation-age-limit"
+                                            },
+                                            "value": "Under 1 year old"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
