@@ -67,15 +67,17 @@
                     "type": "DIGITAL"
                 }
             ],
-            "payment": {
-                "type": "POST-FULFILLMENT",
-                "collected_by": "BPP",
-                "status": "NOT-PAID",
-                "params": {
-                    "amount": "Estimated EMI: 14/month",
-                    "currency": "USD"
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
                 }
-            }
+            ]
         }
     }
 }

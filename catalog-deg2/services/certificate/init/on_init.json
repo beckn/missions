@@ -37,6 +37,107 @@
                     "price": {
                         "estimated_value": "150",
                         "currency": "USD"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "certification-type"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "property-type"
+                                    },
+                                    "value": "Residential"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "inspection-mode"
+                                    },
+                                    "value": "On-site"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documentation"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "required-docs"
+                                    },
+                                    "value": "System layout, installation report, ID proof"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "certificate-validity"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "validity-period"
+                                    },
+                                    "value": "5 years"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "renewal-required"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility-criteria"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "minimum-system-size"
+                                    },
+                                    "value": "1.5KW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installation-age-limit"
+                                    },
+                                    "value": "Under 6 months old"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Document Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 2
+                            },
+                            "headings": [
+                                "System Layout",
+                                "Installation Report",
+                                "ID proof"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://6vs8xnx5i7.scheme-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+                            }
+                        }
                     }
                 }
             ],
@@ -116,15 +217,17 @@
                     }
                 ]
             },
-            "payment": {
-                "type": "ON-FULFILLMENT",
-                "collected_by": "BPP",
-                "status": "NOT-PAID",
-                "params": {
-                    "amount": "150",
-                    "currency": "USD"
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
                 }
-            }
+            ]
         }
     }
 }

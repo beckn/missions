@@ -69,18 +69,18 @@
                     "tags": [
                         {
                             "descriptor": {
-                                "name": "Energy Attributes"
+                                "code": "Energy_Attributes"
                             },
                             "list": [
                                 {
                                     "descriptor": {
-                                        "name": "Source Type"
+                                        "code": "Source_Type"
                                     },
                                     "value": "Rooftop Solar"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Carbon Offset Certified"
+                                        "code": "Carbon_Offset_Certified"
                                     },
                                     "value": "Yes"
                                 }

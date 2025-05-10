@@ -109,37 +109,37 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Panel Specifications"
+                                        "code": "Panel_Specifications"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Type"
+                                                "code": "Type"
                                             },
                                             "value": "Monocrystalline"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Wattage"
+                                                "code": "Wattage"
                                             },
                                             "value": "450W"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Efficiency"
+                                                "code": "Efficiency"
                                             },
                                             "value": "21.4%"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Warranty"
+                                                "code": "Warranty"
                                             },
                                             "value": "25 years"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "IP Rating"
+                                                "code": "IP_Rating"
                                             },
                                             "value": "IP68"
                                         }
@@ -172,31 +172,31 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Panel Specifications"
+                                        "code": "Panel_Specifications"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Type"
+                                                "code": "Type"
                                             },
                                             "value": "Polycrystalline"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Wattage"
+                                                "code": "Wattage"
                                             },
                                             "value": "325W"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Efficiency"
+                                                "code": "Efficiency"
                                             },
                                             "value": "18.3%"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Warranty"
+                                                "code": "Warranty"
                                             },
                                             "value": "10 years"
                                         }
@@ -275,31 +275,31 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Panel Specifications"
+                                        "code": "Panel_Specifications"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Type"
+                                                "code": "Type"
                                             },
                                             "value": "Flexible PET"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Wattage"
+                                                "code": "Wattage"
                                             },
                                             "value": "100W"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Weight"
+                                                "code": "Weight"
                                             },
                                             "value": "2.5 kg"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Use Case"
+                                                "code": "Use_Case"
                                             },
                                             "value": "Camping, RV, Off-grid"
                                         }

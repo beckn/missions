@@ -183,6 +183,58 @@
                         "currency": "USD"
                     }
                 }
+            ],
+            "return_terms": [
+                {
+                    "fulfillment_state": {
+                        "code": "delivered",
+                        "name": "Delivered"
+                    },
+                    "return_eligible": true,
+                    "return_time": {
+                        "timestamp": "2025-05-14T23:59:59Z"
+                    },
+                    "return_location": {
+                        "id": "return-loc-001",
+                        "descriptor": {
+                            "name": "Return Center"
+                        },
+                        "gps": "37.7749,-122.4194",
+                        "address": "Warehouse 5, Bay Area, CA"
+                    },
+                    "fulfillment_managed_by": "CONSUMER"
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "fulfillment_state": {
+                        "descriptor": {
+                            "code": "order_placed",
+                            "name": "Order Placed"
+                        }
+                    },
+                    "reason_required": true,
+                    "cancel_by": {
+                        "timestamp": "2025-05-07T20:00:00Z"
+                    },
+                    "cancellation_fee": {
+                        "percentage": 5,
+                        "minimum_value": {
+                            "currency": "USD",
+                            "value": "10"
+                        }
+                    },
+                    "xinput": {
+                        "required": true,
+                        "form": {
+                            "url": "https://example.com/cancel"
+                        }
+                    },
+                    "external_ref": {
+                        "url": "https://example.com/docs/cancellation-policy.pdf",
+                        "mime_type": "application/pdf"
+                    }
+                }
             ]
         }
     }

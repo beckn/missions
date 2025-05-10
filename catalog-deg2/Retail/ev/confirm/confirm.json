@@ -59,16 +59,17 @@
                     ]
                 }
             ],
-            "payment": {
-                "type": "PRE-FULFILLMENT",
-                "collected_by": "BPP",
-                "status": "PAID",
-                "params": {
-                    "amount": "1300",
-                    "currency": "USD",
-                    "transaction_id": "txn-vw-ev-001"
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
                 }
-            }
+            ]
         }
     }
 }

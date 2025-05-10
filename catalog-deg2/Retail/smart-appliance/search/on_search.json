@@ -87,7 +87,7 @@
                             "descriptor": {
                                 "name": "SmartHive 55\" 4K Android TV",
                                 "short_desc": "55-inch UHD Smart TV with voice remote and Google Assistant",
-                                "long_desc": "SmartHive’s 4K UHD Android TV supports all major OTT apps, voice assistant integration, and has a sleek bezel-less design."
+                                "long_desc": "SmartHive's 4K UHD Android TV supports all major OTT apps, voice assistant integration, and has a sleek bezel-less design."
                             },
                             "price": {
                                 "value": "549",
@@ -109,31 +109,31 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Specifications"
+                                        "code": "Specifications"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Resolution"
+                                                "code": "Resolution"
                                             },
                                             "value": "4K UHD"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "OS"
+                                                "code": "OS"
                                             },
                                             "value": "Android TV 11"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Voice Assistant"
+                                                "code": "Voice_Assistant"
                                             },
                                             "value": "Google Assistant"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Ports"
+                                                "code": "Ports"
                                             },
                                             "value": "HDMI x3, USB x2"
                                         }
@@ -166,25 +166,25 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Specifications"
+                                        "code": "Specifications"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Connectivity"
+                                                "code": "Connectivity"
                                             },
                                             "value": "Wi-Fi, Zigbee, Bluetooth"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Compatible With"
+                                                "code": "Compatible_With"
                                             },
                                             "value": "Google Home, Alexa"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Voice Control"
+                                                "code": "Voice_Control"
                                             },
                                             "value": "Yes"
                                         }
@@ -275,25 +275,25 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Specifications"
+                                        "code": "Specifications"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Length"
+                                                "code": "Length"
                                             },
                                             "value": "16 ft"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Control"
+                                                "code": "Control"
                                             },
                                             "value": "App + Voice"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Power Source"
+                                                "code": "Power_Source"
                                             },
                                             "value": "USB"
                                         }
@@ -327,31 +327,31 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Specifications"
+                                        "code": "Specifications"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Resolution"
+                                                "code": "Resolution"
                                             },
                                             "value": "2K (1440p)"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Storage"
+                                                "code": "Storage"
                                             },
                                             "value": "Cloud + SD card"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Audio"
+                                                "code": "Audio"
                                             },
                                             "value": "2-way audio"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Night Vision"
+                                                "code": "Night_Vision"
                                             },
                                             "value": "Yes"
                                         }

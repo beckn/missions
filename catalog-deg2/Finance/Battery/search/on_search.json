@@ -23,7 +23,6 @@
     "message": {
         "catalog": {
             "descriptor": {
-                "name": "Energykart",
                 "code": "Energykart",
                 "short_desc": "A seller platform for energy solutions, enabling seamless transactions of batteries, solar panels, and other renewable energy products."
             },
@@ -31,7 +30,7 @@
                 {
                     "id": "103",
                     "descriptor": {
-                        "name": "PNC",
+                        "code": "PNC",
                         "short_desc": "Provides capital for businesses",
                         "long_desc": "Provides capital for businesses, asset purchases, or investments",
                         "additional_desc": {
@@ -48,7 +47,6 @@
                         {
                             "id": "33",
                             "descriptor": {
-                                "name": "BATTERY LOAN",
                                 "code": "BATTERY_LOAN"
                             }
                         }
@@ -79,7 +77,7 @@
                         {
                             "id": "281",
                             "descriptor": {
-                                "name": "Battery Loan - 6 Months EMI Plan",
+                                "code": "Battery_Loan_-_6_Months_EMI_Plan",
                                 "short_desc": "Asset Financier",
                                 "long_desc": "Battery Loan by PNC Equipment Financing 6 Months EMI Plan",
                                 "images": [
@@ -103,55 +101,55 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Loan Terms"
+                                        "code": "Loan_Terms"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Min Loan Amount(USD)"
+                                                "code": "Min_Loan_Amount_USD"
                                             },
                                             "value": "1000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Max Loan Amount(USD)"
+                                                "code": "Max_Loan_Amount_USD"
                                             },
                                             "value": "10000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Interest Rate (Annual %)"
+                                                "code": "Interest_Rate_Annual_Percent"
                                             },
                                             "value": "12.0"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Tenure"
+                                                "code": "Tenure"
                                             },
                                             "value": "6 months"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Repayment Type"
+                                                "code": "Repayment_Type"
                                             },
                                             "value": "EMI"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Collateral Required"
+                                                "code": "Collateral_Required"
                                             },
                                             "value": "No"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Monthly EMI Estimate"
+                                                "code": "Monthly_EMI_Estimate"
                                             },
                                             "value": "14"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Terms & Conditions"
+                                                "code": "Terms_and_Conditions"
                                             },
                                             "value": "https://pnc.com/loan-terms"
                                         }
@@ -159,25 +157,25 @@
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Eligibility"
+                                        "code": "Eligibility"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Credit Score"
+                                                "code": "Minimum_Credit_Score"
                                             },
                                             "value": "650"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Income (Monthly)(USD)"
+                                                "code": "Minimum_Income_Monthly_USD"
                                             },
                                             "value": "2000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Employment Status"
+                                                "code": "Employment_Status"
                                             },
                                             "value": "Salaried"
                                         }
@@ -188,7 +186,7 @@
                         {
                             "id": "340",
                             "descriptor": {
-                                "name": "Battery Loan - 9 Months EMI Plan",
+                                "code": "Battery_Loan_-_9_Months_EMI_Plan",
                                 "short_desc": "Asset Financier",
                                 "long_desc": "Battery Loan by PNC Equipment Financing 9 Months EMI Plan",
                                 "images": [
@@ -211,55 +209,55 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Loan Terms"
+                                        "code": "Loan_Terms"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Min Loan Amount(USD)"
+                                                "code": "Min_Loan_Amount_USD"
                                             },
                                             "value": "2000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Max Loan Amount(USD)"
+                                                "code": "Max_Loan_Amount_USD"
                                             },
                                             "value": "15000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Interest Rate (Annual %)"
+                                                "code": "Interest_Rate_Annual_Percent"
                                             },
                                             "value": "13.2"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Tenure"
+                                                "code": "Tenure"
                                             },
                                             "value": "9 months"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Repayment Type"
+                                                "code": "Repayment_Type"
                                             },
                                             "value": "EMI"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Collateral Required"
+                                                "code": "Collateral_Required"
                                             },
                                             "value": "Yes"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Monthly EMI Estimate"
+                                                "code": "Monthly_EMI_Estimate"
                                             },
                                             "value": "16"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Terms & Conditions"
+                                                "code": "Terms_and_Conditions"
                                             },
                                             "value": "https://bofa.com/loan-terms"
                                         }
@@ -267,25 +265,25 @@
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Eligibility"
+                                        "code": "Eligibility"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Credit Score"
+                                                "code": "Minimum_Credit_Score"
                                             },
                                             "value": "700"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Income (Monthly)(USD)"
+                                                "code": "Minimum_Income_Monthly_USD"
                                             },
                                             "value": "3000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Employment Status"
+                                                "code": "Employment_Status"
                                             },
                                             "value": "Salaried"
                                         }
@@ -298,7 +296,7 @@
                 {
                     "id": "102",
                     "descriptor": {
-                        "name": "Bank of America",
+                        "code": "Bank_of_America",
                         "short_desc": "Provides capital for businesses",
                         "long_desc": "Provides capital for businesses, asset purchases, or investments",
                         "additional_desc": {
@@ -317,7 +315,6 @@
                         {
                             "id": "36",
                             "descriptor": {
-                                "name": "BATTERY LOAN",
                                 "code": "BATTERY_LOAN"
                             }
                         }
@@ -346,7 +343,7 @@
                         {
                             "id": "280",
                             "descriptor": {
-                                "name": "BOA: Battery Loan - 9 Months EMI Plan",
+                                "code": "BOA:_Battery_Loan_-_9_Months_EMI_Plan",
                                 "short_desc": "Asset Financier",
                                 "long_desc": "Battery Loan by Bank of America 9 Months EMI Plan",
                                 "images": [
@@ -369,55 +366,55 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Loan Terms"
+                                        "code": "Loan_Terms"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Min Loan Amount(USD)"
+                                                "code": "Min_Loan_Amount_USD"
                                             },
                                             "value": "4000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Max Loan Amount(USD)"
+                                                "code": "Max_Loan_Amount_USD"
                                             },
                                             "value": "20000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Interest Rate (Annual %)"
+                                                "code": "Interest_Rate_Annual_Percent"
                                             },
                                             "value": "12.2"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Tenure"
+                                                "code": "Tenure"
                                             },
                                             "value": "9 months"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Repayment Type"
+                                                "code": "Repayment_Type"
                                             },
                                             "value": "EMI"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Collateral Required"
+                                                "code": "Collateral_Required"
                                             },
                                             "value": "No"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Monthly EMI Estimate(USD)"
+                                                "code": "Monthly_EMI_Estimate_USD"
                                             },
                                             "value": "20"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Terms & Conditions"
+                                                "code": "Terms_and_Conditions"
                                             },
                                             "value": "https://bofa.com/loan-terms"
                                         }
@@ -425,25 +422,25 @@
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Eligibility"
+                                        "code": "Eligibility"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Credit Score"
+                                                "code": "Minimum_Credit_Score"
                                             },
                                             "value": "720"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Income (Monthly)(USD)"
+                                                "code": "Minimum_Income_Monthly_USD"
                                             },
                                             "value": "4000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Employment Status"
+                                                "code": "Employment_Status"
                                             },
                                             "value": "Salaried"
                                         }

@@ -112,16 +112,48 @@
                     }
                 ]
             },
-            "payment": {
-                "type": "PRE-FULFILLMENT",
-                "collected_by": "BPP",
-                "status": "PAID",
-                "params": {
-                    "amount": "345",
-                    "currency": "USD",
-                    "transaction_id": "txn-sunpro-001"
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
                 }
-            }
+            ],
+            "cancellation_terms": [
+                {
+                    "fulfillment_state": {
+                        "descriptor": {
+                            "code": "order_placed",
+                            "name": "Order Placed"
+                        }
+                    },
+                    "reason_required": true,
+                    "cancel_by": {
+                        "timestamp": "2025-05-07T20:00:00Z"
+                    },
+                    "cancellation_fee": {
+                        "percentage": 5,
+                        "minimum_value": {
+                            "currency": "USD",
+                            "value": "10"
+                        }
+                    },
+                    "xinput": {
+                        "required": true,
+                        "form": {
+                            "url": "https://example.com/cancel"
+                        }
+                    },
+                    "external_ref": {
+                        "url": "https://example.com/docs/cancellation-policy.pdf",
+                        "mime_type": "application/pdf"
+                    }
+                }
+            ]
         }
     }
 }

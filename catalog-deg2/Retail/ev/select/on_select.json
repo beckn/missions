@@ -47,31 +47,31 @@
                     "tags": [
                         {
                             "descriptor": {
-                                "name": "Specifications"
+                                "code": "Specifications"
                             },
                             "display": true,
                             "list": [
                                 {
                                     "descriptor": {
-                                        "name": "Battery"
+                                        "code": "Battery"
                                     },
                                     "value": "3.97kWh Lithium-ion"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Range"
+                                        "code": "Range"
                                     },
                                     "value": "120 km"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Top Speed"
+                                        "code": "Top_Speed"
                                     },
                                     "value": "95 km/h"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Charging Time"
+                                        "code": "Charging_Time"
                                     },
                                     "value": "6.5 hours"
                                 }

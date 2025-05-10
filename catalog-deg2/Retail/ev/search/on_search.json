@@ -109,31 +109,31 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Specifications"
+                                        "code": "Specifications"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Battery"
+                                                "code": "Battery"
                                             },
                                             "value": "3.97kWh Lithium-ion"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Range"
+                                                "code": "Range"
                                             },
                                             "value": "120 km"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Top Speed"
+                                                "code": "Top_Speed"
                                             },
                                             "value": "95 km/h"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Charging Time"
+                                                "code": "Charging_Time"
                                             },
                                             "value": "6.5 hours"
                                         }
@@ -167,25 +167,25 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Helmet Specs"
+                                        "code": "Helmet_Specs"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Size"
+                                                "code": "Size"
                                             },
                                             "value": "M / L / XL"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Bluetooth"
+                                                "code": "Bluetooth"
                                             },
                                             "value": "Yes"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Safety"
+                                                "code": "Safety"
                                             },
                                             "value": "Rear LED Light"
                                         }
@@ -275,31 +275,31 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Specifications"
+                                        "code": "Specifications"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Battery"
+                                                "code": "Battery"
                                             },
                                             "value": "4.5kWh Removable"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Range"
+                                                "code": "Range"
                                             },
                                             "value": "150 km"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Top Speed"
+                                                "code": "Top_Speed"
                                             },
                                             "value": "45 km/h"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Seating"
+                                                "code": "Seating"
                                             },
                                             "value": "3 + driver"
                                         }
@@ -332,25 +332,25 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Charger Specs"
+                                        "code": "Charger_Specs"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Voltage"
+                                                "code": "Voltage"
                                             },
                                             "value": "48V"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Current"
+                                                "code": "Current"
                                             },
                                             "value": "15A"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Features"
+                                                "code": "Features"
                                             },
                                             "value": "Surge Protection, Auto Cutoff"
                                         }

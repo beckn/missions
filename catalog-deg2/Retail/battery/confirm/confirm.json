@@ -58,16 +58,17 @@
             ]
           }
         ],
-        "payment": {
-          "type": "ON-FULFILLMENT",
-          "collected_by": "BPP",
-          "status": "PAID",
-          "params": {
-            "amount": "1050",
-            "currency": "USD",
-            "transaction_id": "txn-7890-abcd"
+        "payments": [
+          {
+            "type": "ON-FULFILLMENT",
+            "collected_by": "BPP",
+            "status": "NOT-PAID",
+            "params": {
+              "amount": "150",
+              "currency": "USD"
+            }
           }
-        }
+        ]
       }
     }
   }

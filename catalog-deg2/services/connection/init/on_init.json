@@ -71,7 +71,36 @@
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Document Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 2
+                            },
+                            "headings": [
+                                "ID proof",
+                                "ownership certificate",
+                                "wiring diagram"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://6vs8xnx5i7.scheme-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+                            }
+                        }
+                    }
                 }
             ],
             "billing": {
@@ -129,15 +158,17 @@
                     }
                 ]
             },
-            "payment": {
-                "type": "ON-FULFILLMENT",
-                "collected_by": "BPP",
-                "status": "NOT-PAID",
-                "params": {
-                    "amount": "200",
-                    "currency": "USD"
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
                 }
-            }
+            ]
         }
     }
 }

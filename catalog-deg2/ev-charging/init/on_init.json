@@ -65,42 +65,42 @@
                     "tags": [
                         {
                             "descriptor": {
-                                "name": "Connector Specifications"
+                                "code": "Connector_Specifications"
                             },
                             "list": [
                                 {
                                     "descriptor": {
-                                        "name": "Connector ID"
+                                        "code": "Connector_ID"
                                     },
                                     "value": "con1"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Charger Type"
+                                        "code": "Charger_Type"
                                     },
                                     "value": "DC"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Connector Type"
+                                        "code": "Connector_Type"
                                     },
                                     "value": "CCS2"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Power Rating"
+                                        "code": "Power_Rating"
                                     },
                                     "value": "30kW"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Estimated Charging Time"
+                                        "code": "Estimated_Charging_Time"
                                     },
                                     "value": "40 minutes"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Availability"
+                                        "code": "Availability"
                                     },
                                     "value": "Available"
                                 }
@@ -108,18 +108,18 @@
                         },
                         {
                             "descriptor": {
-                                "name": "Charging Point Specifications"
+                                "code": "Charging_Point_Specifications"
                             },
                             "list": [
                                 {
                                     "descriptor": {
-                                        "name": "Pillar Number"
+                                        "code": "Pillar_Number"
                                     },
                                     "value": "4"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Charger ID"
+                                        "code": "Charger_ID"
                                     },
                                     "value": "charg1"
                                 }
@@ -141,24 +141,24 @@
                     "tags": [
                         {
                             "descriptor": {
-                                "name": "Fulfillment Details"
+                                "code": "Fulfillment_Details"
                             },
                             "list": [
                                 {
                                     "descriptor": {
-                                        "name": "Service Time per Vehicle"
+                                        "code": "Service_Time_per_Vehicle"
                                     },
                                     "value": "45 min"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Charger Environment"
+                                        "code": "Charger_Environment"
                                     },
                                     "value": "Covered Bay"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Supports Plug-n-Charge"
+                                        "code": "Supports_Plug-n-Charge"
                                     },
                                     "value": "Yes"
                                 }

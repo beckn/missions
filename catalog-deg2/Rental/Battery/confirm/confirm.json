@@ -58,16 +58,17 @@
                     ]
                 }
             ],
-            "payment": {
-                "type": "ON-FULFILLMENT",
-                "status": "PAID",
-                "collected_by": "BPP",
-                "params": {
-                    "amount": "10.00",
-                    "currency": "USD",
-                    "transaction_id": "pay-ref-7890"
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
                 }
-            }
+            ]
         }
     }
 }

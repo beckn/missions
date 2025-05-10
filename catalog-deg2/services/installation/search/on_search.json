@@ -25,7 +25,7 @@
                 {
                     "id": "sunpower_sf",
                     "descriptor": {
-                        "name": "SunPower Installers",
+                        "code": "SunPower_Installers",
                         "short_desc": "Residential and commercial solar panel installation",
                         "long_desc": "Leading provider of rooftop and industrial solar panel setup services in San Francisco.",
                         "images": [
@@ -65,7 +65,7 @@
                         {
                             "id": "sp-resi-001",
                             "descriptor": {
-                                "name": "2kW Rooftop Solar Setup"
+                                "code": "2kW_Rooftop_Solar_Setup"
                             },
                             "price": {
                                 "estimated_value": "85000",
@@ -138,7 +138,7 @@
                         {
                             "id": "sp-comm-002",
                             "descriptor": {
-                                "name": "5kW Industrial Solar Installation"
+                                "code": "5kW_Industrial_Solar_Installation"
                             },
                             "price": {
                                 "estimated_value": "130000",
@@ -213,7 +213,7 @@
                 {
                     "id": "evgrid_connect",
                     "descriptor": {
-                        "name": "EVGrid Connect",
+                        "code": "EVGrid_Connect",
                         "short_desc": "End-to-end EV charging station setup services",
                         "long_desc": "Expert service provider for residential and commercial EV charger installation and maintenance in the Bay Area.",
                         "images": [
@@ -250,7 +250,7 @@
                         {
                             "id": "ev-home-001",
                             "descriptor": {
-                                "name": "Residential EV Charger Installation"
+                                "code": "Residential_EV_Charger_Installation"
                             },
                             "price": {
                                 "estimated_value": "15000",
@@ -297,7 +297,7 @@
                         {
                             "id": "ev-pub-002",
                             "descriptor": {
-                                "name": "Commercial EV Charging Station Setup"
+                                "code": "Commercial_EV_Charging_Station_Setup"
                             },
                             "price": {
                                 "estimated_value": "45000",

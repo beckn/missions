@@ -38,55 +38,55 @@
                     "tags": [
                         {
                             "descriptor": {
-                                "name": "Loan Terms"
+                                "code": "Loan_Terms"
                             },
                             "display": true,
                             "list": [
                                 {
                                     "descriptor": {
-                                        "name": "Min Loan Amount(USD)"
+                                        "code": "Min_Loan_Amount_USD"
                                     },
                                     "value": "1000"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Max Loan Amount(USD)"
+                                        "code": "Max_Loan_Amount_USD"
                                     },
                                     "value": "10000"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Interest Rate (Annual %)"
+                                        "code": "Interest_Rate_Annual_Percent"
                                     },
                                     "value": "12.0"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Tenure"
+                                        "code": "Tenure"
                                     },
                                     "value": "6 months"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Repayment Type"
+                                        "code": "Repayment_Type"
                                     },
                                     "value": "EMI"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Collateral Required"
+                                        "code": "Collateral_Required"
                                     },
                                     "value": "No"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Monthly EMI Estimate"
+                                        "code": "Monthly_EMI_Estimate"
                                     },
                                     "value": "14"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Terms & Conditions"
+                                        "code": "Terms_and_Conditions"
                                     },
                                     "value": "https://pnc.com/loan-terms"
                                 }
@@ -94,25 +94,25 @@
                         },
                         {
                             "descriptor": {
-                                "name": "Eligibility"
+                                "code": "Eligibility"
                             },
                             "display": true,
                             "list": [
                                 {
                                     "descriptor": {
-                                        "name": "Minimum Credit Score"
+                                        "code": "Minimum_Credit_Score"
                                     },
                                     "value": "650"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Minimum Income (Monthly)(USD)"
+                                        "code": "Minimum_Income_Monthly_USD"
                                     },
                                     "value": "2000"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Employment Status"
+                                        "code": "Employment_Status"
                                     },
                                     "value": "Salaried"
                                 }
@@ -120,24 +120,24 @@
                         },
                         {
                             "descriptor": {
-                                "name": "Asset Details"
+                                "code": "Asset_Details"
                             },
                             "list": [
                                 {
                                     "descriptor": {
-                                        "name": "Asset Name"
+                                        "code": "Asset_Name"
                                     },
                                     "value": "STARMAX GC STCR-305 – 6V 305Ah Flooded Battery"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Asset Value (USD)"
+                                        "code": "Asset_Value_USD"
                                     },
                                     "value": "1000"
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Asset ID"
+                                        "code": "Asset_ID"
                                     },
                                     "value": "starmax_gc_stcr_305"
                                 }

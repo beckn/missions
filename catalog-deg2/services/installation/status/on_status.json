@@ -150,15 +150,17 @@
                     }
                 ]
             },
-            "payment": {
-                "type": "ON-FULFILLMENT",
-                "collected_by": "BPP",
-                "status": "NOT-PAID",
-                "params": {
-                    "amount": "85000",
-                    "currency": "USD"
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
                 }
-            }
+            ]
         }
     }
 }

@@ -86,43 +86,43 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Loan Terms"
+                                        "code": "Loan_Terms"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Min Loan Amount"
+                                                "code": "Min_Loan_Amount"
                                             },
                                             "value": "1000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Max Loan Amount"
+                                                "code": "Max_Loan_Amount"
                                             },
                                             "value": "8000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Tenure"
+                                                "code": "Tenure"
                                             },
                                             "value": "12 months"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Interest Rate (Annual %)"
+                                                "code": "Interest_Rate_Annual_Percent"
                                             },
                                             "value": "11.0"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Collateral Required"
+                                                "code": "Collateral_Required"
                                             },
                                             "value": "No"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Monthly EMI Estimate"
+                                                "code": "Monthly_EMI_Estimate"
                                             },
                                             "value": "80"
                                         }
@@ -130,25 +130,25 @@
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Eligibility"
+                                        "code": "Eligibility"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Credit Score"
+                                                "code": "Minimum_Credit_Score"
                                             },
                                             "value": "650"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Income"
+                                                "code": "Minimum_Income"
                                             },
                                             "value": "2500 USD"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Employment Status"
+                                                "code": "Employment_Status"
                                             },
                                             "value": "Salaried"
                                         }
@@ -213,43 +213,43 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Loan Terms"
+                                        "code": "Loan_Terms"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Min Loan Amount"
+                                                "code": "Min_Loan_Amount"
                                             },
                                             "value": "500"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Max Loan Amount"
+                                                "code": "Max_Loan_Amount"
                                             },
                                             "value": "6000"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Tenure"
+                                                "code": "Tenure"
                                             },
                                             "value": "9 months"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Interest Rate (Annual %)"
+                                                "code": "Interest_Rate_Annual_Percent"
                                             },
                                             "value": "10.5"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Collateral Required"
+                                                "code": "Collateral_Required"
                                             },
                                             "value": "No"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Monthly EMI Estimate"
+                                                "code": "Monthly_EMI_Estimate"
                                             },
                                             "value": "65"
                                         }
@@ -257,25 +257,25 @@
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Eligibility"
+                                        "code": "Eligibility"
                                     },
                                     "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Credit Score"
+                                                "code": "Minimum_Credit_Score"
                                             },
                                             "value": "600"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Income"
+                                                "code": "Minimum_Income"
                                             },
                                             "value": "1800 USD"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Employment Status"
+                                                "code": "Employment_Status"
                                             },
                                             "value": "Self-Employed"
                                         }
