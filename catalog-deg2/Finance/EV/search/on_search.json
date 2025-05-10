@@ -52,6 +52,20 @@
                             "type": "In-person Verification"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "items": [
                         {
                             "id": "ev_loan_1",
@@ -64,6 +78,10 @@
                             ],
                             "fulfillment_ids": [
                                 "digital_doc"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
                             ],
                             "tags": [
                                 {
@@ -161,6 +179,20 @@
                             "type": "Digital"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "items": [
                         {
                             "id": "ev_loan_volt_9mo",
@@ -173,6 +205,10 @@
                             ],
                             "fulfillment_ids": [
                                 "digital_doc"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
                             ],
                             "tags": [
                                 {

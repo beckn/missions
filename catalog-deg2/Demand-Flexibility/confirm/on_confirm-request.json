@@ -48,30 +48,30 @@
           "tags": [
             {
               "descriptor": {
-                "name": "Flexibility Event Details"
+                "code": "Flexibility_Event_Details"
               },
               "list": [
                 {
                   "descriptor": {
-                    "name": "Window"
+                    "code": "Window"
                   },
                   "value": "5:00 PM to 8:00 PM daily during alerts"
                 },
                 {
                   "descriptor": {
-                    "name": "Reward"
+                    "code": "Reward"
                   },
                   "value": "$0.20 per reduced kWh"
                 },
                 {
                   "descriptor": {
-                    "name": "Enrollment Required"
+                    "code": "Enrollment_Required"
                   },
                   "value": "Yes"
                 },
                 {
                   "descriptor": {
-                    "name": "Acceptance Mode"
+                    "code": "Acceptance_Mode"
                   },
                   "value": "Manual (via app notification)"
                 }

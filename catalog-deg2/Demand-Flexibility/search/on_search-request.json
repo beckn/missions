@@ -36,6 +36,51 @@
               }
             ]
           },
+          "locations": [
+            {
+              "id": "1",
+              "city": {
+                "name": "San Francisco"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "id": "manual_optin",
+              "type": "DIGITAL",
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "participation_mode"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "acceptance_type"
+                      },
+                      "value": "Manual via App Notification"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "categories": [
+            {
+              "id": "flex_manual",
+              "descriptor": {
+                "code": "MANUAL_FLEX",
+                "name": "Manual Demand Response"
+              }
+            },
+            {
+              "id": "flex_auto",
+              "descriptor": {
+                "code": "AUTO_FLEX",
+                "name": "Automated Load Management"
+              }
+            }
+          ],
           "items": [
             {
               "id": "manual_optin_demand_flex",
@@ -47,33 +92,42 @@
                   "url": "https://sfeu.org/flexibility/peak-saver"
                 }
               },
+              "location_ids": [
+                "1"
+              ],
+              "category_ids": [
+                "flex_manual"
+              ],
+              "fulfillment_ids": [
+                "manual_optin"
+              ],
               "tags": [
                 {
                   "descriptor": {
-                    "name": "Flexibility Event Details"
+                    "code": "Flexibility_Event_Details"
                   },
                   "list": [
                     {
                       "descriptor": {
-                        "name": "Window"
+                        "code": "Window"
                       },
                       "value": "5:00 PM to 8:00 PM daily during alerts"
                     },
                     {
                       "descriptor": {
-                        "name": "Reward"
+                        "code": "Reward"
                       },
                       "value": "$0.20 per reduced kWh"
                     },
                     {
                       "descriptor": {
-                        "name": "Enrollment Required"
+                        "code": "Enrollment_Required"
                       },
                       "value": "Yes"
                     },
                     {
                       "descriptor": {
-                        "name": "Acceptance Mode"
+                        "code": "Acceptance_Mode"
                       },
                       "value": "Manual (via app notification)"
                     }
@@ -94,6 +148,51 @@
               }
             ]
           },
+          "locations": [
+            {
+              "id": "1",
+              "city": {
+                "name": "San Francisco"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "id": "automated_control",
+              "type": "DIGITAL",
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "participation_mode"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "acceptance_type"
+                      },
+                      "value": "Automated via Device API"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "categories": [
+            {
+              "id": "flex_manual",
+              "descriptor": {
+                "code": "MANUAL_FLEX",
+                "name": "Manual Demand Response"
+              }
+            },
+            {
+              "id": "flex_auto",
+              "descriptor": {
+                "code": "AUTO_FLEX",
+                "name": "Automated Load Management"
+              }
+            }
+          ],
           "items": [
             {
               "id": "aggregator_optin_flex",
@@ -105,33 +204,42 @@
                   "url": "https://flexigrid.com/programs/smart-load"
                 }
               },
+              "location_ids": [
+                "1"
+              ],
+              "category_ids": [
+                "flex_auto"
+              ],
+              "fulfillment_ids": [
+                "automated_control"
+              ],
               "tags": [
                 {
                   "descriptor": {
-                    "name": "Flexibility Event Details"
+                    "code": "Flexibility_Event_Details"
                   },
                   "list": [
                     {
                       "descriptor": {
-                        "name": "Appliance Control Mode"
+                        "code": "Appliance_Control_Mode"
                       },
                       "value": "Automated (via device integration)"
                     },
                     {
                       "descriptor": {
-                        "name": "Reward"
+                        "code": "Reward"
                       },
                       "value": "$0.15 per reduced kWh"
                     },
                     {
                       "descriptor": {
-                        "name": "Compatible Devices"
+                        "code": "Compatible_Devices"
                       },
                       "value": "Nest, Tesla Wall Connector, Ecobee"
                     },
                     {
                       "descriptor": {
-                        "name": "Enrollment Required"
+                        "code": "Enrollment_Required"
                       },
                       "value": "Yes, with device linking"
                     }

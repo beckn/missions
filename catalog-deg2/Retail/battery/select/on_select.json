@@ -1,75 +1,158 @@
 {
     "context": {
-      "domain": "retail",
-      "action": "on_select",
-      "version": "1.1.0",
-      "bap_id": "bap-ps-network-dev.becknprotocol.io",
-      "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",
-      "bpp_uri": "http://bpp-ps-network-strapi2-dev.becknprotocol.io",
-      "transaction_id": "4ff62a86-2241-41cc-9527-f0c00ecaba76",
-      "message_id": "on_select-message-001",
-      "timestamp": "2025-04-15T15:00:10Z",
-      "location": {
-        "country": { "code": "USA" },
-        "city": { "code": "628" }
-      }
+        "domain": "retail",
+        "action": "on_select",
+        "version": "1.1.0",
+        "bap_id": "bap-ps-network-dev.becknprotocol.io",
+        "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",
+        "bpp_uri": "http://bpp-ps-network-strapi2-dev.becknprotocol.io",
+        "transaction_id": "4ff62a86-2241-41cc-9527-f0c00ecaba76",
+        "message_id": "on_select-message-001",
+        "timestamp": "2025-04-15T15:00:10Z",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "628"
+            }
+        }
     },
     "message": {
-      "order": {
-        "provider": {
-          "id": "104",
-          "descriptor": {
-            "name": "STARMAX",
-            "short_desc": "Manufacturer of deep cycle batteries for EVs and storage"
-          }
-        },
-        "items": [
-          {
-            "id": "283",
-            "descriptor": {
-              "name": "STARMAX GC STCR-305 – 6V 305Ah Flooded Battery",
-              "short_desc": "Heavy-duty 6V flooded battery for carts, solar, or backup"
+        "order": {
+            "provider": {
+                "id": "104",
+                "descriptor": {
+                    "name": "STARMAX",
+                    "short_desc": "Manufacturer of deep cycle batteries for EVs and storage"
+                }
             },
-            "price": {
-              "value": "1000",
-              "currency": "USD"
-            },
-            "quantity": {
-              "selected": {
-                "count": 1
-              }
+            "items": [
+                {
+                    "id": "283",
+                    "descriptor": {
+                        "name": "STARMAX GC STCR-305 – 6V 305Ah Flooded Battery",
+                        "short_desc": "Heavy-duty 6V flooded battery for carts, solar, or backup"
+                    },
+                    "price": {
+                        "value": "1000",
+                        "currency": "USD"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "count": 1
+                        }
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "product_specification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "battery_type"
+                                    },
+                                    "value": "Flooded Lead-Acid"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "deep_cycle"
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "high_load_support"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "technical_specification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "voltage"
+                                    },
+                                    "value": "6V"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "305Ah"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "weight"
+                                    },
+                                    "value": "121 lbs"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "general_specification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "application_1"
+                                    },
+                                    "value": "Golf Carts"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "application_2"
+                                    },
+                                    "value": "Solar Systems"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "application_3"
+                                    },
+                                    "value": "Backup Inverters"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "type": "HOME_DELIVERY"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "1050",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Battery Cost",
+                        "price": {
+                            "value": "1000",
+                            "currency": "USD"
+                        }
+                    },
+                    {
+                        "title": "Delivery Charge",
+                        "price": {
+                            "value": "50",
+                            "currency": "USD"
+                        }
+                    }
+                ]
             }
-          }
-        ],
-        "fulfillments": [
-          {
-            "id": "1",
-            "type": "HOME_DELIVERY"
-          }
-        ],
-        "quote": {
-          "price": {
-            "value": "1050",
-            "currency": "USD"
-          },
-          "breakup": [
-            {
-              "title": "Battery Cost",
-              "price": {
-                "value": "1000",
-                "currency": "USD"
-              }
-            },
-            {
-              "title": "Delivery Charge",
-              "price": {
-                "value": "50",
-                "currency": "USD"
-              }
-            }
-          ]
         }
-      }
     }
-  }
-  
+}

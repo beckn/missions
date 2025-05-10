@@ -59,6 +59,20 @@
                             "type": "DIGITAL"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "rating": "4.2",
                     "rateable": true,
                     "items": [
@@ -81,6 +95,10 @@
                             ],
                             "fulfillment_ids": [
                                 "569"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
                             ],
                             "tags": [
                                 {
@@ -186,6 +204,9 @@
                             ],
                             "fulfillment_ids": [
                                 "569"
+                            ],
+                            "location_ids": [
+                                "1"
                             ],
                             "tags": [
                                 {
@@ -307,6 +328,20 @@
                             "type": "DIGITAL"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "items": [
                         {
                             "id": "280",
@@ -327,6 +362,9 @@
                             ],
                             "fulfillment_ids": [
                                 "569"
+                            ],
+                            "location_ids": [
+                                "2"
                             ],
                             "tags": [
                                 {

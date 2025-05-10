@@ -69,7 +69,7 @@
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Fulfillment Details"
+                                        "code": "Fulfillment Details"
                                     },
                                     "list": [
                                         {
@@ -89,43 +89,6 @@
                                                 "name": "Supports Plug-n-Charge"
                                             },
                                             "value": "Yes"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "3",
-                            "type": "CHARGING",
-                            "rateable": true,
-                            "tracking": false,
-                            "contact": {
-                                "phone": "+1800987654",
-                                "email": "helpdesk@voltcharge.com"
-                            },
-                            "tags": [
-                                {
-                                    "descriptor": {
-                                        "name": "Fulfillment Details"
-                                    },
-                                    "list": [
-                                        {
-                                            "descriptor": {
-                                                "name": "Service Time per Vehicle"
-                                            },
-                                            "value": "60 min"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Charger Environment"
-                                            },
-                                            "value": "Open Lot"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Supports Plug-n-Charge"
-                                            },
-                                            "value": "No"
                                         }
                                     ]
                                 }
