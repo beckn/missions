@@ -57,7 +57,20 @@
                             }
                         }
                     ],
-                    "rating": "4",
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "fulfillments": [
                         {
                             "id": "569",
@@ -89,14 +102,15 @@
                                 "value": "10",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 1000
-                                }
-                            },
                             "fulfillment_ids": [
                                 "569",
                                 "570"
+                            ],
+                            "category_ids": [
+                                "33"
+                            ],
+                            "location_ids": [
+                                "1"
                             ]
                         },
                         {
@@ -118,13 +132,14 @@
                                 "value": "8",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 200
-                                }
-                            },
                             "fulfillment_ids": [
                                 "570"
+                            ],
+                            "category_ids": [
+                                "33"
+                            ],
+                            "location_ids": [
+                                "2"
                             ]
                         }
                     ]
@@ -154,7 +169,20 @@
                             }
                         }
                     ],
-                    "rating": "5",
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "fulfillments": [
                         {
                             "id": "567",
@@ -186,14 +214,15 @@
                                 "value": "12",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 100
-                                }
-                            },
                             "fulfillment_ids": [
                                 "567",
                                 "568"
+                            ],
+                            "category_ids": [
+                                "33"
+                            ],
+                            "location_ids": [
+                                "2"
                             ]
                         }
                     ]

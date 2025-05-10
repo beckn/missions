@@ -66,6 +66,20 @@
                             "type": "STORE_PICKUP"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "rateable": true,
                     "items": [
                         {
@@ -79,17 +93,16 @@
                                 "value": "1250",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 50
-                                }
-                            },
                             "category_ids": [
                                 "electric_scooters"
                             ],
                             "fulfillment_ids": [
                                 "vw_hd",
                                 "vw_sp"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
                             ],
                             "rating": "4.7",
                             "rateable": true,
@@ -139,17 +152,15 @@
                                 "value": "89",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 200
-                                }
-                            },
                             "category_ids": [
                                 "ev_accessories"
                             ],
                             "fulfillment_ids": [
                                 "vw_hd",
                                 "vw_sp"
+                            ],
+                            "location_ids": [
+                                "2"
                             ],
                             "rating": "4.6",
                             "rateable": true,
@@ -223,6 +234,20 @@
                             "type": "SHOWROOM_PICKUP"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "rateable": true,
                     "items": [
                         {
@@ -236,16 +261,14 @@
                                 "value": "2100",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 30
-                                }
-                            },
                             "category_ids": [
                                 "electric_rickshaws"
                             ],
                             "fulfillment_ids": [
                                 "gm_hd"
+                            ],
+                            "location_ids": [
+                                "1"
                             ],
                             "rating": "4.5",
                             "rateable": true,
@@ -295,16 +318,14 @@
                                 "value": "199",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 75
-                                }
-                            },
                             "category_ids": [
                                 "ev_accessories"
                             ],
                             "fulfillment_ids": [
                                 "gm_sp"
+                            ],
+                            "location_ids": [
+                                "1"
                             ],
                             "rating": "4.3",
                             "rateable": true,

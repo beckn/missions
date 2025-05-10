@@ -55,19 +55,10 @@
                             }
                         }
                     ],
-                    "tags": [
+                    "fulfillments": [
                         {
-                            "descriptor": {
-                                "code": "provider_details"
-                            },
-                            "list": [
-                                {
-                                    "descriptor": {
-                                        "code": "govt_subsidy_empaneled"
-                                    },
-                                    "value": "true"
-                                }
-                            ]
+                            "id": "1",
+                            "type": "ONSITE"
                         }
                     ],
                     "items": [
@@ -84,6 +75,9 @@
                                 "1"
                             ],
                             "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
                                 "1"
                             ],
                             "tags": [
@@ -154,6 +148,9 @@
                                 "1"
                             ],
                             "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
                                 "1"
                             ],
                             "tags": [
@@ -243,19 +240,10 @@
                             }
                         }
                     ],
-                    "tags": [
+                    "fulfillments": [
                         {
-                            "descriptor": {
-                                "code": "provider_details"
-                            },
-                            "list": [
-                                {
-                                    "descriptor": {
-                                        "code": "govt_subsidy_empaneled"
-                                    },
-                                    "value": "false"
-                                }
-                            ]
+                            "id": "1",
+                            "type": "ONSITE"
                         }
                     ],
                     "items": [
@@ -272,6 +260,9 @@
                                 "1"
                             ],
                             "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
                                 "1"
                             ],
                             "tags": [
@@ -316,6 +307,9 @@
                                 "1"
                             ],
                             "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
                                 "1"
                             ],
                             "tags": [

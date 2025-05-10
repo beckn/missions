@@ -66,6 +66,20 @@
                             "type": "STORE_PICKUP"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "rateable": true,
                     "items": [
                         {
@@ -79,17 +93,16 @@
                                 "value": "320",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 500
-                                }
-                            },
                             "category_ids": [
                                 "premium_panels"
                             ],
                             "fulfillment_ids": [
                                 "hd1",
                                 "sp1"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
                             ],
                             "rating": "4.5",
                             "rateable": true,
@@ -145,16 +158,14 @@
                                 "value": "200",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 600
-                                }
-                            },
                             "category_ids": [
                                 "budget_panels"
                             ],
                             "fulfillment_ids": [
                                 "sp1"
+                            ],
+                            "location_ids": [
+                                "1"
                             ],
                             "rating": "4.2",
                             "rateable": true,
@@ -223,6 +234,20 @@
                             "type": "HOME_DELIVERY"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "rateable": true,
                     "items": [
                         {
@@ -236,16 +261,14 @@
                                 "value": "145",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 200
-                                }
-                            },
                             "category_ids": [
                                 "portable_panels"
                             ],
                             "fulfillment_ids": [
                                 "hd2"
+                            ],
+                            "location_ids": [
+                                "2"
                             ],
                             "rating": "4.6",
                             "rateable": true,

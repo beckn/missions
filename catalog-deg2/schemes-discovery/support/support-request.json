@@ -1,22 +1,25 @@
 {
-    "context": {
-      "domain": "deg:scheme",
-      "action": "support",
-      "location": {
-        "country": { "code": "USA" },
-        "city": { "code": "628" }
+  "context": {
+    "domain": "scheme",
+    "action": "support",
+    "location": {
+      "country": {
+        "code": "USA"
       },
-      "version": "1.1.0",
-      "bap_id": "energy-bap-network.example.com",
-      "bap_uri": "https://energy-bap-network.example.com",
-      "bpp_id": "energy-incentive-bpp.example.com",
-      "bpp_uri": "https://energy-incentive-bpp.example.com",
-      "transaction_id": "scheme-txn-1001",
-      "message_id": "scheme-msg-2008",
-      "timestamp": "2025-05-07T11:08:00Z"
+      "city": {
+        "code": "NANP:628"
+      }
     },
-    "message": {
-      "ref_id": "order-scheme-001"
-    }
+    "version": "1.1.0",
+    "bap_id": "energy-bap-network.example.com",
+    "bap_uri": "https://energy-bap-network.example.com",
+    "bpp_id": "energy-incentive-bpp.example.com",
+    "bpp_uri": "https://energy-incentive-bpp.example.com",
+    "transaction_id": "scheme-txn-1001",
+    "message_id": "scheme-msg-2008",
+    "timestamp": "2025-05-07T11:08:00Z"
+  },
+  "message": {
+    "ref_id": "manual_optin_demand_flex"
   }
-  
+}

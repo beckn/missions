@@ -1,15 +1,7 @@
 {
   "context": {
     "domain": "flexibility",
-    "action": "on_init",
-    "version": "1.1.0",
-    "bap_id": "energy-bap-network.example.com",
-    "bap_uri": "https://energy-bap-network.example.com",
-    "bpp_id": "energy-incentive-bpp.example.com",
-    "bpp_uri": "https://energy-incentive-bpp.example.com",
-    "transaction_id": "incentive-txn-1001",
-    "message_id": "incentive-msg-2003",
-    "timestamp": "2025-05-07T10:47:00Z",
+    "action": "on_cancel",
     "location": {
       "country": {
         "code": "USA"
@@ -17,10 +9,19 @@
       "city": {
         "code": "NANP:628"
       }
-    }
+    },
+    "version": "1.1.0",
+    "bap_id": "energy-bap-network.example.com",
+    "bap_uri": "https://energy-bap-network.example.com",
+    "bpp_id": "energy-incentive-bpp.example.com",
+    "bpp_uri": "https://energy-incentive-bpp.example.com",
+    "transaction_id": "incentive-txn-1001",
+    "message_id": "incentive-msg-2006",
+    "timestamp": "2025-05-07T10:51:00Z"
   },
   "message": {
     "order": {
+      "id": "order-flex-001",
       "provider": {
         "id": "provider_demand_flex_001",
         "descriptor": {
@@ -76,34 +77,7 @@
                 }
               ]
             }
-          ],
-          "xinput": {
-            "required": false,
-            "head": {
-              "descriptor": {
-                "name": "Details Form"
-              },
-              "index": {
-                "min": 0,
-                "cur": 0,
-                "max": 0
-              },
-              "headings": [
-                "Customer Details"
-              ]
-            },
-            "form": {
-              "mime_type": "text/html",
-              "url": "https://6vs8xnx5i7.scheme-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
-              "resubmit": false,
-              "auth": {
-                "descriptor": {
-                  "code": "jwt"
-                },
-                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
-              }
-            }
-          }
+          ]
         }
       ],
       "fulfillments": [
@@ -124,7 +98,12 @@
                 "address": "der://ssf.meter/98765456"
               }
             }
-          ]
+          ],
+          "state": {
+            "descriptor": {
+              "code": "APPLICATION_CANCELLED"
+            }
+          }
         }
       ]
     }

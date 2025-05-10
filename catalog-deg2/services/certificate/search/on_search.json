@@ -52,24 +52,9 @@
                             }
                         }
                     ],
-                    "tags": [
-                        {
-                            "descriptor": {
-                                "code": "provider-details"
-                            },
-                            "list": [
-                                {
-                                    "descriptor": {
-                                        "code": "certified-body"
-                                    },
-                                    "value": "true"
-                                }
-                            ]
-                        }
-                    ],
                     "fulfillments": [
                         {
-                            "id": "inspection",
+                            "id": "1",
                             "type": "ONSITE",
                             "rateable": true,
                             "tracking": true,
@@ -110,6 +95,9 @@
                                 "1"
                             ],
                             "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
                                 "1"
                             ],
                             "tags": [

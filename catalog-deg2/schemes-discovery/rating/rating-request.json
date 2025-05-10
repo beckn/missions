@@ -1,38 +1,31 @@
 {
-    "context": {
-      "domain": "scheme",
-      "action": "rating",
-      "location": {
-        "country": { "code": "USA" },
-        "city": { "code": "628" }
+  "context": {
+    "domain": "scheme",
+    "action": "rating",
+    "location": {
+      "country": {
+        "code": "USA"
       },
-      "version": "1.1.0",
-      "bap_id": "energy-bap-network.example.com",
-      "bap_uri": "https://energy-bap-network.example.com",
-      "bpp_id": "energy-incentive-bpp.example.com",
-      "bpp_uri": "https://energy-incentive-bpp.example.com",
-      "transaction_id": "scheme-txn-1001",
-      "message_id": "scheme-msg-2007",
-      "timestamp": "2025-05-07T11:07:00Z"
-    },
-    "message": {
-      "id": "order-scheme-001",
-      "value": 4,
-      "feedback_form": {
-        "descriptor": {
-          "name": "Energy Program Feedback"
-        },
-        "questions": [
-          {
-            "question": "Was the subsidy application process smooth?",
-            "answer": "Yes"
-          },
-          {
-            "question": "Did you receive support in time?",
-            "answer": "Mostly"
-          }
-        ]
+      "city": {
+        "code": "NANP:628"
       }
-    }
+    },
+    "version": "1.1.0",
+    "bap_id": "energy-bap-network.example.com",
+    "bap_uri": "https://energy-bap-network.example.com",
+    "bpp_id": "energy-incentive-bpp.example.com",
+    "bpp_uri": "https://energy-incentive-bpp.example.com",
+    "transaction_id": "scheme-txn-1001",
+    "message_id": "scheme-msg-2007",
+    "timestamp": "2025-05-07T11:07:00Z"
+  },
+  "message": {
+    "ratings": [
+      {
+        "id": "manual_optin_demand_flex",
+        "rating_category": "Item",
+        "value": "5"
+      }
+    ]
   }
-  
+}

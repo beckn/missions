@@ -97,6 +97,9 @@
                             "location_ids": [
                                 "1"
                             ],
+                            "fulfillment_ids": [
+                                "1"
+                            ],
                             "tags": [
                                 {
                                     "descriptor": {
@@ -145,6 +148,9 @@
                                 "1"
                             ],
                             "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
                                 "1"
                             ],
                             "tags": [

@@ -1,10 +1,10 @@
 {
     "context": {
-      "domain": "deg:flexibility",
+      "domain": "flexibility",
       "action": "support",
       "location": {
         "country": { "code": "USA" },
-        "city": { "code": "628" }
+        "city": { "code": "NANP:628" }
       },
       "version": "1.1.0",
       "bap_id": "energy-bap-network.example.com",

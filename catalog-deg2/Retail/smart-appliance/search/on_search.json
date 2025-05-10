@@ -66,6 +66,20 @@
                             "type": "STORE_PICKUP"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "rateable": true,
                     "items": [
                         {
@@ -79,17 +93,16 @@
                                 "value": "549",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 120
-                                }
-                            },
                             "category_ids": [
                                 "smart_tvs"
                             ],
                             "fulfillment_ids": [
                                 "shd1",
                                 "ssp1"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
                             ],
                             "rating": "4.7",
                             "rateable": true,
@@ -139,16 +152,14 @@
                                 "value": "99",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 300
-                                }
-                            },
                             "category_ids": [
                                 "smart_control"
                             ],
                             "fulfillment_ids": [
                                 "shd1"
+                            ],
+                            "location_ids": [
+                                "1"
                             ],
                             "rating": "4.3",
                             "rateable": true,
@@ -222,6 +233,20 @@
                             "type": "STORE_PICKUP"
                         }
                     ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
                     "rateable": true,
                     "items": [
                         {
@@ -235,17 +260,15 @@
                                 "value": "39",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 1000
-                                }
-                            },
                             "category_ids": [
                                 "smart_lights"
                             ],
                             "fulfillment_ids": [
                                 "nhd2",
                                 "nsp2"
+                            ],
+                            "location_ids": [
+                                "2"
                             ],
                             "rating": "4.6",
                             "rateable": true,
@@ -289,16 +312,15 @@
                                 "value": "69",
                                 "currency": "USD"
                             },
-                            "quantity": {
-                                "available": {
-                                    "count": 250
-                                }
-                            },
                             "category_ids": [
                                 "smart_security"
                             ],
                             "fulfillment_ids": [
                                 "nhd2"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
                             ],
                             "rating": "4.4",
                             "rateable": true,
