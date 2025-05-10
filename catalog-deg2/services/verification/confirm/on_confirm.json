@@ -1,0 +1,165 @@
+{
+    "context": {
+        "domain": "service",
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "bap_id": "example_bap_com",
+        "bpp_id": "example_bpp_com",
+        "bpp_uri": "https://example_bpp_com",
+        "transaction_id": "verification_txn_11001",
+        "message_id": "verification_msg_20007",
+        "timestamp": "2025-05-07T14:30:30Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "id": "verify-order-11001",
+            "provider": {
+                "id": "sf_solar_verification_unit",
+                "descriptor": {
+                    "name": "sf_solar_verification_unit",
+                    "short_desc": "third_party_service_for_verifying_installed_solar_systems"
+                }
+            },
+            "items": [
+                {
+                    "id": "verify_residential",
+                    "descriptor": {
+                        "name": "residential_solar_system_verification"
+                    },
+                    "price": {
+                        "estimated_value": "75",
+                        "currency": "USD"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "verification_scope"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "checklist"
+                                    },
+                                    "value": "panel_count_inverter_match_grid_feed_wiring"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "verification_mode"
+                                    },
+                                    "value": "onsite_with_photo_audit"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documentation"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "required_docs"
+                                    },
+                                    "value": "installation_invoice_connection_approval_letter"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Alicia Chen",
+                "email": "alicia.chen@example.com",
+                "phone": "+14155557777",
+                "address": "301 Greenpoint Ave, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "onsite_check",
+                    "type": "ONSITE",
+                    "tracking": true,
+                    "state": {
+                        "descriptor": {
+                            "code": "Scheduled",
+                            "name": "Verification Scheduled"
+                        }
+                    },
+                    "customer": {
+                        "person": {
+                            "name": "Alicia Chen"
+                        },
+                        "contact": {
+                            "phone": "+14155557777",
+                            "email": "alicia.chen@example.com"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "301 Greenpoint Ave, San Francisco, CA"
+                            }
+                        }
+                    ],
+                    "contact": {
+                        "phone": "+1800123123",
+                        "email": "support@sfsolarverify.org"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "verification_visit_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "inspector_qualification"
+                                    },
+                                    "value": "accredited_solar_auditor"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "avg_duration"
+                                    },
+                                    "value": "45_minutes"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "75",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Verification Fee",
+                        "price": {
+                            "value": "75",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payment": {
+                "type": "ON-FULFILLMENT",
+                "collected_by": "BPP",
+                "status": "NOT-PAID",
+                "params": {
+                    "amount": "75",
+                    "currency": "USD"
+                }
+            }
+        }
+    }
+}

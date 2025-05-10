@@ -1,413 +1,182 @@
 {
     "context": {
-        "domain": "finance",
+        "domain": "service",
         "action": "on_search",
-        "version": "1.1.0",
-        "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",
-        "bpp_uri": "http://bpp-ps-network-strapi2-dev.becknprotocol.io",
         "location": {
             "country": {
-                "code": "USA"
+                "code": "usa"
             },
             "city": {
                 "code": "NANP:628"
             }
         },
-        "bap_id": "bap-ps-network-dev.becknprotocol.io",
-        "bap_uri": "https://bap-ps-network-dev.becknprotocol.io",
-        "transaction_id": "c07c000b-aab6-410e-9fa2-fd11cafb6dda",
-        "message_id": "10377d28-1bba-41e8-b83d-bbe7161da659",
-        "ttl": "PT10M",
-        "timestamp": "2025-04-15T15:12:42.351Z"
+        "version": "1.1.0",
+        "bap_id": "example_bap_com",
+        "bap_uri": "https://api.example_bap_com/pilot/bap/energy/v1",
+        "bpp_id": "example_bpp_com",
+        "bpp_uri": "https://example_bpp_com",
+        "transaction_id": "verification_txn_11001",
+        "message_id": "verification_msg_12001",
+        "timestamp": "2025-05-07T14:30:00Z"
     },
     "message": {
         "catalog": {
-            "descriptor": {
-                "name": "Energykart",
-                "code": "Energykart",
-                "short_desc": "A seller platform for energy solutions, enabling seamless transactions of batteries, solar panels, and other renewable energy products."
-            },
             "providers": [
                 {
-                    "id": "103",
+                    "id": "sf_solar_verification_unit",
                     "descriptor": {
-                        "name": "PNC",
-                        "short_desc": "Provides capital for businesses",
-                        "long_desc": "Provides capital for businesses, asset purchases, or investments",
-                        "additional_desc": {
-                            "url": "www.becknprotocol.io"
-                        },
+                        "name": "sf_solar_verification_unit",
+                        "short_desc": "third_party_service_for_verifying_installed_solar_systems",
+                        "long_desc": "independent_organization_providing_ground_level_and_remote_verification_of_residential_and_commercial_solar_panel_installations_for_subsidies_and_grid_compliance",
                         "images": [
                             {
-                                "url": "https://www.lawnandgardendirectory.org/Shared/images/PNC-Equipment-Finance-th1.jpg",
-                                "size_type": "sm"
+                                "url": "https://sfsolarverify.org/logo.png"
                             }
                         ]
                     },
+                    "rating": "4.6/5",
                     "categories": [
                         {
-                            "id": "33",
+                            "id": "1",
                             "descriptor": {
-                                "name": "BATTERY LOAN",
-                                "code": "BATTERY_LOAN"
+                                "code": "solar_verification",
+                                "name": "solar_installation_verification"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "san_francisco"
                             }
                         }
                     ],
                     "fulfillments": [
                         {
-                            "id": "569",
-                            "type": "DIGITAL"
+                            "id": "onsite_check",
+                            "type": "onsite",
+                            "rateable": true,
+                            "tracking": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "verification_visit_details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "inspector_qualification"
+                                            },
+                                            "value": "accredited_solar_auditor"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "avg_duration"
+                                            },
+                                            "value": "45_minutes"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ],
-                    "rating": "4.2",
-                    "rateable": true,
                     "items": [
                         {
-                            "id": "281",
+                            "id": "verify_residential",
                             "descriptor": {
-                                "name": "Battery Loan - 6 Months EMI Plan",
-                                "short_desc": "Asset Financier",
-                                "long_desc": "Battery Loan by PNC Equipment Financing 6 Months EMI Plan",
-                                "images": [
-                                    {
-                                        "url": "https://www.lawnandgardendirectory.org/Shared/images/PNC-Equipment-Finance-th1.jpg"
-                                    }
-                                ]
+                                "name": "residential_solar_system_verification"
                             },
-                            "rateable": true,
-                            "rating": "4.2",
+                            "price": {
+                                "estimated_value": "75",
+                                "currency": "usd"
+                            },
                             "category_ids": [
-                                "33"
+                                "1"
                             ],
-                            "fulfillment_ids": [
-                                "569"
+                            "location_ids": [
+                                "1"
                             ],
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Loan Terms"
+                                        "code": "verification_scope"
                                     },
-                                    "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Min Loan Amount(USD)"
+                                                "code": "checklist"
                                             },
-                                            "value": "1000"
+                                            "value": "panel_count_inverter_match_grid_feed_wiring"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Max Loan Amount(USD)"
+                                                "code": "verification_mode"
                                             },
-                                            "value": "10000"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Interest Rate (Annual %)"
-                                            },
-                                            "value": "12.0"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Tenure"
-                                            },
-                                            "value": "6 months"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Repayment Type"
-                                            },
-                                            "value": "EMI"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Collateral Required"
-                                            },
-                                            "value": "No"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Monthly EMI Estimate"
-                                            },
-                                            "value": "14"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Terms & Conditions"
-                                            },
-                                            "value": "https://pnc.com/loan-terms"
+                                            "value": "onsite_with_photo_audit"
                                         }
                                     ]
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Eligibility"
+                                        "code": "documentation"
                                     },
-                                    "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Credit Score"
+                                                "code": "required_docs"
                                             },
-                                            "value": "650"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Minimum Income (Monthly)(USD)"
-                                            },
-                                            "value": "2000"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Employment Status"
-                                            },
-                                            "value": "Salaried"
+                                            "value": "installation_invoice_connection_approval_letter"
                                         }
                                     ]
                                 }
                             ]
                         },
                         {
-                            "id": "340",
+                            "id": "verify_commercial",
                             "descriptor": {
-                                "name": "Battery Loan - 9 Months EMI Plan",
-                                "short_desc": "Asset Financier",
-                                "long_desc": "Battery Loan by PNC Equipment Financing 9 Months EMI Plan",
-                                "images": [
-                                    {
-                                        "url": "https://www.lawnandgardendirectory.org/Shared/images/PNC-Equipment-Finance-th1.jpg"
-                                    }
-                                ]
+                                "name": "commercial_solar_system_verification"
                             },
-                            "rateable": true,
-                            "rating": "4.1",
+                            "price": {
+                                "estimated_value": "140",
+                                "currency": "usd"
+                            },
                             "category_ids": [
-                                "33"
+                                "1"
                             ],
-                            "fulfillment_ids": [
-                                "569"
+                            "location_ids": [
+                                "1"
                             ],
                             "tags": [
                                 {
                                     "descriptor": {
-                                        "name": "Loan Terms"
+                                        "code": "verification_scope"
                                     },
-                                    "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Min Loan Amount(USD)"
+                                                "code": "checklist"
                                             },
-                                            "value": "2000"
+                                            "value": "capacity_match_safety_labeling_net_meter_link"
                                         },
                                         {
                                             "descriptor": {
-                                                "name": "Max Loan Amount(USD)"
+                                                "code": "verification_mode"
                                             },
-                                            "value": "15000"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Interest Rate (Annual %)"
-                                            },
-                                            "value": "13.2"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Tenure"
-                                            },
-                                            "value": "9 months"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Repayment Type"
-                                            },
-                                            "value": "EMI"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Collateral Required"
-                                            },
-                                            "value": "Yes"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Monthly EMI Estimate"
-                                            },
-                                            "value": "16"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Terms & Conditions"
-                                            },
-                                            "value": "https://bofa.com/loan-terms"
+                                            "value": "onsite_and_system_test"
                                         }
                                     ]
                                 },
                                 {
                                     "descriptor": {
-                                        "name": "Eligibility"
+                                        "code": "documentation"
                                     },
-                                    "display": true,
                                     "list": [
                                         {
                                             "descriptor": {
-                                                "name": "Minimum Credit Score"
+                                                "code": "required_docs"
                                             },
-                                            "value": "700"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Minimum Income (Monthly)(USD)"
-                                            },
-                                            "value": "3000"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Employment Status"
-                                            },
-                                            "value": "Salaried"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": "102",
-                    "descriptor": {
-                        "name": "Bank of America",
-                        "short_desc": "Provides capital for businesses",
-                        "long_desc": "Provides capital for businesses, asset purchases, or investments",
-                        "additional_desc": {
-                            "url": "www.becknprotocol.io"
-                        },
-                        "images": [
-                            {
-                                "url": "https://business.bofa.com/etc.clientlibs/flagship/clientlibs/clientlib-site/resources/images/BofA_logo.svg",
-                                "size_type": "sm"
-                            }
-                        ]
-                    },
-                    "rating": "4.5",
-                    "rateable": true,
-                    "categories": [
-                        {
-                            "id": "36",
-                            "descriptor": {
-                                "name": "BATTERY LOAN",
-                                "code": "BATTERY_LOAN"
-                            }
-                        }
-                    ],
-                    "fulfillments": [
-                        {
-                            "id": "569",
-                            "type": "DIGITAL"
-                        }
-                    ],
-                    "items": [
-                        {
-                            "id": "280",
-                            "descriptor": {
-                                "name": "BOA: Battery Loan - 9 Months EMI Plan",
-                                "short_desc": "Asset Financier",
-                                "long_desc": "Battery Loan by Bank of America 9 Months EMI Plan",
-                                "images": [
-                                    {
-                                        "url": "https://business.bofa.com/etc.clientlibs/flagship/clientlibs/clientlib-site/resources/images/BofA_logo.svg"
-                                    }
-                                ]
-                            },
-                            "rateable": true,
-                            "rating": "4.5",
-                            "category_ids": [
-                                "36"
-                            ],
-                            "fulfillment_ids": [
-                                "569"
-                            ],
-                            "tags": [
-                                {
-                                    "descriptor": {
-                                        "name": "Loan Terms"
-                                    },
-                                    "display": true,
-                                    "list": [
-                                        {
-                                            "descriptor": {
-                                                "name": "Min Loan Amount(USD)"
-                                            },
-                                            "value": "4000"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Max Loan Amount(USD)"
-                                            },
-                                            "value": "20000"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Interest Rate (Annual %)"
-                                            },
-                                            "value": "12.2"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Tenure"
-                                            },
-                                            "value": "9 months"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Repayment Type"
-                                            },
-                                            "value": "EMI"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Collateral Required"
-                                            },
-                                            "value": "No"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Monthly EMI Estimate(USD)"
-                                            },
-                                            "value": "20"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Terms & Conditions"
-                                            },
-                                            "value": "https://bofa.com/loan-terms"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "descriptor": {
-                                        "name": "Eligibility"
-                                    },
-                                    "display": true,
-                                    "list": [
-                                        {
-                                            "descriptor": {
-                                                "name": "Minimum Credit Score"
-                                            },
-                                            "value": "720"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Minimum Income (Monthly)(USD)"
-                                            },
-                                            "value": "4000"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "name": "Employment Status"
-                                            },
-                                            "value": "Salaried"
+                                            "value": "system_specs_energy_audit_report_compliance_id"
                                         }
                                     ]
                                 }

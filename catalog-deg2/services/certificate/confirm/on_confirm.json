@@ -1,0 +1,131 @@
+{
+    "context": {
+        "domain": "service",
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bpp_id": "example-bpp.com",
+        "bpp_uri": "https://example-bpp.com",
+        "transaction_id": "certification-txn-9001",
+        "message_id": "certification-msg-20007",
+        "timestamp": "2025-05-07T14:15:50Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "id": "cert-order-001",
+            "provider": {
+                "id": "sf_solar_cert_board",
+                "descriptor": {
+                    "name": "SF Solar Certification Board",
+                    "short_desc": "Official body for certifying solar panel installations"
+                }
+            },
+            "items": [
+                {
+                    "id": "solar-cert-residential",
+                    "descriptor": {
+                        "name": "Residential Solar Certification"
+                    },
+                    "price": {
+                        "estimated_value": "150",
+                        "currency": "USD"
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Rachel Lee",
+                "email": "rachel.lee@example.com",
+                "phone": "+14155558888",
+                "address": "22 Sunset Ave, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "inspection",
+                    "type": "ONSITE",
+                    "tracking": true,
+                    "state": {
+                        "descriptor": {
+                            "code": "Scheduled",
+                            "name": "Inspection Scheduled"
+                        }
+                    },
+                    "customer": {
+                        "person": {
+                            "name": "Rachel Lee"
+                        },
+                        "contact": {
+                            "phone": "+14155558888",
+                            "email": "rachel.lee@example.com"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "22 Sunset Ave, San Francisco, CA"
+                            }
+                        }
+                    ],
+                    "contact": {
+                        "phone": "+1800123456",
+                        "email": "support@sfsolarboard.gov"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "inspection_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "technician_qualification"
+                                    },
+                                    "value": "Certified Solar Inspector"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "average_duration"
+                                    },
+                                    "value": "90 minutes"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "150",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Inspection & Certification",
+                        "price": {
+                            "value": "150",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payment": {
+                "type": "ON-FULFILLMENT",
+                "collected_by": "BPP",
+                "status": "NOT-PAID",
+                "params": {
+                    "amount": "150",
+                    "currency": "USD"
+                }
+            }
+        }
+    }
+}

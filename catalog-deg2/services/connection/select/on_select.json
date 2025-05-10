@@ -1,0 +1,102 @@
+{
+    "context": {
+        "domain": "service",
+        "action": "on_select",
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bpp_id": "example-bpp.com",
+        "bpp_uri": "https://example-bpp.com",
+        "transaction_id": "connection-txn-8001",
+        "message_id": "connection-msg-10003",
+        "timestamp": "2025-05-07T14:00:20Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "sf_electric_authority",
+                "descriptor": {
+                    "name": "San Francisco Electric Authority",
+                    "short_desc": "Official provider for new electricity connections"
+                }
+            },
+            "items": [
+                {
+                    "id": "new-resi-connection",
+                    "descriptor": {
+                        "name": "Residential Electricity Connection"
+                    },
+                    "price": {
+                        "estimated_value": "200",
+                        "currency": "USD"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "connection-type"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "property-type"
+                                    },
+                                    "value": "Residential"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "phase"
+                                    },
+                                    "value": "Single Phase"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documentation"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "required-docs"
+                                    },
+                                    "value": "ID proof, ownership certificate, wiring diagram"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "onsite",
+                    "type": "ONSITE",
+                    "tracking": true,
+                    "rateable": true
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "200",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Connection Setup Fee",
+                        "price": {
+                            "value": "200",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
