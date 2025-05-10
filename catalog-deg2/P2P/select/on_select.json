@@ -1,0 +1,146 @@
+{
+    "context": {
+        "domain": "trade",
+        "action": "on_select",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bpp_id": "p2pTrading-bpp.com",
+        "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "on_select-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p1072",
+                "descriptor": {
+                    "name": "Ethan Maxwell",
+                    "images": [
+                        {
+                            "url": "https://p1072.in/images/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "uid_xyz",
+                    "descriptor": {
+                        "code": "energy",
+                        "name": "Solar Surplus Energy",
+                        "short_desc": "30 kWh surplus available between 10AM-6PM"
+                    },
+                    "price": {
+                        "value": "5",
+                        "currency": "USD/kWH"
+                    },
+                    "quantity": {
+                        "available": {
+                            "measure": {
+                                "value": "30",
+                                "unit": "kWH"
+                            }
+                        },
+                        "selected": {
+                            "measure": {
+                                "value": "10",
+                                "unit": "kWH"
+                            }
+                        }
+                    },
+                    "category_ids": [
+                        "1"
+                    ],
+                    "location_ids": [
+                        "1"
+                    ],
+                    "fulfillment_ids": [
+                        "1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "Energy Attributes"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Source Type"
+                                    },
+                                    "value": "Rooftop Solar"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Carbon Offset Certified"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "PG&E Grid Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "start",
+                            "location": {
+                                "address": "der://pge.meter/100200300"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        },
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "der://ssf.meter/98765456"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "50",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Energy Cost",
+                        "price": {
+                            "value": "50",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

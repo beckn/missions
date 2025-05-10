@@ -1,6 +1,6 @@
 {
     "context": {
-      "domain": "deg:retail",
+      "domain": "retail",
       "action": "on_search",
       "version": "1.1.0",
       "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",

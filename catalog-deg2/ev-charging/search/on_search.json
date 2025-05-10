@@ -1,6 +1,6 @@
 {
     "context": {
-        "domain": "deg:charging",
+        "domain": "charging",
         "action": "on_search",
         "location": {
             "country": {

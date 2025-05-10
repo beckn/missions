@@ -1,6 +1,6 @@
 {
     "context": {
-        "domain": "deg:rental",
+        "domain": "rental",
         "action": "on_search",
         "version": "1.1.0",
         "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",
@@ -10,7 +10,7 @@
                 "code": "USA"
             },
             "city": {
-                "code": "628"
+                "code": "NANP:628"
             }
         },
         "bap_id": "bap-ps-network-dev.becknprotocol.io",

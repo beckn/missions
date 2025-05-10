@@ -1,0 +1,74 @@
+{
+    "context": {
+      "domain": "retail",
+      "action": "confirm",
+      "version": "1.1.0",
+      "bap_id": "bap-ps-network-dev.becknprotocol.io",
+      "bap_uri": "https://bap-ps-network-dev.becknprotocol.io",
+      "transaction_id": "4ff62a86-2241-41cc-9527-f0c00ecaba76",
+      "message_id": "confirm-message-001",
+      "timestamp": "2025-04-15T15:00:20Z",
+      "location": {
+        "country": {
+          "code": "USA"
+        },
+        "city": {
+          "code": "628"
+        }
+      }
+    },
+    "message": {
+      "order": {
+        "provider": {
+          "id": "104"
+        },
+        "items": [
+          {
+            "id": "283",
+            "quantity": {
+              "selected": {
+                "count": 1
+              }
+            }
+          }
+        ],
+        "billing": {
+          "name": "Jane Doe",
+          "email": "jane@example.com",
+          "phone": "+14155551234",
+          "address": "42 Solar Lane, San Francisco, CA"
+        },
+        "fulfillments": [
+          {
+            "id": "1",
+            "type": "HOME_DELIVERY",
+            "stops": [
+              {
+                "type": "end",
+                "location": {
+                  "address": "42 Solar Lane, San Francisco, CA"
+                },
+                "time": {
+                  "range": {
+                    "start": "2025-04-16T10:00:00Z",
+                    "end": "2025-04-16T18:00:00Z"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "payment": {
+          "type": "ON-FULFILLMENT",
+          "collected_by": "BPP",
+          "status": "PAID",
+          "params": {
+            "amount": "1050",
+            "currency": "USD",
+            "transaction_id": "txn-7890-abcd"
+          }
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,152 @@
+{
+    "context": {
+        "domain": "rental",
+        "action": "on_status",
+        "version": "1.1.0",
+        "bap_id": "bap-ps-network-dev.becknprotocol.io",
+        "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",
+        "bpp_uri": "http://bpp-ps-network-strapi2-dev.becknprotocol.io",
+        "transaction_id": "924dd6fb-8896-476e-9918-b0faf06d3e77",
+        "message_id": "on_status-message-001",
+        "timestamp": "2025-04-15T15:54:30.000Z",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "id": "ORDER-RENTAL-001",
+            "provider": {
+                "id": "299",
+                "descriptor": {
+                    "name": "San Francisco Energy Depot",
+                    "short_desc": "Battery",
+                    "long_desc": "Battery",
+                    "images": [
+                        {
+                            "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg",
+                            "size_type": "sm"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "420",
+                    "descriptor": {
+                        "name": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery",
+                        "short_desc": "305Ah X 8",
+                        "long_desc": "Premium Battery Rental service for energy backup.",
+                        "images": [
+                            {
+                                "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg"
+                            }
+                        ]
+                    },
+                    "price": {
+                        "value": "10.00",
+                        "currency": "USD"
+                    },
+                    "quantity": {
+                        "available": {
+                            "count": 1000
+                        },
+                        "selected": {
+                            "count": 1
+                        }
+                    },
+                    "fulfillment_ids": [
+                        "569",
+                        "570"
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Jane Doe",
+                "phone": "+14155552671",
+                "email": "jane.doe@example.com",
+                "address": "123 Battery Street, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "569",
+                    "type": "HOME_DELIVERY",
+                    "state": {
+                        "descriptor": {
+                            "code": "Out-for-delivery",
+                            "name": "Out for Delivery"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Carlos Rivera",
+                            "phone": "+14155559876"
+                        },
+                        "rating": 4.7,
+                        "organization": {
+                            "descriptor": {
+                                "name": "SF Energy Delivery Partners"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "start",
+                            "location": {
+                                "address": "Warehouse 21, SF Industrial Area"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-04-16T08:30:00Z",
+                                    "end": "2025-04-16T09:00:00Z"
+                                }
+                            }
+                        },
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "123 Battery Street, San Francisco, CA"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-04-16T09:30:00Z",
+                                    "end": "2025-04-16T11:00:00Z"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "USD",
+                    "value": "10.00"
+                },
+                "breakup": [
+                    {
+                        "title": "Battery Rental",
+                        "price": {
+                            "value": "10.00",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payment": {
+                "type": "ON-FULFILLMENT",
+                "status": "PAID",
+                "collected_by": "BPP",
+                "params": {
+                    "amount": "10.00",
+                    "currency": "USD",
+                    "transaction_id": "pay-ref-7890"
+                }
+            }
+        }
+    }
+}

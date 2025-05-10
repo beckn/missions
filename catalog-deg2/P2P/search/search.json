@@ -1,0 +1,52 @@
+{
+    "context": {
+        "domain": "trade",
+        "action": "search",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "search-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
+    },
+    "message": {
+        "intent": {
+            "item": {
+                "descriptor": {
+                    "name": "Solar Surplus Energy"
+                }
+            },
+            "fulfillment": {
+                "agent": {
+                    "organization": {
+                        "descriptor": {
+                            "name": "PG&E Grid Services"
+                        }
+                    }
+                },
+                "stops": [
+                    {
+                        "type": "end",
+                        "location": {
+                            "address": "der://ssf.meter/98765456"
+                        },
+                        "time": {
+                            "range": {
+                                "start": "2024-10-04T10:00:00",
+                                "end": "2024-10-04T18:00:00"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

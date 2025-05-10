@@ -1,0 +1,40 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "search",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-solar-panel-001",
+        "message_id": "msg-search-001",
+        "timestamp": "2025-05-07T12:29:00Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "intent": {
+            "descriptor": {
+                "name": "Solar panels for rooftop installation"
+            },
+            "category": {
+                "descriptor": {
+                    "code": "mono_panels"
+                }
+            },
+            "fulfillment": {
+                "type": "HOME_DELIVERY"
+            },
+            "payment": {
+                "type": "PRE-FULFILLMENT",
+                "collected_by": "BPP"
+            }
+        }
+    }
+}

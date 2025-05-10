@@ -1,0 +1,24 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "status",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-smart-001",
+        "message_id": "msg-status-001",
+        "timestamp": "2025-05-07T12:45:55Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order_id": "order-smart-rgb-001"
+    }
+}

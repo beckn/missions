@@ -1,13 +1,13 @@
 {
     "context": {
-        "domain": "energy",
+        "domain": "trade",
         "action": "on_search",
         "location": {
             "country": {
                 "code": "USA"
             },
             "city": {
-                "code": "628"
+                "code": "NANP:628"
             }
         },
         "version": "1.1.0",

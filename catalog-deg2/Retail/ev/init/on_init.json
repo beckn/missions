@@ -1,0 +1,144 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "on_init",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bpp_id": "bpp-ev-retail.example.com",
+        "bpp_uri": "https://bpp-ev-retail.example.com",
+        "transaction_id": "tx-ev-retail-001",
+        "message_id": "msg-on-init-001",
+        "timestamp": "2025-05-07T13:21:35Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "voltwheel_mobility",
+                "descriptor": {
+                    "name": "VoltWheel Mobility",
+                    "short_desc": "Smart EVs and accessories"
+                }
+            },
+            "items": [
+                {
+                    "id": "volt_s1_pro",
+                    "descriptor": {
+                        "name": "Volt S1 Pro",
+                        "short_desc": "Electric scooter with 120 km range"
+                    },
+                    "price": {
+                        "value": "1250",
+                        "currency": "USD"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "count": 1
+                        }
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "Specifications"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Battery"
+                                    },
+                                    "value": "3.97kWh Lithium-ion"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Range"
+                                    },
+                                    "value": "120 km"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Top Speed"
+                                    },
+                                    "value": "95 km/h"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Charging Time"
+                                    },
+                                    "value": "6.5 hours"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Alex Johnson",
+                "phone": "+14155550001",
+                "email": "alex.johnson@example.com",
+                "address": "1234 Main St, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "vw_hd",
+                    "type": "HOME_DELIVERY",
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "1234 Main St, San Francisco, CA"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-05-08T10:00:00Z",
+                                    "end": "2025-05-08T16:00:00Z"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "1300",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Vehicle Cost",
+                        "price": {
+                            "value": "1250",
+                            "currency": "USD"
+                        }
+                    },
+                    {
+                        "title": "Home Delivery",
+                        "price": {
+                            "value": "50",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "type": "PRE-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "1300",
+                        "currency": "USD"
+                    }
+                }
+            ]
+        }
+    }
+}

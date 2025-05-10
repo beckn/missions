@@ -1,6 +1,6 @@
 {
     "context": {
-        "domain": "deg:retail",
+        "domain": "retail",
         "action": "on_search",
         "version": "1.1.0",
         "bpp_id": "bpp-solar-store.example.com",
@@ -10,7 +10,7 @@
                 "code": "USA"
             },
             "city": {
-                "code": "628"
+                "code": "NANP:628"
             }
         },
         "bap_id": "bap-consumer.example.com",

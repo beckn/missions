@@ -1,0 +1,119 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "on_select",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bpp_id": "bpp-solar-store.example.com",
+        "bpp_uri": "https://bpp-solar-store.example.com",
+        "transaction_id": "tx-solar-panel-001",
+        "message_id": "msg-on-select-001",
+        "timestamp": "2025-05-07T12:30:10Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "sunpro_energy",
+                "descriptor": {
+                    "name": "SunPro Energy Systems",
+                    "short_desc": "Premium mono and polycrystalline solar panels"
+                }
+            },
+            "items": [
+                {
+                    "id": "sp_mono_450w",
+                    "descriptor": {
+                        "name": "SunPro Mono 450W Panel",
+                        "short_desc": "High-efficiency 450W panel for rooftop systems"
+                    },
+                    "price": {
+                        "value": "320",
+                        "currency": "USD"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "count": 1
+                        }
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "Panel Specifications"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Type"
+                                    },
+                                    "value": "Monocrystalline"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Wattage"
+                                    },
+                                    "value": "450W"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Efficiency"
+                                    },
+                                    "value": "21.4%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Warranty"
+                                    },
+                                    "value": "25 years"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "IP Rating"
+                                    },
+                                    "value": "IP68"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "hd1",
+                    "type": "HOME_DELIVERY"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "345",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Panel Price",
+                        "price": {
+                            "value": "320",
+                            "currency": "USD"
+                        }
+                    },
+                    {
+                        "title": "Home Delivery",
+                        "price": {
+                            "value": "25",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
