@@ -1,0 +1,173 @@
+{
+    "context": {
+        "domain": "finance",
+        "action": "on_status",
+        "version": "1.1.0",
+        "bap_id": "bap-ps-network-dev.becknprotocol.io",
+        "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",
+        "bpp_uri": "http://bpp-ps-network-strapi2-dev.becknprotocol.io",
+        "transaction_id": "c07c000b-aab6-410e-9fa2-fd11cafb6dda",
+        "message_id": "msg-on-status-001",
+        "timestamp": "2025-04-15T15:13:35Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "id": "loan-order-pnc-001",
+            "provider": {
+                "id": "103",
+                "descriptor": {
+                    "name": "PNC",
+                    "short_desc": "Provides capital for businesses"
+                }
+            },
+            "items": [
+                {
+                    "id": "281",
+                    "descriptor": {
+                        "name": "Battery Loan - 6 Months EMI Plan",
+                        "short_desc": "Asset Financier"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "Loan Terms"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Min Loan Amount(USD)"
+                                    },
+                                    "value": "1000"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Max Loan Amount(USD)"
+                                    },
+                                    "value": "10000"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Interest Rate (Annual %)"
+                                    },
+                                    "value": "12.0"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Tenure"
+                                    },
+                                    "value": "6 months"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Repayment Type"
+                                    },
+                                    "value": "EMI"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Collateral Required"
+                                    },
+                                    "value": "No"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Monthly EMI Estimate"
+                                    },
+                                    "value": "14"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Terms & Conditions"
+                                    },
+                                    "value": "https://pnc.com/loan-terms"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Eligibility"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Minimum Credit Score"
+                                    },
+                                    "value": "650"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Minimum Income (Monthly)(USD)"
+                                    },
+                                    "value": "2000"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Employment Status"
+                                    },
+                                    "value": "Salaried"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Ava Thompson",
+                "email": "ava.thompson@example.com",
+                "phone": "+14155550011",
+                "address": "22 Greenway Blvd, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "569",
+                    "type": "DIGITAL",
+                    "state": {
+                        "descriptor": {
+                            "code": "Loan-disbursed",
+                            "name": "Loan Disbursed"
+                        }
+                    },
+                    "contact": {
+                        "phone": "+18001234567",
+                        "email": "support@pnc.com"
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "USD",
+                    "value": "Estimated EMI: 14/month"
+                },
+                "breakup": [
+                    {
+                        "title": "Monthly EMI (for 6 months)",
+                        "price": {
+                            "value": "14",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payment": {
+                "type": "POST-FULFILLMENT",
+                "collected_by": "BPP",
+                "status": "NOT-PAID",
+                "params": {
+                    "amount": "Estimated EMI: 14/month",
+                    "currency": "USD"
+                }
+            }
+        }
+    }
+}
