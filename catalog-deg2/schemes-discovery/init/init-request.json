@@ -1,0 +1,40 @@
+{
+    "context": {
+        "domain": "scheme",
+        "action": "init",
+        "location": {
+            "country": { "code": "USA" },
+                "city": { "code": "628" }
+      },
+      "version": "1.1.0",
+      "bap_id": "energy-bap-network.example.com",
+      "bap_uri": "https://energy-bap-network.example.com",
+      "bpp_id": "energy-incentive-bpp.example.com",
+      "bpp_uri": "https://energy-incentive-bpp.example.com",
+      "transaction_id": "scheme-txn-1001",
+      "message_id": "scheme-msg-2002",
+      "timestamp": "2025-05-07T11:02:00Z"
+    },
+    "message": {
+      "order": {
+        "provider": { "id": "provider_doe_sf" },
+        "items": [
+          { "id": "solar_purchase_subsidy_sf" }
+        ],
+        "fulfillments": [
+          {
+            "customer": {
+              "person": {
+                "name": "Taylor West"
+              },
+              "contact": {
+                "phone": "+14155550000",
+                "email": "taylor.west@example.com"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+  

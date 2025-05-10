@@ -1,0 +1,41 @@
+{
+    "context": {
+      "domain": "flexibility",
+      "action": "on_status",
+      "version": "1.1.0",
+      "bap_id": "energy-bap-network.example.com",
+      "bap_uri": "https://energy-bap-network.example.com",
+      "bpp_id": "energy-incentive-bpp.example.com",
+      "bpp_uri": "https://energy-incentive-bpp.example.com",
+      "transaction_id": "incentive-txn-1001",
+      "message_id": "incentive-msg-2005",
+      "timestamp": "2025-05-07T10:50:00Z",
+      "location": {
+        "country": { "code": "USA" },
+        "city": { "code": "628" }
+      }
+    },
+    "message": {
+      "order_id": "order-flex-001",
+      "status": "Active",
+      "fulfillment": {
+        "id": "1",
+        "type": "Demand Response",
+        "stops": [
+          {
+            "type": "start",
+            "location": {
+              "address": "der://smart.meter/100200300"
+            },
+            "time": {
+              "range": {
+                "start": "2025-05-07T17:00:00",
+                "end": "2025-05-07T20:00:00"
+              }
+            },
+            "status": "In Progress"
+          }
+        ]
+      }
+    }
+} 

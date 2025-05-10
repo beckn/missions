@@ -1,0 +1,41 @@
+
+{
+    "context": {
+      "domain": "deg:flexibility",
+      "action": "init",
+      "location": {
+        "country": { "code": "USA" },
+        "city": { "code": "628" }
+      },
+      "version": "1.1.0",
+      "bap_id": "energy-bap-network.example.com",
+      "bap_uri": "https://energy-bap-network.example.com",
+      "bpp_id": "energy-incentive-bpp.example.com",
+      "bpp_uri": "https://energy-incentive-bpp.example.com",
+      "transaction_id": "incentive-txn-1001",
+      "message_id": "incentive-msg-2003",
+      "timestamp": "2025-05-07T10:47:00Z"
+    },
+    "message": {
+      "order": {
+        "provider": { "id": "provider_demand_flex_001" },
+        "items": [
+          { "id": "manual_optin_demand_flex" }
+        ],
+        "fulfillments": [
+          {
+            "customer": {
+              "person": {
+                "name": "Alex Morgan"
+              },
+              "contact": {
+                "phone": "+14155552626",
+                "email": "alex.morgan@example.com"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+  

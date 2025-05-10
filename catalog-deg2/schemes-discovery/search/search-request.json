@@ -1,0 +1,26 @@
+{
+    "context": {
+      "domain": "deg:scheme",
+      "action": "search",
+      "location": {
+        "country": { "code": "USA" },
+        "city": { "code": "628" }
+      },
+      "version": "1.1.0",
+      "bap_id": "energy-bap-network.example.com",
+      "bap_uri": "https://energy-bap-network.example.com",
+      "transaction_id": "scheme-txn-1001",
+      "message_id": "scheme-msg-2000",
+      "timestamp": "2025-05-07T11:00:00Z"
+    },
+    "message": {
+      "intent": {
+        "item": {
+          "descriptor": {
+            "name": "Energy Subsidy"
+          }
+        }
+      }
+    }
+  }
+  
