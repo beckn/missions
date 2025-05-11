@@ -123,6 +123,83 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "id": "it/elc/01",
+                    "descriptor": {
+                        "name": "Battery Installation Service",
+                        "short_desc": "Professional on-site installation of lead-acid or lithium batteries",
+                        "long_desc": "Includes secure mounting, terminal wiring, inverter connection, safety checks, and operational testing. Service covers both residential and small commercial battery systems."
+                    },
+                    "price": {
+                        "value": "100",
+                        "currency": "USD"
+                    },
+                    "rateable": true,
+                    "rating": "4.6",
+                    "category_ids": [
+                        "2"
+                    ],
+                    "fulfillment_ids": [
+                        "onsite"
+                    ],
+                    "location_ids": [
+                        "1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "installation_specification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "installation_type"
+                                    },
+                                    "value": "On-site"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "supported_battery_types"
+                                    },
+                                    "value": "Flooded Lead-Acid, AGM, Lithium-ion"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "duration_estimate"
+                                    },
+                                    "value": "60–90 minutes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "included_services"
+                                    },
+                                    "value": "Mounting, wiring, configuration, performance testing"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "installer_qualification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "certified_technician"
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "safety_protocols_followed"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "fulfillments": [

@@ -84,6 +84,89 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "id": "it/panel/12",
+                    "descriptor": {
+                        "name": "Solar Panel Installation Service",
+                        "short_desc": "On-site installation for rooftop or ground-mounted solar panels",
+                        "long_desc": "Includes mounting structure setup, panel alignment, inverter integration, grid connection readiness, and post-installation testing. Covers both residential and commercial rooftop systems."
+                    },
+                    "price": {
+                        "value": "250",
+                        "currency": "USD"
+                    },
+                    "rateable": true,
+                    "rating": "4.8",
+                    "category_ids": [
+                        "solar_installation"
+                    ],
+                    "fulfillment_ids": [
+                        "sv1"
+                    ],
+                    "location_ids": [
+                        "1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "installation_specification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "installation_type"
+                                    },
+                                    "value": "Rooftop / Ground-mount"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "supported_panel_types"
+                                    },
+                                    "value": "Mono PERC, Polycrystalline, Thin Film"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "system_capacity_limit"
+                                    },
+                                    "value": "Up to 10kW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "included_services"
+                                    },
+                                    "value": "Mounting, inverter wiring, earthing, net-meter interface"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installation_duration"
+                                    },
+                                    "value": "4–6 hours"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "installer_qualification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "empaneled_with_nodal_agency"
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "safety_certified"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "billing": {

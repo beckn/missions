@@ -47,24 +47,17 @@
                     "rating": "4",
                     "categories": [
                         {
-                            "id": "17",
+                            "id": "1",
                             "descriptor": {
-                                "name": "EV Batteries",
-                                "code": "ev_batteries"
+                                "name": "Batteries",
+                                "code": "batteries"
                             }
                         },
                         {
-                            "id": "18",
+                            "id": "2",
                             "descriptor": {
-                                "name": "Solar Storage",
-                                "code": "solar_storage"
-                            }
-                        },
-                        {
-                            "id": "19",
-                            "descriptor": {
-                                "name": "General Purpose Batteries",
-                                "code": "general_batteries"
+                                "name": "Installation service",
+                                "code": "Installation_service"
                             }
                         }
                     ],
@@ -112,7 +105,7 @@
                                 "2"
                             ],
                             "category_ids": [
-                                "19"
+                                "1"
                             ],
                             "location_ids": [
                                 "1",
@@ -198,6 +191,83 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "id": "it/elc/01",
+                            "descriptor": {
+                                "name": "Battery Installation Service",
+                                "short_desc": "Professional on-site installation of lead-acid or lithium batteries",
+                                "long_desc": "Includes secure mounting, terminal wiring, inverter connection, safety checks, and operational testing. Service covers both residential and small commercial battery systems."
+                            },
+                            "price": {
+                                "value": "100",
+                                "currency": "USD"
+                            },
+                            "rateable": true,
+                            "rating": "4.6",
+                            "category_ids": [
+                                "2"
+                            ],
+                            "fulfillment_ids": [
+                                "onsite"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "installation_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "installation_type"
+                                            },
+                                            "value": "On-site"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "supported_battery_types"
+                                            },
+                                            "value": "Flooded Lead-Acid, AGM, Lithium-ion"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "duration_estimate"
+                                            },
+                                            "value": "60–90 minutes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "included_services"
+                                            },
+                                            "value": "Mounting, wiring, configuration, performance testing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installer_qualification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "certified_technician"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "safety_protocols_followed"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -221,10 +291,17 @@
                     "rateable": true,
                     "categories": [
                         {
-                            "id": "19",
+                            "id": "1",
                             "descriptor": {
-                                "name": "General Purpose Batteries",
-                                "code": "general_batteries"
+                                "name": "Batteries",
+                                "code": "batteries"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "descriptor": {
+                                "name": "Installation service",
+                                "code": "Installation_service"
                             }
                         }
                     ],
@@ -270,7 +347,7 @@
                                 "1"
                             ],
                             "category_ids": [
-                                "19"
+                                "1"
                             ],
                             "location_ids": [
                                 "2"
@@ -355,6 +432,83 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "id": "battery-installation-service",
+                            "descriptor": {
+                                "name": "Battery Installation Service",
+                                "short_desc": "Professional on-site installation of lead-acid or lithium batteries",
+                                "long_desc": "Includes secure mounting, terminal wiring, inverter connection, safety checks, and operational testing. Service covers both residential and small commercial battery systems."
+                            },
+                            "price": {
+                                "value": "100",
+                                "currency": "USD"
+                            },
+                            "rateable": true,
+                            "rating": "4.6",
+                            "category_ids": [
+                                "2"
+                            ],
+                            "fulfillment_ids": [
+                                "onsite"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "installation_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "installation_type"
+                                            },
+                                            "value": "On-site"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "supported_battery_types"
+                                            },
+                                            "value": "Flooded Lead-Acid, AGM, Lithium-ion"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "duration_estimate"
+                                            },
+                                            "value": "60–90 minutes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "included_services"
+                                            },
+                                            "value": "Mounting, wiring, configuration, performance testing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installer_qualification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "certified_technician"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "safety_protocols_followed"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -430,7 +584,7 @@
                                 "2"
                             ],
                             "category_ids": [
-                                "19"
+                                "1"
                             ],
                             "location_ids": [
                                 "1"
@@ -511,6 +665,83 @@
                                                 "code": "application_3"
                                             },
                                             "value": "Telecom Towers"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "battery-installation-service",
+                            "descriptor": {
+                                "name": "Battery Installation Service",
+                                "short_desc": "Professional on-site installation of lead-acid or lithium batteries",
+                                "long_desc": "Includes secure mounting, terminal wiring, inverter connection, safety checks, and operational testing. Service covers both residential and small commercial battery systems."
+                            },
+                            "price": {
+                                "value": "100",
+                                "currency": "USD"
+                            },
+                            "rateable": true,
+                            "rating": "4.6",
+                            "category_ids": [
+                                "2"
+                            ],
+                            "fulfillment_ids": [
+                                "onsite"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "installation_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "installation_type"
+                                            },
+                                            "value": "On-site"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "supported_battery_types"
+                                            },
+                                            "value": "Flooded Lead-Acid, AGM, Lithium-ion"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "duration_estimate"
+                                            },
+                                            "value": "60–90 minutes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "included_services"
+                                            },
+                                            "value": "Mounting, wiring, configuration, performance testing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installer_qualification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "certified_technician"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "safety_protocols_followed"
+                                            },
+                                            "value": "Yes"
                                         }
                                     ]
                                 }
