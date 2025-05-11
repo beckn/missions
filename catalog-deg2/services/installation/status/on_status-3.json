@@ -1,14 +1,14 @@
 {
     "context": {
         "domain": "service",
-        "action": "on_init",
+        "action": "on_status",
         "version": "1.1.0",
         "bap_id": "example-bap.com",
         "bpp_id": "example-bpp.com",
         "bpp_uri": "https://example-bpp.com",
         "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-        "message_id": "certification-msg-10005",
-        "timestamp": "2023-07-16T04:41:35Z",
+        "message_id": "certification-msg-10009",
+        "timestamp": "2023-07-16T04:41:55Z",
         "ttl": "PT10M",
         "location": {
             "country": {
@@ -21,20 +21,12 @@
     },
     "message": {
         "order": {
+            "id": "sunpower-install-order-001",
             "provider": {
                 "id": "sunpower_sf",
                 "descriptor": {
-                    "code": "SunPower_Installers",
-                    "short_desc": "Residential and commercial solar panel installation",
-                    "long_desc": "Leading provider of rooftop and industrial solar panel setup services in San Francisco.",
-                    "images": [
-                        {
-                            "url": "https://sunpower.com/logo.png"
-                        },
-                        {
-                            "url": "https://sunpower.com/gallery.jpg"
-                        }
-                    ]
+                    "name": "SunPower Installers",
+                    "short_desc": "Residential and commercial solar panel installation"
                 }
             },
             "items": [
@@ -84,6 +76,66 @@
                                         "code": "empaneled"
                                     },
                                     "value": "true"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "system_capacity_kw"
+                                    },
+                                    "value": "3.0"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "panel_type"
+                                    },
+                                    "value": "Mono PERC"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "number_of_panels"
+                                    },
+                                    "value": "6"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "inverter_type"
+                                    },
+                                    "value": "Hybrid"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "mounting_type"
+                                    },
+                                    "value": "Rooftop – Fixed Tilt"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installation_date"
+                                    },
+                                    "value": "2025-05-10"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "commissioning_status"
+                                    },
+                                    "value": "Completed"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "net_metering_enabled"
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installation_certificate_id"
+                                    },
+                                    "value": "CERT-SP-20250510-00123"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installer_empaneled"
+                                    },
+                                    "value": "Yes"
                                 }
                             ]
                         },
@@ -99,50 +151,8 @@
                                     "value": "true"
                                 }
                             ]
-                        },
-                        {
-                            "descriptor": {
-                                "code": "documentation"
-                            },
-                            "display": true,
-                            "list": [
-                                {
-                                    "descriptor": {
-                                        "code": "required_docs"
-                                    },
-                                    "value": "ID proof, Ownership certificate, Electricity bill, Net metering form, Wiring diagram"
-                                }
-                            ]
                         }
-                    ],
-                    "xinput": {
-                        "required": false,
-                        "head": {
-                            "descriptor": {
-                                "name": "Details Form"
-                            },
-                            "index": {
-                                "min": 0,
-                                "cur": 0,
-                                "max": 1
-                            },
-                            "headings": [
-                                "Customer Details",
-                                "Technical Details"
-                            ]
-                        },
-                        "form": {
-                            "mime_type": "text/html",
-                            "url": "https://6vs8xnx5i7.scheme-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
-                            "resubmit": false,
-                            "auth": {
-                                "descriptor": {
-                                    "code": "jwt"
-                                },
-                                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
-                            }
-                        }
-                    }
+                    ]
                 }
             ],
             "billing": {
@@ -158,8 +168,8 @@
                     "tracking": true,
                     "state": {
                         "descriptor": {
-                            "code": "Scheduled",
-                            "name": "Installation Scheduled"
+                            "code": "Installed",
+                            "name": "Installed"
                         }
                     },
                     "customer": {
@@ -169,6 +179,14 @@
                         "contact": {
                             "phone": "+14155556666",
                             "email": "emily.tran@example.com"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "David C"
+                        },
+                        "contact": {
+                            "phone": "+1423452345"
                         }
                     },
                     "stops": [

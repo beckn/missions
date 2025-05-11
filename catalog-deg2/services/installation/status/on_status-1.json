@@ -1,14 +1,14 @@
 {
     "context": {
         "domain": "service",
-        "action": "on_select",
+        "action": "on_status",
         "version": "1.1.0",
         "bap_id": "example-bap.com",
         "bpp_id": "example-bpp.com",
         "bpp_uri": "https://example-bpp.com",
         "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-        "message_id": "certification-msg-10003",
-        "timestamp": "2023-07-16T04:41:25Z",
+        "message_id": "certification-msg-10009",
+        "timestamp": "2023-07-16T04:41:55Z",
         "ttl": "PT10M",
         "location": {
             "country": {
@@ -21,20 +21,12 @@
     },
     "message": {
         "order": {
+            "id": "sunpower-install-order-001",
             "provider": {
                 "id": "sunpower_sf",
                 "descriptor": {
-                    "code": "SunPower_Installers",
-                    "short_desc": "Residential and commercial solar panel installation",
-                    "long_desc": "Leading provider of rooftop and industrial solar panel setup services in San Francisco.",
-                    "images": [
-                        {
-                            "url": "https://sunpower.com/logo.png"
-                        },
-                        {
-                            "url": "https://sunpower.com/gallery.jpg"
-                        }
-                    ]
+                    "name": "SunPower Installers",
+                    "short_desc": "Residential and commercial solar panel installation"
                 }
             },
             "items": [
@@ -99,30 +91,56 @@
                                     "value": "true"
                                 }
                             ]
-                        },
-                        {
-                            "descriptor": {
-                                "code": "documentation"
-                            },
-                            "display": true,
-                            "list": [
-                                {
-                                    "descriptor": {
-                                        "code": "required_docs"
-                                    },
-                                    "value": "ID proof, Ownership certificate, Electricity bill, Net metering form, Wiring diagram"
-                                }
-                            ]
                         }
                     ]
                 }
             ],
+            "billing": {
+                "name": "Emily Tran",
+                "email": "emily.tran@example.com",
+                "phone": "+14155556666",
+                "address": "456 Glenview St, San Francisco, CA"
+            },
             "fulfillments": [
                 {
                     "id": "1",
                     "type": "ONSITE",
                     "tracking": true,
-                    "rateable": true
+                    "state": {
+                        "descriptor": {
+                            "code": "Technician-dispatched",
+                            "name": "Technician Dispatched"
+                        }
+                    },
+                    "customer": {
+                        "person": {
+                            "name": "Emily Tran"
+                        },
+                        "contact": {
+                            "phone": "+14155556666",
+                            "email": "emily.tran@example.com"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "David C"
+                        },
+                        "contact": {
+                            "phone": "+1423452345"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "456 Glenview St, San Francisco, CA"
+                            }
+                        }
+                    ],
+                    "contact": {
+                        "phone": "+18005559999",
+                        "email": "install@sunpower.com"
+                    }
                 }
             ],
             "quote": {
@@ -139,7 +157,18 @@
                         }
                     }
                 ]
-            }
+            },
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
+                }
+            ]
         }
     }
 }

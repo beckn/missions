@@ -25,7 +25,13 @@
                 "id": "sf_electric_authority",
                 "descriptor": {
                     "name": "San Francisco Electric Authority",
-                    "short_desc": "Official provider for new electricity connections"
+                    "short_desc": "Official provider for new electricity connections",
+                    "long_desc": "Government utility responsible for delivering new residential and commercial electricity connections in San Francisco.",
+                    "images": [
+                        {
+                            "url": "https://sfea.gov/logo.png"
+                        }
+                    ]
                 }
             },
             "items": [
@@ -111,15 +117,9 @@
             },
             "fulfillments": [
                 {
-                    "id": "onsite",
+                    "id": "1",
                     "type": "ONSITE",
                     "tracking": true,
-                    "state": {
-                        "descriptor": {
-                            "code": "Scheduled",
-                            "name": "Connection Visit Scheduled"
-                        }
-                    },
                     "customer": {
                         "person": {
                             "name": "Jonathan Park"

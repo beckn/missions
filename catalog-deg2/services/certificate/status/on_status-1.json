@@ -1,14 +1,14 @@
 {
     "context": {
         "domain": "service",
-        "action": "on_confirm",
+        "action": "on_status",
         "version": "1.1.0",
         "bap_id": "example-bap.com",
         "bpp_id": "example-bpp.com",
         "bpp_uri": "https://example-bpp.com",
         "transaction_id": "certification-txn-9001",
-        "message_id": "certification-msg-20007",
-        "timestamp": "2025-05-07T14:15:50Z",
+        "message_id": "certification-msg-20009",
+        "timestamp": "2025-05-07T14:16:05Z",
         "ttl": "PT10M",
         "location": {
             "country": {
@@ -132,8 +132,16 @@
                     "tracking": true,
                     "state": {
                         "descriptor": {
-                            "code": "Scheduled",
-                            "name": "Inspection Scheduled"
+                            "code": "Technician-en-route",
+                            "name": "Technician En Route"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "David C"
+                        },
+                        "contact": {
+                            "phone": "+1423452345"
                         }
                     },
                     "customer": {

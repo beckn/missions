@@ -1,14 +1,14 @@
 {
     "context": {
         "domain": "service",
-        "action": "on_confirm",
+        "action": "on_status",
         "version": "1.1.0",
         "bap_id": "example-bap.com",
         "bpp_id": "example-bpp.com",
         "bpp_uri": "https://example-bpp.com",
         "transaction_id": "certification-txn-9001",
-        "message_id": "certification-msg-20007",
-        "timestamp": "2025-05-07T14:15:50Z",
+        "message_id": "certification-msg-20009",
+        "timestamp": "2025-05-07T14:16:05Z",
         "ttl": "PT10M",
         "location": {
             "country": {
@@ -115,6 +115,68 @@
                                     "value": "Under 6 months old"
                                 }
                             ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "certification_details"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "certificate_id"
+                                    },
+                                    "value": "CERT-RES-20250507-00123"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "issue_date"
+                                    },
+                                    "value": "2025-05-07"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "valid_until"
+                                    },
+                                    "value": "2030-05-06"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "property_type"
+                                    },
+                                    "value": "Residential"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "system_capacity_kw"
+                                    },
+                                    "value": "3.0"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installation_age_months"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "inspector_id"
+                                    },
+                                    "value": "INS-01928"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "compliance_passed"
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "certificate_url"
+                                    },
+                                    "value": "https://sfsolarboard.gov/certificates/CERT-RES-20250507-00123.pdf"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -132,8 +194,16 @@
                     "tracking": true,
                     "state": {
                         "descriptor": {
-                            "code": "Scheduled",
-                            "name": "Inspection Scheduled"
+                            "code": "Cert_Assigned",
+                            "name": "Assigned"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "David C"
+                        },
+                        "contact": {
+                            "phone": "+1423452345"
                         }
                     },
                     "customer": {

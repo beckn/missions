@@ -25,7 +25,13 @@
                 "id": "sf_solar_cert_board",
                 "descriptor": {
                     "name": "SF Solar Certification Board",
-                    "short_desc": "Official body for certifying solar panel installations"
+                    "short_desc": "Official body for certifying solar panel installations",
+                    "long_desc": "Authorized certifying body offering inspection and certification services for solar panel installations in residential and commercial properties.",
+                    "images": [
+                        {
+                            "url": "https://sfsolarboard.gov/logo.png"
+                        }
+                    ]
                 }
             },
             "items": [

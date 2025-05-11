@@ -32,9 +32,6 @@
                 "descriptor": {
                     "code": "solar_verification"
                 }
-            },
-            "fulfillment": {
-                "type": "ONSITE"
             }
         }
     }

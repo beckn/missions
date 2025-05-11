@@ -37,6 +37,21 @@
                             }
                         ]
                     },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "provider-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "govt_subsidy_empaneled"
+                                    },
+                                    "value": "true"
+                                }
+                            ]
+                        }
+                    ],
                     "rating": "4.6/5",
                     "categories": [
                         {
@@ -130,6 +145,20 @@
                                                 "code": "financial_assistance"
                                             },
                                             "value": "true"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "documentation"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "required_docs"
+                                            },
+                                            "value": "ID proof, Ownership certificate, Electricity bill, Net metering form, Wiring diagram"
                                         }
                                     ]
                                 }

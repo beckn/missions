@@ -3,12 +3,12 @@
         "domain": "service",
         "action": "on_status",
         "version": "1.1.0",
-        "bap_id": "example-bap.com",
-        "bpp_id": "example-bpp.com",
-        "bpp_uri": "https://example-bpp.com",
-        "transaction_id": "connection-txn-8001",
-        "message_id": "connection-msg-10009",
-        "timestamp": "2025-05-07T14:01:05Z",
+        "bap_id": "example_bap_com",
+        "bpp_id": "example_bpp_com",
+        "bpp_uri": "https://example_bpp_com",
+        "transaction_id": "verification_txn_11001",
+        "message_id": "verification_msg_20009",
+        "timestamp": "2025-05-07T14:30:40Z",
         "ttl": "PT10M",
         "location": {
             "country": {
@@ -21,41 +21,41 @@
     },
     "message": {
         "order": {
-            "id": "conn-order-001",
+            "id": "verify-order-11001",
             "provider": {
-                "id": "sf_electric_authority",
+                "id": "sf_solar_verification_unit",
                 "descriptor": {
-                    "name": "San Francisco Electric Authority",
-                    "short_desc": "Official provider for new electricity connections"
+                    "name": "sf_solar_verification_unit",
+                    "short_desc": "third_party_service_for_verifying_installed_solar_systems"
                 }
             },
             "items": [
                 {
-                    "id": "new-resi-connection",
+                    "id": "verify_residential",
                     "descriptor": {
-                        "name": "Residential Electricity Connection"
+                        "name": "residential_solar_system_verification"
                     },
                     "price": {
-                        "estimated_value": "200",
+                        "estimated_value": "75",
                         "currency": "USD"
                     },
                     "tags": [
                         {
                             "descriptor": {
-                                "code": "connection-type"
+                                "code": "verification_scope"
                             },
                             "list": [
                                 {
                                     "descriptor": {
-                                        "code": "property-type"
+                                        "code": "checklist"
                                     },
-                                    "value": "Residential"
+                                    "value": "panel_count_inverter_match_grid_feed_wiring"
                                 },
                                 {
                                     "descriptor": {
-                                        "code": "phase"
+                                        "code": "verification_mode"
                                     },
-                                    "value": "Single Phase"
+                                    "value": "onsite_with_photo_audit"
                                 }
                             ]
                         },
@@ -66,9 +66,9 @@
                             "list": [
                                 {
                                     "descriptor": {
-                                        "code": "required-docs"
+                                        "code": "required_docs"
                                     },
-                                    "value": "ID proof, ownership certificate, wiring diagram"
+                                    "value": "installation_invoice_connection_approval_letter"
                                 }
                             ]
                         }
@@ -76,14 +76,14 @@
                 }
             ],
             "billing": {
-                "name": "Jonathan Park",
-                "email": "jonathan.park@example.com",
-                "phone": "+14155553333",
-                "address": "910 Pinecrest Blvd, San Francisco, CA"
+                "name": "Alicia Chen",
+                "email": "alicia.chen@example.com",
+                "phone": "+14155557777",
+                "address": "301 Greenpoint Ave, San Francisco, CA"
             },
             "fulfillments": [
                 {
-                    "id": "onsite",
+                    "id": "onsite_check",
                     "type": "ONSITE",
                     "tracking": true,
                     "state": {
@@ -94,37 +94,66 @@
                     },
                     "customer": {
                         "person": {
-                            "name": "Jonathan Park"
+                            "name": "Alicia Chen"
                         },
                         "contact": {
-                            "phone": "+14155553333",
-                            "email": "jonathan.park@example.com"
+                            "phone": "+14155557777",
+                            "email": "alicia.chen@example.com"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "David C"
+                        },
+                        "contact": {
+                            "phone": "+1423452345"
                         }
                     },
                     "stops": [
                         {
                             "type": "end",
                             "location": {
-                                "address": "910 Pinecrest Blvd, San Francisco, CA"
+                                "address": "301 Greenpoint Ave, San Francisco, CA"
                             }
                         }
                     ],
                     "contact": {
-                        "phone": "+18004321234",
-                        "email": "support@sfea.gov"
-                    }
+                        "phone": "+1800123123",
+                        "email": "support@sfsolarverify.org"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "verification_visit_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "inspector_qualification"
+                                    },
+                                    "value": "accredited_solar_auditor"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "avg_duration"
+                                    },
+                                    "value": "45_minutes"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "quote": {
                 "price": {
-                    "value": "200",
+                    "value": "75",
                     "currency": "USD"
                 },
                 "breakup": [
                     {
-                        "title": "Connection Setup Fee",
+                        "title": "Verification Fee",
                         "price": {
-                            "value": "200",
+                            "value": "75",
                             "currency": "USD"
                         }
                     }

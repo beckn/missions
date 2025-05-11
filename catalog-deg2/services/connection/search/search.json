@@ -21,15 +21,12 @@
     "message": {
         "intent": {
             "descriptor": {
-                "name": "Request for new electricity connection"
+                "name": "Request for a new electricity connection"
             },
             "category": {
                 "descriptor": {
                     "code": "electricity-connection"
                 }
-            },
-            "fulfillment": {
-                "type": "ONSITE"
             }
         }
     }

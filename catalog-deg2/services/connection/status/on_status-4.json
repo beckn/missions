@@ -1,14 +1,14 @@
 {
     "context": {
         "domain": "service",
-        "action": "on_confirm",
+        "action": "on_status",
         "version": "1.1.0",
         "bap_id": "example-bap.com",
         "bpp_id": "example-bpp.com",
         "bpp_uri": "https://example-bpp.com",
         "transaction_id": "connection-txn-8001",
-        "message_id": "connection-msg-10007",
-        "timestamp": "2025-05-07T14:00:50Z",
+        "message_id": "connection-msg-10009",
+        "timestamp": "2025-05-07T14:01:05Z",
         "ttl": "PT10M",
         "location": {
             "country": {
@@ -77,6 +77,74 @@
                                     "value": "ID proof, ownership certificate, wiring diagram"
                                 }
                             ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "connection_details"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "consumer_number"
+                                    },
+                                    "value": "SFEA-928384"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "meter_id"
+                                    },
+                                    "value": "MTR-112234"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "meter_type"
+                                    },
+                                    "value": "Smart Meter"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "connection_type"
+                                    },
+                                    "value": "Residential - Single Phase"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "sanctioned_load_kw"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "connection_start_date"
+                                    },
+                                    "value": "2025-05-10"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "billing_cycle"
+                                    },
+                                    "value": "Monthly"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "tariff_category"
+                                    },
+                                    "value": "Domestic - General"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "subsidy_eligible"
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "grid_zone"
+                                    },
+                                    "value": "San Francisco North"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -89,13 +157,13 @@
             },
             "fulfillments": [
                 {
-                    "id": "1",
+                    "id": "onsite",
                     "type": "ONSITE",
                     "tracking": true,
                     "state": {
                         "descriptor": {
-                            "code": "Scheduled",
-                            "name": "Connection Visit Scheduled"
+                            "code": "Connection-established",
+                            "name": "Connection Established"
                         }
                     },
                     "customer": {
@@ -107,11 +175,22 @@
                             "email": "jonathan.park@example.com"
                         }
                     },
+                    "agent": {
+                        "person": {
+                            "name": "David C"
+                        },
+                        "contact": {
+                            "phone": "+1423452345"
+                        }
+                    },
                     "stops": [
                         {
                             "type": "end",
                             "location": {
                                 "address": "910 Pinecrest Blvd, San Francisco, CA"
+                            },
+                            "time": {
+                                "timestamp": "2025-05-12T14:00:00Z"
                             }
                         }
                     ],

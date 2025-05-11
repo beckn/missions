@@ -32,9 +32,6 @@
                 "descriptor": {
                     "code": "solar_panel_installation"
                 }
-            },
-            "fulfillment": {
-                "type": "ONSITE"
             }
         }
     }

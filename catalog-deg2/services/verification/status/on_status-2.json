@@ -88,8 +88,8 @@
                     "tracking": true,
                     "state": {
                         "descriptor": {
-                            "code": "Technician-dispatched",
-                            "name": "Technician Dispatched"
+                            "code": "Verification-completed",
+                            "name": "Verification completed"
                         }
                     },
                     "customer": {
@@ -99,6 +99,14 @@
                         "contact": {
                             "phone": "+14155557777",
                             "email": "alicia.chen@example.com"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "David C"
+                        },
+                        "contact": {
+                            "phone": "+1423452345"
                         }
                     },
                     "stops": [
