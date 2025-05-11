@@ -44,12 +44,6 @@
                         "currency": "USD/kWH"
                     },
                     "quantity": {
-                        "available": {
-                            "measure": {
-                                "value": "30",
-                                "unit": "kWH"
-                            }
-                        },
                         "selected": {
                             "measure": {
                                 "value": "10",

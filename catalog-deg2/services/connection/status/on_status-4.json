@@ -62,6 +62,12 @@
                                         "code": "phase"
                                     },
                                     "value": "Single Phase"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "user_type"
+                                    },
+                                    "value": "Consumer"
                                 }
                             ]
                         },
@@ -94,7 +100,7 @@
                                     "descriptor": {
                                         "code": "meter_id"
                                     },
-                                    "value": "MTR-112234"
+                                    "value": "der://puh.meter/84469825"
                                 },
                                 {
                                     "descriptor": {
@@ -187,7 +193,8 @@
                         {
                             "type": "end",
                             "location": {
-                                "address": "910 Pinecrest Blvd, San Francisco, CA"
+                                "address": "910 Pinecrest Blvd, San Francisco, CA",
+                                "gps": "37.774921,122.419424"
                             },
                             "time": {
                                 "timestamp": "2025-05-12T14:00:00Z"

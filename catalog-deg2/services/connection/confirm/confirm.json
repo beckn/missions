@@ -25,7 +25,41 @@
             },
             "items": [
                 {
-                    "id": "new-resi-connection"
+                    "id": "new-resi-connection",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "connection-type"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "user_type"
+                                    },
+                                    "value": "Consumer"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "requested_connection_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "requested_load_kw"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "estimated_monthly_consumption_kwh"
+                                    },
+                                    "value": "300"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "billing": {
@@ -51,7 +85,8 @@
                         {
                             "type": "end",
                             "location": {
-                                "address": "910 Pinecrest Blvd, San Francisco, CA"
+                                "address": "910 Pinecrest Blvd, San Francisco, CA",
+                                "gps": "37.774921,122.419424"
                             }
                         }
                     ]
