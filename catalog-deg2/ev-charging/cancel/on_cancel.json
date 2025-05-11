@@ -1,7 +1,7 @@
 {
     "context": {
         "domain": "charging",
-        "action": "on_init",
+        "action": "on_cancel",
         "version": "1.1.0",
         "bap_id": "example-bap.com",
         "bpp_id": "example-bpp.com",
@@ -20,6 +20,7 @@
     },
     "message": {
         "order": {
+            "id": "ord/01",
             "provider": {
                 "id": "voltcharge_inc",
                 "descriptor": {
@@ -65,42 +66,42 @@
                     "tags": [
                         {
                             "descriptor": {
-                                "code": "Connector_Specifications"
+                                "name": "Connector Specifications"
                             },
                             "list": [
                                 {
                                     "descriptor": {
-                                        "code": "Connector_ID"
+                                        "name": "Connector ID"
                                     },
                                     "value": "con1"
                                 },
                                 {
                                     "descriptor": {
-                                        "code": "Charger_Type"
+                                        "name": "Charger Type"
                                     },
                                     "value": "DC"
                                 },
                                 {
                                     "descriptor": {
-                                        "code": "Connector_Type"
+                                        "name": "Connector Type"
                                     },
                                     "value": "CCS2"
                                 },
                                 {
                                     "descriptor": {
-                                        "code": "Power_Rating"
+                                        "name": "Power Rating"
                                     },
                                     "value": "30kW"
                                 },
                                 {
                                     "descriptor": {
-                                        "code": "Estimated_Charging_Time"
+                                        "name": "Estimated Charging Time"
                                     },
                                     "value": "40 minutes"
                                 },
                                 {
                                     "descriptor": {
-                                        "code": "Availability"
+                                        "name": "Availability"
                                     },
                                     "value": "Available"
                                 }
@@ -108,18 +109,18 @@
                         },
                         {
                             "descriptor": {
-                                "code": "Charging_Point_Specifications"
+                                "name": "Charging Point Specifications"
                             },
                             "list": [
                                 {
                                     "descriptor": {
-                                        "code": "Pillar_Number"
+                                        "name": "Pillar Number"
                                     },
                                     "value": "4"
                                 },
                                 {
                                     "descriptor": {
-                                        "code": "Charger_ID"
+                                        "name": "Charger ID"
                                     },
                                     "value": "charg1"
                                 }
@@ -134,6 +135,12 @@
                     "type": "CHARGING",
                     "rateable": true,
                     "tracking": false,
+                    "state": {
+                        "descriptor": {
+                            "code": "Booking-cancelled",
+                            "name": "Booking Cancelled"
+                        }
+                    },
                     "contact": {
                         "phone": "+1800123456",
                         "email": "support@voltcharge.com"
@@ -141,28 +148,100 @@
                     "tags": [
                         {
                             "descriptor": {
-                                "code": "Fulfillment_Details"
+                                "name": "Fulfillment Details"
                             },
                             "list": [
                                 {
                                     "descriptor": {
-                                        "code": "Service_Time_per_Vehicle"
+                                        "name": "Service Time per Vehicle"
                                     },
                                     "value": "45 min"
                                 },
                                 {
                                     "descriptor": {
-                                        "code": "Charger_Environment"
+                                        "name": "Charger Environment"
                                     },
                                     "value": "Covered Bay"
                                 },
                                 {
                                     "descriptor": {
-                                        "code": "Supports_Plug-n-Charge"
+                                        "name": "Supports Plug-n-Charge"
                                     },
                                     "value": "Yes"
                                 }
                             ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Charging Details",
+                                "code": "charging-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Energy Delivered",
+                                        "code": "energy-delivered"
+                                    },
+                                    "value": "2.3kWh"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "State of Charge",
+                                        "code": "soc"
+                                    },
+                                    "value": "80%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Start Time",
+                                        "code": "start-time"
+                                    },
+                                    "value": "2023-07-16T10:30:00.000Z"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Stop Time",
+                                        "code": "stop-time"
+                                    },
+                                    "value": "2023-07-16T11:30:00.000Z"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Meter Start",
+                                        "code": "meter-start"
+                                    },
+                                    "value": "12345"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Meter Stop",
+                                        "code": "meter-stop"
+                                    },
+                                    "value": "14345"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Current",
+                                        "code": "current"
+                                    },
+                                    "value": "10A"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Power",
+                                        "code": "power"
+                                    },
+                                    "value": "3.3kW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Voltage",
+                                        "code": "voltage"
+                                    },
+                                    "value": "330V"
+                                }
+                            ],
+                            "display": true
                         }
                     ]
                 }

@@ -29,7 +29,35 @@
                         "selected": {
                             "count": 1
                         }
-                    }
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "rental_details"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-10"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-06-10"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "duration"
+                                    },
+                                    "value": "30 days"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "billing": {

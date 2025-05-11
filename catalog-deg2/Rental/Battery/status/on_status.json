@@ -27,11 +27,135 @@
       "items": [
         {
           "id": "420",
+          "descriptor": {
+            "name": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery",
+            "short_desc": "305Ah X 8",
+            "long_desc": "Premium Battery Rental service for energy backup.",
+            "images": [
+              {
+                "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg"
+              }
+            ]
+          },
+          "price": {
+            "value": "10.00",
+            "currency": "USD"
+          },
           "quantity": {
             "selected": {
               "count": 1
             }
-          }
+          },
+          "fulfillment_ids": [
+            "569",
+            "570"
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "code": "product_specification"
+              },
+              "display": true,
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "battery_type"
+                  },
+                  "value": "Flooded Lead-Acid"
+                },
+                {
+                  "descriptor": {
+                    "code": "deep_cycle"
+                  },
+                  "value": "Yes"
+                },
+                {
+                  "descriptor": {
+                    "code": "high_load_support"
+                  },
+                  "value": "Yes"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "technical_specification"
+              },
+              "display": true,
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "voltage"
+                  },
+                  "value": "6V"
+                },
+                {
+                  "descriptor": {
+                    "code": "capacity"
+                  },
+                  "value": "305Ah"
+                },
+                {
+                  "descriptor": {
+                    "code": "weight"
+                  },
+                  "value": "121 lbs"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "general_specification"
+              },
+              "display": true,
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "application_1"
+                  },
+                  "value": "Golf Carts"
+                },
+                {
+                  "descriptor": {
+                    "code": "application_2"
+                  },
+                  "value": "Solar Systems"
+                },
+                {
+                  "descriptor": {
+                    "code": "application_3"
+                  },
+                  "value": "Backup Inverters"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "rental_details"
+              },
+              "display": true,
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "start_date"
+                  },
+                  "value": "2025-05-10"
+                },
+                {
+                  "descriptor": {
+                    "code": "end_date"
+                  },
+                  "value": "2025-06-10"
+                },
+                {
+                  "descriptor": {
+                    "code": "duration"
+                  },
+                  "value": "30 days"
+                }
+              ]
+            }
+          ]
         }
       ],
       "billing": {

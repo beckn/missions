@@ -53,9 +53,6 @@
                         "currency": "USD"
                     },
                     "quantity": {
-                        "available": {
-                            "count": 1000
-                        },
                         "selected": {
                             "count": 1
                         }
@@ -63,6 +60,112 @@
                     "fulfillment_ids": [
                         "569",
                         "570"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "product_specification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "battery_type"
+                                    },
+                                    "value": "Flooded Lead-Acid"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "deep_cycle"
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "high_load_support"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "technical_specification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "voltage"
+                                    },
+                                    "value": "6V"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "capacity"
+                                    },
+                                    "value": "305Ah"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "weight"
+                                    },
+                                    "value": "121 lbs"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "general_specification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "application_1"
+                                    },
+                                    "value": "Golf Carts"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "application_2"
+                                    },
+                                    "value": "Solar Systems"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "application_3"
+                                    },
+                                    "value": "Backup Inverters"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "rental_details"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-10"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-06-10"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "duration"
+                                    },
+                                    "value": "30 days"
+                                }
+                            ]
+                        }
                     ]
                 }
             ],
@@ -152,8 +255,8 @@
             "return_terms": [
                 {
                     "fulfillment_state": {
-                            "code": "delivered",
-                            "name": "Delivered"
+                        "code": "delivered",
+                        "name": "Delivered"
                     },
                     "return_eligible": true,
                     "return_time": {

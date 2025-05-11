@@ -111,6 +111,86 @@
                             ],
                             "location_ids": [
                                 "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "product_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "battery_type"
+                                            },
+                                            "value": "Flooded Lead-Acid"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "deep_cycle"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "high_load_support"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "technical_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "voltage"
+                                            },
+                                            "value": "6V"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "305Ah"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "weight"
+                                            },
+                                            "value": "121 lbs"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "general_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "application_1"
+                                            },
+                                            "value": "Golf Carts"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_2"
+                                            },
+                                            "value": "Solar Systems"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_3"
+                                            },
+                                            "value": "Backup Inverters"
+                                        }
+                                    ]
+                                }
                             ]
                         },
                         {
@@ -140,6 +220,86 @@
                             ],
                             "location_ids": [
                                 "2"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "product_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "battery_type"
+                                            },
+                                            "value": "Flooded Lead-Acid"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "deep_cycle"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "high_load_support"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "technical_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "voltage"
+                                            },
+                                            "value": "6V"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "305Ah"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "weight"
+                                            },
+                                            "value": "121 lbs"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "general_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "application_1"
+                                            },
+                                            "value": "Golf Carts"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_2"
+                                            },
+                                            "value": "Solar Systems"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_3"
+                                            },
+                                            "value": "Backup Inverters"
+                                        }
+                                    ]
+                                }
                             ]
                         }
                     ]
@@ -223,6 +383,86 @@
                             ],
                             "location_ids": [
                                 "2"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "product_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "battery_type"
+                                            },
+                                            "value": "Flooded Lead-Acid"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "deep_cycle"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "high_load_support"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "technical_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "voltage"
+                                            },
+                                            "value": "6V"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "305Ah"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "weight"
+                                            },
+                                            "value": "121 lbs"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "general_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "application_1"
+                                            },
+                                            "value": "Golf Carts"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_2"
+                                            },
+                                            "value": "Solar Systems"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_3"
+                                            },
+                                            "value": "Backup Inverters"
+                                        }
+                                    ]
+                                }
                             ]
                         }
                     ]
