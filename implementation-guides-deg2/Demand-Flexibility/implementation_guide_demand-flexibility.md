@@ -8,25 +8,26 @@
 | ---------- | ------- | --------------------------------------------------- |
 | 12-05-2025 | 1.0     | Initial Version                                     |
 
+
 ## Introduction
 
-This document provides integration guidelines for implementing demand-side flexibility programs over a Beckn-enabled open energy network. It showcases how energy providers and aggregators in San Francisco can publish flexible load reduction programs, enabling users to participate in grid-responsive activities and earn monetary rewards for reducing electricity usage during peak hours.
+This document provides integration guidelines for implementing new electricity connection services over a Beckn-enabled open energy network. It outlines how licensed utility providers, such as the San Francisco Electric Authority, can publish connection offerings—residential or commercial—through standardized digital catalogs accessible to users via Beckn-compliant platforms.
 
-This guide assumes the reader is familiar with the Beckn protocol, message flow, and schema standards. It maps the JSON-based catalog provided by participating BPPs to the Beckn on_search response pattern.
+The guide is intended for developers and service integrators familiar with the Beckn protocol, message flows, and schema structures. It maps the JSON-based catalog responses from connection service providers (BPPs) to the standard Beckn `on_search` message format to ensure interoperability and seamless service discovery.
 
-## Structure of the document
+## Structure of the Document
 
 This document has the following parts:
 
-1. [Outcome Visualization](#outcome-visualisation) - This is a pictorial or descriptive representation of the different use cases that are supported by the network.
-2. General Flow diagrams - This section is relevant to all the messages flows illustrated below and discussed further in the document. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams) section in the generic implementation guide to understand the flow.
-3. [API Calls and Schema](#api-calls-and-schema) - This section provides details on the API calls and the schema of the message that is sent in the form of sample schemas.
-4. [Taxonomy and layer 2 configuration](#taxonomy-and-layer-2-configuration) - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
-5. Notes on writing/integrating with your own software - We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software) section in the generic implementation guide.
-6. [Links to artefacts](#links-to-artefacts) - This section contains the downloadable files referenced in this document.
-7. [Sandbox Details](#sandbox-details) - Sandbox links to BAP, Regitry/Gateway and BPP.
+1. [Outcome Visualization](#outcome-visualization) - A pictorial or descriptive representation of the different use cases that are supported by the network.
+2. [General Flow Diagrams](#general-flow-diagrams) - This section is relevant to all the message flows illustrated below and discussed further in the document. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams) section in the generic implementation guide to understand the flow.
+3. [API Calls and Schema](#api-calls-and-schema) - This section provides details on the API calls and the schema of the messages that are sent in the form of sample schemas.
+4. [Taxonomy and Layer 2 Configuration](#taxonomy-and-layer-2-configuration) - This section provides details on the taxonomy, enumerations, and any rules defined for either the use case or by the network.
+5. [Integration Notes](#integration-notes) - Notes on writing/integrating with your own software. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software) section in the generic implementation guide.
+6. [Links to Artefacts](#links-to-artefacts) - This section contains the downloadable files referenced in this document.
+7. [Sandbox Details](#sandbox-details) - Sandbox links to BAP, Registry/Gateway, and BPP.
 
-## Outcome Visualisation
+## Outcome Visualization
 
 ### Use case - Discovery, order and fulfillment of Demand Flexibility
 
@@ -296,7 +297,7 @@ Search request can contain one or more search criterion within it. Use the follo
               "descriptor": {
                 "name": "Smart Appliance Flex Program",
                 "short_desc": "$0.15/kWh reduction via smart device control",
-                "long_desc": "FlexiGrid can adjust your smart appliances like thermostats or EV chargers during grid alerts. You’ll earn $0.15 for each kWh avoided.",
+                "long_desc": "FlexiGrid can adjust your smart appliances like thermostats or EV chargers during grid alerts. You'll earn $0.15 for each kWh avoided.",
                 "additional_desc": {
                   "url": "https://flexigrid.com/programs/smart-load"
                 }

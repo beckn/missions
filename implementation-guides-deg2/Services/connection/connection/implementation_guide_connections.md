@@ -24,11 +24,46 @@ This document has the following parts:
 6. [Links to artefacts](#links-to-artefacts) - This section contains the downloadable files referenced in this document.
 7. [Sandbox Details](#sandbox-details) - Sandbox links to BAP, Regitry/Gateway and BPP.
 
-## Outcome Visualisation
+## Outcome Visualization
 
 ### Use case - Discovery, order and fulfillment of Connections
 
-<>
+### Electricity Connection in San Francisco
+
+Maria, a homeowner in San Francisco, is setting up her new residence. She needs to get a formal electricity connection installed by the city's official service provider.
+
+### 1. Discovery
+
+* Maria opens the **Energykart app**, which lists licensed utility service providers.
+* The app shows:
+  * **San Francisco Electric Authority**
+  * Service offered: **Residential and Commercial Electricity Connections**
+  * Fulfillment: **Onsite visit**
+* She selects the **Residential Electricity Connection** option.
+
+### 2. Order
+
+* Maria chooses the **Single Phase Residential Connection**.
+* Price displayed: **$200 USD (estimated)**
+* Required documents listed:
+  * **ID proof**
+  * **Ownership certificate**
+  * **Wiring diagram**
+* Maria uploads the documents, agrees to the terms, and selects **card payment**.
+* She receives a **Connection Request ID** and an appointment for a technician visit.
+
+### 3. Fulfillment
+
+* On the scheduled day, a certified technician visits Maria's home.
+* The technician checks the wiring layout and installs the connection.
+* Power supply is activated and linked to her smart meter system.
+* A service completion note is issued digitally.
+
+### 4. Post Fulfillment
+
+* Maria receives a **digital confirmation of activation** and a formal invoice.
+* She is asked to **rate the service** on a 0–5 scale.
+* Maria gives a **5-star rating** for fast response and professional handling.
 
 ## API Calls and Schema
 
