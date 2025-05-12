@@ -1118,7 +1118,7 @@ Search request can contain one or more search criterion within it. Use the follo
 Taxonomy
 
 | Property Name | Enums |
-|--------------|-------|
+|---------------|-------|
 | connection-type | - Residential<br>- Commercial<br>- Industrial |
 | phase | - Single Phase<br>- Three Phase<br>- Split Phase |
 | property-type | - Apartment<br>- House<br>- Office<br>- Factory<br>- Shop |
@@ -1134,6 +1134,7 @@ Taxonomy
 | connection-tariff | - Residential<br>- Commercial<br>- Industrial<br>- Agricultural |
 | connection-metering | - Single Point<br>- Multi Point |
 | connection-billing | - Prepaid<br>- Postpaid |
+
 
 
 ## Links to artefacts
