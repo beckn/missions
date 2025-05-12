@@ -1,411 +1,1012 @@
 # DEG Implementation Guide - Connections
 
-#### Version 1.0
+#### Version 1.1
 
 ## Version History
 
-| Date       | Version | Description                                         |
-| ---------- | ------- | --------------------------------------------------- |
-| 12-05-2025 | 1.0     | Initial Version                                     |
+| Date       | Version | Description                     |
+| ---------- | ------- | ------------------------------- |
+| 12-05-2025 | 1.0     | Initial version                 |
+| 13-05-2025 | 1.1     | Completed and revised structure |
 
 ## Introduction
 
-<>
+This guide provides implementation instructions for electricity connection services using the Beckn Protocol in an open digital energy network. It is intended for developers and integrators building BAPs or BPPs for licensed utility providers such as San Francisco Electric Authority. The document aligns the sample APIs and JSON message structures for seamless interoperability across the network.
 
 ## Structure of the document
 
-This document has the following parts:
-
-1. [Outcome Visualization](#outcome-visualisation) - This is a pictorial or descriptive representation of the different use cases that are supported by the network.
-2. General Flow diagrams - This section is relevant to all the messages flows illustrated below and discussed further in the document. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams) section in the generic implementation guide to understand the flow.
-3. [API Calls and Schema](#api-calls-and-schema) - This section provides details on the API calls and the schema of the message that is sent in the form of sample schemas.
-4. [Taxonomy and layer 2 configuration](#taxonomy-and-layer-2-configuration) - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
-5. Notes on writing/integrating with your own software - We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software) section in the generic implementation guide.
-6. [Links to artefacts](#links-to-artefacts) - This section contains the downloadable files referenced in this document.
-7. [Sandbox Details](#sandbox-details) - Sandbox links to BAP, Regitry/Gateway and BPP.
+1. [Outcome Visualization](#outcome-visualization)
+2. [General Flow diagrams](#general-flow-diagrams)
+3. [API Calls and Schema](#api-calls-and-schema)
+4. [Taxonomy and Layer 2 Configuration](#taxonomy-and-layer-2-configuration)
+5. [Notes on Software Integration](#notes-on-software-integration)
+6. [Links to Artefacts](#links-to-artefacts)
+7. [Sandbox Details](#sandbox-details)
 
 ## Outcome Visualization
 
-### Use case - Discovery, order and fulfillment of Connections
+### Use Case - Electricity Connection
 
-### Electricity Connection in San Francisco
+**Scenario**: Maria, a homeowner in San Francisco, needs a new residential electricity connection.
 
-Maria, a homeowner in San Francisco, is setting up her new residence. She needs to get a formal electricity connection installed by the city's official service provider.
+1. **Discovery**: Uses Energykart app to find available electricity service providers.
+2. **Order**: Selects "Residential Electricity Connection", uploads required documents, receives order ID.
+3. **Fulfillment**: Technician installs meter onsite and activates power.
+4. **Post Fulfillment**: Receives invoice and gives feedback.
 
-### 1. Discovery
+## General Flow Diagrams
 
-* Maria opens the **Energykart app**, which lists licensed utility service providers.
-* The app shows:
-  * **San Francisco Electric Authority**
-  * Service offered: **Residential and Commercial Electricity Connections**
-  * Fulfillment: **Onsite visit**
-* She selects the **Residential Electricity Connection** option.
-
-### 2. Order
-
-* Maria chooses the **Single Phase Residential Connection**.
-* Price displayed: **$200 USD (estimated)**
-* Required documents listed:
-  * **ID proof**
-  * **Ownership certificate**
-  * **Wiring diagram**
-* Maria uploads the documents, agrees to the terms, and selects **card payment**.
-* She receives a **Connection Request ID** and an appointment for a technician visit.
-
-### 3. Fulfillment
-
-* On the scheduled day, a certified technician visits Maria's home.
-* The technician checks the wiring layout and installs the connection.
-* Power supply is activated and linked to her smart meter system.
-* A service completion note is issued digitally.
-
-### 4. Post Fulfillment
-
-* Maria receives a **digital confirmation of activation** and a formal invoice.
-* She is asked to **rate the service** on a 0–5 scale.
-* Maria gives a **5-star rating** for fast response and professional handling.
+Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams).
 
 ## API Calls and Schema
 
 ### search
 
-Search request can contain one or more search criterion within it. Use the following list on how to specify the criterion.
-
-- The location to search around is specified in the message->intent->fulfillment->stops[0]->location field.
-- The connector type required is specified in message->intent->fulfillment->tags[0]->list[0]. Refer to the taxonomy section below for the list of connector types supported.
-- If searching by free text, it is specified in message->intent->descriptor->name
-- If searching by category, it is specified in message->intent->category->descriptor->code
-
-```
+```json
 {
-    "context": {
-        "domain": "service",
-        "action": "search",
-        "version": "1.1.0",
-        "bap_id": "example-bap.com",
-        "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
-        "transaction_id": "connection-txn-8001",
-        "message_id": "connection-msg-10001",
-        "timestamp": "2025-05-07T13:59:00Z",
-        "ttl": "PT10M",
-        "location": {
-            "country": {
-                "code": "USA"
-            },
-            "city": {
-                "code": "NANP:628"
-            }
-        }
-    },
-    "message": {
-        "intent": {
-            "descriptor": {
-                "name": "Request for a new electricity connection"
-            },
-            "category": {
-                "descriptor": {
-                    "code": "electricity-connection"
-                }
-            }
-        }
+  "context": {
+    "domain": "service",
+    "action": "search",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "transaction_id": "connection-txn-8001",
+    "message_id": "connection-msg-10001",
+    "timestamp": "2025-05-07T13:59:00Z",
+    "ttl": "PT10M",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
     }
+  },
+  "message": {
+    "intent": {
+      "descriptor": {
+        "name": "Request for a new electricity connection"
+      },
+      "category": {
+        "descriptor": {
+          "code": "electricity-connection"
+        }
+      }
+    }
+  }
 }
 ```
 
-### on_search
+### on\_search
 
-**on_search with catalog of results**
-
-- The catalog that comes back has a list of providers.
-- Each provider has a list of items.
-- Each item is the catalog listing for a charging station.
-
-
-```
+```json
 {
-    "context": {
-        "domain": "service",
-        "action": "on_search",
-        "location": {
-            "country": {
-                "code": "USA"
-            },
-            "city": {
-                "code": "NANP:628"
-            }
-        },
-        "version": "1.1.0",
-        "bap_id": "example-bap.com",
-        "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
-        "bpp_id": "example-bpp.com",
-        "bpp_uri": "https://example-bpp.com",
-        "transaction_id": "connection-txn-8001",
-        "message_id": "connection-msg-9001",
-        "timestamp": "2025-05-07T14:00:00Z"
-    },
-    "message": {
-        "catalog": {
-            "providers": [
-                {
-                    "id": "sf_electric_authority",
-                    "descriptor": {
-                        "name": "San Francisco Electric Authority",
-                        "short_desc": "Official provider for new electricity connections",
-                        "long_desc": "Government utility responsible for delivering new residential and commercial electricity connections in San Francisco.",
-                        "images": [
-                            {
-                                "url": "https://sfea.gov/logo.png"
-                            }
-                        ]
-                    },
-                    "rating": "4.8/5",
-                    "categories": [
-                        {
-                            "id": "1",
-                            "descriptor": {
-                                "code": "electricity-connection",
-                                "name": "Electricity Connection"
-                            }
-                        }
-                    ],
-                    "locations": [
-                        {
-                            "id": "1",
-                            "city": {
-                                "name": "San Francisco"
-                            }
-                        }
-                    ],
-                    "fulfillments": [
-                        {
-                            "id": "1",
-                            "type": "ONSITE"
-                        }
-                    ],
-                    "items": [
-                        {
-                            "id": "new-resi-connection",
-                            "descriptor": {
-                                "name": "Residential Electricity Connection"
-                            },
-                            "price": {
-                                "estimated_value": "200",
-                                "currency": "USD"
-                            },
-                            "category_ids": [
-                                "1"
-                            ],
-                            "location_ids": [
-                                "1"
-                            ],
-                            "fulfillment_ids": [
-                                "1"
-                            ],
-                            "tags": [
-                                {
-                                    "descriptor": {
-                                        "code": "connection-type"
-                                    },
-                                    "list": [
-                                        {
-                                            "descriptor": {
-                                                "code": "property-type"
-                                            },
-                                            "value": "Residential"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "code": "phase"
-                                            },
-                                            "value": "Single Phase"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "descriptor": {
-                                        "code": "documentation"
-                                    },
-                                    "list": [
-                                        {
-                                            "descriptor": {
-                                                "code": "required-docs"
-                                            },
-                                            "value": "ID proof, ownership certificate, wiring diagram"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "new-comm-connection",
-                            "descriptor": {
-                                "name": "Commercial Electricity Connection"
-                            },
-                            "price": {
-                                "estimated_value": "500",
-                                "currency": "USD"
-                            },
-                            "category_ids": [
-                                "1"
-                            ],
-                            "location_ids": [
-                                "1"
-                            ],
-                            "fulfillment_ids": [
-                                "1"
-                            ],
-                            "tags": [
-                                {
-                                    "descriptor": {
-                                        "code": "connection-type"
-                                    },
-                                    "list": [
-                                        {
-                                            "descriptor": {
-                                                "code": "property-type"
-                                            },
-                                            "value": "Commercial"
-                                        },
-                                        {
-                                            "descriptor": {
-                                                "code": "phase"
-                                            },
-                                            "value": "Three Phase"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "descriptor": {
-                                        "code": "documentation"
-                                    },
-                                    "list": [
-                                        {
-                                            "descriptor": {
-                                                "code": "required-docs"
-                                            },
-                                            "value": "Business license, wiring plan, ID proof"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
+  "context": {
+    "domain": "service",
+    "action": "on_search",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "connection-txn-8001",
+    "message_id": "connection-msg-10002",
+    "timestamp": "2025-05-07T14:00:10Z",
+    "ttl": "PT10M",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
     }
+  },
+  "message": {
+    "catalog": {
+      "providers": [
+        {
+          "id": "sf_electric_authority",
+          "descriptor": {
+            "name": "San Francisco Electric Authority",
+            "short_desc": "Official provider for new electricity connections",
+            "long_desc": "Government utility responsible for delivering new residential and commercial electricity connections in San Francisco.",
+            "images": [
+              {
+                "url": "https://sfea.gov/logo.png"
+              }
+            ]
+          },
+          "items": [
+            {
+              "id": "new-resi-connection",
+              "descriptor": {
+                "name": "Residential Electricity Connection"
+              },
+              "price": {
+                "estimated_value": "200",
+                "currency": "USD"
+              },
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "connection-type"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "property-type"
+                      },
+                      "value": "Residential"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "phase"
+                      },
+                      "value": "Single Phase"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "user_type"
+                      },
+                      "value": "Consumer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+### select
+
+```json
+{
+  "context": {
+    "domain": "service",
+    "action": "select",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "transaction_id": "connection-txn-8001",
+    "message_id": "connection-msg-10002",
+    "timestamp": "2025-05-07T14:00:15Z",
+    "ttl": "PT10M",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
+    }
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "sf_electric_authority"
+      },
+      "items": [
+        {
+          "id": "new-resi-connection",
+          "tags": [
+            {
+              "descriptor": {
+                "code": "connection-type"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "user_type"
+                  },
+                  "value": "Consumer"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "requested_connection_details"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "requested_load_kw"
+                  },
+                  "value": "5"
+                },
+                {
+                  "descriptor": {
+                    "code": "estimated_monthly_consumption_kwh"
+                  },
+                  "value": "300"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1"
+        }
+      ]
+    }
+  }
+}
+```
+
+### on\_select
+
+```json
+{
+  "context": {
+    "domain": "service",
+    "action": "on_select",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "connection-txn-8001",
+    "message_id": "connection-msg-10003",
+    "timestamp": "2025-05-07T14:00:20Z",
+    "ttl": "PT10M",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
+    }
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "sf_electric_authority",
+        "descriptor": {
+          "name": "San Francisco Electric Authority",
+          "short_desc": "Official provider for new electricity connections",
+          "long_desc": "Government utility responsible for delivering new residential and commercial electricity connections in San Francisco.",
+          "images": [
+            {
+              "url": "https://sfea.gov/logo.png"
+            }
+          ]
+        }
+      },
+      "items": [
+        {
+          "id": "new-resi-connection",
+          "descriptor": {
+            "name": "Residential Electricity Connection"
+          },
+          "price": {
+            "estimated_value": "200",
+            "currency": "USD"
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "code": "connection-type"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "property-type"
+                  },
+                  "value": "Residential"
+                },
+                {
+                  "descriptor": {
+                    "code": "phase"
+                  },
+                  "value": "Single Phase"
+                },
+                {
+                  "descriptor": {
+                    "code": "user_type"
+                  },
+                  "value": "Consumer"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "documentation"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "required-docs"
+                  },
+                  "value": "ID proof, ownership certificate, wiring diagram"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "requested_connection_details"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "requested_load_kw"
+                  },
+                  "value": "5"
+                },
+                {
+                  "descriptor": {
+                    "code": "estimated_monthly_consumption_kwh"
+                  },
+                  "value": "300"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "ONSITE"
+        }
+      ],
+      "quote": {
+        "price": {
+          "value": "200",
+          "currency": "USD"
+        },
+        "breakup": [
+          {
+            "title": "Connection Setup Fee",
+            "price": {
+              "value": "200",
+              "currency": "USD"
+            }
+          }
+        ]
+      }
+    }
+  }
 }
 ```
 
 ### init
 
-**send init request**
-
-- The draft order including billing details.
-- Billing details specified in message->order->billing
-
+```json
+{
+  "context": {
+    "domain": "service",
+    "action": "init",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "transaction_id": "connection-txn-8001",
+    "message_id": "connection-msg-10004",
+    "timestamp": "2025-05-07T14:00:30Z",
+    "ttl": "PT10M",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
+    }
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "sf_electric_authority"
+      },
+      "items": [
+        {
+          "id": "new-resi-connection",
+          "tags": [
+            {
+              "descriptor": {
+                "code": "connection-type"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "user_type"
+                  },
+                  "value": "Consumer"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "requested_connection_details"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "requested_load_kw"
+                  },
+                  "value": "5"
+                },
+                {
+                  "descriptor": {
+                    "code": "estimated_monthly_consumption_kwh"
+                  },
+                  "value": "300"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "billing": {
+        "name": "Jonathan Park",
+        "email": "jonathan.park@example.com",
+        "phone": "+14155553333",
+        "address": "910 Pinecrest Blvd, San Francisco, CA"
+      },
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "ONSITE",
+          "customer": {
+            "person": {
+              "name": "Jonathan Park"
+            },
+            "contact": {
+              "phone": "+14155553333",
+              "email": "jonathan.park@example.com"
+            }
+          },
+          "stops": [
+            {
+              "type": "end",
+              "location": {
+                "address": "910 Pinecrest Blvd, San Francisco, CA",
+                "gps": "37.774921,122.419424"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
 ```
 
-```
+### on\_init
 
-### on_init
-
-- Contains payment terms. Payment terms specified in message->order->payments
-- Cancellation terms specified in message->order->cancellation_terms
-- Here we show the BPP as payment collector. In case the BAP specifies that it collects the payment in the init, the url field within payments will be empty
-
-```
-
+```json
+{
+  "context": {
+    "domain": "service",
+    "action": "on_init",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "connection-txn-8001",
+    "message_id": "connection-msg-10005",
+    "timestamp": "2025-05-07T14:00:35Z",
+    "ttl": "PT10M",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
+    }
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "sf_electric_authority",
+        "descriptor": {
+          "name": "San Francisco Electric Authority",
+          "short_desc": "Official provider for new electricity connections",
+          "long_desc": "Government utility responsible for delivering new residential and commercial electricity connections in San Francisco.",
+          "images": [
+            {
+              "url": "https://sfea.gov/logo.png"
+            }
+          ]
+        }
+      },
+      "items": [
+        {
+          "id": "new-resi-connection",
+          "descriptor": {
+            "name": "Residential Electricity Connection"
+          },
+          "price": {
+            "estimated_value": "200",
+            "currency": "USD"
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "code": "connection-type"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "property-type"
+                  },
+                  "value": "Residential"
+                },
+                {
+                  "descriptor": {
+                    "code": "phase"
+                  },
+                  "value": "Single Phase"
+                },
+                {
+                  "descriptor": {
+                    "code": "user_type"
+                  },
+                  "value": "Consumer"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "documentation"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "required-docs"
+                  },
+                  "value": "ID proof, ownership certificate, wiring diagram"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "requested_connection_details"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "requested_load_kw"
+                  },
+                  "value": "5"
+                },
+                {
+                  "descriptor": {
+                    "code": "estimated_monthly_consumption_kwh"
+                  },
+                  "value": "300"
+                }
+              ]
+            }
+          ],
+          "xinput": {
+            "required": false,
+            "head": {
+              "descriptor": {
+                "name": "Document Form"
+              },
+              "index": {
+                "min": 0,
+                "cur": 0,
+                "max": 2
+              },
+              "headings": [
+                "ID proof",
+                "ownership certificate",
+                "wiring diagram"
+              ]
+            },
+            "form": {
+              "mime_type": "text/html",
+              "url": "https://6vs8xnx5i7.scheme-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+              "resubmit": false,
+              "auth": {
+                "descriptor": {
+                  "code": "jwt"
+                },
+                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+              }
+            }
+          }
+        }
+      ],
+      "billing": {
+        "name": "Jonathan Park",
+        "email": "jonathan.park@example.com",
+        "phone": "+14155553333",
+        "address": "910 Pinecrest Blvd, San Francisco, CA"
+      },
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "ONSITE",
+          "tracking": true,
+          "customer": {
+            "person": {
+              "name": "Jonathan Park"
+            },
+            "contact": {
+              "phone": "+14155553333",
+              "email": "jonathan.park@example.com"
+            }
+          },
+          "stops": [
+            {
+              "type": "end",
+              "location": {
+                "address": "910 Pinecrest Blvd, San Francisco, CA",
+                "gps": "37.774921,122.419424"
+              }
+            }
+          ],
+          "contact": {
+            "phone": "+18004321234",
+            "email": "support@sfea.gov"
+          }
+        }
+      ],
+      "quote": {
+        "price": {
+          "value": "200",
+          "currency": "USD"
+        },
+        "breakup": [
+          {
+            "title": "Connection Setup Fee",
+            "price": {
+              "value": "200",
+              "currency": "USD"
+            }
+          }
+        ]
+      },
+      "payments": [
+        {
+          "type": "ON-FULFILLMENT",
+          "collected_by": "BPP",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "150",
+            "currency": "USD"
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
 ### confirm
 
-- Confirm order including payment paid info (when applicable).
-- It is in message->order->payments
-
+```json
+{
+  "context": {
+    "domain": "service",
+    "action": "confirm",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "transaction_id": "connection-txn-8001",
+    "message_id": "connection-msg-10006",
+    "timestamp": "2025-05-07T14:00:45Z",
+    "ttl": "PT10M",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
+    }
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "sf_electric_authority"
+      },
+      "items": [
+        {
+          "id": "new-resi-connection",
+          "tags": [
+            {
+              "descriptor": {
+                "code": "connection-type"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "user_type"
+                  },
+                  "value": "Consumer"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "requested_connection_details"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "requested_load_kw"
+                  },
+                  "value": "5"
+                },
+                {
+                  "descriptor": {
+                    "code": "estimated_monthly_consumption_kwh"
+                  },
+                  "value": "300"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "billing": {
+        "name": "Jonathan Park",
+        "email": "jonathan.park@example.com",
+        "phone": "+14155553333",
+        "address": "910 Pinecrest Blvd, San Francisco, CA"
+      },
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "ONSITE",
+          "customer": {
+            "person": {
+              "name": "Jonathan Park"
+            },
+            "contact": {
+              "phone": "+14155553333",
+              "email": "jonathan.park@example.com"
+            }
+          },
+          "stops": [
+            {
+              "type": "end",
+              "location": {
+                "address": "910 Pinecrest Blvd, San Francisco, CA",
+                "gps": "37.774921,122.419424"
+              }
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "type": "ON-FULFILLMENT",
+          "collected_by": "BPP",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "150",
+            "currency": "USD"
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
+### on\_confirm
+
+```json
+{
+  "context": {
+    "domain": "service",
+    "action": "on_confirm",
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "connection-txn-8001",
+    "message_id": "connection-msg-10007",
+    "timestamp": "2025-05-07T14:00:50Z",
+    "ttl": "PT10M",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
+    }
+  },
+  "message": {
+    "order": {
+      "id": "conn-order-001",
+      "provider": {
+        "id": "sf_electric_authority",
+        "descriptor": {
+          "name": "San Francisco Electric Authority",
+          "short_desc": "Official provider for new electricity connections",
+          "long_desc": "Government utility responsible for delivering new residential and commercial electricity connections in San Francisco.",
+          "images": [
+            {
+              "url": "https://sfea.gov/logo.png"
+            }
+          ]
+        }
+      },
+      "items": [
+        {
+          "id": "new-resi-connection",
+          "descriptor": {
+            "name": "Residential Electricity Connection"
+          },
+          "price": {
+            "estimated_value": "200",
+            "currency": "USD"
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "code": "connection-type"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "property-type"
+                  },
+                  "value": "Residential"
+                },
+                {
+                  "descriptor": {
+                    "code": "phase"
+                  },
+                  "value": "Single Phase"
+                },
+                {
+                  "descriptor": {
+                    "code": "user_type"
+                  },
+                  "value": "Consumer"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "documentation"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "required-docs"
+                  },
+                  "value": "ID proof, ownership certificate, wiring diagram"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "requested_connection_details"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "requested_load_kw"
+                  },
+                  "value": "5"
+                },
+                {
+                  "descriptor": {
+                    "code": "estimated_monthly_consumption_kwh"
+                  },
+                  "value": "300"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "billing": {
+        "name": "Jonathan Park",
+        "email": "jonathan.park@example.com",
+        "phone": "+14155553333",
+        "address": "910 Pinecrest Blvd, San Francisco, CA"
+      },
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "ONSITE",
+          "tracking": true,
+          "state": {
+            "descriptor": {
+              "code": "Scheduled",
+              "name": "Connection Visit Scheduled"
+            }
+          },
+          "customer": {
+            "person": {
+              "name": "Jonathan Park"
+            },
+            "contact": {
+              "phone": "+14155553333",
+              "email": "jonathan.park@example.com"
+            }
+          },
+          "stops": [
+            {
+              "type": "end",
+              "location": {
+                "address": "910 Pinecrest Blvd, San Francisco, CA",
+                "gps": "37.774921,122.419424"
+              }
+            }
+          ],
+          "contact": {
+            "phone": "+18004321234",
+            "email": "support@sfea.gov"
+          }
+        }
+      ],
+      "quote": {
+        "price": {
+          "value": "200",
+          "currency": "USD"
+        },
+        "breakup": [
+          {
+            "title": "Connection Setup Fee",
+            "price": {
+              "value": "200",
+              "currency": "USD"
+            }
+          }
+        ]
+      },
+      "payments": [
+        {
+          "type": "ON-FULFILLMENT",
+          "collected_by": "BPP",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "150",
+            "currency": "USD"
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
-### on_confirm
+## Taxonomy and Layer 2 Configuration
 
-- Order confirmed. Charging can start.
+* `connection-type`: Residential / Commercial
+* `property-type`: Owned / Rented
+* `phase`: Single / Three phase
+* `documentation`: ID proof, Wiring diagram, Ownership proof
 
-```
+## Notes on Software Integration
 
-```
+Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software)
 
-### status
+## Links to Artefacts
 
-- Request for status on order. order_id is specifiedin message->order_id
-
-```
-
-```
-
-### on_status
-
-- Status of requested order.
-- Primarily the fulfillment status is specified in message->order->fulfillments[]->state
-- The message->order->fulfillments[]->state->descriptor->long_desc can be used to specify the OCPP status of the charge point. This can help the BAP to construct a custom detailed UI for charging status.
-
-```
-
-```
-
-### support
-
-- Request for support information.
-- If regarding a specific order, specify the order_id in message->support->ref_id
-
-```
-
-  
-```
-
-### on_support
-
-- Contains support information. If integrated with a CMS, the URL could contain order specific support info
-- In all other cases, contains general support info (message->support)
-
-```
-
-```
-
-### cancel
-
-- Request to cancel an order. order_id to be specified in message->order_id
-- In the case where there is no advance booking of the charging slot, this does not have much relevance
-
-```
-
-```
-
-### on_cancel
-
-- Confirmation of cancelled order. The cancelled order will be in message->order
-- In cases where advanced booking of charging station is not supported, this message is not relevant.
-
-```
-
-```
-
-## Taxonomy and layer 2 configuration
-
-## Links to artefacts
-
-- [Postman collection for Connections]()
-- [Layer2 config for UEI Connections]()
+* [Postman Collection for DEG Connection APIs]()
+* [Layer 2 Configuration File]()
 
 ## Sandbox Details
 
-### Registry/Gateway:
+**Registry/Gateway:**
 
-- **Gateway Sandbox:** []()
-- **Registry Sandbox:** []()
+* Gateway: [gateway.becknprotocol.io/bg](https://gateway.becknprotocol.io/bg)
+* Registry: [registry.becknprotocol.io](https://registry.becknprotocol.io)
 
-### BPP:
+**BAP:**
 
-- **BPP Client Sandbox:** []()
-- **BPP Network Sandbox:** []()
-- **BPP Playground Sandbox:** []()
+* BAP Client: [bap-ps-client-dev.becknprotocol.io](https://bap-ps-client-dev.becknprotocol.io)
+
+**BPP:**
+
+* BPP Client: [bpp-ps-client-dev.becknprotocol.io](https://bpp-ps-client-dev.becknprotocol.io)
+* BPP Network: [bpp-ps-network-dev.becknprotocol.io](https://bpp-ps-network-dev.becknprotocol.io)

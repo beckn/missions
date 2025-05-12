@@ -11,9 +11,9 @@
 
 ## Introduction
 
-This document provides integration guidelines for implementing new electricity connection services over a Beckn-enabled open energy network. It outlines how licensed utility providers, such as the San Francisco Electric Authority, can publish connection offerings—residential or commercial—through standardized digital catalogs accessible to users via Beckn-compliant platforms.
+This document provides integration guidelines for implementing demand-side flexibility programs over a Beckn-enabled open energy network. It showcases how energy providers and aggregators in San Francisco can publish flexible load reduction programs, enabling users to participate in grid-responsive activities and earn monetary rewards for reducing electricity usage during peak hours.
 
-The guide is intended for developers and service integrators familiar with the Beckn protocol, message flows, and schema structures. It maps the JSON-based catalog responses from connection service providers (BPPs) to the standard Beckn `on_search` message format to ensure interoperability and seamless service discovery.
+This guide assumes the reader is familiar with the Beckn protocol, message flow, and schema standards. It maps the JSON-based catalog provided by participating BPPs to the Beckn on_search response pattern.
 
 ## Structure of the Document
 
