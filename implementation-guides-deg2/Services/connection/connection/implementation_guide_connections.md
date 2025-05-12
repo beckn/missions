@@ -42,6 +42,18 @@ Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/b
 
 ### search
 
+Search request can contain one or more search criterion within it. Use the following list on how to specify the criterion:
+
+- The location to search around is specified in message->intent->location.
+
+- The service type is indicated in message->intent->category->descriptor->code.
+
+- Free text can be specified in message->intent->descriptor->name.
+
+- Additional filters like load or connection phase can be passed in message->intent->tags.
+
+
+
 ```json
 {
   "context": {
@@ -79,6 +91,15 @@ Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/b
 ```
 
 ### on\_search
+on_search returns catalogs of services from matched providers. Use the following to extract details:
+
+- Providers are listed in message->catalog->providers.
+
+- Each provider lists services in provider->items.
+
+- Each item includes pricing, description, and tags for filtering.
+
+- The bpp_id and bpp_uri are used for follow-up API calls.
 
 ```json
 {
@@ -164,7 +185,13 @@ Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/b
 ```
 
 ### select
+Select is used to choose a specific service item returned in on_search. The following fields are used:
 
+- The selected item is passed under message->order->items.
+
+- Any additional parameters (like load or documents) are added as tags under the item.
+
+- Fulfillment details are listed in message->order->fulfillments.
 ```json
 {
   "context": {
@@ -241,7 +268,13 @@ Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/b
 ```
 
 ### on\_select
+on_select confirms availability and details of the selected service. Look at these key fields:
 
+- Service name and pricing are in message->order->items.
+
+- Provider info is present in message->order->provider.
+
+- Fulfillment and quote details are included with the item for confirmation.
 ```json
 {
   "context": {
@@ -377,6 +410,14 @@ Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/b
 ```
 
 ### init
+init is used to submit customer, billing, and location details before placing the order. The following fields are important:
+
+- Consumer details are added in billing and fulfillments.
+
+- Location and GPS for connection are specified in fulfillments->stops.
+
+- Any uploaded documents can be passed as tags or xinput if needed.
+
 
 ```json
 {
@@ -479,6 +520,14 @@ Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/b
 ```
 
 ### on\_init
+on_init returns additional information needed for order confirmation. Refer to the fields below:
+
+- Required documents and form link are in xinput under item tags.
+
+- Payment terms and pricing breakup are found in quote.
+
+- Provider’s contact info and tracking preferences are shared in fulfillments.
+
 
 ```json
 {
@@ -684,7 +733,13 @@ Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/b
 ```
 
 ### confirm
+confirm is used to finalize the order. You must send the following:
 
+- Full details of the selected item and consumer in order.
+
+- Payment instructions are specified under payments.
+
+- Final location and service details must match those returned in on_init.
 ```json
 {
   "context": {
@@ -797,6 +852,14 @@ Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/b
 ```
 
 ### on\_confirm
+on_confirm confirms that the order has been successfully placed. Look at these fields for final confirmation:
+
+- Order ID is found in message->order->id.
+
+- Scheduled state, tracking info, and support contact are inside fulfillments.
+
+- Final payment, quote, and item details are echoed back for verification.
+
 
 ```json
 {
