@@ -8,25 +8,26 @@
 | ---------- | ------- | --------------------------------------------------- |
 | 12-05-2025 | 1.0     | Initial Version                                     |
 
+
 ## Introduction
 
 This document provides integration guidelines for implementing demand-side flexibility programs over a Beckn-enabled open energy network. It showcases how energy providers and aggregators in San Francisco can publish flexible load reduction programs, enabling users to participate in grid-responsive activities and earn monetary rewards for reducing electricity usage during peak hours.
 
 This guide assumes the reader is familiar with the Beckn protocol, message flow, and schema standards. It maps the JSON-based catalog provided by participating BPPs to the Beckn on_search response pattern.
 
-## Structure of the document
+## Structure of the Document
 
 This document has the following parts:
 
-1. [Outcome Visualization](#outcome-visualisation) - This is a pictorial or descriptive representation of the different use cases that are supported by the network.
-2. General Flow diagrams - This section is relevant to all the messages flows illustrated below and discussed further in the document. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams) section in the generic implementation guide to understand the flow.
-3. [API Calls and Schema](#api-calls-and-schema) - This section provides details on the API calls and the schema of the message that is sent in the form of sample schemas.
-4. [Taxonomy and layer 2 configuration](#taxonomy-and-layer-2-configuration) - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
-5. Notes on writing/integrating with your own software - We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software) section in the generic implementation guide.
-6. [Links to artefacts](#links-to-artefacts) - This section contains the downloadable files referenced in this document.
-7. [Sandbox Details](#sandbox-details) - Sandbox links to BAP, Regitry/Gateway and BPP.
+1. [Outcome Visualization](#outcome-visualization) - A pictorial or descriptive representation of the different use cases that are supported by the network.
+2. [General Flow Diagrams](#general-flow-diagrams) - This section is relevant to all the message flows illustrated below and discussed further in the document. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams) section in the generic implementation guide to understand the flow.
+3. [API Calls and Schema](#api-calls-and-schema) - This section provides details on the API calls and the schema of the messages that are sent in the form of sample schemas.
+4. [Taxonomy and Layer 2 Configuration](#taxonomy-and-layer-2-configuration) - This section provides details on the taxonomy, enumerations, and any rules defined for either the use case or by the network.
+5. [Integration Notes](#integration-notes) - Notes on writing/integrating with your own software. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software) section in the generic implementation guide.
+6. [Links to Artefacts](#links-to-artefacts) - This section contains the downloadable files referenced in this document.
+7. [Sandbox Details](#sandbox-details) - Sandbox links to BAP, Registry/Gateway, and BPP.
 
-## Outcome Visualisation
+## Outcome Visualization
 
 ### Use case - Discovery, order and fulfillment of Demand Flexibility
 
@@ -296,7 +297,7 @@ Search request can contain one or more search criterion within it. Use the follo
               "descriptor": {
                 "name": "Smart Appliance Flex Program",
                 "short_desc": "$0.15/kWh reduction via smart device control",
-                "long_desc": "FlexiGrid can adjust your smart appliances like thermostats or EV chargers during grid alerts. You’ll earn $0.15 for each kWh avoided.",
+                "long_desc": "FlexiGrid can adjust your smart appliances like thermostats or EV chargers during grid alerts. You'll earn $0.15 for each kWh avoided.",
                 "additional_desc": {
                   "url": "https://flexigrid.com/programs/smart-load"
                 }
@@ -1115,26 +1116,23 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ## Taxonomy and layer 2 configuration
 
-Taxonomy
-
 |Property Name|Enums|
 |-------------|-----|
-|connection-type|RESIDENTIAL<br>COMMERCIAL<br>INDUSTRIAL|
-|phase|SINGLE_PHASE<br>THREE_PHASE<br>SPLIT_PHASE|
-|property-type|APARTMENT<br>HOUSE<br>OFFICE<br>FACTORY<br>SHOP|
-|documentation|ID_PROOF<br>OWNERSHIP_CERTIFICATE<br>WIRING_DIAGRAM<br>BUSINESS_LICENSE<br>WIRING_PLAN|
-|connection-status|PENDING<br>IN_PROGRESS<br>COMPLETED<br>CANCELLED<br>FAILED|
-|payment-status|PENDING<br>PAID<br>FAILED<br>REFUNDED|
-|meter-type|DIGITAL<br>ANALOG<br>SMART_METER|
-|voltage-level|LOW_VOLTAGE_230V<br>MEDIUM_VOLTAGE_11KV<br>HIGH_VOLTAGE_33KV|
-|connection-load|LIGHT_LOAD<br>MEDIUM_LOAD<br>HEAVY_LOAD|
-|connection-phase|SINGLE_PHASE<br>THREE_PHASE|
-|connection-category|NEW_CONNECTION<br>TEMPORARY_CONNECTION<br>PERMANENT_CONNECTION<br>TEMP_TO_PERM|
-|connection-purpose|DOMESTIC<br>COMMERCIAL<br>INDUSTRIAL<br>AGRICULTURAL|
-|connection-tariff|RESIDENTIAL<br>COMMERCIAL<br>INDUSTRIAL<br>AGRICULTURAL|
-|connection-metering|SINGLE_POINT<br>MULTI_POINT|
-|connection-billing|PREPAID<br>POSTPAID|
-
+|flexibility-type|MANUAL_FLEX<br>AUTO_FLEX<br>HYBRID_FLEX|
+|participation-mode|MANUAL_OPTIN<br>AUTO_OPTIN<br>SCHEDULED|
+|event-status|PENDING<br>ACTIVE<br>COMPLETED<br>CANCELLED<br>FAILED|
+|reward-type|PER_KWH<br>FIXED_AMOUNT<br>TIERED|
+|device-type|THERMOSTAT<br>EV_CHARGER<br>SMART_PLUG<br>BATTERY<br>SOLAR_INVERTER|
+|control-mode|MANUAL<br>AUTOMATED<br>SEMI_AUTOMATED|
+|event-window|PEAK_HOURS<br>OFF_PEAK<br>CUSTOM|
+|notification-type|PUSH<br>EMAIL<br>SMS<br>IN_APP|
+|enrollment-status|PENDING<br>ACTIVE<br>INACTIVE<br>TERMINATED|
+|verification-method|METER_READING<br>DEVICE_DATA<br>MANUAL_CONFIRMATION|
+|payment-status|PENDING<br>PROCESSED<br>FAILED<br>REFUNDED|
+|flexibility-category|DEMAND_RESPONSE<br>LOAD_SHIFTING<br>PEAK_REDUCTION|
+|reward-currency|USD<br>EUR<br>GBP<br>INR|
+|event-frequency|DAILY<br>WEEKLY<br>MONTHLY<br>ON_DEMAND|
+|verification-status|PENDING<br>VERIFIED<br>REJECTED|
 
 ## Links to artefacts
 
