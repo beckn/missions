@@ -1117,23 +1117,23 @@ Search request can contain one or more search criterion within it. Use the follo
 
 Taxonomy
 
-| Property Name | Enums |
-|---------------|-------|
-| connection-type | - Residential<br>- Commercial<br>- Industrial |
-| phase | - Single Phase<br>- Three Phase<br>- Split Phase |
-| property-type | - Apartment<br>- House<br>- Office<br>- Factory<br>- Shop |
-| documentation | - ID proof<br>- Ownership certificate<br>- Wiring diagram<br>- Business license<br>- Wiring plan |
-| connection-status | - Pending<br>- In Progress<br>- Completed<br>- Cancelled<br>- Failed |
-| payment-status | - Pending<br>- Paid<br>- Failed<br>- Refunded |
-| meter-type | - Digital<br>- Analog<br>- Smart Meter |
-| voltage-level | - Low Voltage (230V)<br>- Medium Voltage (11kV)<br>- High Voltage (33kV) |
-| connection-load | - Light Load<br>- Medium Load<br>- Heavy Load |
-| connection-phase | - Single Phase<br>- Three Phase |
-| connection-category | - New Connection<br>- Temporary Connection<br>- Permanent Connection<br>- Temporary to Permanent |
-| connection-purpose | - Domestic<br>- Commercial<br>- Industrial<br>- Agricultural |
-| connection-tariff | - Residential<br>- Commercial<br>- Industrial<br>- Agricultural |
-| connection-metering | - Single Point<br>- Multi Point |
-| connection-billing | - Prepaid<br>- Postpaid |
+| Property Name | Enums                                                                   |
+|---------------|-------------------------------------------------------------------------|
+| connection-type | - Residential<br>- Commercial<br>- Industrial                         |
+| phase | - Single Phase<br>- Three Phase<br>- Split Phase                                |
+| property-type | - Apartment<br>- House<br>- Office<br>- Factory<br>- Shop               |
+| documentation | - ID proof<br>- Ownership certificate<br>- Wiring diagram<br>- Business license<br>- Wiring plan                                                                  |
+| connection-status | - Pending<br>- In Progress<br>- Completed<br>- Cancelled<br>- Failed                            |
+| payment-status | - Pending<br>- Paid<br>- Failed<br>- Refunded                            |
+| meter-type | - Digital<br>- Analog<br>- Smart Meter                            |
+| voltage-level | - Low Voltage (230V)<br>- Medium Voltage (11kV)<br>- High Voltage (33kV)                            |
+| connection-load | - Light Load<br>- Medium Load<br>- Heavy Load                            |
+| connection-phase | - Single Phase<br>- Three Phase                            |
+| connection-category | - New Connection<br>- Temporary Connection<br>- Permanent Connection<br>- Temporary to Permanent                            |
+| connection-purpose | - Domestic<br>- Commercial<br>- Industrial<br>- Agricultural                            |
+| connection-tariff | - Residential<br>- Commercial<br>- Industrial<br>- Agricultural                            |
+| connection-metering | - Single Point<br>- Multi Point                            |
+| connection-billing | - Prepaid<br>- Postpaid                            |
 
 
 
