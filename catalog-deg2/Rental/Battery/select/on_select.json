@@ -1,0 +1,168 @@
+{
+  "context": {
+    "domain": "rental",
+    "action": "on_select",
+    "version": "1.1.0",
+    "bap_id": "bap-ps-network-dev.becknprotocol.io",
+    "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",
+    "bpp_uri": "http://bpp-ps-network-strapi2-dev.becknprotocol.io",
+    "transaction_id": "924dd6fb-8896-476e-9918-b0faf06d3e77",
+    "message_id": "on_select-message-001",
+    "timestamp": "2025-04-15T15:50:01.000Z",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
+    }
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "299",
+        "descriptor": {
+          "name": "San Francisco Energy Depot",
+          "short_desc": "Battery",
+          "long_desc": "Battery",
+          "additional_desc": {
+            "url": "www.becknprotocol.io"
+          },
+          "images": [
+            {
+              "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg",
+              "size_type": "sm"
+            }
+          ]
+        }
+      },
+      "items": [
+        {
+          "id": "420",
+          "descriptor": {
+            "name": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery",
+            "code": "Battery",
+            "short_desc": "305Ah X 8",
+            "long_desc": "Premium Battery Rental designed for efficient electric energy management.",
+            "images": [
+              {
+                "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg"
+              }
+            ]
+          },
+          "price": {
+            "value": "10",
+            "currency": "USD"
+          },
+          "quantity": {
+            "selected": {
+              "count": 1
+            }
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "code": "product_specification"
+              },
+              "display": true,
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "battery_type"
+                  },
+                  "value": "Flooded Lead-Acid"
+                },
+                {
+                  "descriptor": {
+                    "code": "deep_cycle"
+                  },
+                  "value": "Yes"
+                },
+                {
+                  "descriptor": {
+                    "code": "high_load_support"
+                  },
+                  "value": "Yes"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "technical_specification"
+              },
+              "display": true,
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "voltage"
+                  },
+                  "value": "6V"
+                },
+                {
+                  "descriptor": {
+                    "code": "capacity"
+                  },
+                  "value": "305Ah"
+                },
+                {
+                  "descriptor": {
+                    "code": "weight"
+                  },
+                  "value": "121 lbs"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "general_specification"
+              },
+              "display": true,
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "application_1"
+                  },
+                  "value": "Golf Carts"
+                },
+                {
+                  "descriptor": {
+                    "code": "application_2"
+                  },
+                  "value": "Solar Systems"
+                },
+                {
+                  "descriptor": {
+                    "code": "application_3"
+                  },
+                  "value": "Backup Inverters"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "569",
+          "type": "HOME_DELIVERY"
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "USD",
+          "value": "10.00"
+        },
+        "breakup": [
+          {
+            "title": "Battery Rental",
+            "price": {
+              "value": "10.00",
+              "currency": "USD"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

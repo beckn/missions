@@ -1,0 +1,43 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "select",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-ev-retail-001",
+        "message_id": "msg-select-001",
+        "timestamp": "2025-05-07T13:21:00Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "voltwheel_mobility"
+            },
+            "items": [
+                {
+                    "id": "volt_s1_pro",
+                    "quantity": {
+                        "selected": {
+                            "count": 1
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "vw_hd"
+                }
+            ]
+        }
+    }
+}

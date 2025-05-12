@@ -1,0 +1,473 @@
+{
+    "context": {
+        "domain": "rental",
+        "action": "on_search",
+        "version": "1.1.0",
+        "bpp_id": "bpp-ps-network-strapi2-dev.becknprotocol.io",
+        "bpp_uri": "http://bpp-ps-network-strapi2-dev.becknprotocol.io",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        },
+        "bap_id": "bap-ps-network-dev.becknprotocol.io",
+        "bap_uri": "https://bap-ps-network-dev.becknprotocol.io",
+        "transaction_id": "924dd6fb-8896-476e-9918-b0faf06d3e77",
+        "message_id": "62cb31f3-c675-4a5b-a315-4835d2adccfd",
+        "ttl": "PT10M",
+        "timestamp": "2025-04-15T15:48:14.481Z"
+    },
+    "message": {
+        "catalog": {
+            "descriptor": {
+                "name": "Energykart",
+                "code": "Energykart",
+                "short_desc": "A seller platform for energy solutions, enabling seamless transactions of batteries, solar panels, and other renewable energy products."
+            },
+            "providers": [
+                {
+                    "id": "299",
+                    "descriptor": {
+                        "name": "San Francisco Energy Depot",
+                        "short_desc": "Battery",
+                        "long_desc": "Battery",
+                        "additional_desc": {
+                            "url": "www.becknprotocol.io"
+                        },
+                        "images": [
+                            {
+                                "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg",
+                                "size_type": "sm"
+                            },
+                            {
+                                "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg",
+                                "size_type": "sm"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "33",
+                            "descriptor": {
+                                "name": "BATTERY RENTAL",
+                                "code": "BATTERY_RENTAL"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "569",
+                            "type": "HOME_DELIVERY"
+                        },
+                        {
+                            "id": "570",
+                            "type": "STORE_PICKUP"
+                        }
+                    ],
+                    "rateable": true,
+                    "items": [
+                        {
+                            "id": "420",
+                            "descriptor": {
+                                "name": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery",
+                                "code": "Battery",
+                                "short_desc": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery, 305Ah X 8",
+                                "long_desc": "Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\nOur flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\nChoose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.",
+                                "images": [
+                                    {
+                                        "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg"
+                                    }
+                                ]
+                            },
+                            "rateable": true,
+                            "rating": "4.2",
+                            "price": {
+                                "value": "10",
+                                "currency": "USD"
+                            },
+                            "fulfillment_ids": [
+                                "569",
+                                "570"
+                            ],
+                            "category_ids": [
+                                "33"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "product_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "battery_type"
+                                            },
+                                            "value": "Flooded Lead-Acid"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "deep_cycle"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "high_load_support"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "technical_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "voltage"
+                                            },
+                                            "value": "6V"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "305Ah"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "weight"
+                                            },
+                                            "value": "121 lbs"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "general_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "application_1"
+                                            },
+                                            "value": "Golf Carts"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_2"
+                                            },
+                                            "value": "Solar Systems"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_3"
+                                            },
+                                            "value": "Backup Inverters"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "421",
+                            "descriptor": {
+                                "name": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery",
+                                "code": "Battery",
+                                "short_desc": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery, 305Ah X 8",
+                                "long_desc": "Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\nOur flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\nChoose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.",
+                                "images": [
+                                    {
+                                        "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg"
+                                    }
+                                ]
+                            },
+                            "rateable": true,
+                            "rating": "4.1",
+                            "price": {
+                                "value": "8",
+                                "currency": "USD"
+                            },
+                            "fulfillment_ids": [
+                                "570"
+                            ],
+                            "category_ids": [
+                                "33"
+                            ],
+                            "location_ids": [
+                                "2"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "product_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "battery_type"
+                                            },
+                                            "value": "Flooded Lead-Acid"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "deep_cycle"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "high_load_support"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "technical_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "voltage"
+                                            },
+                                            "value": "6V"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "305Ah"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "weight"
+                                            },
+                                            "value": "121 lbs"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "general_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "application_1"
+                                            },
+                                            "value": "Golf Carts"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_2"
+                                            },
+                                            "value": "Solar Systems"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_3"
+                                            },
+                                            "value": "Backup Inverters"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "277",
+                    "descriptor": {
+                        "name": "San Francisco Battery Rentals",
+                        "short_desc": "Battery",
+                        "long_desc": "Battery",
+                        "additional_desc": {
+                            "url": "www.becknprotocol.io"
+                        },
+                        "images": [
+                            {
+                                "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg",
+                                "size_type": "sm"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "33",
+                            "descriptor": {
+                                "name": "BATTERY RENTAL",
+                                "code": "BATTERY_RENTAL"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "567",
+                            "type": "HOME_DELIVERY"
+                        },
+                        {
+                            "id": "568",
+                            "type": "STORE_PICKUP"
+                        }
+                    ],
+                    "rateable": true,
+                    "items": [
+                        {
+                            "id": "419",
+                            "descriptor": {
+                                "name": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery",
+                                "code": "Battery",
+                                "short_desc": "STARMAX GC STCR-305 – 6-Volt Deep Cycle Flooded Battery, 305Ah X 8",
+                                "long_desc": "Experience unmatched power storage with our premium Battery Rental service, designed for efficient electric energy management.\nOur flexible Battery for Rent options ensure you always have access to reliable power storage when you need it.\nChoose to Rent a Battery today and harness a cost-effective solution tailored to your energy needs.",
+                                "images": [
+                                    {
+                                        "url": "https://m.media-amazon.com/images/I/51D9ZUF9W-L._AC_SX679_.jpg"
+                                    }
+                                ]
+                            },
+                            "rateable": true,
+                            "rating": "4.4",
+                            "price": {
+                                "value": "12",
+                                "currency": "USD"
+                            },
+                            "fulfillment_ids": [
+                                "567",
+                                "568"
+                            ],
+                            "category_ids": [
+                                "33"
+                            ],
+                            "location_ids": [
+                                "2"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "product_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "battery_type"
+                                            },
+                                            "value": "Flooded Lead-Acid"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "deep_cycle"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "high_load_support"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "technical_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "voltage"
+                                            },
+                                            "value": "6V"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "capacity"
+                                            },
+                                            "value": "305Ah"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "weight"
+                                            },
+                                            "value": "121 lbs"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "general_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "application_1"
+                                            },
+                                            "value": "Golf Carts"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_2"
+                                            },
+                                            "value": "Solar Systems"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_3"
+                                            },
+                                            "value": "Backup Inverters"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
