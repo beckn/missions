@@ -1115,28 +1115,25 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ## Taxonomy and layer 2 configuration
 
-Taxonomy1
+Taxonomy
 
 |Property Name|Enums|
 |-------------|-----|
-|connection-type|- Residential<br>- Commercial<br>- Industrial|
-|phase|- Single Phase<br>- Three Phase<br>- Split Phase|
-|property-type|- Apartment<br>- House<br>- Office<br>- Factory<br>- Shop|
-|documentation|- ID proof<br>- Ownership certificate<br>- Wiring diagram<br>- Business license<br>- Wiring plan|
-|connection-status|- Pending<br>- In Progress<br>- Completed<br>- Cancelled<br>- Failed|
-|payment-status|- Pending<br>- Paid<br>- Failed<br>- Refunded|
-|meter-type|- Digital<br>- Analog<br>- Smart Meter|
-|voltage-level|- Low Voltage (230V)<br>- Medium Voltage (11kV)<br>- High Voltage (33kV)|
-|connection-load|- Light Load<br>- Medium Load<br>- Heavy Load|
-|connection-phase|- Single Phase<br>- Three Phase|
-|connection-category|- New Connection<br>- Temporary Connection<br>- Permanent Connection<br>- Temporary to Permanent|
-|connection-purpose|- Domestic<br>- Commercial<br>- Industrial<br>- Agricultural|
-|connection-tariff|- Residential<br>- Commercial<br>- Industrial<br>- Agricultural|
-|connection-metering|- Single Point<br>- Multi Point|
-|connection-billing|- Prepaid<br>- Postpaid|
-
-## Links to artefacts                          |
-
+|connection-type|RESIDENTIAL<br>COMMERCIAL<br>INDUSTRIAL|
+|phase|SINGLE_PHASE<br>THREE_PHASE<br>SPLIT_PHASE|
+|property-type|APARTMENT<br>HOUSE<br>OFFICE<br>FACTORY<br>SHOP|
+|documentation|ID_PROOF<br>OWNERSHIP_CERTIFICATE<br>WIRING_DIAGRAM<br>BUSINESS_LICENSE<br>WIRING_PLAN|
+|connection-status|PENDING<br>IN_PROGRESS<br>COMPLETED<br>CANCELLED<br>FAILED|
+|payment-status|PENDING<br>PAID<br>FAILED<br>REFUNDED|
+|meter-type|DIGITAL<br>ANALOG<br>SMART_METER|
+|voltage-level|LOW_VOLTAGE_230V<br>MEDIUM_VOLTAGE_11KV<br>HIGH_VOLTAGE_33KV|
+|connection-load|LIGHT_LOAD<br>MEDIUM_LOAD<br>HEAVY_LOAD|
+|connection-phase|SINGLE_PHASE<br>THREE_PHASE|
+|connection-category|NEW_CONNECTION<br>TEMPORARY_CONNECTION<br>PERMANENT_CONNECTION<br>TEMP_TO_PERM|
+|connection-purpose|DOMESTIC<br>COMMERCIAL<br>INDUSTRIAL<br>AGRICULTURAL|
+|connection-tariff|RESIDENTIAL<br>COMMERCIAL<br>INDUSTRIAL<br>AGRICULTURAL|
+|connection-metering|SINGLE_POINT<br>MULTI_POINT|
+|connection-billing|PREPAID<br>POSTPAID|
 
 
 ## Links to artefacts
