@@ -1062,14 +1062,14 @@ Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/m
 
 **Registry/Gateway:**
 
-* Gateway: [gateway.becknprotocol.io/bg](https://gateway.becknprotocol.io/bg)
-* Registry: [registry.becknprotocol.io](https://registry.becknprotocol.io)
+* Gateway
+* Registry
 
 **BAP:**
 
-* BAP Client: [bap-ps-client-dev.becknprotocol.io](https://bap-ps-client-dev.becknprotocol.io)
+* BAP Client
 
 **BPP:**
 
-* BPP Client: [bpp-ps-client-dev.becknprotocol.io](https://bpp-ps-client-dev.becknprotocol.io)
-* BPP Network: [bpp-ps-network-dev.becknprotocol.io](https://bpp-ps-network-dev.becknprotocol.io)
+* BPP Client
+* BPP Network

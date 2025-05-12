@@ -1,92 +1,535 @@
-# P2P Energy Trading Implementation Guide
-
-#### Version 1.0
+# Battery Rental Implementation Guide
 
 ## Version History
 
-| Date       | Version | Description                    |
-| ---------- | ------- | ------------------------------ |
-| 13-05-2025 | 1.0     | Initial version for P2P energy |
+| Date       | Version | Description                        |
+| ---------- | ------- | ---------------------------------- |
+| 13-05-2025 | 1.0     | Initial version for battery rental |
+
+---
 
 ## Introduction
 
-This guide provides implementation instructions for a peer-to-peer (P2P) energy trading use case using the Beckn Protocol. It helps developers and integrators build Beckn-compliant BAPs and BPPs for decentralized energy trading between prosumers and consumers via smart grid infrastructure.
+This guide outlines the end-to-end implementation for a battery rental use case using the Beckn Protocol. It is intended for developers and system integrators creating Beckn-compliant BAP and BPP systems for renting energy storage devices.
 
-## Structure of the document
-
-1. [Outcome Visualization](#outcome-visualization)
-2. [API Calls and Schema](#api-calls-and-schema)
-3. [Update & Order Management](#update--order-management)
-4. [Taxonomy and Configuration](#taxonomy-and-configuration)
-5. [Integration Notes](#integration-notes)
-6. [Sandbox Access](#sandbox-access)
+---
 
 ## Outcome Visualization
 
-### Use Case - Peer-to-Peer Solar Energy Trade
+### Use Case - Battery Rental for Residential Backup
 
-**Scenario**: Ethan, a solar prosumer in San Francisco, has a surplus of 30kWh energy from 10 AM to 6 PM. John, a neighbor, wishes to purchase 10kWh.
+**Scenario**: Jane Doe wants to rent a STARMAX 6-Volt Deep Cycle Battery for solar backup. She selects the product through Energykart, confirms rental dates, and opts for home delivery.
 
-1. **Discovery**: John uses the EnergyTrade app to discover local surplus offers.
-2. **Selection**: He selects Ethan’s offer and specifies his required quantity.
-3. **Order**: John confirms the order, provides payment, and receives transfer details.
-4. **Fulfillment**: PG\&E Grid facilitates the actual transfer between DER meters.
-5. **Post-Trade**: Both parties receive confirmation and transaction closure.
+1. **Search**: Jane searches for batteries available for rental in San Francisco.
+2. **Discovery**: Energykart shows multiple battery products from vendors like SF Energy Depot.
+3. **Selection**: Jane selects the STARMAX battery with a 60-day rental period.
+4. **Order**: Billing and delivery details are confirmed.
+5. **Fulfillment**: The battery is delivered and picked up at the end of the term.
+6. **Post-Rental**: Status is updated, and return policies apply.
 
-## API Calls and Schema
+---
 
-### search
+## API Calls and Payloads
 
-Search request is used by the consumer to discover available energy offers matching location, time, and quantity.
+### select
 
-* `intent.descriptor.name`: specifies what energy item is being searched.
-* `fulfillment.stops[0].location`: indicates where the energy is needed.
+Used to choose a specific battery rental product and indicate quantity or rental preferences.
+
+* The item is chosen using `order.items.id`.
+* Delivery preferences go in `fulfillments.stops[].location`.
 
 ````json
 {
   "context": {
-    "domain": "trade",
-    "action": "search",
+    "domain": "rental",
+    "action": "select",
+    "bap_id": "battery-bap.com",
+    "bap_uri": "https://battery-bap.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-select-3001",
+    "timestamp": "2025-05-12T09:01:00Z",
     "location": {
-      "country": {
-        "code": "USA"
-      },
-      "city": {
-        "code": "NANP:628"
-      }
+      "country": { "code": "USA" },
+      "city": { "code": "NANP:628" }
     },
-    "version": "1.1.0",
-    "bap_id": "p2pTrading-bap.com",
-    "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "search-message-001",
-    "timestamp": "2025-05-09T10:00:00Z"
+    "version": "1.1.0"
+  },
+  "message": {
+    "order": {
+      "provider": { "id": "sfenergystore" },
+      "items": [
+        {
+          "id": "starmax-6v",
+          "quantity": {
+            "measure": {
+              "value": 1,
+              "unit": "unit"
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "end": {
+            "location": {
+              "address": "456 Battery St, San Francisco, CA"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+````
+
+### on_select
+Returns confirmation of selection with pricing and fulfillment info.
+- Check item pricing and rental period.
+- Validate final address and available quantity.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "on_select",
+    "bap_id": "battery-bap.com",
+    "bpp_id": "sfenergystore.com",
+    "bpp_uri": "https://api.sfenergystore.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-onselect-3001",
+    "timestamp": "2025-05-12T09:01:02Z",
+    "location": {
+      "country": { "code": "USA" },
+      "city": { "code": "NANP:628" }
+    },
+    "version": "1.1.0"
+  },
+  "message": {
+    "order": {
+      "items": [
+        {
+          "id": "starmax-6v",
+          "price": {
+            "currency": "USD",
+            "value": "50"
+          },
+          "quantity": {
+            "measure": {
+              "value": 1,
+              "unit": "unit"
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "end": {
+            "location": {
+              "address": "456 Battery St, San Francisco, CA"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+````
+
+### init
+
+Initializes the order by sending billing and fulfillment details.
+
+* Contains renter details and location for battery delivery.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "init",
+    "bap_id": "battery-bap.com",
+    "bap_uri": "https://battery-bap.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-init-3001",
+    "timestamp": "2025-05-12T09:02:00Z",
+    "location": {
+      "country": { "code": "USA" },
+      "city": { "code": "NANP:628" }
+    },
+    "version": "1.1.0"
+  },
+  "message": {
+    "order": {
+      "provider": { "id": "sfenergystore" },
+      "items": [
+        {
+          "id": "starmax-6v"
+        }
+      ],
+      "billing": {
+        "name": "Jane Doe",
+        "address": "456 Battery St, SF, CA",
+        "email": "jane@example.com",
+        "phone": "+14155551234"
+      },
+      "fulfillments": [
+        {
+          "end": {
+            "location": {
+              "address": "456 Battery St, SF, CA"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+````
+
+### on\_init
+
+- Returns quote, payment info, and order summary for confirmation.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "on_init",
+    "bap_id": "battery-bap.com",
+    "bpp_id": "sfenergystore.com",
+    "bpp_uri": "https://api.sfenergystore.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-oninit-3001",
+    "timestamp": "2025-05-12T09:02:05Z",
+    "location": {
+      "country": { "code": "USA" },
+      "city": { "code": "NANP:628" }
+    },
+    "version": "1.1.0"
+  },
+  "message": {
+    "order": {
+      "quote": {
+        "price": {
+          "currency": "USD",
+          "value": "50"
+        }
+      },
+      "payment": {
+        "collected_by": "BAP",
+        "type": "PRE-FULFILLMENT",
+        "status": "NOT-PAID"
+      },
+      "items": [
+        {
+          "id": "starmax-6v"
+        }
+      ]
+    }
+  }
+}
+````
+
+### confirm
+
+- Used to finalize the battery rental request including selected item and delivery.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "confirm",
+    "bap_id": "battery-bap.com",
+    "bap_uri": "https://battery-bap.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-confirm-3001",
+    "timestamp": "2025-05-12T09:03:00Z",
+    "location": {
+      "country": { "code": "USA" },
+      "city": { "code": "NANP:628" }
+    },
+    "version": "1.1.0"
+  },
+  "message": {
+    "order": {
+      "id": "battery-order-001",
+      "provider": { "id": "sfenergystore" },
+      "items": [ { "id": "starmax-6v" } ],
+      "billing": {
+        "name": "Jane Doe",
+        "email": "jane@example.com",
+        "phone": "+14155551234"
+      },
+      "fulfillments": [
+        {
+          "end": {
+            "location": { "address": "456 Battery St, SF, CA" }
+          }
+        }
+      ]
+    }
+  }
+}
+````
+
+### on\_confirm
+
+- Confirmation of successful rental placement.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "on_confirm",
+    "bap_id": "battery-bap.com",
+    "bpp_id": "sfenergystore.com",
+    "bpp_uri": "https://api.sfenergystore.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-onconfirm-3001",
+    "timestamp": "2025-05-12T09:03:03Z",
+    "location": {
+      "country": { "code": "USA" },
+      "city": { "code": "NANP:628" }
+    },
+    "version": "1.1.0"
+  },
+  "message": {
+    "order": {
+      "id": "battery-order-001",
+      "state": "CONFIRMED",
+      "items": [
+        {
+          "id": "starmax-6v"
+        }
+      ],
+      "fulfillments": [
+        {
+          "end": {
+            "location": {
+              "address": "456 Battery St, SF, CA"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+````
+
+### status
+
+- Used to fetch the status of the rental fulfillment.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "status",
+    "bap_id": "battery-bap.com",
+    "bap_uri": "https://battery-bap.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-status-3001",
+    "timestamp": "2025-05-12T09:04:00Z",
+    "version": "1.1.0"
+  },
+  "message": {
+    "order_id": "battery-order-001"
+  }
+}
+````
+
+### on\_status
+
+- Gives latest state of delivery or pickup for the rental order.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "on_status",
+    "bap_id": "battery-bap.com",
+    "bpp_id": "sfenergystore.com",
+    "bpp_uri": "https://api.sfenergystore.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-onstatus-3001",
+    "timestamp": "2025-05-12T09:04:02Z",
+    "version": "1.1.0"
+  },
+  "message": {
+    "order": {
+      "id": "battery-order-001",
+      "state": "ACTIVE",
+      "fulfillments": [
+        {
+          "state": {
+            "descriptor": {
+              "code": "In-Transit",
+              "name": "Battery out for delivery"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+````
+
+### update
+
+- Used to update order fulfillment like new delivery window.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "update",
+    "bap_id": "battery-bap.com",
+    "bap_uri": "https://battery-bap.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-update-3001",
+    "timestamp": "2025-05-12T09:05:00Z",
+    "version": "1.1.0"
+  },
+  "message": {
+    "update_target": "fulfillments",
+    "order": {
+      "id": "battery-order-001",
+      "fulfillments": [
+        {
+          "end": {
+            "location": {
+              "address": "789 New Delivery Lane, SF, CA"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+````
+
+### on\_update
+
+- Acknowledges update to the order details.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "on_update",
+    "bap_id": "battery-bap.com",
+    "bpp_id": "sfenergystore.com",
+    "bpp_uri": "https://api.sfenergystore.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-onupdate-3001",
+    "timestamp": "2025-05-12T09:05:03Z",
+    "version": "1.1.0"
+  },
+  "message": {
+    "order": {
+      "id": "battery-order-001",
+      "fulfillments": [
+        {
+          "end": {
+            "location": {
+              "address": "789 New Delivery Lane, SF, CA"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+````
+
+### cancel
+
+- Used to cancel a placed order before fulfillment.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "cancel",
+    "bap_id": "battery-bap.com",
+    "bap_uri": "https://battery-bap.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-cancel-3001",
+    "timestamp": "2025-05-12T09:06:00Z",
+    "version": "1.1.0"
+  },
+  "message": {
+    "order_id": "battery-order-001",
+    "cancellation_reason_id": "buyer_changed_mind"
+  }
+}
+````
+
+### on\_cancel
+
+- Confirms that the order has been successfully cancelled.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "on_cancel",
+    "bap_id": "battery-bap.com",
+    "bpp_id": "sfenergystore.com",
+    "bpp_uri": "https://api.sfenergystore.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-oncancel-3001",
+    "timestamp": "2025-05-12T09:06:02Z",
+    "version": "1.1.0"
+  },
+  "message": {
+    "order": {
+      "id": "battery-order-001",
+      "state": "CANCELLED"
+    }
+  }
+}
+````
+
+
+
+
+### search
+Search is used to discover available battery rental options.
+- `intent.descriptor.name`: battery product or type.
+- `fulfillment.stops[0].location`: location of delivery or pickup.
+
+```json
+{
+  "context": {
+    "domain": "rental",
+    "action": "search",
+    "bap_id": "battery-bap.com",
+    "bap_uri": "https://battery-bap.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-search-3001",
+    "timestamp": "2025-05-12T09:00:00Z",
+    "location": {
+      "country": { "code": "USA" },
+      "city": { "code": "NANP:628" }
+    },
+    "version": "1.1.0"
   },
   "message": {
     "intent": {
       "item": {
-        "descriptor": {
-          "name": "Solar Surplus Energy"
-        }
+        "descriptor": { "name": "Battery" }
       },
       "fulfillment": {
-        "agent": {
-          "organization": {
-            "descriptor": {
-              "name": "PG&E Grid Services"
-            }
-          }
-        },
         "stops": [
           {
             "type": "end",
             "location": {
-              "address": "der://ssf.meter/98765456"
+              "address": "456 Battery St, San Francisco, CA"
             },
             "time": {
               "range": {
-                "start": "2024-10-04T10:00:00",
-                "end": "2024-10-04T18:00:00"
+                "start": "2025-05-14T09:00:00Z",
+                "end": "2025-07-13T17:00:00Z"
               }
             }
           }
@@ -97,69 +540,62 @@ Search request is used by the consumer to discover available energy offers match
 }
 ````
 ### on_search
-on_search returns matched energy catalogs from registered providers. Use the following fields:
-- Energy offers and their details are found in `catalog.providers[].items[]`.
-- Each offer has price, quantity, source type, and certification tags.
+Responds with available battery rental options from different providers.
+- Product options listed under `catalog.providers[].items[]`.
+- Pricing, quantity, rental terms and images are included.
 
 ```json
 {
   "context": {
-    "domain": "trade",
+    "domain": "rental",
     "action": "on_search",
+    "bap_id": "battery-bap.com",
+    "bpp_id": "sfenergystore.com",
+    "bpp_uri": "https://api.sfenergystore.com",
+    "transaction_id": "txn-rental-3001",
+    "message_id": "msg-onsearch-3001",
+    "timestamp": "2025-05-12T09:00:03Z",
     "location": {
       "country": { "code": "USA" },
       "city": { "code": "NANP:628" }
     },
-    "version": "1.1.0",
-    "bap_id": "p2pTrading-bap.com",
-    "bpp_id": "p2pTrading-bpp.com",
-    "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "on_search-message-001",
-    "timestamp": "2025-05-09T10:00:00Z"
+    "version": "1.1.0"
   },
   "message": {
     "catalog": {
       "providers": [
         {
-          "id": "p1072",
+          "id": "sfenergystore",
           "descriptor": {
-            "name": "Ethan Maxwell",
-            "images": [
-              { "url": "https://p1072.in/images/logo.png" }
-            ]
+            "name": "SF Energy Depot",
+            "images": [ { "url": "https://sfenergystore.com/images/battery1.png" } ]
           },
           "items": [
             {
-              "id": "uid_xyz",
+              "id": "starmax-6v",
               "descriptor": {
-                "code": "energy",
-                "name": "Solar Surplus Energy",
-                "short_desc": "30 kWh surplus available between 10AM-6PM"
+                "name": "STARMAX 6-Volt Deep Cycle Battery",
+                "short_desc": "Ideal for solar backup."
               },
               "price": {
-                "value": "5",
-                "currency": "USD/kWH"
+                "currency": "USD",
+                "value": "50"
               },
               "quantity": {
                 "available": {
                   "measure": {
-                    "value": "30",
-                    "unit": "kWH"
+                    "value": "10",
+                    "unit": "units"
                   }
                 }
               },
               "tags": [
                 {
-                  "descriptor": { "code": "Energy_Attributes" },
+                  "descriptor": { "code": "rental_terms" },
                   "list": [
                     {
-                      "descriptor": { "code": "Source_Type" },
-                      "value": "Rooftop Solar"
-                    },
-                    {
-                      "descriptor": { "code": "Carbon_Offset_Certified" },
-                      "value": "Yes"
+                      "descriptor": { "code": "duration" },
+                      "value": "60 days"
                     }
                   ]
                 }
@@ -173,543 +609,33 @@ on_search returns matched energy catalogs from registered providers. Use the fol
 }
 ````
 
-### select
-Used to select a specific energy offer and specify required kWh.
-
-```json
-{
-  "context": {
-    "domain": "trade",
-    "action": "select",
-    "bap_id": "p2pTrading-bap.com",
-    "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "select-message-001",
-    "timestamp": "2025-05-09T10:01:00Z",
-    "location": {
-      "country": {
-        "code": "USA"
-      },
-      "city": {
-        "code": "NANP:628"
-      }
-    }
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "p1072"
-      },
-      "items": [
-        {
-          "id": "uid_xyz",
-          "quantity": {
-            "measure": {
-              "value": "10",
-              "unit": "kWH"
-            }
-          }
-        }
-      ],
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "der://ssf.meter/65432100"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-````
-
-### on_select
-Confirms availability, pricing, and any certifications (e.g., carbon offset, ownership certificates).
-
-```json
-{
-  "context": {
-    "domain": "trade",
-    "action": "on_select",
-    "bap_id": "p2pTrading-bap.com",
-    "bpp_id": "p2pTrading-bpp.com",
-    "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "on_select-message-001",
-    "timestamp": "2025-05-09T10:01:15Z",
-    "location": {
-      "country": {
-        "code": "USA"
-      },
-      "city": {
-        "code": "NANP:628"
-      }
-    }
-  },
-  "message": {
-    "order": {
-      "provider": {
-        "id": "p1072"
-      },
-      "items": [
-        {
-          "id": "uid_xyz",
-          "price": {
-            "value": "5",
-            "currency": "USD/kWH"
-          },
-          "quantity": {
-            "measure": {
-              "value": "10",
-              "unit": "kWH"
-            }
-          }
-        }
-      ],
-      "quote": {
-        "price": {
-          "value": "50",
-          "currency": "USD"
-        },
-        "breakup": [
-          {
-            "title": "Energy Cost",
-            "price": {
-              "value": "50",
-              "currency": "USD"
-            }
-          }
-        ]
-      },
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "der://ssf.meter/65432100"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-````
-
-### init
-Initiates the order with consumer billing and meter location.
-
-```json
-{
-  "context": {
-    "domain": "trade",
-    "action": "init",
-    "bap_id": "p2pTrading-bap.com",
-    "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "init-message-001",
-    "timestamp": "2025-05-09T10:02:00Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    }
-  },
-  "message": {
-    "order": {
-      "provider": { "id": "p1072" },
-      "items": [
-        {
-          "id": "uid_xyz",
-          "quantity": {
-            "measure": {
-              "value": "10",
-              "unit": "kWH"
-            }
-          }
-        }
-      ],
-      "billing": {
-        "name": "John Miller",
-        "address": "123 Bay St, SF, CA",
-        "phone": "+14151112222",
-        "email": "john.miller@example.com"
-      },
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "der://ssf.meter/65432100"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-````
-
-### on_init
-Returns final quote, document links, payment instructions, and any regulatory tags.
-
-```json
-{
-  "context": {
-    "domain": "trade",
-    "action": "on_init",
-    "bap_id": "p2pTrading-bap.com",
-    "bpp_id": "p2pTrading-bpp.com",
-    "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "on_init-message-001",
-    "timestamp": "2025-05-09T10:02:30Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    }
-  },
-  "message": {
-    "order": {
-      "provider": { "id": "p1072" },
-      "items": [
-        {
-          "id": "uid_xyz",
-          "price": {
-            "value": "5",
-            "currency": "USD/kWH"
-          },
-          "quantity": {
-            "measure": {
-              "value": "10",
-              "unit": "kWH"
-            }
-          }
-        }
-      ],
-      "quote": {
-        "price": {
-          "value": "50",
-          "currency": "USD"
-        },
-        "breakup": [
-          {
-            "title": "Energy Cost",
-            "price": {
-              "value": "50",
-              "currency": "USD"
-            }
-          }
-        ]
-      },
-      "billing": {
-        "name": "John Miller",
-        "address": "123 Bay St, SF, CA",
-        "phone": "+14151112222",
-        "email": "john.miller@example.com"
-      },
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "der://ssf.meter/65432100"
-            }
-          },
-          "customer": {
-            "person": {
-              "name": "John Miller"
-            },
-            "contact": {
-              "phone": "+14151112222",
-              "email": "john.miller@example.com"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-````
-
-### confirm
-Consumer confirms order and payment details. Includes energy quantity and meter stop locations.
-
-```json
-{
-  "context": {
-    "domain": "trade",
-    "action": "confirm",
-    "bap_id": "p2pTrading-bap.com",
-    "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "confirm-message-001",
-    "timestamp": "2025-05-09T10:03:00Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    }
-  },
-  "message": {
-    "order": {
-      "provider": { "id": "p1072" },
-      "items": [
-        {
-          "id": "uid_xyz",
-          "quantity": {
-            "measure": {
-              "value": "10",
-              "unit": "kWH"
-            }
-          }
-        }
-      ],
-      "billing": {
-        "name": "John Miller",
-        "address": "123 Bay St, SF, CA",
-        "phone": "+14151112222",
-        "email": "john.miller@example.com"
-      },
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "der://ssf.meter/65432100"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-````
-
-### on_confirm
-Confirms the order with final provider metadata, schedule, fulfillment stops, and order ID.
-
-```json
-{
-  "context": {
-    "domain": "trade",
-    "action": "on_confirm",
-    "bap_id": "p2pTrading-bap.com",
-    "bpp_id": "p2pTrading-bpp.com",
-    "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "on_confirm-message-001",
-    "timestamp": "2025-05-09T10:03:30Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    }
-  },
-  "message": {
-    "order": {
-      "id": "p2p-order-001",
-      "provider": { "id": "p1072" },
-      "items": [
-        {
-          "id": "uid_xyz",
-          "quantity": {
-            "measure": {
-              "value": "10",
-              "unit": "kWH"
-            }
-          }
-        }
-      ],
-      "billing": {
-        "name": "John Miller",
-        "address": "123 Bay St, SF, CA",
-        "phone": "+14151112222",
-        "email": "john.miller@example.com"
-      },
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "der://ssf.meter/65432100"
-            }
-          },
-          "customer": {
-            "person": {
-              "name": "John Miller"
-            },
-            "contact": {
-              "phone": "+14151112222",
-              "email": "john.miller@example.com"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-````
-
-### status
-Used to fetch the current status of an order.
-
-```json
-{
-  "context": {
-    "domain": "trade",
-    "action": "status",
-    "bap_id": "p2pTrading-bap.com",
-    "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "status-message-001",
-    "timestamp": "2025-05-09T10:04:00Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    }
-  },
-  "message": {
-    "order_id": "p2p-order-001"
-  }
-}
-````
-
-### on\_status
-
-Returns the current status and updated fulfillment info.
-
-````json
-{
-  "context": {
-    "domain": "trade",
-    "action": "on_status",
-    "bap_id": "p2pTrading-bap.com",
-    "bpp_id": "p2pTrading-bpp.com",
-    "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "on_status-message-001",
-    "timestamp": "2025-05-09T10:04:15Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    }
-  },
-  "message": {
-    "order": {
-      "id": "p2p-order-001",
-      "state": "ACTIVE",
-      "fulfillments": [
-        {
-          "state": {
-            "descriptor": {
-              "code": "In-Progress",
-              "name": "Energy transfer ongoing"
-            }
-          },
-          "end": {
-            "location": {
-              "address": "der://ssf.meter/65432100"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-````
-
-
-## Update & Order Management
-
-### update
-Used to make changes to fulfillment (time slots, end meter, etc.) or to resend details in case of payment retries.
-
-```json
-{
-  "context": {
-    "domain": "trade",
-    "action": "update",
-    "bap_id": "p2pTrading-bap.com",
-    "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "update-message-001",
-    "timestamp": "2025-05-09T10:05:00Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    }
-  },
-  "message": {
-    "update_target": "fulfillments",
-    "order": {
-      "id": "p2p-order-001",
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "der://ssf.meter/000NEWDEST"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-````
-### on_update
-Responds with updated order details or error message. Confirms that change has been acknowledged by provider.
-
-```json
-{
-  "context": {
-    "domain": "trade",
-    "action": "on_update",
-    "bap_id": "p2pTrading-bap.com",
-    "bpp_id": "p2pTrading-bpp.com",
-    "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
-    "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
-    "message_id": "on_update-message-001",
-    "timestamp": "2025-05-09T10:05:30Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    }
-  },
-  "message": {
-    "order": {
-      "id": "p2p-order-001",
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "der://ssf.meter/000NEWDEST"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-````
+---
 
 ## Taxonomy and Configuration
 
-- `source_type`: Rooftop Solar / Wind / Hydro
-- `certifications`: SPOC, P2PTL
-- `fulfillment.agent`: Grid operator (e.g., PG&E)
-- `location.address`: DER URI format (e.g., der://meter-id)
+- `location.address`: Where the battery is to be delivered or returned.
+- `payment.type`: PRE-FULFILLMENT or ON-FULFILLMENT.
+- `fulfillment.state`: Used for tracking status (e.g., In-Transit, Delivered).
+- `tags`: Allow specifying rental-specific attributes like `duration`, `capacity`, etc.
+
+---
 
 ## Integration Notes
 
-- Each participant must be registered with gateway and registry.
-- DER endpoints should support standard Beckn fulfillment interfaces.
-- Grid operator must support two-way transfer event logging.
+- All participants must be registered on the Beckn Gateway and Registry.
+- Ensure time ranges are handled in ISO 8601 format (`start` and `end`).
+- Implement retries for `on_*` responses in case of gateway delays.
+- Confirm support for both delivery and pickup logistics via fulfillment blocks.
+
+---
 
 ## Sandbox Access
 
-**Registry/Gateway:**
-- Gateway: [gateway.becknprotocol.io/bg](https://gateway.becknprotocol.io/bg)
-- Registry: [registry.becknprotocol.io](https://registry.becknprotocol.io)
+**Gateway**
 
-**BAP:**
-- EnergyTrade Client: [bap-p2p.dev.becknprotocol.io](https://bap-p2p.dev.becknprotocol.io)
+**Registry**
 
-**BPP:**
-- SolarProsumer Node: [bpp-p2p.dev.becknprotocol.io](https://bpp-p2p.dev.becknprotocol.io)
+**Battery Rental BAP Sandbox**
 
-
+**Battery Rental BPP Sandbox**
+````
