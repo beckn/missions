@@ -155,6 +155,27 @@
                                             "value": "IP68"
                                         }
                                     ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "solar equipment certificate",
+                                                "code": "SEC"
+                                            },
+                                            "value": "https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "pv module safety certificate",
+                                                "code": "PMSC"
+                                            },
+                                            "value": "https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf"
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -210,6 +231,27 @@
                                                 "code": "Warranty"
                                             },
                                             "value": "10 years"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "solar equipment certificate",
+                                                "code": "SEC"
+                                            },
+                                            "value": "https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "pv module safety certificate",
+                                                "code": "PMSC"
+                                            },
+                                            "value": "https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf"
                                         }
                                     ]
                                 }
@@ -407,6 +449,27 @@
                                                 "code": "Use_Case"
                                             },
                                             "value": "Camping, RV, Off-grid"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "solar equipment certificate",
+                                                "code": "SEC"
+                                            },
+                                            "value": "https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "pv module safety certificate",
+                                                "code": "PMSC"
+                                            },
+                                            "value": "https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf"
                                         }
                                     ]
                                 }

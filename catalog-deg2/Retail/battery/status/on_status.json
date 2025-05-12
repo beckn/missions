@@ -68,6 +68,12 @@
                                         "code": "high_load_support"
                                     },
                                     "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "condition"
+                                    },
+                                    "value": "New"
                                 }
                             ]
                         },
@@ -120,6 +126,27 @@
                                         "code": "application_3"
                                     },
                                     "value": "Backup Inverters"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Certifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Safety of energy storage systems and equipment",
+                                        "code": "SESSE"
+                                    },
+                                    "value": "https://www.example.com/certifications/UL9540/FortressPower_eFlexMax_Certification.pdf"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Battery transportation safety",
+                                        "code": "BTS"
+                                    },
+                                    "value": "https://www.example.com/certifications/UL9540/FortressPower_eFlexMax_Certification.pdf"
                                 }
                             ]
                         }

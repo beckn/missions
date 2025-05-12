@@ -49,8 +49,8 @@
                         {
                             "id": "1",
                             "descriptor": {
-                                "name": "Batteries",
-                                "code": "batteries"
+                                "name": "New_Battery",
+                                "code": "New battery"
                             }
                         },
                         {
@@ -58,6 +58,20 @@
                             "descriptor": {
                                 "name": "Installation service",
                                 "code": "Installation_service"
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "descriptor": {
+                                "name": "Used_Battery",
+                                "code": "Used battery"
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "descriptor": {
+                                "name": "Refurbished_Battery",
+                                "code": "Refurbished battery"
                             }
                         }
                     ],
@@ -135,6 +149,12 @@
                                                 "code": "high_load_support"
                                             },
                                             "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "condition"
+                                            },
+                                            "value": "New"
                                         }
                                     ]
                                 },
@@ -187,6 +207,27 @@
                                                 "code": "application_3"
                                             },
                                             "value": "Backup Inverters"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Safety of energy storage systems and equipment",
+                                                "code": "SESSE"
+                                            },
+                                            "value": "https://www.example.com/certifications/UL9540/FortressPower_eFlexMax_Certification.pdf"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Battery transportation safety",
+                                                "code": "BTS"
+                                            },
+                                            "value": "https://www.example.com/certifications/UL9540/FortressPower_eFlexMax_Certification.pdf"
                                         }
                                     ]
                                 }
@@ -293,8 +334,8 @@
                         {
                             "id": "1",
                             "descriptor": {
-                                "name": "Batteries",
-                                "code": "batteries"
+                                "name": "New_Battery",
+                                "code": "New battery"
                             }
                         },
                         {
@@ -302,6 +343,20 @@
                             "descriptor": {
                                 "name": "Installation service",
                                 "code": "Installation_service"
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "descriptor": {
+                                "name": "Used_Battery",
+                                "code": "Used battery"
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "descriptor": {
+                                "name": "Refurbished_Battery",
+                                "code": "Refurbished battery"
                             }
                         }
                     ],
@@ -347,7 +402,7 @@
                                 "1"
                             ],
                             "category_ids": [
-                                "1"
+                                "4"
                             ],
                             "location_ids": [
                                 "2"
@@ -376,6 +431,12 @@
                                                 "code": "spill_proof"
                                             },
                                             "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "condition"
+                                            },
+                                            "value": "Refurbished"
                                         }
                                     ]
                                 },
@@ -428,6 +489,27 @@
                                                 "code": "application_3"
                                             },
                                             "value": "Solar Off-Grid"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Safety of energy storage systems and equipment",
+                                                "code": "SESSE"
+                                            },
+                                            "value": "https://www.example.com/certifications/UL9540/FortressPower_eFlexMax_Certification.pdf"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Battery transportation safety",
+                                                "code": "BTS"
+                                            },
+                                            "value": "https://www.example.com/certifications/UL9540/FortressPower_eFlexMax_Certification.pdf"
                                         }
                                     ]
                                 }
@@ -532,17 +614,31 @@
                     "rateable": true,
                     "categories": [
                         {
-                            "id": "17",
+                            "id": "1",
                             "descriptor": {
-                                "name": "EV Batteries",
-                                "code": "ev_batteries"
+                                "name": "New_Battery",
+                                "code": "New battery"
                             }
                         },
                         {
-                            "id": "19",
+                            "id": "2",
                             "descriptor": {
-                                "name": "General Purpose Batteries",
-                                "code": "general_batteries"
+                                "name": "Installation service",
+                                "code": "Installation_service"
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "descriptor": {
+                                "name": "Used_Battery",
+                                "code": "Used battery"
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "descriptor": {
+                                "name": "Refurbished_Battery",
+                                "code": "Refurbished battery"
                             }
                         }
                     ],
@@ -584,7 +680,7 @@
                                 "2"
                             ],
                             "category_ids": [
-                                "1"
+                                "3"
                             ],
                             "location_ids": [
                                 "1"
@@ -613,6 +709,12 @@
                                                 "code": "modular_design"
                                             },
                                             "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "condition"
+                                            },
+                                            "value": "Used"
                                         }
                                     ]
                                 },
@@ -665,6 +767,27 @@
                                                 "code": "application_3"
                                             },
                                             "value": "Telecom Towers"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Safety of energy storage systems and equipment",
+                                                "code": "SESSE"
+                                            },
+                                            "value": "https://www.example.com/certifications/UL9540/FortressPower_eFlexMax_Certification.pdf"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Battery transportation safety",
+                                                "code": "BTS"
+                                            },
+                                            "value": "https://www.example.com/certifications/UL9540/FortressPower_eFlexMax_Certification.pdf"
                                         }
                                     ]
                                 }

@@ -44,7 +44,68 @@
                         "selected": {
                             "count": 1
                         }
-                    }
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Panel_Specifications"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Type"
+                                    },
+                                    "value": "Monocrystalline"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Wattage"
+                                    },
+                                    "value": "450W"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Efficiency"
+                                    },
+                                    "value": "21.4%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Warranty"
+                                    },
+                                    "value": "25 years"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "IP_Rating"
+                                    },
+                                    "value": "IP68"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Certifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "solar equipment certificate",
+                                        "code": "SEC"
+                                    },
+                                    "value": "https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "pv module safety certificate",
+                                        "code": "PMSC"
+                                    },
+                                    "value": "https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "it/panel/12",

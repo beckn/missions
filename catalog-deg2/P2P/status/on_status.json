@@ -80,6 +80,27 @@
                                     "value": "Yes"
                                 }
                             ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Certifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Solar Panel Ownership Certificate",
+                                        "code": "SPOC"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/SolarPanelOwnershipCer.json"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "P2P Trading Licence",
+                                        "code": "P2PTL"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/Licence.pdf"
+                                }
+                            ]
                         }
                     ]
                 }
