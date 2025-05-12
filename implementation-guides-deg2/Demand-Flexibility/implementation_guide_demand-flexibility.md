@@ -1122,8 +1122,6 @@ Search request can contain one or more search criterion within it. Use the follo
 
 ## Sandbox Details
 
-![<Sandbox Name>]()
-
 ### Registry/Gateway:
 
 - **Gateway Sandbox:** []()
