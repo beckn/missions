@@ -58,7 +58,7 @@
                       "descriptor": {
                         "code": "acceptance_type"
                       },
-                      "value": "Manual via App Notification"
+                      "value": "MANUAL_OPTIN"
                     }
                   ]
                 }

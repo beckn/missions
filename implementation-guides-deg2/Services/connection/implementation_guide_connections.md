@@ -1060,26 +1060,22 @@ on_confirm confirms that the order has been successfully placed. Look at these f
 
 |Property Name|Enums|
 |-------------|-----|
-|connection-type|RESIDENTIAL<br>COMMERCIAL<br>INDUSTRIAL<br>AGRICULTURAL|
+|connection category|ELECTRICITY_CONNECTION|
+|property-type|RESIDENTIAL<br>COMMERCIAL<br>INDUSTRIAL<br>AGRICULTURAL|
 |connection-status|PENDING<br>IN_PROGRESS<br>COMPLETED<br>CANCELLED<br>FAILED<br>ON_HOLD|
-|connection-category|NEW_CONNECTION<br>TEMPORARY_CONNECTION<br>PERMANENT_CONNECTION<br>TEMP_TO_PERM<br>MIGRATION|
 |connection-phase|SINGLE_PHASE<br>THREE_PHASE<br>SPLIT_PHASE|
-|voltage-level|LOW_VOLTAGE_230V<br>MEDIUM_VOLTAGE_11KV<br>HIGH_VOLTAGE_33KV<br>EXTRA_HIGH_VOLTAGE_132KV|
+|user-type|CONSUMER<br>PRODUCER|
+|fulfillment-type|ON_SITE|
 |meter-type|DIGITAL<br>ANALOG<br>SMART_METER<br>PREPAID_METER<br>POSTPAID_METER|
-|connection-load|LIGHT_LOAD<br>MEDIUM_LOAD<br>HEAVY_LOAD<br>EXTRA_HEAVY_LOAD|
-|property-type|APARTMENT<br>HOUSE<br>OFFICE<br>FACTORY<br>SHOP<br>WAREHOUSE<br>FARM|
 |documentation-status|PENDING<br>SUBMITTED<br>VERIFIED<br>REJECTED<br>EXPIRED|
 |payment-status|PENDING<br>PAID<br>FAILED<br>REFUNDED<br>PARTIALLY_PAID|
-|connection-purpose|DOMESTIC<br>COMMERCIAL<br>INDUSTRIAL<br>AGRICULTURAL<br>MIXED_USE|
-|connection-tariff|RESIDENTIAL<br>COMMERCIAL<br>INDUSTRIAL<br>AGRICULTURAL<br>SPECIAL_PURPOSE|
-|connection-metering|SINGLE_POINT<br>MULTI_POINT<br>BULK_METERING|
-|connection-billing|PREPAID<br>POSTPAID<br>HYBRID|
-|verification-status|PENDING<br>VERIFIED<br>REJECTED<br>NEEDS_REVISION|
-|connection-priority|HIGH<br>MEDIUM<br>LOW<br>EMERGENCY|
-|connection-source|GRID<br>SOLAR<br>HYBRID<br>BACKUP|
-|connection-phase-status|ACTIVE<br>INACTIVE<br>SUSPENDED<br>TERMINATED|
-|connection-compliance|COMPLIANT<br>NON_COMPLIANT<br>PENDING_VERIFICATION|
-|connection-maintenance|REGULAR<br>PREVENTIVE<br>CORRECTIVE<br>EMERGENCY|
+|billing cycle|WEEKLY<br>MONTHLY<br>QUARTERLY|
+|fulfillment state codes| TECHNICIAN_ASSIGNED<br>ASSESSMENT_COMPLETED<br>APPROVED<br>CONNECTION_ESTABLISHED|
+|payment type| PRE_ORDER<br>POST_ORDER<br>PRE_FULFILLMENT<br>POST_FULFILLMENT|
+|payment status| PAID<br>NOT_PAID
+|payment collected by| BAP<br>BPP<br>AGENT
+|fulfillment stop types| START<br>END
+
 
 
 

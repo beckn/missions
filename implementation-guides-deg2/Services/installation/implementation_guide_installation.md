@@ -1059,21 +1059,20 @@ Search request can contain one or more search criterion within it. Use the follo
 
 |Property Name|Enums|
 |-------------|-----|
-|installation-type|METER_INSTALLATION<br>SOLAR_PANEL<br>BATTERY_SYSTEM<br>EV_CHARGER<br>SMART_DEVICE|
-|installation-status|PENDING<br>SCHEDULED<br>IN_PROGRESS<br>COMPLETED<br>CANCELLED<br>FAILED|
-|technician-type|ELECTRICIAN<br>SOLAR_TECHNICIAN<br>EV_SPECIALIST<br>GENERAL_TECHNICIAN|
-|scheduling-status|PENDING<br>CONFIRMED<br>RESCHEDULED<br>CANCELLED|
-|installation-priority|HIGH<br>MEDIUM<br>LOW<br>EMERGENCY|
-|verification-status|PENDING<br>VERIFIED<br>REJECTED<br>NEEDS_REVISION|
-|payment-status|PENDING<br>PAID<br>FAILED<br>REFUNDED|
-|installation-category|NEW_INSTALLATION<br>UPGRADE<br>REPLACEMENT<br>MAINTENANCE|
+|category|SOLAR_PANEL_INSTALLATION|
+|govt_subsidy_empaneled|TRUE<br>FALSE|
+|fulfillment types|ONSITE|
+|fulfillment state|TECHNICIAN_DISPATCHED<br>APPROVED<br>INSTALLED|
+|commission status|PENDING<br>SCHEDULED<br>IN_PROGRESS<br>COMPLETED<br>CANCELLED<br>FAILED|
 |equipment-type|METER<br>SOLAR_PANEL<br>BATTERY<br>CHARGER<br>INVERTER<br>CONTROLLER|
-|installation-complexity|SIMPLE<br>MODERATE<br>COMPLEX<br>SPECIALIZED|
-|location-type|RESIDENTIAL<br>COMMERCIAL<br>INDUSTRIAL<br>UTILITY|
-|access-type|EASY_ACCESS<br>RESTRICTED_ACCESS<br>SPECIAL_PERMISSION|
-|installation-phase|SITE_SURVEY<br>PREPARATION<br>INSTALLATION<br>TESTING<br>COMMISSIONING|
-|documentation-status|PENDING<br>COMPLETED<br>VERIFIED<br>REJECTED|
-|safety-status|PENDING<br>VERIFIED<br>ISSUES_FOUND<br>RESOLVED|
+|property-type|RESIDENTIAL<br>COMMERCIAL<br>INDUSTRIAL<br>UTILITY|
+|payment type| PRE_ORDER<br>POST_ORDER<br>PRE_FULFILLMENT<br>POST_FULFILLMENT|
+|payment status| PAID<br>NOT_PAID<br>FAILED<br>PROCESSING
+|payment collected by| BAP<br>BPP<br>AGENT
+|fulfillment stop types| START<br>END
+|inverter type| ON_GRID<br>OFF_GRID<br>HYBRID
+|mounting type| ROOFTOP_FIXED_TILT<br>ROOFTOP_ADJUSTABLE_TILT<br>ROOFTOP_FLUSH_MOUNT<br>GROUND_FIXED_TILT
+
 
 
 ## Notes on Software Integration

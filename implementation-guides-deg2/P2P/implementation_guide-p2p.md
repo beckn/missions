@@ -1442,26 +1442,16 @@ Initializes the order by sending billing and fulfillment details.
 
 |Property Name|Enums|
 |-------------|-----|
-|p2p-type|ENERGY_TRADE<br>POWER_EXCHANGE<br>GRID_SERVICES<br>COMMUNITY_SHARING|
-|trade-status|PENDING<br>ACTIVE<br>COMPLETED<br>CANCELLED<br>FAILED<br>DISPUTED|
-|trade-mode|AUTOMATED<br>MANUAL<br>HYBRID<br>SCHEDULED|
-|energy-source|SOLAR<br>BATTERY<br>GRID<br>HYBRID<br>RENEWABLE|
-|trade-direction|BUY<br>SELL<br>BIDIRECTIONAL|
+|category codes|SOLAR_ENERGY<br>EV|
+|location codes|HOME<br>EV|
+|fulfillment stops type|START<br>END|
+|energy source type|SOLAR<br>BATTERY<br>GRID<br>HYBRID<br>RENEWABLE|
+|certification codes|SPOC<br>P2PTL|
 |payment-status|PENDING<br>COMPLETED<br>FAILED<br>REFUNDED<br>DISPUTED|
 |settlement-type|REAL_TIME<br>HOURLY<br>DAILY<br>WEEKLY<br>MONTHLY|
 |trade-currency|USD<br>EUR<br>GBP<br>INR<br>CRYPTO|
-|verification-status|PENDING<br>VERIFIED<br>REJECTED<br>NEEDS_REVISION|
-|trade-priority|HIGH<br>MEDIUM<br>LOW<br>EMERGENCY|
-|trade-volume|SMALL<br>MEDIUM<br>LARGE<br>CUSTOM|
-|trade-duration|INSTANT<br>HOURLY<br>DAILY<br>WEEKLY<br>MONTHLY|
 |trade-participant|INDIVIDUAL<br>COMMERCIAL<br>UTILITY<br>AGGREGATOR|
-|trade-platform|CENTRALIZED<br>DECENTRALIZED<br>HYBRID|
-|trade-compliance|COMPLIANT<br>NON_COMPLIANT<br>PENDING_VERIFICATION|
-|trade-security|SECURE<br>PENDING_VERIFICATION<br>FLAGGED|
-|trade-settlement|AUTOMATED<br>MANUAL<br>HYBRID|
-|trade-notification|PUSH<br>EMAIL<br>SMS<br>IN_APP|
-|trade-documentation|PENDING<br>COMPLETED<br>VERIFIED<br>REJECTED|
-|trade-dispute|NONE<br>PENDING<br>RESOLVED<br>ESCALATED|
+|Certifications-codes|SPOC<br>P2PTL|
 
 
 ## Notes on Software Integration

@@ -1122,21 +1122,16 @@ Search request can contain one or more search criterion within it. Use the follo
 
 |Property Name|Enums|
 |-------------|-----|
-|flexibility-type|MANUAL_FLEX<br>AUTO_FLEX<br>HYBRID_FLEX|
-|participation-mode|MANUAL_OPTIN<br>AUTO_OPTIN<br>SCHEDULED|
-|event-status|PENDING<br>ACTIVE<br>COMPLETED<br>CANCELLED<br>FAILED|
-|reward-type|PER_KWH<br>FIXED_AMOUNT<br>TIERED|
-|device-type|THERMOSTAT<br>EV_CHARGER<br>SMART_PLUG<br>BATTERY<br>SOLAR_INVERTER|
-|control-mode|MANUAL<br>AUTOMATED<br>SEMI_AUTOMATED|
-|event-window|PEAK_HOURS<br>OFF_PEAK<br>CUSTOM|
-|notification-type|PUSH<br>EMAIL<br>SMS<br>IN_APP|
-|enrollment-status|PENDING<br>ACTIVE<br>INACTIVE<br>TERMINATED|
-|verification-method|METER_READING<br>DEVICE_DATA<br>MANUAL_CONFIRMATION|
+|Demand flexibility categories|MANUAL_FLEX<br>AUTO_FLEX<br>HYBRID_FLEX|
+|acceptance_type|MANUAL_OPTIN<br>AUTO_OPTIN<br>SCHEDULED|
+|application-status|PENDING<br>ACTIVE<br>CANCELLED<br>FAILED|
+|fulfillment_type|DIGITAL|
+|fulfillment state|APPLICATION_SUCCESSFUL<br>APPLICATION_PROCESSING<br>SMS<br>APPLICATION_FAILED|
+|stops types|END|
 |payment-status|PENDING<br>PROCESSED<br>FAILED<br>REFUNDED|
-|flexibility-category|DEMAND_RESPONSE<br>LOAD_SHIFTING<br>PEAK_REDUCTION|
-|reward-currency|USD<br>EUR<br>GBP<br>INR|
-|event-frequency|DAILY<br>WEEKLY<br>MONTHLY<br>ON_DEMAND|
-|verification-status|PENDING<br>VERIFIED<br>REJECTED|
+|payment type| POST_ORDER<br>PRE_FULFILLMENT<br>POST_FULFILLMENT|
+|payment collected by| BAP<br>BPP<br>AGENT
+|fulfillment stop types| START<br>END
 
 ## Notes on Software Integration
 
