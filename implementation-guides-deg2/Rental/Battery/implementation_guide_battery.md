@@ -620,10 +620,30 @@ Initializes the order by sending billing and fulfillment details.
 ````
 
 
-
-
-
 ## Taxonomy and layer2 configuration
+
+|Property Name|Enums|
+|-------------|-----|
+|battery-type|LITHIUM_ION<br>LEAD_ACID<br>FLOW_BATTERY<br>SOLID_STATE|
+|rental-status|AVAILABLE<br>RENTED<br>MAINTENANCE<br>RETIRED<br>RESERVED|
+|battery-capacity|SMALL_1KWH<br>MEDIUM_5KWH<br>LARGE_10KWH<br>XL_20KWH<br>CUSTOM|
+|battery-condition|NEW<br>LIKE_NEW<br>GOOD<br>FAIR<br>POOR|
+|rental-duration|HOURLY<br>DAILY<br>WEEKLY<br>MONTHLY<br>LONG_TERM|
+|payment-status|PENDING<br>PAID<br>FAILED<br>REFUNDED<br>PARTIALLY_PAID|
+|battery-usage|BACKUP<br>GRID_SERVICES<br>EV_CHARGING<br>SOLAR_STORAGE<br>MIXED_USE|
+|battery-health|EXCELLENT<br>GOOD<br>FAIR<br>POOR<br>CRITICAL|
+|battery-location|FIXED<br>MOBILE<br>PORTABLE<br>STATIONARY|
+|battery-connectivity|WIRED<br>WIRELESS<br>HYBRID<br>MANUAL|
+|battery-monitoring|REAL_TIME<br>PERIODIC<br>MANUAL<br>OFFLINE|
+|battery-maintenance|REGULAR<br>PREVENTIVE<br>CORRECTIVE<br>EMERGENCY|
+|battery-warranty|ACTIVE<br>EXPIRED<br>VOID<br>PENDING|
+|battery-certification|CERTIFIED<br>PENDING<br>EXPIRED<br>REVOKED|
+|battery-safety|COMPLIANT<br>NON_COMPLIANT<br>PENDING_VERIFICATION|
+|battery-availability|AVAILABLE<br>RESERVED<br>UNAVAILABLE<br>MAINTENANCE|
+|battery-charging|FAST_CHARGE<br>NORMAL_CHARGE<br>TRICKLE_CHARGE<br>OFFLINE|
+|battery-discharging|ACTIVE<br>STANDBY<br>OFFLINE<br>PROTECTED|
+|battery-temperature|NORMAL<br>WARNING<br>CRITICAL<br>SHUTDOWN|
+|battery-cycles|LOW<br>MEDIUM<br>HIGH<br>CRITICAL|
 
 
 ## Notes on Software Integration
