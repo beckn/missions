@@ -20,10 +20,10 @@ This guide assumes the reader is familiar with the Beckn protocol, message flow,
 This document has the following parts:
 
 1. [Outcome Visualization](#outcome-visualization) - A pictorial or descriptive representation of the different use cases that are supported by the network.
-2. [General Flow Diagrams](#general-flow-diagrams) - This section is relevant to all the message flows illustrated below and discussed further in the document. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams) section in the generic implementation guide to understand the flow.
+2. [General Flow Diagrams](#general-flow-diagrams) - This section is relevant to all the message flows illustrated below and discussed further in the document.
 3. [API Calls and Schema](#api-calls-and-schema) - This section provides details on the API calls and the schema of the messages that are sent in the form of sample schemas.
 4. [Taxonomy and Layer 2 Configuration](#taxonomy-and-layer-2-configuration) - This section provides details on the taxonomy, enumerations, and any rules defined for either the use case or by the network.
-5. [Integration Notes](#integration-notes) - Notes on writing/integrating with your own software. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software) section in the generic implementation guide.
+5. [Integration Notes](#notes-on-software-integration) - Notes on writing/integrating with your own software.
 6. [Links to Artefacts](#links-to-artefacts) - This section contains the downloadable files referenced in this document.
 7. [Sandbox Details](#sandbox-details) - Sandbox links to BAP, Registry/Gateway, and BPP.
 
@@ -45,6 +45,10 @@ Emily's journey:
    - Or lets FlexiGrid control her thermostat automatically
 3. Post-event:
    - Views energy saved and incentive earned within the app dashboard
+
+## General Flow Diagrams
+
+Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams).
 
 ## API Calls and Schema
 

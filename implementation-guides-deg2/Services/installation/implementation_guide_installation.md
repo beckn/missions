@@ -6,7 +6,7 @@
 
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
-| 12-05-2025 | 1.0     | Initial Version                                     |
+| 13-05-2025 | 1.0     | Initial Version                                     |
 
 ## Introduction
 
@@ -19,10 +19,10 @@ The guide is intended for developers and service integrators familiar with the B
 This document has the following parts:
 
 1. [Outcome Visualization](#outcome-visualization) - This is a pictorial or descriptive representation of the different use cases that are supported by the network.
-2. General Flow diagrams - This section is relevant to all the messages flows illustrated below and discussed further in the document. We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams) section in the generic implementation guide to understand the flow.
+2. [General Flow diagrams](#general-flow-diagrams) - This section is relevant to all the messages flows illustrated below and discussed further in the document.
 3. [API Calls and Schema](#api-calls-and-schema) - This section provides details on the API calls and the schema of the message that is sent in the form of sample schemas.
 4. [Taxonomy and layer 2 configuration](#taxonomy-and-layer-2-configuration) - This section provides details on the taxonomy, enumerations and any rules defined for either the use case or by the network.
-5. Notes on writing/integrating with your own software - We can refer [this](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software) section in the generic implementation guide.
+5. [Integration Notes](#notes-on-software-integration) - Notes on writing/integrating with your own software.
 6. [Links to artefacts](#links-to-artefacts) - This section contains the downloadable files referenced in this document.
 7. [Sandbox Details](#sandbox-details) - Sandbox links to BAP, Registry/Gateway and BPP.
 
@@ -68,6 +68,10 @@ Emily, a homeowner in San Francisco, wants to install solar panels on her reside
 * Emily receives a **digital confirmation of installation** and a formal invoice.
 * She is asked to **rate the service** on a 0–5 scale.
 * Emily gives a **5-star rating** for professional installation and system performance.
+
+## General Flow Diagrams
+
+Refer to the [Generic Implementation Guide - Flow Diagrams](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#general-flow-diagrams).
 
 ## API Calls and Schema
 
@@ -1049,7 +1053,6 @@ Search request can contain one or more search criterion within it. Use the follo
     }
 }
 ```
-
 
 
 ## Taxonomy and layer 2 configuration
