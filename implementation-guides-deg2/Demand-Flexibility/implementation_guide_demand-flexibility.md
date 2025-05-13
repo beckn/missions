@@ -1134,6 +1134,10 @@ Search request can contain one or more search criterion within it. Use the follo
 |event-frequency|DAILY<br>WEEKLY<br>MONTHLY<br>ON_DEMAND|
 |verification-status|PENDING<br>VERIFIED<br>REJECTED|
 
+## Notes on Software Integration
+
+Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software)
+
 ## Links to artefacts
 
 - [Postman collection for Demand Flexibility]()

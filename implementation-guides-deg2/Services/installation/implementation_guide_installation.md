@@ -1073,6 +1073,10 @@ Search request can contain one or more search criterion within it. Use the follo
 |safety-status|PENDING<br>VERIFIED<br>ISSUES_FOUND<br>RESOLVED|
 
 
+## Notes on Software Integration
+
+Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/main/Generic-Implementation-Guide/generic_implementation_guide.md#integrating-with-your-software)
+
 ## Links to artefacts
 
 - [Postman collection for Connections]()
