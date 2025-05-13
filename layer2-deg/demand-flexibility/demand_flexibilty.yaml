@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Beckn for Local Retail
-  description: Adaptation of beckn protocol for the local retail domain
+  title: Beckn for Energy Demand Flexibility
+  description: Adaptation of beckn protocol for the Energy Demand Flexibility domain
   version: 1.1.0
 security:
   - SubscriberAuth: []
@@ -894,7 +894,17 @@ components:
         parent_category_id:
           $ref: "#/components/schemas/Category/properties/id"
         descriptor:
-          $ref: "#/components/schemas/Descriptor"
+          allOf:
+            - $ref: "#/components/schemas/Descriptor"
+            - type: object
+                  properties:
+                    code:
+                      type: string
+                      enum:
+                        - MANUAL_FLEX
+                        - AUTO_FLEX
+                        - HYBRID_FLEX
+
         time:
           $ref: "#/components/schemas/Time"
         ttl:
@@ -1126,6 +1136,8 @@ components:
         type:
           description: "A code that describes the mode of fulfillment. This is typically set when there are multiple ways an order can be fulfilled. For example, a retail order can be fulfilled either via store pickup or a home delivery. Similarly, a medical consultation can be provided either in-person or via tele-consultation. The network policy must publish standard fulfillment type codes for the different modes of fulfillment."
           type: string
+          enum:
+            - DIGITAL
         rateable:
           description: Whether the fulfillment can be rated or not
           type: boolean
@@ -1137,6 +1149,17 @@ components:
           description: The current state of fulfillment. The BPP must set this value whenever the state of the order fulfillment changes and fire an unsolicited `on_status` call.
           allOf:
             - $ref: "#/components/schemas/FulfillmentState"
+            - type: object
+              properties:
+                descriptor:
+                  properties:
+                    code:
+                      type: string
+                      enum:
+                        - APPLICATION_SUBMITTED
+                        - APPLICATION_PROCESSING
+                        - APPLICATION_SUCCESSFUL
+                        - APPLICATION_FAILED
         tracking:
           type: boolean
           description: Indicates whether the fulfillment allows tracking
@@ -2008,6 +2031,9 @@ components:
         type:
           description: The type of stop. Allowed values of this property can be defined by the network policy.
           type: string
+          enum:
+            - START
+            - END
         time:
           description: Timings applicable at the stop.
           allOf:

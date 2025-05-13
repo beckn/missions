@@ -1124,7 +1124,6 @@ Search request can contain one or more search criterion within it. Use the follo
 |-------------|-----|
 |Demand flexibility categories|MANUAL_FLEX<br>AUTO_FLEX<br>HYBRID_FLEX|
 |acceptance_type|MANUAL_OPTIN<br>AUTO_OPTIN<br>SCHEDULED|
-|application-status|PENDING<br>ACTIVE<br>CANCELLED<br>FAILED|
 |fulfillment_type|DIGITAL|
 |fulfillment state|APPLICATION_SUCCESSFUL<br>APPLICATION_PROCESSING<br>SMS<br>APPLICATION_FAILED|
 |stops types|END|

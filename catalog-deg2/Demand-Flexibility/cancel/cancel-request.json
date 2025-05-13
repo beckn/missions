@@ -21,8 +21,6 @@
   },
   "message": {
     "order_id": "order-flex-001",
-    "descriptor": {
-      "name": "Moving Out"
-    }
+    "cancellation_reason_id": "cancel/id/1234"
   }
 }
