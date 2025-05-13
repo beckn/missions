@@ -1,254 +1,490 @@
-# Battery Rental Implementation Guide
+# DEG Implementation Guide: Peer To Peer Energy Trade
 
 ## Version History
 
 | Date       | Version | Description                        |
 | ---------- | ------- | ---------------------------------- |
-| 13-05-2025 | 1.0     | Initial version for battery rental |
+| 13-05-2025 | 1.0     | Initial version for Peer To Peer Energy Trade |
 
 
 ## Introduction
 
-This guide outlines the end-to-end implementation for a battery rental use case using the Beckn Protocol. It is intended for developers and system integrators creating Beckn-compliant BAP and BPP systems for renting energy storage devices.
+This guide outlines the end-to-end implementation for a Peer To Peer Energy Trade use case using the Beckn Protocol. It is intended for developers and system integrators creating Beckn-compliant BAP and BPP systems for renting energy storage devices.
 
 ## Outcome Visualization
 
-### Use Case - Battery Rental for Residential Backup
+### Use Case - Peer To Peer Energy Trade for Residential Backup
 
-**Scenario**: Jane Doe wants to rent a STARMAX 6-Volt Deep Cycle Battery for solar backup. She selects the product through Energykart, confirms rental dates, and opts for home delivery.
-
-1. **Search**: Jane searches for batteries available for rental in San Francisco.
-2. **Discovery**: Energykart shows multiple battery products from vendors like SF Energy Depot.
-3. **Selection**: Jane selects the STARMAX battery with a 60-day rental period.
-4. **Order**: Billing and delivery details are confirmed.
-5. **Fulfillment**: The battery is delivered and picked up at the end of the term.
-6. **Post-Rental**: Status is updated, and return policies apply.
+<>
 
 
 ## API Calls and Payloads
 
 ### search
-Search is used to discover available battery rental options.
-- `intent.descriptor.name`: battery product or type.
-- `fulfillment.stops[0].location`: location of delivery or pickup.
+Search is used to discover available Peer To Peer Energy Trade options.
 
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "search",
-    "bap_id": "battery-bap.com",
-    "bap_uri": "https://battery-bap.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-search-3001",
-    "timestamp": "2025-05-12T09:00:00Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    },
-    "version": "1.1.0"
-  },
-  "message": {
-    "intent": {
-      "item": {
-        "descriptor": { "name": "Battery" }
-      },
-      "fulfillment": {
-        "stops": [
-          {
-            "type": "end",
-            "location": {
-              "address": "456 Battery St, San Francisco, CA"
+    "context": {
+        "domain": "trade",
+        "action": "search",
+        "location": {
+            "country": {
+                "code": "USA"
             },
-            "time": {
-              "range": {
-                "start": "2025-05-14T09:00:00Z",
-                "end": "2025-07-13T17:00:00Z"
-              }
+            "city": {
+                "code": "NANP:628"
             }
-          }
-        ]
-      }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "search-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
+    },
+    "message": {
+        "intent": {
+            "item": {
+                "descriptor": {
+                    "name": "Solar Surplus Energy"
+                }
+            },
+            "fulfillment": {
+                "agent": {
+                    "organization": {
+                        "descriptor": {
+                            "name": "PG&E Grid Services"
+                        }
+                    }
+                },
+                "stops": [
+                    {
+                        "type": "end",
+                        "location": {
+                            "address": "der://ssf.meter/98765456"
+                        },
+                        "time": {
+                            "range": {
+                                "start": "2024-10-04T10:00:00",
+                                "end": "2024-10-04T18:00:00"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
     }
-  }
 }
 ````
 
-
 ### on_search
-Responds with available battery rental options from different providers.
+Responds with available Peer To Peer Energy Trade options from different providers.
 - Product options listed under `catalog.providers[].items[]`.
 - Pricing, quantity, rental terms and images are included.
 
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "on_search",
-    "bap_id": "battery-bap.com",
-    "bpp_id": "sfenergystore.com",
-    "bpp_uri": "https://api.sfenergystore.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-onsearch-3001",
-    "timestamp": "2025-05-12T09:00:03Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    },
-    "version": "1.1.0"
-  },
-  "message": {
-    "catalog": {
-      "providers": [
-        {
-          "id": "sfenergystore",
-          "descriptor": {
-            "name": "SF Energy Depot",
-            "images": [ { "url": "https://sfenergystore.com/images/battery1.png" } ]
-          },
-          "items": [
-            {
-              "id": "starmax-6v",
-              "descriptor": {
-                "name": "STARMAX 6-Volt Deep Cycle Battery",
-                "short_desc": "Ideal for solar backup."
-              },
-              "price": {
-                "currency": "USD",
-                "value": "50"
-              },
-              "quantity": {
-                "available": {
-                  "measure": {
-                    "value": "10",
-                    "unit": "units"
-                  }
-                }
-              },
-              "tags": [
-                {
-                  "descriptor": { "code": "rental_terms" },
-                  "list": [
-                    {
-                      "descriptor": { "code": "duration" },
-                      "value": "60 days"
-                    }
-                  ]
-                }
-              ]
+    "context": {
+        "domain": "trade",
+        "action": "on_search",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
             }
-          ]
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
+        "bpp_id": "p2pTrading-bpp.com",
+        "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "timestamp": "2023-07-16T04:41:16Z"
+    },
+    "message": {
+        "catalog": {
+            "providers": [
+                {
+                    "id": "p1072",
+                    "descriptor": {
+                        "name": "Ethan Maxwell",
+                        "images": [
+                            {
+                                "url": "https://p1072.in/images/logo.png"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "1",
+                            "descriptor": {
+                                "code": "solar-energy",
+                                "name": "Solar Energy"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "descriptor": {
+                                "code": "EV",
+                                "name": "Electric Vehicle"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "gps": "37.7749,-122.4194",
+                            "descriptor": {
+                                "code": "home"
+                            },
+                            "address": "der://ethan.home"
+                        },
+                        {
+                            "id": "2",
+                            "gps": "37.7749,-122.4194",
+                            "descriptor": {
+                                "code": "ev"
+                            },
+                            "address": "der://ethan.ev"
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "1",
+                            "agent": {
+                                "organization": {
+                                    "descriptor": {
+                                        "name": "PG&E Grid Services"
+                                    }
+                                }
+                            },
+                            "stops": [
+                                {
+                                    "type": "start",
+                                    "location": {
+                                        "address": "der://pge.meter/100200300"
+                                    },
+                                    "time": {
+                                        "range": {
+                                            "start": "2024-10-04T10:00:00",
+                                            "end": "2024-10-04T18:00:00"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "end",
+                                    "time": {
+                                        "range": {
+                                            "start": "2024-10-04T10:00:00",
+                                            "end": "2024-10-04T18:00:00"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "uid_xyz",
+                            "descriptor": {
+                                "code": "energy",
+                                "name": "Solar Surplus Energy",
+                                "short_desc": "30 kWh surplus available between 10AM–6PM"
+                            },
+                            "price": {
+                                "value": "5",
+                                "currency": "INR/kWH"
+                            },
+                            "quantity": {
+                                "available": {
+                                    "measure": {
+                                        "value": "30",
+                                        "unit": "kWH"
+                                    }
+                                }
+                            },
+                            "category_ids": [
+                                "1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "name": "Energy Attributes"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Source Type"
+                                            },
+                                            "value": "Rooftop Solar"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Carbon Offset Certified"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Solar Panel Ownership Certificate",
+                                                "code": "SPOC"
+                                            },
+                                            "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/SolarPanelOwnershipCer.json"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "P2P Trading Licence",
+                                                "code": "P2PTL"
+                                            },
+                                            "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/Licence.pdf"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-      ]
     }
-  }
 }
 ````
 
----
-
-
 ### select
 
-Used to choose a specific battery rental product and indicate quantity or rental preferences.
+Used to choose a specific energy trade listing and indicate quantity
 
 * The item is chosen using `order.items.id`.
 * Delivery preferences go in `fulfillments.stops[].location`.
 
 ````json
 {
-  "context": {
-    "domain": "rental",
-    "action": "select",
-    "bap_id": "battery-bap.com",
-    "bap_uri": "https://battery-bap.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-select-3001",
-    "timestamp": "2025-05-12T09:01:00Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
+    "context": {
+        "domain": "trade",
+        "action": "select",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "select-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
     },
-    "version": "1.1.0"
-  },
-  "message": {
-    "order": {
-      "provider": { "id": "sfenergystore" },
-      "items": [
-        {
-          "id": "starmax-6v",
-          "quantity": {
-            "measure": {
-              "value": 1,
-              "unit": "unit"
-            }
-          }
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p1072"
+            },
+            "items": [
+                {
+                    "id": "uid_xyz",
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "value": "10",
+                                "unit": "kWH"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "PG&E Grid Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "der://ssf.meter/98765456"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
         }
-      ],
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "456 Battery St, San Francisco, CA"
-            }
-          }
-        }
-      ]
     }
-  }
 }
 ````
 
 ### on_select
 Returns confirmation of selection with pricing and fulfillment info.
-- Check item pricing and rental period.
-- Validate final address and available quantity.
 
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "on_select",
-    "bap_id": "battery-bap.com",
-    "bpp_id": "sfenergystore.com",
-    "bpp_uri": "https://api.sfenergystore.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-onselect-3001",
-    "timestamp": "2025-05-12T09:01:02Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
+    "context": {
+        "domain": "trade",
+        "action": "on_select",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bpp_id": "p2pTrading-bpp.com",
+        "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "on_select-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
     },
-    "version": "1.1.0"
-  },
-  "message": {
-    "order": {
-      "items": [
-        {
-          "id": "starmax-6v",
-          "price": {
-            "currency": "USD",
-            "value": "50"
-          },
-          "quantity": {
-            "measure": {
-              "value": 1,
-              "unit": "unit"
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p1072",
+                "descriptor": {
+                    "name": "Ethan Maxwell",
+                    "images": [
+                        {
+                            "url": "https://p1072.in/images/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "uid_xyz",
+                    "descriptor": {
+                        "code": "energy",
+                        "name": "Solar Surplus Energy",
+                        "short_desc": "30 kWh surplus available between 10AM-6PM"
+                    },
+                    "price": {
+                        "value": "5",
+                        "currency": "USD/kWH"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "value": "10",
+                                "unit": "kWH"
+                            }
+                        }
+                    },
+                    "category_ids": [
+                        "1"
+                    ],
+                    "location_ids": [
+                        "1"
+                    ],
+                    "fulfillment_ids": [
+                        "1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Energy_Attributes"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Source_Type"
+                                    },
+                                    "value": "Rooftop Solar"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Carbon_Offset_Certified"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "PG&E Grid Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "start",
+                            "location": {
+                                "address": "der://pge.meter/100200300"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        },
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "der://ssf.meter/98765456"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "50",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Energy Cost",
+                        "price": {
+                            "value": "50",
+                            "currency": "USD"
+                        }
+                    }
+                ]
             }
-          }
         }
-      ],
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "456 Battery St, San Francisco, CA"
-            }
-          }
-        }
-      ]
     }
-  }
 }
 ````
 
@@ -256,49 +492,76 @@ Returns confirmation of selection with pricing and fulfillment info.
 
 Initializes the order by sending billing and fulfillment details.
 
-* Contains renter details and location for battery delivery.
-
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "init",
-    "bap_id": "battery-bap.com",
-    "bap_uri": "https://battery-bap.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-init-3001",
-    "timestamp": "2025-05-12T09:02:00Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    },
-    "version": "1.1.0"
-  },
-  "message": {
-    "order": {
-      "provider": { "id": "sfenergystore" },
-      "items": [
-        {
-          "id": "starmax-6v"
-        }
-      ],
-      "billing": {
-        "name": "Jane Doe",
-        "address": "456 Battery St, SF, CA",
-        "email": "jane@example.com",
-        "phone": "+14155551234"
-      },
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "456 Battery St, SF, CA"
+    "context": {
+        "domain": "trade",
+        "action": "init",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
             }
-          }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "init-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p1072"
+            },
+            "items": [
+                {
+                    "id": "uid_xyz",
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "value": "10",
+                                "unit": "kWH"
+                            }
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "John Doe",
+                "email": "john@example.com",
+                "phone": "+11234567890"
+            },
+            "fulfillments": [
+                {
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "PG&E Grid Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "der://ssf.meter/98765456"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
         }
-      ]
     }
-  }
 }
 ````
 
@@ -308,308 +571,857 @@ Initializes the order by sending billing and fulfillment details.
 
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "on_init",
-    "bap_id": "battery-bap.com",
-    "bpp_id": "sfenergystore.com",
-    "bpp_uri": "https://api.sfenergystore.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-oninit-3001",
-    "timestamp": "2025-05-12T09:02:05Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
+    "context": {
+        "domain": "trade",
+        "action": "on_init",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bpp_id": "p2pTrading-bpp.com",
+        "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "on_select-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
     },
-    "version": "1.1.0"
-  },
-  "message": {
-    "order": {
-      "quote": {
-        "price": {
-          "currency": "USD",
-          "value": "50"
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p1072",
+                "descriptor": {
+                    "name": "Ethan Maxwell",
+                    "images": [
+                        {
+                            "url": "https://p1072.in/images/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "uid_xyz",
+                    "descriptor": {
+                        "code": "energy",
+                        "name": "Solar Surplus Energy",
+                        "short_desc": "30 kWh surplus available between 10AM-6PM"
+                    },
+                    "price": {
+                        "value": "5",
+                        "currency": "USD/kWH"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "value": "10",
+                                "unit": "kWH"
+                            }
+                        }
+                    },
+                    "category_ids": [
+                        "1"
+                    ],
+                    "location_ids": [
+                        "1"
+                    ],
+                    "fulfillment_ids": [
+                        "1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Energy_Attributes"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Source_Type"
+                                    },
+                                    "value": "Rooftop Solar"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Carbon_Offset_Certified"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Certifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Solar Panel Ownership Certificate",
+                                        "code": "SPOC"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/SolarPanelOwnershipCer.json"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "P2P Trading Licence",
+                                        "code": "P2PTL"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/Licence.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "PG&E Grid Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "start",
+                            "location": {
+                                "address": "der://pge.meter/100200300"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        },
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "der://ssf.meter/98765456"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "50",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Energy Cost",
+                        "price": {
+                            "value": "50",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE-ORDER",
+                    "params": {
+                        "amount": "50",
+                        "currency": "USD"
+                    },
+                    "url": "https://payment-gateway.com/checkout?amount=1500&currency=USD&order_id=123456&customer_id=78910&callback_url=https://yourwebsite.com/payment/callback",
+                    "status": "NOT-PAID"
+                }
+            ]
         }
-      },
-      "payment": {
-        "collected_by": "BAP",
-        "type": "PRE-FULFILLMENT",
-        "status": "NOT-PAID"
-      },
-      "items": [
-        {
-          "id": "starmax-6v"
-        }
-      ]
     }
-  }
 }
 ````
 
 ### confirm
 
-- Used to finalize the battery rental request including selected item and delivery.
+- Used to finalize the Peer To Peer Energy Trade request including selected item and delivery.
 
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "confirm",
-    "bap_id": "battery-bap.com",
-    "bap_uri": "https://battery-bap.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-confirm-3001",
-    "timestamp": "2025-05-12T09:03:00Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
+    "context": {
+        "domain": "trade",
+        "action": "confirm",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "confirm-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
     },
-    "version": "1.1.0"
-  },
-  "message": {
-    "order": {
-      "id": "battery-order-001",
-      "provider": { "id": "sfenergystore" },
-      "items": [ { "id": "starmax-6v" } ],
-      "billing": {
-        "name": "Jane Doe",
-        "email": "jane@example.com",
-        "phone": "+14155551234"
-      },
-      "fulfillments": [
-        {
-          "end": {
-            "location": { "address": "456 Battery St, SF, CA" }
-          }
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p1072"
+            },
+            "items": [
+                {
+                    "id": "uid_xyz",
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "value": "10",
+                                "unit": "kWH"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "PG&E Grid Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "der://ssf.meter/98765456"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE-ORDER",
+                    "params": {
+                        "amount": "50",
+                        "currency": "USD"
+                    },
+                    "url": "https://payment-gateway.com/checkout?amount=1500&currency=USD&order_id=123456&customer_id=78910&callback_url=https://yourwebsite.com/payment/callback",
+                    "status": "NOT-PAID"
+                }
+            ]
         }
-      ]
     }
-  }
 }
 ````
 
 ### on_confirm
 
-- Confirmation of successful rental placement.
+- Confirmation of successful trade order placement.
 
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "on_confirm",
-    "bap_id": "battery-bap.com",
-    "bpp_id": "sfenergystore.com",
-    "bpp_uri": "https://api.sfenergystore.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-onconfirm-3001",
-    "timestamp": "2025-05-12T09:03:03Z",
-    "location": {
-      "country": { "code": "USA" },
-      "city": { "code": "NANP:628" }
-    },
-    "version": "1.1.0"
-  },
-  "message": {
-    "order": {
-      "id": "battery-order-001",
-      "state": "CONFIRMED",
-      "items": [
-        {
-          "id": "starmax-6v"
-        }
-      ],
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "456 Battery St, SF, CA"
+    "context": {
+        "domain": "trade",
+        "action": "on_confirm",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
             }
-          }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bpp_id": "p2pTrading-bpp.com",
+        "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "on_select-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
+    },
+    "message": {
+        "order": {
+            "id": "ord/12",
+            "provider": {
+                "id": "p1072",
+                "descriptor": {
+                    "name": "Ethan Maxwell",
+                    "images": [
+                        {
+                            "url": "https://p1072.in/images/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "uid_xyz",
+                    "descriptor": {
+                        "code": "energy",
+                        "name": "Solar Surplus Energy",
+                        "short_desc": "30 kWh surplus available between 10AM-6PM"
+                    },
+                    "price": {
+                        "value": "5",
+                        "currency": "USD/kWH"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "value": "10",
+                                "unit": "kWH"
+                            }
+                        }
+                    },
+                    "category_ids": [
+                        "1"
+                    ],
+                    "location_ids": [
+                        "1"
+                    ],
+                    "fulfillment_ids": [
+                        "1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "Energy Attributes"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Source Type"
+                                    },
+                                    "value": "Rooftop Solar"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Carbon Offset Certified"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Certifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Solar Panel Ownership Certificate",
+                                        "code": "SPOC"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/SolarPanelOwnershipCer.json"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "P2P Trading Licence",
+                                        "code": "P2PTL"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/Licence.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "PG&E Grid Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "start",
+                            "location": {
+                                "address": "der://pge.meter/100200300"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        },
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "der://ssf.meter/98765456"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "status": "ORDER_PLACED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "50",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Energy Cost",
+                        "price": {
+                            "value": "50",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE-ORDER",
+                    "params": {
+                        "amount": "50",
+                        "currency": "USD",
+                        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176"
+                    },
+                    "url": "https://payment-gateway.com/checkout?amount=1500&currency=USD&order_id=123456&customer_id=78910&callback_url=https://yourwebsite.com/payment/callback",
+                    "status": "PAID"
+                }
+            ]
         }
-      ]
     }
-  }
 }
 ````
 
 ### status
 
-- Used to fetch the status of the rental fulfillment.
+- Used to fetch the status of a tarde order.
 
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "status",
-    "bap_id": "battery-bap.com",
-    "bap_uri": "https://battery-bap.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-status-3001",
-    "timestamp": "2025-05-12T09:04:00Z",
-    "version": "1.1.0"
-  },
-  "message": {
-    "order_id": "battery-order-001"
+    "context": {
+      "domain": "trade",
+      "action": "status",
+      "location": {
+        "country": {
+          "code": "USA"
+        },
+        "city": {
+          "code": "NANP:628"
+        }
+      },
+      "version": "1.1.0",
+      "bap_id": "p2pTrading-bap.com",
+      "bap_uri": "https://api.p2pTrading-bap.com/pilot/bap/energy/v1",
+      "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+      "message_id": "status-message-001",
+      "timestamp": "2025-05-09T10:00:00Z"
+    },
+    "message": {
+      "order_id": "ord/12"
+    }
   }
-}
 ````
 
 ### on_status
 
-- Gives latest state of delivery or pickup for the rental order.
-
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "on_status",
-    "bap_id": "battery-bap.com",
-    "bpp_id": "sfenergystore.com",
-    "bpp_uri": "https://api.sfenergystore.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-onstatus-3001",
-    "timestamp": "2025-05-12T09:04:02Z",
-    "version": "1.1.0"
-  },
-  "message": {
-    "order": {
-      "id": "battery-order-001",
-      "state": "ACTIVE",
-      "fulfillments": [
-        {
-          "state": {
-            "descriptor": {
-              "code": "In-Transit",
-              "name": "Battery out for delivery"
-            }
-          }
+    "context": {
+      "domain": "trade",
+      "action": "on_status",
+      "location": {
+        "country": {
+          "code": "USA"
+        },
+        "city": {
+          "code": "NANP:628"
         }
-      ]
+      },
+      "version": "1.1.0",
+      "bap_id": "p2pTrading-bap.com",
+      "bpp_id": "p2pTrading-bpp.com",
+      "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
+      "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+      "message_id": "on_status-message-001",
+      "timestamp": "2025-05-09T10:00:00Z"
+    },
+    "message": {
+        "order": {
+            "id": "ord/12",
+            "provider": {
+                "id": "p1072",
+                "descriptor": {
+                    "name": "Ethan Maxwell",
+                    "images": [
+                        {
+                            "url": "https://p1072.in/images/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "uid_xyz",
+                    "descriptor": {
+                        "code": "energy",
+                        "name": "Solar Surplus Energy",
+                        "short_desc": "30 kWh surplus available between 10AM-6PM"
+                    },
+                    "price": {
+                        "value": "5",
+                        "currency": "USD/kWH"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "value": "10",
+                                "unit": "kWH"
+                            }
+                        }
+                    },
+                    "category_ids": [
+                        "1"
+                    ],
+                    "location_ids": [
+                        "1"
+                    ],
+                    "fulfillment_ids": [
+                        "1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "Energy Attributes"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Source Type"
+                                    },
+                                    "value": "Rooftop Solar"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Carbon Offset Certified"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Certifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Solar Panel Ownership Certificate",
+                                        "code": "SPOC"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/SolarPanelOwnershipCer.json"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "P2P Trading Licence",
+                                        "code": "P2PTL"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/Licence.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "PG&E Grid Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "start",
+                            "location": {
+                                "address": "der://pge.meter/100200300"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        },
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "der://ssf.meter/98765456"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "status": "ORDER_CONFIRMED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "50",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Energy Cost",
+                        "price": {
+                            "value": "50",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE-ORDER",
+                    "params": {
+                        "amount": "50",
+                        "currency": "USD",
+                        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176"
+                    },
+                    "url": "https://payment-gateway.com/checkout?amount=1500&currency=USD&order_id=123456&customer_id=78910&callback_url=https://yourwebsite.com/payment/callback",
+                    "status": "PAID"
+                }
+            ]
+        }
     }
   }
-}
-````
-
-### update
-
-- Used to update order fulfillment like new delivery window.
-
-```json
-{
-  "context": {
-    "domain": "rental",
-    "action": "update",
-    "bap_id": "battery-bap.com",
-    "bap_uri": "https://battery-bap.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-update-3001",
-    "timestamp": "2025-05-12T09:05:00Z",
-    "version": "1.1.0"
-  },
-  "message": {
-    "update_target": "fulfillments",
-    "order": {
-      "id": "battery-order-001",
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "789 New Delivery Lane, SF, CA"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
 ````
 
 ### on_update
 
-- Acknowledges update to the order details.
 
 ```json
 {
-  "context": {
-    "domain": "rental",
-    "action": "on_update",
-    "bap_id": "battery-bap.com",
-    "bpp_id": "sfenergystore.com",
-    "bpp_uri": "https://api.sfenergystore.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-onupdate-3001",
-    "timestamp": "2025-05-12T09:05:03Z",
-    "version": "1.1.0"
-  },
-  "message": {
-    "order": {
-      "id": "battery-order-001",
-      "fulfillments": [
-        {
-          "end": {
-            "location": {
-              "address": "789 New Delivery Lane, SF, CA"
+    "context": {
+        "domain": "trade",
+        "action": "on_update",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
             }
-          }
+        },
+        "version": "1.1.0",
+        "bap_id": "p2pTrading-bap.com",
+        "bpp_id": "p2pTrading-bpp.com",
+        "bpp_uri": "https://api.p2pTrading-bpp.com/pilot/bpp/",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "on_status-message-001",
+        "timestamp": "2025-05-09T10:00:00Z"
+    },
+    "message": {
+        "order": {
+            "id": "ord/12",
+            "provider": {
+                "id": "p1072",
+                "descriptor": {
+                    "name": "Ethan Maxwell",
+                    "images": [
+                        {
+                            "url": "https://p1072.in/images/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "uid_xyz",
+                    "descriptor": {
+                        "code": "energy",
+                        "name": "Solar Surplus Energy",
+                        "short_desc": "30 kWh surplus available between 10AM-6PM"
+                    },
+                    "price": {
+                        "value": "5",
+                        "currency": "USD/kWH"
+                    },
+                    "quantity": {
+                        "available": {
+                            "measure": {
+                                "value": "30",
+                                "unit": "kWH"
+                            }
+                        },
+                        "selected": {
+                            "measure": {
+                                "value": "10",
+                                "unit": "kWH"
+                            }
+                        }
+                    },
+                    "category_ids": [
+                        "1"
+                    ],
+                    "location_ids": [
+                        "1"
+                    ],
+                    "fulfillment_ids": [
+                        "1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "Energy Attributes"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Source Type"
+                                    },
+                                    "value": "Rooftop Solar"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Carbon Offset Certified"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Certifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Solar Panel Ownership Certificate",
+                                        "code": "SPOC"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/SolarPanelOwnershipCer.json"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "P2P Trading Licence",
+                                        "code": "P2PTL"
+                                    },
+                                    "value": "https://https://drive.google.com/drive/u/0/my-drive/43846384/Licence.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "PG&E Grid Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "start",
+                            "location": {
+                                "address": "der://pge.meter/100200300"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        },
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "der://ssf.meter/98765456"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2024-10-04T10:00:00",
+                                    "end": "2024-10-04T18:00:00"
+                                }
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "status": "ORDER_PARTIALLY_FULFILLED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "40",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Energy Cost",
+                        "price": {
+                            "value": "40",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE-ORDER",
+                    "params": {
+                        "amount": "50",
+                        "currency": "USD",
+                        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176"
+                    },
+                    "url": "https://payment-gateway.com/checkout?amount=1500&currency=USD&order_id=123456&customer_id=78910&callback_url=https://yourwebsite.com/payment/callback",
+                    "status": "PAID"
+                }
+            ]
         }
-      ]
     }
-  }
 }
 ````
-
-### cancel
-
-- Used to cancel a placed order before fulfillment.
-
-```json
-{
-  "context": {
-    "domain": "rental",
-    "action": "cancel",
-    "bap_id": "battery-bap.com",
-    "bap_uri": "https://battery-bap.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-cancel-3001",
-    "timestamp": "2025-05-12T09:06:00Z",
-    "version": "1.1.0"
-  },
-  "message": {
-    "order_id": "battery-order-001",
-    "cancellation_reason_id": "buyer_changed_mind"
-  }
-}
-````
-
-### on_cancel
-
-- Confirms that the order has been successfully cancelled.
-
-```json
-{
-  "context": {
-    "domain": "rental",
-    "action": "on_cancel",
-    "bap_id": "battery-bap.com",
-    "bpp_id": "sfenergystore.com",
-    "bpp_uri": "https://api.sfenergystore.com",
-    "transaction_id": "txn-rental-3001",
-    "message_id": "msg-oncancel-3001",
-    "timestamp": "2025-05-12T09:06:02Z",
-    "version": "1.1.0"
-  },
-  "message": {
-    "order": {
-      "id": "battery-order-001",
-      "state": "CANCELLED"
-    }
-  }
-}
-````
-
-
-
-
 
 ## Taxonomy and Layer2 Configuration
 
