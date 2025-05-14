@@ -1,0 +1,190 @@
+{
+    "context": {
+        "domain": "charging",
+        "action": "on_select",
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bpp_id": "example-bpp.com",
+        "bpp_uri": "https://example-bpp.com",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "on_select-message-001",
+        "timestamp": "2023-07-16T04:42:05Z",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "voltcharge_inc",
+                "descriptor": {
+                    "name": "VoltCharge Inc.",
+                    "short_desc": "EV charging solutions across urban and highway locations",
+                    "images": [
+                        {
+                            "url": "https://voltcharge.com/assets/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "pe-charging-01",
+                    "descriptor": {
+                        "code": "energy"
+                    },
+                    "price": {
+                        "value": "8",
+                        "currency": "USD/kWh"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "measure": {
+                                "value": "20",
+                                "unit": "kWh"
+                            }
+                        }
+                    },
+                    "add_ons": [
+                        {
+                            "id": "addon-wifi",
+                            "descriptor": {
+                                "name": "Wi-Fi Access"
+                            },
+                            "price": {
+                                "value": "0",
+                                "currency": "USD"
+                            }
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Connector_Specifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Connector_ID"
+                                    },
+                                    "value": "con1"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Charger_Type"
+                                    },
+                                    "value": "DC"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Connector_Type"
+                                    },
+                                    "value": "CCS2"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Power_Rating"
+                                    },
+                                    "value": "30kW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Estimated_Charging_Time"
+                                    },
+                                    "value": "40 minutes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Availability"
+                                    },
+                                    "value": "Available"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "Charging_Point_Specifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Pillar_Number"
+                                    },
+                                    "value": "4"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Charger_ID"
+                                    },
+                                    "value": "charg1"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "type": "CHARGING",
+                    "rateable": true,
+                    "tracking": false,
+                    "contact": {
+                        "phone": "+1800123456",
+                        "email": "support@voltcharge.com"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Fulfillment_Details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Service_Time_per_Vehicle"
+                                    },
+                                    "value": "45 min"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Charger_Environment"
+                                    },
+                                    "value": "Covered Bay"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Supports_Plug-n-Charge"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "USD",
+                    "value": "160"
+                },
+                "breakup": [
+                    {
+                        "title": "Charging Energy",
+                        "price": {
+                            "value": "160",
+                            "currency": "USD"
+                        },
+                        "item": {
+                            "id": "pe-charging-01"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

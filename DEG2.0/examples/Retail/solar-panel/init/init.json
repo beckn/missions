@@ -1,0 +1,67 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "init",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-solar-panel-001",
+        "message_id": "msg-init-001",
+        "timestamp": "2025-05-07T12:30:15Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "sunpro_energy"
+            },
+            "items": [
+                {
+                    "id": "sp_mono_450w",
+                    "quantity": {
+                        "selected": {
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "id": "it/panel/12"
+                }
+            ],
+            "billing": {
+                "name": "Evan Smith",
+                "email": "evan.smith@example.com",
+                "phone": "+14155558888",
+                "address": "456 Solar Valley Rd, San Jose, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "hd1",
+                    "type": "HOME_DELIVERY",
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "456 Solar Valley Rd, San Jose, CA"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-05-08T09:00:00Z",
+                                    "end": "2025-05-08T17:00:00Z"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

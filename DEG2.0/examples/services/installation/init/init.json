@@ -1,0 +1,62 @@
+{
+    "context": {
+        "domain": "service",
+        "action": "init",
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "certification-msg-10004",
+        "timestamp": "2023-07-16T04:41:30Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "sunpower_sf"
+            },
+            "items": [
+                {
+                    "id": "sp-resi-001"
+                }
+            ],
+            "billing": {
+                "name": "Emily Tran",
+                "email": "emily.tran@example.com",
+                "phone": "+14155556666",
+                "address": "456 Glenview St, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "type": "ONSITE",
+                    "customer": {
+                        "person": {
+                            "name": "Emily Tran"
+                        },
+                        "contact": {
+                            "phone": "+14155556666",
+                            "email": "emily.tran@example.com"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "456 Glenview St, San Francisco, CA"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

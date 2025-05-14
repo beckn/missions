@@ -1,0 +1,145 @@
+{
+    "context": {
+        "domain": "service",
+        "action": "on_select",
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bpp_id": "example-bpp.com",
+        "bpp_uri": "https://example-bpp.com",
+        "transaction_id": "6743e9e2-4fb5-487c-92b7-13ba8018f176",
+        "message_id": "certification-msg-10003",
+        "timestamp": "2023-07-16T04:41:25Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "sunpower_sf",
+                "descriptor": {
+                    "code": "SunPower_Installers",
+                    "short_desc": "Residential and commercial solar panel installation",
+                    "long_desc": "Leading provider of rooftop and industrial solar panel setup services in San Francisco.",
+                    "images": [
+                        {
+                            "url": "https://sunpower.com/logo.png"
+                        },
+                        {
+                            "url": "https://sunpower.com/gallery.jpg"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "sp-resi-001",
+                    "descriptor": {
+                        "name": "2kW Rooftop Solar Setup"
+                    },
+                    "price": {
+                        "estimated_value": "85000",
+                        "currency": "USD"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "system_specification"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "system_capacity"
+                                    },
+                                    "value": "2KW"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "installation_context"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "property_type"
+                                    },
+                                    "value": "Residential"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "installer_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "empaneled"
+                                    },
+                                    "value": "true"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "financial_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "financial_assistance"
+                                    },
+                                    "value": "true"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documentation"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "required_docs"
+                                    },
+                                    "value": "ID proof, Ownership certificate, Electricity bill, Net metering form, Wiring diagram"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "type": "ONSITE",
+                    "tracking": true,
+                    "rateable": true
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "85000",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Installation Charge",
+                        "price": {
+                            "value": "85000",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,566 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "on_search",
+        "version": "1.1.0",
+        "bpp_id": "bpp-solar-store.example.com",
+        "bpp_uri": "https://bpp-solar-store.example.com",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        },
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-solar-panel-001",
+        "message_id": "msg-solar-panel-001",
+        "ttl": "PT10M",
+        "timestamp": "2025-05-07T12:30:00Z"
+    },
+    "message": {
+        "catalog": {
+            "descriptor": {
+                "name": "Energykart Solar",
+                "short_desc": "Shop solar panels by efficiency, budget, or portability"
+            },
+            "providers": [
+                {
+                    "id": "sunpro_energy",
+                    "descriptor": {
+                        "name": "SunPro Energy Systems",
+                        "short_desc": "Premium mono and polycrystalline solar panels",
+                        "long_desc": "SunPro manufactures high-efficiency solar panels for residential and industrial installations. Known for reliability and long warranties.",
+                        "images": [
+                            {
+                                "url": "https://example.com/images/sunpro_logo.png",
+                                "size_type": "sm"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "premium_panels",
+                            "descriptor": {
+                                "name": "High Efficiency Panels",
+                                "code": "mono_panels"
+                            }
+                        },
+                        {
+                            "id": "budget_panels",
+                            "descriptor": {
+                                "name": "Economy Panels",
+                                "code": "poly_panels"
+                            }
+                        },
+                        {
+                            "id": "solar_installation",
+                            "descriptor": {
+                                "name": "Solar installation service",
+                                "code": "Solar_installation_service"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "hd1",
+                            "type": "HOME_DELIVERY"
+                        },
+                        {
+                            "id": "sp1",
+                            "type": "STORE_PICKUP"
+                        },
+                        {
+                            "id": "sv1",
+                            "type": "SITE_VISIT"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "rateable": true,
+                    "items": [
+                        {
+                            "id": "sp_mono_450w",
+                            "descriptor": {
+                                "name": "SunPro Mono 450W Panel",
+                                "short_desc": "High-efficiency 450W panel for rooftop systems",
+                                "long_desc": "450W monocrystalline panel with superior power output and compact size. Built for long-lasting rooftop installations with 25-year warranty."
+                            },
+                            "price": {
+                                "value": "320",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "premium_panels"
+                            ],
+                            "fulfillment_ids": [
+                                "hd1",
+                                "sp1"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
+                            ],
+                            "rating": "4.5",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Panel_Specifications"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Type"
+                                            },
+                                            "value": "Monocrystalline"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Wattage"
+                                            },
+                                            "value": "450W"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Efficiency"
+                                            },
+                                            "value": "21.4%"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Warranty"
+                                            },
+                                            "value": "25 years"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "IP_Rating"
+                                            },
+                                            "value": "IP68"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "solar equipment certificate",
+                                                "code": "SEC"
+                                            },
+                                            "value": "https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "pv module safety certificate",
+                                                "code": "PMSC"
+                                            },
+                                            "value": "https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "sp_poly_325w",
+                            "descriptor": {
+                                "name": "SunPro Poly 325W Panel",
+                                "short_desc": "Affordable 325W solar panel for home kits",
+                                "long_desc": "Entry-level 325W polycrystalline panel. Suitable for small rooftop or DIY solar applications. Offers good performance at lower cost."
+                            },
+                            "price": {
+                                "value": "200",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "budget_panels"
+                            ],
+                            "fulfillment_ids": [
+                                "sp1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "rating": "4.2",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Panel_Specifications"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Type"
+                                            },
+                                            "value": "Polycrystalline"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Wattage"
+                                            },
+                                            "value": "325W"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Efficiency"
+                                            },
+                                            "value": "18.3%"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Warranty"
+                                            },
+                                            "value": "10 years"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "solar equipment certificate",
+                                                "code": "SEC"
+                                            },
+                                            "value": "https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "pv module safety certificate",
+                                                "code": "PMSC"
+                                            },
+                                            "value": "https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "it/panel/12",
+                            "descriptor": {
+                                "name": "Solar Panel Installation Service",
+                                "short_desc": "On-site installation for rooftop or ground-mounted solar panels",
+                                "long_desc": "Includes mounting structure setup, panel alignment, inverter integration, grid connection readiness, and post-installation testing. Covers both residential and commercial rooftop systems."
+                            },
+                            "price": {
+                                "value": "250",
+                                "currency": "USD"
+                            },
+                            "rateable": true,
+                            "rating": "4.8",
+                            "category_ids": [
+                                "solar_installation"
+                            ],
+                            "fulfillment_ids": [
+                                "sv1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "installation_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "installation_type"
+                                            },
+                                            "value": "Rooftop / Ground-mount"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "supported_panel_types"
+                                            },
+                                            "value": "Mono PERC, Polycrystalline, Thin Film"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "system_capacity_limit"
+                                            },
+                                            "value": "Up to 10kW"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "included_services"
+                                            },
+                                            "value": "Mounting, inverter wiring, earthing, net-meter interface"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "installation_duration"
+                                            },
+                                            "value": "4–6 hours"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installer_qualification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "empaneled_with_nodal_agency"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "safety_certified"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "voltedge_solar",
+                    "descriptor": {
+                        "name": "VoltEdge Solar",
+                        "short_desc": "Flexible and mobile solar panel systems",
+                        "long_desc": "VoltEdge provides bendable and lightweight solar panels ideal for portable energy needs, RVs, and boats. Built for rugged environments.",
+                        "images": [
+                            {
+                                "url": "https://example.com/images/voltedge_logo.png",
+                                "size_type": "sm"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "portable_panels",
+                            "descriptor": {
+                                "name": "Portable Panels",
+                                "code": "flex_panels"
+                            }
+                        },
+                        {
+                            "id": "solar_installation",
+                            "descriptor": {
+                                "name": "Solar installation service",
+                                "code": "Solar_installation_service"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "hd2",
+                            "type": "HOME_DELIVERY"
+                        },
+                        {
+                            "id": "sv1",
+                            "type": "SITE_VISIT"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "rateable": true,
+                    "items": [
+                        {
+                            "id": "ve_flex_100w",
+                            "descriptor": {
+                                "name": "VoltEdge Flex 100W Panel",
+                                "short_desc": "Bendable solar panel for mobile energy use",
+                                "long_desc": "Flexible 100W solar panel built for curved surfaces and off-grid portability. Ideal for campers, boats, or remote setups. Durable and water-resistant."
+                            },
+                            "price": {
+                                "value": "145",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "portable_panels"
+                            ],
+                            "fulfillment_ids": [
+                                "hd2"
+                            ],
+                            "location_ids": [
+                                "2"
+                            ],
+                            "rating": "4.6",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Panel_Specifications"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Type"
+                                            },
+                                            "value": "Flexible PET"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Wattage"
+                                            },
+                                            "value": "100W"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Weight"
+                                            },
+                                            "value": "2.5 kg"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Use_Case"
+                                            },
+                                            "value": "Camping, RV, Off-grid"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Certifications"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "solar equipment certificate",
+                                                "code": "SEC"
+                                            },
+                                            "value": "https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "pv module safety certificate",
+                                                "code": "PMSC"
+                                            },
+                                            "value": "https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "it/panel/12",
+                            "descriptor": {
+                                "name": "Solar Panel Installation Service",
+                                "short_desc": "On-site installation for rooftop or ground-mounted solar panels",
+                                "long_desc": "Includes mounting structure setup, panel alignment, inverter integration, grid connection readiness, and post-installation testing. Covers both residential and commercial rooftop systems."
+                            },
+                            "price": {
+                                "value": "250",
+                                "currency": "USD"
+                            },
+                            "rateable": true,
+                            "rating": "4.8",
+                            "category_ids": [
+                                "solar_installation"
+                            ],
+                            "fulfillment_ids": [
+                                "sv1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "installation_specification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "installation_type"
+                                            },
+                                            "value": "Rooftop / Ground-mount"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "supported_panel_types"
+                                            },
+                                            "value": "Mono PERC, Polycrystalline, Thin Film"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "system_capacity_limit"
+                                            },
+                                            "value": "Up to 10kW"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "included_services"
+                                            },
+                                            "value": "Mounting, inverter wiring, earthing, net-meter interface"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "installation_duration"
+                                            },
+                                            "value": "4–6 hours"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installer_qualification"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "empaneled_with_nodal_agency"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "safety_certified"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

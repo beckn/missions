@@ -1,0 +1,64 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "init",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-smart-001",
+        "message_id": "msg-init-001",
+        "timestamp": "2025-05-07T12:45:25Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "neohome"
+            },
+            "items": [
+                {
+                    "id": "neohome_rgb_strip",
+                    "quantity": {
+                        "selected": {
+                            "count": 1
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Maria Lee",
+                "email": "maria.lee@example.com",
+                "phone": "+14155556666",
+                "address": "789 Beacon St, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "nhd2",
+                    "type": "HOME_DELIVERY",
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "789 Beacon St, San Francisco, CA"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-05-08T09:00:00Z",
+                                    "end": "2025-05-08T18:00:00Z"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
