@@ -35,7 +35,7 @@ This document has the following parts:
 
 Renee Lopez, a homeowner in San Jose, CA, is planning to transition to solar energy to reduce her electricity bills and environmental footprint. She wants a convenient way to discover, purchase, and install a solar panel system for her rooftop.
 
-She opens a Beckn-enabled marketplace app (powered by [bap-consumer.example.com](https://bap-consumer.example.com)) and browses offerings in the solar category. She selects a complete solution offered by **SunPro Energy Systems**:
+She opens a Beckn-enabled marketplace app and browses offerings in the solar category. She selects a complete solution offered by **SunPro Energy Systems**:
 
 - **Product**: *SunPro Mono 450W Panel*  
   - Price: $320 USD  
@@ -51,23 +51,12 @@ She opens a Beckn-enabled marketplace app (powered by [bap-consumer.example.com]
   - Certified and empaneled with nodal agency  
 
 ### Renee’s Journey:
-1. Adds the solar panel and installation service to her cart  
-2. Confirms delivery to her home at:  
-   *456 Solar Valley Rd, San Jose, CA*  
-3. Receives order confirmation with:
-   - **Order ID**: `order-sunpro-001`  
-   - **Transaction ID**: `tx-solar-panel-001`  
-   - **Total Quote**: $345 USD  
-   - Breakdown: $320 (panel) + $25 (delivery)  
-4. Schedules delivery and installation:
-   - **Delivery Window**: May 8, 2025, between 9:00 AM and 5:00 PM  
-   - Fulfillment Type: HOME_DELIVERY  
+1. Adds the solar panel and installation service to her cart.
+2. Confirms the price and the terms of the order.
+3. Schedules delivery and installation.
+4. Receives order confirmation with the terms of the order. 
 5. Chooses to pay $150 on fulfillment (Pay on Delivery option)  
-6. In case of cancellation:
-   - Must cancel before **May 7, 2025, 8:00 PM**
-   - A 5% cancellation fee applies (min $10 USD)
-   - Cancellation requires form submission via [this form](https://example.com/cancel)  
-   - Detailed terms: [Cancellation Policy (PDF)](https://example.com/docs/cancellation-policy.pdf)
+6. Check the regular status of the order.
 
 By using the Beckn-enabled solar store, Renee is able to transparently compare specifications, certifications, and installation offerings, ensuring a smooth end-to-end experience in her clean energy journey.
 
