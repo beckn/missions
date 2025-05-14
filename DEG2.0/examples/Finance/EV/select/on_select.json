@@ -1,0 +1,160 @@
+{
+    "context": {
+        "domain": "finance",
+        "action": "on_select",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bpp_id": "bpp-loan-provider.example.com",
+        "bpp_uri": "https://bpp-loan-provider.example.com",
+        "transaction_id": "tx-ev-001",
+        "message_id": "msg-on-select-001",
+        "timestamp": "2025-05-07T10:00:12Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "ev_finance_inc",
+                "descriptor": {
+                    "name": "EV Finance Inc.",
+                    "short_desc": "Loan provider for electric two- and three-wheelers"
+                }
+            },
+            "items": [
+                {
+                    "id": "ev_loan_1",
+                    "descriptor": {
+                        "name": "EV Loan - 12 Month Plan",
+                        "short_desc": "Loan for electric scooters"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Loan_Terms"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Min_Loan_Amount"
+                                    },
+                                    "value": "1000"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Max_Loan_Amount"
+                                    },
+                                    "value": "8000"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Tenure"
+                                    },
+                                    "value": "12 months"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Interest_Rate_Annual_Percent"
+                                    },
+                                    "value": "11.0"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Collateral_Required"
+                                    },
+                                    "value": "No"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Monthly_EMI_Estimate"
+                                    },
+                                    "value": "80"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "Eligibility"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Minimum_Credit_Score"
+                                    },
+                                    "value": "650"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Minimum_Income"
+                                    },
+                                    "value": "2500 USD"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Employment_Status"
+                                    },
+                                    "value": "Salaried"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "Asset_Details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Asset_Name"
+                                    },
+                                    "value": "Volt S1 Pro Electric Scooter"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Asset_Value_USD"
+                                    },
+                                    "value": "1200"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Asset_ID"
+                                    },
+                                    "value": "volt_s1_pro"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "digital_doc",
+                    "type": "Digital"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "80",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Monthly EMI Estimate",
+                        "price": {
+                            "value": "80",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

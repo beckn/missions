@@ -1,0 +1,367 @@
+{
+    "context": {
+        "domain": "deg:retail",
+        "action": "on_search",
+        "version": "1.1.0",
+        "bpp_id": "bpp-smartstore.example.com",
+        "bpp_uri": "https://bpp-smartstore.example.com",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "628"
+            }
+        },
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-smart-001",
+        "message_id": "msg-smart-001",
+        "ttl": "PT10M",
+        "timestamp": "2025-05-07T12:45:00Z"
+    },
+    "message": {
+        "catalog": {
+            "descriptor": {
+                "name": "SmartHome Mart",
+                "short_desc": "Online store for smart home devices and IoT appliances"
+            },
+            "providers": [
+                {
+                    "id": "smarthive",
+                    "descriptor": {
+                        "name": "SmartHive",
+                        "short_desc": "Smart TVs and automation hubs",
+                        "long_desc": "SmartHive offers a wide range of smart TVs, home automation controllers, and IoT-enabled products.",
+                        "images": [
+                            {
+                                "url": "https://example.com/images/smarthive_logo.png",
+                                "size_type": "sm"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "smart_tvs",
+                            "descriptor": {
+                                "name": "Smart TVs",
+                                "code": "smart_tvs"
+                            }
+                        },
+                        {
+                            "id": "smart_control",
+                            "descriptor": {
+                                "name": "Smart Home Controllers",
+                                "code": "smart_control"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "shd1",
+                            "type": "HOME_DELIVERY"
+                        },
+                        {
+                            "id": "ssp1",
+                            "type": "STORE_PICKUP"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "rateable": true,
+                    "items": [
+                        {
+                            "id": "smarthive_tv_55",
+                            "descriptor": {
+                                "name": "SmartHive 55\" 4K Android TV",
+                                "short_desc": "55-inch UHD Smart TV with voice remote and Google Assistant",
+                                "long_desc": "SmartHive's 4K UHD Android TV supports all major OTT apps, voice assistant integration, and has a sleek bezel-less design."
+                            },
+                            "price": {
+                                "value": "549",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "smart_tvs"
+                            ],
+                            "fulfillment_ids": [
+                                "shd1",
+                                "ssp1"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
+                            ],
+                            "rating": "4.7",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Specifications"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Resolution"
+                                            },
+                                            "value": "4K UHD"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "OS"
+                                            },
+                                            "value": "Android TV 11"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Voice_Assistant"
+                                            },
+                                            "value": "Google Assistant"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Ports"
+                                            },
+                                            "value": "HDMI x3, USB x2"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "smarthive_hub",
+                            "descriptor": {
+                                "name": "SmartHive Home Hub Pro",
+                                "short_desc": "IoT hub for controlling smart lights, locks, sensors",
+                                "long_desc": "SmartHive Home Hub lets you connect and manage all your smart devices from one place using voice or app. Compatible with Alexa and Google."
+                            },
+                            "price": {
+                                "value": "99",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "smart_control"
+                            ],
+                            "fulfillment_ids": [
+                                "shd1"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "rating": "4.3",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Specifications"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Connectivity"
+                                            },
+                                            "value": "Wi-Fi, Zigbee, Bluetooth"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Compatible_With"
+                                            },
+                                            "value": "Google Home, Alexa"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Voice_Control"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "neohome",
+                    "descriptor": {
+                        "name": "NeoHome Electronics",
+                        "short_desc": "Smart lighting and home security systems",
+                        "long_desc": "NeoHome delivers modern smart lighting solutions, surveillance cameras, and integrated home security kits for digital homes.",
+                        "images": [
+                            {
+                                "url": "https://example.com/images/neohome_logo.png",
+                                "size_type": "sm"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "smart_lights",
+                            "descriptor": {
+                                "name": "Smart Lighting",
+                                "code": "smart_lights"
+                            }
+                        },
+                        {
+                            "id": "smart_security",
+                            "descriptor": {
+                                "name": "Smart Security Systems",
+                                "code": "smart_security"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "nhd2",
+                            "type": "HOME_DELIVERY"
+                        },
+                        {
+                            "id": "nsp2",
+                            "type": "STORE_PICKUP"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "rateable": true,
+                    "items": [
+                        {
+                            "id": "neohome_rgb_strip",
+                            "descriptor": {
+                                "name": "NeoHome RGB Smart LED Strip (16ft)",
+                                "short_desc": "Voice-controlled RGB strip with app and remote access",
+                                "long_desc": "Smart LED light strip with over 16 million colors, Google/Alexa voice control, and custom timers/scenes from mobile app."
+                            },
+                            "price": {
+                                "value": "39",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "smart_lights"
+                            ],
+                            "fulfillment_ids": [
+                                "nhd2",
+                                "nsp2"
+                            ],
+                            "location_ids": [
+                                "2"
+                            ],
+                            "rating": "4.6",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Specifications"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Length"
+                                            },
+                                            "value": "16 ft"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Control"
+                                            },
+                                            "value": "App + Voice"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Power_Source"
+                                            },
+                                            "value": "USB"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "neohome_cam2k",
+                            "descriptor": {
+                                "name": "NeoHome Indoor Smart Camera 2K",
+                                "short_desc": "Indoor camera with 2K resolution, motion alerts, 2-way audio",
+                                "long_desc": "Smart surveillance camera with 2K HD live feed, cloud storage, motion detection, and night vision. Controlled via app."
+                            },
+                            "price": {
+                                "value": "69",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "smart_security"
+                            ],
+                            "fulfillment_ids": [
+                                "nhd2"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
+                            ],
+                            "rating": "4.4",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Specifications"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Resolution"
+                                            },
+                                            "value": "2K (1440p)"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Storage"
+                                            },
+                                            "value": "Cloud + SD card"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Audio"
+                                            },
+                                            "value": "2-way audio"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Night_Vision"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

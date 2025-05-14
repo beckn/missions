@@ -1,0 +1,196 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "on_init",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bpp_id": "bpp-ev-retail.example.com",
+        "bpp_uri": "https://bpp-ev-retail.example.com",
+        "transaction_id": "tx-ev-retail-001",
+        "message_id": "msg-on-init-001",
+        "timestamp": "2025-05-07T13:21:35Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "voltwheel_mobility",
+                "descriptor": {
+                    "name": "VoltWheel Mobility",
+                    "short_desc": "Smart EVs and accessories"
+                }
+            },
+            "items": [
+                {
+                    "id": "volt_s1_pro",
+                    "descriptor": {
+                        "name": "Volt S1 Pro",
+                        "short_desc": "Electric scooter with 120 km range"
+                    },
+                    "price": {
+                        "value": "1250",
+                        "currency": "USD"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "count": 1
+                        }
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Specifications"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Battery"
+                                    },
+                                    "value": "3.97kWh Lithium-ion"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Range"
+                                    },
+                                    "value": "120 km"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Top_Speed"
+                                    },
+                                    "value": "95 km/h"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Charging_Time"
+                                    },
+                                    "value": "6.5 hours"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Alex Johnson",
+                "phone": "+14155550001",
+                "email": "alex.johnson@example.com",
+                "address": "1234 Main St, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "vw_hd",
+                    "type": "HOME_DELIVERY",
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "1234 Main St, San Francisco, CA"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-05-08T10:00:00Z",
+                                    "end": "2025-05-08T16:00:00Z"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "1300",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Vehicle Cost",
+                        "price": {
+                            "value": "1250",
+                            "currency": "USD"
+                        }
+                    },
+                    {
+                        "title": "Home Delivery",
+                        "price": {
+                            "value": "50",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "type": "PRE-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "1300",
+                        "currency": "USD"
+                    }
+                }
+            ],
+            "return_terms": [
+                {
+                    "fulfillment_state": {
+                        "code": "delivered",
+                        "name": "Delivered"
+                    },
+                    "return_eligible": true,
+                    "return_time": {
+                        "timestamp": "2025-05-14T23:59:59Z"
+                    },
+                    "return_location": {
+                        "id": "return-loc-001",
+                        "descriptor": {
+                            "name": "Return Center"
+                        },
+                        "gps": "37.7749,-122.4194",
+                        "address": "Warehouse 5, Bay Area, CA"
+                    },
+                    "fulfillment_managed_by": "CONSUMER"
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "fulfillment_state": {
+                        "descriptor": {
+                            "code": "order_placed",
+                            "name": "Order Placed"
+                        }
+                    },
+                    "reason_required": true,
+                    "cancel_by": {
+                        "timestamp": "2025-05-07T20:00:00Z"
+                    },
+                    "cancellation_fee": {
+                        "percentage": 5,
+                        "minimum_value": {
+                            "currency": "USD",
+                            "value": "10"
+                        }
+                    },
+                    "xinput": {
+                        "required": true,
+                        "form": {
+                            "url": "https://example.com/cancel"
+                        }
+                    },
+                    "external_ref": {
+                        "url": "https://example.com/docs/cancellation-policy.pdf",
+                        "mime_type": "application/pdf"
+                    }
+                }
+            ]
+        }
+    }
+}

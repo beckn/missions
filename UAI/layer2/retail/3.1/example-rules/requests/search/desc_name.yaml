@@ -1,0 +1,13 @@
+properties:
+  message:
+    properties:
+      intent:
+        properties:
+          descriptor:
+            properties:
+              name:
+                type: string
+            required:
+              - name
+        required:
+          - descriptor

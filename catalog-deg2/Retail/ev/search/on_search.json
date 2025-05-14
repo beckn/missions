@@ -1,0 +1,366 @@
+{
+    "context": {
+        "domain": "deg:retail",
+        "action": "on_search",
+        "version": "1.1.0",
+        "bpp_id": "bpp-ev-retail.example.com",
+        "bpp_uri": "https://bpp-ev-retail.example.com",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "628"
+            }
+        },
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-ev-retail-001",
+        "message_id": "msg-ev-retail-001",
+        "ttl": "PT10M",
+        "timestamp": "2025-05-07T13:20:00Z"
+    },
+    "message": {
+        "catalog": {
+            "descriptor": {
+                "name": "EV Retail Store",
+                "short_desc": "Buy EVs and accessories online"
+            },
+            "providers": [
+                {
+                    "id": "voltwheel_mobility",
+                    "descriptor": {
+                        "name": "VoltWheel Mobility",
+                        "short_desc": "Smart EVs and accessories",
+                        "long_desc": "VoltWheel manufactures electric scooters and high-quality EV accessories. Sleek designs, high range, and app integration.",
+                        "images": [
+                            {
+                                "url": "https://example.com/images/voltwheel_logo.png",
+                                "size_type": "sm"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "electric_scooters",
+                            "descriptor": {
+                                "name": "Electric Scooters",
+                                "code": "ev_scooter"
+                            }
+                        },
+                        {
+                            "id": "ev_accessories",
+                            "descriptor": {
+                                "name": "EV Accessories",
+                                "code": "ev_accessories"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "vw_hd",
+                            "type": "HOME_DELIVERY"
+                        },
+                        {
+                            "id": "vw_sp",
+                            "type": "STORE_PICKUP"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "rateable": true,
+                    "items": [
+                        {
+                            "id": "volt_s1_pro",
+                            "descriptor": {
+                                "name": "Volt S1 Pro",
+                                "short_desc": "Electric scooter with 120 km range",
+                                "long_desc": "The Volt S1 Pro features a 3.97kWh battery, top speed of 95 km/h, and fast charging in 6.5 hours. App-connected with anti-theft and navigation."
+                            },
+                            "price": {
+                                "value": "1250",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "electric_scooters"
+                            ],
+                            "fulfillment_ids": [
+                                "vw_hd",
+                                "vw_sp"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
+                            ],
+                            "rating": "4.7",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Specifications"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Battery"
+                                            },
+                                            "value": "3.97kWh Lithium-ion"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Range"
+                                            },
+                                            "value": "120 km"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Top_Speed"
+                                            },
+                                            "value": "95 km/h"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Charging_Time"
+                                            },
+                                            "value": "6.5 hours"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "vw_helmet_blaze",
+                            "descriptor": {
+                                "name": "VoltWheel Blaze Helmet",
+                                "short_desc": "Lightweight smart helmet with rear light",
+                                "long_desc": "Smart EV helmet with adjustable visor, Bluetooth connectivity, rear safety LED, and ventilated shell."
+                            },
+                            "price": {
+                                "value": "89",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "ev_accessories"
+                            ],
+                            "fulfillment_ids": [
+                                "vw_hd",
+                                "vw_sp"
+                            ],
+                            "location_ids": [
+                                "2"
+                            ],
+                            "rating": "4.6",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Helmet_Specs"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Size"
+                                            },
+                                            "value": "M / L / XL"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Bluetooth"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Safety"
+                                            },
+                                            "value": "Rear LED Light"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "greenmove_vehicles",
+                    "descriptor": {
+                        "name": "GreenMove Vehicles",
+                        "short_desc": "Heavy-duty EVs and parts",
+                        "long_desc": "GreenMove produces high-capacity e-rickshaws and rugged accessories suited for fleet and commercial operations.",
+                        "images": [
+                            {
+                                "url": "https://example.com/images/greenmove_logo.png",
+                                "size_type": "sm"
+                            }
+                        ]
+                    },
+                    "categories": [
+                        {
+                            "id": "electric_rickshaws",
+                            "descriptor": {
+                                "name": "Electric Rickshaws",
+                                "code": "ev_rickshaw"
+                            }
+                        },
+                        {
+                            "id": "ev_accessories",
+                            "descriptor": {
+                                "name": "EV Accessories",
+                                "code": "ev_accessories"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "gm_hd",
+                            "type": "HOME_DELIVERY"
+                        },
+                        {
+                            "id": "gm_sp",
+                            "type": "SHOWROOM_PICKUP"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "rateable": true,
+                    "items": [
+                        {
+                            "id": "green_rk_max",
+                            "descriptor": {
+                                "name": "GreenMove RK Max",
+                                "short_desc": "3-seater electric rickshaw for urban rides",
+                                "long_desc": "Sturdy and reliable 3-seater electric rickshaw with 150 km range and removable battery. Ideal for last-mile transport and fleet owners."
+                            },
+                            "price": {
+                                "value": "2100",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "electric_rickshaws"
+                            ],
+                            "fulfillment_ids": [
+                                "gm_hd"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "rating": "4.5",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Specifications"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Battery"
+                                            },
+                                            "value": "4.5kWh Removable"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Range"
+                                            },
+                                            "value": "150 km"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Top_Speed"
+                                            },
+                                            "value": "45 km/h"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Seating"
+                                            },
+                                            "value": "3 + driver"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "gm_fast_charger",
+                            "descriptor": {
+                                "name": "GreenMove Portable Fast Charger (48V)",
+                                "short_desc": "Compatible with rickshaws, includes surge protection",
+                                "long_desc": "48V 15A portable EV charger for e-rickshaws with auto-cutoff and thermal safety. Ideal for fleet use."
+                            },
+                            "price": {
+                                "value": "199",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "ev_accessories"
+                            ],
+                            "fulfillment_ids": [
+                                "gm_sp"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "rating": "4.3",
+                            "rateable": true,
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Charger_Specs"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Voltage"
+                                            },
+                                            "value": "48V"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Current"
+                                            },
+                                            "value": "15A"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Features"
+                                            },
+                                            "value": "Surge Protection, Auto Cutoff"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

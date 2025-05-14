@@ -1,0 +1,255 @@
+{
+  "context": {
+    "domain": "flexibility",
+    "action": "on_search",
+    "location": {
+      "country": {
+        "code": "USA"
+      },
+      "city": {
+        "code": "NANP:628"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "energy-bap-network.example.com",
+    "bap_uri": "https://energy-bap-network.example.com",
+    "bpp_id": "energy-incentive-bpp.example.com",
+    "bpp_uri": "https://energy-incentive-bpp.example.com",
+    "transaction_id": "incentive-txn-1001",
+    "message_id": "incentive-msg-2001",
+    "timestamp": "2025-05-07T10:45:00Z"
+  },
+  "message": {
+    "catalog": {
+      "descriptor": {
+        "name": "Energy Incentives and Subsidies"
+      },
+      "providers": [
+        {
+          "id": "provider_demand_flex_001",
+          "descriptor": {
+            "name": "SF Grid LoadFlex",
+            "short_desc": "San Francisco Demand Flexibility Programs",
+            "images": [
+              {
+                "url": "https://sfeu.org/assets/loadflex_logo.png"
+              }
+            ]
+          },
+          "locations": [
+            {
+              "id": "1",
+              "city": {
+                "name": "San Francisco"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "id": "manual_optin",
+              "type": "DIGITAL",
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "participation_mode"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "acceptance_type"
+                      },
+                      "value": "MANUAL_OPTIN"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "categories": [
+            {
+              "id": "flex_manual",
+              "descriptor": {
+                "code": "MANUAL_FLEX",
+                "name": "Manual Demand Response"
+              }
+            },
+            {
+              "id": "flex_auto",
+              "descriptor": {
+                "code": "AUTO_FLEX",
+                "name": "Automated Load Management"
+              }
+            }
+          ],
+          "items": [
+            {
+              "id": "manual_optin_demand_flex",
+              "descriptor": {
+                "name": "Evening Peak Saver Manual Opt-in",
+                "short_desc": "$0.20/kWh for 5-8 PM reductions (manual acceptance)",
+                "long_desc": "Users will receive app notifications during grid peak hours (5–8 PM). Upon manual acceptance, they can reduce usage and earn $0.20 for every kWh saved during the window.",
+                "additional_desc": {
+                  "url": "https://sfeu.org/flexibility/peak-saver"
+                }
+              },
+              "location_ids": [
+                "1"
+              ],
+              "category_ids": [
+                "flex_manual"
+              ],
+              "fulfillment_ids": [
+                "manual_optin"
+              ],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "Flexibility_Event_Details"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "Window"
+                      },
+                      "value": "5:00 PM to 8:00 PM daily during alerts"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "Reward"
+                      },
+                      "value": "$0.20 per reduced kWh"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "Enrollment_Required"
+                      },
+                      "value": "Yes"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "Acceptance_Mode"
+                      },
+                      "value": "Manual (via app notification)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "provider_flex_aggregator_001",
+          "descriptor": {
+            "name": "FlexiGrid Aggregator",
+            "short_desc": "Third-party aggregator for flexible load management",
+            "images": [
+              {
+                "url": "https://flexigrid.com/assets/logo.png"
+              }
+            ]
+          },
+          "locations": [
+            {
+              "id": "1",
+              "city": {
+                "name": "San Francisco"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "id": "automated_control",
+              "type": "DIGITAL",
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "participation_mode"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "acceptance_type"
+                      },
+                      "value": "Automated via Device API"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "categories": [
+            {
+              "id": "flex_manual",
+              "descriptor": {
+                "code": "MANUAL_FLEX",
+                "name": "Manual Demand Response"
+              }
+            },
+            {
+              "id": "flex_auto",
+              "descriptor": {
+                "code": "AUTO_FLEX",
+                "name": "Automated Load Management"
+              }
+            }
+          ],
+          "items": [
+            {
+              "id": "aggregator_optin_flex",
+              "descriptor": {
+                "name": "Smart Appliance Flex Program",
+                "short_desc": "$0.15/kWh reduction via smart device control",
+                "long_desc": "FlexiGrid can adjust your smart appliances like thermostats or EV chargers during grid alerts. You’ll earn $0.15 for each kWh avoided.",
+                "additional_desc": {
+                  "url": "https://flexigrid.com/programs/smart-load"
+                }
+              },
+              "location_ids": [
+                "1"
+              ],
+              "category_ids": [
+                "flex_auto"
+              ],
+              "fulfillment_ids": [
+                "automated_control"
+              ],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "Flexibility_Event_Details"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "Appliance_Control_Mode"
+                      },
+                      "value": "Automated (via device integration)"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "Reward"
+                      },
+                      "value": "$0.15 per reduced kWh"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "Compatible_Devices"
+                      },
+                      "value": "Nest, Tesla Wall Connector, Ecobee"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "Enrollment_Required"
+                      },
+                      "value": "Yes, with device linking"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

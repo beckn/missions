@@ -1,0 +1,334 @@
+{
+    "context": {
+        "domain": "scheme",
+        "action": "on_search",
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bap_uri": "www.example-bap.com",
+        "bpp_id": "sf-green-energy-office.gov",
+        "bpp_uri": "https://api.sf-green-energy-office.gov",
+        "transaction_id": "subsidy-txn-002",
+        "message_id": "subsidy-msg-002",
+        "timestamp": "2025-05-08T16:00:00Z",
+        "ttl": "PT10S",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "catalog": {
+            "descriptor": {
+                "name": "San Francisco Solar Panel Subsidy Programs",
+                "short_desc": "Explore subsidies for solar panel purchases in the Bay Area"
+            },
+            "providers": [
+                {
+                    "id": "sf_energy_office",
+                    "descriptor": {
+                        "name": "SF Department of Energy Support",
+                        "short_desc": "State incentives for clean energy adoption",
+                        "long_desc": "Provides incentives, rebates, and support programs for residents installing solar panels, as part of San Francisco's clean energy transition goals."
+                    },
+                    "categories": [
+                        {
+                            "id": "solar_purchase_subsidy",
+                            "descriptor": {
+                                "code": "solar_purchase_subsidy",
+                                "name": "Solar Panel Purchase Subsidy"
+                            }
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Francisco"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "subsidy_enrollment_digital",
+                            "type": "DIGITAL"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "purchase-rebate-basic",
+                            "descriptor": {
+                                "name": "Residential Solar Panel Rebate - Up to $2500",
+                                "short_desc": "One-time subsidy on approved rooftop solar purchases"
+                            },
+                            "price": {
+                                "estimated_value": "0",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "solar_purchase_subsidy"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
+                                "subsidy_enrollment_digital"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "subsidy_program_details"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "subsidy_type"
+                                            },
+                                            "value": "Direct Purchase Rebate"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "max_subsidy_amount_usd"
+                                            },
+                                            "value": "2500"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_deadline"
+                                            },
+                                            "value": "2025-12-31"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "administered_by"
+                                            },
+                                            "value": "SF Energy Department"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "eligibility_criteria"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "property_type"
+                                            },
+                                            "value": "Residential"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "system_capacity_min_kw"
+                                            },
+                                            "value": "2"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "system_certified"
+                                            },
+                                            "value": "Yes - by SF Certified Installer"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "ev-load-balance-incentive",
+                            "descriptor": {
+                                "name": "Smart EV Charger Load-Balancing Incentive",
+                                "short_desc": "Incentive for smart charger installations that support grid load-balancing"
+                            },
+                            "price": {
+                                "estimated_value": "0",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "solar_purchase_subsidy"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
+                                "subsidy_enrollment_digital"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "subsidy_program_details"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "subsidy_type"
+                                            },
+                                            "value": "Load-Balancing Rebate"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "max_subsidy_amount_usd"
+                                            },
+                                            "value": "500"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_mode"
+                                            },
+                                            "value": "Auto-applied upon installation"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "administered_by"
+                                            },
+                                            "value": "San Francisco Grid Authority"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "eligibility_criteria"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "required_device_type"
+                                            },
+                                            "value": "Smart EV Charger"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "grid_responsive"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "installation_certified"
+                                            },
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "documentation"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "required_documents"
+                                            },
+                                            "value": "Installation Report, Smart Charger ID, Utility Consent"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "carbon-grid-enrollment-incentive",
+                            "descriptor": {
+                                "name": "Carbon Savings & Grid Enrollment Incentive",
+                                "short_desc": "Auto-enrollment incentive for carbon savings or grid-participation programs"
+                            },
+                            "price": {
+                                "estimated_value": "0",
+                                "currency": "USD"
+                            },
+                            "category_ids": [
+                                "solar_purchase_subsidy"
+                            ],
+                            "location_ids": [
+                                "1"
+                            ],
+                            "fulfillment_ids": [
+                                "subsidy_enrollment_digital"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "subsidy_program_details"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "subsidy_type"
+                                            },
+                                            "value": "Performance-Based Incentive"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "program_name"
+                                            },
+                                            "value": "SF Carbon Efficiency Rebate"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "administered_by"
+                                            },
+                                            "value": "SF Carbon & Grid Response Unit"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "application_mode"
+                                            },
+                                            "value": "Auto-enrollment via device agent"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "eligibility_criteria"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "device_agent_required"
+                                            },
+                                            "value": "Yes"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "participation_type"
+                                            },
+                                            "value": "Carbon Tracking or Grid Load Response"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "minimum_duration_months"
+                                            },
+                                            "value": "6"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "documentation"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "required_documents"
+                                            },
+                                            "value": "Carbon tracking reports, device telemetry consent, participation certificate (if any)"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

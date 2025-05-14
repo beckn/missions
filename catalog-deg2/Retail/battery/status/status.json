@@ -1,0 +1,24 @@
+{
+    "context": {
+      "domain": "retail",
+      "action": "status",
+      "version": "1.1.0",
+      "bap_id": "bap-ps-network-dev.becknprotocol.io",
+      "bap_uri": "https://bap-ps-network-dev.becknprotocol.io",
+      "transaction_id": "4ff62a86-2241-41cc-9527-f0c00ecaba76",
+      "message_id": "status-message-001",
+      "timestamp": "2025-04-15T15:01:00Z",
+      "location": {
+        "country": {
+          "code": "USA"
+        },
+        "city": {
+          "code": "628"
+        }
+      }
+    },
+    "message": {
+      "order_id": "order-retail-104-001"
+    }
+  }
+  

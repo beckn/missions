@@ -1,0 +1,303 @@
+{
+    "context": {
+        "domain": "retail",
+        "action": "on_status",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bpp_id": "bpp-solar-store.example.com",
+        "bpp_uri": "https://bpp-solar-store.example.com",
+        "transaction_id": "tx-solar-panel-001",
+        "message_id": "msg-on-status-001",
+        "timestamp": "2025-05-07T12:30:45Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "id": "order-sunpro-001",
+            "provider": {
+                "id": "sunpro_energy",
+                "descriptor": {
+                    "name": "SunPro Energy Systems",
+                    "short_desc": "Premium mono and polycrystalline solar panels"
+                }
+            },
+            "items": [
+                {
+                    "id": "sp_mono_450w",
+                    "descriptor": {
+                        "name": "SunPro Mono 450W Panel",
+                        "short_desc": "High-efficiency 450W panel for rooftop systems"
+                    },
+                    "price": {
+                        "value": "320",
+                        "currency": "USD"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "count": 1
+                        }
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Panel_Specifications"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Type"
+                                    },
+                                    "value": "Monocrystalline"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Wattage"
+                                    },
+                                    "value": "450W"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Efficiency"
+                                    },
+                                    "value": "21.4%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Warranty"
+                                    },
+                                    "value": "25 years"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "IP_Rating"
+                                    },
+                                    "value": "IP68"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Certifications"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "solar equipment certificate",
+                                        "code": "SEC"
+                                    },
+                                    "value": "https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "pv module safety certificate",
+                                        "code": "PMSC"
+                                    },
+                                    "value": "https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "it/panel/12",
+                    "descriptor": {
+                        "name": "Solar Panel Installation Service",
+                        "short_desc": "On-site installation for rooftop or ground-mounted solar panels",
+                        "long_desc": "Includes mounting structure setup, panel alignment, inverter integration, grid connection readiness, and post-installation testing. Covers both residential and commercial rooftop systems."
+                    },
+                    "price": {
+                        "value": "250",
+                        "currency": "USD"
+                    },
+                    "rateable": true,
+                    "rating": "4.8",
+                    "category_ids": [
+                        "solar_installation"
+                    ],
+                    "fulfillment_ids": [
+                        "sv1"
+                    ],
+                    "location_ids": [
+                        "1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "installation_specification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "installation_type"
+                                    },
+                                    "value": "Rooftop / Ground-mount"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "supported_panel_types"
+                                    },
+                                    "value": "Mono PERC, Polycrystalline, Thin Film"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "system_capacity_limit"
+                                    },
+                                    "value": "Up to 10kW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "included_services"
+                                    },
+                                    "value": "Mounting, inverter wiring, earthing, net-meter interface"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installation_duration"
+                                    },
+                                    "value": "4–6 hours"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "installer_qualification"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "empaneled_with_nodal_agency"
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "safety_certified"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Evan Smith",
+                "email": "evan.smith@example.com",
+                "phone": "+14155558888",
+                "address": "456 Solar Valley Rd, San Jose, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "hd1",
+                    "type": "HOME_DELIVERY",
+                    "state": {
+                        "descriptor": {
+                            "code": "Out-for-delivery",
+                            "name": "Out for Delivery"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Carlos Green",
+                            "phone": "+14155551234"
+                        },
+                        "organization": {
+                            "descriptor": {
+                                "name": "SunPro Delivery Services"
+                            }
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "456 Solar Valley Rd, San Jose, CA"
+                            },
+                            "time": {
+                                "range": {
+                                    "start": "2025-05-08T09:00:00Z",
+                                    "end": "2025-05-08T17:00:00Z"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "345",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Panel Price",
+                        "price": {
+                            "value": "320",
+                            "currency": "USD"
+                        }
+                    },
+                    {
+                        "title": "Home Delivery",
+                        "price": {
+                            "value": "25",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "fulfillment_state": {
+                        "descriptor": {
+                            "code": "order_placed",
+                            "name": "Order Placed"
+                        }
+                    },
+                    "reason_required": true,
+                    "cancel_by": {
+                        "timestamp": "2025-05-07T20:00:00Z"
+                    },
+                    "cancellation_fee": {
+                        "percentage": 5,
+                        "minimum_value": {
+                            "currency": "USD",
+                            "value": "10"
+                        }
+                    },
+                    "xinput": {
+                        "required": true,
+                        "form": {
+                            "url": "https://example.com/cancel"
+                        }
+                    },
+                    "external_ref": {
+                        "url": "https://example.com/docs/cancellation-policy.pdf",
+                        "mime_type": "application/pdf"
+                    }
+                }
+            ]
+        }
+    }
+}

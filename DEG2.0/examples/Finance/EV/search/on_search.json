@@ -1,0 +1,291 @@
+{
+    "context": {
+        "domain": "finance",
+        "action": "on_search",
+        "version": "1.1.0",
+        "bpp_id": "bpp-loan-provider.example.com",
+        "bpp_uri": "https://bpp-loan-provider.example.com",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        },
+        "bap_id": "bap-consumer.example.com",
+        "bap_uri": "https://bap-consumer.example.com",
+        "transaction_id": "tx-ev-001",
+        "message_id": "msg-ev-001",
+        "ttl": "PT10M",
+        "timestamp": "2025-05-07T10:00:00Z"
+    },
+    "message": {
+        "catalog": {
+            "descriptor": {
+                "name": "EV Loan Catalog",
+                "short_desc": "Loan offerings for electric vehicles"
+            },
+            "providers": [
+                {
+                    "id": "ev_finance_inc",
+                    "descriptor": {
+                        "name": "EV Finance Inc.",
+                        "long_desc": "Loan provider for electric two- and three-wheelers"
+                    },
+                    "categories": [
+                        {
+                            "id": "ev_loans",
+                            "descriptor": {
+                                "name": "EV Loans",
+                                "code": "EV_LOAN"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "digital_doc",
+                            "type": "Digital"
+                        },
+                        {
+                            "id": "field_verification",
+                            "type": "In-person Verification"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "ev_loan_1",
+                            "descriptor": {
+                                "name": "EV Loan - 12 Month Plan",
+                                "short_desc": "Loan for electric scooters"
+                            },
+                            "category_ids": [
+                                "ev_loans"
+                            ],
+                            "fulfillment_ids": [
+                                "digital_doc"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Loan_Terms"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Min_Loan_Amount"
+                                            },
+                                            "value": "1000"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Max_Loan_Amount"
+                                            },
+                                            "value": "8000"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Tenure"
+                                            },
+                                            "value": "12 months"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Interest_Rate_Annual_Percent"
+                                            },
+                                            "value": "11.0"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Collateral_Required"
+                                            },
+                                            "value": "No"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Monthly_EMI_Estimate"
+                                            },
+                                            "value": "80"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Eligibility"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Minimum_Credit_Score"
+                                            },
+                                            "value": "650"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Minimum_Income"
+                                            },
+                                            "value": "2500 USD"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Employment_Status"
+                                            },
+                                            "value": "Salaried"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "volt_loan_corp",
+                    "descriptor": {
+                        "name": "VoltLoan Corp.",
+                        "long_desc": "Affordable EV loans for low-income customers"
+                    },
+                    "categories": [
+                        {
+                            "id": "ev_loans",
+                            "descriptor": {
+                                "name": "EV Loans",
+                                "code": "EV_LOAN"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "digital_doc",
+                            "type": "Digital"
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "id": "1",
+                            "city": {
+                                "name": "San Jose"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "city": {
+                                "name": " OakLand"
+                            }
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "ev_loan_volt_9mo",
+                            "descriptor": {
+                                "name": "EV Loan - 9 Month Plan",
+                                "short_desc": "Low EMI plan for entry-level EVs"
+                            },
+                            "category_ids": [
+                                "ev_loans"
+                            ],
+                            "fulfillment_ids": [
+                                "digital_doc"
+                            ],
+                            "location_ids": [
+                                "1",
+                                "2"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Loan_Terms"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Min_Loan_Amount"
+                                            },
+                                            "value": "500"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Max_Loan_Amount"
+                                            },
+                                            "value": "6000"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Tenure"
+                                            },
+                                            "value": "9 months"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Interest_Rate_Annual_Percent"
+                                            },
+                                            "value": "10.5"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Collateral_Required"
+                                            },
+                                            "value": "No"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Monthly_EMI_Estimate"
+                                            },
+                                            "value": "65"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Eligibility"
+                                    },
+                                    "display": true,
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Minimum_Credit_Score"
+                                            },
+                                            "value": "600"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Minimum_Income"
+                                            },
+                                            "value": "1800 USD"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "Employment_Status"
+                                            },
+                                            "value": "Self-Employed"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

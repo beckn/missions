@@ -1,0 +1,239 @@
+{
+    "context": {
+        "domain": "service",
+        "action": "on_init",
+        "version": "1.1.0",
+        "bap_id": "example-bap.com",
+        "bpp_id": "example-bpp.com",
+        "bpp_uri": "https://example-bpp.com",
+        "transaction_id": "certification-txn-9001",
+        "message_id": "certification-msg-20005",
+        "timestamp": "2025-05-07T14:15:35Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "sf_solar_cert_board",
+                "descriptor": {
+                    "name": "SF Solar Certification Board",
+                    "short_desc": "Official body for certifying solar panel installations",
+                    "long_desc": "Authorized certifying body offering inspection and certification services for solar panel installations in residential and commercial properties.",
+                    "images": [
+                        {
+                            "url": "https://sfsolarboard.gov/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "solar-cert-residential",
+                    "descriptor": {
+                        "name": "Residential Solar Certification"
+                    },
+                    "price": {
+                        "estimated_value": "150",
+                        "currency": "USD"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "certification-type"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "property-type"
+                                    },
+                                    "value": "Residential"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "inspection-mode"
+                                    },
+                                    "value": "On-site"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documentation"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "required-docs"
+                                    },
+                                    "value": "System layout, installation report, ID proof"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "certificate-validity"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "validity-period"
+                                    },
+                                    "value": "5 years"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "renewal-required"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility-criteria"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "minimum-system-size"
+                                    },
+                                    "value": "1.5KW"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "installation-age-limit"
+                                    },
+                                    "value": "Under 6 months old"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Document Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 2
+                            },
+                            "headings": [
+                                "System Layout",
+                                "Installation Report",
+                                "ID proof"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://6vs8xnx5i7.scheme-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+                            }
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Rachel Lee",
+                "email": "rachel.lee@example.com",
+                "phone": "+14155558888",
+                "address": "22 Sunset Ave, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "inspection",
+                    "type": "ONSITE",
+                    "tracking": true,
+                    "state": {
+                        "descriptor": {
+                            "code": "Scheduled",
+                            "name": "Inspection Scheduled"
+                        }
+                    },
+                    "customer": {
+                        "person": {
+                            "name": "Rachel Lee"
+                        },
+                        "contact": {
+                            "phone": "+14155558888",
+                            "email": "rachel.lee@example.com"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "end",
+                            "location": {
+                                "address": "22 Sunset Ave, San Francisco, CA"
+                            }
+                        }
+                    ],
+                    "contact": {
+                        "phone": "+1800123456",
+                        "email": "support@sfsolarboard.gov"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "inspection_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "technician_qualification"
+                                    },
+                                    "value": "Certified Solar Inspector"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "average_duration"
+                                    },
+                                    "value": "90 minutes"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "150",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Inspection & Certification",
+                        "price": {
+                            "value": "150",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
+                }
+            ]
+        }
+    }
+}

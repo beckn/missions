@@ -1,0 +1,245 @@
+{
+    "context": {
+        "domain": "finance",
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "bap_id": "bap-consumer.example.com",
+        "bpp_id": "bpp-loan-provider.example.com",
+        "bpp_uri": "https://bpp-loan-provider.example.com",
+        "transaction_id": "tx-solar-001",
+        "message_id": "msg-on-confirm-001",
+        "timestamp": "2025-05-07T10:05:35Z",
+        "ttl": "PT10M",
+        "location": {
+            "country": {
+                "code": "USA"
+            },
+            "city": {
+                "code": "NANP:628"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "id": "loan-order-solar-001",
+            "provider": {
+                "id": "sun_finance",
+                "descriptor": {
+                    "name": "Sun Finance",
+                    "short_desc": "Loan provider for residential and SME solar energy systems"
+                }
+            },
+            "items": [
+                {
+                    "id": "solar_loan_3kw",
+                    "descriptor": {
+                        "name": "Solar Panel Loan - 3kW System (36 Month Plan)",
+                        "short_desc": "Loan for 3kW rooftop solar installation"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "Loan Terms"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Max Loan Amount"
+                                    },
+                                    "value": "15000"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Tenure"
+                                    },
+                                    "value": "36 months"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Interest Rate (Annual %)"
+                                    },
+                                    "value": "10.0"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Collateral Required"
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Monthly EMI Estimate"
+                                    },
+                                    "value": "110"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Eligibility"
+                            },
+                            "display": true,
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Minimum Credit Score"
+                                    },
+                                    "value": "680"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Minimum Income"
+                                    },
+                                    "value": "3000 USD"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Panel Type"
+                                    },
+                                    "value": "Mono PERC"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Subsidy Available"
+                                    },
+                                    "value": "Yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Asset Details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Asset Name"
+                                    },
+                                    "value": "SunPro 3kW Rooftop Solar Panel System"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Asset Value (USD)"
+                                    },
+                                    "value": "14000"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Asset ID"
+                                    },
+                                    "value": "sunpro_solar_3kw"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Alice Verma",
+                "email": "alice.verma@example.com",
+                "phone": "+14155557777",
+                "address": "789 Solar Lane, San Francisco, CA"
+            },
+            "fulfillments": [
+                {
+                    "id": "field_verification",
+                    "type": "In-person Verification",
+                    "state": {
+                        "descriptor": {
+                            "code": "Loan-application-received",
+                            "name": "Loan Application Received"
+                        }
+                    },
+                    "contact": {
+                        "phone": "+1800123456",
+                        "email": "support@sunfinance.com"
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "value": "110",
+                    "currency": "USD"
+                },
+                "breakup": [
+                    {
+                        "title": "Monthly EMI Estimate",
+                        "price": {
+                            "value": "110",
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "type": "ON-FULFILLMENT",
+                    "collected_by": "BPP",
+                    "status": "NOT-PAID",
+                    "params": {
+                        "amount": "150",
+                        "currency": "USD"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "fulfillment_state": {
+                        "descriptor": {
+                            "code": "application_received",
+                            "name": "Application Received"
+                        }
+                    },
+                    "reason_required": true,
+                    "cancel_by": {
+                        "timestamp": "2025-05-08T23:59:59Z"
+                    },
+                    "cancellation_fee": {
+                        "percentage": 0,
+                        "minimum_value": {
+                            "currency": "USD",
+                            "value": "0"
+                        }
+                    },
+                    "xinput": {
+                        "required": false
+                    },
+                    "external_ref": {
+                        "url": "https://example.com/docs/loan-cancellation-policy.pdf",
+                        "mime_type": "application/pdf"
+                    }
+                },
+                {
+                    "fulfillment_state": {
+                        "descriptor": {
+                            "code": "approved",
+                            "name": "Approved"
+                        }
+                    },
+                    "reason_required": true,
+                    "cancel_by": {
+                        "timestamp": "2025-05-09T12:00:00Z"
+                    },
+                    "cancellation_fee": {
+                        "percentage": 2,
+                        "minimum_value": {
+                            "currency": "USD",
+                            "value": "50"
+                        }
+                    },
+                    "xinput": {
+                        "required": true,
+                        "form": {
+                            "url": "https://example.com/forms/cancel-loan"
+                        }
+                    },
+                    "external_ref": {
+                        "url": "https://example.com/docs/loan-policy.pdf",
+                        "mime_type": "application/pdf"
+                    }
+                }
+            ]
+        }
+    }
+}
