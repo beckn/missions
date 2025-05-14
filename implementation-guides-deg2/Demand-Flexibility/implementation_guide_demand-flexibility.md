@@ -1143,13 +1143,17 @@ Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/m
 
 ## Sandbox Details
 
-### Registry/Gateway:
+**Registry/Gateway:**
 
-- **Gateway Sandbox:** []()
-- **Registry Sandbox:** []()
+* Gateway: [gateway-deg.becknprotocol.io](gateway-deg.becknprotocol.io	)
+* Registry: [https://dedi-registry.becknprotocol.io](https://dedi-registry.becknprotocol.io)
 
-### BPP:
+**BAP:**
 
-- **BPP Client Sandbox:** []()
-- **BPP Network Sandbox:** []()
-- **BPP Playground Sandbox:** []()
+* BAP Client: [bap-ps-client-deg.becknprotocol.io](bap-ps-client-deg.becknprotocol.io)
+* BAP Network: [bap-ps-network-deg.becknprotocol.io](bap-ps-network-deg.becknprotocol.io)
+
+**BPP:**
+
+* BPP Client: [bpp-ps-client-deg.becknprotocol.io](bpp-ps-client-deg.becknprotocol.io)
+* BPP Network: [bpp-ps-network-deg.becknprotocol.io	](bpp-ps-network-deg.becknprotocol.io	)

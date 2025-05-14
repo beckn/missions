@@ -1452,6 +1452,10 @@ Initializes the order by sending billing and fulfillment details.
 |trade-currency|USD<br>EUR<br>GBP<br>INR<br>CRYPTO|
 |trade-participant|INDIVIDUAL<br>COMMERCIAL<br>UTILITY<br>AGGREGATOR|
 |Certifications-codes|SPOC<br>P2PTL|
+|payment type| PRE_ORDER<br>POST_ORDER<br>PRE_FULFILLMENT<br>POST_FULFILLMENT|
+|payment status| PAID<br>NOT_PAID
+|payment collected by| BAP<br>BPP<br>AGENT
+|fulfillment stop types| START<br>END
 
 
 ## Notes on Software Integration
@@ -1465,13 +1469,17 @@ Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/m
 
 ## Sandbox Details
 
-### Registry/Gateway:
+**Registry/Gateway:**
 
-- **Gateway Sandbox:** []()
-- **Registry Sandbox:** []()
+* Gateway: [gateway-deg.becknprotocol.io](gateway-deg.becknprotocol.io	)
+* Registry: [https://dedi-registry.becknprotocol.io](https://dedi-registry.becknprotocol.io)
 
-### BPP:
+**BAP:**
 
-- **BPP Client Sandbox:** []()
-- **BPP Network Sandbox:** []()
-- **BPP Playground Sandbox:** []()
+* BAP Client: [bap-ps-client-deg.becknprotocol.io](bap-ps-client-deg.becknprotocol.io)
+* BAP Network: [bap-ps-network-deg.becknprotocol.io](bap-ps-network-deg.becknprotocol.io)
+
+**BPP:**
+
+* BPP Client: [bpp-ps-client-deg.becknprotocol.io](bpp-ps-client-deg.becknprotocol.io)
+* BPP Network: [bpp-ps-network-deg.becknprotocol.io	](bpp-ps-network-deg.becknprotocol.io	)

@@ -894,7 +894,16 @@ components:
         parent_category_id:
           $ref: "#/components/schemas/Category/properties/id"
         descriptor:
-          $ref: "#/components/schemas/Descriptor"
+          allOf:
+            - $ref: "#/components/schemas/Descriptor"
+            - type: object
+              properties:
+                descriptor:
+                  properties:
+                    code:
+                      type: string
+                      enum:
+                        - ELECTRICITY_CONNECTION
         time:
           $ref: "#/components/schemas/Time"
         ttl:
