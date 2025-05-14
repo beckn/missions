@@ -1551,7 +1551,7 @@ Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/m
 
 ## Links to Artefacts
 
-* [Postman Collection for DEG Connection APIs]()
+* [Postman Collection for DEG Connection APIs](https://documenter.getpostman.com/view/23690031/2sB2qUmQAU#304488a7-8f53-400f-8eb1-d8e1cd6fad95)
 * [Layer 2 Configuration File]()
 
 ## Sandbox Details

@@ -1138,7 +1138,7 @@ Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/m
 
 ## Links to artefacts
 
-- [Postman collection for Demand Flexibility]()
+- [Postman collection for Demand Flexibility](https://documenter.getpostman.com/view/23690031/2sB2qUmQAU#e84faee4-82e4-4b47-b7ee-7cd03d2f4fd7)
 - [Layer2 config for Demand Flexibility]()
 
 ## Sandbox Details

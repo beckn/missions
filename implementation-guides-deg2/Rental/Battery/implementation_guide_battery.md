@@ -652,7 +652,7 @@ Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/m
 
 ## Links to artefacts
 
-- [Postman collection for Demand Flexibility]()
+- [Postman collection for Demand Flexibility](https://documenter.getpostman.com/view/23690031/2sB2qUmQAU#7f196f71-6ff6-457d-b813-fdca59faf12f)
 - [Layer2 config for UEI Demand Flexibility]()
 
 ## Sandbox Details

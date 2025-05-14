@@ -1081,7 +1081,7 @@ Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/m
 
 ## Links to artefacts
 
-- [Postman collection for Connections]()
+- [Postman collection for Connections](https://documenter.getpostman.com/view/23690031/2sB2qUmQAU#fd9a699b-2ac0-4808-aa4a-327a5a6c19ea)
 - [Layer2 config for Connections]()
 
 ## Sandbox Details
