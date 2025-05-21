@@ -795,7 +795,7 @@ paths:
   /energy-resources:
     post:
       tags:
-        - ER
+        - ER (Energy Resource)
       summary: Create a new energy resource
       description: |
         Create a new ER(Energy resource)
@@ -820,7 +820,7 @@ paths:
   /energy-resources/{erId}:
     get:
       tags:
-        - ER
+        - ER (Energy Resource)
       summary: Get energy resource by ID
       description: |
         Get an energy resource by ER id
@@ -868,7 +868,7 @@ paths:
                         example: "2025-05-21T07:55:45.555Z"
     delete:
       tags:
-        - ER
+        - ER (Energy Resource)
       summary: Delete energy resource by ID
       description: |
         Delete an energy resource by ER id
@@ -885,7 +885,7 @@ paths:
   /der:
     post:
       tags:
-        - DER
+        - DER (Distributed Energy Resource)
       summary: Create a DER (appliance)
       description: |
         Create a DER
@@ -909,7 +909,7 @@ paths:
   /toggle-der/{derid}:
     post:
       tags:
-        - DER
+        - DER (Distributed Energy Resource)
       summary: Toggle DER on or off
       description: |
         Switching an DER(energy appliance) on and off using DER id , i.e, switching on or off your Ceiling Fan, or Electric Geyser.
