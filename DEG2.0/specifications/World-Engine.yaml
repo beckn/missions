@@ -3,6 +3,10 @@ info:
   title: World Engine API
   version: 1.0.0
   description: API for managing utilities, meters, energy resources, and appliances
+  
+servers:
+  - url: https://playground.becknprotocol.io/meter-data-simulator
+    description: Sandbox server
 
 paths:
   /utility/detailed:
