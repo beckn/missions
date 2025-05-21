@@ -220,8 +220,8 @@ paths:
         - Utility
       summary: Reset utility data to default
       description: |
-        By default there is one utility and its details stored in the database.
-        - This API resets utilities data in the DB to the default values.
+        By default there is one utility(with its details) stored in the database.
+        - This API resets utilities data in the DB to the default value.
         - Roll back the DB to a default state when required.
         - No request body payload is sent as part of this API.
       responses:
@@ -529,7 +529,7 @@ paths:
         - Meter
       summary: Get a specific meter by ID
       description: |
-        fetch a meter from the world engine using meter id
+        Fetch a meter record from the world engine using meter id
         - No request body payload is sent as part of this API.
     
       parameters:
@@ -677,7 +677,7 @@ paths:
         - Meter
       summary: Delete a specific meter
       description: |
-        Delete a meter from the world engine using meter id
+        Delete a meter record from the world engine using meter id
         - No request body payload is sent as part of this API.
       parameters:
         - name: meterId
@@ -703,7 +703,7 @@ paths:
         - Meter
       summary: Add subscription to meter
       description: |
-        Add details of a subscription foe a meter from a cunsumer.
+        Add details of a user subscription for a meter into the world engine
       requestBody:
         required: true
         content:
@@ -802,7 +802,7 @@ paths:
         - ER (Energy Resource)
       summary: Create a new energy resource
       description: |
-        Create a new ER(Energy resource)
+        Create a new ER(Energy Resource)
       requestBody:
         required: true
         content:
@@ -827,7 +827,7 @@ paths:
         - ER (Energy Resource)
       summary: Get energy resource by ID
       description: |
-        Get an energy resource by ER id
+        Get an energy resource by ER(Energy Resource) ID
       parameters:
         - name: erId
           in: path
@@ -875,7 +875,7 @@ paths:
         - ER (Energy Resource)
       summary: Delete energy resource by ID
       description: |
-        Delete an energy resource by ER id
+        Delete an energy resource by ER(Energy Resource) ID
       parameters:
         - name: erId
           in: path
@@ -916,9 +916,9 @@ paths:
         - DER (Distributed Energy Resource)
       summary: Toggle DER on or off
       description: |
-        Switching an DER(energy appliance) on and off using DER id , i.e, switching on or off your Ceiling Fan, or Electric Geyser.
-        - When switched off, the device will not generate any load on the grid. No consumption data will be generated.
-        - Used in demand-flexibility use case, in response to a DF notification.
+        Switching an DER, i.e, energy appliance on and off using DER ID , i.e, switching on or off your Ceiling Fan, or Electric Geyser.
+        - While switched off, the device will not generate any load on the grid. No consumption data will be generated for respective appliances.
+        - Used in the Demand-Dlexibility use case, in response to a Demand-Dlexibility notification.
 
       parameters:
         - name: derid
