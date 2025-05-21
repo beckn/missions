@@ -1,0 +1,927 @@
+openapi: 3.0.3
+info:
+  title: World Engine API
+  version: 1.0.0
+  description: API for managing utilities, meters, energy resources, and appliances
+
+paths:
+  /utility/detailed:
+    get:
+      tags:
+        - Utility
+      summary: Get detailed info of all utilities
+      description: |
+        Get a list of utility companies:
+        - Each utility company will have a list of substations
+        - Each substation will have a list of transformers
+        - Each transformer will have a list of meters
+        - Each Meter is linked to a household. An ER(Energy Resource) represents a household.
+        - Each ER will have a list of DER(Distributed Energy Resource)
+        - Each DER represents an appliance, i.e a Ceiling Fan, an Electric Geyser.
+
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  utilities:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        latitude:
+                          type: string
+                        longtitude:
+                          type: string
+                        pincode:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                        publishedAt:
+                          type: string
+                          format: date-time
+                        substations:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              name:
+                                type: string
+                              city:
+                                type: string
+                              state:
+                                type: string
+                              latitude:
+                                type: string
+                              longtitude:
+                                type: string
+                              pincode:
+                                type: string
+                              createdAt:
+                                type: string
+                                format: date-time
+                              updatedAt:
+                                type: string
+                                format: date-time
+                              publishedAt:
+                                type: string
+                                format: date-time
+                              max_capacity_KW:
+                                type: number
+                              transformers:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: integer
+                                    name:
+                                      type: string
+                                    city:
+                                      type: string
+                                    state:
+                                      type: string
+                                    latitude:
+                                      type: string
+                                    longtitude:
+                                      type: string
+                                    pincode:
+                                      type: string
+                                    createdAt:
+                                      type: string
+                                      format: date-time
+                                    updatedAt:
+                                      type: string
+                                      format: date-time
+                                    publishedAt:
+                                      type: string
+                                      format: date-time
+                                    max_capacity_KW:
+                                      type: number
+                                    meters:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          id:
+                                            type: integer
+                                          code:
+                                            type: string
+                                          consumptionLoadFactor:
+                                            type: number
+                                          productionLoadFactor:
+                                            type: number
+                                          type:
+                                            type: string
+                                          city:
+                                            type: string
+                                          state:
+                                            type: string
+                                          latitude:
+                                            type: number
+                                          longitude:
+                                            type: number
+                                          pincode:
+                                            type: string
+                                          createdAt:
+                                            type: string
+                                            format: date-time
+                                          updatedAt:
+                                            type: string
+                                            format: date-time
+                                          publishedAt:
+                                            type: string
+                                            format: date-time
+                                          max_capacity_KW:
+                                            type: number
+                                          energyResource:
+                                            type: object
+                                            properties:
+                                              id:
+                                                type: integer
+                                              name:
+                                                type: string
+                                              type:
+                                                type: string
+                                              createdAt:
+                                                type: string
+                                                format: date-time
+                                              updatedAt:
+                                                type: string
+                                                format: date-time
+                                              publishedAt:
+                                                type: string
+                                                format: date-time
+                                              ders:
+                                                type: array
+                                                items:
+                                                  type: object
+                                                  properties:
+                                                    id:
+                                                      type: integer
+                                                    switched_on:
+                                                      type: boolean
+                                                    createdAt:
+                                                      type: string
+                                                      format: date-time
+                                                    updatedAt:
+                                                      type: string
+                                                      format: date-time
+                                                    publishedAt:
+                                                      type: string
+                                                      format: date-time
+                                                    appliance:
+                                                      type: object
+                                                      properties:
+                                                        id:
+                                                          type: integer
+                                                        name:
+                                                          type: string
+                                                        powerRating:
+                                                          type: number
+                                                        baseKWh:
+                                                          type: number
+                                                        description:
+                                                          type: string
+                                                        createdAt:
+                                                          type: string
+                                                          format: date-time
+                                                        updatedAt:
+                                                          type: string
+                                                          format: date-time
+                                                        publishedAt:
+                                                          type: string
+                                                          format: date-time
+
+  /utility/reset:
+    put:
+      tags:
+        - Utility
+      summary: Reset utility data to default
+      description: |
+        By default there is one utility and its details stored in the database.
+        - This API resets utilities data in the DB to the default values.
+        - Roll back the DB to a default state when required.
+        - No request body payload is sent as part of this API.
+      responses:
+        '200':
+          description: Utility data reset to default successfully
+
+  /grid-loads:
+    get:
+      tags:
+        - Utility
+      summary: Get current transformer loads
+      description: |
+        Get the current load on the grid
+        - When you create new ERs and DERs into the world engine, the grid load would adjust accordingly(load will increase).
+        - This API is used to get the load on the grid at any point in time.
+        - No request body payload is sent as part of this API.
+
+      responses:
+        '200':
+          description: Grid Loads fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Grid Loads fetched successfully
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        current_transformer_load:
+                          type: number
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                        publishedAt:
+                          type: string
+                          format: date-time
+                        timestamp:
+                          type: string
+                          format: date-time
+                        transformer:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            city:
+                              type: string
+                            state:
+                              type: string
+                            latitude:
+                              type: string
+                            longtitude:
+                              type: string
+                            pincode:
+                              type: string
+                            createdAt:
+                              type: string
+                              format: date-time
+                            updatedAt:
+                              type: string
+                              format: date-time
+                            publishedAt:
+                              type: string
+                              format: date-time
+                            max_capacity_KW:
+                              type: number
+                            emergency_service:
+                              type: boolean
+                            substation:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                name:
+                                  type: string
+                                city:
+                                  type: string
+                                state:
+                                  type: string
+                                latitude:
+                                  type: string
+                                longtitude:
+                                  type: string
+                                pincode:
+                                  type: string
+                                createdAt:
+                                  type: string
+                                  format: date-time
+                                updatedAt:
+                                  type: string
+                                  format: date-time
+                                publishedAt:
+                                  type: string
+                                  format: date-time
+                                max_capacity_KW:
+                                  type: number
+
+  /meters:
+    get:
+      tags:
+          - Meter
+      summary: Get list of meters
+      description: |
+        - Get the list of meters stored in the world engine
+        - No request body payload is sent as part of this API.
+
+      responses:
+        '200':
+          description: Meters fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Meters fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 2124
+                            code:
+                              type: string
+                              example: MTR-0036
+                            consumptionLoadFactor:
+                              type: number
+                              example: 1
+                            productionLoadFactor:
+                              type: number
+                              example: 0
+                            type:
+                              type: string
+                              example: SMART
+                            city:
+                              type: string
+                              example: San Francisco
+                            state:
+                              type: string
+                              example: CA
+                            latitude:
+                              type: number
+                              format: float
+                              example: 37.73
+                            longitude:
+                              type: number
+                              format: float
+                              example: -122.48
+                            pincode:
+                              type: string
+                              example: "94103"
+                            createdAt:
+                              type: string
+                              format: date-time
+                              example: 2025-05-21T07:55:45.038Z
+                            updatedAt:
+                              type: string
+                              format: date-time
+                              example: 2025-05-21T08:46:07.380Z
+                            publishedAt:
+                              type: string
+                              format: date-time
+                              example: 2025-05-21T07:55:45.038Z
+                            max_capacity_KW:
+                              type: number
+                              example: 10
+                            dfp_subscription_id:
+                              type: string
+                              nullable: true
+                              example: "3804"
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            type: integer
+                            example: 1
+                          pageSize:
+                            type: integer
+                            example: 25
+                          pageCount:
+                            type: integer
+                            example: 6
+                          total:
+                            type: integer
+                            example: 150
+    post:
+      tags:
+        - Meter
+      summary: Create a meter record in the world engine
+      description: |
+        Create a meter record in the world engine.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - code
+                - energyResource
+                - consumptionLoadFactor
+                - productionLoadFactor
+                - type
+                - city
+                - state
+                - latitude
+                - longitude
+                - pincode
+              properties:
+                code:
+                  type: string
+                  description: Meter ID code
+                  example: "MTR-0035"
+                parent:
+                  type: string
+                  nullable: true
+                  description: If it is a child meter, this field contains parent meter ID
+                  example: "MTR-0010"
+                energyResource:
+                  type: string
+                  description: Energy Resource ID associated with this meter
+                  example: "3799"
+                consumptionLoadFactor:
+                  type: number
+                  format: double
+                  description: Load scaling constant K for consumption
+                  example: 1.0
+                productionLoadFactor:
+                  type: number
+                  format: double
+                  description: Load scaling constant K for production
+                  example: 0.0
+                type:
+                  type: string
+                  description: Type of meter installed (e.g., 1-Ph, 3-Ph, Smart, net-meter)
+                  example: "SMART"
+                city:
+                  type: string
+                  description: City where the meter is located
+                  example: "San Francisco"
+                state:
+                  type: string
+                  description: State where the meter is located
+                  example: "California"
+                latitude:
+                  type: number
+                  format: double
+                  description: Latitude coordinate of the meter
+                  example: 37.7749
+                longitude:
+                  type: number
+                  format: double
+                  description: Longitude coordinate of the meter
+                  example: -122.4194
+                pincode:
+                  type: string
+                  description: Pincode of the location where meter is located
+                  example: "94103"
+      responses:
+        '201':
+          description: Meter created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Meter created successfully"
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2127
+                      code:
+                        type: string
+                        example: "MTR-0035"
+                      # additional properties can be added here matching the created meter details
+        '400':
+          description: Bad Request - Invalid input
+        '500':
+          description: Internal Server Error
+
+  /meters/{meterId}:
+    get:
+      tags:
+        - Meter
+      summary: Get a specific meter by ID
+      description: |
+        fetch a meter from the world engine using meter id
+        - No request body payload is sent as part of this API.
+    
+      parameters:
+        - name: meterId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Meter fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Meter fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2127
+                      code:
+                        type: string
+                        example: MTR-0035
+                      consumptionLoadFactor:
+                        type: number
+                        example: 1
+                      productionLoadFactor:
+                        type: number
+                        example: 0
+                      type:
+                        type: string
+                        example: SMART
+                      city:
+                        type: string
+                        example: San Francisco
+                      state:
+                        type: string
+                        example: CA
+                      latitude:
+                        type: number
+                        format: float
+                        example: 37.73
+                      longitude:
+                        type: number
+                        format: float
+                        example: -122.44
+                      pincode:
+                        type: string
+                        example: "94103"
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2025-05-21T07:55:45.038Z"
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        example: "2025-05-21T08:41:13.397Z"
+                      publishedAt:
+                        type: string
+                        format: date-time
+                        example: "2025-05-21T07:55:45.038Z"
+                      max_capacity_KW:
+                        type: number
+                        example: 10
+                      dfp_subscription_id:
+                        type: string
+                        nullable: true
+                        example: "3799"
+                      user:
+                        nullable: true
+                        example: null
+                      energyResource:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2992
+                          name:
+                            type: string
+                            example: Daryl Collins
+                          type:
+                            type: string
+                            example: CONSUMER
+                          createdAt:
+                            type: string
+                            format: date-time
+                            example: "2025-05-21T07:55:45.550Z"
+                          updatedAt:
+                            type: string
+                            format: date-time
+                            example: "2025-05-21T07:55:45.550Z"
+                          publishedAt:
+                            type: string
+                            format: date-time
+                            example: "2025-05-21T07:55:45.550Z"
+                      transformer:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 222
+                          name:
+                            type: string
+                            example: Fogline MSN33-TX1
+                          city:
+                            type: string
+                            example: San Francisco
+                          state:
+                            type: string
+                            example: CA
+                          latitude:
+                            type: string
+                            example: "37.729064"
+                          longtitude:
+                            type: string
+                            example: "-122.430954"
+                          pincode:
+                            type: string
+                            example: "94103"
+                          createdAt:
+                            type: string
+                            format: date-time
+                            example: "2025-05-21T07:55:44.978Z"
+                          updatedAt:
+                            type: string
+                            format: date-time
+                            example: "2025-05-21T07:55:44.978Z"
+                          publishedAt:
+                            type: string
+                            format: date-time
+                            example: "2025-05-21T07:55:44.978Z"
+                          max_capacity_KW:
+                            type: number
+                            example: 90
+                          emergency_service:
+                            type: boolean
+                            example: false
+    delete:
+      tags:
+        - Meter
+      summary: Delete a specific meter
+      description: |
+        Delete a meter from the world engine using meter id
+        - No request body payload is sent as part of this API.
+      parameters:
+        - name: meterId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Meter deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Meter deleted successfully
+  
+  /meters/add-subscription:
+    put:
+      tags:
+        - Meter
+      summary: Add subscription to meter
+      description: |
+        Add details of a subscription foe a meter from a cunsumer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Meter_id:
+                  type: string
+                Subscription_order_id:
+                  type: string
+      responses:
+        '200':
+          description: Subscription added
+
+  /meter-datasets/{meterId}:
+    get:
+      tags:
+        - Meter
+      summary: Get meter dataset by meter ID
+      description: |
+        Get historical energy consumption data corresponding to a meter id.
+        - No request body payload is sent as part of this API.
+      parameters:
+        - name: meterId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Meter Dataset fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Meter Dataset fetched successfully
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1321189
+                        consumptionKWh:
+                          type: number
+                          format: float
+                          example: 2.0698
+                        productionKWh:
+                          type: number
+                          format: float
+                          example: 1.2
+                        consumptionKVAh:
+                          type: number
+                          format: float
+                          example: 2.555308641975308
+                        avgCurrent:
+                          type: number
+                          format: float
+                          example: 0.1169456366237482
+                        avgVoltage:
+                          type: integer
+                          example: 233
+                        reactivePowerKVAR:
+                          type: number
+                          format: float
+                          example: 2.3672943333768792
+                        powerFactor:
+                          type: number
+                          format: float
+                          example: 0.81
+                        timestamp:
+                          type: string
+                          format: date-time
+                          example: "2026-08-29T02:42:09.768Z"
+                        createdAt:
+                          type: string
+                          format: date-time
+                          example: "2025-05-21T07:56:00.324Z"
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          example: "2025-05-21T07:56:00.324Z"
+                        publishedAt:
+                          type: string
+                          format: date-time
+                          example: "2025-05-21T07:56:00.184Z"
+  
+  /energy-resources:
+    post:
+      tags:
+        - ER
+      summary: Create a new energy resource
+      description: |
+        Create a new ER(Energy resource)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                type:
+                  type: string
+                  enum: [CONSUMER, PROSUMER]
+                meter:
+                  type: number
+      responses:
+        '201':
+          description: Energy resource created
+
+  /energy-resources/{erId}:
+    get:
+      tags:
+        - ER
+      summary: Get energy resource by ID
+      description: |
+        Get an energy resource by ER id
+      parameters:
+        - name: erId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Energy resource fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Energy resource fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2796
+                      name:
+                        type: string
+                        example: Adam Conley
+                      type:
+                        type: string
+                        enum: [CONSUMER, PRODUCER]
+                        example: CONSUMER
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2025-05-21T07:55:45.555Z"
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        example: "2025-05-21T07:55:45.555Z"
+                      publishedAt:
+                        type: string
+                        format: date-time
+                        example: "2025-05-21T07:55:45.555Z"
+    delete:
+      tags:
+        - ER
+      summary: Delete energy resource by ID
+      description: |
+        Delete an energy resource by ER id
+      parameters:
+        - name: erId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Energy resource deleted
+
+  /der:
+    post:
+      tags:
+        - DER
+      summary: Create a DER (appliance)
+      description: |
+        Create a DER
+        - A DER is created when we install any electrical appliance in a household.
+        - DER associates an ER(household) with an appliance(Electrical Geyer).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Energy_resource:
+                  type: number
+                Appliance:
+                  type: number
+      responses:
+        '201':
+          description: DER created
+
+  /toggle-der/{derid}:
+    post:
+      tags:
+        - DER
+      summary: Toggle DER on or off
+      description: |
+        Switching an DER(energy appliance) on and off using DER id , i.e, switching on or off your Ceiling Fan, or Electric Geyser.
+        - When switched off, the device will not generate any load on the grid. No consumption data will be generated.
+        - Used in demand-flexibility use case, in response to a DF notification.
+
+      parameters:
+        - name: derid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: DER toggled successfully
