@@ -703,7 +703,7 @@ paths:
         - Meter
       summary: Add subscription to meter
       description: |
-        Add details of a user subscription for a meter into the world engine
+        Add a user's DFP subscription record into the World Engine.
       requestBody:
         required: true
         content:
@@ -713,8 +713,10 @@ paths:
               properties:
                 Meter_id:
                   type: string
+                  description: Meter ID of the user
                 Subscription_order_id:
                   type: string
+                  description: Order ID the user received when they subscribed to a DFP program.
       responses:
         '200':
           description: Subscription added
