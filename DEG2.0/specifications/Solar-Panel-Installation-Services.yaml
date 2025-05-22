@@ -11,7 +11,11 @@ paths:
       tags:
         - Beckn Provider Platform (BPP)
         - Beckn Gateway (BG)
-      description: BAP declares the customer's intent to buy/avail products or services
+      description: | 
+        BAP declares the customer's intent to buy/avail products or services
+        - BAP can use descriptor.name to do a keyword based search.
+        - provider.descriptor.name can be used to filter based on providers.
+        - category.descriptor.code can be used to filter based on the service category
       requestBody:
         content:
           application/json:
@@ -72,7 +76,9 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: BAP declares the customer's cart (or equivalent) created by selecting objects from the catalog
+      description: |
+        BAP declares the customer's cart (or equivalent) created by selecting objects from the catalog
+        - Consumer selects the service provider(provider ID), item ID(service) and the fulfillment ID.
       requestBody:
         content:
           application/json:
@@ -311,7 +317,9 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: Initialize an order by providing billing and/or shipping details
+      description: | 
+        Initialize an order by providing billing and/or shipping details
+        - Consumer provides their billing and fulfillment details.
       requestBody:
         content:
           application/json:
@@ -408,7 +416,10 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: Initialize an order by providing billing and/or shipping details
+      description: | 
+        Initialize an order by providing billing and/or shipping details
+        - Consumer reviews and accepts the payment terms.
+        - Id there is a payment required before confirming the order, consumer completes the payment of the network before sending a confirm request.
       requestBody:
         content:
           application/json:
@@ -494,7 +505,10 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: Fetch the latest order object
+      description: | 
+        Fetch the latest order object
+        - Consumer sends the order_id to check the status.
+        - Consumer must have received the order ID as part of the on_confirm callback.
       requestBody:
         content:
           application/json:
@@ -553,7 +567,12 @@ paths:
       tags:
         - Beckn Application Platform (BAP)
         - Beckn Gateway (BG)
-      description: BPP sends its catalog in response to a search request.
+      description: | 
+        BPP sends its catalog in response to a search request.
+        - Response contains a catalog from a BPP.
+        - The catalog contains solar panel installation services from multiple providers(service providers).
+        - Each provider can have multiple items(solar panel installation services)
+        - Items.tags contains the metadata associated with the service.
       requestBody:
         content:
           application/json:
@@ -797,7 +816,10 @@ paths:
     post:
       tags:
         - Beckn Application Platform (BAP)
-      description: Send draft order object with quoted price for selected items
+      description: | 
+        Send draft order object with quoted price for selected items
+        - The response must contain a quotation for the service inside "quote" object.
+        - quotation can be an estimate value or an actual value.
       requestBody:
         content:
           application/json:
@@ -914,7 +936,8 @@ paths:
     post:
       tags:
         - Beckn Application Platform (BAP)
-      description: Send order object with payment details updated
+      description: | 
+        Send order object with payment details updated
       requestBody:
         content:
           application/json:
@@ -1081,7 +1104,10 @@ paths:
     post:
       tags:
         - Beckn Application Platform (BAP)
-      description: Send active order object
+      description: |
+        Send active order object
+        - BPP must generate and send an order.id which is used to uniquely identify the order.
+        - BPP must also send the state of the fulfillment as part of fulfillments.state.descriptor.code
       requestBody:
         content:
           application/json:

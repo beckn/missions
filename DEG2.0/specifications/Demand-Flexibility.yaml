@@ -11,7 +11,10 @@ paths:
       tags:
         - Beckn Provider Platform (BPP)
         - Beckn Gateway (BG)
-      description: BAP declares the customer's intent to buy/avail products or services
+      description: | 
+        BAP declares the customer's intent to buy/avail products or services
+        - To perform a keyword based search, use intent.descriptor.name
+        - To perform a provider based search, use intent.provider.descriptor.name
       requestBody:
         content:
           application/json:
@@ -88,7 +91,9 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: Initialize an order by providing billing and/or shipping details
+      description: | 
+        Confirm an order by providing billing and/or shipping details
+        - fulfillments.stops.location.address, i.e "der://ssf.meter/98765456" represents a meter.
       requestBody:
         content:
           application/json:
@@ -161,7 +166,9 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: Fetch the latest order object
+      description: | 
+        Fetch the latest order object
+        - Send the id of the order for which to check the status in the message.order_id
       requestBody:
         content:
           application/json:
@@ -219,7 +226,10 @@ paths:
     post:
       tags:
         - Beckn Provider Platform (BPP)
-      description: Cancel an order
+      description: | 
+        Cancel an order
+        - Send the id of the order which needs to be cancelled inside message.order_id
+        - A list of cancellation_reason_ids can be fetched from the BPP by calling the BPP's /get_cancellation_reasons API
       requestBody:
         content:
           application/json:
@@ -466,7 +476,10 @@ paths:
     post:
       tags:
         - Beckn Application Platform (BAP)
-      description: Send active order object
+      description: |
+        Send active order object
+        - BPP must generate and send an order.id which is used to uniquely identify the order.
+        - BPP must also send the state of the fulfillment as part of fulfillments.state.descriptor.code
       requestBody:
         content:
           application/json:
@@ -573,7 +586,9 @@ paths:
     post:
       tags:
         - Beckn Application Platform (BAP)
-      description: Send cancellation request_id with reasons list in case of cancellation request. Else send cancelled order object
+      description: |
+        Send cancellation request_id with reasons list in case of cancellation request. Else send cancelled order object
+        - The fulfillment.state.descriptor.code must be set to reflect the cancelled state of the fulfillment. 
       requestBody:
         content:
           application/json:
