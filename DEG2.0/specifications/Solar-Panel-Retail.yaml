@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Beckn Protocol Specification modeled for Solar Panel Installation Services use case.
-  description: Beckn Protocol Specification modeled for Solar Panel Installation Services use case.
+  title: Beckn Protocol Specification modeled for Solar Panel Retail use case.
+  description: Beckn Protocol Specification modeled for Solar Panel Retail use case.
   version: 1.1.1
 security:
   - SubscriberAuth: []
@@ -41,14 +41,14 @@ paths:
               Search intent example:
                 value:
                   context:
-                    domain: service
+                    domain: retail
                     action: search
                     version: 1.1.0
-                    bap_id: example-bap.com
-                    bap_uri: https://api.example-bap.com/pilot/bap/energy/v1
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    timestamp: '2023-07-16T04:41:00Z'
+                    bap_id: bap-consumer.example.com
+                    bap_uri: https://bap-consumer.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-search-001
+                    timestamp: '2025-05-07T12:29:00Z'
                     ttl: PT10M
                     location:
                       country:
@@ -58,13 +58,19 @@ paths:
                   message:
                     intent:
                       descriptor:
-                        name: Solar Installation Request
-                      provider:
-                        descriptor:
-                          name: SunPower Installers
+                        name: Solar panels for rooftop installation
                       category:
                         descriptor:
-                          code: solar_panel_installation      
+                          code: mono_panels
+                      fulfillment:
+                        type: HOME_DELIVERY
+                      payments:
+                      - type: ON-FULFILLMENT
+                        collected_by: BPP
+                        status: NOT-PAID
+                        params:
+                          amount: '150'
+                          currency: USD
       responses:
         default:
           description: Acknowledgement of message received after successful validation of schema and signature
@@ -108,14 +114,14 @@ paths:
               Select a solar installation service:
                 value:
                   context:
-                    domain: service
+                    domain: retail
                     action: select
                     version: 1.1.0
-                    bap_id: example-bap.com
-                    bap_uri: https://api.example-bap.com/pilot/bap/energy/v1
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10002
-                    timestamp: '2023-07-16T04:41:20Z'
+                    bap_id: bap-consumer.example.com
+                    bap_uri: https://bap-consumer.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-select-001
+                    timestamp: '2025-05-07T12:30:05Z'
                     ttl: PT10M
                     location:
                       country:
@@ -125,11 +131,15 @@ paths:
                   message:
                     order:
                       provider:
-                        id: sunpower_sf
+                        id: sunpro_energy
                       items:
-                      - id: sp-resi-001
+                      - id: sp_mono_450w
+                        quantity:
+                          selected:
+                            count: 1
+                      - id: it/panel/12
                       fulfillments:
-                      - id: '1'      
+                      - id: hd1 
       responses:
         default:
           $ref: '#/paths/~1init/post/responses/default'
@@ -169,14 +179,14 @@ paths:
               Initialize a solar installation service order:
                 value:
                   context:
-                    domain: service
+                    domain: retail
                     action: init
                     version: 1.1.0
-                    bap_id: example-bap.com
-                    bap_uri: https://api.example-bap.com/pilot/bap/energy/v1
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10004
-                    timestamp: '2023-07-16T04:41:30Z'
+                    bap_id: bap-consumer.example.com
+                    bap_uri: https://bap-consumer.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-init-001
+                    timestamp: '2025-05-07T12:30:15Z'
                     ttl: PT10M
                     location:
                       country:
@@ -186,27 +196,29 @@ paths:
                   message:
                     order:
                       provider:
-                        id: sunpower_sf
+                        id: sunpro_energy
                       items:
-                      - id: sp-resi-001
+                      - id: sp_mono_450w
+                        quantity:
+                          selected:
+                            count: 1
+                      - id: it/panel/12
                       billing:
-                        name: Emily Tran
-                        email: emily.tran@example.com
-                        phone: "+14155556666"
-                        address: 456 Glenview St, San Francisco, CA
+                        name: Evan Smith
+                        email: evan.smith@example.com
+                        phone: "+14155558888"
+                        address: 456 Solar Valley Rd, San Jose, CA
                       fulfillments:
-                      - id: '1'
-                        type: ONSITE
-                        customer:
-                          person:
-                            name: Emily Tran
-                          contact:
-                            phone: "+14155556666"
-                            email: emily.tran@example.com
+                      - id: hd1
+                        type: HOME_DELIVERY
                         stops:
                         - type: end
                           location:
-                            address: 456 Glenview St, San Francisco, CA      
+                            address: 456 Solar Valley Rd, San Jose, CA
+                          time:
+                            range:
+                              start: '2025-05-08T09:00:00Z'
+                              end: '2025-05-08T17:00:00Z'      
       responses:
         default:
           description: Acknowledgement of message received after successful validation of schema and signature
@@ -269,14 +281,14 @@ paths:
               Confirm a solar panel service order:
                 value:
                   context:
-                    domain: service
+                    domain: retail
                     action: confirm
                     version: 1.1.0
-                    bap_id: example-bap.com
-                    bap_uri: https://api.example-bap.com/pilot/bap/energy/v1
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10006
-                    timestamp: '2023-07-16T04:41:40Z'
+                    bap_id: bap-consumer.example.com
+                    bap_uri: https://bap-consumer.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-confirm-001
+                    timestamp: '2025-05-07T12:30:30Z'
                     ttl: PT10M
                     location:
                       country:
@@ -286,27 +298,29 @@ paths:
                   message:
                     order:
                       provider:
-                        id: sunpower_sf
+                        id: sunpro_energy
                       items:
-                      - id: sp-resi-001
+                      - id: sp_mono_450w
+                        quantity:
+                          selected:
+                            count: 1
+                      - id: it/panel/12
                       billing:
-                        name: Emily Tran
-                        email: emily.tran@example.com
-                        phone: "+14155556666"
-                        address: 456 Glenview St, San Francisco, CA
+                        name: Evan Smith
+                        email: evan.smith@example.com
+                        phone: "+14155558888"
+                        address: 456 Solar Valley Rd, San Jose, CA
                       fulfillments:
-                      - id: '1'
-                        type: ONSITE
-                        customer:
-                          person:
-                            name: Emily Tran
-                          contact:
-                            phone: "+14155556666"
-                            email: emily.tran@example.com
+                      - id: hd1
+                        type: HOME_DELIVERY
                         stops:
                         - type: end
                           location:
-                            address: 456 Glenview St, San Francisco, CA
+                            address: 456 Solar Valley Rd, San Jose, CA
+                          time:
+                            range:
+                              start: '2025-05-08T09:00:00Z'
+                              end: '2025-05-08T17:00:00Z'
                       payments:
                       - type: ON-FULFILLMENT
                         collected_by: BPP
@@ -358,14 +372,14 @@ paths:
               Request to check the status of a solar panel installation service:
                 value:
                   context:
-                    domain: service
+                    domain: retail
                     action: status
                     version: 1.1.0
-                    bap_id: example-bap.com
-                    bap_uri: https://api.example-bap.com/pilot/bap/energy/v1
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10008
-                    timestamp: '2023-07-16T04:41:50Z'
+                    bap_id: bap-consumer.example.com
+                    bap_uri: https://bap-consumer.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-status-001
+                    timestamp: '2025-05-07T12:30:40Z'
                     ttl: PT10M
                     location:
                       country:
@@ -373,7 +387,7 @@ paths:
                       city:
                         code: NANP:628
                   message:
-                    order_id: sunpower-install-order-001      
+                    order_id: order-sunpro-001      
       responses:
         default:
           description: Acknowledgement of message received after successful validation of schema and signature
@@ -423,208 +437,334 @@ paths:
               catalog from BPP:
                 value:
                   context:
-                    domain: service
+                    domain: retail
                     action: on_search
+                    version: 1.1.0
+                    bpp_id: bpp-solar-store.example.com
+                    bpp_uri: https://bpp-solar-store.example.com
                     location:
                       country:
                         code: USA
                       city:
                         code: NANP:628
-                    version: 1.1.0
-                    bap_id: example-bap.com
-                    bap_uri: https://api.example-bap.com/pilot/bap/energy/v1
-                    bpp_id: example-bpp.com
-                    bpp_uri: https://example-bpp.com
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    timestamp: '2023-07-16T04:41:16Z'
+                    bap_id: bap-consumer.example.com
+                    bap_uri: https://bap-consumer.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-solar-panel-001
+                    ttl: PT10M
+                    timestamp: '2025-05-07T12:30:00Z'
                   message:
                     catalog:
+                      descriptor:
+                        name: Energykart Solar
+                        short_desc: Shop solar panels by efficiency, budget, or portability
                       providers:
-                      - id: sunpower_sf
+                      - id: sunpro_energy
                         descriptor:
-                          code: SunPower_Installers
-                          short_desc: Residential and commercial solar panel installation
-                          long_desc: Leading provider of rooftop and industrial solar panel setup services
-                            in San Francisco.
+                          name: SunPro Energy Systems
+                          short_desc: Premium mono and polycrystalline solar panels
+                          long_desc: SunPro manufactures high-efficiency solar panels for residential
+                            and industrial installations. Known for reliability and long warranties.
                           images:
-                          - url: https://sunpower.com/logo.png
-                          - url: https://sunpower.com/gallery.jpg
-                        tags:
-                        - descriptor:
-                            code: provider-details
-                          list:
-                          - descriptor:
-                              code: govt_subsidy_empaneled
-                            value: 'true'
-                        rating: 4.6/5
+                          - url: https://example.com/images/sunpro_logo.png
+                            size_type: sm
                         categories:
-                        - id: '1'
+                        - id: premium_panels
                           descriptor:
-                            code: solar_panel_installation
-                            name: Solar Panel Installation
+                            name: High Efficiency Panels
+                            code: mono_panels
+                        - id: budget_panels
+                          descriptor:
+                            name: Economy Panels
+                            code: poly_panels
+                        - id: solar_installation
+                          descriptor:
+                            name: Solar installation service
+                            code: Solar_installation_service
+                        fulfillments:
+                        - id: hd1
+                          type: HOME_DELIVERY
+                        - id: sp1
+                          type: STORE_PICKUP
+                        - id: sv1
+                          type: SITE_VISIT
                         locations:
                         - id: '1'
                           city:
-                            name: San Francisco
-                        fulfillments:
-                        - id: '1'
-                          type: ONSITE
+                            name: San Jose
+                        - id: '2'
+                          city:
+                            name: " OakLand"
+                        rateable: true
                         items:
-                        - id: sp-resi-001
+                        - id: sp_mono_450w
                           descriptor:
-                            code: 2kW_Rooftop_Solar_Setup
+                            name: SunPro Mono 450W Panel
+                            short_desc: High-efficiency 450W panel for rooftop systems
+                            long_desc: 450W monocrystalline panel with superior power output and compact
+                              size. Built for long-lasting rooftop installations with 25-year warranty.
                           price:
-                            estimated_value: '85000'
+                            value: '320'
                             currency: USD
                           category_ids:
-                          - '1'
+                          - premium_panels
+                          fulfillment_ids:
+                          - hd1
+                          - sp1
                           location_ids:
                           - '1'
-                          fulfillment_ids:
-                          - '1'
+                          - '2'
+                          rating: '4.5'
+                          rateable: true
                           tags:
                           - descriptor:
-                              code: system_specification
-                            list:
-                            - descriptor:
-                                code: system_capacity
-                              value: 2KW
-                          - descriptor:
-                              code: installation_context
-                            list:
-                            - descriptor:
-                                code: property_type
-                              value: Residential
-                          - descriptor:
-                              code: installer_details
-                            list:
-                            - descriptor:
-                                code: empaneled
-                              value: 'true'
-                          - descriptor:
-                              code: financial_details
-                            list:
-                            - descriptor:
-                                code: financial_assistance
-                              value: 'true'
-                          - descriptor:
-                              code: documentation
+                              code: Panel_Specifications
                             display: true
                             list:
                             - descriptor:
-                                code: required_docs
-                              value: ID proof, Ownership certificate, Electricity bill, Net metering
-                                form, Wiring diagram
-                        - id: sp-comm-002
+                                code: Type
+                              value: Monocrystalline
+                            - descriptor:
+                                code: Wattage
+                              value: 450W
+                            - descriptor:
+                                code: Efficiency
+                              value: 21.4%
+                            - descriptor:
+                                code: Warranty
+                              value: 25 years
+                            - descriptor:
+                                code: IP_Rating
+                              value: IP68
+                          - descriptor:
+                              name: Certifications
+                            list:
+                            - descriptor:
+                                name: solar equipment certificate
+                                code: SEC
+                              value: https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf
+                            - descriptor:
+                                name: pv module safety certificate
+                                code: PMSC
+                              value: https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf
+                        - id: sp_poly_325w
                           descriptor:
-                            code: 5kW_Industrial_Solar_Installation
+                            name: SunPro Poly 325W Panel
+                            short_desc: Affordable 325W solar panel for home kits
+                            long_desc: Entry-level 325W polycrystalline panel. Suitable for small rooftop
+                              or DIY solar applications. Offers good performance at lower cost.
                           price:
-                            estimated_value: '130000'
+                            value: '200'
                             currency: USD
                           category_ids:
-                          - '1'
+                          - budget_panels
+                          fulfillment_ids:
+                          - sp1
                           location_ids:
                           - '1'
+                          rating: '4.2'
+                          rateable: true
+                          tags:
+                          - descriptor:
+                              code: Panel_Specifications
+                            display: true
+                            list:
+                            - descriptor:
+                                code: Type
+                              value: Polycrystalline
+                            - descriptor:
+                                code: Wattage
+                              value: 325W
+                            - descriptor:
+                                code: Efficiency
+                              value: 18.3%
+                            - descriptor:
+                                code: Warranty
+                              value: 10 years
+                          - descriptor:
+                              name: Certifications
+                            list:
+                            - descriptor:
+                                name: solar equipment certificate
+                                code: SEC
+                              value: https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf
+                            - descriptor:
+                                name: pv module safety certificate
+                                code: PMSC
+                              value: https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf
+                        - id: it/panel/12
+                          descriptor:
+                            name: Solar Panel Installation Service
+                            short_desc: On-site installation for rooftop or ground-mounted solar panels
+                            long_desc: Includes mounting structure setup, panel alignment, inverter
+                              integration, grid connection readiness, and post-installation testing.
+                              Covers both residential and commercial rooftop systems.
+                          price:
+                            value: '250'
+                            currency: USD
+                          rateable: true
+                          rating: '4.8'
+                          category_ids:
+                          - solar_installation
                           fulfillment_ids:
+                          - sv1
+                          location_ids:
                           - '1'
                           tags:
                           - descriptor:
-                              code: system_specification
+                              code: installation_specification
+                            display: true
                             list:
                             - descriptor:
-                                code: system_capacity
-                              value: 5KW
+                                code: installation_type
+                              value: Rooftop / Ground-mount
+                            - descriptor:
+                                code: supported_panel_types
+                              value: Mono PERC, Polycrystalline, Thin Film
+                            - descriptor:
+                                code: system_capacity_limit
+                              value: Up to 10kW
+                            - descriptor:
+                                code: included_services
+                              value: Mounting, inverter wiring, earthing, net-meter interface
+                            - descriptor:
+                                code: installation_duration
+                              value: 4–6 hours
                           - descriptor:
-                              code: installation_context
+                              code: installer_qualification
+                            display: true
                             list:
                             - descriptor:
-                                code: property_type
-                              value: Commercial
-                          - descriptor:
-                              code: installer_details
-                            list:
+                                code: empaneled_with_nodal_agency
+                              value: 'Yes'
                             - descriptor:
-                                code: empaneled
-                              value: 'true'
-                          - descriptor:
-                              code: financial_details
-                            list:
-                            - descriptor:
-                                code: financial_assistance
-                              value: 'true'
-                      - id: evgrid_connect
+                                code: safety_certified
+                              value: 'Yes'
+                      - id: voltedge_solar
                         descriptor:
-                          code: EVGrid_Connect
-                          short_desc: End-to-end EV charging station setup services
-                          long_desc: Expert service provider for residential and commercial EV charger
-                            installation and maintenance in the Bay Area.
+                          name: VoltEdge Solar
+                          short_desc: Flexible and mobile solar panel systems
+                          long_desc: VoltEdge provides bendable and lightweight solar panels ideal for
+                            portable energy needs, RVs, and boats. Built for rugged environments.
                           images:
-                          - url: https://evgridconnect.com/logo.png
-                        rating: 4.7/5
+                          - url: https://example.com/images/voltedge_logo.png
+                            size_type: sm
                         categories:
-                        - id: '1'
+                        - id: portable_panels
                           descriptor:
-                            code: solar_panel
-                            name: Solar Panel
+                            name: Portable Panels
+                            code: flex_panels
+                        - id: solar_installation
+                          descriptor:
+                            name: Solar installation service
+                            code: Solar_installation_service
+                        fulfillments:
+                        - id: hd2
+                          type: HOME_DELIVERY
+                        - id: sv1
+                          type: SITE_VISIT
                         locations:
                         - id: '1'
                           city:
-                            name: San Francisco
-                        fulfillments:
-                        - id: '1'
-                          type: ONSITE
+                            name: San Jose
+                        - id: '2'
+                          city:
+                            name: " OakLand"
+                        rateable: true
                         items:
-                        - id: ev-home-001
+                        - id: ve_flex_100w
                           descriptor:
-                            code: Residential_EV_Charger_Installation
+                            name: VoltEdge Flex 100W Panel
+                            short_desc: Bendable solar panel for mobile energy use
+                            long_desc: Flexible 100W solar panel built for curved surfaces and off-grid
+                              portability. Ideal for campers, boats, or remote setups. Durable and water-resistant.
                           price:
-                            estimated_value: '15000'
+                            value: '145'
                             currency: USD
                           category_ids:
-                          - '1'
-                          location_ids:
-                          - '1'
+                          - portable_panels
                           fulfillment_ids:
+                          - hd2
+                          location_ids:
+                          - '2'
+                          rating: '4.6'
+                          rateable: true
+                          tags:
+                          - descriptor:
+                              code: Panel_Specifications
+                            display: true
+                            list:
+                            - descriptor:
+                                code: Type
+                              value: Flexible PET
+                            - descriptor:
+                                code: Wattage
+                              value: 100W
+                            - descriptor:
+                                code: Weight
+                              value: 2.5 kg
+                            - descriptor:
+                                code: Use_Case
+                              value: Camping, RV, Off-grid
+                          - descriptor:
+                              name: Certifications
+                            list:
+                            - descriptor:
+                                name: solar equipment certificate
+                                code: SEC
+                              value: https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf
+                            - descriptor:
+                                name: pv module safety certificate
+                                code: PMSC
+                              value: https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf
+                        - id: it/panel/12
+                          descriptor:
+                            name: Solar Panel Installation Service
+                            short_desc: On-site installation for rooftop or ground-mounted solar panels
+                            long_desc: Includes mounting structure setup, panel alignment, inverter
+                              integration, grid connection readiness, and post-installation testing.
+                              Covers both residential and commercial rooftop systems.
+                          price:
+                            value: '250'
+                            currency: USD
+                          rateable: true
+                          rating: '4.8'
+                          category_ids:
+                          - solar_installation
+                          fulfillment_ids:
+                          - sv1
+                          location_ids:
                           - '1'
                           tags:
                           - descriptor:
-                              code: installation_context
+                              code: installation_specification
+                            display: true
                             list:
                             - descriptor:
-                                code: property_type
-                              value: Residential
+                                code: installation_type
+                              value: Rooftop / Ground-mount
+                            - descriptor:
+                                code: supported_panel_types
+                              value: Mono PERC, Polycrystalline, Thin Film
+                            - descriptor:
+                                code: system_capacity_limit
+                              value: Up to 10kW
+                            - descriptor:
+                                code: included_services
+                              value: Mounting, inverter wiring, earthing, net-meter interface
+                            - descriptor:
+                                code: installation_duration
+                              value: 4–6 hours
                           - descriptor:
-                              code: installer_details
+                              code: installer_qualification
+                            display: true
                             list:
                             - descriptor:
-                                code: certified
-                              value: 'true'
-                        - id: ev-pub-002
-                          descriptor:
-                            code: Commercial_EV_Charging_Station_Setup
-                          price:
-                            estimated_value: '45000'
-                            currency: USD
-                          category_ids:
-                          - '1'
-                          location_ids:
-                          - '1'
-                          fulfillment_ids:
-                          - '1'
-                          tags:
-                          - descriptor:
-                              code: installation_context
-                            list:
+                                code: empaneled_with_nodal_agency
+                              value: 'Yes'
                             - descriptor:
-                                code: property_type
-                              value: Commercial
-                          - descriptor:
-                              code: installer_details
-                            list:
-                            - descriptor:
-                                code: certified
-                              value: 'true'      
+                                code: safety_certified
+                              value: 'Yes'      
       responses:
         default:
           description: Acknowledgement of message received after successful validation of schema and signature
@@ -668,15 +808,15 @@ paths:
               On_Select response of the selected solar installation service:
                 value:
                   context:
-                    domain: service
+                    domain: retail
                     action: on_select
                     version: 1.1.0
-                    bap_id: example-bap.com
-                    bpp_id: example-bpp.com
-                    bpp_uri: https://example-bpp.com
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10003
-                    timestamp: '2023-07-16T04:41:25Z'
+                    bap_id: bap-consumer.example.com
+                    bpp_id: bpp-solar-store.example.com
+                    bpp_uri: https://bpp-solar-store.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-on-select-001
+                    timestamp: '2025-05-07T12:30:10Z'
                     ttl: PT10M
                     location:
                       country:
@@ -686,69 +826,117 @@ paths:
                   message:
                     order:
                       provider:
-                        id: sunpower_sf
+                        id: sunpro_energy
                         descriptor:
-                          code: SunPower_Installers
-                          short_desc: Residential and commercial solar panel installation
-                          long_desc: Leading provider of rooftop and industrial solar panel setup services
-                            in San Francisco.
-                          images:
-                          - url: https://sunpower.com/logo.png
-                          - url: https://sunpower.com/gallery.jpg
+                          name: SunPro Energy Systems
+                          short_desc: Premium mono and polycrystalline solar panels
                       items:
-                      - id: sp-resi-001
+                      - id: sp_mono_450w
                         descriptor:
-                          name: 2kW Rooftop Solar Setup
+                          name: SunPro Mono 450W Panel
+                          short_desc: High-efficiency 450W panel for rooftop systems
                         price:
-                          estimated_value: '85000'
+                          value: '320'
                           currency: USD
+                        quantity:
+                          selected:
+                            count: 1
                         tags:
                         - descriptor:
-                            code: system_specification
-                          list:
-                          - descriptor:
-                              code: system_capacity
-                            value: 2KW
-                        - descriptor:
-                            code: installation_context
-                          list:
-                          - descriptor:
-                              code: property_type
-                            value: Residential
-                        - descriptor:
-                            code: installer_details
-                          list:
-                          - descriptor:
-                              code: empaneled
-                            value: 'true'
-                        - descriptor:
-                            code: financial_details
-                          list:
-                          - descriptor:
-                              code: financial_assistance
-                            value: 'true'
-                        - descriptor:
-                            code: documentation
+                            code: Panel_Specifications
                           display: true
                           list:
                           - descriptor:
-                              code: required_docs
-                            value: ID proof, Ownership certificate, Electricity bill, Net metering form,
-                              Wiring diagram
-                      fulfillments:
-                      - id: '1'
-                        type: ONSITE
-                        tracking: true
+                              code: Type
+                            value: Monocrystalline
+                          - descriptor:
+                              code: Wattage
+                            value: 450W
+                          - descriptor:
+                              code: Efficiency
+                            value: 21.4%
+                          - descriptor:
+                              code: Warranty
+                            value: 25 years
+                          - descriptor:
+                              code: IP_Rating
+                            value: IP68
+                        - descriptor:
+                            name: Certifications
+                          list:
+                          - descriptor:
+                              name: solar equipment certificate
+                              code: SEC
+                            value: https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf
+                          - descriptor:
+                              name: pv module safety certificate
+                              code: PMSC
+                            value: https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf
+                      - id: it/panel/12
+                        descriptor:
+                          name: Solar Panel Installation Service
+                          short_desc: On-site installation for rooftop or ground-mounted solar panels
+                          long_desc: Includes mounting structure setup, panel alignment, inverter integration,
+                            grid connection readiness, and post-installation testing. Covers both residential
+                            and commercial rooftop systems.
+                        price:
+                          value: '250'
+                          currency: USD
                         rateable: true
+                        rating: '4.8'
+                        category_ids:
+                        - solar_installation
+                        fulfillment_ids:
+                        - sv1
+                        location_ids:
+                        - '1'
+                        tags:
+                        - descriptor:
+                            code: installation_specification
+                          display: true
+                          list:
+                          - descriptor:
+                              code: installation_type
+                            value: Rooftop / Ground-mount
+                          - descriptor:
+                              code: supported_panel_types
+                            value: Mono PERC, Polycrystalline, Thin Film
+                          - descriptor:
+                              code: system_capacity_limit
+                            value: Up to 10kW
+                          - descriptor:
+                              code: included_services
+                            value: Mounting, inverter wiring, earthing, net-meter interface
+                          - descriptor:
+                              code: installation_duration
+                            value: 4–6 hours
+                        - descriptor:
+                            code: installer_qualification
+                          display: true
+                          list:
+                          - descriptor:
+                              code: empaneled_with_nodal_agency
+                            value: 'Yes'
+                          - descriptor:
+                              code: safety_certified
+                            value: 'Yes'
+                      fulfillments:
+                      - id: hd1
+                        type: HOME_DELIVERY
                       quote:
                         price:
-                          value: '85000'
+                          value: '345'
                           currency: USD
                         breakup:
-                        - title: Installation Charge
+                        - title: Panel Price
                           price:
-                            value: '85000'
-                            currency: USD      
+                            value: '320'
+                            currency: USD
+                        - title: Home Delivery
+                          price:
+                            value: '25'
+                            currency: USD
+                        
       responses:
         default:
           $ref: '#/paths/~1init/post/responses/default'
@@ -788,15 +976,15 @@ paths:
               on_init examples of a solar installation service order:
                 value:
                   context:
-                    domain: service
+                    domain: retail
                     action: on_init
                     version: 1.1.0
-                    bap_id: example-bap.com
-                    bpp_id: example-bpp.com
-                    bpp_uri: https://example-bpp.com
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10005
-                    timestamp: '2023-07-16T04:41:35Z'
+                    bap_id: bap-consumer.example.com
+                    bpp_id: bpp-solar-store.example.com
+                    bpp_uri: https://bpp-solar-store.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-on-init-001
+                    timestamp: '2025-05-07T12:30:20Z'
                     ttl: PT10M
                     location:
                       country:
@@ -806,117 +994,159 @@ paths:
                   message:
                     order:
                       provider:
-                        id: sunpower_sf
+                        id: sunpro_energy
                         descriptor:
-                          code: SunPower_Installers
-                          short_desc: Residential and commercial solar panel installation
-                          long_desc: Leading provider of rooftop and industrial solar panel setup services
-                            in San Francisco.
-                          images:
-                          - url: https://sunpower.com/logo.png
-                          - url: https://sunpower.com/gallery.jpg
+                          name: SunPro Energy Systems
+                          short_desc: Premium mono and polycrystalline solar panels
                       items:
-                      - id: sp-resi-001
+                      - id: sp_mono_450w
                         descriptor:
-                          name: 2kW Rooftop Solar Setup
+                          name: SunPro Mono 450W Panel
+                          short_desc: High-efficiency 450W panel for rooftop systems
                         price:
-                          estimated_value: '85000'
+                          value: '320'
                           currency: USD
+                        quantity:
+                          selected:
+                            count: 1
                         tags:
                         - descriptor:
-                            code: system_specification
-                          list:
-                          - descriptor:
-                              code: system_capacity
-                            value: 2KW
-                        - descriptor:
-                            code: installation_context
-                          list:
-                          - descriptor:
-                              code: property_type
-                            value: Residential
-                        - descriptor:
-                            code: installer_details
-                          list:
-                          - descriptor:
-                              code: empaneled
-                            value: 'true'
-                        - descriptor:
-                            code: financial_details
-                          list:
-                          - descriptor:
-                              code: financial_assistance
-                            value: 'true'
-                        - descriptor:
-                            code: documentation
+                            code: Panel_Specifications
                           display: true
                           list:
                           - descriptor:
-                              code: required_docs
-                            value: ID proof, Ownership certificate, Electricity bill, Net metering form,
-                              Wiring diagram
-                        xinput:
-                          required: false
-                          head:
-                            descriptor:
-                              name: Details Form
-                            index:
-                              min: 0
-                              cur: 0
-                              max: 1
-                            headings:
-                            - Customer Details
-                            - Technical Details
-                          form:
-                            mime_type: text/html
-                            url: https://6vs8xnx5i7.scheme-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f
-                            resubmit: false
-                            auth:
-                              descriptor:
-                                code: jwt
-                              value: eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4
+                              code: Type
+                            value: Monocrystalline
+                          - descriptor:
+                              code: Wattage
+                            value: 450W
+                          - descriptor:
+                              code: Efficiency
+                            value: 21.4%
+                          - descriptor:
+                              code: Warranty
+                            value: 25 years
+                          - descriptor:
+                              code: IP_Rating
+                            value: IP68
+                        - descriptor:
+                            name: Certifications
+                          list:
+                          - descriptor:
+                              name: solar equipment certificate
+                              code: SEC
+                            value: https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf
+                          - descriptor:
+                              name: pv module safety certificate
+                              code: PMSC
+                            value: https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf
+                      - id: it/panel/12
+                        descriptor:
+                          name: Solar Panel Installation Service
+                          short_desc: On-site installation for rooftop or ground-mounted solar panels
+                          long_desc: Includes mounting structure setup, panel alignment, inverter integration,
+                            grid connection readiness, and post-installation testing. Covers both residential
+                            and commercial rooftop systems.
+                        price:
+                          value: '250'
+                          currency: USD
+                        rateable: true
+                        rating: '4.8'
+                        category_ids:
+                        - solar_installation
+                        fulfillment_ids:
+                        - sv1
+                        location_ids:
+                        - '1'
+                        tags:
+                        - descriptor:
+                            code: installation_specification
+                          display: true
+                          list:
+                          - descriptor:
+                              code: installation_type
+                            value: Rooftop / Ground-mount
+                          - descriptor:
+                              code: supported_panel_types
+                            value: Mono PERC, Polycrystalline, Thin Film
+                          - descriptor:
+                              code: system_capacity_limit
+                            value: Up to 10kW
+                          - descriptor:
+                              code: included_services
+                            value: Mounting, inverter wiring, earthing, net-meter interface
+                          - descriptor:
+                              code: installation_duration
+                            value: 4–6 hours
+                        - descriptor:
+                            code: installer_qualification
+                          display: true
+                          list:
+                          - descriptor:
+                              code: empaneled_with_nodal_agency
+                            value: 'Yes'
+                          - descriptor:
+                              code: safety_certified
+                            value: 'Yes'
                       billing:
-                        name: Emily Tran
-                        email: emily.tran@example.com
-                        phone: "+14155556666"
-                        address: 456 Glenview St, San Francisco, CA
+                        name: Evan Smith
+                        email: evan.smith@example.com
+                        phone: "+14155558888"
+                        address: 456 Solar Valley Rd, San Jose, CA
                       fulfillments:
-                      - id: '1'
-                        type: ONSITE
-                        tracking: true
-                        state:
-                          descriptor:
-                            code: Scheduled
-                            name: Installation Scheduled
-                        customer:
-                          person:
-                            name: Emily Tran
-                          contact:
-                            phone: "+14155556666"
-                            email: emily.tran@example.com
+                      - id: hd1
+                        type: HOME_DELIVERY
                         stops:
                         - type: end
                           location:
-                            address: 456 Glenview St, San Francisco, CA
-                        contact:
-                          phone: "+18005559999"
-                          email: install@sunpower.com
+                            address: 456 Solar Valley Rd, San Jose, CA
+                          time:
+                            range:
+                              start: '2025-05-08T09:00:00Z'
+                              end: '2025-05-08T17:00:00Z'
                       quote:
                         price:
-                          value: '85000'
+                          value: '345'
                           currency: USD
                         breakup:
-                        - title: Installation Charge
+                        - title: Panel Price
                           price:
-                            value: '85000'
+                            value: '320'
+                            currency: USD
+                        - title: Home Delivery
+                          price:
+                            value: '25'
                             currency: USD
                       payments:
-                      - type: ON-FULFILLMENT
+                      - type: PRE-FULFILLMENT
                         collected_by: BPP
                         status: NOT-PAID
                         params:
-                          amount: '150'
-                          currency: USD      
+                          amount: '345'
+                          currency: USD
+                          transaction_id: txn-sunpro-001
+                        url: https://bpp-solar-store.example.com/payments/txn-sunpro-001
+                      cancellation_terms:
+                      - fulfillment_state:
+                          descriptor:
+                            code: order_placed
+                            name: Order Placed
+                        reason_required: true
+                        cancel_by:
+                          timestamp: '2025-05-07T20:00:00Z'
+                        cancellation_fee:
+                          percentage: 5
+                          minimum_value:
+                            currency: USD
+                            value: '10'
+                        xinput:
+                          required: true
+                          form:
+                            url: https://example.com/cancel
+                        external_ref:
+                          url: https://example.com/docs/cancellation-policy.pdf
+                          mime_type: application/pdf
+                        
       responses:
         default:
           $ref: '#/paths/~1init/post/responses/default'
@@ -958,15 +1188,15 @@ paths:
               Confirmation of a solar panel installation service order:
                 value:
                   context:
-                    domain: service
+                    domain: retail
                     action: on_confirm
                     version: 1.1.0
-                    bap_id: example-bap.com
-                    bpp_id: example-bpp.com
-                    bpp_uri: https://example-bpp.com
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10007
-                    timestamp: '2023-07-16T04:41:45Z'
+                    bap_id: bap-consumer.example.com
+                    bpp_id: bpp-solar-store.example.com
+                    bpp_uri: https://bpp-solar-store.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-on-confirm-001
+                    timestamp: '2025-05-07T12:30:35Z'
                     ttl: PT10M
                     location:
                       country:
@@ -975,83 +1205,134 @@ paths:
                         code: NANP:628
                   message:
                     order:
-                      id: sunpower-install-order-001
+                      id: order-sunpro-001
                       provider:
-                        id: sunpower_sf
+                        id: sunpro_energy
                         descriptor:
-                          code: SunPower_Installers
-                          short_desc: Residential and commercial solar panel installation
-                          long_desc: Leading provider of rooftop and industrial solar panel setup services
-                            in San Francisco.
-                          images:
-                          - url: https://sunpower.com/logo.png
-                          - url: https://sunpower.com/gallery.jpg
+                          name: SunPro Energy Systems
+                          short_desc: Premium mono and polycrystalline solar panels
                       items:
-                      - id: sp-resi-001
+                      - id: sp_mono_450w
                         descriptor:
-                          name: 2kW Rooftop Solar Setup
+                          name: SunPro Mono 450W Panel
+                          short_desc: High-efficiency 450W panel for rooftop systems
                         price:
-                          estimated_value: '85000'
+                          value: '320'
                           currency: USD
+                        quantity:
+                          selected:
+                            count: 1
                         tags:
                         - descriptor:
-                            code: system_specification
+                            code: Panel_Specifications
+                          display: true
                           list:
                           - descriptor:
-                              code: system_capacity
-                            value: 2KW
+                              code: Type
+                            value: Monocrystalline
+                          - descriptor:
+                              code: Wattage
+                            value: 450W
+                          - descriptor:
+                              code: Efficiency
+                            value: 21.4%
+                          - descriptor:
+                              code: Warranty
+                            value: 25 years
+                          - descriptor:
+                              code: IP_Rating
+                            value: IP68
                         - descriptor:
-                            code: installation_context
+                            name: Certifications
                           list:
                           - descriptor:
-                              code: property_type
-                            value: Residential
+                              name: solar equipment certificate
+                              code: SEC
+                            value: https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf
+                          - descriptor:
+                              name: pv module safety certificate
+                              code: PMSC
+                            value: https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf
+                      - id: it/panel/12
+                        descriptor:
+                          name: Solar Panel Installation Service
+                          short_desc: On-site installation for rooftop or ground-mounted solar panels
+                          long_desc: Includes mounting structure setup, panel alignment, inverter integration,
+                            grid connection readiness, and post-installation testing. Covers both residential
+                            and commercial rooftop systems.
+                        price:
+                          value: '250'
+                          currency: USD
+                        rateable: true
+                        rating: '4.8'
+                        category_ids:
+                        - solar_installation
+                        fulfillment_ids:
+                        - sv1
+                        location_ids:
+                        - '1'
+                        tags:
                         - descriptor:
-                            code: installer_details
+                            code: installation_specification
+                          display: true
                           list:
                           - descriptor:
-                              code: empaneled
-                            value: 'true'
+                              code: installation_type
+                            value: Rooftop / Ground-mount
+                          - descriptor:
+                              code: supported_panel_types
+                            value: Mono PERC, Polycrystalline, Thin Film
+                          - descriptor:
+                              code: system_capacity_limit
+                            value: Up to 10kW
+                          - descriptor:
+                              code: included_services
+                            value: Mounting, inverter wiring, earthing, net-meter interface
+                          - descriptor:
+                              code: installation_duration
+                            value: 4–6 hours
                         - descriptor:
-                            code: financial_details
+                            code: installer_qualification
+                          display: true
                           list:
                           - descriptor:
-                              code: financial_assistance
-                            value: 'true'
+                              code: empaneled_with_nodal_agency
+                            value: 'Yes'
+                          - descriptor:
+                              code: safety_certified
+                            value: 'Yes'
                       billing:
-                        name: Emily Tran
-                        email: emily.tran@example.com
-                        phone: "+14155556666"
-                        address: 456 Glenview St, San Francisco, CA
+                        name: Evan Smith
+                        email: evan.smith@example.com
+                        phone: "+14155558888"
+                        address: 456 Solar Valley Rd, San Jose, CA
                       fulfillments:
-                      - id: '1'
-                        type: ONSITE
-                        tracking: true
+                      - id: hd1
+                        type: HOME_DELIVERY
                         state:
                           descriptor:
-                            code: Scheduled
-                            name: Installation Visit Scheduled
-                        customer:
-                          person:
-                            name: Emily Tran
-                          contact:
-                            phone: "+14155556666"
-                            email: emily.tran@example.com
+                            code: Order-confirmed
+                            name: Order Confirmed
                         stops:
                         - type: end
                           location:
-                            address: 456 Glenview St, San Francisco, CA
-                        contact:
-                          phone: "+18005559999"
-                          email: install@sunpower.com
+                            address: 456 Solar Valley Rd, San Jose, CA
+                          time:
+                            range:
+                              start: '2025-05-08T09:00:00Z'
+                              end: '2025-05-08T17:00:00Z'
                       quote:
                         price:
-                          value: '85000'
+                          value: '345'
                           currency: USD
                         breakup:
-                        - title: Installation Charge
+                        - title: Panel Price
                           price:
-                            value: '85000'
+                            value: '320'
+                            currency: USD
+                        - title: Home Delivery
+                          price:
+                            value: '25'
                             currency: USD
                       payments:
                       - type: ON-FULFILLMENT
@@ -1059,7 +1340,28 @@ paths:
                         status: NOT-PAID
                         params:
                           amount: '150'
-                          currency: USD      
+                          currency: USD
+                      cancellation_terms:
+                      - fulfillment_state:
+                          descriptor:
+                            code: order_placed
+                            name: Order Placed
+                        reason_required: true
+                        cancel_by:
+                          timestamp: '2025-05-07T20:00:00Z'
+                        cancellation_fee:
+                          percentage: 5
+                          minimum_value:
+                            currency: USD
+                            value: '10'
+                        xinput:
+                          required: true
+                          form:
+                            url: https://example.com/cancel
+                        external_ref:
+                          url: https://example.com/docs/cancellation-policy.pdf
+                          mime_type: application/pdf
+      
       responses:
         default:
           description: Acknowledgement of message received after successful validation of schema and signature
@@ -1102,120 +1404,15 @@ paths:
               on_status example response 1:
                 value:
                   context:
-                    domain: service
-                    action: on_confirm
-                    version: 1.1.0
-                    bap_id: example-bap.com
-                    bpp_id: example-bpp.com
-                    bpp_uri: https://example-bpp.com
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10007
-                    timestamp: '2023-07-16T04:41:45Z'
-                    ttl: PT10M
-                    location:
-                      country:
-                        code: USA
-                      city:
-                        code: NANP:628
-                  message:
-                    order:
-                      id: sunpower-install-order-001
-                      provider:
-                        id: sunpower_sf
-                        descriptor:
-                          code: SunPower_Installers
-                          short_desc: Residential and commercial solar panel installation
-                          long_desc: Leading provider of rooftop and industrial solar panel setup services
-                            in San Francisco.
-                          images:
-                          - url: https://sunpower.com/logo.png
-                          - url: https://sunpower.com/gallery.jpg
-                      items:
-                      - id: sp-resi-001
-                        descriptor:
-                          name: 2kW Rooftop Solar Setup
-                        price:
-                          estimated_value: '85000'
-                          currency: USD
-                        tags:
-                        - descriptor:
-                            code: system_specification
-                          list:
-                          - descriptor:
-                              code: system_capacity
-                            value: 2KW
-                        - descriptor:
-                            code: installation_context
-                          list:
-                          - descriptor:
-                              code: property_type
-                            value: Residential
-                        - descriptor:
-                            code: installer_details
-                          list:
-                          - descriptor:
-                              code: empaneled
-                            value: 'true'
-                        - descriptor:
-                            code: financial_details
-                          list:
-                          - descriptor:
-                              code: financial_assistance
-                            value: 'true'
-                      billing:
-                        name: Emily Tran
-                        email: emily.tran@example.com
-                        phone: "+14155556666"
-                        address: 456 Glenview St, San Francisco, CA
-                      fulfillments:
-                      - id: '1'
-                        type: ONSITE
-                        tracking: true
-                        state:
-                          descriptor:
-                            code: Scheduled
-                            name: Installation Visit Scheduled
-                        customer:
-                          person:
-                            name: Emily Tran
-                          contact:
-                            phone: "+14155556666"
-                            email: emily.tran@example.com
-                        stops:
-                        - type: end
-                          location:
-                            address: 456 Glenview St, San Francisco, CA
-                        contact:
-                          phone: "+18005559999"
-                          email: install@sunpower.com
-                      quote:
-                        price:
-                          value: '85000'
-                          currency: USD
-                        breakup:
-                        - title: Installation Charge
-                          price:
-                            value: '85000'
-                            currency: USD
-                      payments:
-                      - type: ON-FULFILLMENT
-                        collected_by: BPP
-                        status: NOT-PAID
-                        params:
-                          amount: '150'
-                          currency: USD
-              on_status example response 2:
-                value:
-                  context:
-                    domain: service
+                    domain: retail
                     action: on_status
                     version: 1.1.0
-                    bap_id: example-bap.com
-                    bpp_id: example-bpp.com
-                    bpp_uri: https://example-bpp.com
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10009
-                    timestamp: '2023-07-16T04:41:55Z'
+                    bap_id: bap-consumer.example.com
+                    bpp_id: bpp-solar-store.example.com
+                    bpp_uri: https://bpp-solar-store.example.com
+                    transaction_id: tx-solar-panel-001
+                    message_id: msg-on-status-001
+                    timestamp: '2025-05-07T12:30:45Z'
                     ttl: PT10M
                     location:
                       country:
@@ -1224,83 +1421,141 @@ paths:
                         code: NANP:628
                   message:
                     order:
-                      id: sunpower-install-order-001
+                      id: order-sunpro-001
                       provider:
-                        id: sunpower_sf
+                        id: sunpro_energy
                         descriptor:
-                          name: SunPower Installers
-                          short_desc: Residential and commercial solar panel installation
+                          name: SunPro Energy Systems
+                          short_desc: Premium mono and polycrystalline solar panels
                       items:
-                      - id: sp-resi-001
+                      - id: sp_mono_450w
                         descriptor:
-                          name: 2kW Rooftop Solar Setup
+                          name: SunPro Mono 450W Panel
+                          short_desc: High-efficiency 450W panel for rooftop systems
                         price:
-                          estimated_value: '85000'
+                          value: '320'
                           currency: USD
+                        quantity:
+                          selected:
+                            count: 1
                         tags:
                         - descriptor:
-                            code: system_specification
+                            code: Panel_Specifications
+                          display: true
                           list:
                           - descriptor:
-                              code: system_capacity
-                            value: 2KW
+                              code: Type
+                            value: Monocrystalline
+                          - descriptor:
+                              code: Wattage
+                            value: 450W
+                          - descriptor:
+                              code: Efficiency
+                            value: 21.4%
+                          - descriptor:
+                              code: Warranty
+                            value: 25 years
+                          - descriptor:
+                              code: IP_Rating
+                            value: IP68
                         - descriptor:
-                            code: installation_context
+                            name: Certifications
                           list:
                           - descriptor:
-                              code: property_type
-                            value: Residential
+                              name: solar equipment certificate
+                              code: SEC
+                            value: https://www.example.com/certificates/solar/CEC_LISTED/SunPower_X21_345_Module_CEC_Certification.pdf
+                          - descriptor:
+                              name: pv module safety certificate
+                              code: PMSC
+                            value: https://www.example.com/certificates/pv_module_safety_certificate/JinkoTigerNeo_UL61730_Cert.pdf
+                      - id: it/panel/12
+                        descriptor:
+                          name: Solar Panel Installation Service
+                          short_desc: On-site installation for rooftop or ground-mounted solar panels
+                          long_desc: Includes mounting structure setup, panel alignment, inverter integration,
+                            grid connection readiness, and post-installation testing. Covers both residential
+                            and commercial rooftop systems.
+                        price:
+                          value: '250'
+                          currency: USD
+                        rateable: true
+                        rating: '4.8'
+                        category_ids:
+                        - solar_installation
+                        fulfillment_ids:
+                        - sv1
+                        location_ids:
+                        - '1'
+                        tags:
                         - descriptor:
-                            code: installer_details
+                            code: installation_specification
+                          display: true
                           list:
                           - descriptor:
-                              code: empaneled
-                            value: 'true'
+                              code: installation_type
+                            value: Rooftop / Ground-mount
+                          - descriptor:
+                              code: supported_panel_types
+                            value: Mono PERC, Polycrystalline, Thin Film
+                          - descriptor:
+                              code: system_capacity_limit
+                            value: Up to 10kW
+                          - descriptor:
+                              code: included_services
+                            value: Mounting, inverter wiring, earthing, net-meter interface
+                          - descriptor:
+                              code: installation_duration
+                            value: 4–6 hours
                         - descriptor:
-                            code: financial_details
+                            code: installer_qualification
+                          display: true
                           list:
                           - descriptor:
-                              code: financial_assistance
-                            value: 'true'
+                              code: empaneled_with_nodal_agency
+                            value: 'Yes'
+                          - descriptor:
+                              code: safety_certified
+                            value: 'Yes'
                       billing:
-                        name: Emily Tran
-                        email: emily.tran@example.com
-                        phone: "+14155556666"
-                        address: 456 Glenview St, San Francisco, CA
+                        name: Evan Smith
+                        email: evan.smith@example.com
+                        phone: "+14155558888"
+                        address: 456 Solar Valley Rd, San Jose, CA
                       fulfillments:
-                      - id: '1'
-                        type: ONSITE
-                        tracking: true
+                      - id: hd1
+                        type: HOME_DELIVERY
                         state:
                           descriptor:
-                            code: Approved
-                            name: Approved
-                        customer:
-                          person:
-                            name: Emily Tran
-                          contact:
-                            phone: "+14155556666"
-                            email: emily.tran@example.com
+                            code: Out-for-delivery
+                            name: Out for Delivery
                         agent:
                           person:
-                            name: David C
-                          contact:
-                            phone: "+1423452345"
+                            name: Carlos Green
+                            phone: "+14155551234"
+                          organization:
+                            descriptor:
+                              name: SunPro Delivery Services
                         stops:
                         - type: end
                           location:
-                            address: 456 Glenview St, San Francisco, CA
-                        contact:
-                          phone: "+18005559999"
-                          email: install@sunpower.com
+                            address: 456 Solar Valley Rd, San Jose, CA
+                          time:
+                            range:
+                              start: '2025-05-08T09:00:00Z'
+                              end: '2025-05-08T17:00:00Z'
                       quote:
                         price:
-                          value: '85000'
+                          value: '345'
                           currency: USD
                         breakup:
-                        - title: Installation Charge
+                        - title: Panel Price
                           price:
-                            value: '85000'
+                            value: '320'
+                            currency: USD
+                        - title: Home Delivery
+                          price:
+                            value: '25'
                             currency: USD
                       payments:
                       - type: ON-FULFILLMENT
@@ -1309,141 +1564,27 @@ paths:
                         params:
                           amount: '150'
                           currency: USD
-              on_status example response 3:
-                value:
-                  context:
-                    domain: service
-                    action: on_status
-                    version: 1.1.0
-                    bap_id: example-bap.com
-                    bpp_id: example-bpp.com
-                    bpp_uri: https://example-bpp.com
-                    transaction_id: 6743e9e2-4fb5-487c-92b7-13ba8018f176
-                    message_id: certification-msg-10009
-                    timestamp: '2023-07-16T04:41:55Z'
-                    ttl: PT10M
-                    location:
-                      country:
-                        code: USA
-                      city:
-                        code: NANP:628
-                  message:
-                    order:
-                      id: sunpower-install-order-001
-                      provider:
-                        id: sunpower_sf
-                        descriptor:
-                          name: SunPower Installers
-                          short_desc: Residential and commercial solar panel installation
-                      items:
-                      - id: sp-resi-001
-                        descriptor:
-                          name: 2kW Rooftop Solar Setup
-                        price:
-                          estimated_value: '85000'
-                          currency: USD
-                        tags:
-                        - descriptor:
-                            code: system_specification
-                          list:
-                          - descriptor:
-                              code: system_capacity
-                            value: 2KW
-                        - descriptor:
-                            code: installation_context
-                          list:
-                          - descriptor:
-                              code: property_type
-                            value: Residential
-                        - descriptor:
-                            code: installer_details
-                          list:
-                          - descriptor:
-                              code: empaneled
-                            value: 'true'
-                          - descriptor:
-                              code: system_capacity_kw
-                            value: '3.0'
-                          - descriptor:
-                              code: panel_type
-                            value: Mono PERC
-                          - descriptor:
-                              code: number_of_panels
-                            value: '6'
-                          - descriptor:
-                              code: inverter_type
-                            value: Hybrid
-                          - descriptor:
-                              code: mounting_type
-                            value: Rooftop – Fixed Tilt
-                          - descriptor:
-                              code: installation_date
-                            value: '2025-05-10'
-                          - descriptor:
-                              code: commissioning_status
-                            value: Completed
-                          - descriptor:
-                              code: net_metering_enabled
-                            value: 'Yes'
-                          - descriptor:
-                              code: installation_certificate_id
-                            value: CERT-SP-20250510-00123
-                          - descriptor:
-                              code: installer_empaneled
-                            value: 'Yes'
-                        - descriptor:
-                            code: financial_details
-                          list:
-                          - descriptor:
-                              code: financial_assistance
-                            value: 'true'
-                      billing:
-                        name: Emily Tran
-                        email: emily.tran@example.com
-                        phone: "+14155556666"
-                        address: 456 Glenview St, San Francisco, CA
-                      fulfillments:
-                      - id: '1'
-                        type: ONSITE
-                        tracking: true
-                        state:
+                      cancellation_terms:
+                      - fulfillment_state:
                           descriptor:
-                            code: Installed
-                            name: Installed
-                        customer:
-                          person:
-                            name: Emily Tran
-                          contact:
-                            phone: "+14155556666"
-                            email: emily.tran@example.com
-                        agent:
-                          person:
-                            name: David C
-                          contact:
-                            phone: "+1423452345"
-                        stops:
-                        - type: end
-                          location:
-                            address: 456 Glenview St, San Francisco, CA
-                        contact:
-                          phone: "+18005559999"
-                          email: install@sunpower.com
-                      quote:
-                        price:
-                          value: '85000'
-                          currency: USD
-                        breakup:
-                        - title: Installation Charge
-                          price:
-                            value: '85000'
+                            code: order_placed
+                            name: Order Placed
+                        reason_required: true
+                        cancel_by:
+                          timestamp: '2025-05-07T20:00:00Z'
+                        cancellation_fee:
+                          percentage: 5
+                          minimum_value:
                             currency: USD
-                      payments:
-                      - type: ON-FULFILLMENT
-                        collected_by: BPP
-                        status: NOT-PAID
-                        params:
-                          amount: '150'
-                          currency: USD
+                            value: '10'
+                        xinput:
+                          required: true
+                          form:
+                            url: https://example.com/cancel
+                        external_ref:
+                          url: https://example.com/docs/cancellation-policy.pdf
+                          mime_type: application/pdf
+                        
       responses:
         default:
           $ref: '#/paths/~1init/post/responses/default'
