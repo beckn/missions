@@ -223,3 +223,181 @@ The authentication on the BAP (Consumer facing app) towards the customer side is
 Q47. **How can we handle payments in a production grade customer app ?**
 
 This document [Payments on Beckn networks](https://github.com/beckn/protocol-specifications/blob/master/docs/BECKN-002-Payments-On-Beckn-Enabled-Networks.md) explains the concepts involved in payments on Beckn. However the actual implementation is left to the application developers. 
+
+Q48. **Are domain-specific taxonomies agreed on at a protocol level, or decided by individual implementers ? if at a protocol level, what's the process for their creation and evolution?** 
+
+Domain-specific taxonomies are agreed at a protocol level and not left to individual 
+
+Domain-specific taxonomies are governed through a collaborative, working group–led process, not embedded directly in the protocol’s core specification. The process typically follows these steps:
+- Formation of a Domain Working Group
+    - Convened by the Beckn community or a network facilitator, this group includes domain experts, implementers, policymakers, and Beckn architects. It serves as the canonical authority for that domain’s taxonomy.
+- Drafting the Taxonomy
+ The working group defines:
+    - Domain code and subdomain identifiers
+    - Standard category codes, item descriptors, fulfillment types
+    - Enumeration lists for tags and filters
+- Review and Community Feedback
+    - Drafts are shared for public or ecosystem-wide feedback. Comments are reviewed, and iterative improvements are made. This ensures practical alignment across diverse implementers.
+- Finalization and Publication
+    - Once consensus is reached, the taxonomy is published in relevant Beckn GitHub repositories or the relevant domain network’s documentation. Implementers are expected to conform to this shared vocabulary.
+- The taxonomy is added into TagGroups, Fulfillment State, Fulfillment Type, Category Codes etc.
+- Ongoing Evolution
+The same working group maintains stewardship of the taxonomy, with versioning and a structured proposal process for:
+    - Adding new enumerations or categories
+    - Deprecating outdated terms
+    - Aligning with real-world policy or regulatory shifts
+
+Q49. **is it within the protocol's scope to validate the correct execution (especially by BPPs) of what the protocol messages represent? (orders, cancellations...)?** 
+
+Beckn is a lightweight protocol specification that defines the schema and contract between two communicating applications / platforms. The validation of the business logic and other semantics needs to be coded by the application.
+We have built a reference beckn adapter (beckn onix) which implements 2 level validations
+    - Protocol level
+        - Ensures message integrity
+        - Includes header checks, digital signature verification
+        - Guarantees the message is untampered, and that the sender is legitimate
+    - Domain Level (use case level)
+        - Applies domain-specific constraints, such as correct usage of taxonomies, enumerations, and expected data values
+        - Ensures semantic consistency within a domain context, but still does not enforce execution or business workflows
+
+Q50. **is it within the protocol's scope to have paths of action when a participant doesn't correctly execute what's represented by the protocol? e.g., they behave in the protocol as if fulfilling an order, but never actually ship the physical item?** 
+
+The paths of action need to be coded by the BPP implementor, its up to the implementor on how the business logic needs to be implemented and what enforcement logic needs to be applied.
+
+However, the protocol includes mechanisms to communicate changes in order state to participants, enabling participants to get notified about the progression of an order through:
+    - /status and /on_status – to share the current state of the order (e.g., dispatched, delivered)
+    - /track - to track the location of a shipped order.
+    - These APIs help maintain state visibility, but trust and enforcement are delegated to the network governance layer, where monitoring, audit, and redressal mechanisms can be implemented.
+    - In short, the protocol ensures transparent communication, not enforcement of physical execution.
+
+Q51. **Is the protocol meant only to exist alongside existing mechanisms for executing the processes represented by it (e.g. an existing storefront) or does it offer domain-specific applications sufficient to participate as a BPP from scratch, without an existing backend? (e.g. for e-commerce, something similar to Shopify for setting up a storefront)** 
+
+Adoption Paths
+A participant can adopt the Beckn Protocol through either of the following approaches:
+    - Integrating with an Existing System
+    Example: A storefront such as Shopify, WooCommerce, or any legacy commerce platform.
+
+    - Building a New Application
+    A fresh build that natively implements Beckn APIs and directly conforms to the protocol specification.
+
+# How It Works
+
+## Standardized Transaction APIs
+Beckn exposes a set of standardized APIs for handling key digital commerce workflows including:
+
+- **Discovery**
+- **Ordering**
+- **Fulfillment**
+- **Post-fulfillment**
+
+Once implemented, these APIs enable **interoperability** across all Beckn-compliant (*Becknified*) applications.
+
+---
+
+## Backend Requirements for BPPs
+A **BPP (Beckn Protocol Provider)** still requires a fully functional backend, similar to any regular digital application. Beckn does **not** provide or enforce domain-specific backends.
+
+---
+
+# Integration Methods
+
+## Using a Mapper for Existing Applications
+Applications can become Beckn-compliant by integrating a **mapper/adapter layer**, which translates internal APIs into standard Beckn messages.
+
+## Native Implementation for New Applications
+New systems can directly implement **Beckn endpoints** without relying on a pre-existing backend—offering more flexibility and tighter integration.
+
+---
+
+# About Beckn Protocol
+
+## Domain-Agnostic Open Protocol
+Beckn is designed to **standardize digital commerce interactions** across domains and platforms—without prescribing a specific business model or vertical.
+
+## Not a Product, But a Protocol Layer
+Unlike platforms like Shopify, Beckn is **not a full-fledged application**. Instead, it is a lightweight **interoperability layer** that allows existing and new applications to:
+
+- Communicate using a **common language**
+- Form **decentralized commerce networks**
+- Enable **plug-and-play participation** for both large enterprises and small
+
+Q52. **Are there tutorial-style docs or resources anywhere on how to set up a BPP from scratch? less high-level than the concept docs, but more structured than the API specification** 
+
+# BPP Demo Stack Overview
+
+Our **BPP (Beckn Protocol Provider)** stack is built on the **MERN stack** (MongoDB, Express.js, React, Node.js) using the **Strapi** framework. It is intended as a **demo BPP application** and should **not be used for production deployments**.
+
+The demo is primarily utilized to simulate various **Beckn Protocol use cases** and aid in testing and development workflows.
+
+---
+
+## Setup & Requirements
+
+### 🚫 Production Readiness
+This BPP is a **demo implementation**.  
+It is **not optimized** for scalability, security, or reliability for live environments.
+
+### 📄 Documentation Availability
+There is **no exhaustive setup documentation** available for this BPP demo.  
+However, developers familiar with the **MERN stack** should be able to deploy it with minimal effort.
+
+---
+
+## Alternative BPP Solutions
+
+You may also choose to use **existing market solutions** as your BPP application by integrating them via **Beckn Onix**, a Beckn protocol adapter.
+
+Examples of compatible platforms include:
+
+- **Shopify**
+- **WooCommerce**
+
+---
+
+## Resources
+
+### 📘 Beckn Starter Kit (Setup Guide for Beckn Onix)
+- **Starter Kit Documentation**
+
+### 🔗 Beckn Onix Repository
+- [https://github.com/beckn/beckn-onix](https://github.com/beckn/beckn-onix)
+
+### 💻 BPP Demo Codebase
+- **Plugins**: [https://github.com/beckn/strapi-plugins](https://github.com/beckn/strapi-plugins)  
+- **Strapi BAP-BPP**: [https://github.com/beckn/strapi-bap-bpp](https://github.com/beckn/strapi-bap-bpp)
+
+
+Q53. **What about for a BAP?** 
+
+# Demo BAP Applications (POC)
+
+We have developed a set of **demo BAP applications** intended for **Proof of Concept (POC)** use cases. These applications are:
+
+- Built on the **MERN stack** (MongoDB, Express.js, React, Node.js)
+- Developed using **Strapi**, a popular headless CMS framework
+- **Open source** and available for reuse and customization
+
+---
+
+## Setup Requirements
+
+While we do not provide exhaustive documentation for local setup, developers with a **MERN background** should find it straightforward to configure the environment and run the application.
+
+To set up the BAP locally, you will need to integrate components from the following repositories:
+
+---
+
+### 🔹 1. Beckn UI Workspace
+- **Purpose**: Provides the front-end interface for the BAP demo  
+- **Repository**: [https://github.com/beckn/beckn-ui-workspace](https://github.com/beckn/beckn-ui-workspace)
+
+---
+
+### 🔹 2. Generic Client Layer
+- **Purpose**: Acts as a translation layer between the Beckn UI and the Beckn adapter  
+- **Repository**: [https://github.com/beckn/generic-client-layer](https://github.com/beckn/generic-client-layer)
+
+---
+
+### 🔹 3. Beckn Onix (Adapter)
+- **Purpose**: Required for setting up the Beckn adapter  
+- **Repository**: [https://github.com/beckn/beckn-onix](https://github.com/beckn/beckn-onix)
