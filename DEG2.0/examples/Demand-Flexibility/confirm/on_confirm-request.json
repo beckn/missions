@@ -40,44 +40,11 @@
           "descriptor": {
             "name": "Evening Peak Saver Manual Opt-in",
             "short_desc": "$0.20/kWh for 5-8 PM reductions (manual acceptance)",
-            "long_desc": "Users will receive app notifications during grid peak hours (5–8 PM). Upon manual acceptance, they can reduce usage and earn $0.20 for every kWh saved during the window.",
+            "long_desc": "Users will receive app notifications during grid peak hours (5-8 PM). Upon manual acceptance, they can reduce usage and earn $0.20 for every kWh saved during the window.",
             "additional_desc": {
               "url": "https://sfeu.org/flexibility/peak-saver"
             }
-          },
-          "tags": [
-            {
-              "descriptor": {
-                "code": "Flexibility_Event_Details"
-              },
-              "list": [
-                {
-                  "descriptor": {
-                    "code": "Window"
-                  },
-                  "value": "5:00 PM to 8:00 PM daily during alerts"
-                },
-                {
-                  "descriptor": {
-                    "code": "Reward"
-                  },
-                  "value": "$0.20 per reduced kWh"
-                },
-                {
-                  "descriptor": {
-                    "code": "Enrollment_Required"
-                  },
-                  "value": "Yes"
-                },
-                {
-                  "descriptor": {
-                    "code": "Acceptance_Mode"
-                  },
-                  "value": "Manual (via app notification)"
-                }
-              ]
-            }
-          ]
+          }
         }
       ],
       "fulfillments": [
