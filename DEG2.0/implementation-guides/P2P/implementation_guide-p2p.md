@@ -1465,7 +1465,7 @@ Refer: [Integrating with Your Software](https://github.com/beckn/missions/blob/m
 ## Links to artefacts
 
 - [Postman collection for Demand Flexibility]()
-- [Layer2 config for UEI Demand Flexibility]()
+- [Layer2 config for UEI Demand Flexibility](https://github.com/beckn/missions/blob/main/DEG2.0/layer2/P2P/trade_1.1.0.yaml)
 
 ## Sandbox Details
 
