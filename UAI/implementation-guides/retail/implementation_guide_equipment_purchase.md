@@ -135,7 +135,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -176,7 +176,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -219,6 +219,18 @@ Beckn is a aynchronous protocol at its core.
                         ]
                     }
                 ]
+            },
+            "fulfillment": {
+                "type": "Delivery",
+                "stops": [
+                    {
+                        "type": "end",
+                        "location": {
+                            "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+                            "area_code": "416506" // pin code
+                        }
+                    }
+                ]
             }
         }
     }
@@ -229,7 +241,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -254,10 +266,19 @@ Beckn is a aynchronous protocol at its core.
             "item": {
                 "descriptor": {
                     "name": "motor pump"
-                },
-                "fulfillment": {
-                    "type": "Delivery"
                 }
+            },
+            "fulfillment": {
+                "type": "Delivery",
+                "stops": [
+                    {
+                        "type": "end",
+                        "location": {
+                            "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+                            "area_code": "416506" // pin code
+                        }
+                    }
+                ]
             }
         }
     }
@@ -278,7 +299,7 @@ The items which allow booking a demo have category code "demo" in it.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -603,7 +624,7 @@ BAP specifies that it is a demo request using item category code.
 ```
 {
     "context": {
-      "domain": "retail:uai",
+      "domain": "retail:uki",
       "location": {
         "country": {
           "code": "IND"
@@ -646,10 +667,8 @@ BAP specifies that it is a demo request using item category code.
                 {
                     "type": "end",
                     "location": {
-                        "district": {
-                            "name": "Nashik",
-                            "code": "nashik"
-                        },
+                        "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+                        "district": "Nashik"
                         "state": {
                             "name": "Maharashtra",
                             "code": "maharashtra"
@@ -677,7 +696,7 @@ BAP specifies that it is a demo request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -793,7 +812,8 @@ BAP specifies that it is a demo request using item category code.
                         {
                             "type": "end",
                             "location": {
-                                "district": {
+                                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+                                "city": {
                                     "name": "Nashik",
                                     "code": "nashik"
                                 },
@@ -826,7 +846,7 @@ This on_confrim would contain an order id.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -916,7 +936,8 @@ This on_confrim would contain an order id.
                         {
                             "type": "end",
                             "location": {
-                                "district": {
+                                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+                                "city": {
                                     "name": "Nashik",
                                     "code": "nashik"
                                 },
@@ -951,7 +972,7 @@ This on_confrim would contain an order id.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -978,7 +999,7 @@ This on_confrim would contain an order id.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -1068,7 +1089,8 @@ This on_confrim would contain an order id.
                         {
                             "type": "end",
                             "location": {
-                                "district": {
+                                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+                                "city": {
                                     "name": "Nashik",
                                     "code": "nashik"
                                 },
@@ -1110,7 +1132,7 @@ This on_confrim would contain an order id.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -1200,7 +1222,8 @@ This on_confrim would contain an order id.
                         {
                             "type": "end",
                             "location": {
-                                "district": {
+                                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+                                "city": {
                                     "name": "Nashik",
                                     "code": "nashik"
                                 },
@@ -1254,7 +1277,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-      "domain": "retail:uai",
+      "domain": "retail:uki",
       "location": {
         "country": {
           "code": "IND"
@@ -1315,7 +1338,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -1437,7 +1460,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-      "domain": "retail:uai",
+      "domain": "retail:uki",
       "location": {
         "country": {
           "code": "IND"
@@ -1483,9 +1506,13 @@ BAP specifies that it is a purchase request using item category code.
                     "location": {
                         "gps": "23.23442, 24.35352",
                         "address": "123 street, HSR layout, Nashik",
-                        "city": "Nashik",
                         "district": "Nashik",
-                        "state": "Maharashtra"
+                        "city": {
+                            "name": "Nashik"
+                        },
+                        "state": {
+                            "name": "Maharashtra"
+                        }
                     }
                 }
             ],
@@ -1517,7 +1544,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -1601,9 +1628,13 @@ BAP specifies that it is a purchase request using item category code.
                             "location": {
                                 "gps": "23.23442, 24.35352",
                                 "address": "123 street, HSR layout, Nashik",
-                                "city": "Nashik",
                                 "district": "Nashik",
-                                "state": "Maharashtra"
+                                "city": {
+                                    "name": "Nashik"
+                                },
+                                "state": {
+                                    "name": "Maharashtra"
+                                }
                             }
                         }
                     ],
@@ -1690,7 +1721,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -1777,7 +1808,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -1862,9 +1893,13 @@ BAP specifies that it is a purchase request using item category code.
                             "location": {
                                 "gps": "23.23442, 24.35352",
                                 "address": "123 street, HSR layout, Nashik",
-                                "city": "Nashik",
                                 "district": "Nashik",
-                                "state": "Maharashtra"
+                                "city": {
+                                    "name": "Nashik"
+                                },
+                                "state": {
+                                    "name": "Maharashtra"
+                                }
                             }
                         }
                     ],
@@ -1959,7 +1994,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -1988,7 +2023,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -2073,9 +2108,12 @@ BAP specifies that it is a purchase request using item category code.
                             "location": {
                                 "gps": "23.23442, 24.35352",
                                 "address": "123 street, HSR layout, Nashik",
-                                "city": "Nashik",
-                                "district": "Nashik",
-                                "state": "Maharashtra"
+                                "city": {
+                                    "name": "Nashik"
+                                },
+                                "state": {
+                                    "name": "Maharashtra"
+                                }
                             }
                         }
                     ],
@@ -2181,7 +2219,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "code": "IND"
@@ -2214,7 +2252,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -2251,7 +2289,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
   "context": {
-    "domain": "retail:uai",
+    "domain": "retail:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -2278,7 +2316,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
   "context": {
-    "domain": "retail:uai",
+    "domain": "retail:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -2317,7 +2355,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -2356,7 +2394,7 @@ BAP specifies that it is a purchase request using item category code.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -2446,5 +2484,5 @@ If you are writing the provider platform software, the following are the steps y
  - **BPP Sandbox:** bpp-unified-sandbox-uai.becknprotocol.io
 
 ### Domain name:
-    retail:uai
+    retail:uki
 

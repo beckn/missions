@@ -181,7 +181,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "action": "search",
     "location": {
       "country": {
@@ -222,6 +222,8 @@ Beckn is a aynchronous protocol at its core.
           {
             "type": "applicable-region",
             "location": {
+              "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+              "area_code": "416506", // pin code
               "state": {
                 "name": "Maharshtra"
               },
@@ -246,7 +248,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "action": "search",
     "location": {
       "country": {
@@ -287,6 +289,8 @@ Beckn is a aynchronous protocol at its core.
           {
             "type": "applicable-region",
             "location": {
+              "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+              "area_code": "416506", // pin code
               "state": {
                 "name": "Maharshtra"
               },
@@ -401,7 +405,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "action": "search",
     "location": {
       "country": {
@@ -461,7 +465,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "action": "on_search",
     "location": {
       "country": {
@@ -656,6 +660,19 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
                       "display": true
                     }
                   ]
+                },
+                {
+                  "descriptor": {
+                    "name": "languages"
+                  },
+                  "list": [
+                    {
+                      "value": "mr"
+                    },
+                    {
+                      "value": "en"
+                    }
+                  ]
                 }
               ],
               "category_ids": [
@@ -711,7 +728,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "action": "confirm",
     "location": {
       "country": {
@@ -761,7 +778,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
     "context": {
-        "domain": "scheme:uai",
+        "domain": "scheme:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -900,6 +917,19 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
                         "display": true
                       }
                     ]
+                  },
+                  {
+                    "descriptor": {
+                      "name": "languages"
+                    },
+                    "list": [
+                      {
+                        "value": "mr"
+                      },
+                      {
+                        "value": "en"
+                      }
+                    ]
                   }
                 ],
                 "category_ids": [
@@ -949,7 +979,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
   "context": {
-      "domain": "scheme:uai",
+      "domain": "scheme:uki",
       "location": {
           "country": {
               "name": "IND"
@@ -977,7 +1007,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
     "context": {
-        "domain": "scheme:uai",
+        "domain": "scheme:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1114,6 +1144,19 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
                         },
                         "value": "Yes",
                         "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "name": "languages"
+                    },
+                    "list": [
+                      {
+                        "value": "mr"
+                      },
+                      {
+                        "value": "en"
                       }
                     ]
                   }
@@ -1171,7 +1214,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
     "context": {
-        "domain": "scheme:uai",
+        "domain": "scheme:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1308,6 +1351,19 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
                         },
                         "value": "Yes",
                         "display": true
+                      }
+                    ]
+                  },
+                  {
+                    "descriptor": {
+                      "name": "languages"
+                    },
+                    "list": [
+                      {
+                        "value": "mr"
+                      },
+                      {
+                        "value": "en"
                       }
                     ]
                   }
@@ -1370,7 +1426,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "location": {
       "country": {
         "name": "IND"
@@ -1402,7 +1458,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "location": {
       "country": {
         "code": "IND"
@@ -1438,7 +1494,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -1465,7 +1521,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -1504,7 +1560,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "location": {
       "country": {
         "name": "IND"
@@ -1541,7 +1597,7 @@ If a BAP receives an xinput in the catalog, optionally, the BAP can render the x
 ```
 {
   "context": {
-    "domain": "scheme:uai",
+    "domain": "scheme:uki",
     "location": {
       "country": {
         "name": "IND"
@@ -1637,4 +1693,4 @@ If you are writing the provider platform software, the following are the steps y
  - **BPP Sandbox:** bpp-unified-sandbox-uai.becknprotocol.io
 
 ### Domain name:
-    scheme:uai
+    scheme:uki

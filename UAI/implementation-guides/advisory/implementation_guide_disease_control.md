@@ -131,7 +131,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "search",
     "location": {
       "country": {
@@ -157,6 +157,23 @@ Beckn is a aynchronous protocol at its core.
         },
         "descriptor": {
           "name": "Kala Daag on onion leaves"
+        },
+        "item": {
+          "tags": [
+            {
+              "descriptor": {
+                "name": "languages"
+              },
+              "list": [
+                {
+                  "value": "mr"
+                },
+                {
+                  "value": "en"
+                }
+              ]
+            }
+          ]
         }
     }
   }
@@ -168,7 +185,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "search",
     "location": {
       "country": {
@@ -193,6 +210,21 @@ Beckn is a aynchronous protocol at its core.
         "name": "kala daag on onion leaves"
       }
       "item": {
+        "tags": [
+            {
+              "descriptor": {
+                "name": "languages"
+              },
+              "list": [
+                {
+                  "value": "mr"
+                },
+                {
+                  "value": "en"
+                }
+              ]
+            }
+        ],
         "rating": ">3.0",
       }
     }
@@ -208,7 +240,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "search",
     "location": {
       "country": {
@@ -243,10 +275,10 @@ Beckn is a aynchronous protocol at its core.
             },
             "list": [
               {
-                "value": "Odia"
+                "value": "en"
               },
               {
-                "value": "Hindi"
+                "value": "mr"
               }
             ]
           }
@@ -265,7 +297,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "search",
     "location": {
       "country": {
@@ -374,7 +406,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "search",
     "location": {
       "country": {
@@ -474,7 +506,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "on_search",
     "location": {
       "country": {
@@ -519,7 +551,22 @@ Beckn is a aynchronous protocol at its core.
                 "name": "Stemphylium Blight: Steps to prevent",
                 "short_desc": "TNAU Agritech portal",
                 "long_desc": "To manage Stemphylium Blight in onions, begin by inspecting crops regularly and removing infected leaves to prevent spread. Avoid overhead irrigation, as excess moisture promotes fungal growth; instead, use drip irrigation to keep leaves dry. Apply fungicides like Mancozeb or Azoxystrobin, adhering to recommended dosages for effective control. Rotate crops with non-host plants, such as cereals, to limit fungal spore buildup in soil. Maintain balanced fertilization, as excess nitrogen can increase  susceptibility, and ensure adequate spacing for better airflow. Routine monitoring is crucial to detect early signs and take prompt action, safeguarding the crop yield effectively."
-              }
+              },
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "languages"
+                  },
+                  "list": [
+                    {
+                      "value": "mr"
+                    },
+                    {
+                      "value": "en"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "4321",
@@ -534,7 +581,22 @@ Beckn is a aynchronous protocol at its core.
                   }
                 ]
               },
-              "rating": "4.0"
+              "rating": "4.0",
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "languages"
+                  },
+                  "list": [
+                    {
+                      "value": "mr"
+                    },
+                    {
+                      "value": "en"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "8977",
@@ -549,7 +611,22 @@ Beckn is a aynchronous protocol at its core.
                   }
                 ]
               },
-              "rating": "3.5"
+              "rating": "3.5",
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "languages"
+                  },
+                  "list": [
+                    {
+                      "value": "mr"
+                    },
+                    {
+                      "value": "en"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -578,7 +655,22 @@ Beckn is a aynchronous protocol at its core.
                   }
                 ]
               },
-              "rating": "4.5"
+              "rating": "4.5",
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "languages"
+                  },
+                  "list": [
+                    {
+                      "value": "mr"
+                    },
+                    {
+                      "value": "en"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -592,7 +684,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "on_search",
     "version": "1.1.0",
     "bap_id": "example-bap.becknprotocol.io",
@@ -638,8 +730,22 @@ Beckn is a aynchronous protocol at its core.
                 "name": "Powdery mildew on grapes",
                 "short_desc": "1 A white, powder-like fungal growth appears on both sides of the leaf. 2 White, powdery spots on leaves, shoots, flowers, and fruits; yellowing and curling of leaves; leaf drop.",
                 "long_desc": "1 As soon as symptoms of powdery mildew appear, spray **water-mixable sulfur** at a rate of 25 grams per 10 liters of water. 2 For controlling powdery mildew, spraying **nanosilver** at a rate of 2 ml per liter of water can be beneficial."
-
-              }
+              },
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "languages"
+                  },
+                  "list": [
+                    {
+                      "value": "mr"
+                    },
+                    {
+                      "value": "en"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -659,7 +765,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "location": {
       "country": {
         "name": "India",
@@ -696,7 +802,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "location": {
       "country": {
         "name": "India",
@@ -737,7 +843,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -768,7 +874,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -811,7 +917,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "location": {
       "country": {
         "name": "India",
@@ -853,7 +959,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "location": {
       "country": {
         "name": "India",
@@ -965,4 +1071,4 @@ If you are writing the provider platform software, the following are the steps y
  - **BPP Sandbox:** bpp-unified-sandbox-uai.becknprotocol.io
 
 ### Domain name:
-    advisory:uai
+    advisory:uki
