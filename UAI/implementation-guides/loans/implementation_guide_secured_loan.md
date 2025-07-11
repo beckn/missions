@@ -6,9 +6,7 @@
 
 | Date       | Version | Description                                         |
 | ---------- | ------- | --------------------------------------------------- |
-| 06-11-2024 | 0.1     | Initial Version                                     |
-| 14-11-2024 | 0.2     | Internal Review Comments Incorporated                |
-| 18-11-2024 | 1.0     | Final Version                                       |
+| 11-07-2025  | 0.1     | Initial Version                                     |
 
 ## Introduction
 

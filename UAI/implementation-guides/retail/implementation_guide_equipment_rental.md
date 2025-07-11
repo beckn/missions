@@ -8,7 +8,7 @@
 | ---------- | ------- | --------------------------------------------------- |
 | 06-11-2024 | 0.1     | Initial Version                                     |
 | 14-11-2024 | 0.2     | Internal Review Comments are incorprated                                     |
-| 18-11-2024 | 1.0     | Final Version                                     |
+| 11-07-2025  | 1.0     | updates in the location, language and domain name in the JSONs   
 
 ## Introduction
 
