@@ -238,6 +238,7 @@ Beckn is an asynchronous protocol at its core.
                         {
                             "id": "l1",
                             "address": "Nashik District Office",
+                            "area_code": "416506" // pin code
                             "city": {
                                 "name": "Nashik"
                             },
@@ -348,6 +349,7 @@ Beckn is an asynchronous protocol at its core.
                         {
                             "id": "l1",
                             "address": "Nashik District Office",
+                            "area_code": "416506" // pin code
                             "city": {
                                 "name": "Nashik"
                             },
@@ -458,6 +460,7 @@ Beckn is an asynchronous protocol at its core.
                         {
                             "id": "l1",
                             "address": "Nashik District Office",
+                            "area_code": "416506" // pin code
                             "city": {
                                 "name": "Nashik"
                             },

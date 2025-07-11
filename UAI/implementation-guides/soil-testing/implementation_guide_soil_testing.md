@@ -106,7 +106,7 @@ Beckn is an asynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "agri-services:uki",
+    "domain": "agri:uki",
     "action": "search",
     "version": "1.1.0",
     "bap_id": "soiltest.bap.uki.in",
@@ -157,6 +157,8 @@ Beckn is an asynchronous protocol at its core.
           {
             "type": "start",
             "location": {
+              "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
+              "area_code": "416506" // pin code
               "gps": "19.9975,73.7898"
             }
           }
@@ -399,14 +401,16 @@ Beckn is an asynchronous protocol at its core.
                             "type": "PickUp",
                             "location": {
                                 "gps": "19.9975,73.7898",
-                                "address": "Smita's Farm, Nashik"
+                                "address": "Smita's Farm, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         },
                         {
                             "type": "DropOff",
                             "location": {
                                 "gps": "19.9910,73.7769",
-                                "address": "Krishi Kendra Soil Lab, Nashik"
+                                "address": "Krishi Kendra Soil Lab, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         }
                     ]
@@ -475,7 +479,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "PickUp",
                             "location": {
                                 "gps": "19.9975,73.7898",
-                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                                "area_code": "416506" // pin code
                             },
                             "contact": {
                                 "phone": "9876543210",
@@ -489,7 +494,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "DropOff",
                             "location": {
                                 "gps": "19.9910,73.7769",
-                                "address": "Krishi Kendra Soil Lab, Nashik"
+                                "address": "Krishi Kendra Soil Lab, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         }
                     ]
@@ -591,7 +597,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "PickUp",
                             "location": {
                                 "gps": "19.9975,73.7898",
-                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                                "area_code": "416506" // pin code
                             },
                             "contact": {
                                 "phone": "9876543210"
@@ -604,7 +611,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "DropOff",
                             "location": {
                                 "gps": "19.9910,73.7769",
-                                "address": "Krishi Kendra Soil Lab, Nashik"
+                                "address": "Krishi Kendra Soil Lab, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         }
                     ]
@@ -683,7 +691,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "PickUp",
                             "location": {
                                 "gps": "19.9975,73.7898",
-                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                                "area_code": "416506" // pin code
                             },
                             "contact": {
                                 "phone": "9876543210",
@@ -697,7 +706,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "DropOff",
                             "location": {
                                 "gps": "19.9910,73.7769",
-                                "address": "Krishi Kendra Soil Lab, Nashik"
+                                "address": "Krishi Kendra Soil Lab, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         }
                     ]
@@ -811,7 +821,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "PickUp",
                             "location": {
                                 "gps": "19.9975,73.7898",
-                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                                "area_code": "416506" // pin code
                             },
                             "contact": {
                                 "phone": "9876543210"
@@ -824,7 +835,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "DropOff",
                             "location": {
                                 "gps": "19.9910,73.7769",
-                                "address": "Krishi Kendra Soil Lab, Nashik"
+                                "address": "Krishi Kendra Soil Lab, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         }
                     ],
@@ -983,7 +995,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "PickUp",
                             "location": {
                                 "gps": "19.9975,73.7898",
-                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                                "area_code": "416506" // pin code
                             },
                             "contact": {
                                 "phone": "9876543210"
@@ -996,7 +1009,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "DropOff",
                             "location": {
                                 "gps": "19.9910,73.7769",
-                                "address": "Krishi Kendra Soil Lab, Nashik"
+                                "address": "Krishi Kendra Soil Lab, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         }
                     ],
@@ -1131,7 +1145,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "PickUp",
                             "location": {
                                 "gps": "19.9975,73.7898",
-                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                                "area_code": "416506" // pin code
                             },
                             "contact": {
                                 "phone": "9876543210"
@@ -1144,7 +1159,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "DropOff",
                             "location": {
                                 "gps": "19.9910,73.7769",
-                                "address": "Krishi Kendra Soil Lab, Nashik"
+                                "address": "Krishi Kendra Soil Lab, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         }
                     ],
@@ -1280,7 +1296,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "PickUp",
                             "location": {
                                 "gps": "19.9975,73.7898",
-                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                                "area_code": "416506" // pin code
                             },
                             "contact": {
                                 "phone": "9876543210"
@@ -1293,7 +1310,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "DropOff",
                             "location": {
                                 "gps": "19.9910,73.7769",
-                                "address": "Krishi Kendra Soil Lab, Nashik"
+                                "address": "Krishi Kendra Soil Lab, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         }
                     ],
@@ -1429,7 +1447,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "PickUp",
                             "location": {
                                 "gps": "19.9975,73.7898",
-                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                                "area_code": "416506" // pin code
                             },
                             "contact": {
                                 "phone": "9876543210"
@@ -1442,7 +1461,8 @@ Beckn is an asynchronous protocol at its core.
                             "type": "DropOff",
                             "location": {
                                 "gps": "19.9910,73.7769",
-                                "address": "Krishi Kendra Soil Lab, Nashik"
+                                "address": "Krishi Kendra Soil Lab, Nashik",
+                                "area_code": "416506" // pin code
                             }
                         }
                     ],
@@ -1723,4 +1743,4 @@ If you are writing the provider platform software, the following are the steps y
  - **BPP Sandbox:** bpp-unified-sandbox-uai.becknprotocol.io
 
 ### Domain name:
-    agri-services:uki 
+    agri:uki 
