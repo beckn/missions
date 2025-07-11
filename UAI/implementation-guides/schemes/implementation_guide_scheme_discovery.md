@@ -10,7 +10,7 @@
 | 14-11-2024 | 0.2     | Internal Review Comments Incorprated                |
 | 18-11-2024 | 1.0     | Final Version                                       |
 | 04-12-2024 | 1.1     | A new section created for Schema Details and added details for Scheme Discovery      |
-| 11-07-2025  | 1.0     | updates in the location, language and domain name in the JSONs   
+| 11-07-2025  | 1.2     | updates in the location, language and domain name in the JSONs   
 
 ## Introduction
 
