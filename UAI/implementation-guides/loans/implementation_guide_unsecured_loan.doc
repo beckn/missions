@@ -117,12 +117,12 @@ Structure of a on_select message with an error
 ```
 
 API Calls and Schema
+
+
 1.  search
 Purpose
 This API is used by the BAP to express a farmer’s search intent to discover unsecured credit products from providers (BPPs) on the network. 
 Request Payload:
-
-
 {
     "context": {
         "domain": "credit-services:uki",
@@ -382,8 +382,6 @@ Response Payload:
 3. select
 Purpose: The select API is used to indicate the user's selection of a particular loan product (item) from a catalog previously received in on_search. 
 Request Payload:
-
-
 {
     "context": {
         "domain": "credit-services:uki",
@@ -424,12 +422,11 @@ Request Payload:
         }
     }
 }
+
+
 4. on_select
 Purpose: The on_select API is the response from the BPP, returning a formal quotation for the selected item. This may include structured EMI info, sanctioned amount range, TAT, and other terms. 
-
 Response Payload:
-
-
 {
     "context": {
         "domain": "credit-services:uki",
@@ -601,6 +598,8 @@ Response Payload:
         }
     }
 }
+
+
 5. init
 Purpose: The init API is used by the BAP to formally initiate the application process for the selected credit product. This is where the borrower provides structured user data, such as identity, financial info, crop details (optional), bank account, and purpose of the loan.
 Request Payload:
@@ -705,6 +704,7 @@ Request Payload:
         }
     }
 }
+
 
 6. on_init
 Purpose: The on_init API is the response from the BPP after receiving a loan application initiation request. It returns:
@@ -967,9 +967,9 @@ Response Payload:
     }
 }
 
+
 7. confirm
 Purpose: The confirm API is called by the BAP when the user accepts the terms of the loan and formally submits their consent. This marks the user’s commitment to proceed under the quoted terms.
-
 Request Payload:
 {
     "context": {
@@ -1084,6 +1084,9 @@ Request Payload:
         }
     }
 }
+
+
+
 
 8. on_confirm
 Purpose: The on_confirm API is returned by the BPP to indicate the finalisation of loan application. It includes:
@@ -1351,6 +1354,9 @@ Response Payload:
         }
     }
 }
+
+
+
 
 9. status
 Purpose: The status API allows the BAP to request the latest state of a loan application. This API is used after confirm to track:
@@ -1652,6 +1658,8 @@ Response Payload:
         }
     }
 }
+
+
 11. On_status-2
 
 {
@@ -1913,6 +1921,9 @@ Response Payload:
         }
     }
 }
+
+
+
 12. On_status-3
 {
     "context": {
@@ -2200,6 +2211,8 @@ Response Payload:
         }
     }
 }
+
+
 13. On_status-4
 {
     "context": {
@@ -2487,6 +2500,8 @@ Response Payload:
         }
     }
 }
+
+
 14. On_status-5
 {
     "context": {
@@ -2784,6 +2799,8 @@ Response Payload:
         }
     }
 }
+
+
 15. On_status-6
 {
     "context": {
@@ -3081,6 +3098,8 @@ Response Payload:
         }
     }
 }
+
+
 16. update
 {
     "context": {
@@ -3139,6 +3158,9 @@ Response Payload:
         }
     }
 }
+
+
+
 17. On_update
 
 {
@@ -3437,6 +3459,8 @@ Response Payload:
         }
     }
 }
+
+
 18. rating
 Purpose: The rating API is called by the BAP on behalf of the user to submit ratings about the product, process, or provider. This may occur after the loan is disbursed or even during EMI repayment stages
 Request Payload:
@@ -3473,6 +3497,8 @@ Request Payload:
         ]
     }
 }
+
+
 19. On_rating
 BPP might ask the customer to fill a feedback form.
 This enables the BPP to receive feedback directly from borrowers.
@@ -3507,6 +3533,8 @@ This enables the BPP to receive feedback directly from borrowers.
         }
     }
 }
+
+
 20. support
 Purpose: The support API is used by the BAP to raise a query or complaint related to the loan application or service. 
 Request Payload:
@@ -3536,6 +3564,7 @@ Request Payload:
         "ref_id": "ord01"
     }
 }
+
 
 21. on_support
 Purpose: BPP responds with appropriate support message, contact, escalation document, or timeline.
@@ -3568,6 +3597,8 @@ Response Payload:
           }
     }
 }
+
+
 22. Cancel
 {
     "context": {
@@ -3596,6 +3627,8 @@ Response Payload:
         "cancellation_reason_id": "cancel/id/1234"
     }
 }
+
+
 23. On_cancel
 
 {

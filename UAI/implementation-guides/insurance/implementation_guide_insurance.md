@@ -337,12 +337,2838 @@ Beckn is an asynchronous protocol at its core.
                             ]
                         }
                     ]
+                },
+                {
+                    "id": "p2",
+                    "descriptor": {
+                        "name": "Risk Free Insurers",
+                        "short_desc": "High Temperature Crop Cover"
+                    },
+                    "locations": [
+                        {
+                            "id": "l1",
+                            "address": "Nashik District Office",
+                            "city": {
+                                "name": "Nashik"
+                            },
+                            "state": {
+                                "name": "Maharashtra"
+                            }
+                        }
+                    ],
+                    "categories": [
+                        {
+                            "id": "c1",
+                            "descriptor": {
+                                "code": "insurance"
+                            }
+                        },
+                        {
+                            "id": "c2",
+                            "descriptor": {
+                                "code": "crop-insurance"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "f1",
+                            "type": "digital"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "ht-cover-30d",
+                            "descriptor": {
+                                "name": "High Temperature Cover"
+                            },
+                            "rating": "4.5",
+                            "category_ids": [
+                                "c1",
+                                "c2"
+                            ],
+                            "fulfillment_ids": [
+                                "f1"
+                            ],
+                            "location_ids": [
+                                "l1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "policy_details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "sum_insured"
+                                            },
+                                            "value": "10000 INR/acre"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "premium_payable"
+                                            },
+                                            "value": "500 INR/acre"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "policy_duration"
+                                            },
+                                            "value": "30 Days"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "start_date"
+                                            },
+                                            "value": "2025-05-01"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "end_date"
+                                            },
+                                            "value": "2025-05-31"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "performance_metrics"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "claims_settlement_ratio"
+                                            },
+                                            "value": "98%"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "p3",
+                    "descriptor": {
+                        "name": "Insurance Bazaar",
+                        "short_desc": "Rainfall Risk Crop Cover"
+                    },
+                    "locations": [
+                        {
+                            "id": "l1",
+                            "address": "Nashik District Office",
+                            "city": {
+                                "name": "Nashik"
+                            },
+                            "state": {
+                                "name": "Maharashtra"
+                            }
+                        }
+                    ],
+                    "categories": [
+                        {
+                            "id": "c1",
+                            "descriptor": {
+                                "code": "insurance"
+                            }
+                        },
+                        {
+                            "id": "c2",
+                            "descriptor": {
+                                "code": "crop-insurance"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        {
+                            "id": "f1",
+                            "type": "digital"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "rainfall-cover-30d",
+                            "descriptor": {
+                                "name": "Rainfall Cover"
+                            },
+                            "rating": "4.2",
+                            "category_ids": [
+                                "c1",
+                                "c2"
+                            ],
+                            "fulfillment_ids": [
+                                "f1"
+                            ],
+                            "location_ids": [
+                                "l1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "policy_details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "sum_insured"
+                                            },
+                                            "value": "15000 INR/acre"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "premium_payable"
+                                            },
+                                            "value": "500 INR/acre"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "policy_duration"
+                                            },
+                                            "value": "90 Days"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "start_date"
+                                            },
+                                            "value": "2025-05-01"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "code": "end_date"
+                                            },
+                                            "value": "2025-07-31"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "performance_metrics"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "claims_settlement_ratio"
+                                            },
+                                            "value": "95%"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
     }
 }
 ```
+
+#### select
+
+**select insurance product**
+
+- Rajesh selects a specific insurance product and proceeds with his intent to purchase it.
+
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "select",
+        "version": "1.1.0",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "4d5e6f7g-8h9i-0j1k-2l3m-4n5o6p7q8r9",
+        "timestamp": "2025-06-02T09:06:00Z",
+        "ttl": "PT10M",
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "location": {
+            "country": {
+                "code": "IND",
+                "name": "India"
+            },
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p3"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital"
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_select
+
+**on_select response with detailed quote**
+
+- The provider responds by validating initial eligibility and provides a detailed quote.
+
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_select",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p3",
+                "name": "Insurance Bazaar",
+                "short_desc": "Rainfall Risk Crop Cover"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "descriptor": {
+                        "name": "Rainfall Cover"
+                    },
+                    "rating": "4.2",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "policy_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "sum_insured"
+                                    },
+                                    "value": "15000 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "premium_payable"
+                                    },
+                                    "value": "500 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "policy_duration"
+                                    },
+                                    "value": "90 Days"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-01"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-07-31"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "performance_metrics"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "claims_settlement_ratio"
+                                    },
+                                    "value": "95%"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "Insurance Bazaar"
+                            }
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3000"
+                },
+                "breakup": [
+                    {
+                        "title": "Insurance Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2500"
+                        }
+                    },
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+#### init
+
+**init order with personal details**
+
+- Rajesh confirms his eligibility and proceeds to submit personal details, billing and shipping addresses.
+
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "init",
+        "version": "1.1.0",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "4d5e6f7g-8h9i-0j1k-2l3m-4n5o6p7q8r9",
+        "timestamp": "2025-06-02T09:06:00Z",
+        "ttl": "PT10M",
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "location": {
+            "country": {
+                "code": "IND",
+                "name": "India"
+            },
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p3"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "email": "Rajesh.Mahavir@mail.com",
+                            "phone": "+9876******"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Ravi",
+                "phone": "+9876543210",
+                "email": "ravi.shinde@mail.com",
+                "address": "Vill- Niphad, ishtar, Nashik"
+            }
+        }
+    }
+}
+```
+
+#### on_init
+
+**on_init response with locked quote**
+
+- The BPP responds by locking the quote and validating the final user inputs.
+
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_init",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p3",
+                "name": "Insurance Bazaar",
+                "short_desc": "Rainfall Risk Crop Cover"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "descriptor": {
+                        "name": "Rainfall Cover"
+                    },
+                    "rating": "4.2",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "policy_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "sum_insured"
+                                    },
+                                    "value": "15000 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "premium_payable"
+                                    },
+                                    "value": "500 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "policy_duration"
+                                    },
+                                    "value": "90 Days"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-01"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-07-31"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "performance_metrics"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "claims_settlement_ratio"
+                                    },
+                                    "value": "95%"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Requirements Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 4
+                            },
+                            "headings": [
+                                "Land‐holding proof",
+                                "Identity proof",
+                                "Bank account details",
+                                "Sowing/planting declaration",
+                                "Application form"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://6vs8xnx5i7.loan-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "email": "Rajesh.Mahavir@mail.com",
+                            "phone": "+9876******"
+                        }
+                    },
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "Insurance Bazaar"
+                            }
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3000"
+                },
+                "breakup": [
+                    {
+                        "title": "Insurance Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2500"
+                        }
+                    },
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+
+#### confirm
+
+**confirm order with payment**
+
+- Rajesh confirms the order by initiating payment via UPI.
+
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "confirm",
+        "version": "1.1.0",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "4d5e6f7g-8h9i-0j1k-2l3m-4n5o6p7q8r9",
+        "timestamp": "2025-06-02T09:06:00Z",
+        "ttl": "PT10M",
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "location": {
+            "country": {
+                "code": "IND",
+                "name": "India"
+            },
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            }
+        }
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p3"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "email": "Rajesh.Mahavir@mail.com",
+                            "phone": "+9876******"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Ravi",
+                "phone": "+9876543210",
+                "email": "ravi.shinde@mail.com",
+                "address": "Vill- Niphad, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "3000.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_confirm
+
+**on_confirm response with order ID and policy document**
+
+- The BPP confirms receipt of payment and issues a unique Order ID along with the digital policy document.
+
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord0123",
+            "provider": {
+                "id": "p3",
+                "name": "Insurance Bazaar",
+                "short_desc": "Rainfall Risk Crop Cover"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "descriptor": {
+                        "name": "Rainfall Cover"
+                    },
+                    "rating": "4.2",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "policy_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "sum_insured"
+                                    },
+                                    "value": "15000 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "premium_payable"
+                                    },
+                                    "value": "500 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "policy_duration"
+                                    },
+                                    "value": "90 Days"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-01"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-07-31"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "performance_metrics"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "claims_settlement_ratio"
+                                    },
+                                    "value": "95%"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "email": "Rajesh.Mahavir@mail.com",
+                            "phone": "+9876******"
+                        }
+                    },
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "Insurance Bazaar"
+                            }
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "APPLICATION_SUCCESSFUL"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3000"
+                },
+                "breakup": [
+                    {
+                        "title": "Insurance Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2500"
+                        }
+                    },
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Ravi",
+                "phone": "+9876543210",
+                "email": "ravi.shinde@mail.com",
+                "address": "Vill- Niphad, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "3000.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "time": "2025-04-30T23:59:59Z",
+                        "label": "Full refund window"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "time": "2025-05-31T23:59:59Z",
+                        "label": "Partial refund window (within 30 days)"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "50%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "No cancellation allowed after 30 days"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "100%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### status
+
+**check order status**
+
+- Rajesh wishes to check the status of his insurance policy after purchase.
+
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:30Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order_id": "ord0123"
+    }
+}
+```
+
+#### on_status
+
+**on_status response with policy status**
+
+- The BPP returns the current policy status and any fulfillment updates.
+
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord0123",
+            "state": "Active",
+            "provider": {
+                "id": "p3",
+                "name": "Insurance Bazaar"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "descriptor": {
+                        "name": "Rainfall Cover"
+                    },
+                    "state": "Active"
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "state": {
+                        "descriptor": {
+                            "code": "ACTIVE"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+
+#### on_status2
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord0123",
+            "provider": {
+                "id": "p3",
+                "name": "Insurance Bazaar",
+                "short_desc": "Rainfall Risk Crop Cover"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "descriptor": {
+                        "name": "Rainfall Cover"
+                    },
+                    "rating": "4.2",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "policy_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "sum_insured"
+                                    },
+                                    "value": "15000 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "premium_payable"
+                                    },
+                                    "value": "500 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "policy_duration"
+                                    },
+                                    "value": "90 Days"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-01"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-07-31"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "performance_metrics"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "claims_settlement_ratio"
+                                    },
+                                    "value": "95%"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "email": "Rajesh.Mahavir@mail.com",
+                            "phone": "+9876******"
+                        }
+                    },
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "Insurance Bazaar"
+                            }
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "KYC_SUCCESSFUL"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3000"
+                },
+                "breakup": [
+                    {
+                        "title": "Insurance Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2500"
+                        }
+                    },
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Ravi",
+                "phone": "+9876543210",
+                "email": "ravi.shinde@mail.com",
+                "address": "Vill- Niphad, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "3000.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "time": "2025-04-30T23:59:59Z",
+                        "label": "Full refund window"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "time": "2025-05-31T23:59:59Z",
+                        "label": "Partial refund window (within 30 days)"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "50%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "No cancellation allowed after 30 days"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "100%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status3
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord0123",
+            "provider": {
+                "id": "p3",
+                "name": "Insurance Bazaar",
+                "short_desc": "Rainfall Risk Crop Cover"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "descriptor": {
+                        "name": "Rainfall Cover"
+                    },
+                    "rating": "4.2",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "policy_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "sum_insured"
+                                    },
+                                    "value": "15000 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "premium_payable"
+                                    },
+                                    "value": "500 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "policy_duration"
+                                    },
+                                    "value": "90 Days"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-01"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-07-31"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "performance_metrics"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "claims_settlement_ratio"
+                                    },
+                                    "value": "95%"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "email": "Rajesh.Mahavir@mail.com",
+                            "phone": "+9876******"
+                        }
+                    },
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "Insurance Bazaar"
+                            }
+                        },
+                        "person": {
+                            "name": "Suhana Khan",
+                            "languages": [
+                                {
+                                    "code": "Hindi"
+                                },
+                                {
+                                    "code": "English"
+                                },
+                                {
+                                    "code": "Marathi"
+                                }
+                            ]
+                        },
+                        "contact": {
+                            "phone": "+9876******"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "AGENT_ASSIGNED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3000"
+                },
+                "breakup": [
+                    {
+                        "title": "Insurance Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2500"
+                        }
+                    },
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Ravi",
+                "phone": "+9876543210",
+                "email": "ravi.shinde@mail.com",
+                "address": "Vill- Niphad, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "3000.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "time": "2025-04-30T23:59:59Z",
+                        "label": "Full refund window"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "time": "2025-05-31T23:59:59Z",
+                        "label": "Partial refund window (within 30 days)"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "50%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "No cancellation allowed after 30 days"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "100%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status4
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord0123",
+            "provider": {
+                "id": "p3",
+                "name": "Insurance Bazaar",
+                "short_desc": "Rainfall Risk Crop Cover"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "descriptor": {
+                        "name": "Rainfall Cover"
+                    },
+                    "rating": "4.2",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "policy_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "sum_insured"
+                                    },
+                                    "value": "15000 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "premium_payable"
+                                    },
+                                    "value": "500 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "policy_duration"
+                                    },
+                                    "value": "90 Days"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-01"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-07-31"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "performance_metrics"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "claims_settlement_ratio"
+                                    },
+                                    "value": "95%"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "email": "Rajesh.Mahavir@mail.com",
+                            "phone": "+9876******"
+                        }
+                    },
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "Insurance Bazaar"
+                            }
+                        },
+                        "person": {
+                            "name": "Suhana Khan",
+                            "languages": [
+                                {
+                                    "code": "Hindi"
+                                },
+                                {
+                                    "code": "English"
+                                },
+                                {
+                                    "code": "Marathi"
+                                }
+                            ]
+                        },
+                        "contact": {
+                            "phone": "+9876******"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "FINAL_QUOTE_SHARED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3481.00"
+                },
+                "breakup": [
+                    {
+                        "title": "Base Insurance Premium",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2500.00"
+                        }
+                    },
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500.00"
+                        }
+                    },
+                    {
+                        "title": "KYC Verification Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "100.00"
+                        }
+                    },
+                    {
+                        "title": "Underwriting Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "50.00"
+                        }
+                    },
+                    {
+                        "title": "No-Claims Discount",
+                        "price": {
+                            "currency": "INR",
+                            "value": "-200.00"
+                        }
+                    },
+                    {
+                        "title": "GST (18%)",
+                        "price": {
+                            "currency": "INR",
+                            "value": "531.00"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Ravi",
+                "phone": "+9876543210",
+                "email": "ravi.shinde@mail.com",
+                "address": "Vill- Niphad, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "3481.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "time": "2025-04-30T23:59:59Z",
+                        "label": "Full refund window"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "time": "2025-05-31T23:59:59Z",
+                        "label": "Partial refund window (within 30 days)"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "50%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "No cancellation allowed after 30 days"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "100%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status5
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord0123",
+            "provider": {
+                "id": "p3",
+                "name": "Insurance Bazaar",
+                "short_desc": "Rainfall Risk Crop Cover"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "descriptor": {
+                        "name": "Rainfall Cover"
+                    },
+                    "rating": "4.2",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "policy_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "sum_insured"
+                                    },
+                                    "value": "15000 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "premium_payable"
+                                    },
+                                    "value": "500 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "policy_duration"
+                                    },
+                                    "value": "90 Days"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-01"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-07-31"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "performance_metrics"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "claims_settlement_ratio"
+                                    },
+                                    "value": "95%"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "email": "Rajesh.Mahavir@mail.com",
+                            "phone": "+9876******"
+                        }
+                    },
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "Insurance Bazaar"
+                            }
+                        },
+                        "person": {
+                            "name": "Suhana Khan",
+                            "languages": [
+                                {
+                                    "code": "Hindi"
+                                },
+                                {
+                                    "code": "English"
+                                },
+                                {
+                                    "code": "Marathi"
+                                }
+                            ]
+                        },
+                        "contact": {
+                            "phone": "+9876******"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "ORDER_FULFILLED"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "start",
+                            "time": {
+                                "timestamp": "2025-06-05T10:00:00Z"
+                            }
+                        },
+                        {
+                            "type": "end",
+                            "time": {
+                                "timestamp": "2025-08-05T10:00:00Z"
+                            },
+                            "instructions": {
+                                "short_desc": "Access the insurance docs at the below provided links",
+                                "media": [
+                                    {
+                                        "mimetype": "application/pdf",
+                                        "url": "https://bpp.example.com/policies/PMFBY-0001234.pdf"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3481.00"
+                },
+                "breakup": [
+                    {
+                        "title": "Base Insurance Premium",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2500.00"
+                        }
+                    },
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500.00"
+                        }
+                    },
+                    {
+                        "title": "KYC Verification Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "100.00"
+                        }
+                    },
+                    {
+                        "title": "Underwriting Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "50.00"
+                        }
+                    },
+                    {
+                        "title": "No-Claims Discount",
+                        "price": {
+                            "currency": "INR",
+                            "value": "-200.00"
+                        }
+                    },
+                    {
+                        "title": "GST (18%)",
+                        "price": {
+                            "currency": "INR",
+                            "value": "531.00"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Ravi",
+                "phone": "+9876543210",
+                "email": "ravi.shinde@mail.com",
+                "address": "Vill- Niphad, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE_FULFILLMENT",
+                    "status": "PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "3481.00",
+                        "transaction_id": "tran0123"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "time": "2025-04-30T23:59:59Z",
+                        "label": "Full refund window"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "time": "2025-05-31T23:59:59Z",
+                        "label": "Partial refund window (within 30 days)"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "50%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "No cancellation allowed after 30 days"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "100%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### rating
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "rating",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "ratings": [
+            {
+                "id": "p3",
+                "rating_category": "Provider",
+                "value": "5"
+            }
+        ]
+    }
+}
+```
+
+#### on_rating
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_rating",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "feedback_form": {
+            "form": {
+                "url": "https://agri_acad.example.org/feedback"
+            }
+        }
+    }
+}
+```
+
+#### support
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "support",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "ref_id": "ord0123"
+    }
+}
+```
+
+#### on_support
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_support",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network"
+    },
+    "message": {
+        "support": {
+            "ref_id": "ord0123",
+            "phone": "+14155550123",
+            "email": "support@service-insurance-bazar.com"
+        }
+    }
+}
+```
+
+#### update
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "update",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:30Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "update_target": "order.items",
+        "order": {
+            "id": "ord0123",
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Complementary docs"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 0
+                            },
+                            "headings": [
+                                "Complementary documents"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://6vs8xnx5i7.loan-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_update
+```
+{
+    "context": {
+        "domain": "financial-services:uki",
+        "action": "on_update",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "bap-client.uki.network",
+        "bap_uri": "https://bap-client.uki.network/protocol",
+        "bpp_id": "insurance-bazaar.uki.network",
+        "bpp_uri": "https://insurance-bazaar.uki.network/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord0123",
+            "provider": {
+                "id": "p3",
+                "name": "Insurance Bazaar",
+                "short_desc": "Rainfall Risk Crop Cover"
+            },
+            "items": [
+                {
+                    "id": "rainfall-cover-30d",
+                    "descriptor": {
+                        "name": "Rainfall Cover"
+                    },
+                    "rating": "4.2",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "policy_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "sum_insured"
+                                    },
+                                    "value": "15000 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "premium_payable"
+                                    },
+                                    "value": "500 INR/acre"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "policy_duration"
+                                    },
+                                    "value": "90 Days"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "start_date"
+                                    },
+                                    "value": "2025-05-01"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "end_date"
+                                    },
+                                    "value": "2025-07-31"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "performance_metrics"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "claims_settlement_ratio"
+                                    },
+                                    "value": "95%"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "crop_details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "crop_name"
+                                    },
+                                    "value": "guava"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "farm_location"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "address"
+                                    },
+                                    "value": "Niphad, Nashik"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "land_area"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "area"
+                                    },
+                                    "value": "5 Acres"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Rajesh"
+                        },
+                        "contact": {
+                            "email": "Rajesh.Mahavir@mail.com",
+                            "phone": "+9876******"
+                        }
+                    },
+                    "agent": {
+                        "organization": {
+                            "descriptor": {
+                                "name": "Insurance Bazaar"
+                            }
+                        },
+                        "person": {
+                            "name": "Suhana Khan",
+                            "languages": [
+                                {
+                                    "code": "Hindi"
+                                },
+                                {
+                                    "code": "English"
+                                },
+                                {
+                                    "code": "Marathi"
+                                }
+                            ]
+                        },
+                        "contact": {
+                            "phone": "+9876******"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "COMPLEMENTARY_DOCS_UPLOADED"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "start",
+                            "time": {
+                                "timestamp": "2025-06-05T10:00:00Z"
+                            }
+                        },
+                        {
+                            "type": "end",
+                            "time": {
+                                "timestamp": "2025-08-05T10:00:00Z"
+                            },
+                            "instructions": {
+                                "short_desc": "Access the insurance docs at the below provided links",
+                                "media": [
+                                    {
+                                        "mimetype": "application/pdf",
+                                        "url": "https://bpp.example.com/policies/PMFBY-0001234.pdf"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "3481.00"
+                },
+                "breakup": [
+                    {
+                        "title": "Base Insurance Premium",
+                        "price": {
+                            "currency": "INR",
+                            "value": "2500.00"
+                        }
+                    },
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500.00"
+                        }
+                    },
+                    {
+                        "title": "KYC Verification Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "100.00"
+                        }
+                    },
+                    {
+                        "title": "Underwriting Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "50.00"
+                        }
+                    },
+                    {
+                        "title": "No-Claims Discount",
+                        "price": {
+                            "currency": "INR",
+                            "value": "-200.00"
+                        }
+                    },
+                    {
+                        "title": "GST (18%)",
+                        "price": {
+                            "currency": "INR",
+                            "value": "531.00"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Ravi",
+                "phone": "+9876543210",
+                "email": "ravi.shinde@mail.com",
+                "address": "Vill- Niphad, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "PRE_FULFILLMENT",
+                    "status": "PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "3481.00",
+                        "transaction_id": "tran0123"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "time": "2025-04-30T23:59:59Z",
+                        "label": "Full refund window"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "10%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "time": "2025-05-31T23:59:59Z",
+                        "label": "Partial refund window (within 30 days)"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "50%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "No cancellation allowed after 30 days"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "100%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
 
 ## Taxonomy and layer 2 configuration
 

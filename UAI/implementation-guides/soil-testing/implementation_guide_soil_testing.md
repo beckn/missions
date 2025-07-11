@@ -269,6 +269,1390 @@ Beckn is an asynchronous protocol at its core.
 }
 ```
 
+#### select
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "select",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "41a7eb31-09a4-4fc7-9845-8cb65cbdf13c",
+        "timestamp": "2025-04-29T09:01:00Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "krishikendra.bpp.uki.in"
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test"
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1"
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_select
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "on_select",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "e2e56f14-72fd-4cb5-b8c4-6e269ce87e68",
+        "timestamp": "2025-04-29T09:01:03Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "krishikendra.bpp.uki.in",
+                "descriptor": {
+                    "name": "Krishi Kendra Soil Services",
+                    "short_desc": "Comprehensive Soil Testing at your farm or lab"
+                }
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test",
+                    "descriptor": {
+                        "name": "NPK Soil Test"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "test-types"
+                            },
+                            "list": [
+                                {
+                                    "value": "NPK"
+                                },
+                                {
+                                    "value": "pH"
+                                },
+                                {
+                                    "value": "OC"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Soil Collection Guidelines"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "document-link"
+                                    },
+                                    "value": "https://krishikendra.bpp.uki.in/docs/soil-collection-guidelines.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "PickUp",
+                            "location": {
+                                "gps": "19.9975,73.7898",
+                                "address": "Smita's Farm, Nashik"
+                            }
+                        },
+                        {
+                            "type": "DropOff",
+                            "location": {
+                                "gps": "19.9910,73.7769",
+                                "address": "Krishi Kendra Soil Lab, Nashik"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "400.00"
+                },
+                "breakup": [
+                    {
+                        "title": "NPK Soil Test",
+                        "price": {
+                            "currency": "INR",
+                            "value": "400.00"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+#### init
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "init",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "41a7eb31-09a4-4fc7-9845-8cb65cbdf13c",
+        "timestamp": "2025-04-29T09:01:00Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "krishikendra.bpp.uki.in"
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test"
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "PickUp",
+                            "location": {
+                                "gps": "19.9975,73.7898",
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                            },
+                            "contact": {
+                                "phone": "9876543210",
+                                "email": "smita@example.com"
+                            },
+                            "time": {
+                                "timestamp": "2025-04-30T07:30:00Z"
+                            }
+                        },
+                        {
+                            "type": "DropOff",
+                            "location": {
+                                "gps": "19.9910,73.7769",
+                                "address": "Krishi Kendra Soil Lab, Nashik"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Smita",
+                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                "phone": "9876543210",
+                "email": "smita@example.com"
+            }
+        }
+    }
+}
+```
+
+#### on_init
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "on_init",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "e2e56f14-72fd-4cb5-b8c4-6e269ce87e68",
+        "timestamp": "2025-04-29T09:01:03Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "krishikendra.bpp.uki.in",
+                "descriptor": {
+                    "name": "Krishi Kendra Soil Services",
+                    "short_desc": "Comprehensive Soil Testing at your farm or lab"
+                }
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test",
+                    "descriptor": {
+                        "name": "NPK Soil Test"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "test-types"
+                            },
+                            "list": [
+                                {
+                                    "value": "NPK"
+                                },
+                                {
+                                    "value": "pH"
+                                },
+                                {
+                                    "value": "OC"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Soil Collection Guidelines"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "document-link"
+                                    },
+                                    "value": "https://krishikendra.bpp.uki.in/docs/soil-collection-guidelines.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "PickUp",
+                            "location": {
+                                "gps": "19.9975,73.7898",
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                            },
+                            "contact": {
+                                "phone": "9876543210"
+                            },
+                            "time": {
+                                "timestamp": "2025-04-30T07:30:00Z"
+                            }
+                        },
+                        {
+                            "type": "DropOff",
+                            "location": {
+                                "gps": "19.9910,73.7769",
+                                "address": "Krishi Kendra Soil Lab, Nashik"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "400.00"
+                },
+                "breakup": [
+                    {
+                        "title": "NPK Soil Test",
+                        "price": {
+                            "currency": "INR",
+                            "value": "400.00"
+                        }
+                    }
+                ]
+            },
+            "payment": [
+                {
+                    "collected_by": "BPP",
+                    "type": "ON-FULFILLMENT",
+                    "params": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### confirm
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "confirm",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "41a7eb31-09a4-4fc7-9845-8cb65cbdf13c",
+        "timestamp": "2025-04-29T09:01:00Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "krishikendra.bpp.uki.in"
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test"
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "PickUp",
+                            "location": {
+                                "gps": "19.9975,73.7898",
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                            },
+                            "contact": {
+                                "phone": "9876543210",
+                                "email": "smita@example.com"
+                            },
+                            "time": {
+                                "timestamp": "2025-04-30T07:30:00Z"
+                            }
+                        },
+                        {
+                            "type": "DropOff",
+                            "location": {
+                                "gps": "19.9910,73.7769",
+                                "address": "Krishi Kendra Soil Lab, Nashik"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Smita",
+                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003",
+                "phone": "9876543210",
+                "email": "smita@example.com"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "ON-FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "params": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_confirm
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "e2e56f14-72fd-4cb5-b8c4-6e269ce87e68",
+        "timestamp": "2025-04-29T09:01:03Z"
+    },
+    "message": {
+        "order": {
+            "id": "order-873652",
+            "provider": {
+                "id": "krishikendra.bpp.uki.in",
+                "descriptor": {
+                    "name": "Krishi Kendra Soil Services",
+                    "short_desc": "Comprehensive Soil Testing at your farm or lab"
+                }
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test",
+                    "descriptor": {
+                        "name": "NPK Soil Test"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "test-types"
+                            },
+                            "list": [
+                                {
+                                    "value": "NPK"
+                                },
+                                {
+                                    "value": "pH"
+                                },
+                                {
+                                    "value": "OC"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Soil Collection Guidelines"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "document-link"
+                                    },
+                                    "value": "https://krishikendra.bpp.uki.in/docs/soil-collection-guidelines.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "PickUp",
+                            "location": {
+                                "gps": "19.9975,73.7898",
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                            },
+                            "contact": {
+                                "phone": "9876543210"
+                            },
+                            "time": {
+                                "timestamp": "2025-04-30T07:30:00Z"
+                            }
+                        },
+                        {
+                            "type": "DropOff",
+                            "location": {
+                                "gps": "19.9910,73.7769",
+                                "address": "Krishi Kendra Soil Lab, Nashik"
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "code": "ORDER_PLACED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "400.00"
+                },
+                "breakup": [
+                    {
+                        "title": "NPK Soil Test",
+                        "price": {
+                            "currency": "INR",
+                            "value": "400.00"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "ON-FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "params": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### status
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "e2e56f14-72fd-4cb5-b8c4-6e269ce87e68",
+        "timestamp": "2025-04-29T09:01:03Z"
+    },
+    "message": {
+        "order_id": "order-873652"
+    }
+}
+```
+
+#### on_status1
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "e2e56f14-72fd-4cb5-b8c4-6e269ce87e68",
+        "timestamp": "2025-04-29T09:01:03Z"
+    },
+    "message": {
+        "order": {
+            "id": "order-873652",
+            "provider": {
+                "id": "krishikendra.bpp.uki.in",
+                "descriptor": {
+                    "name": "Krishi Kendra Soil Services",
+                    "short_desc": "Comprehensive Soil Testing at your farm or lab"
+                }
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test",
+                    "descriptor": {
+                        "name": "NPK Soil Test"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "test-types"
+                            },
+                            "list": [
+                                {
+                                    "value": "NPK"
+                                },
+                                {
+                                    "value": "pH"
+                                },
+                                {
+                                    "value": "OC"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Soil Collection Guidelines"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "document-link"
+                                    },
+                                    "value": "https://krishikendra.bpp.uki.in/docs/soil-collection-guidelines.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "PickUp",
+                            "location": {
+                                "gps": "19.9975,73.7898",
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                            },
+                            "contact": {
+                                "phone": "9876543210"
+                            },
+                            "time": {
+                                "timestamp": "2025-04-30T07:30:00Z"
+                            }
+                        },
+                        {
+                            "type": "DropOff",
+                            "location": {
+                                "gps": "19.9910,73.7769",
+                                "address": "Krishi Kendra Soil Lab, Nashik"
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "code": "AGENT_ASSIGNED"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Heera"
+                        },
+                        "contact": {
+                            "phone": "9876543210"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "400.00"
+                },
+                "breakup": [
+                    {
+                        "title": "NPK Soil Test",
+                        "price": {
+                            "currency": "INR",
+                            "value": "400.00"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "ON-FULFILLMENT",
+                    "params": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status2
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "e2e56f14-72fd-4cb5-b8c4-6e269ce87e68",
+        "timestamp": "2025-04-29T09:01:03Z"
+    },
+    "message": {
+        "order": {
+            "id": "order-873652",
+            "provider": {
+                "id": "krishikendra.bpp.uki.in",
+                "descriptor": {
+                    "name": "Krishi Kendra Soil Services",
+                    "short_desc": "Comprehensive Soil Testing at your farm or lab"
+                }
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test",
+                    "descriptor": {
+                        "name": "NPK Soil Test"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "test-types"
+                            },
+                            "list": [
+                                {
+                                    "value": "NPK"
+                                },
+                                {
+                                    "value": "pH"
+                                },
+                                {
+                                    "value": "OC"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Soil Collection Guidelines"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "document-link"
+                                    },
+                                    "value": "https://krishikendra.bpp.uki.in/docs/soil-collection-guidelines.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "PickUp",
+                            "location": {
+                                "gps": "19.9975,73.7898",
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                            },
+                            "contact": {
+                                "phone": "9876543210"
+                            },
+                            "time": {
+                                "timestamp": "2025-04-30T07:30:00Z"
+                            }
+                        },
+                        {
+                            "type": "DropOff",
+                            "location": {
+                                "gps": "19.9910,73.7769",
+                                "address": "Krishi Kendra Soil Lab, Nashik"
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "code": "SAMPLE_COLLECTED"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Heera"
+                        },
+                        "contact": {
+                            "phone": "9876543210"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "400.00"
+                },
+                "breakup": [
+                    {
+                        "title": "NPK Soil Test",
+                        "price": {
+                            "currency": "INR",
+                            "value": "400.00"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "ON-FULFILLMENT",
+                    "status": "PAID",
+                    "params": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status3
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "e2e56f14-72fd-4cb5-b8c4-6e269ce87e68",
+        "timestamp": "2025-04-29T09:01:03Z"
+    },
+    "message": {
+        "order": {
+            "id": "order-873652",
+            "provider": {
+                "id": "krishikendra.bpp.uki.in",
+                "descriptor": {
+                    "name": "Krishi Kendra Soil Services",
+                    "short_desc": "Comprehensive Soil Testing at your farm or lab"
+                }
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test",
+                    "descriptor": {
+                        "name": "NPK Soil Test"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "test-types"
+                            },
+                            "list": [
+                                {
+                                    "value": "NPK"
+                                },
+                                {
+                                    "value": "pH"
+                                },
+                                {
+                                    "value": "OC"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Soil Collection Guidelines"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "document-link"
+                                    },
+                                    "value": "https://krishikendra.bpp.uki.in/docs/soil-collection-guidelines.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "PickUp",
+                            "location": {
+                                "gps": "19.9975,73.7898",
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                            },
+                            "contact": {
+                                "phone": "9876543210"
+                            },
+                            "time": {
+                                "timestamp": "2025-04-30T07:30:00Z"
+                            }
+                        },
+                        {
+                            "type": "DropOff",
+                            "location": {
+                                "gps": "19.9910,73.7769",
+                                "address": "Krishi Kendra Soil Lab, Nashik"
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "code": "SAMPLE_TESTS_IN_PROGRESS"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Heera"
+                        },
+                        "contact": {
+                            "phone": "9876543210"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "400.00"
+                },
+                "breakup": [
+                    {
+                        "title": "NPK Soil Test",
+                        "price": {
+                            "currency": "INR",
+                            "value": "400.00"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "ON-FULFILLMENT",
+                    "status": "PAID",
+                    "params": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status4
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "e2e56f14-72fd-4cb5-b8c4-6e269ce87e68",
+        "timestamp": "2025-04-29T09:01:03Z"
+    },
+    "message": {
+        "order": {
+            "id": "order-873652",
+            "provider": {
+                "id": "krishikendra.bpp.uki.in",
+                "descriptor": {
+                    "name": "Krishi Kendra Soil Services",
+                    "short_desc": "Comprehensive Soil Testing at your farm or lab"
+                }
+            },
+            "items": [
+                {
+                    "id": "soil-npk-test",
+                    "descriptor": {
+                        "name": "NPK Soil Test"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "test-types"
+                            },
+                            "list": [
+                                {
+                                    "value": "NPK"
+                                },
+                                {
+                                    "value": "pH"
+                                },
+                                {
+                                    "value": "OC"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "name": "Soil Collection Guidelines"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "document-link"
+                                    },
+                                    "value": "https://krishikendra.bpp.uki.in/docs/soil-collection-guidelines.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "stops": [
+                        {
+                            "type": "PickUp",
+                            "location": {
+                                "gps": "19.9975,73.7898",
+                                "address": "Smita's Farm, Village Patole, Nashik District, Maharashtra 422003"
+                            },
+                            "contact": {
+                                "phone": "9876543210"
+                            },
+                            "time": {
+                                "timestamp": "2025-04-30T07:30:00Z"
+                            }
+                        },
+                        {
+                            "type": "DropOff",
+                            "location": {
+                                "gps": "19.9910,73.7769",
+                                "address": "Krishi Kendra Soil Lab, Nashik"
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "code": "REPORT_GENERATED"
+                        }
+                    },
+                    "agent": {
+                        "person": {
+                            "name": "Heera"
+                        },
+                        "contact": {
+                            "phone": "9876543210"
+                        }
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "reports"
+                            },
+                            "list":[
+                                {
+                                    "descriptor": {
+                                        "code": "SOIL_TEST_REPORT"
+                                    },
+                                    "value": "https://krishikendra.bpp.uki.in/reports/soiltest-873652.pdf"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "400.00"
+                },
+                "breakup": [
+                    {
+                        "title": "NPK Soil Test",
+                        "price": {
+                            "currency": "INR",
+                            "value": "400.00"
+                        }
+                    }
+                ]
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "ON-FULFILLMENT",
+                    "status": "PAID",
+                    "params": {
+                        "currency": "INR",
+                        "value": "400.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### rating
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "rating",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "4215a2e5-2ec1-4a55-90c8-b046cbfbd3a5",
+        "timestamp": "2025-05-01T10:00:00Z"
+    },
+    "message": {
+        "ratings": [
+            {
+                "id": "order-873652",
+                "rating_category": "ORDER",
+                "value": "4.8"
+            }
+        ]
+    }
+}
+```
+
+#### on_rating
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "on_rating",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "4215a2e5-2ec1-4a55-90c8-b046cbfbd3a5",
+        "timestamp": "2025-05-01T10:00:00Z"
+    },
+    "message": {
+        "feedback_form": {
+            "form": {
+                "url": "https://link-to-the-form.html"
+            },
+            "required": "false"
+        }
+    }
+}
+```
+
+#### support
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "support",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "a53200c2-267f-49b5-aef0-3a2e607aa6c0",
+        "timestamp": "2025-05-01T10:20:00Z"
+    },
+    "message": {
+        "support": {
+            "ref_id": "order-873652",
+            "url": "https://soiltest.bap.uki.in/uploads/delay-proof.png",
+            "phone": "86XX564567"
+        }
+    }
+}
+```
+
+#### on_support
+```
+{
+    "context": {
+        "domain": "agri.uki",
+        "action": "on_support",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253",
+                "name": "Nashik"
+            },
+            "country": {
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "bap_id": "soiltest.bap.uki.in",
+        "bap_uri": "https://soiltest.bap.uki.in",
+        "bpp_id": "krishikendra.bpp.uki.in",
+        "bpp_uri": "https://krishikendra.bpp.uki.in",
+        "transaction_id": "7e92a1d4-3fa2-48e7-944d-01a6c02fa98b",
+        "message_id": "a53200c2-267f-49b5-aef0-3a2e607aa6c0",
+        "timestamp": "2025-05-01T10:20:00Z"
+    },
+    "message": {
+        "support": {
+            "ref_id": "order-873652",
+            "url": "https://soiltest.bap.uki.in/uploads/delay-proof.png",
+            "phone": "86XX564567",
+            "callback_phone": "897389XX87"
+        }
+    }
+}
+```
+
+
+
 ## Taxonomy and layer 2 configuration
 
 - Any specific tags, enumerations, and rules we add for the use cases or required by the network, will go here.

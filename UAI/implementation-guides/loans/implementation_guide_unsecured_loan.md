@@ -263,6 +263,3492 @@ Beckn is an asynchronous protocol at its core.
 }
 ```
 
+#### select
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "select",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:30Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k"
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1"
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_select
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_select",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+#### init
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "init",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:30Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                    {
+                                        "descriptor": {
+                                            "code": "loan-amount-applied"
+                                        },
+                                        "value": "75000INR"
+                                    }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            }
+        }
+    }
+}
+```
+
+#### on_init
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_init",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+
+#### confirm
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "confirm",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:30Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                    {
+                                        "descriptor": {
+                                            "code": "loan-amount-applied"
+                                        },
+                                        "value": "75000INR"
+                                    }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_confirm
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "APPLICATION_SUCCESSFUL"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### status
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:30Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order_id": "ord01"
+    }
+}
+```
+
+#### on_status1
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "CIBIL_VERIFICATION_IN_PROGRESS"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status2
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "CIBIL_VERIFICATION_SUCCESSFUL"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status3
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Additional Documentation Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 1
+                            },
+                            "headings": [
+                                "Bank Details"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://uhr487hr.loan-finder.co.in/docs/xinput/formid/48623ycd98ey8eie",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eudhwq89deynwxedoweu.cuhw9e7xne9.SflKxwRJSjioeud90xunq9o"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "SUBMIT_ADDITIONAL_DOCS"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status4
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Additional Documentation Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 1
+                            },
+                            "headings": [
+                                "Bank Details"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://uhr487hr.loan-finder.co.in/docs/xinput/formid/48623ycd98ey8eie",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eudhwq89deynwxedoweu.cuhw9e7xne9.SflKxwRJSjioeud90xunq9o"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "ADDITIONAL_DOCS_VERIFICATION_SUCCESSFUL"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status5
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Additional Documentation Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 1
+                            },
+                            "headings": [
+                                "Bank Details"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://uhr487hr.loan-finder.co.in/docs/xinput/formid/48623ycd98ey8eie",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eudhwq89deynwxedoweu.cuhw9e7xne9.SflKxwRJSjioeud90xunq9o"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "SANCTION_LETTER_ISSUED"
+                        }
+                    }
+                }
+            ],
+            "docs": [
+                {
+                    "descriptor":{
+                        "name" :"Sanction Letter",
+                        "short_desc" : "To open this document, enter the password sent to your email abc****@***.com"
+                    },
+                    "url" : "https://link-to-the-document.com",
+                    "mime_type" : "application/pdf"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status6
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Additional Documentation Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 1
+                            },
+                            "headings": [
+                                "Bank Details"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://uhr487hr.loan-finder.co.in/docs/xinput/formid/48623ycd98ey8eie",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eudhwq89deynwxedoweu.cuhw9e7xne9.SflKxwRJSjioeud90xunq9o"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "LOAN_CREDITED"
+                        }
+                    }
+                }
+            ],
+            "docs": [
+                {
+                    "descriptor":{
+                        "name" :"Sanction Letter",
+                        "short_desc" : "To open this document, enter the password sent to your email abc****@***.com"
+                    },
+                    "url" : "https://link-to-the-document.com",
+                    "mime_type" : "application/pdf"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+
+#### update
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "update",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:30Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "update_target": "order.fulfillments",
+        "order": {
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "SANCTION_LETTER_ISSUED"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "AADHAR_EKYC",
+                            "authorization": {
+                                "type": "OTP",
+                                "token": "2674"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_update
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_update",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Additional Documentation Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 1
+                            },
+                            "headings": [
+                                "Bank Details"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://uhr487hr.loan-finder.co.in/docs/xinput/formid/48623ycd98ey8eie",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eudhwq89deynwxedoweu.cuhw9e7xne9.SflKxwRJSjioeud90xunq9o"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "LOAN_CREDITED"
+                        }
+                    }
+                }
+            ],
+            "docs": [
+                {
+                    "descriptor":{
+                        "name" :"Sanction Letter",
+                        "short_desc" : "To open this document, enter the password sent to your email abc****@***.com"
+                    },
+                    "url" : "https://link-to-the-document.com",
+                    "mime_type" : "application/pdf"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### rating
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "rating",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "ratings": [
+            {
+                "id": "prov01",
+                "rating_category": "Provider",
+                "value": "5"
+            }
+        ]
+    }
+}
+```
+
+#### on_rating
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_rating",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "feedback_form": {
+            "form": {
+                "url": "https://agri_acad.example.org/feedback"
+            }
+        }
+    }
+}
+```
+
+#### support
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "support",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "ref_id": "ord01"
+    }
+}
+```
+
+#### on_support
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_support",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "support": {
+            "ref_id": "ord01",
+            "phone": "+14155550123",
+            "email": "support@credit-service-samunnati.com"
+          }
+    }
+}
+```
+
+#### cancel
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "cancel",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "order_id": "ord01",
+        "cancellation_reason_id": "cancel/id/1234"
+    }
+}
+```
+
+#### on_cancel
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_cancel",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "krishi-bap.uki.in",
+        "bap_uri": "https://krishi-bap.uki.in/protocol",
+        "bpp_id": "grameen-fintech.com",
+        "bpp_uri": "https://grameen-fintech.com/credit",
+        "transaction_id": "f75f8973-3261-4931-902f-6a44a7a1ea75",
+        "message_id": "acd6d8c9-4f6f-4a5d-b705-3fd5ec9feaa9",
+        "timestamp": "2025-06-02T09:01:33Z",
+        "ttl": "PT10S"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "name": "Grameen Fintech",
+                "short_desc": "Rural microcredit services"
+            },
+            "items": [
+                {
+                    "id": "loan-agriboost-50k",
+                    "descriptor": {
+                        "name": "Agri Input Boost Loan"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "9.0%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "input-loan"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "repayment-tenure"
+                                    },
+                                    "value": "48M"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P3D"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "processing-fee"
+                                    },
+                                    "value": "500INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "no"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "50000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "100000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-amount-applied"
+                                    },
+                                    "value": "75000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "individual"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "Identity"
+                                    },
+                                    "value": "AADHAR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Taxation"
+                                    },
+                                    "value": "PAN"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "applicant-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "AADHAR"
+                                    },
+                                    "value": "BPQMR****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAN"
+                                    },
+                                    "value": "MNWP976****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-account-number"
+                                    },
+                                    "value": "122242****"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "Bank-IFSC"
+                                    },
+                                    "value": "14435"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Raju"
+                        },
+                        "contact": {
+                            "email": "raju.farmer@mail.com",
+                            "phone": "+9876543210"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "APPLICATION_CANCELLED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "500"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Raju",
+                "phone": "+9876543210",
+                "email": "raju.farmer@mail.com",
+                "address": "Vill- tonk, ishtar, Nashik"
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "500.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
 ## Taxonomy and layer 2 configuration
 
 - Any specific tags, enumerations, and rules we add for the use cases or required by the network, will go here.

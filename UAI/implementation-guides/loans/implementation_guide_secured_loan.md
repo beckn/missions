@@ -257,6 +257,3309 @@ Beckn is an asynchronous protocol at its core.
 }
 ```
 
+#### select
+
+**select a specific loan product and request a detailed quote**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "select",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01"
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l"
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1"
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_select
+
+**on_select returns an estimated quotation for the selected loan item**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_select",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.5%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+#### init
+
+**init shares FPO's documents, billing, and fulfillment details to begin onboarding and verification**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "init",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01"
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l"
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            }
+        }
+    }
+}
+```
+
+#### on_init
+
+**on_init acknowledges receipt and returns fulfillment, payment, cancellation terms, and a form for collecting details**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_init",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.5%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Requirements Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 4
+                            },
+                            "headings": [
+                                "Eligibility checklist",
+                                "Required certifications",
+                                "Collateral details",
+                                "Bank details",
+                                "Authorized signatory KYC"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://6vs8xnx5i7.loan-finder.co.in/schems/xinput/formid/a23f2fdfbbb8ac402bfd54f",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eyJhbGciOiJIUzI.eyJzdWIiOiIxMjM0NTY3O.SflKxwRJSMeKKF2QT4"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### confirm
+
+**confirm the order and formally accept the terms of the order**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "confirm",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "prov01"
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l"
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_confirm
+
+**on_confirm acknowledges and confirms terms of the order, registers loan order, and issues an order id**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.5%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "APPLICATION_SUCCESSFUL"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### status
+
+**status polls the current status of the loan application**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "order_id": "ord01"
+    }
+}
+```
+
+#### on_status
+
+**on_status responds with latest status details such as processing, sanctioned, disbursed, or rejected**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.5%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "CIBIL_VERIFICATION_PENDING"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+
+#### on_status-2
+
+**on_status-2 with additional documentation form**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.5%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ],
+                    "xinput": {
+                        "required": false,
+                        "head": {
+                            "descriptor": {
+                                "name": "Additional Documentation Form"
+                            },
+                            "index": {
+                                "min": 0,
+                                "cur": 0,
+                                "max": 2
+                            },
+                            "headings": [
+                                "Balance sheets",
+                                "Collateral verification docs",
+                                "Board declarations"
+                            ]
+                        },
+                        "form": {
+                            "mime_type": "text/html",
+                            "url": "https://uhr487hr.loan-finder.co.in/docs/xinput/formid/48623ycd98ey8eie",
+                            "resubmit": false,
+                            "auth": {
+                                "descriptor": {
+                                    "code": "jwt"
+                                },
+                                "value": "eudhwq89deynwxedoweu.cuhw9e7xne9.SflKxwRJSjioeud90xunq9o"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "SUBMIT_ADDITIONAL_DOCS"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status-3
+
+**on_status-3 with loan approval**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.7%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "approved-loan-amount"
+                                    },
+                                    "value": "1500000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "LOAN_APPROVED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status-4
+
+**on_status-4 with sanction letter issued**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.7%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "approved-loan-amount"
+                                    },
+                                    "value": "1500000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "SANCTION_LETTER_ISSUED"
+                        }
+                    }
+                }
+            ],
+            "docs": [
+                {
+                    "descriptor":{
+                        "name" :"Sanction Letter",
+                        "short_desc" : "To open this document, enter the password sent to your email abc****@***.com"
+                    },
+                    "url" : "https://link-to-the-document.com",
+                    "mime_type" : "application/pdf"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status-5
+
+**on_status-5 with eKYC pending**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.7%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "approved-loan-amount"
+                                    },
+                                    "value": "1500000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "EKYC_PENDING"
+                        }
+                    }
+                }
+            ],
+            "docs": [
+                {
+                    "descriptor":{
+                        "name" :"Sanction Letter",
+                        "short_desc" : "To open this document, enter the password sent to your email abc****@***.com"
+                    },
+                    "url" : "https://link-to-the-document.com",
+                    "mime_type" : "application/pdf"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_status-6
+
+**on_status-6 with loan credited**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_status",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.7%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "approved-loan-amount"
+                                    },
+                                    "value": "1500000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "LOAN_CREDITED"
+                        }
+                    }
+                }
+            ],
+            "docs": [
+                {
+                    "descriptor":{
+                        "name" :"Sanction Letter",
+                        "short_desc" : "To open this document, enter the password sent to your email abc****@***.com"
+                    },
+                    "url" : "https://link-to-the-document.com",
+                    "mime_type" : "application/pdf"
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### update-1
+
+**update for Aadhaar authorization using OTP**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "update",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "update_target": "order.fulfillments",
+        "order": {
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "EKYC_PENDING"
+                        }
+                    },
+                    "stops": [
+                        {
+                            "type": "AADHAR_EKYC",
+                            "authorization": {
+                                "type": "OTP",
+                                "token": "1234"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```
+
+#### update-2
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "update",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "update_target": "order.fulfillments",
+        "order": {
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "INITIATE_DISBURSEMENT"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_update
+
+**on_update acknowledges the update request**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_update",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.7%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "approved-loan-amount"
+                                    },
+                                    "value": "1500000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "EKYC_PENDING"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### rating
+
+**rating for post-fulfillment feedback**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "rating",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "ratings": [
+            {
+                "id": "prov01",
+                "rating_category": "Provider",
+                "value": "5"
+            }
+        ]
+    }
+}
+```
+
+#### on_rating
+
+**on_rating with feedback form request**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_rating",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "feedback_form": {
+            "form": {
+                "url": "https://agri_acad.example.org/feedback"
+            }
+        }
+    }
+}
+```
+
+#### support
+
+**support request for post-disbursal terms**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "support",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "ref_id": "ord01"
+    }
+}
+```
+
+#### on_support
+
+**on_support with contact information**
+
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_support",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "support": {
+            "ref_id": "ord01",
+            "phone": "+14155550123",
+            "email": "support@credit-service-samunnati.com"
+          }
+    }
+}
+```
+   
+#### cancel
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "cancel",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in",
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "ttl": "PT20S",
+        "timestamp": "2025-06-02T10:01:00Z"
+    },
+    "message": {
+        "order_id": "ord01",
+        "cancellation_reason_id": "cancel/id/1234"
+    }
+}
+```
+
+#### on_cancel-1
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_cancel",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.5%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "APPLICATION_CANCELLED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "299"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                },
+                {
+                    "type": "REFUND",
+                    "status": "PAID",
+                    "params": {
+                        "currency": "INR",
+                        "value": "0.0"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+#### on_cancel-2
+```
+{
+    "context": {
+        "domain": "credit-services:uki",
+        "action": "on_cancel",
+        "version": "1.1.0",
+        "location": {
+            "city": {
+                "code": "std:95253"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "transaction_id": "3a5b0b23-501e-42e8-b43b-03b60e822882",
+        "message_id": "1fa1e8ce-a0f6-46a6-8c49-d2c3e06be021",
+        "bap_id": "credit-fpo.bap.uki.in",
+        "bap_uri": "https://credit-fpo.bap.uki.in",
+        "bpp_id": "samunnati.bpp.uki.in",
+        "bpp_uri": "https://samunnati.bpp.uki.in"
+    },
+    "message": {
+        "order": {
+            "id": "ord01",
+            "provider": {
+                "id": "prov01",
+                "descriptor": {
+                    "name": "Samunnati",
+                    "short_desc": "Agri-focused NBFC",
+                    "images": [
+                        {
+                            "url": "https://samunnati.in/logo.png"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "coldchain-loan-15l",
+                    "descriptor": {
+                        "name": "ColdChain Capital Loan",
+                        "long_desc": "Secured Infra Loan for FPOs with min 200 shareholders"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "financial-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "interest-rate"
+                                    },
+                                    "value": "8.5%"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "loan-type"
+                                    },
+                                    "value": "infrastructure"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "processing-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "tat"
+                                    },
+                                    "value": "P7D"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "security-terms"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "collateral-required"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "limits"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "min-disbursement-amount"
+                                    },
+                                    "value": "1500000INR"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "max-disbursement-amount"
+                                    },
+                                    "value": "2000000INR"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "eligibility"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "entity-type"
+                                    },
+                                    "value": "farmer-collective"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "documents-required"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "clent-identification"
+                                    },
+                                    "value": "UDYAM"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "client-certificate-1"
+                                    },
+                                    "value": "SFAC"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "digital",
+                    "customer": {
+                        "person": {
+                            "name": "Sanjeev Bhosale"
+                        },
+                        "contact": {
+                            "email": "sanjeev@jeevanfpo.in",
+                            "phone": "+919812345678"
+                        }
+                    },
+                    "state": {
+                        "descriptor": {
+                            "code": "APPLICATION_CANCELLED"
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "1799"
+                },
+                "breakup": [
+                    {
+                        "title": "Processing Fee",
+                        "price": {
+                            "currency": "INR",
+                            "value": "299"
+                        }
+                    },
+                    {
+                        "title": "Penalty",
+                        "price": {
+                            "currency": "INR",
+                            "value": "1500"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Jeevan Agro FPO",
+                "organization": {
+                    "descriptor": {
+                        "name": "Jeevan Agro FPO"
+                    },
+                    "address": "Block 3, Agri Chambers, Nashik"
+                }
+            },
+            "payments": [
+                {
+                    "collected_by": "BPP",
+                    "type": "POST_FULFILLMENT",
+                    "status": "NOT_PAID",
+                    "url": "https://payment.quick-freights.uki.network/",
+                    "params": {
+                        "currency": "INR",
+                        "value": "299.00"
+                    }
+                },
+                {
+                    "type": "PENALTY",
+                    "status": "PROCESSING",
+                    "params": {
+                        "currency": "INR",
+                        "value": "1500.0",
+                        "bank_account_number": "1212233242"
+                    }
+                }
+            ],
+            "cancellation_terms": [
+                {
+                    "cancel_by": {
+                        "label": "cancellation before sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0%"
+                    }
+                },
+                {
+                    "cancel_by": {
+                        "label": "cancellation after sanction"
+                    },
+                    "cancellation_fee": {
+                        "percentage": "0.1%"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+
 ## Taxonomy and layer 2 configuration
 
 - Any specific tags, enumerations, and rules we add for the use cases or required by the network, will go here.

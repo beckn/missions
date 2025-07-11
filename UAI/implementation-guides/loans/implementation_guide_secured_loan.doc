@@ -534,6 +534,7 @@ Response Payload:
         }
     }
 }
+
 3. select
 Purpose: Sanjeev, on behalf of Jeevan FPO, selects a specific loan product (e.g., ColdChain Capital Loan) and requests a detailed quote with required fulfillment preferences.
 Request Payload:
@@ -746,6 +747,8 @@ Response Payload:
         }
     }
 }
+
+
 5. init
 Purpose: Sanjeev shares Jeevan FPO's documents, billing details, fulfillment information to begin the formal onboarding and verification process.
 Request Payload:
@@ -807,6 +810,8 @@ Request Payload:
         }
     }
 }
+
+
 6. on_init
 Purpose: BPP acknowledges receipt of details and returns fulfillment, payment, cancellation etc terms. BPP sends a form for collecting details from the customer.
 Response Payload:
@@ -1054,6 +1059,8 @@ Response Payload:
         }
     }
 }
+
+
 7. confirm
 Purpose: Sanjeev confirms the order and formally accepts the terms of the order, signaling agreement to proceed with execution.
 Request Payload:
@@ -1381,6 +1388,7 @@ Request Payload:
         "order_id": "ord01"
     }
 }
+
 10. on_status-1
 Purpose: BPP responds with latest status details such as processing, sanctioned, disbursed, or rejected—using fulfillment state.
 Response Payload:
@@ -1605,7 +1613,6 @@ Response Payload:
 }
 
 11. On_status-2
-
 {
     "context": {
         "domain": "credit-services:uki",
@@ -1854,8 +1861,8 @@ Response Payload:
         }
     }
 }
-12. On_status-3
 
+12. On_status-3
 {
     "context": {
         "domain": "credit-services:uki",
@@ -2083,7 +2090,6 @@ Response Payload:
 }
 
 13. On_status-4
-
 {
     "context": {
         "domain": "credit-services:uki",
@@ -2321,7 +2327,6 @@ Response Payload:
 }
 
 14. On_status-5
-
 {
     "context": {
         "domain": "credit-services:uki",
@@ -2557,8 +2562,8 @@ Response Payload:
         }
     }
 }
-15. On_status-6
 
+15. On_status-6
 {
     "context": {
         "domain": "credit-services:uki",
@@ -2797,7 +2802,6 @@ Response Payload:
 
 16. Update1
 Purpose: Customer perform Aadhar authorisation using OTP to accept the sanction letter.
-
 {
     "context": {
         "domain": "credit-services:uki",
@@ -2857,7 +2861,6 @@ Purpose: Customer perform Aadhar authorisation using OTP to accept the sanction 
 
 17. Update2
 Purpose: Customer opts to transfer the sanctioned money into their bank account.
-
 {
     "context": {
         "domain": "credit-services:uki",
@@ -2907,7 +2910,6 @@ Purpose: Customer opts to transfer the sanctioned money into their bank account.
 }
 
 17. on_Update
-
 {
     "context": {
         "domain": "credit-services:uki",
@@ -3169,6 +3171,7 @@ Request Payload:
         ]
     }
 }
+
 19. on_rating
 Purpose: after Sanjeev submits a post-fulfillment rating for the lender’s process, the BPP might ask Sanjeev to fill a feedback form.
 Request Payload:
@@ -3202,6 +3205,7 @@ Request Payload:
         }
     }
 }
+
 20. support
 Purpose: Sanjeev requests support for clarifying post-disbursal terms, interest clause, or payment schedule.
 Request Payload:
