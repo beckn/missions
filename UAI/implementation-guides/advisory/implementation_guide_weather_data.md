@@ -10,6 +10,7 @@
 | 14-11-2024 | 0.2     | Internal Review Comments Incorprated                |
 | 18-11-2024 | 1.0     | Final Version                                       |
 | 04-12-2024 | 1.1     | A new section created for Schema Details and added details for Weather forecast      |
+| 11-07-2025  | 1.2     | updates in the location, language and domain name in the JSONs   
 
 ## Introduction
 
@@ -121,7 +122,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "search",
     "location": {
       "country": {
@@ -148,12 +149,28 @@ Beckn is a aynchronous protocol at its core.
               "start" : "2024-03-01T00:00:00.000Z",
               "end" : "2024-03-15T00:00:00.000Z"
             }
-          }
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "languages"
+              },
+              "list": [
+                {
+                  "value": "mr"
+                },
+                {
+                  "value": "en"
+                }
+              ]
+            }
+          ]
         },
         "fulfillment": {
           "stops": [
             {
               "location": {
+                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                 "gps": ""12.9716, 77.5946""
               }
             }
@@ -168,7 +185,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "search",
     "location": {
       "country": {
@@ -226,6 +243,19 @@ Beckn is a aynchronous protocol at its core.
                 "value": "Vertical wind speed"
               }
             ]
+          },
+          {
+              "descriptor": {
+                "name": "languages"
+              },
+              "list": [
+                {
+                  "value": "mr"
+                },
+                {
+                  "value": "en"
+                }
+              ]
           }
         ]
       },
@@ -233,6 +263,7 @@ Beckn is a aynchronous protocol at its core.
         "stops": [
           {
             "location": {
+              "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
               "gps": ""12.9716, 77.5946""
             }
           }
@@ -247,7 +278,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "search",
     "location": {
       "country": {
@@ -293,6 +324,7 @@ Beckn is a aynchronous protocol at its core.
           {
             "type": "Forecast-Region"
             "location": {
+              "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
               "gps": ""12.9716, 77.5946""
             }
           }
@@ -315,7 +347,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "advisory:uai",
+      "domain": "advisory:uki",
       "location": {
         "country": {
           "code": "INDIA"
@@ -813,7 +845,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "on_search",
     "version": "1.1.0",
     "bpp_id": "onix-bpp.fasal.co",
@@ -867,7 +899,22 @@ Beckn is a aynchronous protocol at its core.
                     "url": "https://youtu.be/aJtcBCl8Cl4"
                   }
                 ]
-              }
+              },
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "languages"
+                  },
+                  "list": [
+                    {
+                      "value": "mr"
+                    },
+                    {
+                      "value": "en"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -887,7 +934,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "location": {
       "country": {
         "name": "IND"
@@ -919,7 +966,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "location": {
       "country": {
         "code": "IND"
@@ -955,7 +1002,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -981,7 +1028,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -1019,7 +1066,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "location": {
       "country": {
         "name": "IND"
@@ -1056,7 +1103,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "advisory:uai",
+    "domain": "advisory:uki",
     "location": {
       "country": {
         "name": "IND"
@@ -1154,4 +1201,4 @@ If you are writing the provider platform software, the following are the steps y
  - **BPP Sandbox:** bpp-unified-sandbox-uai.becknprotocol.io
 
 ### Domain name:
-    advisory:uai
+    advisory:uki

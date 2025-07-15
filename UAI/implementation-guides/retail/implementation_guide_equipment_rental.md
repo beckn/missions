@@ -8,7 +8,7 @@
 | ---------- | ------- | --------------------------------------------------- |
 | 06-11-2024 | 0.1     | Initial Version                                     |
 | 14-11-2024 | 0.2     | Internal Review Comments are incorprated                                     |
-| 18-11-2024 | 1.0     | Final Version                                     |
+| 11-07-2025  | 1.0     | updates in the location, language and domain name in the JSONs   
 
 ## Introduction
 
@@ -125,7 +125,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "retail:uai",
+      "domain": "retail:uki",
       "location": {
         "country": {
           "name": "IND"
@@ -161,7 +161,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "retail:uai",
+      "domain": "retail:uki",
       "location": {
         "country": {
           "name": "IND"
@@ -210,7 +210,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "retail:uai",
+      "domain": "retail:uki",
       "location": {
         "country": {
           "name": "IND"
@@ -247,6 +247,7 @@ Beckn is a aynchronous protocol at its core.
                 {
                     "type": "SITE",
                     "location": {
+                        "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                         "gps": "23.11355, 24.32344"
                     },
                     "time: {
@@ -267,7 +268,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "retail:uai",
+      "domain": "retail:uki",
       "location": {
         "country": {
           "name": "IND"
@@ -299,6 +300,7 @@ Beckn is a aynchronous protocol at its core.
                 {
                     "type": "SITE",
                     "location": {
+                        "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                         "gps": "23.11355, 24.32344"
                     },
                     "time: {
@@ -340,7 +342,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -677,7 +679,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "retail:uai",
+      "domain": "retail:uki",
       "location": {
         "country": {
             "name": "IND"
@@ -718,6 +720,7 @@ Beckn is a aynchronous protocol at its core.
             "stops": [
                 {
                     "location": {
+                        "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                         "gps": "23.23234, 24.2424"
                     },
                     "time": {
@@ -741,7 +744,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -844,6 +847,7 @@ Beckn is a aynchronous protocol at its core.
                     "stops": [
                         {
                             "location": {
+                                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                                 "gps": "23.23234, 24.2424"
                             },
                             "time": {
@@ -887,7 +891,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-      "domain": "retail:uai",
+      "domain": "retail:uki",
       "location": {
         "country": {
             "name": "IND"
@@ -928,6 +932,7 @@ Beckn is a aynchronous protocol at its core.
             "stops": [
                 {
                     "location": {
+                        "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                         "gps": "23.23234, 24.2424"
                     },
                     "time": {
@@ -963,7 +968,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1066,6 +1071,7 @@ Beckn is a aynchronous protocol at its core.
                     "stops": [
                         {
                             "location": {
+                                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                                 "gps": "23.23234, 24.2424"
                             },
                             "time": {
@@ -1144,7 +1150,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1185,6 +1191,7 @@ Beckn is a aynchronous protocol at its core.
                     "stops": [
                         {
                             "location": {
+                                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                                 "gps": "23.23234, 24.2424"
                             },
                             "time": {
@@ -1240,7 +1247,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1344,6 +1351,7 @@ Beckn is a aynchronous protocol at its core.
                     "stops": [
                         {
                             "location": {
+                                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                                 "gps": "23.23234, 24.2424"
                             },
                             "time": {
@@ -1436,7 +1444,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1465,7 +1473,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1569,6 +1577,7 @@ Beckn is a aynchronous protocol at its core.
                     "stops": [
                         {
                             "location": {
+                                "address": "house number: 12, Village: Rudrapur, Taluk: Rudrapur",
                                 "gps": "23.23234, 24.2424"
                             },
                             "time": {
@@ -1654,7 +1663,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1687,7 +1696,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1721,7 +1730,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "retail:uai",
+    "domain": "retail:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -1748,7 +1757,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
   "context": {
-    "domain": "retail:uai",
+    "domain": "retail:uki",
     "action": "get_rating_categories",
     "location": {
       "country": {
@@ -1787,7 +1796,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1825,7 +1834,7 @@ Beckn is a aynchronous protocol at its core.
 ```
 {
     "context": {
-        "domain": "retail:uai",
+        "domain": "retail:uki",
         "location": {
             "country": {
                 "name": "IND"
@@ -1915,4 +1924,4 @@ If you are writing the provider platform software, the following are the steps y
  - **BPP Sandbox:** bpp-unified-sandbox-uai.becknprotocol.io
 
 ### Domain name:
-    retail:uai
+    retail:uki
