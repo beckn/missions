@@ -1,0 +1,21 @@
+
+properties:
+  message:
+    properties:
+      order:
+        properties:
+          items:
+            items:
+              properties:
+                tags:
+                  allOf:
+                    - contains:
+                        properties:
+                          descriptor:
+                            type: object
+                            properties:
+                              code:
+                                const: connector-specifications
+                            required:
+                              - code
+                      

@@ -19,7 +19,7 @@ properties:
                                   type: object
                                   properties:
                                     code:
-                                      const: CONNECTOR-SPECIFICATIONS
+                                      const: connector-specifications
                                   required:
                                     - code
                             

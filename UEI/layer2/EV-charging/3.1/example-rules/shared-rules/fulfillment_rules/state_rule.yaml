@@ -18,9 +18,10 @@ properties:
                         code:
                           type: string
                           enum:
-                            - ORDER_PLACED
-                            - ORDER_PROCESSING
-                            - ORDER_PARTIALLY_FULFILLED
-                            - ORDER_FULFILLED
+                            - ACTIVE
+                            - COMPLETED
+                            - INVALID
+                            - PENDING
+                            - RESERVATION
                       required:
                         - code

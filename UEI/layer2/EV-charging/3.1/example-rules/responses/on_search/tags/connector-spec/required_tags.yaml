@@ -17,7 +17,7 @@ properties:
                               descriptor:
                                 properties:
                                   code:
-                                    const: CONNECTOR-SPECIFICATIONS
+                                    const: connector-specifications
                           then:
                             properties:
                               list: # there should not be a "type: array" block below this. dont know the reason yet.
@@ -29,7 +29,7 @@ properties:
                                           type: object
                                           properties:
                                             code:
-                                              const: CHARGER-TYPE
+                                              const: connector-id
                                           required:
                                             - code
                                         value:
@@ -44,7 +44,7 @@ properties:
                                           type: object
                                           properties:
                                             code:
-                                              const: CONNECTOR-TYPE
+                                              const: connector-type
                                           required:
                                             - code
                                         value:
@@ -59,7 +59,7 @@ properties:
                                             type: object
                                             properties:
                                               code:
-                                                const: POWER-RATING
+                                                const: power-type
                                             required:
                                               - code
                                           value:

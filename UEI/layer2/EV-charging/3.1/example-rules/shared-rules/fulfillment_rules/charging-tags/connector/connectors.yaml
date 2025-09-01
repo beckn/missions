@@ -1,0 +1,3 @@
+allOf:
+  - $ref: "./required-taggroup.yaml"
+  - $ref: "./required-tags.yaml"

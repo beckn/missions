@@ -1,0 +1,51 @@
+#structure it like u did for search SETTLEMENT_TERMS
+properties:
+  message:
+    properties:
+      order:
+        properties:
+          items:
+            items:
+              properties:
+                tags:
+                  items:
+                    if:
+                      properties:
+                        descriptor:
+                          properties:
+                            code:
+                              const: charging-options
+                    then:
+                      properties:
+                        list: # there should not be a "type: array" block below this. dont know the reason yet.
+                          allOf:
+                            - contains:
+                                type: object
+                                properties:
+                                  descriptor:
+                                    type: object
+                                    properties:
+                                      code:
+                                        const: charging-by
+                                    required:
+                                      - code
+                                  value:
+                                    type: string
+                                    enum:
+                                      - AMOUNT
+                                      - TIME
+                                      - UNITS
+                                      - SOC
+                                required:
+                                  - descriptor
+                                  - value
+                            - contains:
+                                type: object
+                                properties:
+                                  descriptor:
+                                    type: object
+                                    properties:
+                                      code:
+                                        const: charging-limit
+                                    required:
+                                      - code

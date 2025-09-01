@@ -17,7 +17,7 @@ properties:
                               descriptor:
                                 properties:
                                   code:
-                                    const: CONNECTOR-SPECIFICATIONS
+                                    const: connector-specifications
                           then:
                             properties:
                               list:
@@ -30,8 +30,8 @@ properties:
                                         code:
                                           type: string
                                           enum:
-                                            - CONNECTOR-ID
-                                            - CHARGER-TYPE
-                                            - CONNECTOR-TYPE
-                                            - POWER-RATING
-                                            - AVAILABILITY
+                                            - connector-id
+                                            - power-type
+                                            - connector-type
+                                            - connector-format
+                                            - status
