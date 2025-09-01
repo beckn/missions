@@ -123,42 +123,42 @@ paths:
                                                     properties:
                                                       code:
                                                         const: connector-type
-                                              then:
-                                                properties:
-                                                  descriptor:
-                                                    properties:
-                                                      value:
-                                                        enum:
-                                                          - CHADEMO
-                                                          - DOMESTIC_A
-                                                          - DOMESTIC_B
-                                                          - DOMESTIC_C
-                                                          - DOMESTIC_D
-                                                          - DOMESTIC_E
-                                                          - DOMESTIC_F
-                                                          - DOMESTIC_G
-                                                          - DOMESTIC_H
-                                                          - DOMESTIC_I
-                                                          - DOMESTIC_J
-                                                          - DOMESTIC_K
-                                                          - DOMESTIC_L
-                                                          - DOMESTIC_M
-                                                          - DOMESTIC_N
-                                                          - DOMESTIC_O
-                                                          - IEC_60309_2_single_16
-                                                          - IEC_60309_2_three_16
-                                                          - IEC_60309_2_three_32
-                                                          - IEC_60309_2_three_64
-                                                          - IEC_62196_T1
-                                                          - IEC_62196_T1_COMBO
-                                                          - IEC_62196_T2
-                                                          - IEC_62196_T2_COMBO
-                                                          - IEC_62196_T3A
-                                                          - IEC_62196_T3C
-                                                          - TESLA_R
-                                                          - TESLA_S
                                                     required:
-                                                      - value
+                                                      - code
+                                              then:
+                                                value:
+                                                  type: string
+                                                  enum:
+                                                    - CHADEMO
+                                                    - DOMESTIC_A
+                                                    - DOMESTIC_B
+                                                    - DOMESTIC_C
+                                                    - DOMESTIC_D
+                                                    - DOMESTIC_E
+                                                    - DOMESTIC_F
+                                                    - DOMESTIC_G
+                                                    - DOMESTIC_H
+                                                    - DOMESTIC_I
+                                                    - DOMESTIC_J
+                                                    - DOMESTIC_K
+                                                    - DOMESTIC_L
+                                                    - DOMESTIC_M
+                                                    - DOMESTIC_N
+                                                    - DOMESTIC_O
+                                                    - IEC_60309_2_single_16
+                                                    - IEC_60309_2_three_16
+                                                    - IEC_60309_2_three_32
+                                                    - IEC_60309_2_three_64
+                                                    - IEC_62196_T1
+                                                    - IEC_62196_T1_COMBO
+                                                    - IEC_62196_T2
+                                                    - IEC_62196_T2_COMBO
+                                                    - IEC_62196_T3A
+                                                    - IEC_62196_T3C
+                                                    - TESLA_R
+                                                    - TESLA_S
+                                              required:
+                                                - value
       responses:
         '200':
           content:
@@ -1043,6 +1043,8 @@ paths:
                                                                           - power-type
                                                                           - connector-type
                                                                           - connector-format
+                                                                          - charging-speed
+                                                                          - power-rating
                                                                           - status
                             - properties:
                                 message:
@@ -1440,39 +1442,8 @@ paths:
                               type: string
                               enum:
                                 - on_confirm
-                    - $ref: '#/paths/~1on_cancel/post/requestBody/content/application~1json/schema/allOf/1/allOf/2'
-                    - $ref: '#/paths/~1on_cancel/post/requestBody/content/application~1json/schema/allOf/1/allOf/3'
-                    - $ref: '#/paths/~1on_cancel/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
-                    - $ref: '#/paths/~1on_cancel/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - $ref: '#/paths/~1on_cancel/post/requestBody/content/application~1json/schema/allOf/1/allOf/6'
-                    - $ref: '#/paths/~1on_cancel/post/requestBody/content/application~1json/schema/allOf/1/allOf/7'
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                status:
-                                  type: string
-                                  enum:
-                                    - COMPLETE
-                                    - ACTIVE
-                              required:
-                                - status
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                status:
-                                  type: string
-                                  enum:
-                                    - COMPLETED
-                                    - ACTIVE
-                                    - CANCELLED
-                                    - SOFT_CANCEL
-                              required:
-                                - status
-                    - $ref: '#/paths/~1on_cancel/post/requestBody/content/application~1json/schema/allOf/1/allOf/8'
+                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/2'
+                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/3'
                     - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
                     - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
         description: TODO
@@ -1918,385 +1889,10 @@ paths:
                               type: string
                               enum:
                                 - on_cancel
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                provider:
-                                  type: object
-                                  properties:
-                                    id:
-                                      type: string
-                                  required:
-                                    - id
-                              required:
-                                - provider
-                    - allOf:
-                        - properties:
-                            message:
-                              properties:
-                                order:
-                                  properties:
-                                    items:
-                                      type: array
-                                      minItems: 1
-                                      items:
-                                        type: object
-                                        properties:
-                                          id:
-                                            type: string
-                                          descriptor:
-                                            type: object
-                                            properties:
-                                              name:
-                                                type: string
-                                              code:
-                                                type: string
-                                                enum:
-                                                  - ENERGY
-                                            required:
-                                              - code
-                                          price:
-                                            type: object
-                                            properties:
-                                              value:
-                                                type: string
-                                            required:
-                                              - value
-                                          fulfillment_ids:
-                                            minItems: 1
-                                          location_ids:
-                                            minItems: 1
-                                        required:
-                                          - id
-                                          - price
-                                          - descriptor
-                                  required:
-                                    - items
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                items:
-                                  type: array
-                                  minItems: 1
-                                  items:
-                                    type: object
-                                    properties:
-                                      fulfillment_ids:
-                                        minItems: 1
-                                      location_ids:
-                                        minItems: 1
-                                    required:
-                                      - fulfillment_ids
-                                      - location_ids
-                    - allOf:
-                        - allOf:
-                            - allOf:
-                                - properties:
-                                    message:
-                                      properties:
-                                        order:
-                                          properties:
-                                            fulfillments:
-                                              type: array
-                                              minItems: 1
-                                              items:
-                                                required:
-                                                  - id
-                                          required:
-                                            - fulfillments
-                                - properties:
-                                    message:
-                                      properties:
-                                        order:
-                                          properties:
-                                            fulfillments:
-                                              type: array
-                                              minItems: 1
-                                              items:
-                                                type: object
-                                                properties:
-                                                  state:
-                                                    type: object
-                                                    properties:
-                                                      descriptor:
-                                                        type: object
-                                                        properties:
-                                                          code:
-                                                            type: string
-                                                            enum:
-                                                              - ACTIVE
-                                                              - COMPLETED
-                                                              - INVALID
-                                                              - PENDING
-                                                              - RESERVATION
-                                                        required:
-                                                          - code
-                                - properties:
-                                    message:
-                                      properties:
-                                        order:
-                                          properties:
-                                            fulfillments:
-                                              items:
-                                                properties:
-                                                  stops:
-                                                    allOf:
-                                                      - contains:
-                                                          type: object
-                                                          properties:
-                                                            type:
-                                                              const: START
-                                                          required:
-                                                            - type
-                                                            - time
-                                                      - contains:
-                                                          type: object
-                                                          properties:
-                                                            type:
-                                                              const: END
-                                                          required:
-                                                            - type
-                                                            - time
-                                                required:
-                                                  - stops
-                            - properties:
-                                message:
-                                  properties:
-                                    order:
-                                      properties:
-                                        fulfillments:
-                                          type: array
-                                          items:
-                                            allOf:
-                                              - properties:
-                                                  customer:
-                                                    properties:
-                                                      contact:
-                                                        properties:
-                                                          phone:
-                                                            type: string
-                                                            pattern: '^\+?[1-9]\d{1,14}$'
-                                                        required:
-                                                          - phone
-                                                      person:
-                                                        properties:
-                                                          name:
-                                                            type: string
-                                                        required:
-                                                          - name
-                                                    required:
-                                                      - contact
-                                                      - person
-                                                required:
-                                                  - customer
-                    - allOf:
-                        - properties:
-                            message:
-                              properties:
-                                order:
-                                  properties:
-                                    quote:
-                                      type: object
-                                      properties:
-                                        price:
-                                          type: object
-                                          properties:
-                                            currency:
-                                              type: string
-                                            value:
-                                              type: string
-                                              pattern: '^\d+(\.\d{1,2})?$'
-                                          required:
-                                            - currency
-                                            - value
-                                        breakup:
-                                          type: array
-                                          items:
-                                            type: object
-                                            properties:
-                                              price:
-                                                type: object
-                                                properties:
-                                                  currency:
-                                                    type: string
-                                                  value:
-                                                    type: string
-                                                    pattern: '^\d+(\.\d{1,2})?$'
-                                                required:
-                                                  - currency
-                                                  - value
-                                              title:
-                                                type: string
-                                                enum:
-                                                  - WHEELING_CHARGE
-                                                  - PLATFORM_CHARGE
-                                            required:
-                                              - price
-                                              - title
-                                      required:
-                                        - price
-                                        - breakup
-                                  required:
-                                    - quote
-                        - properties:
-                            message:
-                              properties:
-                                order:
-                                  properties:
-                                    quote:
-                                      properties:
-                                        breakup:
-                                          allOf:
-                                            - contains:
-                                                type: object
-                                                properties:
-                                                  title:
-                                                    const: WHEELING_CHARGE
-                                                  price:
-                                                    type: object
-                                                    properties:
-                                                      value:
-                                                        type: string
-                                                    required:
-                                                      - value
-                                                required:
-                                                  - title
-                                                  - price
-                                            - contains:
-                                                type: object
-                                                properties:
-                                                  title:
-                                                    const: PLATFORM_CHARGE
-                                                  price:
-                                                    type: object
-                                                    properties:
-                                                      value:
-                                                        type: string
-                                                    required:
-                                                      - value
-                                                required:
-                                                  - title
-                                                  - price
-                    - allOf:
-                        - allOf:
-                            - properties:
-                                message:
-                                  properties:
-                                    order:
-                                      properties:
-                                        payments:
-                                          type: array
-                                          items:
-                                            type: object
-                                            properties:
-                                              type:
-                                                type: string
-                                                enum:
-                                                  - PRE-ORDER
-                                                  - ON-FULFILLMENT
-                                                  - POST-FULFILLMENT
-                                              status:
-                                                type: string
-                                                enum:
-                                                  - PAID
-                                                  - NOT-PAID
-                                              collected_by:
-                                                type: string
-                                                enum:
-                                                  - BAP
-                                                  - BPP
-                                              params:
-                                                type: object
-                                                properties:
-                                                  amount:
-                                                    type: string
-                                                    pattern: '^\d+(\.\d{1,2})?$'
-                                                  currency:
-                                                    type: string
-                                            required:
-                                              - type
-                                              - status
-                                              - collected_by
-                                              - params
-                                      required:
-                                        - payments
-                            - properties:
-                                message:
-                                  properties:
-                                    order:
-                                      properties:
-                                        payments:
-                                          items:
-                                            properties:
-                                              params:
-                                                required:
-                                                  - bank_code
-                                                  - bank_account_number
-                                                  - virtual_payment_address
-                                            required:
-                                              - type
-                                              - status
-                                              - collected_by
-                                              - params
-                                      required:
-                                        - payments
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                payments:
-                                  type: array
-                                  items:
-                                    properties:
-                                      type:
-                                        type: string
-                                      params:
-                                        type: object
-                                        properties:
-                                          transaction_id:
-                                            type: string
-                                    required:
-                                      - type
-                                    allOf:
-                                      - if:
-                                          properties:
-                                            type:
-                                              const: PRE-ORDER
-                                        then:
-                                          properties:
-                                            params:
-                                              required:
-                                                - transaction_id
+                    - $ref: '#/paths/~1on_init/post/requestBody/content/application~1json/schema/allOf/1/allOf/2'
+                    - $ref: '#/paths/~1init/post/requestBody/content/application~1json/schema/allOf/1/allOf/3'
                     - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/4'
                     - $ref: '#/paths/~1on_status/post/requestBody/content/application~1json/schema/allOf/1/allOf/5'
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                status:
-                                  type: string
-                                  enum:
-                                    - CANCELLED
-                                    - SOFT_CANCEL
-                              required:
-                                - status
-                    - properties:
-                        message:
-                          properties:
-                            order:
-                              properties:
-                                cancellation_terms:
-                                  items:
-                                    required:
-                                      - reason_required
-                              required:
-                                - cancellation_terms
         description: TODO
       responses:
         '200':

@@ -34,4 +34,7 @@ properties:
                                             - power-type
                                             - connector-type
                                             - connector-format
+                                            - charging-speed
+                                            - power-rating
                                             - status
+                                            
