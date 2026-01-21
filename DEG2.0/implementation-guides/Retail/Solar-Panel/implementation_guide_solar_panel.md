@@ -1808,15 +1808,19 @@ Search request can contain one or more search criterion within it. Use the follo
 
 Property Name|Enums|
 |-------------|-----|
-|Panel Categories|mono_panels<br>poly_panels<br>flex_panels<br>Solar_installation_service|
+|Panel Categories|MONO_PANELS<br>POLY_PANELS<br>FLEX_PANELS<br>SOLAR_INSTALLATION_SERVICE|
 |Fulfillment Types|HOME_DELIVERY<br>STORE_PICKUP<br>SITE_VISIT|
 |Payment Types|ON-FULFILLMENT|
 |Payment Collected By|BPP|
 |Payment Status|NOT-PAID|
-|Panel Specification Types|Type<br>Wattage<br>Efficiency<br>Warranty<br>IP_Rating<br>Weight<br>Use_Case|
+|Panel Specification Types|TYPE<br>WATTAGE<br>EFFICIENCY<br>WARRANTY<br>IP_RATING<br>WEIGHT<br>USE_CASE|
 |Certification Types|SEC<br>PMSC|
-|Installation Specification Types|installation_type<br>supported_panel_types<br>system_capacity_limit<br>included_services<br>installation_duration|
-|Installer Qualification Types|empaneled_with_nodal_agency<br>safety_certified|
+|Installation Specification Types|INSTALLATION_TYPE<br>SUPPORTED_PANEL_TYPES<br>SYSTEM_CAPACITY_LIMIT<br>INCLUDED_SERVICES<br>INSTALLATION_DURATION|
+|Installer Qualification Types|EMPANELED_WITH_NODAL_AGENCY<br>SAFETY_CERTIFIED|
+|payment type| PRE_ORDER<br>POST_ORDER<br>PRE_FULFILLMENT<br>POST_FULFILLMENT|
+|payment status| PAID<br>NOT_PAID<br>FAILED<br>PROCESSING
+|payment collected by| BAP<br>BPP<br>AGENT
+|fulfillment stop types| START<br>END
 
 ## Notes on Software Integration
 

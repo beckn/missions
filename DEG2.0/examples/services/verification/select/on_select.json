@@ -25,7 +25,13 @@
                 "id": "sf_solar_verification_unit",
                 "descriptor": {
                     "name": "sf_solar_verification_unit",
-                    "short_desc": "third_party_service_for_verifying_installed_solar_systems"
+                    "short_desc": "third_party_service_for_verifying_installed_solar_systems",
+                    "long_desc": "independent_organization_providing_ground_level_and_remote_verification_of_residential_and_commercial_solar_panel_installations_for_subsidies_and_grid_compliance",
+                    "images": [
+                        {
+                            "url": "https://sfsolarverify.org/logo.png"
+                        }
+                    ]
                 }
             },
             "items": [
