@@ -1,6 +1,6 @@
 # UEI Implementation Guide - EV Charging
 
-#### Version 1.2
+#### Version 1.4
 
 ## Version History
 
@@ -10,6 +10,7 @@
 | 09-09-2024 | 1.1     | Incorporated input from Participants during Winroom |
 | 14-11-2024 | 1.2     | Incorporated feedback from Participants|
 | 25-11-2024 | 1.3     | Updated moving connector specification tag groups from "fulfillments" to "items."|
+| 15-04-2026 | 1.4     | Added ON-FULFILLMENT postpaid metered charging for DC cable-lock chargers (UPI collect at session end); LIVE-METER tag for real-time kWh/cost in on_status; SESSION-SUMMARY tag and cable-released state in on_update; taxonomy rows 29-38 |
 
 ## Introduction
 
@@ -1442,6 +1443,588 @@ Search request can contain one or more search criterion within it. Use the follo
           "external_ref": {
             "mimetype": "text/html",
             "url": "https://example-company.com/charge/tnc.html"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+---
+
+> **Postpaid Metered Charging — Payment Types**
+>
+> **ON-FULFILLMENT — Postpaid Metered Charging (DC chargers)**
+>
+> Applicable to DC chargers (CCS2 / CHAdeMO) with cable-lock hardware. The cable stays physically locked after the session ends. The BPP sends a UPI collect request to the driver's VPA; OCPP `UnlockConnector` is issued only after the driver approves payment (`PAID`). This is the correct Beckn payment type for this enforcement model because payment is required to *complete* the fulfillment (cable release).
+
+---
+
+### confirm (ON-FULFILLMENT / DC Postpaid)
+
+- Postpaid confirm for DC chargers with cable lock enforcement.
+- Payment type `ON-FULFILLMENT`: the BPP sends a UPI collect request after the session ends; the cable remains locked until payment is confirmed.
+- `status` is `NOT-PAID` at confirm; `amount` is `"0"` because actual kWh is unknown until session ends.
+- Driver's UPI VPA is in `message->order->payments[0]->params->virtual_payment_address`.
+
+```
+{
+  "context": {
+    "domain": "ev-charging:uei",
+    "action": "confirm",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "a1b2c3d4-5e6f-7890-abcd-ef1234567890",
+    "message_id": "a1b2c3d4-5e6f-7890-abcd-ef1234567890",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "example_provider_id"
+      },
+      "items": [
+        {
+          "id": "pe-charging-01"
+        }
+      ],
+      "billing": {
+        "name": "John Doe",
+        "email": "abc@example.com",
+        "phone": "+91-9876522222"
+      },
+      "fulfillments": [
+        {
+          "id": "1",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "John Doe"
+            },
+            "contact": {
+              "phone": "+91-9887766554"
+            }
+          }
+        }
+      ],
+      "payments": [
+        {
+          "collected_by": "BPP",
+          "params": {
+            "amount": "0",
+            "currency": "INR",
+            "virtual_payment_address": "johndoe@upi"
+          },
+          "status": "NOT-PAID",
+          "type": "ON-FULFILLMENT"
+        }
+      ]
+    }
+  }
+}
+```
+
+### on_confirm (ON-FULFILLMENT / DC Postpaid)
+
+- Order confirmed. Session can begin via `update` → `start-charging`. No upfront charge.
+- Fulfillment state is `order-initiated`; payment status remains `NOT-PAID`.
+- BPP will send a UPI collect to `johndoe@upi` after `TransactionEvent(Ended)`.
+
+```
+{
+  "context": {
+    "domain": "ev-charging:uei",
+    "action": "on_confirm",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "a1b2c3d4-5e6f-7890-abcd-ef1234567890",
+    "message_id": "a1b2c3d4-5e6f-7890-abcd-ef1234567890",
+    "timestamp": "2023-07-16T04:41:16Z"
+  },
+  "message": {
+    "order": {
+      "id": "a1b2c3d4-5e6f-7890-abcd",
+      "provider": {
+        "id": "example_provider_id",
+        "descriptor": {
+          "name": "Example Company",
+          "short_desc": "Example Company Pvt Ltd",
+          "images": [
+            {
+              "url": "https://example-company.com/images/logo.png"
+            }
+          ]
+        }
+      },
+      "items": [
+        {
+          "id": "pe-charging-01",
+          "descriptor": {
+            "code": "energy"
+          },
+          "price": {
+            "value": "8",
+            "currency": "INR/kWH"
+          },
+          "quantity": {
+            "available": {
+              "measure": {
+                "value": "100",
+                "unit": "kWh"
+              }
+            }
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Connector Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "connector 1",
+                    "code": "connector-id"
+                  },
+                  "value": "con1"
+                },
+                {
+                  "descriptor": {
+                    "name": "Charger Type",
+                    "code": "charger-type"
+                  },
+                  "value": "DC"
+                },
+                {
+                  "descriptor": {
+                    "name": "Connector Type",
+                    "code": "connector-type"
+                  },
+                  "value": "CCS2"
+                },
+                {
+                  "descriptor": {
+                    "name": "Power Rating",
+                    "code": "power-rating"
+                  },
+                  "value": "30kW"
+                },
+                {
+                  "descriptor": {
+                    "name": "Availability",
+                    "code": "availability"
+                  },
+                  "value": "Available"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "CHARGING",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "timestamp": "2023-07-16T10:00:00+05:30"
+              },
+              "instructions": {
+                "name": "Charging instructions",
+                "short_desc": "Plug in the CCS2 connector. Charging will start automatically. Do not unplug until the app shows payment confirmed."
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "John Doe"
+            },
+            "contact": {
+              "phone": "+91-9887766554"
+            }
+          },
+          "state": {
+            "descriptor": {
+              "code": "order-initiated"
+            }
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Charging Point Specifications"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Pillar Number 4",
+                    "code": "charger-id"
+                  },
+                  "value": "charg1"
+                },
+                {
+                  "descriptor": {
+                    "code": "Availability"
+                  },
+                  "value": "Available"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "billing": {
+        "email": "abc@example.com",
+        "phone": "+91-9876522222"
+      },
+      "quote": {
+        "price": {
+          "value": "0",
+          "currency": "INR"
+        },
+        "breakup": [
+          {
+            "title": "charging session cost",
+            "item": {
+              "descriptor": {
+                "name": "Metered — billed at 8 INR/kWh after session"
+              }
+            },
+            "price": {
+              "value": "0",
+              "currency": "INR"
+            }
+          }
+        ]
+      },
+      "payments": [
+        {
+          "type": "ON-FULFILLMENT",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "0",
+            "currency": "INR",
+            "virtual_payment_address": "johndoe@upi"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+### on_status (LIVE-METER — real-time cost during ON-FULFILLMENT session)
+
+- Sent periodically (every 30 s, driven by OCPP `MeterValues`) during an active `ON-FULFILLMENT` session.
+- The `LIVE-METER` tag group in `message->order->fulfillments[0]->tags` lets the BAP render a running cost ticker.
+- Payment status remains `NOT-PAID` until after session ends and UPI collect is approved.
+
+```
+{
+  "context": {
+    "domain": "ev-charging:uei",
+    "action": "on_status",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "a1b2c3d4-5e6f-7890-abcd-ef1234567890",
+    "message_id": "b2c3d4e5-6f70-8901-bcde-f12345678901",
+    "timestamp": "2023-07-16T10:15:00Z"
+  },
+  "message": {
+    "order": {
+      "id": "a1b2c3d4-5e6f-7890-abcd",
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "CHARGING",
+          "state": {
+            "descriptor": {
+              "code": "vehicle-getting-charged"
+            }
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Live Meter",
+                "code": "LIVE-METER"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Energy Delivered",
+                    "code": "energy-delivered"
+                  },
+                  "value": "2.3 kWh"
+                },
+                {
+                  "descriptor": {
+                    "name": "Cost So Far",
+                    "code": "cost-so-far"
+                  },
+                  "value": "18.40"
+                },
+                {
+                  "descriptor": {
+                    "name": "Rate",
+                    "code": "rate"
+                  },
+                  "value": "8 INR/kWh"
+                }
+              ],
+              "display": true
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "type": "ON-FULFILLMENT",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "0",
+            "currency": "INR",
+            "virtual_payment_address": "johndoe@upi"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+### on_update (SESSION-SUMMARY — amount due, cable still locked)
+
+- Sent by BPP immediately after OCPP `TransactionEvent(Ended)`. Charging is complete; cable is still physically locked.
+- The `SESSION-SUMMARY` tag group carries verified meter totals. `payments[0].params.amount` is updated to the exact billed amount.
+- BPP simultaneously sends a UPI collect request to the driver's VPA for this amount.
+- Payment status is `NOT-PAID` pending driver UPI approval.
+
+```
+{
+  "context": {
+    "domain": "ev-charging:uei",
+    "action": "on_update",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "a1b2c3d4-5e6f-7890-abcd-ef1234567890",
+    "message_id": "c3d4e5f6-7890-1234-cdef-123456789012",
+    "timestamp": "2023-07-16T11:27:00Z"
+  },
+  "message": {
+    "order": {
+      "id": "a1b2c3d4-5e6f-7890-abcd",
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "CHARGING",
+          "state": {
+            "descriptor": {
+              "code": "charging-ended"
+            }
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "name": "Session Summary",
+                "code": "SESSION-SUMMARY"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "name": "Total Energy Consumed",
+                    "code": "total-energy"
+                  },
+                  "value": "4.2 kWh"
+                },
+                {
+                  "descriptor": {
+                    "name": "Total Cost",
+                    "code": "total-cost"
+                  },
+                  "value": "36.29"
+                },
+                {
+                  "descriptor": {
+                    "name": "Session Start",
+                    "code": "session-start"
+                  },
+                  "value": "2023-07-16T10:00:00+05:30"
+                },
+                {
+                  "descriptor": {
+                    "name": "Session End",
+                    "code": "session-end"
+                  },
+                  "value": "2023-07-16T11:27:00+05:30"
+                }
+              ],
+              "display": true
+            }
+          ]
+        }
+      ],
+      "quote": {
+        "price": {
+          "value": "36.29",
+          "currency": "INR"
+        },
+        "breakup": [
+          {
+            "title": "charging session cost",
+            "item": {
+              "descriptor": {
+                "name": "Units consumed"
+              },
+              "quantity": {
+                "selected": {
+                  "measure": {
+                    "value": "4.2",
+                    "unit": "kWh"
+                  }
+                }
+              }
+            },
+            "price": {
+              "value": "33.60",
+              "currency": "INR"
+            }
+          },
+          {
+            "title": "gst",
+            "price": {
+              "currency": "INR",
+              "value": "2.69"
+            }
+          }
+        ]
+      },
+      "payments": [
+        {
+          "type": "ON-FULFILLMENT",
+          "status": "NOT-PAID",
+          "params": {
+            "amount": "36.29",
+            "currency": "INR",
+            "virtual_payment_address": "johndoe@upi"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+### on_update (Payment Confirmed — cable released)
+
+- Sent by BPP after UPI collect is approved by the driver (UPI callback received).
+- BPP calls OCPP `UnlockConnector`; fulfillment state transitions to `cable-released`.
+- `payments[0].status` is now `PAID` with the UPI `transaction_id` as proof of payment.
+
+```
+{
+  "context": {
+    "domain": "ev-charging:uei",
+    "action": "on_update",
+    "location": {
+      "country": {
+        "name": "India",
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "version": "1.1.0",
+    "bap_id": "example-bap.com",
+    "bap_uri": "https://api.example-bap.com/pilot/bap/energy/v1",
+    "bpp_id": "example-bpp.com",
+    "bpp_uri": "https://example-bpp.com",
+    "transaction_id": "a1b2c3d4-5e6f-7890-abcd-ef1234567890",
+    "message_id": "d4e5f6a7-8901-2345-defa-234567890123",
+    "timestamp": "2023-07-16T11:29:45Z"
+  },
+  "message": {
+    "order": {
+      "id": "a1b2c3d4-5e6f-7890-abcd",
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "CHARGING",
+          "state": {
+            "descriptor": {
+              "code": "cable-released"
+            }
+          }
+        }
+      ],
+      "payments": [
+        {
+          "type": "ON-FULFILLMENT",
+          "status": "PAID",
+          "params": {
+            "amount": "36.29",
+            "currency": "INR",
+            "virtual_payment_address": "johndoe@upi",
+            "transaction_id": "upi-txn-abc123xyz"
+          },
+          "time": {
+            "timestamp": "2023-07-16T11:29:40+05:30"
           }
         }
       ]
@@ -3127,10 +3710,10 @@ Below is a list of standardised codes used in this implememtation. Each of these
 |  13  |   quote breakup  | parking-fee       |          |          |
 |  14  |   quote breakup  | gst       |          |          |
 |  15  |   quote breakup  | total       |          |          |
-|  16  |   payment  | payment_type       |          |   PRE-ORDER       |
+|  16  |   payment  | payment_type       |          |   PRE-ORDER, ON-FULFILLMENT       |
 |  17  |   payment  | payment_status       |          |   PAID, NOT-PAID       |
 |  18  |   payment  | collected_by       |          |   bap, bpp       |
-|  19  |   fulfillment   |  state    |          |   start-chargin, end-chargin, charging-started, charging-ended, order-initiated, payment-completed       |
+|  19  |   fulfillment   |  state    |          |   start-chargin, end-chargin, charging-started, charging-ended, order-initiated, payment-completed, vehicle-getting-charged, cable-released       |
 |  20  |  Connector  Charging Details     | energy-delivered       |          |          |
 |  21  | Connector  Charging Details       | soc       |          |          |
 |   22 |  Connector  Charging Details      | start-time       |          |          |
@@ -3140,6 +3723,15 @@ Below is a list of standardised codes used in this implememtation. Each of these
 |  26  |  Connector  Charging Details      | current       |          |          |
 |  27  |  Connector  Charging Details      | power       |          |          |
 |  28  | Connector  Charging Details       | voltage       |          |          |
+|  29  |   LIVE-METER (on_status tag)    | energy-delivered       |          |   Real-time kWh delivered so far in the session       |
+|  30  |   LIVE-METER (on_status tag)    | cost-so-far       |          |   Running cost in INR based on metered usage       |
+|  31  |   LIVE-METER (on_status tag)    | rate       |          |   Applicable tariff (e.g. "8 INR/kWh")       |
+|  32  |   SESSION-SUMMARY (on_update tag)   | total-energy       |          |   Total kWh consumed for the completed session       |
+|  33  |   SESSION-SUMMARY (on_update tag)   | total-cost       |          |   Final billed amount in INR       |
+|  34  |   SESSION-SUMMARY (on_update tag)   | session-start       |          |   ISO 8601 timestamp of session start       |
+|  35  |   SESSION-SUMMARY (on_update tag)   | session-end       |          |   ISO 8601 timestamp of session end       |
+|  36  |   payment params  | virtual_payment_address       |          |   Driver's UPI VPA for ON-FULFILLMENT collect request (e.g. "johndoe@upi")       |
+|  37  |   payment params  | transaction_id       |          |   UPI transaction reference, populated by BPP after successful UPI collect approval       |
 
 
 List of enums values defined for connector-type code
